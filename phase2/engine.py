@@ -53,9 +53,9 @@ def discover(data,budget=12,timeout=45,run_root=None):
             graph.update('p2_target','verified' if result['accepted'] else 'failed',compile_log=result['log'])
             status='proved' if result['accepted'] else 'unknown'; reason='lean_accepted' if result['accepted'] else 'final_compilation_failed'; break
         candidates=planner.candidates(facts,unresolved)
-        journal.event('planning_round',unresolved=[g.text() for g in unresolved],matched=len(candidates),matching_work=planner.last_scan,match_budget=planner.match_budget)
+        journal.event('planning_round',unresolved=[g.text() for g in unresolved],matched=len(candidates),matching_work=planner.last_scan,match_budget=planner.match_budget,plan=planner.last_plan)
         if not candidates:
-            reason='matching_budget_exhausted' if planner.last_scan>=planner.match_budget else 'no_new_fact_in_current_fragment'; break
+            reason='matching_budget_exhausted' if planner.last_scan>=planner.match_budget else ('goal_not_derivable_in_fragment_closure' if planner.last_plan.get('fixpoint') and planner.last_plan.get('unreachable') else 'no_new_fact_in_current_fragment'); break
         candidate=candidates[0]; rule=candidate['rule']; key=f'p2_n{compiler.counter+1:03d}'
         if following_failure: repairs+=1
         graph.add(key,candidate['conclusion'].text(),candidate['parents'],origin='Rule Engine + '+rule['origin'],rule=rule['name'],

@@ -1,0 +1,765 @@
+{
+  "seed": 20261114,
+  "budget": 12,
+  "label": "iter1-symbolic-closure",
+  "engine_hashes": {
+    "__init__.py": "47eec408c83b9765c8fd8b4a8e90827db95e7250aa8e28886248405ba3776a10",
+    "__main__.py": "6116eb1b3f1e68ec38494d01bf5d336750a1901ede736a981a91c90397b3f4c7",
+    "bench_ext.py": "e06a2f0fc40d99bc2cde47e0f74953a1a43f011c216a99d8faa22f434b4f9d36",
+    "benchmark.py": "0e5ca46ff5eacc55446ccbace0087cf88558539031bf24306aabc50191e61f45",
+    "compiler.py": "2857751a705ba926d0c59c7ff693065b2a849fa99594b6f91dc685f12546a9f6",
+    "engine.py": "29ebf067484c88154889df6d4d5308753c94d4f5dec4b50d1e9d131fba973a99",
+    "evidence.py": "e0b9c8d0206ed7c5fd673c68da5348c894e306d23b174624ffa7908406b4e68e",
+    "model.py": "3c0f392e446e854bf792a487f78a3ec7715408a296dcc05044071d971f4a39fa",
+    "planner.py": "a212678095caba6c4691a5fd5f069210ebf034943bbb99f61c3c1a1d7e01e650",
+    "provider.py": "1aa3bbcf1753e85708b4312edad046fff9007bd7655eb977d286bf035afdb493",
+    "retrieval.py": "67df1785427de177b2db2bd745fb2afc10cb8258ea1068db544cd5b9fbce3f10"
+  },
+  "cases": [
+    {
+      "id": "order_chain-0",
+      "category": "order_chain",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "b < c",
+          "c ≤ a"
+        ],
+        "goals": [
+          "b < a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "order_chain-1",
+      "category": "order_chain",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "c < d",
+          "b ≤ a",
+          "d ≤ b"
+        ],
+        "goals": [
+          "c < a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "order_chain-2",
+      "category": "order_chain",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "assumptions": [
+          "b < e",
+          "a ≤ c",
+          "c < d",
+          "e ≤ a"
+        ],
+        "goals": [
+          "b < d"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "order_chain-3",
+      "category": "order_chain",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "f < b",
+          "b ≤ a",
+          "e ≤ d",
+          "a ≤ c",
+          "d < f"
+        ],
+        "goals": [
+          "e < c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "order_chain-4",
+      "category": "order_chain",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g"
+        ],
+        "assumptions": [
+          "c ≤ b",
+          "d < f",
+          "f < c",
+          "b ≤ e",
+          "a ≤ g",
+          "g ≤ d"
+        ],
+        "goals": [
+          "a < e"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "dvd_chain_le-0",
+      "category": "dvd_chain_le",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "0 < c",
+          "b ∣ c"
+        ],
+        "goals": [
+          "a ≤ c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "dvd_chain_le-1",
+      "category": "dvd_chain_le",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "c ∣ d",
+          "a ∣ c",
+          "0 < b",
+          "d ∣ b"
+        ],
+        "goals": [
+          "a ≤ b"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "dvd_chain_le-2",
+      "category": "dvd_chain_le",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "assumptions": [
+          "0 < d",
+          "b ∣ a",
+          "a ∣ e",
+          "c ∣ b",
+          "e ∣ d"
+        ],
+        "goals": [
+          "c ≤ d"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "dvd_chain_le-3",
+      "category": "dvd_chain_le",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "f ∣ c",
+          "e ∣ a",
+          "a ∣ f",
+          "c ∣ d",
+          "0 < b",
+          "d ∣ b"
+        ],
+        "goals": [
+          "e ≤ b"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "dvd_chain_le-4",
+      "category": "dvd_chain_le",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g"
+        ],
+        "assumptions": [
+          "e ∣ b",
+          "d ∣ a",
+          "0 < f",
+          "g ∣ c",
+          "b ∣ g",
+          "c ∣ d",
+          "a ∣ f"
+        ],
+        "goals": [
+          "e ≤ f"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "eq_mixed-0",
+      "category": "eq_mixed",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "b = d",
+          "d < a",
+          "a ≤ c"
+        ],
+        "goals": [
+          "b < c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "eq_mixed-1",
+      "category": "eq_mixed",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "assumptions": [
+          "b < c",
+          "c ≤ e",
+          "a ≤ d",
+          "e ≤ a"
+        ],
+        "goals": [
+          "b < d"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "eq_mixed-2",
+      "category": "eq_mixed",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "f < e",
+          "a ≤ d",
+          "e = a",
+          "b = f",
+          "c = b"
+        ],
+        "goals": [
+          "c < d"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "antisymm-0",
+      "category": "antisymm",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b"
+        ],
+        "assumptions": [
+          "b ≤ a",
+          "a ≤ b"
+        ],
+        "goals": [
+          "b = a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "antisymm-1",
+      "category": "antisymm",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ≤ c",
+          "c ≤ b",
+          "b ≤ a"
+        ],
+        "goals": [
+          "a = b"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "antisymm-2",
+      "category": "antisymm",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "d ≤ c",
+          "a ≤ d",
+          "b ≤ a",
+          "c ≤ b"
+        ],
+        "goals": [
+          "b = c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "antisymm-3",
+      "category": "antisymm",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ a"
+        ],
+        "goals": [
+          "a = b"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "antisymm-4",
+      "category": "antisymm",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "b ∣ a",
+          "a ∣ c",
+          "c ∣ b"
+        ],
+        "goals": [
+          "b = c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "distractors-0",
+      "category": "distractors",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "f ∣ d",
+          "e ≤ f",
+          "d ≤ b",
+          "b ≤ e",
+          "b ≤ c",
+          "c ≤ a"
+        ],
+        "goals": [
+          "d ≤ a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "distractors-1",
+      "category": "distractors",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g"
+        ],
+        "assumptions": [
+          "a ≤ e",
+          "a ≤ f",
+          "f ≤ g",
+          "e ≤ b",
+          "d ≤ a",
+          "g ≤ c",
+          "b ∣ d"
+        ],
+        "goals": [
+          "d ≤ c"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "distractors-2",
+      "category": "distractors",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f",
+          "g",
+          "h"
+        ],
+        "assumptions": [
+          "c ≤ d",
+          "e ≤ g",
+          "f ≤ b",
+          "f ≤ c",
+          "d ∣ h",
+          "h ≤ f",
+          "g ≤ a",
+          "b ≤ e"
+        ],
+        "goals": [
+          "h ≤ a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "conjunction-0",
+      "category": "conjunction",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "b ∣ c",
+          "a ∣ d",
+          "d ∣ b",
+          "0 < c"
+        ],
+        "goals": [
+          "a ∣ c",
+          "a ≤ c",
+          "0 < a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "conjunction-1",
+      "category": "conjunction",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "e ∣ d",
+          "0 < c",
+          "b ∣ e",
+          "d ∣ c"
+        ],
+        "goals": [
+          "a ∣ c",
+          "a ≤ c",
+          "0 < a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "conjunction-2",
+      "category": "conjunction",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "c ∣ e",
+          "a ∣ d",
+          "e ∣ b",
+          "f ∣ c",
+          "0 < d",
+          "b ∣ a"
+        ],
+        "goals": [
+          "f ∣ d",
+          "f ≤ d",
+          "0 < f"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "positivity-0",
+      "category": "positivity",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "b < a",
+          "c ∣ a"
+        ],
+        "goals": [
+          "1 ≤ a",
+          "c ≤ a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "positivity-1",
+      "category": "positivity",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "c < a",
+          "d ∣ a",
+          "b ∣ d"
+        ],
+        "goals": [
+          "1 ≤ a",
+          "b ≤ a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "positivity-2",
+      "category": "positivity",
+      "provable": true,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e"
+        ],
+        "assumptions": [
+          "c ∣ a",
+          "b ∣ c",
+          "a ∣ d",
+          "e < d"
+        ],
+        "goals": [
+          "1 ≤ d",
+          "b ≤ d"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "control_false-0",
+      "category": "control_false",
+      "provable": false,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ≤ b",
+          "c ≤ b"
+        ],
+        "goals": [
+          "c ≤ a"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "control_false-1",
+      "category": "control_false",
+      "provable": false,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ∣ c",
+          "c ∣ b"
+        ],
+        "goals": [
+          "a < b"
+        ],
+        "original_text": ""
+      }
+    },
+    {
+      "id": "control_false-2",
+      "category": "control_false",
+      "provable": false,
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b"
+        ],
+        "assumptions": [
+          "b ≤ a"
+        ],
+        "goals": [
+          "b = a"
+        ],
+        "original_text": ""
+      }
+    }
+  ]
+}

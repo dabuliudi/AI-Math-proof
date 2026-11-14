@@ -1,0 +1,86 @@
+{
+  "label": "baseline",
+  "seed": 20261114,
+  "budget": 12,
+  "workers": 6,
+  "cases": 30,
+  "provable_cases": 27,
+  "solved": 19,
+  "solve_rate": 0.7037,
+  "false_proofs": 0,
+  "errors": 0,
+  "total_compiles": 228,
+  "compiles_per_solved": 5.053,
+  "failed_compiles": 0,
+  "wall_seconds": 101.1,
+  "by_category": {
+    "order_chain": {
+      "cases": 5,
+      "proved": 5
+    },
+    "dvd_chain_le": {
+      "cases": 5,
+      "proved": 3
+    },
+    "eq_mixed": {
+      "cases": 3,
+      "proved": 3
+    },
+    "antisymm": {
+      "cases": 5,
+      "proved": 5
+    },
+    "distractors": {
+      "cases": 3,
+      "proved": 3
+    },
+    "conjunction": {
+      "cases": 3,
+      "proved": 0
+    },
+    "positivity": {
+      "cases": 3,
+      "proved": 0
+    },
+    "control_false": {
+      "cases": 3,
+      "proved": 0
+    }
+  },
+  "unsolved": [
+    {
+      "id": "dvd_chain_le-3",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "dvd_chain_le-4",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "conjunction-0",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "conjunction-1",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "conjunction-2",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "positivity-0",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "positivity-1",
+      "reason": "budget_exhausted"
+    },
+    {
+      "id": "positivity-2",
+      "reason": "budget_exhausted"
+    }
+  ],
+  "ai_calls": 0,
+  "external_blind_independence": "NOT VERIFIED"
+}

@@ -1,0 +1,53 @@
+{
+  "label": "heldout-new",
+  "seed": 97531,
+  "budget": 12,
+  "workers": 6,
+  "cases": 30,
+  "provable_cases": 27,
+  "solved": 27,
+  "solve_rate": 1.0,
+  "false_proofs": 0,
+  "errors": 0,
+  "total_compiles": 110,
+  "compiles_per_solved": 4.074,
+  "failed_compiles": 0,
+  "wall_seconds": 53.0,
+  "by_category": {
+    "order_chain": {
+      "cases": 5,
+      "proved": 5
+    },
+    "dvd_chain_le": {
+      "cases": 5,
+      "proved": 5
+    },
+    "eq_mixed": {
+      "cases": 3,
+      "proved": 3
+    },
+    "antisymm": {
+      "cases": 5,
+      "proved": 5
+    },
+    "distractors": {
+      "cases": 3,
+      "proved": 3
+    },
+    "conjunction": {
+      "cases": 3,
+      "proved": 3
+    },
+    "positivity": {
+      "cases": 3,
+      "proved": 3
+    },
+    "control_false": {
+      "cases": 3,
+      "proved": 0
+    }
+  },
+  "unsolved": [],
+  "ai_calls": 0,
+  "external_blind_independence": "NOT VERIFIED"
+}

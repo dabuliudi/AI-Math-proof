@@ -1,0 +1,96 @@
+[
+  {
+    "lemma": 1,
+    "source": "D:\\mathproof\\lean\\Research\\Lemma1.lean",
+    "physical_lines": 8,
+    "substantive_lines": 5,
+    "normalized_sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+    "byte_sha256": "16eb70221017875b7fd1f08a14e25925fcaf8781a64a43599b29b56a0462647f",
+    "historical_source_matches": true,
+    "historical_sha_matches": true,
+    "fresh_returncode": 0,
+    "fresh_elapsed": 5.792858999979217,
+    "axioms": {
+      "mathlib2_mason_lemma1": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "axiom_gate_pass": true,
+    "forbidden_tokens": []
+  },
+  {
+    "lemma": 2,
+    "source": "D:\\mathproof\\lean\\Research\\Lemma2.lean",
+    "physical_lines": 32,
+    "substantive_lines": 21,
+    "normalized_sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+    "byte_sha256": "2846525da9ff178afba787a735e5986cf057ba51aab3c2610e2ba59e4cb5528e",
+    "historical_source_matches": true,
+    "historical_sha_matches": true,
+    "fresh_returncode": 0,
+    "fresh_elapsed": 6.179715699981898,
+    "axioms": {
+      "mathlib2_mason_lemma1": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_dvd_linear_combination": [],
+      "mathlib2_quotient_dvd_self": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_mason_lemma2": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "axiom_gate_pass": true,
+    "forbidden_tokens": []
+  },
+  {
+    "lemma": 3,
+    "source": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "physical_lines": 44,
+    "substantive_lines": 30,
+    "normalized_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+    "byte_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "historical_source_matches": true,
+    "historical_sha_matches": true,
+    "fresh_returncode": 0,
+    "fresh_elapsed": 6.342012000037357,
+    "axioms": {
+      "mathlib2_unit_of_natDegree_zero": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_unit_of_radical_unit": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_radical_natDegree_ne_zero": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_mason_lemma3_nat": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "mathlib2_mason_lemma3": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "axiom_gate_pass": true,
+    "forbidden_tokens": []
+  }
+]

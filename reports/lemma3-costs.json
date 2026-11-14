@@ -1,0 +1,55 @@
+{
+  "metrics": [
+    {
+      "experiment": "Lemma1",
+      "physical_lines": 8,
+      "new_lean_lines": 5,
+      "reused_mathlib_theorems": 1,
+      "new_intermediate_lemmas": 0,
+      "proof_depth": 1,
+      "local_proof_depth": 0,
+      "compile_elapsed_seconds": 12.530999999988126,
+      "compile_log": "D:\\mathproof\\reports\\lemma1-v03-c314f1a0098f48cb958f51f7126b7bb5.json",
+      "compile_source_sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    },
+    {
+      "experiment": "Lemma2",
+      "physical_lines": 32,
+      "new_lean_lines": 16,
+      "reused_mathlib_theorems": 4,
+      "new_intermediate_lemmas": 2,
+      "proof_depth": 2,
+      "local_proof_depth": 1,
+      "compile_elapsed_seconds": 12.172000000020489,
+      "compile_log": "D:\\mathproof\\reports\\lemma2-a72e7f230d394350bcf87b0302c3f7d8.json",
+      "compile_source_sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    },
+    {
+      "experiment": "Lemma3",
+      "physical_lines": 44,
+      "new_lean_lines": 30,
+      "reused_mathlib_theorems": 9,
+      "new_intermediate_lemmas": 4,
+      "proof_depth": 4,
+      "local_proof_depth": 3,
+      "compile_elapsed_seconds": 7.764999999955762,
+      "compile_log": "D:\\mathproof\\reports\\lemma3-0cd93ed19024460a85f4de6f484162c5.json",
+      "compile_source_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    }
+  ],
+  "definitions": {
+    "new_lean_lines": "非空且非import/open/#print行；Lemma2剔除Lemma1前缀",
+    "reused_mathlib_theorems": "显式命名数学主干声明，不含定义、隐式实例与基础Nat/逻辑API",
+    "proof_depth": "已列出的数学主干DAG最长路径边数，不含Mathlib内部证明",
+    "elapsed": "指定真实编译日志，不是总探索耗时或可直接比拟的性能基准"
+  }
+}

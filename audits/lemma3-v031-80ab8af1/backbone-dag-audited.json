@@ -1,0 +1,618 @@
+{
+  "nodes": [
+    {
+      "id": "mathlib2_unit_of_natDegree_zero",
+      "title": "mathlib2_unit_of_natDegree_zero",
+      "object_type": "Lemma",
+      "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 4
+      }
+    },
+    {
+      "id": "mathlib2_unit_of_radical_unit",
+      "title": "mathlib2_unit_of_radical_unit",
+      "object_type": "Lemma",
+      "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 10
+      }
+    },
+    {
+      "id": "mathlib2_radical_natDegree_ne_zero",
+      "title": "mathlib2_radical_natDegree_ne_zero",
+      "object_type": "Lemma",
+      "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 18
+      }
+    },
+    {
+      "id": "mathlib2_mason_lemma3_nat",
+      "title": "mathlib2_mason_lemma3_nat",
+      "object_type": "Lemma",
+      "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 27
+      }
+    },
+    {
+      "id": "mathlib2_mason_lemma3",
+      "title": "mathlib2_mason_lemma3",
+      "object_type": "Lemma",
+      "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 31
+      }
+    },
+    {
+      "id": "Polynomial.isUnit_iff_degree_eq_zero",
+      "title": "Polynomial.isUnit_iff_degree_eq_zero",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+        "line": 286
+      }
+    },
+    {
+      "id": "Polynomial.degree_eq_natDegree",
+      "title": "Polynomial.degree_eq_natDegree",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+        "line": 93
+      }
+    },
+    {
+      "id": "UniqueFactorizationMonoid.radical_radical",
+      "title": "UniqueFactorizationMonoid.radical_radical",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 268
+      }
+    },
+    {
+      "id": "UniqueFactorizationMonoid.radical_of_isUnit",
+      "title": "UniqueFactorizationMonoid.radical_of_isUnit",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 180
+      }
+    },
+    {
+      "id": "UniqueFactorizationMonoid.radical_eq_one_iff",
+      "title": "UniqueFactorizationMonoid.radical_eq_one_iff",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 259
+      }
+    },
+    {
+      "id": "UniqueFactorizationMonoid.radical_ne_zero",
+      "title": "UniqueFactorizationMonoid.radical_ne_zero",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 212
+      }
+    },
+    {
+      "id": "Polynomial.natDegree_eq_zero_of_isUnit",
+      "title": "Polynomial.natDegree_eq_zero_of_isUnit",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+        "line": 27
+      }
+    },
+    {
+      "id": "Polynomial.natDegree_pos_iff_degree_pos",
+      "title": "Polynomial.natDegree_pos_iff_degree_pos",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+        "line": 511
+      }
+    },
+    {
+      "id": "WithBot.coe_le_coe",
+      "title": "WithBot.coe_le_coe",
+      "object_type": "Mathlib Reference",
+      "generation_origin": "Mathlib 定理复用",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+        "line": 245
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "Polynomial.isUnit_iff_degree_eq_zero",
+      "to": "mathlib2_unit_of_natDegree_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 6,
+        "quote": "  apply isUnit_iff_degree_eq_zero.mpr",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+          "line": 286
+        },
+        "mathematical_reason": "a非零时degree等于natDegree；次数零的域上多项式为单位。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {R : Type u} [inst : Field R] {p : R[X]}, IsUnit p ↔ p.degree = 0",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] (a : k[X]), a ≠ 0 → a.natDegree = 0 → IsUnit a"
+    },
+    {
+      "from": "Polynomial.degree_eq_natDegree",
+      "to": "mathlib2_unit_of_natDegree_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 7,
+        "quote": "  rw [degree_eq_natDegree ha, hz]",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+          "line": 93
+        },
+        "mathematical_reason": "a非零时degree等于natDegree；次数零的域上多项式为单位。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, p ≠ 0 → p.degree = ↑p.natDegree",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] (a : k[X]), a ≠ 0 → a.natDegree = 0 → IsUnit a"
+    },
+    {
+      "from": "UniqueFactorizationMonoid.radical_radical",
+      "to": "mathlib2_unit_of_radical_unit",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 14,
+        "quote": "      radical a = radical (radical a) := radical_radical.symm",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 268
+        },
+        "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M},\n  UniqueFactorizationMonoid.radical (UniqueFactorizationMonoid.radical a) = UniqueFactorizationMonoid.radical a",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  a ≠ 0 → IsUnit (UniqueFactorizationMonoid.radical a) → IsUnit a"
+    },
+    {
+      "from": "UniqueFactorizationMonoid.radical_of_isUnit",
+      "to": "mathlib2_unit_of_radical_unit",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 15,
+        "quote": "      _ = 1 := radical_of_isUnit hu",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 180
+        },
+        "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, IsUnit a → UniqueFactorizationMonoid.radical a = 1",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  a ≠ 0 → IsUnit (UniqueFactorizationMonoid.radical a) → IsUnit a"
+    },
+    {
+      "from": "UniqueFactorizationMonoid.radical_eq_one_iff",
+      "to": "mathlib2_unit_of_radical_unit",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 16,
+        "quote": "  exact (radical_eq_one_iff.mp hr).resolve_left ha",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 259
+        },
+        "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, UniqueFactorizationMonoid.radical a = 1 ↔ a = 0 ∨ IsUnit a",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  a ≠ 0 → IsUnit (UniqueFactorizationMonoid.radical a) → IsUnit a"
+    },
+    {
+      "from": "mathlib2_unit_of_natDegree_zero",
+      "to": "mathlib2_radical_natDegree_ne_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "已有 Lemma 组合",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 23,
+        "quote": "  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz",
+        "dependency_declaration": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 4
+        },
+        "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {k : Type u_1} [inst : Field k] (a : k[X]), a ≠ 0 → a.natDegree = 0 → IsUnit a",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0"
+    },
+    {
+      "from": "mathlib2_unit_of_radical_unit",
+      "to": "mathlib2_radical_natDegree_ne_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "已有 Lemma 组合",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 24,
+        "quote": "  have hau := mathlib2_unit_of_radical_unit a ha hu",
+        "dependency_declaration": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 10
+        },
+        "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  a ≠ 0 → IsUnit (UniqueFactorizationMonoid.radical a) → IsUnit a",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0"
+    },
+    {
+      "from": "UniqueFactorizationMonoid.radical_ne_zero",
+      "to": "mathlib2_radical_natDegree_ne_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 23,
+        "quote": "  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 212
+        },
+        "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M} [Nontrivial M], UniqueFactorizationMonoid.radical a ≠ 0",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0"
+    },
+    {
+      "from": "Polynomial.natDegree_eq_zero_of_isUnit",
+      "to": "mathlib2_radical_natDegree_ne_zero",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 25,
+        "quote": "  exact hn (natDegree_eq_zero_of_isUnit hau)",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+          "line": 27
+        },
+        "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {R : Type u} [inst : Semiring R] [NoZeroDivisors R] {p : R[X]}, IsUnit p → p.natDegree = 0",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0"
+    },
+    {
+      "from": "mathlib2_radical_natDegree_ne_zero",
+      "to": "mathlib2_mason_lemma3_nat",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "已有 Lemma 组合",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 29,
+        "quote": "  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)",
+        "dependency_declaration": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 18
+        },
+        "mathematical_reason": "自然数不为零等价于至少为1。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → 1 ≤ (UniqueFactorizationMonoid.radical a).natDegree"
+    },
+    {
+      "from": "mathlib2_mason_lemma3_nat",
+      "to": "mathlib2_mason_lemma3",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "已有 Lemma 组合",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 37,
+        "quote": "  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)",
+        "dependency_declaration": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 27
+        },
+        "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → 1 ≤ (UniqueFactorizationMonoid.radical a).natDegree",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree"
+    },
+    {
+      "from": "Polynomial.degree_eq_natDegree",
+      "to": "mathlib2_mason_lemma3",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 36,
+        "quote": "  rw [degree_eq_natDegree radical_ne_zero]",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+          "line": 93
+        },
+        "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, p ≠ 0 → p.degree = ↑p.natDegree",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree"
+    },
+    {
+      "from": "UniqueFactorizationMonoid.radical_ne_zero",
+      "to": "mathlib2_mason_lemma3",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 36,
+        "quote": "  rw [degree_eq_natDegree radical_ne_zero]",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 212
+        },
+        "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M} [Nontrivial M], UniqueFactorizationMonoid.radical a ≠ 0",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree"
+    },
+    {
+      "from": "Polynomial.natDegree_pos_iff_degree_pos",
+      "to": "mathlib2_mason_lemma3",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 35,
+        "quote": "    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+          "line": 511
+        },
+        "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, 0 < p.natDegree ↔ 0 < p.degree",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree"
+    },
+    {
+      "from": "WithBot.coe_le_coe",
+      "to": "mathlib2_mason_lemma3",
+      "basis": "explicit",
+      "source": "实际编译脚本显式引用",
+      "origin": "Mathlib 定理复用",
+      "evidence": {
+        "path": "lean/Research/Lemma3.lean",
+        "line": 37,
+        "quote": "  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)",
+        "dependency_declaration": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+          "line": 245
+        },
+        "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+        "paper_context": {
+          "page": 7,
+          "start": 1071,
+          "end": 2043
+        }
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "audit_status": "PASS",
+      "source_quote_matches": true,
+      "paper_evidence_scope": "论文第7页的总体语义背景，不是作者逐边显式引用",
+      "from_declaration": "∀ {α : Type u_1} {a b : α} [inst : LE α], ↑a ≤ ↑b ↔ a ≤ b",
+      "to_declaration": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree"
+    }
+  ],
+  "status": "acyclic",
+  "unresolved": [],
+  "scope": "显式数学主干依赖，排除Lean基础逻辑/NatAPI及隐式实例；未连接Lemma1/2",
+  "topological_order": [
+    "UniqueFactorizationMonoid.radical_ne_zero",
+    "WithBot.coe_le_coe",
+    "Polynomial.isUnit_iff_degree_eq_zero",
+    "Polynomial.degree_eq_natDegree",
+    "mathlib2_unit_of_natDegree_zero",
+    "UniqueFactorizationMonoid.radical_radical",
+    "UniqueFactorizationMonoid.radical_of_isUnit",
+    "UniqueFactorizationMonoid.radical_eq_one_iff",
+    "mathlib2_unit_of_radical_unit",
+    "Polynomial.natDegree_eq_zero_of_isUnit",
+    "mathlib2_radical_natDegree_ne_zero",
+    "mathlib2_mason_lemma3_nat",
+    "Polynomial.natDegree_pos_iff_degree_pos",
+    "mathlib2_mason_lemma3"
+  ],
+  "proof_depth": 4,
+  "local_proof_depth": 3,
+  "audit_note": "原14节点15边全部真实使用且无环；仅为数学主干，不能称完整内核依赖图。used_in_lean原来只是整文件accepted标志，本次逐边检查实际证明项。"
+}

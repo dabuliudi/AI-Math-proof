@@ -1,0 +1,108 @@
+{
+  "tests": 13,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "elapsed": 21.492807000002358,
+  "success": true,
+  "isolated_root": "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace",
+  "application_module": "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\mathlib2\\formalization.py",
+  "calls": [
+    {
+      "api": "run",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "-M",
+        "2048",
+        "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\lean\\Research\\Attempt_fdb42e53a1324879886a2e3eef77b2fe.lean"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "run",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "-M",
+        "2048",
+        "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\lean\\Research\\Attempt_e458897e56fc4c0883de61af51e69b90.lean"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "run",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "--version"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    },
+    {
+      "api": "Popen",
+      "command": [
+        "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+        "env",
+        "lean",
+        "-M",
+        "2048",
+        "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\lean\\Research\\Attempt_5e7ba634dfeb43b789fc6f2a85a91bba.lean"
+      ],
+      "cwd": "D:\\mathproof\\lean"
+    }
+  ]
+}

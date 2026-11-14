@@ -1,0 +1,12 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a",
+    "b"
+  ],
+  "assumptions": [],
+  "goals": [
+    "a < b"
+  ],
+  "original_text": "无额外条件时尝试证明任意自然数a严格小于b；搜索失败不是证伪。"
+}

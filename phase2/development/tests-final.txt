@@ -1,0 +1,14 @@
+test_benchmark_provenance_and_independent_compilation (test_acceptance.AcceptanceTests.test_benchmark_provenance_and_independent_compilation) ... ok
+test_false_goal_never_proved (test_discovery.RealLeanTests.test_false_goal_never_proved) ... ok
+test_real_failure_feedback_and_alternative (test_discovery.RealLeanTests.test_real_failure_feedback_and_alternative) ... ok
+test_runtime_intermediates_and_goal_order (test_discovery.RealLeanTests.test_runtime_intermediates_and_goal_order) ... ok
+test_dag_planning_journal_precedes_result (test_discovery.UnitTests.test_dag_planning_journal_precedes_result) ... ok
+test_engine_has_no_legacy_templates_or_benchmark_imports (test_discovery.UnitTests.test_engine_has_no_legacy_templates_or_benchmark_imports) ... ok
+test_generic_unification (test_discovery.UnitTests.test_generic_unification) ... ok
+test_parser_and_injection_boundary (test_discovery.UnitTests.test_parser_and_injection_boundary) ... ok
+test_provider_no_call_and_unconfigured_http (test_discovery.UnitTests.test_provider_no_call_and_unconfigured_http) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 127.561s
+
+OK

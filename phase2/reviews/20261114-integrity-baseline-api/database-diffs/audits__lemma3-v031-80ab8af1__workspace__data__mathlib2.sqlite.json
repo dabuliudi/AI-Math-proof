@@ -1,0 +1,251 @@
+{
+  "before": "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\data\\mathlib2.sqlite",
+  "after": "D:\\mathproof\\data\\mathlib2.sqlite",
+  "before_sha256": "b473e429ce9faf0627b7109cfa73d2a79b29ca3a4f579f15d17fee080e880930",
+  "after_sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+  "sqlite_schema_changed": false,
+  "tables": {
+    "candidates": {
+      "before_count": 92,
+      "after_count": 92,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "document_parses": {
+      "before_count": 5,
+      "after_count": 5,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "events": {
+      "before_count": 120,
+      "after_count": 120,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "math_objects": {
+      "before_count": 171,
+      "after_count": 171,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "proof_runs": {
+      "before_count": 9,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "sources": {
+      "before_count": 9,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "verified": {
+      "before_count": 0,
+      "after_count": 0,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_history": {
+      "before_count": 38,
+      "after_count": 42,
+      "schema_changed": false,
+      "added": [
+        {
+          "key": {
+            "id": 39
+          },
+          "after": {
+            "id": 39,
+            "candidate_id": 73,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.376715+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 40
+          },
+          "after": {
+            "id": 40,
+            "candidate_id": 74,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.380715+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 41
+          },
+          "after": {
+            "id": 41,
+            "candidate_id": 75,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.384780+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 42
+          },
+          "after": {
+            "id": 42,
+            "candidate_id": 76,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.388785+00:00"
+          }
+        }
+      ],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_state": {
+      "before_count": 20,
+      "after_count": 20,
+      "schema_changed": false,
+      "added": [],
+      "modified": [
+        {
+          "key": {
+            "candidate_id": 73
+          },
+          "before": {
+            "candidate_id": 73,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"3. An abundant number is an integer n whose divisors add up to more than 2n.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 73,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"3. An abundant number is an integer n whose divisors add up to more than 2n.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 74
+          },
+          "before": {
+            "candidate_id": 74,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"A perfect number is an integer n whose divisors add up to exactly 2n.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 74,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"A perfect number is an integer n whose divisors add up to exactly 2n.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 75
+          },
+          "before": {
+            "candidate_id": 75,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(a) If n is perfect, then kn is abundant for any k ∈ N.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 75,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(a) If n is perfect, then kn is abundant for any k ∈ N.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 76
+          },
+          "before": {
+            "candidate_id": 76,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(b) If p1 and p2 are primes, then p1p2 is abundant.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 76,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(b) If p1 and p2 are primes, then p1p2 is abundant.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        }
+      ],
+      "deleted": []
+    }
+  }
+}

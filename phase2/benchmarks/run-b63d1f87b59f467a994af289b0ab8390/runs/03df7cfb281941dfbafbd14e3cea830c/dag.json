@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "a ∣ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "b ∣ c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "c ∣ d",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "p2_n001",
+      "statement": "a ∣ a",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "dvd_refl",
+      "binding": {
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Divisibility\\Basic.lean",
+        "line": 114,
+        "type": "∀ {α : Type u_1} [inst : Monoid α] (a : α), a ∣ a"
+      },
+      "planned_event": 8,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "a ∣ 0",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "dvd_zero",
+      "binding": {
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Divisibility.lean",
+        "line": 38,
+        "type": "∀ {α : Type u_1} [inst : SemigroupWithZero α] (a : α), a ∣ 0"
+      },
+      "planned_event": 14,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_n003",
+      "statement": "a ∣ c",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "a",
+        "1": "b",
+        "2": "c"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Divisibility\\Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 20,
+      "compile_log": "attempt-003.json"
+    },
+    {
+      "id": "p2_n004",
+      "statement": "a ∣ d",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "a",
+        "1": "c",
+        "2": "d"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Divisibility\\Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 26,
+      "compile_log": "attempt-004.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v0 ∣ p2v3)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 31,
+      "compile_log": "attempt-005.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h0",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "p2_n004",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 3,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "p2_n001": 0,
+    "p2_n002": 0,
+    "p2_n003": 1,
+    "p2_n004": 2,
+    "p2_target": 3
+  }
+}

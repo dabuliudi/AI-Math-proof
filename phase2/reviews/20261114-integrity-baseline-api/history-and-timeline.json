@@ -1,0 +1,577 @@
+{
+  "lemma123": {
+    "candidates": {
+      "rows": 3,
+      "unchanged": true
+    },
+    "workbench_state": {
+      "rows": 3,
+      "unchanged": true
+    },
+    "proof_runs": {
+      "rows": 9,
+      "unchanged": true
+    },
+    "workbench_history": {
+      "rows": 21,
+      "unchanged": true
+    },
+    "events": {
+      "rows": 0,
+      "unchanged": true
+    },
+    "verified": {
+      "rows": 0,
+      "unchanged": true
+    }
+  },
+  "added_history": [
+    {
+      "id": 39,
+      "candidate_id": 73,
+      "action": "planning",
+      "payload": {
+        "status": "acyclic",
+        "unresolved": 2
+      },
+      "created": "2026-11-14T11:34:46.376715+00:00",
+      "china_time": "2026-11-14T19:34:46.376715+08:00"
+    },
+    {
+      "id": 40,
+      "candidate_id": 74,
+      "action": "planning",
+      "payload": {
+        "status": "acyclic",
+        "unresolved": 2
+      },
+      "created": "2026-11-14T11:34:46.380715+00:00",
+      "china_time": "2026-11-14T19:34:46.380715+08:00"
+    },
+    {
+      "id": 41,
+      "candidate_id": 75,
+      "action": "planning",
+      "payload": {
+        "status": "acyclic",
+        "unresolved": 2
+      },
+      "created": "2026-11-14T11:34:46.384780+00:00",
+      "china_time": "2026-11-14T19:34:46.384780+08:00"
+    },
+    {
+      "id": 42,
+      "candidate_id": 76,
+      "action": "planning",
+      "payload": {
+        "status": "acyclic",
+        "unresolved": 2
+      },
+      "created": "2026-11-14T11:34:46.388785+00:00",
+      "china_time": "2026-11-14T19:34:46.388785+08:00"
+    }
+  ],
+  "live_matches_post_acceptance_copy": true,
+  "affected_candidates": [
+    {
+      "id": 73,
+      "source_id": 8,
+      "payload": {
+        "original_statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "normalized_statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "lean_statement": null,
+        "semantic_risk": [],
+        "semantic_status": "unchecked",
+        "proposed_corrections": [],
+        "boundary_checks": [],
+        "normalization": "whitespace_only",
+        "condition_inventory": [
+          "3",
+          "integer",
+          "more than"
+        ],
+        "classification": "formal_mathematical_object",
+        "filter_reason": "明确数学结构；仍需审核",
+        "candidate_eligible": true,
+        "relevance_score": 1.0,
+        "mathematical_completeness": 0.85,
+        "extraction_confidence": 0.78,
+        "source_traceability": 1.0,
+        "quality_tier": "Medium Confidence",
+        "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+        "assumptions": [],
+        "quantifiers": [],
+        "domain_constraints": [
+          "integer n whose divisors add up to more than 2n"
+        ],
+        "definitions": [
+          "abundant",
+          "divisors"
+        ],
+        "boundary_cases": [],
+        "potential_counterexamples": [],
+        "source_location": {
+          "page": 28,
+          "start": 713,
+          "end": 789
+        },
+        "review_status": "pending",
+        "semantic_review_status": "pending",
+        "extraction_status": "recognized",
+        "normalization_changes": [],
+        "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+        "statement_text": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "proof_body": "",
+        "code_fragments": [],
+        "parser_version": "0.3.0",
+        "source_id": 8,
+        "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "object_type": "Definition",
+        "original_text": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "location": {
+          "page": 28,
+          "line": 18,
+          "paragraph": 1,
+          "start": 713,
+          "end": 789
+        },
+        "mathematical_domain": "number_theory (keyword_hint)",
+        "dependencies": [],
+        "extraction_method": "explicit_definition_sentence",
+        "confidence": 0.78,
+        "formalization_status": "not_formalized",
+        "verification_status": "unknown",
+        "retrieval_status": "not_run",
+        "planning_status": "acyclic",
+        "approval_status": "pending",
+        "stage": "Candidate",
+        "recognition_status": "recognized",
+        "reason": "",
+        "context_before": "t f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n",
+        "context_after": "\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserve",
+        "proof_steps": [],
+        "boundary_status": "local_boundary",
+        "object_key": "8:0.3.0:28:713:789:Definition",
+        "kind": "document",
+        "depends_on": []
+      },
+      "status": "unknown",
+      "dedup_key": "8:0.3.0:28:713:789:Definition"
+    },
+    {
+      "id": 74,
+      "source_id": 8,
+      "payload": {
+        "original_statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "normalized_statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "lean_statement": null,
+        "semantic_risk": [],
+        "semantic_status": "unchecked",
+        "proposed_corrections": [],
+        "boundary_checks": [],
+        "normalization": "whitespace_only",
+        "condition_inventory": [
+          "integer",
+          "exactly"
+        ],
+        "classification": "formal_mathematical_object",
+        "filter_reason": "明确数学结构；仍需审核",
+        "candidate_eligible": true,
+        "relevance_score": 1.0,
+        "mathematical_completeness": 0.85,
+        "extraction_confidence": 0.78,
+        "source_traceability": 1.0,
+        "quality_tier": "Medium Confidence",
+        "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+        "assumptions": [],
+        "quantifiers": [],
+        "domain_constraints": [
+          "integer n whose divisors add up to exactly 2n"
+        ],
+        "definitions": [
+          "perfect",
+          "divisors"
+        ],
+        "boundary_cases": [],
+        "potential_counterexamples": [],
+        "source_location": {
+          "page": 28,
+          "start": 790,
+          "end": 859
+        },
+        "review_status": "pending",
+        "semantic_review_status": "pending",
+        "extraction_status": "recognized",
+        "normalization_changes": [],
+        "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+        "statement_text": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "proof_body": "",
+        "code_fragments": [],
+        "parser_version": "0.3.0",
+        "source_id": 8,
+        "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "object_type": "Definition",
+        "original_text": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "location": {
+          "page": 28,
+          "line": 19,
+          "paragraph": 1,
+          "start": 790,
+          "end": 859
+        },
+        "mathematical_domain": "number_theory (keyword_hint)",
+        "dependencies": [],
+        "extraction_method": "explicit_definition_sentence",
+        "confidence": 0.78,
+        "formalization_status": "not_formalized",
+        "verification_status": "unknown",
+        "retrieval_status": "not_run",
+        "planning_status": "acyclic",
+        "approval_status": "pending",
+        "stage": "Candidate",
+        "recognition_status": "recognized",
+        "reason": "",
+        "context_before": "f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\n",
+        "context_after": "\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing",
+        "proof_steps": [],
+        "boundary_status": "local_boundary",
+        "object_key": "8:0.3.0:28:790:859:Definition",
+        "kind": "document",
+        "depends_on": []
+      },
+      "status": "unknown",
+      "dedup_key": "8:0.3.0:28:790:859:Definition"
+    },
+    {
+      "id": 75,
+      "source_id": 8,
+      "payload": {
+        "original_statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "normalized_statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "lean_statement": null,
+        "semantic_risk": [
+          "k=1_not_excluded",
+          "integer_domain_and_zero_convention_need_review",
+          "exercise_truth_not_established"
+        ],
+        "semantic_status": "potential_counterexample",
+        "proposed_corrections": [
+          {
+            "label": "建议修正版（规则建议，不是论文原文，未经 Lean 验证）",
+            "statement": "If n is perfect and k ∈ N with k > 1, then kn is abundant.",
+            "change": "显式增加 k > 1；n 的正性、N 是否含 0 及因数定义仍须复核。",
+            "status": "proposed_not_formalized",
+            "evidence": [
+              {
+                "page": 9,
+                "start": 563,
+                "end": 677,
+                "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+              }
+            ]
+          }
+        ],
+        "boundary_checks": [
+          {
+            "value": "k=1",
+            "status": "potential_counterexample",
+            "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+            "source_evidence": [
+              {
+                "page": 9,
+                "start": 563,
+                "end": 677,
+                "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+              }
+            ]
+          }
+        ],
+        "normalization": "whitespace_only",
+        "condition_inventory": [
+          "If",
+          "then",
+          "any",
+          "∈"
+        ],
+        "classification": "formal_mathematical_object",
+        "filter_reason": "明确数学结构；仍需审核",
+        "candidate_eligible": true,
+        "relevance_score": 1.0,
+        "mathematical_completeness": 0.55,
+        "extraction_confidence": 0.82,
+        "source_traceability": 1.0,
+        "quality_tier": "Medium Confidence",
+        "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+        "assumptions": [
+          "If n is perfect, then kn is abundant for any k ∈ N"
+        ],
+        "quantifiers": [
+          "any k ∈ N"
+        ],
+        "domain_constraints": [
+          "∈ N"
+        ],
+        "definitions": [
+          "perfect",
+          "abundant"
+        ],
+        "boundary_cases": [
+          {
+            "value": "k=1",
+            "status": "potential_counterexample",
+            "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+            "source_evidence": [
+              {
+                "page": 9,
+                "start": 563,
+                "end": 677,
+                "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+              }
+            ]
+          }
+        ],
+        "potential_counterexamples": [
+          {
+            "value": "k=1",
+            "status": "potential_counterexample",
+            "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+            "source_evidence": [
+              {
+                "page": 9,
+                "start": 563,
+                "end": 677,
+                "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+              }
+            ]
+          }
+        ],
+        "source_location": {
+          "page": 28,
+          "start": 867,
+          "end": 922
+        },
+        "review_status": "pending",
+        "semantic_review_status": "pending",
+        "extraction_status": "recognized",
+        "normalization_changes": [],
+        "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+        "statement_text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "proof_body": "",
+        "code_fragments": [],
+        "parser_version": "0.3.0",
+        "source_id": 8,
+        "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "object_type": "Conjecture",
+        "original_text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "location": {
+          "page": 28,
+          "line": 21,
+          "paragraph": 1,
+          "start": 867,
+          "end": 922
+        },
+        "mathematical_domain": "number_theory (keyword_hint)",
+        "dependencies": [
+          {
+            "from": 73,
+            "to": 75,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "abundant",
+              "page": 28,
+              "start": 899,
+              "end": 907
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 18,
+              "paragraph": 1,
+              "start": 713,
+              "end": 789
+            }
+          },
+          {
+            "from": 74,
+            "to": 75,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "perfect",
+              "page": 28,
+              "start": 879,
+              "end": 886
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 19,
+              "paragraph": 1,
+              "start": 790,
+              "end": 859
+            }
+          }
+        ],
+        "extraction_method": "numbered_task",
+        "confidence": 0.82,
+        "formalization_status": "not_formalized",
+        "verification_status": "unknown",
+        "retrieval_status": "not_run",
+        "planning_status": "acyclic",
+        "approval_status": "pending",
+        "stage": "Candidate",
+        "recognition_status": "recognized",
+        "reason": "练习题原文；真值及隐含假设未判断",
+        "context_before": " function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n",
+        "context_after": "\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved ",
+        "proof_steps": [],
+        "boundary_status": "local_boundary",
+        "object_key": "8:0.3.0:28:867:922:Conjecture",
+        "kind": "document",
+        "depends_on": []
+      },
+      "status": "unknown",
+      "dedup_key": "8:0.3.0:28:867:922:Conjecture"
+    },
+    {
+      "id": 76,
+      "source_id": 8,
+      "payload": {
+        "original_statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "normalized_statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "lean_statement": null,
+        "semantic_risk": [
+          "exercise_truth_not_established",
+          "equal_primes_two_not_excluded"
+        ],
+        "semantic_status": "potential_counterexample",
+        "proposed_corrections": [],
+        "boundary_checks": [
+          {
+            "value": "p1=p2=2",
+            "status": "potential_counterexample",
+            "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+            "source_evidence": []
+          }
+        ],
+        "normalization": "whitespace_only",
+        "condition_inventory": [
+          "If",
+          "then"
+        ],
+        "classification": "formal_mathematical_object",
+        "filter_reason": "明确数学结构；仍需审核",
+        "candidate_eligible": true,
+        "relevance_score": 1.0,
+        "mathematical_completeness": 0.55,
+        "extraction_confidence": 0.82,
+        "source_traceability": 1.0,
+        "quality_tier": "Medium Confidence",
+        "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+        "assumptions": [
+          "If p1 and p2 are primes, then p1p2 is abundant"
+        ],
+        "quantifiers": [],
+        "domain_constraints": [],
+        "definitions": [
+          "abundant"
+        ],
+        "boundary_cases": [
+          {
+            "value": "p1=p2=2",
+            "status": "potential_counterexample",
+            "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+            "source_evidence": []
+          }
+        ],
+        "potential_counterexamples": [
+          {
+            "value": "p1=p2=2",
+            "status": "potential_counterexample",
+            "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+            "source_evidence": []
+          }
+        ],
+        "source_location": {
+          "page": 28,
+          "start": 923,
+          "end": 974
+        },
+        "review_status": "pending",
+        "semantic_review_status": "pending",
+        "extraction_status": "recognized",
+        "normalization_changes": [],
+        "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+        "statement_text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "proof_body": "",
+        "code_fragments": [],
+        "parser_version": "0.3.0",
+        "source_id": 8,
+        "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "object_type": "Conjecture",
+        "original_text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "location": {
+          "page": 28,
+          "line": 22,
+          "paragraph": 1,
+          "start": 923,
+          "end": 974
+        },
+        "mathematical_domain": "number_theory (keyword_hint)",
+        "dependencies": [
+          {
+            "from": 73,
+            "to": 76,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "abundant",
+              "page": 28,
+              "start": 965,
+              "end": 973
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 18,
+              "paragraph": 1,
+              "start": 713,
+              "end": 789
+            }
+          }
+        ],
+        "extraction_method": "numbered_task",
+        "confidence": 0.82,
+        "formalization_status": "not_formalized",
+        "verification_status": "unknown",
+        "retrieval_status": "not_run",
+        "planning_status": "acyclic",
+        "approval_status": "pending",
+        "stage": "Candidate",
+        "recognition_status": "recognized",
+        "reason": "练习题原文；真值及隐含假设未判断",
+        "context_before": "ve that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n",
+        "context_after": "\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.\n(b) Let f,g : R → R be functions and a ⊂ R. Su",
+        "proof_steps": [],
+        "boundary_status": "local_boundary",
+        "object_key": "8:0.3.0:28:923:974:Conjecture",
+        "kind": "document",
+        "depends_on": []
+      },
+      "status": "unknown",
+      "dedup_key": "8:0.3.0:28:923:974:Conjecture"
+    }
+  ],
+  "note": "created为应用写入的时间字段，并非独立进程审计时间；代码路径匹配不能确认操作人。"
+}

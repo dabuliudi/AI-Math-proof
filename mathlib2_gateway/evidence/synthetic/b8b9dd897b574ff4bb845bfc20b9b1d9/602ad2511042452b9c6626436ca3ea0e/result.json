@@ -1,0 +1,29 @@
+{
+  "status": "failed",
+  "reason": "token_budget",
+  "run": "D:\\mathproof\\mathlib2_gateway\\evidence\\synthetic\\b8b9dd897b574ff4bb845bfc20b9b1d9\\602ad2511042452b9c6626436ca3ea0e",
+  "evidence_kind": "synthetic_fixture",
+  "plan": null,
+  "generation_origin": null,
+  "lean_status": "not_run",
+  "formal_goal_verified": false,
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "ai_dispatch_attempts": 0,
+  "http_responses": 0,
+  "model_responses": 0,
+  "real_model_responses": 0,
+  "cost": {
+    "dispatch_attempts": 0,
+    "reserved_tokens": 0,
+    "reported_tokens": 0,
+    "attempts_with_unknown_usage": 0,
+    "reserved_usd": "0",
+    "known_estimated_cost_usd": "0",
+    "estimated_total_usd": "0",
+    "actual_billed_usd": null,
+    "cost_basis": "configured_uncached_prices_times_reported_tokens; not invoice",
+    "guarantee": "local admission reservations only; provider tokenization/pricing/hidden charges not guaranteed"
+  },
+  "elapsed": 0.0
+}

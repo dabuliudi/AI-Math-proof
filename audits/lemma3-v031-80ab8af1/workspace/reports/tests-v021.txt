@@ -1,0 +1,26 @@
+test_upload_source_filter_and_unknown (test_app.AppTests.test_upload_source_filter_and_unknown) ... 2026-11-11 19:16:49.434 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_axiom_gate (test_core.CoreTests.test_axiom_gate) ... ok
+test_dag (test_core.CoreTests.test_dag) ... ok
+test_evaluation_policy (test_core.CoreTests.test_evaluation_policy) ... ok
+test_injection_rejected (test_core.CoreTests.test_injection_rejected) ... ok
+test_missing_lean_is_unknown_and_persistent (test_core.CoreTests.test_missing_lean_is_unknown_and_persistent) ... ok
+test_trace (test_core.CoreTests.test_trace) ... ok
+test_real_roundtrip (test_core.LeanIntegration.test_real_roundtrip) ... ok
+test_actual_paper (test_documents.DocumentTests.test_actual_paper) ... ok
+test_dedup_and_migration (test_documents.DocumentTests.test_dedup_and_migration) ... ok
+test_graph_evidence_and_cycles (test_documents.DocumentTests.test_graph_evidence_and_cycles) ... ok
+test_image_only_pdf (test_documents.DocumentTests.test_image_only_pdf) ... ok
+test_plain_pdf_and_corrupt (test_documents.DocumentTests.test_plain_pdf_and_corrupt) ... ok
+test_provider_requires_explicit_endpoint (test_retrieval.RetrievalTests.test_provider_requires_explicit_endpoint) ... ok
+test_source_location (test_retrieval.RetrievalTests.test_source_location) ... ok
+test_eight_types_and_offsets (test_structures.StructureTests.test_eight_types_and_offsets) ... ok
+test_proof_and_latex (test_structures.StructureTests.test_proof_and_latex) ... ok
+test_prose_not_theorems (test_structures.StructureTests.test_prose_not_theorems) ... ok
+test_task_is_not_theorem (test_structures.StructureTests.test_task_is_not_theorem) ... ok
+test_uncertain_heading (test_structures.StructureTests.test_uncertain_heading) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 15.264s
+
+OK

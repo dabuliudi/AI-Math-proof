@@ -1,0 +1,17 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a",
+    "b",
+    "c"
+  ],
+  "assumptions": [
+    "a ∣ b",
+    "b ∣ c",
+    "0 < c"
+  ],
+  "goals": [
+    "a ≤ c"
+  ],
+  "original_text": "a整除b，b整除正自然数c，则a不大于c。"
+}

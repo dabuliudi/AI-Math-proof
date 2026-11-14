@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {
+      "id": "p2_n001",
+      "statement": "q ≤ q",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Preorder.le_refl",
+      "binding": {
+        "0": "q"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+        "line": 41,
+        "type": "∀ {α : Type u_2} [self : Preorder α] (a : α), a ≤ a"
+      },
+      "planned_event": 5,
+      "compile_log": "attempt-001.json"
+    }
+  ],
+  "edges": [],
+  "depth": 0,
+  "depths": {
+    "p2_n001": 0
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "returncode": 0,
+  "stdout": "'p2_n002' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f\\attempt-002.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.711582700000008,
+  "accepted": true,
+  "audits": {
+    "p2_n002": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n002 (p2v0 : Nat) : (p2v0 ≤ p2v0) := by\n  exact @Nat.le_refl p2v0\n\n#print axioms p2_n002\n",
+  "source_sha256": "45e816d8a2fa4636d30899d6253d92df1532fff3c200996560899adf506d8965",
+  "goal": "(p2v0 ≤ p2v0)",
+  "artifact": "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f\\attempt-002.lean",
+  "log": "attempt-002.json"
+}

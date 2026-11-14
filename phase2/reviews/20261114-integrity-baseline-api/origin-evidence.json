@@ -1,0 +1,234 @@
+{
+  "orphan_reference_checks": {
+    "candidates": [],
+    "document_parses": [],
+    "math_objects": [],
+    "events": [],
+    "workbench_state": [],
+    "workbench_history": [],
+    "proof_runs": [],
+    "verified": []
+  },
+  "code_evidence": [
+    {
+      "path": "mathlib2/workbench.py",
+      "sha256": "5c77ad6ad7278717fe0e1f5c735885d91c0e4367ac5cd7de0455d08336e1936b",
+      "lines": [
+        {
+          "line": 18,
+          "text": ""
+        },
+        {
+          "line": 19,
+          "text": "def state(store,cid):"
+        },
+        {
+          "line": 20,
+          "text": "    row=_row(store,cid)"
+        },
+        {
+          "line": 21,
+          "text": "    p=row['payload']"
+        },
+        {
+          "line": 22,
+          "text": "    value=dict(extraction_status='extracted',semantic_review_status='needs_review',review_status='needs_review',"
+        },
+        {
+          "line": 23,
+          "text": "        retrieval_status='not_run',planning_status='not_run',formalization_status=p.get('formalization_status','not_formalized'),"
+        },
+        {
+          "line": 24,
+          "text": "        verification_status=row['status'],approval_status='pending',"
+        },
+        {
+          "line": 25,
+          "text": "        normalized_statement=p.get('normalized_statement',p.get('statement','')),revision=0,"
+        },
+        {
+          "line": 26,
+          "text": "        candidate_alignment='unconfirmed',candidate_verified=False)"
+        },
+        {
+          "line": 27,
+          "text": "    r=store.db.execute('SELECT payload FROM workbench_state WHERE candidate_id=?',(cid,)).fetchone()"
+        },
+        {
+          "line": 28,
+          "text": "    if r:"
+        },
+        {
+          "line": 29,
+          "text": "        value.update(json.loads(r[0]))"
+        },
+        {
+          "line": 30,
+          "text": "    if any(r['candidate_id']==cid for r in store.rows('verified')):"
+        },
+        {
+          "line": 31,
+          "text": "        value['approval_status']='approved'"
+        },
+        {
+          "line": 32,
+          "text": "    return value"
+        },
+        {
+          "line": 33,
+          "text": ""
+        },
+        {
+          "line": 34,
+          "text": ""
+        },
+        {
+          "line": 35,
+          "text": "def _save(store,cid,value,action,details):"
+        },
+        {
+          "line": 36,
+          "text": "    with store.db:"
+        },
+        {
+          "line": 37,
+          "text": "        store.db.execute('INSERT OR REPLACE INTO workbench_state VALUES (?,?)',(cid,json.dumps(value,ensure_ascii=False)))"
+        }
+      ]
+    },
+    {
+      "path": "mathlib2/workbench.py",
+      "sha256": "5c77ad6ad7278717fe0e1f5c735885d91c0e4367ac5cd7de0455d08336e1936b",
+      "lines": [
+        {
+          "line": 151,
+          "text": ""
+        },
+        {
+          "line": 152,
+          "text": "def plan_for(store,sid):"
+        },
+        {
+          "line": 153,
+          "text": "    graph=graph_for(store,sid)"
+        },
+        {
+          "line": 154,
+          "text": "    for c in candidates_for(store,sid):"
+        },
+        {
+          "line": 155,
+          "text": "        s=state(store,c['candidate_id'])"
+        },
+        {
+          "line": 156,
+          "text": "        s['planning_status']='completed' if graph['status']=='acyclic' else 'blocked'"
+        },
+        {
+          "line": 157,
+          "text": "        _save(store,c['candidate_id'],s,'planning',{'status':graph['status'],'unresolved':len(graph['unresolved'])})"
+        },
+        {
+          "line": 158,
+          "text": "    return graph"
+        }
+      ]
+    },
+    {
+      "path": "app.py",
+      "sha256": "ad066476087387baf23e0f14ea557881c36127586ee46d5db000bf07641b6912",
+      "lines": [
+        {
+          "line": 188,
+          "text": ""
+        },
+        {
+          "line": 189,
+          "text": "elif page=='Proof DAG':"
+        },
+        {
+          "line": 190,
+          "text": "    if selected is None:"
+        },
+        {
+          "line": 191,
+          "text": "        st.info('导入文献后才有可规划的数学对象。')"
+        },
+        {
+          "line": 192,
+          "text": "        go('导入文献','文献管理','dag_import')"
+        },
+        {
+          "line": 193,
+          "text": "    else:"
+        },
+        {
+          "line": 194,
+          "text": "        if st.button('建立 / 更新证明规划',key='run_planner',type='primary'):"
+        },
+        {
+          "line": 195,
+          "text": "            try:"
+        },
+        {
+          "line": 196,
+          "text": "                wb.plan_for(store,selected)"
+        },
+        {
+          "line": 197,
+          "text": "                st.success('已保存本次规划，尚未确认的依赖仍保留原状态。')"
+        },
+        {
+          "line": 198,
+          "text": "            except Exception as exc: fail('DAG 规划',exc)"
+        },
+        {
+          "line": 199,
+          "text": "        render_graph(wb.graph_for(store,selected),candidates)"
+        },
+        {
+          "line": 200,
+          "text": ""
+        }
+      ]
+    }
+  ],
+  "session_log_window_utc": [
+    "2026-11-14T11:33:00Z",
+    "2026-11-14T11:36:00Z"
+  ],
+  "session_coverage": [
+    {
+      "path": "C:\\Users\\123\\.codex\\sessions\\2026\\11\\14\\rollout-2026-11-14T02-08-50-01a1d619-144b-7970-8061-38a21491d5c3.jsonl",
+      "first": "2026-11-13T18:08:50.254Z",
+      "last": "2026-11-13T18:08:50.267Z",
+      "records_in_window": 0
+    },
+    {
+      "path": "C:\\Users\\123\\.codex\\sessions\\2026\\11\\14\\rollout-2026-11-14T02-13-28-01a1d61d-5226-7e53-a1f6-764aea77ca54.jsonl",
+      "first": "2026-11-13T18:13:28.232Z",
+      "last": "2026-11-14T09:22:57.862Z",
+      "records_in_window": 0
+    },
+    {
+      "path": "C:\\Users\\123\\.codex\\sessions\\2026\\11\\14\\rollout-2026-11-14T20-46-07-01a1da17-fdaa-70d0-85e3-409dc4f00cf4.jsonl",
+      "first": "2026-11-14T12:46:07.788Z",
+      "last": "2026-11-14T12:46:07.805Z",
+      "records_in_window": 0
+    },
+    {
+      "path": "C:\\Users\\123\\.codex\\sessions\\2026\\11\\14\\rollout-2026-11-14T20-49-52-01a1da1b-6a98-7e40-863f-b2d091bae411.jsonl",
+      "first": "2026-11-14T12:49:52.281Z",
+      "last": "2026-11-14T12:57:25.619Z",
+      "records_in_window": 0
+    },
+    {
+      "path": "C:\\Users\\123\\.codex\\sessions\\2026\\11\\10\\rollout-2026-11-10T23-13-40-01a1c605-8d94-7202-a64c-582061e98e13.jsonl",
+      "first": "2026-11-10T15:13:45.754Z",
+      "last": "2026-11-14T13:54:15.064Z",
+      "records_in_window": 0
+    }
+  ],
+  "matching_events": [],
+  "conclusion": "plan_for保存规划的代码行为与变化吻合；只有按钮或其他调用者主动调用才会写入。未查到窗口内会话记录，无法证明调用者。"
+}

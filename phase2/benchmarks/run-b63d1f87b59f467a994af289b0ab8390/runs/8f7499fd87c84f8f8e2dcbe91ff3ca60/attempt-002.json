@@ -1,0 +1,32 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:2:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:2:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:2:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:2:145: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:5:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean:5:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n'p2_n002' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.767439899966121,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v3) := by\n  exact @Preorder.le_refl Nat _ p2v3\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v4) := by\n  exact @LE.le.trans Nat _ p2v3 p2v1 p2v4 h3 h2\n\n#print axioms p2_n001\n#print axioms p2_n002\n",
+  "source_sha256": "9a16e054351703dca87ddba6c4ab1267b13ca98962867a050d0130685c1464f6",
+  "goal": "(p2v3 ≤ p2v4)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60\\attempt-002.lean",
+  "log": "attempt-002.json"
+}

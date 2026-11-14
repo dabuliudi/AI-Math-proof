@@ -1,0 +1,78 @@
+{
+  "label": "Mason–Stothers Lemma 1：复用 Mathlib",
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (_ha : a ≠ 0) :\n    a / radical a ∣ derivative a := by\n  classical\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\n#print axioms mathlib2_mason_lemma1\n",
+  "target": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), a ≠ 0 → a / radical a ∣ derivative a",
+  "name": "mathlib2_mason_lemma1",
+  "scope": "target",
+  "source_match": "(?is)\\bLemma\\s*1\\b.*?nonzero\\s*polynomial\\s*a.*?rad\\s*\\(\\s*a\\s*\\).*?divides\\s*a",
+  "provenance": {
+    "category": "Theorem Reuse",
+    "new_statement": true,
+    "new_proof": false,
+    "authors": "Jineon Baek, Seewoo Lee（论文及 Mathlib 原证明作者）",
+    "declaration": "divRadical_dvd_derivative",
+    "file": "Mathlib/RingTheory/Polynomial/Radical.lean",
+    "line": 31,
+    "definitions_file": "Mathlib/RingTheory/Radical.lean",
+    "paper": "2408.15180v2.pdf",
+    "paper_pages": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "assumptions": [
+      "Field k（任意特征）",
+      "DecidableEq k（定义所需实例，可由经典逻辑提供）",
+      "a : Polynomial k",
+      "a ≠ 0（保留论文假设；复用定理更强）"
+    ],
+    "alignment": "radical 为不计重数的首一不可约因子乘积；除法是多项式欧几里得除法，divRadical 定义展开。",
+    "note": "模板由开发者明确构造，无 AI API 调用；复用已发表证明，不是独立新证明。"
+  },
+  "template_id": "mason_lemma1",
+  "attempt_id": "7f78cbc4f61045fc8da0959b0ad3da10",
+  "accepted": true,
+  "status": "verified",
+  "stdout": "'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "returncode": 0,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "artifact": "D:\\mathproof\\lean\\Research\\Attempt_7f78cbc4f61045fc8da0959b0ad3da10.lean",
+  "sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+  "elapsed": 10.03200000000652,
+  "toolchain": "leanprover/lean4:v4.24.0",
+  "reason": "真实 Lean 编译及公理审计通过（Theorem Reuse）",
+  "reused_declarations": [
+    {
+      "name": "divRadical_dvd_derivative",
+      "path": "Mathlib/RingTheory/Polynomial/Radical.lean",
+      "line": 31
+    }
+  ],
+  "manifest_sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.EXE",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\lean\\Research\\Attempt_7f78cbc4f61045fc8da0959b0ad3da10.lean"
+  ],
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "declaration_audits": {
+    "mathlib2_mason_lemma1": {
+      "accepted": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "log_artifact": "D:\\mathproof\\reports\\lemma1-v03-7f78cbc4f61045fc8da0959b0ad3da10.json"
+}

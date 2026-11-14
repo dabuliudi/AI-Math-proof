@@ -1,0 +1,30 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\aaf4f96cb83641eda89f88966e37a822\\attempt-001.lean:2:98: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\aaf4f96cb83641eda89f88966e37a822\\attempt-001.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.8012782000005245,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (0 < p2v2)) : (p2v0 ∣ p2v2) := by\n  exact @Dvd.dvd.trans Nat _ p2v0 p2v1 p2v2 h0 h1\n\n#print axioms p2_n001\n",
+  "source_sha256": "aa6f39131aec13ad8d985fbdeac6cd53e1c826d38b80959309f3af898b6d8d1c",
+  "goal": "(p2v0 ∣ p2v2)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\aaf4f96cb83641eda89f88966e37a822\\attempt-001.lean",
+  "log": "attempt-001.json"
+}

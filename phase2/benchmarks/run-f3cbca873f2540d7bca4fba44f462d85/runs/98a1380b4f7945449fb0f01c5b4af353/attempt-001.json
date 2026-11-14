@@ -1,0 +1,30 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\98a1380b4f7945449fb0f01c5b4af353\\attempt-001.lean:2:69: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\98a1380b4f7945449fb0f01c5b4af353\\attempt-001.lean:2:90: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\98a1380b4f7945449fb0f01c5b4af353\\attempt-001.lean:2:111: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\98a1380b4f7945449fb0f01c5b4af353\\attempt-001.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.76350870000897,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) : (p2v0 ∣ p2v0) := by\n  exact @Nat.dvd_refl p2v0\n\n#print axioms p2_n001\n",
+  "source_sha256": "5ca43520e9b14f3846fdc72f0cef29fb9f36b097161002c719a555d7ea4be589",
+  "goal": "(p2v0 ∣ p2v0)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\98a1380b4f7945449fb0f01c5b4af353\\attempt-001.lean",
+  "log": "attempt-001.json"
+}

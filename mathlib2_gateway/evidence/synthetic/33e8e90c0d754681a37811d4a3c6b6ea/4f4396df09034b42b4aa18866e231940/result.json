@@ -1,0 +1,21 @@
+{
+  "status": "blocked",
+  "reason": "缺少环境变量：MATHLIB2_GW_MODEL, MATHLIB2_GW_API_KEY, MATHLIB2_GW_INPUT_USD_PER_MILLION, MATHLIB2_GW_OUTPUT_USD_PER_MILLION, MATHLIB2_GW_PRICE_SOURCE, MATHLIB2_GW_PRICE_AS_OF",
+  "run": "D:\\mathproof\\mathlib2_gateway\\evidence\\synthetic\\33e8e90c0d754681a37811d4a3c6b6ea\\4f4396df09034b42b4aa18866e231940",
+  "evidence_kind": "live",
+  "plan": null,
+  "generation_origin": null,
+  "lean_status": "not_run",
+  "formal_goal_verified": false,
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "ai_dispatch_attempts": 0,
+  "http_responses": 0,
+  "model_responses": 0,
+  "real_model_responses": 0,
+  "cost": {
+    "estimated_total_usd": "0",
+    "actual_billed_usd": "0",
+    "reason": "no outbound request"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  "phase2_start_hash": "5e355630a01bff5422913f9a01c9ce2641c7356ded9d986a62ac68b449eec18c",
+  "exact_hash_matches": [],
+  "limitation": "开始时只有哈希；不能用另一时间点副本冒充精确开始快照。"
+}

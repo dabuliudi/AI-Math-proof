@@ -1,0 +1,22 @@
+{
+  "sources": {
+    "before": 8,
+    "after": 8,
+    "all_original_rows_unchanged": true
+  },
+  "candidates": {
+    "before": 28,
+    "after": 53,
+    "all_original_rows_unchanged": true
+  },
+  "events": {
+    "before": 120,
+    "after": 120,
+    "all_original_rows_unchanged": true
+  },
+  "verified": {
+    "before": 0,
+    "after": 0,
+    "all_original_rows_unchanged": true
+  }
+}

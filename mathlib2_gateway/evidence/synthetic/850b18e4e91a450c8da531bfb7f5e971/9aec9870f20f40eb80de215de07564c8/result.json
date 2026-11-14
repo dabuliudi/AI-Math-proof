@@ -1,0 +1,29 @@
+{
+  "status": "failed",
+  "reason": "missing_response_identity",
+  "run": "D:\\mathproof\\mathlib2_gateway\\evidence\\synthetic\\850b18e4e91a450c8da531bfb7f5e971\\9aec9870f20f40eb80de215de07564c8",
+  "evidence_kind": "synthetic_fixture",
+  "plan": null,
+  "generation_origin": null,
+  "lean_status": "not_run",
+  "formal_goal_verified": false,
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "ai_dispatch_attempts": 1,
+  "http_responses": 1,
+  "model_responses": 0,
+  "real_model_responses": 0,
+  "cost": {
+    "dispatch_attempts": 1,
+    "reserved_tokens": 9392,
+    "reported_tokens": 300,
+    "attempts_with_unknown_usage": 0,
+    "reserved_usd": "0.010592",
+    "known_estimated_cost_usd": "0.0004",
+    "estimated_total_usd": "0.0004",
+    "actual_billed_usd": null,
+    "cost_basis": "configured_uncached_prices_times_reported_tokens; not invoice",
+    "guarantee": "local admission reservations only; provider tokenization/pricing/hidden charges not guaranteed"
+  },
+  "elapsed": 0.016000000000531145
+}

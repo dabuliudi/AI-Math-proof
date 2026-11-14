@@ -1,0 +1,3316 @@
+{
+  "papers": [
+    {
+      "file": "s40753-021-00140-1.pdf",
+      "sha256": "c60c9c32ab6e8daf04e31c624d385ad92a6b97973518050cfcaaedbcfdc5a5da",
+      "source_id": 8,
+      "objects": 39,
+      "candidates": 4,
+      "uncertain": 28,
+      "source_trace_all_exact": true,
+      "repeat_stable": true,
+      "candidate_details": [
+        {
+          "original_statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "normalized_statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "lean_statement": null,
+          "semantic_risk": [],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "3",
+            "integer",
+            "more than"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.85,
+          "extraction_confidence": 0.78,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [],
+          "domain_constraints": [
+            "integer n whose divisors add up to more than 2n"
+          ],
+          "definitions": [
+            "abundant",
+            "divisors"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 28,
+            "start": 713,
+            "end": 789
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 8,
+          "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "object_type": "Definition",
+          "original_text": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "location": {
+            "page": 28,
+            "line": 18,
+            "paragraph": 1,
+            "start": 713,
+            "end": 789
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [],
+          "extraction_method": "explicit_definition_sentence",
+          "confidence": 0.78,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "t f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n",
+          "context_after": "\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserve",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "8:0.3.0:28:713:789:Definition",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 73,
+          "revision": 0
+        },
+        {
+          "original_statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "normalized_statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "lean_statement": null,
+          "semantic_risk": [],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "integer",
+            "exactly"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.85,
+          "extraction_confidence": 0.78,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [],
+          "domain_constraints": [
+            "integer n whose divisors add up to exactly 2n"
+          ],
+          "definitions": [
+            "perfect",
+            "divisors"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 28,
+            "start": 790,
+            "end": 859
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 8,
+          "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "object_type": "Definition",
+          "original_text": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "location": {
+            "page": 28,
+            "line": 19,
+            "paragraph": 1,
+            "start": 790,
+            "end": 859
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [],
+          "extraction_method": "explicit_definition_sentence",
+          "confidence": 0.78,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\n",
+          "context_after": "\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "8:0.3.0:28:790:859:Definition",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 74,
+          "revision": 0
+        },
+        {
+          "original_statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "normalized_statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "k=1_not_excluded",
+            "integer_domain_and_zero_convention_need_review",
+            "exercise_truth_not_established"
+          ],
+          "semantic_status": "potential_counterexample",
+          "proposed_corrections": [
+            {
+              "label": "建议修正版（规则建议，不是论文原文，未经 Lean 验证）",
+              "statement": "If n is perfect and k ∈ N with k > 1, then kn is abundant.",
+              "change": "显式增加 k > 1；n 的正性、N 是否含 0 及因数定义仍须复核。",
+              "status": "proposed_not_formalized",
+              "evidence": [
+                {
+                  "page": 9,
+                  "start": 563,
+                  "end": 677,
+                  "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+                }
+              ]
+            }
+          ],
+          "boundary_checks": [
+            {
+              "value": "k=1",
+              "status": "potential_counterexample",
+              "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+              "source_evidence": [
+                {
+                  "page": 9,
+                  "start": 563,
+                  "end": 677,
+                  "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+                }
+              ]
+            }
+          ],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "If",
+            "then",
+            "any",
+            "∈"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.82,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "If n is perfect, then kn is abundant for any k ∈ N"
+          ],
+          "quantifiers": [
+            "any k ∈ N"
+          ],
+          "domain_constraints": [
+            "∈ N"
+          ],
+          "definitions": [
+            "perfect",
+            "abundant"
+          ],
+          "boundary_cases": [
+            {
+              "value": "k=1",
+              "status": "potential_counterexample",
+              "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+              "source_evidence": [
+                {
+                  "page": 9,
+                  "start": 563,
+                  "end": 677,
+                  "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+                }
+              ]
+            }
+          ],
+          "potential_counterexamples": [
+            {
+              "value": "k=1",
+              "status": "potential_counterexample",
+              "reasoning": "按完全数定义，k=1 时 kn=n，因数和等于 2n，未满足丰盈数要求的严格大于。未进行 Lean 验证。",
+              "source_evidence": [
+                {
+                  "page": 9,
+                  "start": 563,
+                  "end": 677,
+                  "quote": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1."
+                }
+              ]
+            }
+          ],
+          "source_location": {
+            "page": 28,
+            "start": 867,
+            "end": 922
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 8,
+          "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "object_type": "Conjecture",
+          "original_text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "location": {
+            "page": 28,
+            "line": 21,
+            "paragraph": 1,
+            "start": 867,
+            "end": 922
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [
+            {
+              "from": 73,
+              "to": 75,
+              "basis": "rule_hypothesis",
+              "dependency_type": "Inferred Dependency",
+              "relation": "definition_use",
+              "status": "uncertain",
+              "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+              "evidence": {
+                "quote": "abundant",
+                "page": 28,
+                "start": 899,
+                "end": 907
+              },
+              "definition_location": {
+                "page": 28,
+                "line": 18,
+                "paragraph": 1,
+                "start": 713,
+                "end": 789
+              }
+            },
+            {
+              "from": 74,
+              "to": 75,
+              "basis": "rule_hypothesis",
+              "dependency_type": "Inferred Dependency",
+              "relation": "definition_use",
+              "status": "uncertain",
+              "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+              "evidence": {
+                "quote": "perfect",
+                "page": 28,
+                "start": 879,
+                "end": 886
+              },
+              "definition_location": {
+                "page": 28,
+                "line": 19,
+                "paragraph": 1,
+                "start": 790,
+                "end": 859
+              }
+            }
+          ],
+          "extraction_method": "numbered_task",
+          "confidence": 0.82,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "练习题原文；真值及隐含假设未判断",
+          "context_before": " function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n",
+          "context_after": "\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved ",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "8:0.3.0:28:867:922:Conjecture",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 75,
+          "revision": 0
+        },
+        {
+          "original_statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "normalized_statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "exercise_truth_not_established",
+            "equal_primes_two_not_excluded"
+          ],
+          "semantic_status": "potential_counterexample",
+          "proposed_corrections": [],
+          "boundary_checks": [
+            {
+              "value": "p1=p2=2",
+              "status": "potential_counterexample",
+              "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+              "source_evidence": []
+            }
+          ],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "If",
+            "then"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.82,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "If p1 and p2 are primes, then p1p2 is abundant"
+          ],
+          "quantifiers": [],
+          "domain_constraints": [],
+          "definitions": [
+            "abundant"
+          ],
+          "boundary_cases": [
+            {
+              "value": "p1=p2=2",
+              "status": "potential_counterexample",
+              "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+              "source_evidence": []
+            }
+          ],
+          "potential_counterexamples": [
+            {
+              "value": "p1=p2=2",
+              "status": "potential_counterexample",
+              "reasoning": "乘积为4，正因数为1、2、4，和为7；7不大于2×4=8。规则算术解释，尚未经Lean验证。",
+              "source_evidence": []
+            }
+          ],
+          "source_location": {
+            "page": 28,
+            "start": 923,
+            "end": 974
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 8,
+          "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "object_type": "Conjecture",
+          "original_text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "location": {
+            "page": 28,
+            "line": 22,
+            "paragraph": 1,
+            "start": 923,
+            "end": 974
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [
+            {
+              "from": 73,
+              "to": 76,
+              "basis": "rule_hypothesis",
+              "dependency_type": "Inferred Dependency",
+              "relation": "definition_use",
+              "status": "uncertain",
+              "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+              "evidence": {
+                "quote": "abundant",
+                "page": 28,
+                "start": 965,
+                "end": 973
+              },
+              "definition_location": {
+                "page": 28,
+                "line": 18,
+                "paragraph": 1,
+                "start": 713,
+                "end": 789
+              }
+            }
+          ],
+          "extraction_method": "numbered_task",
+          "confidence": 0.82,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "练习题原文；真值及隐含假设未判断",
+          "context_before": "ve that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n",
+          "context_after": "\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.\n(b) Let f,g : R → R be functions and a ⊂ R. Su",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "8:0.3.0:28:923:974:Conjecture",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 76,
+          "revision": 0
+        }
+      ],
+      "dag": {
+        "nodes": [
+          {
+            "id": 73,
+            "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+            "location": {
+              "page": 28,
+              "line": 18,
+              "paragraph": 1,
+              "start": 713,
+              "end": 789
+            },
+            "source_id": 8,
+            "object_type": "Definition"
+          },
+          {
+            "id": 74,
+            "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+            "location": {
+              "page": 28,
+              "line": 19,
+              "paragraph": 1,
+              "start": 790,
+              "end": 859
+            },
+            "source_id": 8,
+            "object_type": "Definition"
+          },
+          {
+            "id": 75,
+            "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+            "location": {
+              "page": 28,
+              "line": 21,
+              "paragraph": 1,
+              "start": 867,
+              "end": 922
+            },
+            "source_id": 8,
+            "object_type": "Conjecture"
+          },
+          {
+            "id": 76,
+            "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+            "location": {
+              "page": 28,
+              "line": 22,
+              "paragraph": 1,
+              "start": 923,
+              "end": 974
+            },
+            "source_id": 8,
+            "object_type": "Conjecture"
+          }
+        ],
+        "edges": [
+          {
+            "from": 73,
+            "to": 75,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "abundant",
+              "page": 28,
+              "start": 899,
+              "end": 907
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 18,
+              "paragraph": 1,
+              "start": 713,
+              "end": 789
+            },
+            "source": "paper",
+            "confidence": 0.45,
+            "human_confirmed": false,
+            "used_in_lean": false,
+            "edge_type": "Definition Usage"
+          },
+          {
+            "from": 74,
+            "to": 75,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "perfect",
+              "page": 28,
+              "start": 879,
+              "end": 886
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 19,
+              "paragraph": 1,
+              "start": 790,
+              "end": 859
+            },
+            "source": "paper",
+            "confidence": 0.45,
+            "human_confirmed": false,
+            "used_in_lean": false,
+            "edge_type": "Definition Usage"
+          },
+          {
+            "from": 73,
+            "to": 76,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "relation": "definition_use",
+            "status": "uncertain",
+            "reason": "命题使用了定义词；规则推测，尚未由作者编号引用或人工确认",
+            "evidence": {
+              "quote": "abundant",
+              "page": 28,
+              "start": 965,
+              "end": 973
+            },
+            "definition_location": {
+              "page": 28,
+              "line": 18,
+              "paragraph": 1,
+              "start": 713,
+              "end": 789
+            },
+            "source": "paper",
+            "confidence": 0.45,
+            "human_confirmed": false,
+            "used_in_lean": false,
+            "edge_type": "Definition Usage"
+          }
+        ],
+        "associations": [],
+        "unresolved": [
+          {
+            "reference": "Lemma 3",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 14,
+            "start": 1597,
+            "end": 1604,
+            "context": "lso concerned, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Lemma 4",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 14,
+            "start": 1609,
+            "end": 1616,
+            "context": "d, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to understand ",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          }
+        ],
+        "status": "acyclic",
+        "topological_order": [
+          73,
+          74,
+          75,
+          76
+        ]
+      }
+    },
+    {
+      "file": "2408.15180v2.pdf",
+      "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574",
+      "source_id": 9,
+      "objects": 50,
+      "candidates": 16,
+      "uncertain": 3,
+      "source_trace_all_exact": true,
+      "repeat_stable": true,
+      "candidate_details": [
+        {
+          "original_statement": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there\nexist only finitely many triples of coprime integers (a, b, c) such thata+b=c\nand\nc >rad(abc)1+ε.\nHere, rad(n) = Qp|n pis the product of all prime factors ofn.\nThe conjecture implies many deep theorems or conjectures in number theory. For\nexample, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary\nof an explicit quantitative version of the ABC conjecture [9], while the currently\nknown proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See\n[3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8]\nboth follow from the ABC conjecture [23]; note that the proof of each theorem\nearned its corresponding author a Fields medal.\narXiv:2408.15180v2  [cs.LO]  25 Sep 2025",
+          "normalized_statement": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there exist only finitely many triples of coprime integers (a, b, c) such thata+b=c and c >rad(abc)1+ε. Here, rad(n) = Qp|n pis the product of all prime factors ofn. The conjecture implies many deep theorems or conjectures in number theory. For example, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary of an explicit quantitative version of the ABC conjecture [9], while the currently known proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See [3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8] both follow from the ABC conjecture [23]; note that the proof of each theorem earned its corresponding author a Fields medal. arXiv:2408.15180v2 [cs.LO] 25 Sep 2025",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered",
+            "page_boundary_possible_truncation",
+            "exercise_truth_not_established"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "1",
+            "every",
+            "positive",
+            ">",
+            "0",
+            "=",
+            ">",
+            "1",
+            "=",
+            "all",
+            "≥",
+            "6",
+            "9",
+            "25",
+            "22",
+            "3",
+            "17",
+            "8",
+            "23",
+            "2408",
+            "25",
+            "2025"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.5,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [
+            "every positive real numberε >0",
+            "there exist only finitely many triples of coprime integers (a",
+            "all prime factors ofn"
+          ],
+          "domain_constraints": [
+            "real numberε >0, there exist only finitely many triples of coprime integers (a, b, c) such thata+b=c and",
+            "Fields medal",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 1,
+            "start": 1419,
+            "end": 2212
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there\nexist only finitely many triples of coprime integers (a, b, c) such thata+b=c\nand\nc >rad(abc)1+ε.\nHere, rad(n) = Qp|n pis the product of all prime factors ofn.\nThe conjecture implies many deep theorems or conjectures in number theory. For\nexample, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary\nof an explicit quantitative version of the ABC conjecture [9], while the currently\nknown proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See\n[3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8]\nboth follow from the ABC conjecture [23]; note that the proof of each theorem\nearned its corresponding author a Fields medal.\narXiv:2408.15180v2  [cs.LO]  25 Sep 2025",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there",
+          "statement": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there\nexist only finitely many triples of coprime integers (a, b, c) such thata+b=c\nand\nc >rad(abc)1+ε.\nHere, rad(n) = Qp|n pis the product of all prime factors ofn.\nThe conjecture implies many deep theorems or conjectures in number theory. For\nexample, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary\nof an explicit quantitative version of the ABC conjecture [9], while the currently\nknown proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See\n[3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8]\nboth follow from the ABC conjecture [23]; note that the proof of each theorem\nearned its corresponding author a Fields medal.\narXiv:2408.15180v2  [cs.LO]  25 Sep 2025",
+          "object_type": "Conjecture",
+          "original_text": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there\nexist only finitely many triples of coprime integers (a, b, c) such thata+b=c\nand\nc >rad(abc)1+ε.\nHere, rad(n) = Qp|n pis the product of all prime factors ofn.\nThe conjecture implies many deep theorems or conjectures in number theory. For\nexample, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary\nof an explicit quantitative version of the ABC conjecture [9], while the currently\nknown proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See\n[3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8]\nboth follow from the ABC conjecture [23]; note that the proof of each theorem\nearned its corresponding author a Fields medal.\narXiv:2408.15180v2  [cs.LO]  25 Sep 2025",
+          "location": {
+            "page": 1,
+            "line": 25,
+            "paragraph": 1,
+            "start": 1419,
+            "end": 2212
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": " has been integrated\ninto themathliblibrary of Lean 4.\nKeywords:Formalization·Number Theory·ABC Conjecture·Fer-\nmat’s Last Theorem·Lean Theorem Prover·mathlib\n1 Introduction\nIn 1985, Oesterl´ e and Masser proposed theABC conjecture[15,16]:\n",
+          "context_after": "",
+          "proof_steps": [],
+          "boundary_status": "page_limited",
+          "object_key": "9:0.3.0:1:1419:2212:Conjecture",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 77,
+          "revision": 0
+        },
+        {
+          "original_statement": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical\nrad(f)offas the product of all irreducible monic factors offnot counting\nmultiplicity.",
+          "normalized_statement": "Definition 1.Let k be any field. For any nonzero f∈k[X], define the radical rad(f)offas the product of all irreducible monic factors offnot counting multiplicity.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "1",
+            "any",
+            "any",
+            "∈",
+            "all"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be any field"
+          ],
+          "quantifiers": [
+            "any field",
+            "any nonzero f∈k[X]",
+            "all irreducible monic factors offnot counting multiplicity"
+          ],
+          "domain_constraints": [
+            "field",
+            "nonzero f∈k[X], define the radical rad(f)offas the product of all irreducible monic factors offnot counting",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [
+            "radical"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 2,
+            "start": 727,
+            "end": 886
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical\nrad(f)offas the product of all irreducible monic factors offnot counting\nmultiplicity.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical",
+          "statement": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical\nrad(f)offas the product of all irreducible monic factors offnot counting\nmultiplicity.",
+          "object_type": "Definition",
+          "original_text": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical\nrad(f)offas the product of all irreducible monic factors offnot counting\nmultiplicity.",
+          "location": {
+            "page": 2,
+            "line": 12,
+            "paragraph": 1,
+            "start": 727,
+            "end": 886
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "asier\nto prove in general.\nIn this line, Stothers proved the polynomial analog of the ABC conjecture in\n1981 [20], and Mason rediscovered it in a more general form in 1983 [14], even\nbefore Osterl´ e and Masser proposed the ABC conjecture.\n",
+          "context_after": "\nTheorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:2:727:886:Definition",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 78,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+          "normalized_statement": "Theorem 1 (Mason–Stothers).Let k be any field anda, b, c∈k[t]be non- zero, pairwise coprime polynomial s satisfyinga+b+c= 0. Then we either have a′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or max{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "1",
+            "any",
+            "∈",
+            "=",
+            "0",
+            "Then",
+            "=",
+            "=",
+            "=",
+            "∈",
+            "<"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be any field anda, b, c∈k[t]be non- zero, pairwise coprime polynomial s satisfyinga+b+c= 0"
+          ],
+          "quantifiers": [
+            "any field anda"
+          ],
+          "domain_constraints": [
+            "field anda, b, c∈k[t]be non- zero, pairwise coprime polynomial s satisfyinga+b+c= 0",
+            "∈k[t]byt, or max{deg(a),deg(b),deg(c)}<deg(rad(abc))",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 2,
+            "start": 887,
+            "end": 1142
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-",
+          "statement": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+          "object_type": "Theorem",
+          "original_text": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+          "location": {
+            "page": 2,
+            "line": 15,
+            "paragraph": 1,
+            "start": 887,
+            "end": 1142
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "orm in 1983 [14], even\nbefore Osterl´ e and Masser proposed the ABC conjecture.\nDefinition 1.Letkbe any field. For any nonzerof∈k[X], define the radical\nrad(f)offas the product of all irreducible monic factors offnot counting\nmultiplicity.\n",
+          "context_after": "\nMason and Stothers proved the theorem using algebro-geometric methods,\nand subsequently Snyder discovered a short and purely elementary proof [19].\nLike the ABC conjecture, the Mason–Stothers theorem has a lot of interesting\nconsequences, ",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:2:887:1142:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 79,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe\nany field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch\nthat1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.",
+          "normalized_statement": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Let k be any field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch that1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then any triple(a, b, c)of nonzero and pairwise coprime polynomial s ink[t]satisfying uap +vb q +wc r = 0consists of constantsa, b, c∈k. Letu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the Fermat’s Last Theorem for polynomial s.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "2",
+            "any",
+            "≥",
+            "1",
+            "1",
+            "≤",
+            "1",
+            "∈",
+            "Then",
+            "any",
+            "=",
+            "∈",
+            "=",
+            "=",
+            "=",
+            "1",
+            "=",
+            "=",
+            "=",
+            "≥",
+            "3",
+            "2"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be any field",
+            "Letp, q, r≥1be integers not divisible by the characteristic ofksuch that1/p+ 1/q+ 1/r≤1",
+            "Letu, v, w∈kbe arbitrary nonzero constants",
+            "Letu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the Fermat’s Last Theorem for polynomial s"
+          ],
+          "quantifiers": [
+            "any field",
+            "any triple(a"
+          ],
+          "domain_constraints": [
+            "field",
+            "integers not divisible by the characteristic ofksuch that1/p+ 1/q+ 1/r≤1",
+            "∈kbe arbitrary nonzero constants",
+            "nonzero and pairwise coprime polynomial s ink[t]satisfying uap +vb q +wc r = 0consists of constantsa, b, c∈",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 3,
+            "start": 1467,
+            "end": 1901
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe\nany field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch\nthat1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe",
+          "statement": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe\nany field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch\nthat1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.",
+          "object_type": "Theorem",
+          "original_text": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe\nany field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch\nthat1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.",
+          "location": {
+            "page": 3,
+            "line": 23,
+            "paragraph": 1,
+            "start": 1467,
+            "end": 1901
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "’s Last Theo-\nrem stating that the equationa p +b q =c r has only finitely many solutions\n(a, b, c, p, q, r) in positive integers satisfying 1/p+ 1/q+ 1/r <1 [9]. The follow-\ning Theorem 2 is a polynomial variant which is known to be true.\n",
+          "context_after": "\nCorollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should b",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:3:1467:1901:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 80,
+          "revision": 0
+        },
+        {
+          "original_statement": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.",
+          "normalized_statement": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Let k be any field. Letn≥3be any integer not divisible by the characteristic ofk. Then any triple(a, b, c)of nonzero and pairwise coprime polynomial s ink[t]satisfying an +b n =c n should be constantsa, b, c∈k. Using Theorem 2, we can obtain the following corollary.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "1",
+            "any",
+            "≥",
+            "any",
+            "integer",
+            "Then",
+            "any",
+            "=",
+            "∈",
+            "2"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be any field",
+            "Letn≥3be any integer not divisible by the characteristic ofk"
+          ],
+          "quantifiers": [
+            "any field",
+            "any integer not divisible by the characteristic ofk",
+            "any triple(a"
+          ],
+          "domain_constraints": [
+            "field",
+            "integer not divisible by the characteristic ofk",
+            "nonzero and pairwise coprime polynomial s ink[t]satisfying an +b n =c n should be constantsa, b, c∈k",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 3,
+            "start": 1902,
+            "end": 2218
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any",
+          "statement": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.",
+          "object_type": "Corollary",
+          "original_text": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.",
+          "location": {
+            "page": 3,
+            "line": 30,
+            "paragraph": 1,
+            "start": 1902,
+            "end": 2218
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [
+            {
+              "from": 80,
+              "to": 81,
+              "basis": "explicit",
+              "dependency_type": "Explicit Dependency",
+              "evidence": {
+                "quote": "Using Theorem 2",
+                "location": {
+                  "page": 3,
+                  "line": 30,
+                  "paragraph": 1,
+                  "start": 1902,
+                  "end": 2218
+                },
+                "relative_start": 261,
+                "relative_end": 276,
+                "page": 3,
+                "start": 2163,
+                "end": 2178
+              }
+            }
+          ],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.\n",
+          "context_after": "\nTheorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:3:1902:2218:Corollary",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 81,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "normalized_statement": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Let k be a field of characteristic≠ 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 = f(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "page_boundary_possible_truncation"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "3",
+            "=",
+            "2",
+            "3",
+            "If",
+            "∈",
+            "2",
+            "=",
+            "3",
+            "1",
+            "then"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.5,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be a field of characteristic≠ 2,3",
+            "If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 = f(t) 3 + 1, then bothf(t)andg(t)are constants ink"
+          ],
+          "quantifiers": [],
+          "domain_constraints": [
+            "field of characteristic≠ 2,3",
+            "∈k(t)satisfyg(t) 2 = f(t) 3 + 1, then bothf(t)andg(t)are constants ink"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 3,
+            "start": 2219,
+            "end": 2417
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "from": "̸=",
+              "to": "≠",
+              "reason": "可识别字符编码恢复"
+            },
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a",
+          "statement": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "object_type": "Theorem",
+          "original_text": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+          "location": {
+            "page": 3,
+            "line": 35,
+            "paragraph": 1,
+            "start": 2219,
+            "end": 2417
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.\n",
+          "context_after": "",
+          "proof_steps": [],
+          "boundary_status": "page_limited",
+          "object_key": "9:0.3.0:3:2219:2417:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 82,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈\nk[t]be non-constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.",
+          "normalized_statement": "Theorem 4 (Davenport).Let k be a field of characteristic zero. Letf(t), g(t)∈ k[t]be non-constant polynomial s such thatf 3 ≠g 2. Then deg(f 3 −g 2)≥ 12 deg(f) + 1.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "4",
+            "∈",
+            "3",
+            "=",
+            "2",
+            "Then",
+            "3",
+            "2",
+            "≥",
+            "12",
+            "1"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be a field of characteristic zero",
+            "Letf(t), g(t)∈ k[t]be non-constant polynomial s such thatf 3 ≠g 2"
+          ],
+          "quantifiers": [],
+          "domain_constraints": [
+            "field of characteristic zero",
+            "∈ k[t]be non-constant polynomial s such thatf 3 ≠g 2",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 389,
+            "end": 551
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "from": "̸=",
+              "to": "≠",
+              "reason": "可识别字符编码恢复"
+            },
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈\nk[t]be non-constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈",
+          "statement": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈\nk[t]be non-constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.",
+          "object_type": "Theorem",
+          "original_text": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈\nk[t]be non-constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.",
+          "location": {
+            "page": 4,
+            "line": 7,
+            "paragraph": 1,
+            "start": 389,
+            "end": 551
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "l functions ink(t).\nAnother interesting corollary of the Mason–Stothers theorem is the following\ntheorem by Davenport [4], initially conjectured [2] by Birch et al. This theorem\nmotivated Stothers’ proof of the Mason–Stothers theorem [20].\n",
+          "context_after": "\n3 Mathematical Proof of the Mason–Stothers Theorem\nWe summarize the proof of the Mason–Stothers theorem (Theorem 1) in Lem-\nmermeyer’s note [12] that we formalize.\nDefinition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.\n",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:4:389:551:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 83,
+          "revision": 0
+        },
+        {
+          "original_statement": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.",
+          "normalized_statement": "Definition 2.TheWronskianof two polynomials a, b∈k[t]isW(a, b) =ab ′ − a′b.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "2",
+            "∈",
+            "="
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [],
+          "domain_constraints": [
+            "∈k[t]isW(a, b) =ab ′ − a′b",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 716,
+            "end": 790
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −",
+          "statement": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.",
+          "object_type": "Definition",
+          "original_text": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.",
+          "location": {
+            "page": 4,
+            "line": 13,
+            "paragraph": 1,
+            "start": 716,
+            "end": 790
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.\n3 Mathematical Proof of the Mason–Stothers Theorem\nWe summarize the proof of the Mason–Stothers theorem (Theorem 1) in Lem-\nmermeyer’s note [12] that we formalize.\n",
+          "context_after": "\nFroma+b+c= 0, we can check that the valuesW(a, b),W(b, c), andW(c, a)\nare all equal. Denote the common value asW.\nNext, we observe the following property.\nLemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\nProof.We can use the prim",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:4:716:790:Definition",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 84,
+          "revision": 0
+        },
+        {
+          "original_statement": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+          "normalized_statement": "Lemma 1.For a nonzero polynomial a∈k[t],a/rad(a)divides a ′.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "1",
+            "∈"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [],
+          "domain_constraints": [
+            "nonzero polynomial a∈k[t],a/rad(a)divides a ′",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 946,
+            "end": 1004
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+          "statement": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+          "object_type": "Lemma",
+          "original_text": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+          "location": {
+            "page": 4,
+            "line": 18,
+            "paragraph": 1,
+            "start": 946,
+            "end": 1004
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "ormalize.\nDefinition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\na′b.\nFroma+b+c= 0, we can check that the valuesW(a, b),W(b, c), andW(c, a)\nare all equal. Denote the common value asW.\nNext, we observe the following property.\n",
+          "context_after": "\nProof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which ",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:4:946:1004:Lemma",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 85,
+          "revision": 0
+        },
+        {
+          "original_statement": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that",
+          "normalized_statement": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a factorization with unituand primesp i ∈k[x] of exponentse i >0. Then the product rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is divisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m . Sincea/rad(a) divides bothaanda ′, an immediate corollary is that",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_only",
+          "condition_inventory": [
+            "=",
+            "∈",
+            ">",
+            "0",
+            "Then",
+            "=",
+            "=",
+            "1",
+            "=",
+            "11",
+            "12"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Leta=up e11 pe22 · · ·pemm be a factorization with unituand primesp i ∈k[x] of exponentse i >0"
+          ],
+          "quantifiers": [],
+          "domain_constraints": [
+            "∈k[x] of exponentse i >0",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 1005,
+            "end": 1363
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "",
+          "proof_body": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a",
+          "statement": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that",
+          "object_type": "Proof",
+          "original_text": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that",
+          "location": {
+            "page": 4,
+            "line": 19,
+            "paragraph": 1,
+            "start": 1005,
+            "end": 1363
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Extracted",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "[t]isW(a, b) =ab ′ −\na′b.\nFroma+b+c= 0, we can check that the valuesW(a, b),W(b, c), andW(c, a)\nare all equal. Denote the common value asW.\nNext, we observe the following property.\nLemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\n",
+          "context_after": "\nLemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\nProof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:4:1005:1363:Proof",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 86,
+          "revision": 0
+        },
+        {
+          "original_statement": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "normalized_statement": "Lemma 2.For any nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "2",
+            "any",
+            "∈",
+            "="
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [],
+          "quantifiers": [
+            "any nonzero a∈k[t]"
+          ],
+          "domain_constraints": [
+            "nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 1364,
+            "end": 1429
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "statement": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "object_type": "Lemma",
+          "original_text": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+          "location": {
+            "page": 4,
+            "line": 24,
+            "paragraph": 1,
+            "start": 1364,
+            "end": 1429
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "x] of exponentse i >0. Then the\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that\n",
+          "context_after": "\nProof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step of the proof.\nWe split the proof into two cases, depending on whe",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:4:1364:1429:Lemma",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 87,
+          "revision": 0
+        },
+        {
+          "original_statement": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step of the proof.\nWe split the proof into two cases, depending on whetherWis zero or not.\nIfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea\ndividesa ′ and soa ′ = 0. Likewise, fromW= 0 we also getb ′ =c ′ = 0.\nNow assumeW̸= 0. Thenabc/rad(abc) dividingWimplies\ndeg(a) + deg(b) + deg(c)−deg(rad(abc)) = deg\n\u0012 abc\nrad(abc)\n\u0013\n≤degW= degW(a, b)<deg(a) + deg(b).\nThe first inequality follows from divisibility, and the second inequality follows\nfrom the definition of Wronskian anda̸= 0. Hence we have deg(c)<deg rad(abc).\nThe same argument withW=W(b, c) andW=W(c, a) gives\nmax{deg(a),deg(b),deg(c)}+ 1≤deg(rad(abc)).",
+          "normalized_statement": "Proof (Proof of Theorem 1).The pairwise coprime polynomials a/rad(a),b/rad(b), andc/rad(c) all divideW, so their productabc/rad(abc) should also divideW. This is the key step of the proof. We split the proof into two cases, depending on whetherWis zero or not. IfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea divides a ′ and soa ′ = 0. Likewise, fromW= 0 we also getb ′ =c ′ = 0. Now assumeW≠ 0. Thenabc/rad(abc) dividingWimplies deg(a) + deg(b) + deg(c)−deg(rad(abc)) = deg \u0012 abc rad(abc) \u0013 ≤degW= degW(a, b)<deg(a) + deg(b). The first inequality follows from divisibility, and the second inequality follows from the definition of Wronskian anda≠ 0. Hence we have deg(c)<deg rad(abc). The same argument withW=W(b, c) andW=W(c, a) gives max{deg(a),deg(b),deg(c)}+ 1≤deg(rad(abc)).",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered",
+            "page_boundary_possible_truncation"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "1",
+            "all",
+            "=",
+            "0",
+            "=",
+            "0",
+            "=",
+            "=",
+            "0",
+            "=",
+            "0",
+            "=",
+            "=",
+            "0",
+            "=",
+            "0",
+            "=",
+            "≤",
+            "=",
+            "<",
+            "=",
+            "0",
+            "<",
+            "=",
+            "=",
+            "1",
+            "≤"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.5,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "IfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea divides a ′ and soa ′ = 0"
+          ],
+          "quantifiers": [
+            "all divideW"
+          ],
+          "domain_constraints": [
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [
+            "Wronskian"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 4,
+            "start": 1430,
+            "end": 2232
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "from": "̸=",
+              "to": "≠",
+              "reason": "可识别字符编码恢复"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "",
+          "proof_body": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step of the proof.\nWe split the proof into two cases, depending on whetherWis zero or not.\nIfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea\ndividesa ′ and soa ′ = 0. Likewise, fromW= 0 we also getb ′ =c ′ = 0.\nNow assumeW̸= 0. Thenabc/rad(abc) dividingWimplies\ndeg(a) + deg(b) + deg(c)−deg(rad(abc)) = deg\n\u0012 abc\nrad(abc)\n\u0013\n≤degW= degW(a, b)<deg(a) + deg(b).\nThe first inequality follows from divisibility, and the second inequality follows\nfrom the definition of Wronskian anda̸= 0. Hence we have deg(c)<deg rad(abc).\nThe same argument withW=W(b, c) andW=W(c, a) gives\nmax{deg(a),deg(b),deg(c)}+ 1≤deg(rad(abc)).",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),",
+          "statement": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step of the proof.\nWe split the proof into two cases, depending on whetherWis zero or not.\nIfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea\ndividesa ′ and soa ′ = 0. Likewise, fromW= 0 we also getb ′ =c ′ = 0.\nNow assumeW̸= 0. Thenabc/rad(abc) dividingWimplies\ndeg(a) + deg(b) + deg(c)−deg(rad(abc)) = deg\n\u0012 abc\nrad(abc)\n\u0013\n≤degW= degW(a, b)<deg(a) + deg(b).\nThe first inequality follows from divisibility, and the second inequality follows\nfrom the definition of Wronskian anda̸= 0. Hence we have deg(c)<deg rad(abc).\nThe same argument withW=W(b, c) andW=W(c, a) gives\nmax{deg(a),deg(b),deg(c)}+ 1≤deg(rad(abc)).",
+          "object_type": "Proof",
+          "original_text": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\nThis is the key step of the proof.\nWe split the proof into two cases, depending on whetherWis zero or not.\nIfW= 0, thenW(a, b) = 0 impliesab ′ =a ′b, and sinceaandbare coprimea\ndividesa ′ and soa ′ = 0. Likewise, fromW= 0 we also getb ′ =c ′ = 0.\nNow assumeW̸= 0. Thenabc/rad(abc) dividingWimplies\ndeg(a) + deg(b) + deg(c)−deg(rad(abc)) = deg\n\u0012 abc\nrad(abc)\n\u0013\n≤degW= degW(a, b)<deg(a) + deg(b).\nThe first inequality follows from divisibility, and the second inequality follows\nfrom the definition of Wronskian anda̸= 0. Hence we have deg(c)<deg rad(abc).\nThe same argument withW=W(b, c) andW=W(c, a) gives\nmax{deg(a),deg(b),deg(c)}+ 1≤deg(rad(abc)).",
+          "location": {
+            "page": 4,
+            "line": 25,
+            "paragraph": 1,
+            "start": 1430,
+            "end": 2232
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Extracted",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that\nLemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\n",
+          "context_after": "",
+          "proof_steps": [],
+          "boundary_status": "page_limited",
+          "object_key": "9:0.3.0:4:1430:2232:Proof",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 88,
+          "revision": 0
+        },
+        {
+          "original_statement": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\nof its radicalrad(a)is also at least one.\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\nfirst show that for any elementaof a general monoidM, a primepdividesaif\nand only if it divides rad(a); this is done by using that the prime divisors ofa\nand rad(a) are the same.",
+          "normalized_statement": "Lemma 3.For any fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one. A formal proof of Lemma 3 requires more work, however. We need to explicitly take a prime factorpofaand show that it is also a prime factor of rad(a). We first show that for any elementaof a general monoidM, a primepdividesaif and only if it divides rad(a); this is done by using that the prime divisors ofa and rad(a) are the same.",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "3",
+            "any",
+            "∈",
+            "≥",
+            "1",
+            "at least",
+            "3",
+            "any",
+            "if"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "if it divides rad(a)"
+          ],
+          "quantifiers": [
+            "any fieldkand a polynomial a∈k[X]of degree≥1",
+            "any elementaof a general monoidM"
+          ],
+          "domain_constraints": [
+            "fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [
+            "divisors"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 7,
+            "start": 1071,
+            "end": 1513
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\nof its radicalrad(a)is also at least one.\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\nfirst show that for any elementaof a general monoidM, a primepdividesaif\nand only if it divides rad(a); this is done by using that the prime divisors ofa\nand rad(a) are the same.",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree",
+          "statement": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\nof its radicalrad(a)is also at least one.\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\nfirst show that for any elementaof a general monoidM, a primepdividesaif\nand only if it divides rad(a); this is done by using that the prime divisors ofa\nand rad(a) are the same.",
+          "object_type": "Lemma",
+          "original_text": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\nof its radicalrad(a)is also at least one.\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\nfirst show that for any elementaof a general monoidM, a primepdividesaif\nand only if it divides rad(a); this is done by using that the prime divisors ofa\nand rad(a) are the same.",
+          "location": {
+            "page": 7,
+            "line": 19,
+            "paragraph": 1,
+            "start": 1071,
+            "end": 1513
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "Monoid R]\n[UniqueFactorizationMonoid R],→\ntheorem radical_mul {a b : R} (hc : IsCoprime a b) :\nradical (a * b) = (radical a) * (radical b)\ntheorem radical_neg {a : R} : radical (-a) = radical a\nThe following seems obvious to the human eye.\n",
+          "context_after": "\ntheorem prime_dvd_radical_iff {a p : M} (ha : a̸=0) (hp : Prime p) :\np | radical a↔p | a\nWe then use it to show that a nonzeroa∈Mis a unit if and only if rad(a) is.\nNote that an element ofMis a unit if and only if it has no prime divisors.",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:7:1071:1513:Lemma",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 89,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-\nzero polynomials satisfyinga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+          "normalized_statement": "Theorem 5.Let k be any field of characteristic zero, anda, b, c∈k[t]be non- zero polynomial s satisfyinga+b+c= 0. Then we either havea, b, c∈kor max{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c). Note that we needkto have characteristic zero in Theorem 5. If chark= p >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "5",
+            "any",
+            "∈",
+            "=",
+            "0",
+            "Then",
+            "∈",
+            "<",
+            "5",
+            "If",
+            "=",
+            ">",
+            "0",
+            "then",
+            "=",
+            "1",
+            "1"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be any field of characteristic zero, anda, b, c∈k[t]be non- zero polynomial s satisfyinga+b+c= 0",
+            "If chark= p >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t)"
+          ],
+          "quantifiers": [
+            "any field of characteristic zero"
+          ],
+          "domain_constraints": [
+            "field of characteristic zero, anda, b, c∈k[t]be non- zero polynomial s satisfyinga+b+c= 0",
+            "∈kor max{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c)",
+            "characteristic zero in Theorem 5",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 11,
+            "start": 1525,
+            "end": 1863
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-\nzero polynomials satisfyinga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-",
+          "statement": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-\nzero polynomials satisfyinga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+          "object_type": "Theorem",
+          "original_text": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-\nzero polynomials satisfyinga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+          "location": {
+            "page": 11,
+            "line": 28,
+            "paragraph": 1,
+            "start": 1525,
+            "end": 1863
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "A Non-coprime V ariant of Mason–Stothers TheoremDavenport’s the-\norem also almost directly follows from Mason–Stothers theorem. We start with\na variant of Mason–Stothers theorem by Stothers [20] that does not require\ncoprimality ofa, b, c.\n",
+          "context_after": "\nProof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=\nb0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so\na0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0),\nwe eit",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:11:1525:1863:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 90,
+          "revision": 0
+        },
+        {
+          "original_statement": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=\nb0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so\na0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0),\nwe either havea ′0 =b ′0 =c ′0 = 0 or\nmax{deg(a0),deg(b 0),deg(c 0)}<\ndeg(rad(a0)) + deg(rad(b0)) + deg(rad(c0)). (1)",
+          "normalized_statement": "Proof.Let d be the greatest common divisor ofaandb. Thena=a 0d, b= b0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so a0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0), we either havea ′0 =b ′0 =c ′0 = 0 or max{deg(a0),deg(b 0),deg(c 0)}< deg(rad(a0)) + deg(rad(b0)) + deg(rad(c0)). (1)",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered",
+            "page_boundary_possible_truncation"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "=",
+            "=",
+            "=",
+            "0",
+            "∈",
+            "0",
+            "0",
+            "0",
+            "=",
+            "0",
+            "=",
+            "1",
+            "1",
+            "0",
+            "=",
+            "0",
+            "=",
+            "0",
+            "=",
+            "0",
+            "0",
+            "0",
+            "<",
+            "1"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.5,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let d be the greatest common divisor ofaandb"
+          ],
+          "quantifiers": [],
+          "domain_constraints": [
+            "∈k[t] witha 0 +b 0 +c 0 = 0",
+            "nonzero and pairwise coprime",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [
+            "divisor"
+          ],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 11,
+            "start": 1864,
+            "end": 2214
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "",
+          "proof_body": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=\nb0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so\na0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0),\nwe either havea ′0 =b ′0 =c ′0 = 0 or\nmax{deg(a0),deg(b 0),deg(c 0)}<\ndeg(rad(a0)) + deg(rad(b0)) + deg(rad(c0)). (1)",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=",
+          "statement": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=\nb0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so\na0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0),\nwe either havea ′0 =b ′0 =c ′0 = 0 or\nmax{deg(a0),deg(b 0),deg(c 0)}<\ndeg(rad(a0)) + deg(rad(b0)) + deg(rad(c0)). (1)",
+          "object_type": "Proof",
+          "original_text": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=\nb0d, c=c 0dfora 0, b0, c0 ∈k[t] witha 0 +b 0 +c 0 = 0. Moreover, gcd(a0, b0) = 1 so\na0, b0, c0 are nonzero and pairwise coprime. By applying Theorem 1 to (a0, b0, c0),\nwe either havea ′0 =b ′0 =c ′0 = 0 or\nmax{deg(a0),deg(b 0),deg(c 0)}<\ndeg(rad(a0)) + deg(rad(b0)) + deg(rad(c0)). (1)",
+          "location": {
+            "page": 11,
+            "line": 33,
+            "paragraph": 1,
+            "start": 1864,
+            "end": 2214
+          },
+          "mathematical_domain": "number_theory (keyword_hint)",
+          "dependencies": [
+            {
+              "from": 79,
+              "to": 91,
+              "basis": "explicit",
+              "dependency_type": "Explicit Dependency",
+              "evidence": {
+                "quote": "applying Theorem 1",
+                "location": {
+                  "page": 11,
+                  "line": 33,
+                  "paragraph": 1,
+                  "start": 1864,
+                  "end": 2214
+                },
+                "relative_start": 197,
+                "relative_end": 215,
+                "page": 11,
+                "start": 2061,
+                "end": 2079
+              }
+            }
+          ],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Extracted",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "nga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).\n",
+          "context_after": "",
+          "proof_steps": [],
+          "boundary_status": "page_limited",
+          "object_key": "9:0.3.0:11:1864:2214:Proof",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 91,
+          "revision": 0
+        },
+        {
+          "original_statement": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a\nsmooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let\nSbe a finite subset of points inC(k)containing all the zeros and poles ofa\nandb. Then eithera, b∈k × or\nmax{deg(a),deg(b)} ≤2g−2 +|S|.\nWhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum\ncoprime triplea, b, cof polynomials gives (−a/c) + (−b/c) = 1, and the\nabove inequality becomes\nmax{deg(a),deg(b),deg(c)}\n= max\n\u001a\ndeg\n\u0010\n− ac \u0011 ,deg \u0012− bc \u0013\u001b\n≤ −2 +|S|= deg(rad(abc))−1,\nwhereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18]\ngives a short proof of the theorem using Riemann–Hurwitz formula.\nAcknowledgement",
+          "normalized_statement": "Theorem 6 (Mason).Let k be an algebraically closed field andCbe a smooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let Sbe a finite subset of points inC(k)containing all the zeros and poles ofa andb. Then eithera, b∈k × or max{deg(a),deg(b)} ≤2g−2 +|S|. WhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum coprime triplea, b, cof polynomial s gives (−a/c) + (−b/c) = 1, and the above inequality becomes max{deg(a),deg(b),deg(c)} = max \u001a deg \u0010 − ac \u0011 ,deg \u0012− bc \u0013\u001b ≤ −2 +|S|= deg(rad(abc))−1, whereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18] gives a short proof of the theorem using Riemann–Hurwitz formula. Acknowledgement",
+          "lean_statement": null,
+          "semantic_risk": [
+            "polynomial_domain_and_characteristic_require_review",
+            "pdf_subscript_superscript_not_reliably_recovered"
+          ],
+          "semantic_status": "unchecked",
+          "proposed_corrections": [],
+          "boundary_checks": [],
+          "normalization": "whitespace_and_audited_glyphs",
+          "condition_inventory": [
+            "6",
+            "∈",
+            "=",
+            "1",
+            "all",
+            "Then",
+            "∈",
+            "≤",
+            "2",
+            "=",
+            "1",
+            "=",
+            "1",
+            "=",
+            "≤",
+            "2",
+            "=",
+            "1",
+            "=",
+            "=",
+            "1",
+            "18"
+          ],
+          "classification": "formal_mathematical_object",
+          "filter_reason": "明确数学结构；仍需审核",
+          "candidate_eligible": true,
+          "relevance_score": 1.0,
+          "mathematical_completeness": 0.55,
+          "extraction_confidence": 0.9,
+          "source_traceability": 1.0,
+          "quality_tier": "Medium Confidence",
+          "quality_policy": "启发式提取质量；非数学正确率；Rejected 不代表数学错误",
+          "assumptions": [
+            "Let k be an algebraically closed field andCbe a smooth projective curve overk",
+            "Leta, b∈k(C)satisfyinga+b= 1, and let Sbe a finite subset of points inC(k)containing all the zeros and poles ofa andb"
+          ],
+          "quantifiers": [
+            "all the zeros and poles ofa andb"
+          ],
+          "domain_constraints": [
+            "field andCbe a smooth projective curve overk",
+            "∈k(C)satisfyinga+b= 1, and let Sbe a finite subset of points inC(k)cont",
+            "∈k × or max{deg(a),deg(b)} ≤2g−2 +|S|",
+            "域及特征须核对声明和论文上下文；不自动补充 characteristic=0"
+          ],
+          "definitions": [],
+          "boundary_cases": [],
+          "potential_counterexamples": [],
+          "source_location": {
+            "page": 16,
+            "start": 246,
+            "end": 914
+          },
+          "review_status": "needs_review",
+          "semantic_review_status": "needs_review",
+          "extraction_status": "extracted",
+          "normalization_changes": [
+            {
+              "pattern": "\\bLet([a-z])be\\b",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            },
+            {
+              "pattern": "\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\b|∈|\\[)",
+              "reason": "限定词汇与单字符变量边界恢复；待人工复核"
+            }
+          ],
+          "semantic_field_method": "规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件",
+          "statement_text": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a\nsmooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let\nSbe a finite subset of points inC(k)containing all the zeros and poles ofa\nandb. Then eithera, b∈k × or\nmax{deg(a),deg(b)} ≤2g−2 +|S|.\nWhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum\ncoprime triplea, b, cof polynomials gives (−a/c) + (−b/c) = 1, and the\nabove inequality becomes\nmax{deg(a),deg(b),deg(c)}\n= max\n\u001a\ndeg\n\u0010\n− ac \u0011 ,deg \u0012− bc \u0013\u001b\n≤ −2 +|S|= deg(rad(abc))−1,\nwhereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18]\ngives a short proof of the theorem using Riemann–Hurwitz formula.\nAcknowledgement",
+          "proof_body": "",
+          "code_fragments": [],
+          "parser_version": "0.3.0",
+          "source_id": 9,
+          "title": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a",
+          "statement": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a\nsmooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let\nSbe a finite subset of points inC(k)containing all the zeros and poles ofa\nandb. Then eithera, b∈k × or\nmax{deg(a),deg(b)} ≤2g−2 +|S|.\nWhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum\ncoprime triplea, b, cof polynomials gives (−a/c) + (−b/c) = 1, and the\nabove inequality becomes\nmax{deg(a),deg(b),deg(c)}\n= max\n\u001a\ndeg\n\u0010\n− ac \u0011 ,deg \u0012− bc \u0013\u001b\n≤ −2 +|S|= deg(rad(abc))−1,\nwhereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18]\ngives a short proof of the theorem using Riemann–Hurwitz formula.\nAcknowledgement",
+          "object_type": "Theorem",
+          "original_text": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a\nsmooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let\nSbe a finite subset of points inC(k)containing all the zeros and poles ofa\nandb. Then eithera, b∈k × or\nmax{deg(a),deg(b)} ≤2g−2 +|S|.\nWhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum\ncoprime triplea, b, cof polynomials gives (−a/c) + (−b/c) = 1, and the\nabove inequality becomes\nmax{deg(a),deg(b),deg(c)}\n= max\n\u001a\ndeg\n\u0010\n− ac \u0011 ,deg \u0012− bc \u0013\u001b\n≤ −2 +|S|= deg(rad(abc))−1,\nwhereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18]\ngives a short proof of the theorem using Riemann–Hurwitz formula.\nAcknowledgement",
+          "location": {
+            "page": 16,
+            "line": 5,
+            "paragraph": 1,
+            "start": 246,
+            "end": 914
+          },
+          "mathematical_domain": "unknown",
+          "dependencies": [],
+          "extraction_method": "numbered_heading",
+          "confidence": 0.9,
+          "formalization_status": "not_formalized",
+          "verification_status": "unknown",
+          "retrieval_status": "not_run",
+          "planning_status": "not_run",
+          "approval_status": "pending",
+          "stage": "Candidate",
+          "recognition_status": "recognized",
+          "reason": "",
+          "context_before": "Baek and S. Lee\n•Mason–Stothers theorem can be thought as the most basic case of ABC over\na function fieldk(C) of a smooth projective curveC, when the curveCis the\nprojective line overk. Mason [13] proved the following more general result:\n",
+          "context_after": "\nWe thank Kevin Buzzard for suggesting the project. Also, we thank Thomas\nBrowning for his help in simplifying the formalization of Davenport’s theorem.\nWe also thank the reviewers ofmathlibwho helped improving our codes and\nporting them in",
+          "proof_steps": [],
+          "boundary_status": "local_boundary",
+          "object_key": "9:0.3.0:16:246:914:Theorem",
+          "kind": "document",
+          "depends_on": [],
+          "candidate_id": 92,
+          "revision": 0
+        }
+      ],
+      "retrieval": [
+        {
+          "name": "divRadical_dvd_derivative",
+          "namespace": "(root)",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+          "line": 31,
+          "text": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a := by",
+          "module": "Mathlib.RingTheory.Polynomial.Radical",
+          "context": "\nvariable {k : Type*} [Field k] [DecidableEq k]\n\ntheorem degree_radical_le {a : k[X]} (h : a ≠ 0) : (radical a).degree ≤ a.degree :=\n  degree_le_of_dvd radical_dvd_self h\n\ntheorem natDegree_radical_le {a : k[X]} :\n    (radical a).natDegree ≤ a.natDegree := by\n  by_cases ha : a = 0\n  · simp [ha]\n  · exact natDegree_le_of_dvd radical_dvd_self ha\n",
+          "kind": "theorem",
+          "score": 100,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "exact_identifier",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "EuclideanDomain.divRadical_dvd_self",
+          "namespace": "EuclideanDomain",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 426,
+          "text": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a :=",
+          "module": "Mathlib.RingTheory.Radical",
+          "context": "  rwa [divRadical, radical_of_isUnit hu, EuclideanDomain.div_one]\n\ntheorem eq_divRadical (h : radical a * x = a) : x = divRadical a := by\n  apply EuclideanDomain.eq_div_of_mul_eq_left radical_ne_zero\n  rwa [mul_comm]\n\ntheorem divRadical_mul (hab : IsCoprime a b) :\n    divRadical (a * b) = divRadical a * divRadical b := by\n  symm; apply eq_divRadical\n  rw [UniqueFactorizationMonoid.radical_mul hab.isRelPrime]\n  rw [mul_mul_mul_comm, radical_mul_divRadical, radical_mul_divRadical]\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "div",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "EuclideanDomain.mul_div_cancel",
+          "namespace": "EuclideanDomain",
+          "namespace_method": "source_syntax",
+          "declaration": "protected theorem mul_div_cancel' {a b : R} (hb : b ≠ 0) (hab : b ∣ a) : b * (a / b) = a",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Basic.lean",
+          "line": 97,
+          "text": "protected theorem mul_div_cancel' {a b : R} (hb : b ≠ 0) (hab : b ∣ a) : b * (a / b) = a := by",
+          "module": "Mathlib.Algebra.EuclideanDomain.Basic",
+          "context": "  rw [← h, mul_div_cancel_right₀ _ hb]\n\ntheorem eq_div_of_mul_eq_right {a b c : R} (ha : a ≠ 0) (h : a * b = c) : b = c / a := by\n  rw [← h, mul_div_cancel_left₀ _ ha]\n\ntheorem mul_div_assoc (x : R) {y z : R} (h : z ∣ y) : x * y / z = x * (y / z) := by\n  by_cases hz : z = 0\n  · subst hz\n    rw [div_zero, div_zero, mul_zero]\n  rcases h with ⟨p, rfl⟩\n  rw [mul_div_cancel_left₀ _ hz, mul_left_comm, mul_div_cancel_left₀ _ hz]\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+          "namespace": "Polynomial",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic {K : Type*} [Field K] (f : K[X]) {a : K}\n    (hf : (X - C a) ∣ f /ₘ (X - C a)) : X - C a ∣ derivative f",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+          "line": 619,
+          "text": "theorem X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic {K : Type*} [Field K] (f : K[X]) {a : K}",
+          "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+          "context": "\ntheorem divByMonic_add_X_sub_C_mul_derivative_divByMonic_eq_derivative\n    {K : Type*} [CommRing K] (f : K[X]) (a : K) :\n    f /ₘ (X - C a) + (X - C a) * derivative (f /ₘ (X - C a)) = derivative f := by\n  have key := by apply congrArg derivative <| X_sub_C_mul_divByMonic_eq_sub_modByMonic f a\n  simpa only [derivative_mul, derivative_sub, derivative_X, derivative_C, sub_zero, one_mul,\n    modByMonic_X_sub_C_eq_C_eval] using key\n\n@[deprecated (since := \"2025-07-08\")]\nalias divByMonic_add_X_sub_C_mul_derivate_divByMonic_eq_derivative :=\ndivByMonic_add_X_sub_C_mul_derivative_divByMonic_eq_derivative\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "RatFunc.num_div_dvd",
+          "namespace": "RatFunc",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem num_div_dvd' (p : K[X]) {q : K[X]} (hq : q ≠ 0) :\n    C (q / gcd p q).leadingCoeff⁻¹ * (p / gcd p q) ∣ p",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\FieldTheory\\RatFunc\\Basic.lean",
+          "line": 887,
+          "text": "theorem num_div_dvd' (p : K[X]) {q : K[X]} (hq : q ≠ 0) :",
+          "module": "Mathlib.FieldTheory.RatFunc.Basic",
+          "context": "theorem num_algebraMap (p : K[X]) : num (algebraMap _ _ p) = p := by convert num_div p 1 <;> simp\n\ntheorem num_div_dvd (p : K[X]) {q : K[X]} (hq : q ≠ 0) :\n    num (algebraMap _ _ p / algebraMap _ _ q) ∣ p := by\n  classical\n  rw [num_div _ q, C_mul_dvd]\n  · exact EuclideanDomain.div_dvd_of_dvd (gcd_dvd_left p q)\n  · simpa only [Ne, inv_eq_zero, Polynomial.leadingCoeff_eq_zero] using right_div_gcd_ne_zero hq\n\nopen scoped Classical in\n\n@[simp]",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "_root_.IsRadical.dvd_radical",
+          "namespace": "UniqueFactorizationMonoid",
+          "namespace_method": "source_syntax",
+          "declaration": "lemma _root_.IsRadical.dvd_radical (ha : IsRadical a) (ha' : a ≠ 0) : a ∣ radical a",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 177,
+          "text": "lemma _root_.IsRadical.dvd_radical (ha : IsRadical a) (ha' : a ≠ 0) : a ∣ radical a :=",
+          "module": "Mathlib.RingTheory.Radical",
+          "context": "    radical a = radical b := by\n  simp only [radical, h]\n\ntheorem radical_eq_of_associated (h : Associated a b) : radical a = radical b :=\n  radical_eq_of_primeFactors_eq h.primeFactors_eq\n\nlemma radical_associated (ha : IsRadical a) (ha' : a ≠ 0) :\n    Associated (radical a) a := by\n  rw [radical, ← Finset.prod_val, primeFactors_val_eq_normalizedFactors ha]\n  exact prod_normalizedFactors ha'\n\n",
+          "kind": "lemma",
+          "score": 9,
+          "matched_tokens": [
+            "derivative",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "abc_subcall",
+          "namespace": "(root)",
+          "namespace_method": "source_syntax",
+          "declaration": "private theorem abc_subcall {a b c w : k[X]} {hw : w ≠ 0} (wab : w = wronskian a b) (ha : a ≠ 0)\n    (hb : b ≠ 0) (hc : c ≠ 0) (abc_dr_dvd_w : divRadical (a * b * c) ∣ w) :\n      c.natDegree + 1 ≤ (radical (a * b * c)).natDegree",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\NumberTheory\\FLT\\MasonStothers.lean",
+          "line": 26,
+          "text": "private theorem abc_subcall {a b c w : k[X]} {hw : w ≠ 0} (wab : w = wronskian a b) (ha : a ≠ 0)",
+          "module": "Mathlib.NumberTheory.FLT.MasonStothers",
+          "context": "\n\n\n\n\n\n\nopen Polynomial UniqueFactorizationMonoid UniqueFactorizationDomain EuclideanDomain\n\nvariable {k : Type*} [Field k] [DecidableEq k]\n\n-- we use this three times; the assumptions are symmetric in a, b, c.",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "div",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "divRadical_dvd_wronskian_left",
+          "namespace": "(root)",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+          "line": 58,
+          "text": "theorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b := by",
+          "module": "Mathlib.RingTheory.Polynomial.Radical",
+          "context": "      rw [mul_comm, mul_assoc]\n      apply dvd_mul_of_dvd_right\n      rw [pow_succ, mul_dvd_mul_iff_left (pow_ne_zero i hp.ne_zero), dvd_normalize_iff]\n  · -- If it holds for coprime pair a and b, then it also holds for a * b.\n    case hcp x y hpxy hx hy =>\n    have hc : IsCoprime x y :=\n      EuclideanDomain.isCoprime_of_dvd\n        (fun ⟨hx, hy⟩ => not_isUnit_zero (hpxy (zero_dvd_iff.mpr hx) (zero_dvd_iff.mpr hy)))\n        fun p hp _ hpx hpy => hp (hpxy hpx hpy)\n    rw [divRadical_mul hc, derivative_mul]\n    exact dvd_add (mul_dvd_mul hx (divRadical_dvd_self y)) (mul_dvd_mul (divRadical_dvd_self x) hy)\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "div",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "divRadical_dvd_wronskian_right",
+          "namespace": "(root)",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem divRadical_dvd_wronskian_right (a b : k[X]) : divRadical b ∣ wronskian a b",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+          "line": 66,
+          "text": "theorem divRadical_dvd_wronskian_right (a b : k[X]) : divRadical b ∣ wronskian a b := by",
+          "module": "Mathlib.RingTheory.Polynomial.Radical",
+          "context": "        fun p hp _ hpx hpy => hp (hpxy hpx hpy)\n    rw [divRadical_mul hc, derivative_mul]\n    exact dvd_add (mul_dvd_mul hx (divRadical_dvd_self y)) (mul_dvd_mul (divRadical_dvd_self x) hy)\n\ntheorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b := by\n  rw [wronskian]\n  apply dvd_sub\n  · apply dvd_mul_of_dvd_left\n    exact divRadical_dvd_self a\n  · apply dvd_mul_of_dvd_left\n    exact divRadical_dvd_derivative a\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "div",
+            "dvd",
+            "radical"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "padicValNat.div",
+          "namespace": "padicValNat",
+          "namespace_method": "source_syntax",
+          "declaration": "protected theorem div' {m : ℕ} (cpm : Coprime p m) {b : ℕ} (dvd : m ∣ b) :\n    padicValNat p (b / m) = padicValNat p b",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\NumberTheory\\Padics\\PadicVal\\Basic.lean",
+          "line": 431,
+          "text": "protected theorem div' {m : ℕ} (cpm : Coprime p m) {b : ℕ} (dvd : m ∣ b) :",
+          "module": "Mathlib.NumberTheory.Padics.PadicVal.Basic",
+          "context": "\n\nprotected theorem pow (n : ℕ) (ha : a ≠ 0) : padicValNat p (a ^ n) = n * padicValNat p a := by\n  simpa only [← @Nat.cast_inj ℤ, push_cast] using padicValRat.pow (Nat.cast_ne_zero.mpr ha)\n\n@[simp]\nprotected theorem prime_pow (n : ℕ) : padicValNat p (p ^ n) = n := by\n  rw [padicValNat.pow _ (@Fact.out p.Prime).ne_zero, padicValNat_self, mul_one]\n\nprotected theorem div_pow (dvd : p ^ a ∣ b) : padicValNat p (b / p ^ a) = padicValNat p b - a := by\n  rw [padicValNat.div_of_dvd dvd, padicValNat.prime_pow]\n",
+          "kind": "theorem",
+          "score": 9,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "Mathlib.Meta.NormNum.isInt_dvd_false",
+          "namespace": "Mathlib.Meta.NormNum",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem isInt_dvd_false : {a b : ℤ} → {a' b' : ℤ} →\n    IsInt a a' → IsInt b b' → Int.emod b' a' != 0 → ¬a ∣ b\n  | _, _, _, _, ⟨rfl⟩, ⟨rfl⟩, e => mt Int.emod_eq_zero_of_dvd (by simpa using e)\n\nattribute [local instance] monadLiftOptionMetaM in\n\n\n@[norm_num (_ : ℤ) ∣ _] def evalIntDvd : NormNumExt",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Tactic\\NormNum\\DivMod.lean",
+          "line": 151,
+          "text": "theorem isInt_dvd_false : {a b : ℤ} → {a' b' : ℤ} →",
+          "module": "Mathlib.Tactic.NormNum.DivMod",
+          "context": "    have nr : Q(ℕ) := mkRawNatLit r\n    let m := q * b\n    have nm := mkRawIntLit m\n    have pf₁ : Q($nq * $nb = $nm) := (q(Eq.refl $nm) :)\n    have pf₂ : Q($nr + $nm = $na) := (q(Eq.refl $na) :)\n    have pf₃ : Q(Nat.blt $nr $nb = true) := (q(Eq.refl true) :)\n    ⟨nr, q(isInt_emod $pa $pb $pf₁ $pf₂ $pf₃)⟩\n\ntheorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →\n    IsInt a a' → IsInt b b' → Int.mul a' c = b' → a ∣ b\n  | _, _, _, _, _, ⟨rfl⟩, ⟨rfl⟩, rfl => ⟨_, rfl⟩\n",
+          "kind": "theorem",
+          "score": 7,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        },
+        {
+          "name": "Mathlib.Meta.NormNum.isInt_dvd_true",
+          "namespace": "Mathlib.Meta.NormNum",
+          "namespace_method": "source_syntax",
+          "declaration": "theorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →",
+          "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Tactic\\NormNum\\DivMod.lean",
+          "line": 147,
+          "text": "theorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →",
+          "module": "Mathlib.Tactic.NormNum.DivMod",
+          "context": "    let b := nb.natLit!\n    let q := za / b\n    have nq := mkRawIntLit q\n    let r := za.natMod b\n    have nr : Q(ℕ) := mkRawNatLit r\n    let m := q * b\n    have nm := mkRawIntLit m\n    have pf₁ : Q($nq * $nb = $nm) := (q(Eq.refl $nm) :)\n    have pf₂ : Q($nr + $nm = $na) := (q(Eq.refl $na) :)\n    have pf₃ : Q(Nat.blt $nr $nb = true) := (q(Eq.refl true) :)\n    ⟨nr, q(isInt_emod $pa $pb $pf₁ $pf₂ $pf₃)⟩\n",
+          "kind": "theorem",
+          "score": 7,
+          "matched_tokens": [
+            "derivative",
+            "div",
+            "dvd"
+          ],
+          "match_kind": "partial_expression",
+          "equivalence": "not_established",
+          "reuse_status": "requires_lean_check",
+          "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+        }
+      ],
+      "lemma1_experiment": {
+        "label": "Mason–Stothers Lemma 1：复用 Mathlib",
+        "source": "import Mathlib.RingTheory.Polynomial.Radical\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (_ha : a ≠ 0) :\n    a / radical a ∣ derivative a := by\n  classical\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\n#print axioms mathlib2_mason_lemma1\n",
+        "target": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), a ≠ 0 → a / radical a ∣ derivative a",
+        "name": "mathlib2_mason_lemma1",
+        "scope": "target",
+        "source_match": "(?is)\\bLemma\\s*1\\b.*?nonzero\\s*polynomial\\s*a.*?rad\\s*\\(\\s*a\\s*\\).*?divides\\s*a",
+        "provenance": {
+          "category": "Theorem Reuse",
+          "new_statement": true,
+          "new_proof": false,
+          "authors": "Jineon Baek, Seewoo Lee（论文及 Mathlib 原证明作者）",
+          "declaration": "divRadical_dvd_derivative",
+          "file": "Mathlib/RingTheory/Polynomial/Radical.lean",
+          "line": 32,
+          "definitions_file": "Mathlib/RingTheory/Radical.lean",
+          "paper": "2408.15180v2.pdf",
+          "paper_pages": [
+            2,
+            4,
+            6,
+            8
+          ],
+          "assumptions": [
+            "Field k（任意特征）",
+            "a : Polynomial k",
+            "a ≠ 0（保留论文假设；复用定理更强）"
+          ],
+          "alignment": "radical 为不计重数的首一不可约因子乘积；除法是多项式欧几里得除法，divRadical 定义展开。",
+          "note": "模板由开发者明确构造，无 AI API 调用；复用已发表证明，不是独立新证明。"
+        },
+        "template_id": "mason_lemma1",
+        "attempt_id": "99865c1111c448a98c9d2072c2664df8",
+        "accepted": true,
+        "status": "verified",
+        "stdout": "'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+        "stderr": "",
+        "returncode": 0,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ],
+        "artifact": "D:\\mathproof\\lean\\Research\\Attempt_99865c1111c448a98c9d2072c2664df8.lean",
+        "sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+        "elapsed": 11.219000000011874,
+        "toolchain": "leanprover/lean4:v4.24.0",
+        "reason": "真实 Lean 编译及公理审计通过（Theorem Reuse）",
+        "reused_declarations": [
+          {
+            "name": "divRadical_dvd_derivative",
+            "path": "Mathlib/RingTheory/Polynomial/Radical.lean",
+            "line": 32
+          }
+        ],
+        "manifest_sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5",
+        "command": [
+          "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+          "env",
+          "lean",
+          "-M",
+          "2048",
+          "D:\\mathproof\\lean\\Research\\Attempt_99865c1111c448a98c9d2072c2664df8.lean"
+        ],
+        "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+        "log_artifact": "D:\\mathproof\\reports\\lemma1-v03-99865c1111c448a98c9d2072c2664df8.json",
+        "revision": 0,
+        "normalized_sha256": "f5c9b871bf94d64d8fef3ea7e66367b4494207f8713e8b3f4f6ebcc0c2f7a815",
+        "candidate_alignment": "unconfirmed",
+        "candidate_verified": false
+      },
+      "dag": {
+        "nodes": [
+          {
+            "id": 77,
+            "title": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there",
+            "location": {
+              "page": 1,
+              "line": 25,
+              "paragraph": 1,
+              "start": 1419,
+              "end": 2212
+            },
+            "source_id": 9,
+            "object_type": "Conjecture"
+          },
+          {
+            "id": 78,
+            "title": "Definition 1.Letkbe any field. For any nonzerof∈k[X], define the radical",
+            "location": {
+              "page": 2,
+              "line": 12,
+              "paragraph": 1,
+              "start": 727,
+              "end": 886
+            },
+            "source_id": 9,
+            "object_type": "Definition"
+          },
+          {
+            "id": 79,
+            "title": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-",
+            "location": {
+              "page": 2,
+              "line": 15,
+              "paragraph": 1,
+              "start": 887,
+              "end": 1142
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": 80,
+            "title": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe",
+            "location": {
+              "page": 3,
+              "line": 23,
+              "paragraph": 1,
+              "start": 1467,
+              "end": 1901
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": 81,
+            "title": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any",
+            "location": {
+              "page": 3,
+              "line": 30,
+              "paragraph": 1,
+              "start": 1902,
+              "end": 2218
+            },
+            "source_id": 9,
+            "object_type": "Corollary"
+          },
+          {
+            "id": 82,
+            "title": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a",
+            "location": {
+              "page": 3,
+              "line": 35,
+              "paragraph": 1,
+              "start": 2219,
+              "end": 2417
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": 83,
+            "title": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈",
+            "location": {
+              "page": 4,
+              "line": 7,
+              "paragraph": 1,
+              "start": 389,
+              "end": 551
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": 84,
+            "title": "Definition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −",
+            "location": {
+              "page": 4,
+              "line": 13,
+              "paragraph": 1,
+              "start": 716,
+              "end": 790
+            },
+            "source_id": 9,
+            "object_type": "Definition"
+          },
+          {
+            "id": 85,
+            "title": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+            "location": {
+              "page": 4,
+              "line": 18,
+              "paragraph": 1,
+              "start": 946,
+              "end": 1004
+            },
+            "source_id": 9,
+            "object_type": "Lemma"
+          },
+          {
+            "id": 86,
+            "title": "Proof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a",
+            "location": {
+              "page": 4,
+              "line": 19,
+              "paragraph": 1,
+              "start": 1005,
+              "end": 1363
+            },
+            "source_id": 9,
+            "object_type": "Proof"
+          },
+          {
+            "id": 87,
+            "title": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+            "location": {
+              "page": 4,
+              "line": 24,
+              "paragraph": 1,
+              "start": 1364,
+              "end": 1429
+            },
+            "source_id": 9,
+            "object_type": "Lemma"
+          },
+          {
+            "id": 88,
+            "title": "Proof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),",
+            "location": {
+              "page": 4,
+              "line": 25,
+              "paragraph": 1,
+              "start": 1430,
+              "end": 2232
+            },
+            "source_id": 9,
+            "object_type": "Proof"
+          },
+          {
+            "id": 89,
+            "title": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree",
+            "location": {
+              "page": 7,
+              "line": 19,
+              "paragraph": 1,
+              "start": 1071,
+              "end": 1513
+            },
+            "source_id": 9,
+            "object_type": "Lemma"
+          },
+          {
+            "id": 90,
+            "title": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-",
+            "location": {
+              "page": 11,
+              "line": 28,
+              "paragraph": 1,
+              "start": 1525,
+              "end": 1863
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": 91,
+            "title": "Proof.Letdbe the greatest common divisor ofaandb. Thena=a 0d, b=",
+            "location": {
+              "page": 11,
+              "line": 33,
+              "paragraph": 1,
+              "start": 1864,
+              "end": 2214
+            },
+            "source_id": 9,
+            "object_type": "Proof"
+          },
+          {
+            "id": 92,
+            "title": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a",
+            "location": {
+              "page": 16,
+              "line": 5,
+              "paragraph": 1,
+              "start": 246,
+              "end": 914
+            },
+            "source_id": 9,
+            "object_type": "Theorem"
+          },
+          {
+            "id": "mathlib:divRadical_dvd_derivative",
+            "title": "divRadical_dvd_derivative",
+            "object_type": "Mathlib Reference",
+            "location": {
+              "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+              "line": 31
+            }
+          },
+          {
+            "id": "mathlib:EuclideanDomain.divRadical_dvd_self",
+            "title": "EuclideanDomain.divRadical_dvd_self",
+            "object_type": "Mathlib Reference",
+            "location": {
+              "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+              "line": 426
+            }
+          },
+          {
+            "id": "mathlib:EuclideanDomain.mul_div_cancel",
+            "title": "EuclideanDomain.mul_div_cancel",
+            "object_type": "Mathlib Reference",
+            "location": {
+              "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Basic.lean",
+              "line": 97
+            }
+          },
+          {
+            "id": "mathlib:Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+            "title": "Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+            "object_type": "Mathlib Reference",
+            "location": {
+              "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+              "line": 619
+            }
+          },
+          {
+            "id": "mathlib:RatFunc.num_div_dvd",
+            "title": "RatFunc.num_div_dvd",
+            "object_type": "Mathlib Reference",
+            "location": {
+              "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\FieldTheory\\RatFunc\\Basic.lean",
+              "line": 887
+            }
+          },
+          {
+            "id": "formal:1",
+            "title": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), a ≠ 0 → a / radical a ∣ derivative a",
+            "object_type": "Formalized Statement",
+            "location": {
+              "path": "D:\\mathproof\\lean\\Research\\Attempt_99865c1111c448a98c9d2072c2664df8.lean"
+            },
+            "verification_status": "proved"
+          }
+        ],
+        "edges": [
+          {
+            "from": 80,
+            "to": 81,
+            "basis": "explicit",
+            "dependency_type": "Explicit Dependency",
+            "evidence": {
+              "quote": "Using Theorem 2",
+              "location": {
+                "page": 3,
+                "line": 30,
+                "paragraph": 1,
+                "start": 1902,
+                "end": 2218
+              },
+              "relative_start": 261,
+              "relative_end": 276,
+              "page": 3,
+              "start": 2163,
+              "end": 2178
+            },
+            "source": "paper",
+            "confidence": 0.95,
+            "human_confirmed": false,
+            "used_in_lean": false,
+            "edge_type": "Explicit Theorem Dependency"
+          },
+          {
+            "from": 79,
+            "to": 91,
+            "basis": "explicit",
+            "dependency_type": "Explicit Dependency",
+            "evidence": {
+              "quote": "applying Theorem 1",
+              "location": {
+                "page": 11,
+                "line": 33,
+                "paragraph": 1,
+                "start": 1864,
+                "end": 2214
+              },
+              "relative_start": 197,
+              "relative_end": 215,
+              "page": 11,
+              "start": 2061,
+              "end": 2079
+            },
+            "source": "paper",
+            "confidence": 0.95,
+            "human_confirmed": false,
+            "used_in_lean": false,
+            "edge_type": "Explicit Theorem Dependency"
+          },
+          {
+            "from_": "mathlib:divRadical_dvd_derivative",
+            "from": "mathlib:divRadical_dvd_derivative",
+            "to": 85,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "mathlib_search",
+            "evidence": {
+              "quote": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a",
+              "location": {
+                "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+                "line": 31
+              }
+            },
+            "confidence": 0.4,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from_": "mathlib:EuclideanDomain.divRadical_dvd_self",
+            "from": "mathlib:EuclideanDomain.divRadical_dvd_self",
+            "to": 85,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "mathlib_search",
+            "evidence": {
+              "quote": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a",
+              "location": {
+                "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+                "line": 426
+              }
+            },
+            "confidence": 0.4,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from_": "mathlib:EuclideanDomain.mul_div_cancel",
+            "from": "mathlib:EuclideanDomain.mul_div_cancel",
+            "to": 85,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "mathlib_search",
+            "evidence": {
+              "quote": "protected theorem mul_div_cancel' {a b : R} (hb : b ≠ 0) (hab : b ∣ a) : b * (a / b) = a",
+              "location": {
+                "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Basic.lean",
+                "line": 97
+              }
+            },
+            "confidence": 0.4,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from_": "mathlib:Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+            "from": "mathlib:Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+            "to": 85,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "mathlib_search",
+            "evidence": {
+              "quote": "theorem X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic {K : Type*} [Field K] (f : K[X]) {a : K}\n    (hf : (X - C a) ∣ f /ₘ (X - C a)) : X - C a ∣ derivative f",
+              "location": {
+                "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+                "line": 619
+              }
+            },
+            "confidence": 0.4,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from_": "mathlib:RatFunc.num_div_dvd",
+            "from": "mathlib:RatFunc.num_div_dvd",
+            "to": 85,
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "mathlib_search",
+            "evidence": {
+              "quote": "theorem num_div_dvd' (p : K[X]) {q : K[X]} (hq : q ≠ 0) :\n    C (q / gcd p q).leadingCoeff⁻¹ * (p / gcd p q) ∣ p",
+              "location": {
+                "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\FieldTheory\\RatFunc\\Basic.lean",
+                "line": 887
+              }
+            },
+            "confidence": 0.4,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from": 85,
+            "to": "formal:1",
+            "basis": "rule_hypothesis",
+            "dependency_type": "Inferred Dependency",
+            "edge_type": "Proof Dependency",
+            "source": "formalization_mapping",
+            "evidence": {
+              "quote": "论文至形式化的映射仍须人工核对",
+              "location": {
+                "page": 4,
+                "line": 18,
+                "paragraph": 1,
+                "start": 946,
+                "end": 1004
+              }
+            },
+            "confidence": 0.5,
+            "human_confirmed": false,
+            "used_in_lean": false
+          },
+          {
+            "from": "mathlib:divRadical_dvd_derivative",
+            "to": "formal:1",
+            "basis": "explicit",
+            "dependency_type": "Explicit Dependency",
+            "edge_type": "Mathlib Reuse",
+            "source": "compiled_template",
+            "evidence": {
+              "quote": "import Mathlib.RingTheory.Polynomial.Radical\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (_ha : a ≠ 0) :\n    a / radical a ∣ derivative a := by\n  classical\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\n#print axioms mathlib2_mason_lemma1\n",
+              "location": {
+                "name": "divRadical_dvd_derivative",
+                "path": "Mathlib/RingTheory/Polynomial/Radical.lean",
+                "line": 32
+              }
+            },
+            "confidence": 1.0,
+            "human_confirmed": false,
+            "used_in_lean": true
+          }
+        ],
+        "associations": [],
+        "unresolved": [
+          {
+            "reference": "Proposition\n2.3.1",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 10,
+            "start": 1883,
+            "end": 1900,
+            "context": "em 3)\nMathematical proofAs a corollary of Theorem 2, we can show thaty 2 =x 3+1\nis not parametrizable by rational functions oft, similarly as in [12, Proposition\n2.3.1].\nAssume that a parametrization exists, so thatx=m/Mandy=n/Nfor\nsomem, n, M, N∈k[t] with (m, M) = 1 and (n, N) = 1. By clearing denom-\ninators, we ob",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Corollary 4",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 13,
+            "start": 120,
+            "end": 131,
+            "context": "Formalizing Mason–Stothers Theorem and its Corollaries in Lean 4 13\nF ormalizationThe statement of Davenport’s theorem (Corollary 4) can be\nformalized as follows.\ntheorem Polynomial.davenport [CharZero k]\n{a b : k[X]} (ha : a.natDegree > 0) (hb : b.natDegree > 0)\n(hnz : a ^ 3 - b ",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Theorem 2.1.4",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 13,
+            "start": 1290,
+            "end": 1303,
+            "context": "Unlike Snyder’s original proof [19]\nwhich assumes thatkis algebraically closed, all formalizations work with any\nfieldkusing radicals, following [12, Theorem 2.1.4, Corollary 2.1.5].\nTable 1: Comparison of definitions and theorems in different formalizations of\nMason–Stothers.\nEberl [7] Wagemaker [10] Ours\nRadic",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Corollary 2.1.5",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 13,
+            "start": 1305,
+            "end": 1320,
+            "context": " original proof [19]\nwhich assumes thatkis algebraically closed, all formalizations work with any\nfieldkusing radicals, following [12, Theorem 2.1.4, Corollary 2.1.5].\nTable 1: Comparison of definitions and theorems in different formalizations of\nMason–Stothers.\nEberl [7] Wagemaker [10] Ours\nRadical radical rad ra",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Lemma 2.1.2",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 13,
+            "start": 1682,
+            "end": 1693,
+            "context": "ad mul eq rad mul rad of coprime radical hMul\ndegW(a, b)<deg(a) + deg(b) degree pderiv mult less10 degree wron le natDegree lt add\na\nrad(a) |a′ ([12, Lemma 2.1.2]) poly div radical dvd pderiv Mason Stothers lemma11 divRadical dvd derivative\nMason–Stothers Mason Stothers Mason Stothers Polynomial.abcMason Stoth",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          },
+          {
+            "reference": "Lemma 2.3.1",
+            "status": "uncertain",
+            "dependency_type": "Unresolved Reference",
+            "page": 15,
+            "start": 531,
+            "end": 542,
+            "context": "nea/rad(a) explicitly but instead use gcd(a, a ′) to avoid\npolynomial division. Then they prove\ndeg(a)≤deg(gcd(a, a ′)) + deg(rad(a))\nas a lemma [24, Lemma 2.3.1], instead of Lemma 1 in our work.\nTable 2: Comparison of Formalizations of the Mason–Stothers Theorem\nEberl [7] Wagemaker [10,24] Ours\nLanguage Isabe",
+            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+          }
+        ],
+        "status": "acyclic",
+        "topological_order": [
+          "mathlib:divRadical_dvd_derivative",
+          "mathlib:EuclideanDomain.divRadical_dvd_self",
+          "mathlib:EuclideanDomain.mul_div_cancel",
+          "mathlib:Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+          "mathlib:RatFunc.num_div_dvd",
+          85,
+          "formal:1",
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ]
+      }
+    }
+  ],
+  "old_rows_unchanged": {
+    "sources": true,
+    "candidates": true,
+    "events": true,
+    "verified": true
+  },
+  "summary": {
+    "source_count": 9,
+    "object_count": 89,
+    "candidate_count": 48,
+    "pending_review_count": 48,
+    "formalized_count": 1,
+    "verified_count": 8,
+    "approved_count": 0,
+    "sources": 9,
+    "objects": 89,
+    "candidates": 48,
+    "pending_review": 48,
+    "formalized": 1,
+    "verified": 8,
+    "approved": 0
+  },
+  "human_approval": "未代替用户审核；生产候选仍待人工对齐审核。编译实验与候选验证状态分开。"
+}

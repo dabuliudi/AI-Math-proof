@@ -1,0 +1,8 @@
+{
+  "live_run_records": 1,
+  "ai_dispatch_attempts": 0,
+  "real_model_responses": 0,
+  "actual_billed_usd": "0",
+  "live_api_acceptance": "BLOCKED: service credentials/model/pricing not configured",
+  "synthetic_results_excluded": true
+}

@@ -1,0 +1,1979 @@
+{
+  "schema_version": 1,
+  "session_id": "s_23c4b357eeb97243a193588c95d6a44b",
+  "status": "ready",
+  "observed_at": "2026-11-11T11:11:59Z",
+  "page": {
+    "url_path": "",
+    "title": "app"
+  },
+  "pages": [
+    {
+      "url_path": "",
+      "title": "app"
+    }
+  ],
+  "query_params": {},
+  "tree": {
+    "type": "root",
+    "children": [
+      {
+        "type": "main",
+        "children": [
+          {
+            "type": "title",
+            "props": {
+              "body": "Mathlib2 Demo v0.2.1"
+            }
+          },
+          {
+            "type": "caption",
+            "props": {
+              "body": "文献结构提取 → 候选审核 → 形式化 → Lean 验证 → 人工入库"
+            }
+          },
+          {
+            "type": "tabs",
+            "props": {
+              "tabs": [
+                "文献与探索",
+                "候选与 DAG",
+                "证据与角色日志",
+                "知识库与审核",
+                "Mathlib 检索"
+              ]
+            },
+            "children": [
+              {
+                "type": "tab",
+                "props": {
+                  "label": "文献与探索",
+                  "open": true
+                },
+                "children": [
+                  {
+                    "type": "info",
+                    "props": {
+                      "body": "真实文献由本地规则识别，不需要 API。提取成功不代表理解或证明成功。教学样例仍使用 mock 生成候选、真实 Lean 验证。"
+                    }
+                  },
+                  {
+                    "type": "file_uploader",
+                    "key": "document_upload",
+                    "props": {
+                      "label": "导入文献（10 MB 以下）",
+                      "type": [
+                        ".md",
+                        ".tex",
+                        ".txt",
+                        ".pdf"
+                      ],
+                      "accept_multiple_files": false,
+                      "max_upload_size": 200,
+                      "disabled": false,
+                      "label_visibility": "visible",
+                      "on_change": "rerun"
+                    },
+                    "support": "action_unsupported"
+                  },
+                  {
+                    "type": "selectbox",
+                    "key": "input_mode",
+                    "props": {
+                      "label": "处理输入",
+                      "options": [
+                        "上传文件",
+                        "当前文献",
+                        "nat.md 教学样例"
+                      ],
+                      "disabled": false,
+                      "required": false,
+                      "label_visibility": "visible",
+                      "accept_new_options": false,
+                      "filter_mode": "fuzzy",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "string"
+                    },
+                    "value": "当前文献"
+                  },
+                  {
+                    "type": "slider",
+                    "key": "$$ID-8ef6c005c4d25573cec7339b9c466c2f-None",
+                    "props": {
+                      "label": "AI / 教学候选预算（规则提取不受此限制）",
+                      "min_value": 1,
+                      "max_value": 8,
+                      "step": 1,
+                      "format": "%d",
+                      "disabled": false,
+                      "label_visibility": "visible",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "integer"
+                    },
+                    "value": 4
+                  },
+                  {
+                    "type": "button",
+                    "key": "run_document",
+                    "props": {
+                      "label": "运行完整流程",
+                      "type": "secondary",
+                      "disabled": false
+                    }
+                  },
+                  {
+                    "type": "dataframe",
+                    "props": {
+                      "hide_index": true,
+                      "alt": "各处理阶段的独立状态"
+                    },
+                    "data": {
+                      "columns": [
+                        {
+                          "name": "阶段",
+                          "type": "large_string"
+                        },
+                        {
+                          "name": "状态",
+                          "type": "large_string"
+                        }
+                      ],
+                      "row_count": 5,
+                      "column_count": 2,
+                      "complete": true,
+                      "preview": {
+                        "rows": [
+                          [
+                            "文件接收",
+                            "received"
+                          ],
+                          [
+                            "正文解析",
+                            "parsed"
+                          ],
+                          [
+                            "数学结构识别",
+                            "recognized"
+                          ],
+                          [
+                            "候选提取",
+                            "extracted"
+                          ],
+                          [
+                            "Lean 运行",
+                            "not_run"
+                          ]
+                        ]
+                      },
+                      "url": "../../media/9fe6ce0d52ccd14cbb910fdc9597288a"
+                    }
+                  },
+                  {
+                    "type": "columns",
+                    "children": [
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "metric",
+                            "props": {
+                              "label": "Definition",
+                              "value": 3,
+                              "label_visibility": "visible"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "metric",
+                            "props": {
+                              "label": "Theorem",
+                              "value": 0,
+                              "label_visibility": "visible"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "metric",
+                            "props": {
+                              "label": "Lemma",
+                              "value": 0,
+                              "label_visibility": "visible"
+                            }
+                          }
+                        ]
+                      },
+                      {
+                        "type": "column",
+                        "children": [
+                          {
+                            "type": "metric",
+                            "props": {
+                              "label": "Proof",
+                              "value": 13,
+                              "label_visibility": "visible"
+                            }
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "识别片段 25 · 不确定对象 14 · 解析失败 0 · 空文字页 0"
+                    }
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "置信度是规则强弱的启发式分数，不是数学正确率；页码为 PDF 物理页码，从 1 开始。"
+                    }
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "未识别对象总数无法从规则输出推定；no_objects 表示规则零命中，不表示论文没有数学内容。"
+                    }
+                  },
+                  {
+                    "type": "selectbox",
+                    "key": "page_1",
+                    "props": {
+                      "label": "原文预览页",
+                      "options": [
+                        "第 1 页",
+                        "第 2 页",
+                        "第 3 页",
+                        "第 4 页",
+                        "第 5 页",
+                        "第 6 页",
+                        "第 7 页",
+                        "第 8 页",
+                        "第 9 页",
+                        "第 10 页",
+                        "第 11 页",
+                        "第 12 页",
+                        "第 13 页",
+                        "第 14 页",
+                        "第 15 页",
+                        "第 16 页",
+                        "第 17 页",
+                        "第 18 页",
+                        "第 19 页",
+                        "第 20 页",
+                        "第 21 页",
+                        "第 22 页",
+                        "第 23 页",
+                        "第 24 页",
+                        "第 25 页",
+                        "第 26 页",
+                        "第 27 页",
+                        "第 28 页",
+                        "第 29 页",
+                        "第 30 页"
+                      ],
+                      "disabled": false,
+                      "required": false,
+                      "label_visibility": "visible",
+                      "accept_new_options": false,
+                      "filter_mode": "fuzzy",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "string"
+                    },
+                    "value": "第 1 页"
+                  },
+                  {
+                    "type": "code",
+                    "props": {
+                      "body": "InternationalJournalofResearchinUndergraduateMathematicsEducation\nhttps://doi.org/10.1007/s40753-021-00140-1\nLearningaboutProofwiththeTheoremProverLEAN:\ntheAbundantNumbersTask\nAthinaThoma1,3 ·PaolaIannone2\nAccepted:24March2021\n©Crown2021\nAbstract\nThis exploratory study reports on characteristics of proof production and proof writ-\ning observed in the work of first-year university students who took part in workshops\non the theorem prover LEAN ( https://leanprover.github.io). These workshops were\nvoluntary and offered alongside a transition to proof module in a UK university.\nThrough qualitative analysis of 36 student produced proofs of an unfamiliar state-\nment we highlight characteristics of proofs produced by students who did engaged\nand who did not engage with LEAN. The analysis shows two characteristics of proofs\nwritten by students who engaged with the programming language. The first concerns\nproof writing and includes the accurate and correct use of mathematics language and\nsymbols, together with the use of complete sentences and punctuations in proofs.\nThe second concerns proof structure and includes the overt break down of proofs in\ngoals and sub-goals. We conclude by hypothesising a link between the characteris-\ntics observed and the experience of engaging with the theorem prover and we reflect\non the potential that engagement with this theorem prover may have in mathematics\ninstruction at university level.\nKeywords Proof · Automated theorem prover · Undergraduate mathematics\nIntroduction\nProof is a central part of mathematics: being able to accept the values that\nthis activity conveys is considered to be one of the characteristics of successful\n/envelopeback Athina Thoma\na.thoma@uea.ac.uk\nPaola Iannone\np.iannone@lboro.ac.uk\n1 Department of Mathematics, Imperial College London, London, UK\n2 Mathematics Education Centre, Loughborough University, Loughborough, UK\n3 School of Education and Lifelong Learning, University of East Anglia, Norwich, UK",
+                      "language": "plaintext",
+                      "line_numbers": false
+                    }
+                  },
+                  {
+                    "type": "expander",
+                    "props": {
+                      "label": "文件哈希与解析详情",
+                      "expanded": false,
+                      "type": "default"
+                    },
+                    "children": [
+                      {
+                        "type": "json",
+                        "props": {
+                          "body": {
+                            "path": "D:\\mathproof\\data\\uploads\\0357be8b67904937aa2d2491b7f8f0f2.pdf",
+                            "filename": "0357be8b67904937aa2d2491b7f8f0f2.pdf",
+                            "sha256": "c60c9c32ab6e8daf04e31c624d385ad92a6b97973518050cfcaaedbcfdc5a5da",
+                            "parser_version": "0.2.1",
+                            "warnings": [],
+                            "stages": {
+                              "file": "received",
+                              "text": "parsed",
+                              "structure": "recognized",
+                              "candidates": "extracted",
+                              "lean": "not_run"
+                            },
+                            "image_pages": [
+                              1,
+                              4,
+                              8,
+                              13,
+                              14,
+                              15,
+                              16,
+                              17,
+                              18,
+                              19,
+                              20,
+                              21,
+                              22,
+                              23
+                            ],
+                            "empty_pages": [],
+                            "method": "规则识别；原文切片可追溯不等于数学语义理解；无 OCR",
+                            "source_id": 1
+                          },
+                          "expanded": true
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "expander",
+                    "props": {
+                      "label": "最近一次执行结果",
+                      "expanded": false,
+                      "type": "default"
+                    },
+                    "children": [
+                      {
+                        "type": "json",
+                        "props": {
+                          "body": {
+                            "source_id": 1,
+                            "extracted": 25,
+                            "provider": "rules（本地规则，无 AI 调用）",
+                            "results": [
+                              {
+                                "id": 1,
+                                "label": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 2,
+                                "label": "Fig.4 The abundant number task",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 3,
+                                "label": " If a student realised that the statement is false for k = 1, they",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 4,
+                                "label": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 5,
+                                "label": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 6,
+                                "label": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 7,
+                                "label": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 8,
+                                "label": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 9,
+                                "label": " He then replaces kn and n with the sum of their divisors (since",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 10,
+                                "label": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 11,
+                                "label": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 12,
+                                "label": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 13,
+                                "label": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 14,
+                                "label": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+                                "status": "unknown",
+                                "stage": "Extracted"
+                              },
+                              {
+                                "id": 15,
+                                "label": "1. Prove that",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 16,
+                                "label": "The f is called fine if it has a root",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 17,
+                                "label": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 18,
+                                "label": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 19,
+                                "label": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 20,
+                                "label": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 21,
+                                "label": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 22,
+                                "label": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 23,
+                                "label": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 24,
+                                "label": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              },
+                              {
+                                "id": 25,
+                                "label": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+                                "status": "unknown",
+                                "stage": "Candidate"
+                              }
+                            ],
+                            "stages": {
+                              "file": "received",
+                              "text": "parsed",
+                              "structure": "recognized",
+                              "candidates": "extracted",
+                              "lean": "not_run"
+                            },
+                            "reused": true,
+                            "dag": {
+                              "nodes": [
+                                {
+                                  "id": 1,
+                                  "title": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                                  "location": {
+                                    "page": 4,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 166
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 2,
+                                  "title": "Fig.4 The abundant number task",
+                                  "location": {
+                                    "page": 8,
+                                    "line": 30,
+                                    "paragraph": 1,
+                                    "start": 2196,
+                                    "end": 2226
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Example"
+                                },
+                                {
+                                  "id": 3,
+                                  "title": " If a student realised that the statement is false for k = 1, they",
+                                  "location": {
+                                    "page": 9,
+                                    "line": 8,
+                                    "paragraph": 1,
+                                    "start": 563,
+                                    "end": 677
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 4,
+                                  "title": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 13,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 136
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 5,
+                                  "title": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 13,
+                                    "line": 3,
+                                    "paragraph": 1,
+                                    "start": 137,
+                                    "end": 208
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 6,
+                                  "title": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 13,
+                                    "line": 14,
+                                    "paragraph": 1,
+                                    "start": 1049,
+                                    "end": 1117
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 7,
+                                  "title": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 14,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 136
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 8,
+                                  "title": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+                                  "location": {
+                                    "page": 15,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 165
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 9,
+                                  "title": " He then replaces kn and n with the sum of their divisors (since",
+                                  "location": {
+                                    "page": 15,
+                                    "line": 10,
+                                    "paragraph": 1,
+                                    "start": 798,
+                                    "end": 915
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 10,
+                                  "title": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+                                  "location": {
+                                    "page": 15,
+                                    "line": 12,
+                                    "paragraph": 1,
+                                    "start": 949,
+                                    "end": 1015
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 11,
+                                  "title": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 17,
+                                    "line": 20,
+                                    "paragraph": 1,
+                                    "start": 1358,
+                                    "end": 1430
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 12,
+                                  "title": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+                                  "location": {
+                                    "page": 18,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 138
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 13,
+                                  "title": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+                                  "location": {
+                                    "page": 20,
+                                    "line": 2,
+                                    "paragraph": 1,
+                                    "start": 66,
+                                    "end": 136
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 14,
+                                  "title": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+                                  "location": {
+                                    "page": 20,
+                                    "line": 17,
+                                    "paragraph": 1,
+                                    "start": 1220,
+                                    "end": 1290
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Proof"
+                                },
+                                {
+                                  "id": 15,
+                                  "title": "1. Prove that",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 6,
+                                    "paragraph": 1,
+                                    "start": 278,
+                                    "end": 306
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 16,
+                                  "title": "The f is called fine if it has a root",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 11,
+                                    "paragraph": 1,
+                                    "start": 351,
+                                    "end": 412
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Definition"
+                                },
+                                {
+                                  "id": 17,
+                                  "title": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 14,
+                                    "paragraph": 1,
+                                    "start": 467,
+                                    "end": 574
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 18,
+                                  "title": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 16,
+                                    "paragraph": 1,
+                                    "start": 575,
+                                    "end": 712
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 19,
+                                  "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 18,
+                                    "paragraph": 1,
+                                    "start": 713,
+                                    "end": 789
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Definition"
+                                },
+                                {
+                                  "id": 20,
+                                  "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 19,
+                                    "paragraph": 1,
+                                    "start": 790,
+                                    "end": 859
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Definition"
+                                },
+                                {
+                                  "id": 21,
+                                  "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 21,
+                                    "paragraph": 1,
+                                    "start": 867,
+                                    "end": 922
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 22,
+                                  "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 22,
+                                    "paragraph": 1,
+                                    "start": 923,
+                                    "end": 974
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 23,
+                                  "title": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 23,
+                                    "paragraph": 1,
+                                    "start": 975,
+                                    "end": 1049
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 24,
+                                  "title": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 25,
+                                    "paragraph": 1,
+                                    "start": 1057,
+                                    "end": 1167
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                },
+                                {
+                                  "id": 25,
+                                  "title": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+                                  "location": {
+                                    "page": 28,
+                                    "line": 27,
+                                    "paragraph": 1,
+                                    "start": 1168,
+                                    "end": 1347
+                                  },
+                                  "source_id": 1,
+                                  "object_type": "Conjecture"
+                                }
+                              ],
+                              "edges": [],
+                              "associations": [],
+                              "unresolved": [
+                                {
+                                  "reference": "Lemma 3",
+                                  "status": "uncertain",
+                                  "page": 14,
+                                  "start": 1597,
+                                  "end": 1604,
+                                  "context": "lso concerned, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to",
+                                  "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+                                },
+                                {
+                                  "reference": "Lemma 4",
+                                  "status": "uncertain",
+                                  "page": 14,
+                                  "start": 1609,
+                                  "end": 1616,
+                                  "context": "d, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to understand ",
+                                  "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+                                }
+                              ],
+                              "status": "acyclic"
+                            }
+                          },
+                          "expanded": true
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "tab",
+                "props": {
+                  "label": "候选与 DAG",
+                  "open": false
+                },
+                "children": [
+                  {
+                    "type": "dataframe",
+                    "props": {
+                      "hide_index": true,
+                      "alt": "当前文献候选列表"
+                    },
+                    "data": {
+                      "columns": [
+                        {
+                          "name": "编号",
+                          "type": "int64"
+                        },
+                        {
+                          "name": "类型",
+                          "type": "large_string"
+                        },
+                        {
+                          "name": "标题",
+                          "type": "large_string"
+                        },
+                        {
+                          "name": "页码",
+                          "type": "int64"
+                        },
+                        {
+                          "name": "阶段",
+                          "type": "large_string"
+                        },
+                        {
+                          "name": "验证",
+                          "type": "large_string"
+                        },
+                        {
+                          "name": "识别",
+                          "type": "large_string"
+                        }
+                      ],
+                      "row_count": 25,
+                      "column_count": 7,
+                      "complete": true,
+                      "preview": {
+                        "rows": [
+                          [
+                            1,
+                            "Proof",
+                            "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                            4,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            2,
+                            "Example",
+                            "Fig.4 The abundant number task",
+                            8,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            3,
+                            "Proof",
+                            " If a student realised that the statement is false for k = 1, they",
+                            9,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            4,
+                            "Proof",
+                            "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                            13,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            5,
+                            "Proof",
+                            "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+                            13,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            6,
+                            "Proof",
+                            "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+                            13,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            7,
+                            "Proof",
+                            "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                            14,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            8,
+                            "Proof",
+                            "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+                            15,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            9,
+                            "Proof",
+                            " He then replaces kn and n with the sum of their divisors (since",
+                            15,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            10,
+                            "Proof",
+                            "Fig.10 LEAN user student Louis - problem centred part of the proof",
+                            15,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            11,
+                            "Proof",
+                            "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+                            17,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            12,
+                            "Proof",
+                            "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+                            18,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            13,
+                            "Proof",
+                            "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+                            20,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            14,
+                            "Proof",
+                            "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+                            20,
+                            "Extracted",
+                            "unknown",
+                            "uncertain"
+                          ],
+                          [
+                            15,
+                            "Conjecture",
+                            "1. Prove that",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            16,
+                            "Definition",
+                            "The f is called fine if it has a root",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            17,
+                            "Conjecture",
+                            "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            18,
+                            "Conjecture",
+                            "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            19,
+                            "Definition",
+                            "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            20,
+                            "Definition",
+                            "A perfect number is an integer n whose divisors add up to exactly 2n.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            21,
+                            "Conjecture",
+                            "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            22,
+                            "Conjecture",
+                            "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            23,
+                            "Conjecture",
+                            "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            24,
+                            "Conjecture",
+                            "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ],
+                          [
+                            25,
+                            "Conjecture",
+                            "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+                            28,
+                            "Candidate",
+                            "unknown",
+                            "recognized"
+                          ]
+                        ]
+                      },
+                      "url": "../../media/da6fb0ff3e4d80ab4edf53c5d4920971"
+                    }
+                  },
+                  {
+                    "type": "selectbox",
+                    "key": "candidate_1",
+                    "props": {
+                      "label": "候选详情",
+                      "options": [
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7",
+                        "8",
+                        "9",
+                        "10",
+                        "11",
+                        "12",
+                        "13",
+                        "14",
+                        "15",
+                        "16",
+                        "17",
+                        "18",
+                        "19",
+                        "20",
+                        "21",
+                        "22",
+                        "23",
+                        "24",
+                        "25"
+                      ],
+                      "disabled": false,
+                      "required": false,
+                      "label_visibility": "visible",
+                      "accept_new_options": false,
+                      "filter_mode": "fuzzy",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "string"
+                    },
+                    "value": "1"
+                  },
+                  {
+                    "type": "subheader",
+                    "props": {
+                      "body": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the"
+                    }
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "Extracted · unknown · not_formalized"
+                    }
+                  },
+                  {
+                    "type": "code",
+                    "props": {
+                      "body": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                      "language": "plaintext",
+                      "line_numbers": false
+                    }
+                  },
+                  {
+                    "type": "json",
+                    "props": {
+                      "body": {
+                        "source_id": 1,
+                        "title": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                        "object_type": "Proof",
+                        "original_text": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                        "location": {
+                          "page": 4,
+                          "line": 2,
+                          "paragraph": 1,
+                          "start": 66,
+                          "end": 166
+                        },
+                        "mathematical_domain": "unknown",
+                        "dependencies": [],
+                        "extraction_method": "figure_caption_only",
+                        "confidence": 0.3,
+                        "formalization_status": "not_formalized",
+                        "verification_status": "unknown",
+                        "stage": "Extracted",
+                        "recognition_status": "uncertain",
+                        "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+                        "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+                        "context_after": "\nchanges in the goal of the proof with each line of the written code\nshows the goals or sub-goals required for completion of the proof and provides feed-\nback to the user in terms of the symbol consistency and the logical connectedness of\nt",
+                        "proof_steps": [],
+                        "boundary_status": "local_boundary",
+                        "object_key": "1:0.2.1:4:66:166:Proof",
+                        "kind": "document",
+                        "depends_on": [],
+                        "candidate_id": 1
+                      },
+                      "expanded": true
+                    }
+                  },
+                  {
+                    "type": "expander",
+                    "props": {
+                      "label": "原文前后文",
+                      "expanded": false,
+                      "type": "default"
+                    },
+                    "children": [
+                      {
+                        "type": "text",
+                        "props": {
+                          "body": "InternationalJournalofResearchinUndergraduateMathematicsEducation"
+                        }
+                      },
+                      {
+                        "type": "code",
+                        "props": {
+                          "body": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                          "language": "plaintext",
+                          "line_numbers": false
+                        }
+                      },
+                      {
+                        "type": "text",
+                        "props": {
+                          "body": "changes in the goal of the proof with each line of the written code\nshows the goals or sub-goals required for completion of the proof and provides feed-\nback to the user in terms of the symbol consistency and the logical connectedness of\nt"
+                        }
+                      }
+                    ]
+                  },
+                  {
+                    "type": "subheader",
+                    "props": {
+                      "body": "DAG 依赖关系预览"
+                    }
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "只从 by/using/from Lemma 等明确引用建立边。正文提及、图注和同篇共现均不构成逻辑依赖。推测边必须注明 rule_hypothesis 或 ai_hypothesis。"
+                    }
+                  },
+                  {
+                    "type": "json",
+                    "props": {
+                      "body": {
+                        "nodes": [
+                          {
+                            "id": 1,
+                            "title": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+                            "location": {
+                              "page": 4,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 166
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 2,
+                            "title": "Fig.4 The abundant number task",
+                            "location": {
+                              "page": 8,
+                              "line": 30,
+                              "paragraph": 1,
+                              "start": 2196,
+                              "end": 2226
+                            },
+                            "source_id": 1,
+                            "object_type": "Example"
+                          },
+                          {
+                            "id": 3,
+                            "title": " If a student realised that the statement is false for k = 1, they",
+                            "location": {
+                              "page": 9,
+                              "line": 8,
+                              "paragraph": 1,
+                              "start": 563,
+                              "end": 677
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 4,
+                            "title": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 13,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 136
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 5,
+                            "title": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 13,
+                              "line": 3,
+                              "paragraph": 1,
+                              "start": 137,
+                              "end": 208
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 6,
+                            "title": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 13,
+                              "line": 14,
+                              "paragraph": 1,
+                              "start": 1049,
+                              "end": 1117
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 7,
+                            "title": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 14,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 136
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 8,
+                            "title": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+                            "location": {
+                              "page": 15,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 165
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 9,
+                            "title": " He then replaces kn and n with the sum of their divisors (since",
+                            "location": {
+                              "page": 15,
+                              "line": 10,
+                              "paragraph": 1,
+                              "start": 798,
+                              "end": 915
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 10,
+                            "title": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+                            "location": {
+                              "page": 15,
+                              "line": 12,
+                              "paragraph": 1,
+                              "start": 949,
+                              "end": 1015
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 11,
+                            "title": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 17,
+                              "line": 20,
+                              "paragraph": 1,
+                              "start": 1358,
+                              "end": 1430
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 12,
+                            "title": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+                            "location": {
+                              "page": 18,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 138
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 13,
+                            "title": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+                            "location": {
+                              "page": 20,
+                              "line": 2,
+                              "paragraph": 1,
+                              "start": 66,
+                              "end": 136
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 14,
+                            "title": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+                            "location": {
+                              "page": 20,
+                              "line": 17,
+                              "paragraph": 1,
+                              "start": 1220,
+                              "end": 1290
+                            },
+                            "source_id": 1,
+                            "object_type": "Proof"
+                          },
+                          {
+                            "id": 15,
+                            "title": "1. Prove that",
+                            "location": {
+                              "page": 28,
+                              "line": 6,
+                              "paragraph": 1,
+                              "start": 278,
+                              "end": 306
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 16,
+                            "title": "The f is called fine if it has a root",
+                            "location": {
+                              "page": 28,
+                              "line": 11,
+                              "paragraph": 1,
+                              "start": 351,
+                              "end": 412
+                            },
+                            "source_id": 1,
+                            "object_type": "Definition"
+                          },
+                          {
+                            "id": 17,
+                            "title": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+                            "location": {
+                              "page": 28,
+                              "line": 14,
+                              "paragraph": 1,
+                              "start": 467,
+                              "end": 574
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 18,
+                            "title": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+                            "location": {
+                              "page": 28,
+                              "line": 16,
+                              "paragraph": 1,
+                              "start": 575,
+                              "end": 712
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 19,
+                            "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+                            "location": {
+                              "page": 28,
+                              "line": 18,
+                              "paragraph": 1,
+                              "start": 713,
+                              "end": 789
+                            },
+                            "source_id": 1,
+                            "object_type": "Definition"
+                          },
+                          {
+                            "id": 20,
+                            "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+                            "location": {
+                              "page": 28,
+                              "line": 19,
+                              "paragraph": 1,
+                              "start": 790,
+                              "end": 859
+                            },
+                            "source_id": 1,
+                            "object_type": "Definition"
+                          },
+                          {
+                            "id": 21,
+                            "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+                            "location": {
+                              "page": 28,
+                              "line": 21,
+                              "paragraph": 1,
+                              "start": 867,
+                              "end": 922
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 22,
+                            "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+                            "location": {
+                              "page": 28,
+                              "line": 22,
+                              "paragraph": 1,
+                              "start": 923,
+                              "end": 974
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 23,
+                            "title": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+                            "location": {
+                              "page": 28,
+                              "line": 23,
+                              "paragraph": 1,
+                              "start": 975,
+                              "end": 1049
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 24,
+                            "title": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+                            "location": {
+                              "page": 28,
+                              "line": 25,
+                              "paragraph": 1,
+                              "start": 1057,
+                              "end": 1167
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          },
+                          {
+                            "id": 25,
+                            "title": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+                            "location": {
+                              "page": 28,
+                              "line": 27,
+                              "paragraph": 1,
+                              "start": 1168,
+                              "end": 1347
+                            },
+                            "source_id": 1,
+                            "object_type": "Conjecture"
+                          }
+                        ],
+                        "edges": [],
+                        "associations": [],
+                        "unresolved": [
+                          {
+                            "reference": "Lemma 3",
+                            "status": "uncertain",
+                            "page": 14,
+                            "start": 1597,
+                            "end": 1604,
+                            "context": "lso concerned, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to",
+                            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+                          },
+                          {
+                            "reference": "Lemma 4",
+                            "status": "uncertain",
+                            "page": 14,
+                            "start": 1609,
+                            "end": 1616,
+                            "context": "d, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to understand ",
+                            "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+                          }
+                        ],
+                        "status": "acyclic"
+                      },
+                      "expanded": true
+                    }
+                  },
+                  {
+                    "type": "info",
+                    "props": {
+                      "body": "尚未识别出可靠依赖边；节点和未解析引用已保留。"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tab",
+                "props": {
+                  "label": "证据与角色日志",
+                  "open": false
+                },
+                "children": [
+                  {
+                    "type": "json",
+                    "props": {
+                      "body": [],
+                      "expanded": true
+                    }
+                  },
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "规则解析对象不会产生伪造的 Lean 日志。"
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tab",
+                "props": {
+                  "label": "知识库与审核",
+                  "open": false
+                },
+                "children": [
+                  {
+                    "type": "warning",
+                    "props": {
+                      "body": "Lean 只验证形式化命题。审核者还须核对原文、量词、假设和结论。"
+                    }
+                  },
+                  {
+                    "type": "form",
+                    "key": "review",
+                    "props": {
+                      "clear_on_submit": false,
+                      "enter_to_submit": true
+                    },
+                    "children": [
+                      {
+                        "type": "selectbox",
+                        "key": "$$ID-4559b2ed6dbaa3aed6e5f84ca30f4475-None",
+                        "props": {
+                          "label": "选择已证明候选",
+                          "options": [],
+                          "disabled": false,
+                          "required": false,
+                          "label_visibility": "visible",
+                          "accept_new_options": false,
+                          "filter_mode": "fuzzy",
+                          "on_change": "rerun"
+                        },
+                        "value_schema": {
+                          "type": "string"
+                        },
+                        "value": null,
+                        "form_id": "review"
+                      },
+                      {
+                        "type": "text_input",
+                        "key": "$$ID-5b9ce9920377de7fda4cff463e84a221-None",
+                        "props": {
+                          "label": "审核人",
+                          "type": "default",
+                          "disabled": false,
+                          "required": false,
+                          "autocomplete": "",
+                          "label_visibility": "visible",
+                          "on_change": "rerun"
+                        },
+                        "value_schema": {
+                          "type": "string"
+                        },
+                        "value": "",
+                        "form_id": "review"
+                      },
+                      {
+                        "type": "text_area",
+                        "key": "$$ID-a7a067afe041cc8dfadc583970e81ca6-None",
+                        "props": {
+                          "label": "一致性及价值审核意见",
+                          "disabled": false,
+                          "required": false,
+                          "label_visibility": "visible",
+                          "on_change": "rerun"
+                        },
+                        "value_schema": {
+                          "type": "string"
+                        },
+                        "value": "",
+                        "form_id": "review"
+                      },
+                      {
+                        "type": "form_submit_button",
+                        "key": "FormSubmitter:review-批准进入知识库",
+                        "props": {
+                          "label": "批准进入知识库",
+                          "type": "secondary",
+                          "disabled": true
+                        },
+                        "form_id": "review"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "json",
+                    "props": {
+                      "body": [],
+                      "expanded": true
+                    }
+                  },
+                  {
+                    "type": "text_input",
+                    "key": "$$ID-8d469bff82a4922426715d7b7d72b0a6-None",
+                    "props": {
+                      "label": "搜索全库已批准知识",
+                      "type": "default",
+                      "disabled": false,
+                      "required": false,
+                      "autocomplete": "",
+                      "label_visibility": "visible",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "string"
+                    },
+                    "value": "Nat"
+                  },
+                  {
+                    "type": "json",
+                    "props": {
+                      "body": [],
+                      "expanded": true
+                    }
+                  }
+                ]
+              },
+              {
+                "type": "tab",
+                "props": {
+                  "label": "Mathlib 检索",
+                  "open": false
+                },
+                "children": [
+                  {
+                    "type": "caption",
+                    "props": {
+                      "body": "词法检索仅扫描目录的前 200 个 Lean 文件，不是全库索引。"
+                    }
+                  },
+                  {
+                    "type": "text_input",
+                    "key": "$$ID-57dd03d43f8c79a6c3630dc769d88c2c-None",
+                    "props": {
+                      "label": "关键词",
+                      "type": "default",
+                      "disabled": false,
+                      "required": false,
+                      "autocomplete": "",
+                      "label_visibility": "visible",
+                      "on_change": "rerun"
+                    },
+                    "value_schema": {
+                      "type": "string"
+                    },
+                    "value": "add_zero"
+                  },
+                  {
+                    "type": "button",
+                    "key": "$$ID-45a01f8a0c39497cfb759d2ce70f34a6-None",
+                    "props": {
+                      "label": "搜索本地 Mathlib 源码",
+                      "type": "secondary",
+                      "disabled": false
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "sidebar",
+        "children": [
+          {
+            "type": "selectbox",
+            "key": "source_select",
+            "props": {
+              "label": "当前文献",
+              "options": [
+                "文献 1 · 0357be8b67904937aa2d2491b7f8f0f2.pdf"
+              ],
+              "disabled": false,
+              "required": false,
+              "label_visibility": "visible",
+              "accept_new_options": false,
+              "filter_mode": "fuzzy",
+              "on_change": "rerun"
+            },
+            "value_schema": {
+              "type": "string"
+            },
+            "value": "文献 1 · 0357be8b67904937aa2d2491b7f8f0f2.pdf"
+          },
+          {
+            "type": "caption",
+            "props": {
+              "body": "所有候选、原文及日志仅显示当前文献。历史记录保留。"
+            }
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "children": []
+      },
+      {
+        "type": "bottom",
+        "children": []
+      }
+    ]
+  },
+  "actions": [
+    {
+      "key": "input_mode",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "处理输入"
+    },
+    {
+      "key": "$$ID-8ef6c005c4d25573cec7339b9c466c2f-None",
+      "kind": "value",
+      "type": "slider",
+      "label": "AI / 教学候选预算（规则提取不受此限制）"
+    },
+    {
+      "key": "run_document",
+      "kind": "trigger",
+      "type": "button",
+      "label": "运行完整流程"
+    },
+    {
+      "key": "page_1",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "原文预览页"
+    },
+    {
+      "key": "candidate_1",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "候选详情"
+    },
+    {
+      "key": "$$ID-4559b2ed6dbaa3aed6e5f84ca30f4475-None",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "选择已证明候选"
+    },
+    {
+      "key": "$$ID-5b9ce9920377de7fda4cff463e84a221-None",
+      "kind": "value",
+      "type": "text_input",
+      "label": "审核人"
+    },
+    {
+      "key": "$$ID-a7a067afe041cc8dfadc583970e81ca6-None",
+      "kind": "value",
+      "type": "text_area",
+      "label": "一致性及价值审核意见"
+    },
+    {
+      "key": "$$ID-8d469bff82a4922426715d7b7d72b0a6-None",
+      "kind": "value",
+      "type": "text_input",
+      "label": "搜索全库已批准知识"
+    },
+    {
+      "key": "$$ID-57dd03d43f8c79a6c3630dc769d88c2c-None",
+      "kind": "value",
+      "type": "text_input",
+      "label": "关键词"
+    },
+    {
+      "key": "$$ID-45a01f8a0c39497cfb759d2ce70f34a6-None",
+      "kind": "trigger",
+      "type": "button",
+      "label": "搜索本地 Mathlib 源码"
+    },
+    {
+      "key": "source_select",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "当前文献"
+    }
+  ]
+}

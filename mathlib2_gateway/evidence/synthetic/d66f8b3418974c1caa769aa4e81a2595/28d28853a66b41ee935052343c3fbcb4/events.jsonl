@@ -1,0 +1,2 @@
+{"sequence": 1, "time": "2026-11-14T14:16:26.537030+00:00", "kind": "failure", "evidence_kind": "synthetic_fixture", "payload": {"raw": "{\"error\":\"[REDACTED]\"}"}, "previous_hash": "", "hash": "4eeba1fe4345c05d2b2e99060a17e951223ed5c682fc9aeb12b26dee3003b3a8"}
+{"sequence": 2, "time": "2026-11-14T14:16:26.537030+00:00", "kind": "done", "evidence_kind": "synthetic_fixture", "payload": {"value": 1}, "previous_hash": "4eeba1fe4345c05d2b2e99060a17e951223ed5c682fc9aeb12b26dee3003b3a8", "hash": "dcfba0780bd539a21ddc388a2312684ee3ebfe035a2db0b4169eedba66dc7bca"}

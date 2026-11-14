@@ -1,0 +1,333 @@
+{
+  "schema_version": 1,
+  "session_id": "s_f3bb4af7448a0edc30cd45bac24378be",
+  "status": "ready",
+  "observed_at": "2026-11-12T09:20:38Z",
+  "page": {
+    "url_path": "",
+    "title": "app"
+  },
+  "pages": [
+    {
+      "url_path": "",
+      "title": "app"
+    }
+  ],
+  "query_params": {},
+  "tree": {
+    "type": "root",
+    "children": [
+      {
+        "type": "main",
+        "children": [
+          {
+            "type": "title",
+            "props": {
+              "body": "知识库"
+            }
+          },
+          {
+            "type": "info",
+            "props": {
+              "body": "批准候选不等于批准入库。只有实际 Lean 验证且人工审核一致性的命题可以进入正式知识库。"
+            }
+          },
+          {
+            "type": "dataframe",
+            "props": {
+              "hide_index": true,
+              "alt": "候选与已验证知识状态"
+            },
+            "data": {
+              "columns": [
+                {
+                  "name": "编号",
+                  "type": "int64"
+                },
+                {
+                  "name": "标题",
+                  "type": "large_string"
+                },
+                {
+                  "name": "候选审核",
+                  "type": "large_string"
+                },
+                {
+                  "name": "验证",
+                  "type": "large_string"
+                },
+                {
+                  "name": "入库",
+                  "type": "large_string"
+                }
+              ],
+              "row_count": 4,
+              "column_count": 5,
+              "complete": true,
+              "preview": {
+                "rows": [
+                  [
+                    1,
+                    "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+                    "needs_review",
+                    "unknown",
+                    "pending"
+                  ],
+                  [
+                    2,
+                    "A perfect number is an integer n whose divisors add up to exactly 2n.",
+                    "needs_review",
+                    "unknown",
+                    "pending"
+                  ],
+                  [
+                    3,
+                    "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+                    "needs_review",
+                    "unknown",
+                    "pending"
+                  ],
+                  [
+                    4,
+                    "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+                    "needs_review",
+                    "unknown",
+                    "pending"
+                  ]
+                ]
+              },
+              "url": "../../media/e94efb4c74f9678ab31e1529211c2051"
+            }
+          },
+          {
+            "type": "form",
+            "key": "review",
+            "props": {
+              "clear_on_submit": false,
+              "enter_to_submit": true
+            },
+            "children": [
+              {
+                "type": "selectbox",
+                "key": "$$ID-4559b2ed6dbaa3aed6e5f84ca30f4475-None",
+                "props": {
+                  "label": "选择已证明候选",
+                  "options": [],
+                  "disabled": false,
+                  "required": false,
+                  "label_visibility": "visible",
+                  "accept_new_options": false,
+                  "filter_mode": "fuzzy",
+                  "on_change": "rerun"
+                },
+                "value_schema": {
+                  "type": "string"
+                },
+                "value": null,
+                "form_id": "review"
+              },
+              {
+                "type": "text_input",
+                "key": "$$ID-988157a458aa194b36917f04360f3eab-None",
+                "props": {
+                  "label": "入库审核人",
+                  "type": "default",
+                  "disabled": false,
+                  "required": false,
+                  "autocomplete": "",
+                  "label_visibility": "visible",
+                  "on_change": "rerun"
+                },
+                "value_schema": {
+                  "type": "string"
+                },
+                "value": "",
+                "form_id": "review"
+              },
+              {
+                "type": "text_area",
+                "key": "$$ID-172a4db792a4f1a814d6b7007c7914ef-None",
+                "props": {
+                  "label": "原文、定义域与形式化一致性意见",
+                  "disabled": false,
+                  "required": false,
+                  "label_visibility": "visible",
+                  "on_change": "rerun"
+                },
+                "value_schema": {
+                  "type": "string"
+                },
+                "value": "",
+                "form_id": "review"
+              },
+              {
+                "type": "checkbox",
+                "key": "$$ID-9f94fbca19e3ef1e6f0d1c25d71cc30b-None",
+                "props": {
+                  "label": "已核对编译证据与原文一致性",
+                  "disabled": false,
+                  "label_visibility": "visible",
+                  "on_change": "rerun"
+                },
+                "value_schema": {
+                  "type": "boolean"
+                },
+                "value": false,
+                "form_id": "review"
+              },
+              {
+                "type": "form_submit_button",
+                "key": "FormSubmitter:review-批准进入知识库",
+                "props": {
+                  "label": "批准进入知识库",
+                  "type": "secondary",
+                  "disabled": true
+                },
+                "form_id": "review"
+              }
+            ]
+          },
+          {
+            "type": "expander",
+            "props": {
+              "label": "审核记录和原有角色日志",
+              "expanded": false,
+              "type": "default"
+            },
+            "children": [
+              {
+                "type": "json",
+                "props": {
+                  "body": [],
+                  "expanded": true
+                }
+              },
+              {
+                "type": "json",
+                "props": {
+                  "body": [],
+                  "expanded": true
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "sidebar",
+        "children": [
+          {
+            "type": "title",
+            "props": {
+              "body": "Mathlib2"
+            }
+          },
+          {
+            "type": "caption",
+            "props": {
+              "body": "Research Workbench · v0.3"
+            }
+          },
+          {
+            "type": "selectbox",
+            "key": "research_page",
+            "props": {
+              "label": "工作空间",
+              "options": [
+                "研究首页",
+                "文献管理",
+                "候选审核",
+                "Proof DAG",
+                "Mathlib 检索",
+                "Lean Lab",
+                "知识库"
+              ],
+              "disabled": false,
+              "required": false,
+              "label_visibility": "visible",
+              "accept_new_options": false,
+              "filter_mode": "fuzzy",
+              "on_change": "rerun"
+            },
+            "value_schema": {
+              "type": "string"
+            },
+            "value": "知识库"
+          },
+          {
+            "type": "selectbox",
+            "key": "source_select",
+            "props": {
+              "label": "当前文献",
+              "options": [
+                "1 · s40753-021-00140-1.pdf"
+              ],
+              "disabled": false,
+              "required": false,
+              "label_visibility": "visible",
+              "accept_new_options": false,
+              "filter_mode": "fuzzy",
+              "on_change": "rerun"
+            },
+            "value_schema": {
+              "type": "string"
+            },
+            "value": "1 · s40753-021-00140-1.pdf"
+          },
+          {
+            "type": "caption",
+            "props": {
+              "body": "本地规则与受信任 Lean 实验。未配置真实 AI。"
+            }
+          }
+        ]
+      },
+      {
+        "type": "event",
+        "children": []
+      },
+      {
+        "type": "bottom",
+        "children": []
+      }
+    ]
+  },
+  "actions": [
+    {
+      "key": "$$ID-4559b2ed6dbaa3aed6e5f84ca30f4475-None",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "选择已证明候选"
+    },
+    {
+      "key": "$$ID-988157a458aa194b36917f04360f3eab-None",
+      "kind": "value",
+      "type": "text_input",
+      "label": "入库审核人"
+    },
+    {
+      "key": "$$ID-172a4db792a4f1a814d6b7007c7914ef-None",
+      "kind": "value",
+      "type": "text_area",
+      "label": "原文、定义域与形式化一致性意见"
+    },
+    {
+      "key": "$$ID-9f94fbca19e3ef1e6f0d1c25d71cc30b-None",
+      "kind": "value",
+      "type": "checkbox",
+      "label": "已核对编译证据与原文一致性"
+    },
+    {
+      "key": "research_page",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "工作空间"
+    },
+    {
+      "key": "source_select",
+      "kind": "value",
+      "type": "selectbox",
+      "label": "当前文献"
+    }
+  ]
+}

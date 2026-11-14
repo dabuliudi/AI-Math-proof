@@ -1,0 +1,52 @@
+[
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "A_missing_declaration",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ≤ a",
+    "variables": 1,
+    "module": "Init.GrindInstances.Ring.Nat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "1a3e86ac8b07fe9330881345dea1cb879dfb845e2fee012c0f9399c8333d1702",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Lean.Grind.instIsPreorderNat._proof_2",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ≤ a",
+    "variables": 1,
+    "module": "Init.GrindInstances.Ring.Nat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "1a3e86ac8b07fe9330881345dea1cb879dfb845e2fee012c0f9399c8333d1702",
+    "origin": "Lean Core Reuse"
+  }
+]

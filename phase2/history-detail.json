@@ -1,0 +1,101 @@
+{
+  "baseline": "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\data\\mathlib2.sqlite",
+  "state_differences": {
+    "73": {
+      "candidate_verified": {
+        "before": null,
+        "after": false
+      },
+      "candidate_alignment": {
+        "before": null,
+        "after": "unconfirmed"
+      }
+    },
+    "74": {
+      "candidate_verified": {
+        "before": null,
+        "after": false
+      },
+      "candidate_alignment": {
+        "before": null,
+        "after": "unconfirmed"
+      }
+    },
+    "75": {
+      "candidate_verified": {
+        "before": null,
+        "after": false
+      },
+      "candidate_alignment": {
+        "before": null,
+        "after": "unconfirmed"
+      }
+    },
+    "76": {
+      "candidate_verified": {
+        "before": null,
+        "after": false
+      },
+      "candidate_alignment": {
+        "before": null,
+        "after": "unconfirmed"
+      }
+    },
+    "85": {},
+    "87": {},
+    "89": {}
+  },
+  "lemma123_history": {
+    "candidates": {
+      "rows": 3,
+      "exact_equal": true
+    },
+    "workbench_state": {
+      "rows": 3,
+      "exact_equal": true
+    },
+    "proof_runs": {
+      "rows": 9,
+      "exact_equal": true
+    },
+    "workbench_history": {
+      "rows": 21,
+      "exact_equal": true
+    },
+    "events": {
+      "rows": 0,
+      "exact_equal": true
+    },
+    "verified": {
+      "rows": 0,
+      "exact_equal": true
+    }
+  },
+  "new_history": [
+    [
+      39,
+      73,
+      "planning",
+      "2026-11-14T11:34:46.376715+00:00"
+    ],
+    [
+      40,
+      74,
+      "planning",
+      "2026-11-14T11:34:46.380715+00:00"
+    ],
+    [
+      41,
+      75,
+      "planning",
+      "2026-11-14T11:34:46.384780+00:00"
+    ],
+    [
+      42,
+      76,
+      "planning",
+      "2026-11-14T11:34:46.388785+00:00"
+    ]
+  ],
+  "attribution": "NOT VERIFIED：未将时间相关性当作因果证据；保留现有数据，不回滚。"
+}

@@ -1,0 +1,42 @@
+{
+  "status": "plan_generated",
+  "reason": "structured_plan_only",
+  "run": "D:\\mathproof\\mathlib2_gateway\\evidence\\synthetic\\694e449e86a94a3ea781eb22358e0efc\\cbb047c94959490d9ee38a91daa1d141",
+  "evidence_kind": "synthetic_fixture",
+  "plan": {
+    "goal": "对任意自然数 a、b、c，若 a ≤ b 且 b ≤ c，则 a ≤ c。请提出证明计划。",
+    "strategy": "使用序关系传递性；尚未验证。",
+    "steps": [
+      {
+        "id": "s1",
+        "objective": "从两条假设推出目标",
+        "reason": "待核对传递性定理"
+      }
+    ],
+    "uncertainties": [
+      "未执行Lean"
+    ]
+  },
+  "generation_origin": "Synthetic Fixture",
+  "lean_status": "not_run",
+  "formal_goal_verified": false,
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "ai_dispatch_attempts": 2,
+  "http_responses": 2,
+  "model_responses": 1,
+  "real_model_responses": 0,
+  "cost": {
+    "dispatch_attempts": 2,
+    "reserved_tokens": 18784,
+    "reported_tokens": 300,
+    "attempts_with_unknown_usage": 1,
+    "reserved_usd": "0.021184",
+    "known_estimated_cost_usd": "0.0004",
+    "estimated_total_usd": null,
+    "actual_billed_usd": null,
+    "cost_basis": "configured_uncached_prices_times_reported_tokens; not invoice",
+    "guarantee": "local admission reservations only; provider tokenization/pricing/hidden charges not guaranteed"
+  },
+  "elapsed": 0.0
+}

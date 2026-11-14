@@ -1,0 +1,33 @@
+{
+  "status": "proved",
+  "reason": "lean_accepted",
+  "formal_goal_verified": true,
+  "source_alignment": "unconfirmed",
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "run": "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f",
+  "ai": "no AI call",
+  "ai_calls": 0,
+  "ai_tokens": null,
+  "ai_cost": 0,
+  "human_interventions": 0,
+  "metrics": {
+    "compile_attempts": 3,
+    "failed_compilations": 1,
+    "repair_attempts": 1,
+    "first_compile_solved_target": false,
+    "reused_declarations": 1,
+    "reused_mathlib_theorems": 0,
+    "reused_lean_core_theorems": 1,
+    "generated_lemmas": 1,
+    "intermediate_lemmas": 0,
+    "dag_depth": 1,
+    "exploration_depth": 1,
+    "elapsed": 17.220351700000037
+  },
+  "successful_proof_nodes": [
+    "p2_n002",
+    "p2_target"
+  ],
+  "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+}

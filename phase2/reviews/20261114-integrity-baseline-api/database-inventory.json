@@ -1,0 +1,285 @@
+[
+  {
+    "path": "data/agent-ui-test.sqlite",
+    "sha256": "c5fa193a4e28e48252d95e6ac992b8bfac787b6e06c5e0fc8899b79c4823b1c8",
+    "bytes": 323584,
+    "mtime_utc": "2026-11-11T11:11:59.177941+00:00",
+    "table_counts": {
+      "candidates": 25,
+      "document_parses": 1,
+      "events": 0,
+      "math_objects": 25,
+      "sources": 1,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "test_or_development_branch"
+  },
+  {
+    "path": "data/agent-ui-v022-check.sqlite",
+    "sha256": "d2a43ca3bfa84edfb01b439d71ddba55c53fc1e327a26d0543e062a6ba38f508",
+    "bytes": 471040,
+    "mtime_utc": "2026-11-12T03:39:44.886739+00:00",
+    "table_counts": {
+      "candidates": 4,
+      "document_parses": 1,
+      "events": 0,
+      "math_objects": 39,
+      "sources": 1,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "test_or_development_branch"
+  },
+  {
+    "path": "data/agent-ui-v03-check.sqlite",
+    "sha256": "62ec8c9d0bff07748f764c1b7102b33dff18d761e78927d9d041fe267fc5a337",
+    "bytes": 581632,
+    "mtime_utc": "2026-11-12T09:20:38.306232+00:00",
+    "table_counts": {
+      "candidates": 4,
+      "document_parses": 1,
+      "events": 0,
+      "math_objects": 39,
+      "proof_runs": 0,
+      "sources": 1,
+      "verified": 0,
+      "workbench_history": 0,
+      "workbench_state": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "test_or_development_branch"
+  },
+  {
+    "path": "data/backup-before-v021.sqlite",
+    "sha256": "70d819a297bc2730d0d826577e08e012a3024f031d29a8a911f9cdfc8ffac703",
+    "bytes": 311296,
+    "mtime_utc": "2026-11-11T11:01:07.909066+00:00",
+    "table_counts": {
+      "candidates": 28,
+      "events": 120,
+      "sources": 8,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/backup-before-v022.sqlite",
+    "sha256": "ea8b769d20649d4fdb8a83dfd5275cad31e8c8f3f7df4fc641b3e15ea54779d5",
+    "bytes": 516096,
+    "mtime_utc": "2026-11-11T13:27:01.147998+00:00",
+    "table_counts": {
+      "candidates": 53,
+      "document_parses": 1,
+      "events": 120,
+      "math_objects": 25,
+      "sources": 8,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/before-lemma1-alignment.sqlite",
+    "sha256": "f502cb2a5539141511639a9235120ced651e6533ea30d9c00084a961b7437562",
+    "bytes": 2195456,
+    "mtime_utc": "2026-11-12T09:37:38.659603+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 1,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 22,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/before-lemma2.sqlite",
+    "sha256": "043112ce2ec9cab9a97a26537a120f594db120bbe276246604c68986645c66b7",
+    "bytes": 2232320,
+    "mtime_utc": "2026-11-12T09:57:41.677862+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 3,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 26,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/before-lemma3.sqlite",
+    "sha256": "1eccd9be943d3d525a59db7f65ec81c5206997e42fdb643d6d97cefe9126ab65",
+    "bytes": 2240512,
+    "mtime_utc": "2026-11-12T10:08:33.379760+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 5,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 30,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/mathlib2.sqlite",
+    "sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+    "bytes": 2285568,
+    "mtime_utc": "2026-11-14T11:34:46.389781+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 9,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 42,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "live"
+  },
+  {
+    "path": "data/mathlib2.sqlite.before-v03.bak",
+    "sha256": "433acd60a9559f1f9189da5933ebf054712ca805afd8d72035bd426e1f9354e2",
+    "bytes": 1224704,
+    "mtime_utc": "2026-11-12T09:19:35.335131+00:00",
+    "table_counts": {
+      "candidates": 72,
+      "document_parses": 3,
+      "events": 120,
+      "math_objects": 82,
+      "sources": 9,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "data/offline-check.sqlite",
+    "sha256": "68d8acf5657b6d10fdc750c85970d731fa9575a6e027971b65b37f2f27780441",
+    "bytes": 36864,
+    "mtime_utc": "2026-11-10T16:13:29.259367+00:00",
+    "table_counts": {
+      "candidates": 4,
+      "events": 17,
+      "sources": 1,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "test_or_development_branch"
+  },
+  {
+    "path": "data/v021-development.sqlite",
+    "sha256": "f64ae662bc2055723a0fe6ed2f359838c93a0dd89e5dc1cf0054f196b450ef4b",
+    "bytes": 319488,
+    "mtime_utc": "2026-11-11T11:02:57.588248+00:00",
+    "table_counts": {
+      "candidates": 25,
+      "document_parses": 1,
+      "events": 0,
+      "math_objects": 25,
+      "sources": 1,
+      "verified": 0
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "test_or_development_branch"
+  },
+  {
+    "path": "audits/lemma3-v031-80ab8af1/workspace/data/mathlib2.sqlite",
+    "sha256": "b473e429ce9faf0627b7109cfa73d2a79b29ca3a4f579f15d17fee080e880930",
+    "bytes": 2285568,
+    "mtime_utc": "2026-11-14T08:33:25.123075+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 9,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 38,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  },
+  {
+    "path": "phase2/legacy-regression/f7b2b657d5694e42bcc9375d3960dd33/workspace/data/mathlib2.sqlite",
+    "sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+    "bytes": 2285568,
+    "mtime_utc": "2026-11-14T11:34:46.389781+00:00",
+    "table_counts": {
+      "candidates": 92,
+      "document_parses": 5,
+      "events": 120,
+      "math_objects": 171,
+      "proof_runs": 9,
+      "sources": 9,
+      "verified": 0,
+      "workbench_history": 42,
+      "workbench_state": 20
+    },
+    "integrity": [
+      "ok"
+    ],
+    "foreign_key_check": [],
+    "role": "backup_or_audit_copy"
+  }
+]

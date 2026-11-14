@@ -1,0 +1,166 @@
+{
+  "seed": 726819,
+  "engine_hashes": {
+    "benchmark.py": "0e5ca46ff5eacc55446ccbace0087cf88558539031bf24306aabc50191e61f45",
+    "compiler.py": "1ac18a1542aa7d921dd4d1a4347e314ed49e74fe5cb0649ef8b621c6376d11b3",
+    "engine.py": "0339fd9d8d3b915117551e0be3b57a23fc35c0a75048824cc4e16de4247d4f32",
+    "evidence.py": "e0b9c8d0206ed7c5fd673c68da5348c894e306d23b174624ffa7908406b4e68e",
+    "model.py": "3c0f392e446e854bf792a487f78a3ec7715408a296dcc05044071d971f4a39fa",
+    "planner.py": "6de397357d111dc598bfafe0a749f827986f4b5fa9d2ed55350fe1c86c61e3b2",
+    "provider.py": "1aa3bbcf1753e85708b4312edad046fff9007bd7655eb977d286bf035afdb493",
+    "retrieval.py": "5acaa8aa3190940950e8aea686aa31c09f405b1f09694a064d2498dea100f365",
+    "__init__.py": "47eec408c83b9765c8fd8b4a8e90827db95e7250aa8e28886248405ba3776a10",
+    "__main__.py": "6116eb1b3f1e68ec38494d01bf5d336750a1901ede736a981a91c90397b3f4c7"
+  },
+  "protocol": "问题输入不含证明、定理名称、策略或DAG。类别仅供事后评估，不传入引擎。内部开发基准，不冒称第三方盲测。",
+  "cases": [
+    {
+      "id": "reuse",
+      "category": "direct_reuse",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a"
+        ],
+        "assumptions": [],
+        "goals": [
+          "a ≤ a"
+        ],
+        "original_text": "每个自然数不大于自身。"
+      }
+    },
+    {
+      "id": "composition",
+      "category": "multiple_theorems",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "0 < c"
+        ],
+        "goals": [
+          "a ≤ c"
+        ],
+        "original_text": "a整除b，b整除正自然数c，则a不大于c。"
+      }
+    },
+    {
+      "id": "intermediate",
+      "category": "intermediate_discovery",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "c ∣ d"
+        ],
+        "goals": [
+          "a ∣ d"
+        ],
+        "original_text": "三段自然数整除链的端点仍满足整除。"
+      }
+    },
+    {
+      "id": "multilayer",
+      "category": "multilevel_and_conjunction",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "c ∣ d",
+          "d ∣ e",
+          "e ∣ f",
+          "0 < f"
+        ],
+        "goals": [
+          "a ∣ f",
+          "a ≤ f"
+        ],
+        "original_text": "五段整除链，末项为正；证明起点整除末项且不大于末项。"
+      }
+    },
+    {
+      "id": "unresolved",
+      "category": "unresolved_control_not_mathlib_impossibility",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b"
+        ],
+        "assumptions": [],
+        "goals": [
+          "a < b"
+        ],
+        "original_text": "无额外条件时尝试证明任意自然数a严格小于b；搜索失败不是证伪。"
+      }
+    },
+    {
+      "id": "generated-0",
+      "category": "post_freeze_generated_order_chain",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "x0",
+          "x1",
+          "x2",
+          "x3",
+          "x4"
+        ],
+        "assumptions": [
+          "x4 ≤ x2",
+          "x2 ≤ x0",
+          "x1 ≤ x4",
+          "x3 ≤ x1"
+        ],
+        "goals": [
+          "x3 ≤ x0"
+        ]
+      }
+    },
+    {
+      "id": "generated-1",
+      "category": "post_freeze_generated_order_chain",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "x0",
+          "x1",
+          "x2",
+          "x3",
+          "x4"
+        ],
+        "assumptions": [
+          "x0 ≤ x1",
+          "x3 ≤ x4",
+          "x4 ≤ x2",
+          "x1 ≤ x3"
+        ],
+        "goals": [
+          "x0 ≤ x2"
+        ]
+      }
+    }
+  ]
+}

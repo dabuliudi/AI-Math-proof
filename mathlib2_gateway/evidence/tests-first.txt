@@ -1,0 +1,26 @@
+test_real_mathematical_planning (test_live.LiveAPIIntegration.test_real_mathematical_planning) ... skipped '真实API未启用；不能视为真实模型验证通过'
+test_actual_http_retry_then_structured_plan (test_transport.LocalHTTPIntegration.test_actual_http_retry_then_structured_plan) ... ok
+test_chat_compatible_over_real_local_http (test_transport.LocalHTTPIntegration.test_chat_compatible_over_real_local_http) ... ok
+test_redirect_is_not_followed (test_transport.LocalHTTPIntegration.test_redirect_is_not_followed) ... ok
+test_request_deadline_kills_worker (test_transport.LocalHTTPIntegration.test_request_deadline_kills_worker) ... ok
+test_auth_failure_not_retried_and_echo_secret_redacted (test_unit.GatewayUnits.test_auth_failure_not_retried_and_echo_secret_redacted) ... ok
+test_budget_prevents_dispatch_and_unknown_usage_keeps_reservation (test_unit.GatewayUnits.test_budget_prevents_dispatch_and_unknown_usage_keeps_reservation) ... ok
+test_config_env_and_secret_repr (test_unit.GatewayUnits.test_config_env_and_secret_repr) ... ok
+test_html_503_retry_and_quota_not_retried (test_unit.GatewayUnits.test_html_503_retry_and_quota_not_retried) ... ok
+test_input_secret_and_oversize_never_sent (test_unit.GatewayUnits.test_input_secret_and_oversize_never_sent) ... ok
+test_long_retry_after_respects_total_deadline (test_unit.GatewayUnits.test_long_retry_after_respects_total_deadline) ... ok
+test_malformed_response_identity_and_schema_failures_saved (test_unit.GatewayUnits.test_malformed_response_identity_and_schema_failures_saved) ... ok
+test_missing_usage_preserved_and_overreported_usage_stops (test_unit.GatewayUnits.test_missing_usage_preserved_and_overreported_usage_stops) ... ok
+test_no_database_lean_or_old_engine_dependencies (test_unit.GatewayUnits.test_no_database_lean_or_old_engine_dependencies) ... ok
+test_protocols_modes_and_no_tools (test_unit.GatewayUnits.test_protocols_modes_and_no_tools) ... ok
+test_refusal_incomplete_missing_and_tool_output (test_unit.GatewayUnits.test_refusal_incomplete_missing_and_tool_output) ... ok
+test_strict_json_schema_target_and_duplicate_keys (test_unit.GatewayUnits.test_strict_json_schema_target_and_duplicate_keys) ... ok
+test_success_is_only_fixture_plan_not_lean (test_unit.GatewayUnits.test_success_is_only_fixture_plan_not_lean) ... ok
+test_transient_retry_and_failed_attempt_preserved (test_unit.GatewayUnits.test_transient_retry_and_failed_attempt_preserved) ... ok
+test_unconfigured_preflight_has_no_fake_call (test_unit.GatewayUnits.test_unconfigured_preflight_has_no_fake_call) ... ok
+test_usage_validation_and_model_version_not_invented (test_unit.GatewayUnits.test_usage_validation_and_model_version_not_invented) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 2.741s
+
+OK (skipped=1)

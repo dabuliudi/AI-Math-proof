@@ -1,0 +1,245 @@
+{
+  "nodes": [
+    {
+      "id": "p2_n001",
+      "statement": "a ≤ a",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Lean.Grind.instIsPreorderNat._proof_2",
+      "binding": {
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+        "line": null,
+        "type": "∀ (a : ℕ), a ≤ a"
+      },
+      "planned_event": 5,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "a ∣ a",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.dvd_refl",
+      "binding": {
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+        "line": 16,
+        "type": "∀ (a : ℕ), a ∣ a"
+      },
+      "planned_event": 11,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_n003",
+      "statement": "a ∣ 0",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.dvd_zero",
+      "binding": {
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+        "line": 18,
+        "type": "∀ (a : ℕ), a ∣ 0"
+      },
+      "planned_event": 17,
+      "compile_log": "attempt-003.json"
+    },
+    {
+      "id": "p2_n004",
+      "statement": "a = a",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Lean.Grind.Nat.eq_of_le_of_le",
+      "binding": {
+        "0": "a",
+        "1": "a"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Offset.lean",
+        "line": 93,
+        "type": "∀ (u v : ℕ), u ≤ v → v ≤ u → u = v"
+      },
+      "planned_event": 23,
+      "compile_log": "attempt-004.json"
+    },
+    {
+      "id": "p2_n005",
+      "statement": "b ≤ b",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Lean.Grind.instIsPreorderNat._proof_2",
+      "binding": {
+        "0": "b"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+        "line": null,
+        "type": "∀ (a : ℕ), a ≤ a"
+      },
+      "planned_event": 29,
+      "compile_log": "attempt-005.json"
+    },
+    {
+      "id": "p2_n006",
+      "statement": "0 ≤ b",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.dfold._proof_6",
+      "binding": {
+        "0": "b"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+        "line": null,
+        "type": "∀ (n : ℕ), 0 ≤ n"
+      },
+      "planned_event": 35,
+      "compile_log": "attempt-006.json"
+    },
+    {
+      "id": "p2_n007",
+      "statement": "b ∣ b",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.dvd_refl",
+      "binding": {
+        "0": "b"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+        "line": 16,
+        "type": "∀ (a : ℕ), a ∣ a"
+      },
+      "planned_event": 41,
+      "compile_log": "attempt-007.json"
+    },
+    {
+      "id": "p2_n008",
+      "statement": "1 ∣ b",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.one_dvd",
+      "binding": {
+        "0": "b"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+        "line": 75,
+        "type": "∀ (n : ℕ), 1 ∣ n"
+      },
+      "planned_event": 47,
+      "compile_log": "attempt-008.json"
+    },
+    {
+      "id": "p2_n009",
+      "statement": "b = b",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Lean.Grind.Nat.eq_of_le_of_le",
+      "binding": {
+        "0": "b",
+        "1": "b"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Offset.lean",
+        "line": 93,
+        "type": "∀ (u v : ℕ), u ≤ v → v ≤ u → u = v"
+      },
+      "planned_event": 53,
+      "compile_log": "attempt-009.json"
+    },
+    {
+      "id": "p2_n010",
+      "statement": "0 < 1",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Array.forIn'._proof_1",
+      "binding": {},
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Array\\Basic.lean",
+        "line": null,
+        "type": "0 < 1"
+      },
+      "planned_event": 59,
+      "compile_log": "attempt-010.json"
+    },
+    {
+      "id": "p2_n011",
+      "statement": "0 < 2",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Dyadic.toRat._proof_4",
+      "binding": {},
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Dyadic\\Basic.lean",
+        "line": null,
+        "type": "0 < 2"
+      },
+      "planned_event": 65,
+      "compile_log": "attempt-011.json"
+    },
+    {
+      "id": "p2_n012",
+      "statement": "1 < 2",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.one_lt_two",
+      "binding": {},
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+        "line": 596,
+        "type": "1 < 2"
+      },
+      "planned_event": 71,
+      "compile_log": "attempt-012.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "p2_n001",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Lean.Grind.Nat.eq_of_le_of_le"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Lean.Grind.Nat.eq_of_le_of_le"
+    },
+    {
+      "source": "p2_n005",
+      "target": "p2_n009",
+      "type": "proof_dependency",
+      "evidence": "Lean.Grind.Nat.eq_of_le_of_le"
+    },
+    {
+      "source": "p2_n005",
+      "target": "p2_n009",
+      "type": "proof_dependency",
+      "evidence": "Lean.Grind.Nat.eq_of_le_of_le"
+    }
+  ],
+  "depth": 1,
+  "depths": {
+    "p2_n001": 0,
+    "p2_n002": 0,
+    "p2_n003": 0,
+    "p2_n004": 1,
+    "p2_n005": 0,
+    "p2_n006": 0,
+    "p2_n007": 0,
+    "p2_n008": 0,
+    "p2_n009": 1,
+    "p2_n010": 0,
+    "p2_n011": 0,
+    "p2_n012": 0
+  }
+}

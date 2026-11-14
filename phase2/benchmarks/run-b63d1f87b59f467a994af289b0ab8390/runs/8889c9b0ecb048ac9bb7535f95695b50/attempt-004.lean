@@ -1,0 +1,17 @@
+import Mathlib.RingTheory.Polynomial.Radical
+theorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ≤ p2v0) := by
+  exact @Preorder.le_refl Nat _ p2v0
+
+theorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ∣ p2v0) := by
+  exact @dvd_refl Nat _ p2v0
+
+theorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ∣ 0) := by
+  exact @dvd_zero Nat _ p2v0
+
+theorem p2_n004 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 = p2v0) := by
+  exact @Dvd.dvd.antisymm Nat _ p2v0 p2v0 _ (p2_n002 p2v0 p2v1) (p2_n002 p2v0 p2v1)
+
+#print axioms p2_n001
+#print axioms p2_n002
+#print axioms p2_n003
+#print axioms p2_n004

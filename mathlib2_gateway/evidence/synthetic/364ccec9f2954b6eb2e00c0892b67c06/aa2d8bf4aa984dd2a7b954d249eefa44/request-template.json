@@ -1,0 +1,88 @@
+{
+  "url": "http://127.0.0.1:55718/v1/responses",
+  "body": {
+    "model": "fixture-model",
+    "input": [
+      {
+        "role": "system",
+        "content": "你是数学规划助手。只给出待验证的数学证明计划，不声称已经检索Mathlib、执行工具或通过Lean。完整保留目标的定义域、假设和量词；goal必须逐字复述用户目标。仅输出符合给定JSON Schema的JSON。steps是建议步骤，不是已经构建或验证的DAG。列出不确定点。不要输出或请求执行代码。"
+      },
+      {
+        "role": "user",
+        "content": "对任意自然数 a、b、c，若 a ≤ b 且 b ≤ c，则 a ≤ c。请提出证明计划。"
+      }
+    ],
+    "max_output_tokens": 1200,
+    "store": false,
+    "stream": false,
+    "text": {
+      "format": {
+        "type": "json_schema",
+        "name": "math_plan",
+        "strict": true,
+        "schema": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "goal": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "strategy": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 2000
+            },
+            "steps": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1500
+                  },
+                  "objective": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1500
+                  },
+                  "reason": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1500
+                  }
+                },
+                "required": [
+                  "id",
+                  "objective",
+                  "reason"
+                ]
+              }
+            },
+            "uncertainties": {
+              "type": "array",
+              "maxItems": 12,
+              "items": {
+                "type": "string",
+                "maxLength": 1000
+              }
+            }
+          },
+          "required": [
+            "goal",
+            "strategy",
+            "steps",
+            "uncertainties"
+          ]
+        }
+      }
+    }
+  },
+  "request_bytes": 1454
+}

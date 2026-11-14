@@ -1,0 +1,146 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "x4 ≤ x2",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "x2 ≤ x0",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "x1 ≤ x4",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "h3",
+      "statement": "x3 ≤ x1",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 5
+    },
+    {
+      "id": "p2_n001",
+      "statement": "x3 ≤ x3",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Preorder.le_refl",
+      "binding": {
+        "0": "x3"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+        "line": 41,
+        "type": "∀ {α : Type u_2} [self : Preorder α] (a : α), a ≤ a"
+      },
+      "planned_event": 9,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "x3 ≤ x4",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "LE.le.trans",
+      "binding": {
+        "0": "x3",
+        "1": "x1",
+        "2": "x4"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Basic.lean",
+        "line": 137,
+        "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b ≤ c → a ≤ c"
+      },
+      "planned_event": 15,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_n003",
+      "statement": "x3 ≤ x0",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "le_imp_le_of_le_of_le",
+      "binding": {
+        "2": "x3",
+        "0": "x4",
+        "1": "x2",
+        "3": "x0"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Basic.lean",
+        "line": 187,
+        "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d"
+      },
+      "planned_event": 21,
+      "compile_log": "attempt-003.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v3 ≤ p2v0)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 26,
+      "compile_log": "attempt-004.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h3",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans"
+    },
+    {
+      "source": "p2_n002",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h0",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 3,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "p2_n001": 0,
+    "p2_n002": 1,
+    "p2_n003": 2,
+    "p2_target": 3
+  }
+}

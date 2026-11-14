@@ -1,0 +1,153 @@
+{
+  "protocol": "fixed-v1; no proof/strategy/DAG answers supplied",
+  "cases": [
+    {
+      "id": "reuse",
+      "category": "direct_reuse",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a"
+        ],
+        "assumptions": [],
+        "goals": [
+          "a ≤ a"
+        ],
+        "original_text": "每个自然数不大于自身。"
+      }
+    },
+    {
+      "id": "composition",
+      "category": "multiple_theorems",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "0 < c"
+        ],
+        "goals": [
+          "a ≤ c"
+        ],
+        "original_text": "a整除b，b整除正自然数c，则a不大于c。"
+      }
+    },
+    {
+      "id": "intermediate",
+      "category": "intermediate_discovery",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "c ∣ d"
+        ],
+        "goals": [
+          "a ∣ d"
+        ],
+        "original_text": "三段自然数整除链的端点仍满足整除。"
+      }
+    },
+    {
+      "id": "multilayer",
+      "category": "multilevel_and_conjunction",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b",
+          "c",
+          "d",
+          "e",
+          "f"
+        ],
+        "assumptions": [
+          "a ∣ b",
+          "b ∣ c",
+          "c ∣ d",
+          "d ∣ e",
+          "e ∣ f",
+          "0 < f"
+        ],
+        "goals": [
+          "a ∣ f",
+          "a ≤ f"
+        ],
+        "original_text": "五段整除链，末项为正；证明起点整除末项且不大于末项。"
+      }
+    },
+    {
+      "id": "unresolved",
+      "category": "unresolved_control_not_mathlib_impossibility",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "a",
+          "b"
+        ],
+        "assumptions": [],
+        "goals": [
+          "a < b"
+        ],
+        "original_text": "无额外条件时尝试证明任意自然数a严格小于b；搜索失败不是证伪。"
+      }
+    },
+    {
+      "id": "generated-0",
+      "category": "post_freeze_generated_order_chain",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "x0",
+          "x1",
+          "x2",
+          "x3",
+          "x4"
+        ],
+        "assumptions": [
+          "x4 ≤ x2",
+          "x2 ≤ x0",
+          "x1 ≤ x4",
+          "x3 ≤ x1"
+        ],
+        "goals": [
+          "x3 ≤ x0"
+        ]
+      }
+    },
+    {
+      "id": "generated-1",
+      "category": "post_freeze_generated_order_chain",
+      "problem": {
+        "domain": "Nat",
+        "variables": [
+          "x0",
+          "x1",
+          "x2",
+          "x3",
+          "x4"
+        ],
+        "assumptions": [
+          "x0 ≤ x1",
+          "x3 ≤ x4",
+          "x4 ≤ x2",
+          "x1 ≤ x3"
+        ],
+        "goals": [
+          "x0 ≤ x2"
+        ]
+      }
+    }
+  ]
+}

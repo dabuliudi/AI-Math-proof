@@ -1,0 +1,61 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:95: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:116: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:137: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:158: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:179: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:2:200: warning: unused variable `h5`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:95: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:116: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:137: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:158: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:179: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:5:200: warning: unused variable `h5`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:95: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:116: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:137: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:158: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:179: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:8:200: warning: unused variable `h5`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:11:137: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:11:158: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:11:179: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean:11:200: warning: unused variable `h5`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext, Quot.sound]\n'p2_n002' depends on axioms: [propext]\n'p2_n003' depends on axioms: [propext]\n'p2_n004' depends on axioms: [propext]\n'p2_n005' depends on axioms: [propext]\n'p2_n006' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.801690599997528,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n004": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n005": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n006": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ≤ p2v0) := by\n  exact @Lean.Grind.instIsPreorderNat._proof_2 p2v0\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ∣ p2v0) := by\n  exact @Nat.dvd_refl p2v0\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ∣ 0) := by\n  exact @Nat.dvd_zero p2v0\n\ntheorem p2_n004 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ∣ p2v2) := by\n  exact @Nat.dvd_trans p2v0 p2v1 p2v2 h0 h1\n\ntheorem p2_n005 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ∣ p2v3) := by\n  exact @Nat.dvd_trans p2v0 p2v2 p2v3 (p2_n004 p2v0 p2v1 p2v2 p2v3 p2v4 p2v5 h0 h1 h2 h3 h4 h5) h2\n\ntheorem p2_n006 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v3 ∣ p2v4)) (h4 : (p2v4 ∣ p2v5)) (h5 : (0 < p2v5)) : (p2v0 ∣ p2v4) := by\n  exact @Nat.dvd_trans p2v0 p2v3 p2v4 (p2_n005 p2v0 p2v1 p2v2 p2v3 p2v4 p2v5 h0 h1 h2 h3 h4 h5) h3\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n#print axioms p2_n004\n#print axioms p2_n005\n#print axioms p2_n006\n",
+  "source_sha256": "5c129aa4bf741f59badf06ec5292500a0a57f99a8df7fba225e937bd15289dd1",
+  "goal": "(p2v0 ∣ p2v4)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\1ec685307ec742189ce5965a481e5d1d\\attempt-006.lean",
+  "log": "attempt-006.json"
+}

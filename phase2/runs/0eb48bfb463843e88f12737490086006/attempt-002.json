@@ -1,0 +1,32 @@
+{
+  "returncode": 0,
+  "stdout": "'p2_n001' does not depend on any axioms\n'p2_target' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\runs\\0eb48bfb463843e88f12737490086006\\attempt-002.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.749510799999825,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_target": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v0 ≤ p2v1)) (h1 : (p2v1 ≤ p2v2)) (h2 : (p2v2 ≤ p2v3)) : (p2v0 ≤ p2v3) := by\n  exact @le_imp_le_of_le_of_le Nat _ p2v1 p2v2 p2v0 p2v3 h0 h2 h1\n\ntheorem p2_target (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v0 ≤ p2v1)) (h1 : (p2v1 ≤ p2v2)) (h2 : (p2v2 ≤ p2v3)) : (p2v0 ≤ p2v3) := by\n  exact (p2_n001 p2v0 p2v1 p2v2 p2v3 h0 h1 h2)\n\n#print axioms p2_n001\n#print axioms p2_target\n",
+  "source_sha256": "646fc5c9277d4d263225f2d6a679b06baa188ecba735067875c5844c92a8e9b9",
+  "goal": "(p2v0 ≤ p2v3)",
+  "artifact": "D:\\mathproof\\phase2\\runs\\0eb48bfb463843e88f12737490086006\\attempt-002.lean",
+  "log": "attempt-002.json"
+}

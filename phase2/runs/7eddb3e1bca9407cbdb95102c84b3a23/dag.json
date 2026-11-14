@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {
+      "id": "p2_n001",
+      "statement": "q ≤ q",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Lean.Grind.instIsPreorderNat._proof_2",
+      "binding": {
+        "0": "q"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+        "line": null,
+        "type": "∀ (a : ℕ), a ≤ a"
+      },
+      "planned_event": 5,
+      "compile_log": "attempt-001.json"
+    }
+  ],
+  "edges": [],
+  "depth": 0,
+  "depths": {
+    "p2_n001": 0
+  }
+}

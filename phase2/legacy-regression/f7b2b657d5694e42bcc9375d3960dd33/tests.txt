@@ -1,0 +1,18 @@
+test_current_record_and_stale_bindings (test_alignment.AlignmentTests.test_current_record_and_stale_bindings) ... ok
+test_real_lemma1 (test_formalization.FormalizationTests.test_real_lemma1) ... ok
+test_template_provenance_and_scope (test_formalization.FormalizationTests.test_template_provenance_and_scope) ... ok
+test_untrusted_template_rejected (test_formalization.FormalizationTests.test_untrusted_template_rejected) ... ok
+test_version_timeout_does_not_claim_proof_compilation (test_formalization.FormalizationTests.test_version_timeout_does_not_claim_proof_compilation) ... ok
+test_independent_construction_and_scope (test_lemma2.Lemma2Tests.test_independent_construction_and_scope) ... ok
+test_real_compile_all_declarations (test_lemma2.Lemma2Tests.test_real_compile_all_declarations) ... ok
+test_real_dag_evidence_and_history (test_lemma2.Lemma2Tests.test_real_dag_evidence_and_history) ... ok
+test_actual_paper_traceability (test_lemma3.Lemma3Tests.test_actual_paper_traceability) ... ok
+test_certificate_history_costs_and_approval_gate (test_lemma3.Lemma3Tests.test_certificate_history_costs_and_approval_gate) ... ok
+test_multilevel_dag_and_retrieval_evidence (test_lemma3.Lemma3Tests.test_multilevel_dag_and_retrieval_evidence) ... ok
+test_real_compile_and_all_five_axiom_audits (test_lemma3.Lemma3Tests.test_real_compile_and_all_five_axiom_audits) ... ok
+test_scope_and_generation_provenance (test_lemma3.Lemma3Tests.test_scope_and_generation_provenance) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 22.178s
+
+OK

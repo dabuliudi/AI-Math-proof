@@ -1,0 +1,464 @@
+[
+  {
+    "line": 4,
+    "source": "theorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 5,
+    "source": "    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 6,
+    "source": "  apply isUnit_iff_degree_eq_zero.mpr",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "Polynomial.isUnit_iff_degree_eq_zero"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 7,
+    "source": "  rw [degree_eq_natDegree ha, hz]",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "Polynomial.degree_eq_natDegree"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 8,
+    "source": "  rfl",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 10,
+    "source": "theorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 11,
+    "source": "    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 12,
+    "source": "  have hr : radical a = 1 := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 13,
+    "source": "    calc",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 14,
+    "source": "      radical a = radical (radical a) := radical_radical.symm",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "UniqueFactorizationMonoid.radical_radical"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 15,
+    "source": "      _ = 1 := radical_of_isUnit hu",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "UniqueFactorizationMonoid.radical_of_isUnit"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 16,
+    "source": "  exact (radical_eq_one_iff.mp hr).resolve_left ha",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "UniqueFactorizationMonoid.radical_eq_one_iff"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 18,
+    "source": "theorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 19,
+    "source": "    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 20,
+    "source": "  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "lt_of_lt_of_le"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 21,
+    "source": "  have ha : a ≠ 0 := fun hz => hn (by simp [hz])",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 22,
+    "source": "  intro hz",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 23,
+    "source": "  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Lemma Composition",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "UniqueFactorizationMonoid.radical_ne_zero"
+    ],
+    "lemma_composition": [
+      "mathlib2_unit_of_natDegree_zero"
+    ],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 24,
+    "source": "  have hau := mathlib2_unit_of_radical_unit a ha hu",
+    "runtime_origin": [
+      "Developer Template",
+      "Lemma Composition",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [
+      "mathlib2_unit_of_radical_unit"
+    ],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 25,
+    "source": "  exact hn (natDegree_eq_zero_of_isUnit hau)",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "Polynomial.natDegree_eq_zero_of_isUnit"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 27,
+    "source": "theorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 28,
+    "source": "    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 29,
+    "source": "  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)",
+    "runtime_origin": [
+      "Developer Template",
+      "Lemma Composition",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [
+      "mathlib2_radical_natDegree_ne_zero"
+    ],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 31,
+    "source": "theorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 32,
+    "source": "    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :",
+    "runtime_origin": [
+      "Developer Template"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 33,
+    "source": "    (1 : WithBot ℕ) ≤ (radical a).degree := by",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 34,
+    "source": "  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt",
+    "runtime_origin": [
+      "Developer Template",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 35,
+    "source": "    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "Polynomial.natDegree_pos_iff_degree_pos",
+      "lt_of_lt_of_le"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 36,
+    "source": "  rw [degree_eq_natDegree radical_ne_zero]",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "Polynomial.degree_eq_natDegree",
+      "UniqueFactorizationMonoid.radical_ne_zero"
+    ],
+    "lemma_composition": [],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  },
+  {
+    "line": 37,
+    "source": "  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)",
+    "runtime_origin": [
+      "Developer Template",
+      "Mathlib Reuse",
+      "Lemma Composition",
+      "Rule Engine (Lean elaboration/tactics; not autonomous project planner)"
+    ],
+    "prewritten_before_execution": true,
+    "runtime_ai_generation": false,
+    "historical_authorship": "AI Generated: prior conversation + declared metadata; not a project API trace",
+    "mathlib_reuse": [
+      "WithBot.coe_le_coe"
+    ],
+    "lemma_composition": [
+      "mathlib2_mason_lemma3",
+      "mathlib2_mason_lemma3_nat"
+    ],
+    "human_written_evidence": "NOT VERIFIED: repository does not attest who originally typed each line"
+  }
+]

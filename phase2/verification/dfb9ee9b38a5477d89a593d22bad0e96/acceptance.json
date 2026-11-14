@@ -1,0 +1,37 @@
+{
+  "batch": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390",
+  "verified": [
+    {
+      "case": "reuse",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\48f8d34c1a474d2386b91c0efe06ca2a",
+      "fresh_compile": "attempt-001.json"
+    },
+    {
+      "case": "composition",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\aaf4f96cb83641eda89f88966e37a822",
+      "fresh_compile": "attempt-002.json"
+    },
+    {
+      "case": "intermediate",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\03df7cfb281941dfbafbd14e3cea830c",
+      "fresh_compile": "attempt-003.json"
+    },
+    {
+      "case": "multilayer",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\7a05a163ef664fc684dfdd4e783371f4",
+      "fresh_compile": "attempt-004.json"
+    },
+    {
+      "case": "generated-0",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8f7499fd87c84f8f8e2dcbe91ff3ca60",
+      "fresh_compile": "attempt-005.json"
+    },
+    {
+      "case": "generated-1",
+      "original_run": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\fa4758007ffb4855a1d1b0a6261de14c",
+      "fresh_compile": "attempt-006.json"
+    }
+  ],
+  "all_passed": true,
+  "limitation": "内部基准的独立证据复核；不是第三方未见问题或LLM能力验收"
+}

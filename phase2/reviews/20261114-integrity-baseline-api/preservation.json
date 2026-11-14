@@ -1,0 +1,24 @@
+{
+  "checked": 988,
+  "changed": [],
+  "removed": [],
+  "added": [],
+  "all_unchanged": true,
+  "sqlite_access": "sqlite3 URI mode=ro + query_only=ON; SELECT/read PRAGMA only; no Store imported",
+  "database_and_sidecars": [
+    "audits\\lemma3-v031-80ab8af1\\workspace\\data\\mathlib2.sqlite",
+    "data\\agent-ui-test.sqlite",
+    "data\\agent-ui-v022-check.sqlite",
+    "data\\agent-ui-v03-check.sqlite",
+    "data\\backup-before-v021.sqlite",
+    "data\\backup-before-v022.sqlite",
+    "data\\before-lemma1-alignment.sqlite",
+    "data\\before-lemma2.sqlite",
+    "data\\before-lemma3.sqlite",
+    "data\\mathlib2.sqlite",
+    "data\\mathlib2.sqlite.before-v03.bak",
+    "data\\offline-check.sqlite",
+    "data\\v021-development.sqlite",
+    "phase2\\legacy-regression\\f7b2b657d5694e42bcc9375d3960dd33\\workspace\\data\\mathlib2.sqlite"
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "label": "Mason–Stothers Lemma 2：新编写的组合证明",
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (_ha : a ≠ 0) :\n    a / radical a ∣ derivative a := by\n  classical\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\n#print axioms mathlib2_mason_lemma1\n\ntheorem mathlib2_dvd_linear_combination {R : Type*} [Ring R]\n    {q x y : R} (hx : q ∣ x) (hy : q ∣ y) (r s : R) :\n    q ∣ x * r - y * s := by\n  rcases hx with ⟨u, rfl⟩\n  rcases hy with ⟨v, rfl⟩\n  refine ⟨u * r - v * s, ?_⟩\n  rw [mul_sub, mul_assoc, mul_assoc]\n\ntheorem mathlib2_quotient_dvd_self {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) : a / radical a ∣ a := by\n  simpa only [divRadical] using (divRadical_dvd_self a)\n\ntheorem mathlib2_mason_lemma2 {k : Type*} [Field k] [DecidableEq k]\n    (a b : k[X]) (ha : a ≠ 0) : a / radical a ∣ wronskian a b := by\n  change a / radical a ∣ a * derivative b - derivative a * b\n  exact mathlib2_dvd_linear_combination\n    (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha)\n    (derivative b) b\n\n#print axioms mathlib2_dvd_linear_combination\n#print axioms mathlib2_quotient_dvd_self\n#print axioms mathlib2_mason_lemma2\n#print mathlib2_mason_lemma2\n",
+  "target": "∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b",
+  "name": "mathlib2_mason_lemma2",
+  "scope": "target",
+  "source_match": "(?is)\\bLemma\\s*2\\b.*?nonzero.*?rad\\s*\\(\\s*a\\s*\\).*?divides\\s*W",
+  "provenance": {
+    "category": "New Proof",
+    "new_statement": true,
+    "new_proof": true,
+    "meaning": "新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1",
+    "method": "提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律",
+    "author_code_copied": false,
+    "ai_api_calls": 0,
+    "alternative_not_used": "divRadical_dvd_wronskian_left"
+  },
+  "audit_names": [
+    "mathlib2_mason_lemma1",
+    "mathlib2_dvd_linear_combination",
+    "mathlib2_quotient_dvd_self",
+    "mathlib2_mason_lemma2"
+  ],
+  "reused_declarations": [
+    {
+      "name": "divRadical_dvd_derivative",
+      "path": "Mathlib/RingTheory/Polynomial/Radical.lean",
+      "line": 31
+    },
+    {
+      "name": "EuclideanDomain.divRadical_dvd_self",
+      "path": "Mathlib/RingTheory/Radical.lean",
+      "line": 426
+    }
+  ],
+  "template_id": "mason_lemma2",
+  "attempt_id": "a3b998ec11104ef488b704d092d8f1ef",
+  "accepted": true,
+  "status": "verified",
+  "stdout": "'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_dvd_linear_combination' does not depend on any axioms\n'mathlib2_quotient_dvd_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma2' depends on axioms: [propext, Classical.choice, Quot.sound]\ntheorem mathlib2_mason_lemma2.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b : k[X]),\n  a ≠ 0 → a / radical a ∣ a.wronskian b :=\nfun {k} [Field k] [DecidableEq k] a b ha =>\n  id (mathlib2_dvd_linear_combination (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha) (derivative b) b)\n",
+  "stderr": "",
+  "returncode": 0,
+  "axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "artifact": "D:\\mathproof\\lean\\Research\\Attempt_a3b998ec11104ef488b704d092d8f1ef.lean",
+  "sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+  "elapsed": 7.797000000020489,
+  "toolchain": "leanprover/lean4:v4.24.0",
+  "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+  "manifest_sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.EXE",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\lean\\Research\\Attempt_a3b998ec11104ef488b704d092d8f1ef.lean"
+  ],
+  "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+  "declaration_audits": {
+    "mathlib2_mason_lemma1": {
+      "accepted": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "mathlib2_dvd_linear_combination": {
+      "accepted": true,
+      "axioms": []
+    },
+    "mathlib2_quotient_dvd_self": {
+      "accepted": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    },
+    "mathlib2_mason_lemma2": {
+      "accepted": true,
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ]
+    }
+  },
+  "log_artifact": "D:\\mathproof\\reports\\lemma2-a3b998ec11104ef488b704d092d8f1ef.json"
+}

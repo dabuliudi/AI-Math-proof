@@ -1,0 +1,414 @@
+# Proof DAG 验收
+
+PASS：数学主干14节点15边均在实际证明项中出现；无环、无推测边、无只展示不使用的主干节点。
+
+原图不是全部内核依赖图。本验收扩充到所有五个本地声明的直接类型/证明常量，库声明为边界叶节点。全部节点的完整Lean类型、文件和位置见complete-local-dag.json及all-direct-declarations.json；本报告不声称展开Mathlib全部传递依赖。
+
+扩充图：115节点、264边；未使用节点：[]。
+
+## 全部原主干边
+
+|来源|目标|依赖类型|Lean行|数学依据|验收|
+|---|---|---|---:|---|---|
+|Polynomial.isUnit_iff_degree_eq_zero|mathlib2_unit_of_natDegree_zero|Mathlib 定理复用|6|a非零时degree等于natDegree；次数零的域上多项式为单位。|PASS|
+|Polynomial.degree_eq_natDegree|mathlib2_unit_of_natDegree_zero|Mathlib 定理复用|7|a非零时degree等于natDegree；次数零的域上多项式为单位。|PASS|
+|UniqueFactorizationMonoid.radical_radical|mathlib2_unit_of_radical_unit|Mathlib 定理复用|14|rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。|PASS|
+|UniqueFactorizationMonoid.radical_of_isUnit|mathlib2_unit_of_radical_unit|Mathlib 定理复用|15|rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。|PASS|
+|UniqueFactorizationMonoid.radical_eq_one_iff|mathlib2_unit_of_radical_unit|Mathlib 定理复用|16|rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。|PASS|
+|mathlib2_unit_of_natDegree_zero|mathlib2_radical_natDegree_ne_zero|已有 Lemma 组合|23|假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。|PASS|
+|mathlib2_unit_of_radical_unit|mathlib2_radical_natDegree_ne_zero|已有 Lemma 组合|24|假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。|PASS|
+|UniqueFactorizationMonoid.radical_ne_zero|mathlib2_radical_natDegree_ne_zero|Mathlib 定理复用|23|假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。|PASS|
+|Polynomial.natDegree_eq_zero_of_isUnit|mathlib2_radical_natDegree_ne_zero|Mathlib 定理复用|25|假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。|PASS|
+|mathlib2_radical_natDegree_ne_zero|mathlib2_mason_lemma3_nat|已有 Lemma 组合|29|自然数不为零等价于至少为1。|PASS|
+|mathlib2_mason_lemma3_nat|mathlib2_mason_lemma3|已有 Lemma 组合|37|degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。|PASS|
+|Polynomial.degree_eq_natDegree|mathlib2_mason_lemma3|Mathlib 定理复用|36|degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。|PASS|
+|UniqueFactorizationMonoid.radical_ne_zero|mathlib2_mason_lemma3|Mathlib 定理复用|36|degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。|PASS|
+|Polynomial.natDegree_pos_iff_degree_pos|mathlib2_mason_lemma3|Mathlib 定理复用|35|degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。|PASS|
+|WithBot.coe_le_coe|mathlib2_mason_lemma3|Mathlib 定理复用|37|degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。|PASS|
+
+逐边原文引用及声明类型见backbone-dag-audited.json。paper_context只是总体论文上下文，不能冒称论文作者逐边提出了本次分解。
+
+## 全部扩充节点
+
+- Polynomial.instNormalizationMonoid：definition_or_instance；参与最终证明=True。
+- WithBot.preorder：definition_or_instance；参与最终证明=True。
+- Iff.mpr：theorem；参与最终证明=True。
+- WithBot.addMonoidWithOne：definition_or_instance；参与最终证明=True。
+- Eq.mpr：definition_or_instance；参与最终证明=True。
+- mathlib2_mason_lemma3：theorem；参与最终证明=True。
+- MulOne.toOne：definition_or_instance；参与最终证明=True。
+- Nat.instMulZeroClass：definition_or_instance；参与最终证明=True。
+- WithBot.some：definition_or_instance；参与最终证明=True。
+- WithBot：definition_or_instance；参与最终证明=True。
+- Trans.trans：definition_or_instance；参与最终证明=True。
+- IsDomain.to_noZeroDivisors：theorem；参与最终证明=True。
+- Preorder.toLT：definition_or_instance；参与最终证明=True。
+- Polynomial.degree_eq_natDegree：theorem；参与最终证明=True。
+- of_decide_eq_true：theorem；参与最终证明=True。
+- Nat.instOne：definition_or_instance；参与最终证明=True。
+- AddGroupWithOne.toAddGroup：definition_or_instance；参与最终证明=True。
+- congrArg：theorem；参与最终证明=True。
+- Polynomial.instIsDomainOfIsCancelAdd：theorem；参与最终证明=True。
+- UniqueFactorizationMonoid.radical_ne_zero：theorem；参与最终证明=True。
+- Nat.succ_le_of_lt：theorem；参与最终证明=True。
+- WithBot.zero：definition_or_instance；参与最终证明=True。
+- AddCancelMonoid.toIsCancelAdd：theorem；参与最终证明=True。
+- CancelCommMonoidWithZero.toCommMonoidWithZero：definition_or_instance；参与最终证明=True。
+- IsUnit：definition_or_instance；参与最终证明=True。
+- Preorder.toLE：definition_or_instance；参与最终证明=True。
+- Field.toDivisionRing：definition_or_instance；参与最终证明=True。
+- IsDomain.toCancelCommMonoidWithZero：definition_or_instance；参与最终证明=True。
+- id：definition_or_instance；参与最终证明=True。
+- PrincipalIdealRing.to_uniqueFactorizationMonoid：theorem；参与最终证明=True。
+- Or.resolve_left：theorem；参与最终证明=True。
+- AddMonoidWithOne.toNatCast：definition_or_instance；参与最终证明=True。
+- Ne：definition_or_instance；参与最终证明=True。
+- DivisionRing.toRing：definition_or_instance；参与最终证明=True。
+- instOfNatNat：definition_or_instance；参与最终证明=True。
+- CommMonoidWithZero.toMonoidWithZero：definition_or_instance；参与最终证明=True。
+- Polynomial.degree：definition_or_instance；参与最终证明=True。
+- LE.le：definition_or_instance；参与最终证明=True。
+- Polynomial.nontrivial：theorem；参与最终证明=True。
+- instLENat：definition_or_instance；参与最终证明=True。
+- Nat.instAddMonoidWithOne：definition_or_instance；参与最终证明=True。
+- UniqueFactorizationMonoid.radical_radical：theorem；参与最终证明=True。
+- Nat.cast：definition_or_instance；参与最终证明=True。
+- Field.toSemifield：definition_or_instance；参与最终证明=True。
+- WithBot.coe_le_coe：theorem；参与最终证明=True。
+- WithBot.one：definition_or_instance；参与最终证明=True。
+- instIsDomain：theorem；参与最终证明=True。
+- Polynomial：definition_or_instance；参与最终证明=True。
+- UniqueFactorizationMonoid.radical：definition_or_instance；参与最终证明=True。
+- MulZeroOneClass.toMulOneClass：definition_or_instance；参与最终证明=True。
+- instTransEq：definition_or_instance；参与最终证明=True。
+- Bool.true：definition_or_instance；参与最终证明=True。
+- mathlib2_radical_natDegree_ne_zero：theorem；参与最终证明=True。
+- Polynomial.instEuclideanDomain：definition_or_instance；参与最终证明=True。
+- MulOneClass.toMulOne：definition_or_instance；参与最终证明=True。
+- CommRing.toCommSemiring：definition_or_instance；参与最终证明=True。
+- Semifield.toDivisionSemiring：definition_or_instance；参与最终证明=True。
+- MonoidWithZero.toMulZeroOneClass：definition_or_instance；参与最终证明=True。
+- CommGroupWithZero.instNormalizedGCDMonoid：definition_or_instance；参与最终证明=True。
+- Nat.instPreorder：definition_or_instance；参与最终证明=True。
+- Polynomial.semiring：definition_or_instance；参与最终证明=True。
+- NormalizedGCDMonoid.toNormalizationMonoid：definition_or_instance；参与最终证明=True。
+- Nat：definition_or_instance；参与最终证明=True。
+- EuclideanDomain.to_principal_ideal_domain：theorem；参与最终证明=True。
+- mathlib2_mason_lemma3_nat：theorem；参与最终证明=True。
+- Semifield.toCommGroupWithZero：definition_or_instance；参与最终证明=True。
+- LT.lt：definition_or_instance；参与最终证明=True。
+- True：definition_or_instance；参与最终证明=True。
+- eq_self：theorem；参与最终证明=True。
+- UniqueFactorizationMonoid.radical_of_isUnit：theorem；参与最终证明=True。
+- Polynomial.zero：definition_or_instance；参与最终证明=True。
+- Iff.mp：theorem；参与最终证明=True。
+- Polynomial.commRing：definition_or_instance；参与最终证明=True。
+- WithBot.decidableLT：definition_or_instance；参与最终证明=True。
+- DivisionSemiring.toSemiring：definition_or_instance；参与最终证明=True。
+- Polynomial.isUnit_iff_degree_eq_zero：theorem；参与最终证明=True。
+- Bool：definition_or_instance；参与最终证明=True。
+- of_eq_true：theorem；参与最终证明=True。
+- Nat.decLt：definition_or_instance；参与最终证明=True。
+- mathlib2_unit_of_radical_unit：theorem；参与最终证明=True。
+- One.toOfNat1：definition_or_instance；参与最终证明=True。
+- Zero.toOfNat0：definition_or_instance；参与最终证明=True。
+- Eq.refl：definition_or_instance；参与最终证明=True。
+- EuclideanDomain.toNontrivial：theorem；参与最终证明=True。
+- mathlib2_unit_of_natDegree_zero：theorem；参与最终证明=True。
+- Nat.one_le_iff_ne_zero：theorem；参与最终证明=True。
+- Semifield.toCommSemiring：definition_or_instance；参与最终证明=True。
+- Or：definition_or_instance；参与最终证明=True。
+- WithBot.le：definition_or_instance；参与最终证明=True。
+- instLTNat：definition_or_instance；参与最终证明=True。
+- MulZeroOneClass.toMulZeroClass：definition_or_instance；参与最终证明=True。
+- EuclideanDomain.toCommRing：definition_or_instance；参与最终证明=True。
+- Polynomial.commSemiring：definition_or_instance；参与最终证明=True。
+- Polynomial.natDegree：definition_or_instance；参与最终证明=True。
+- Polynomial.natDegree_eq_zero_of_isUnit：theorem；参与最终证明=True。
+- AddGroup.toAddCancelMonoid：definition_or_instance；参与最终证明=True。
+- Polynomial.natDegree_pos_iff_degree_pos：theorem；参与最终证明=True。
+- OfNat.ofNat：definition_or_instance；参与最终证明=True。
+- Eq.symm：theorem；参与最终证明=True。
+- Decidable.decide：definition_or_instance；参与最终证明=True。
+- Eq：definition_or_instance；参与最终证明=True。
+- Field：definition_or_instance；参与最终证明=True。
+- Nat.lt_of_lt_of_le：theorem；参与最终证明=True。
+- Ring.toAddGroupWithOne：definition_or_instance；参与最终证明=True。
+- UniqueFactorizationMonoid.radical_eq_one_iff：theorem；参与最终证明=True。
+- Polynomial.one：definition_or_instance；参与最终证明=True。
+- Field.toEuclideanDomain：definition_or_instance；参与最终证明=True。
+- MonoidWithZero.toMonoid：definition_or_instance；参与最终证明=True。
+- Eq.trans：theorem；参与最终证明=True。
+- lt_of_lt_of_le：theorem；参与最终证明=True。
+- MulZeroClass.toZero：definition_or_instance；参与最终证明=True。
+- Nat.ne_of_gt：theorem；参与最终证明=True。
+- Semiring.toMonoidWithZero：definition_or_instance；参与最终证明=True。
+- DecidableEq：definition_or_instance；参与最终证明=True。
+- Nat.zero_lt_one：theorem；参与最终证明=True。
+
+## 全部扩充边
+
+- AddMonoidWithOne.toNatCast → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- DivisionSemiring.toSemiring → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Eq → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- Eq.mpr → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- Eq.refl → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- Field → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Field.toSemifield → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Iff.mpr → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- IsUnit → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- MonoidWithZero.toMonoid → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- MulZeroClass.toZero → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Nat → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- Nat.cast → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- Nat.instAddMonoidWithOne → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Nat.instMulZeroClass → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Ne → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- OfNat.ofNat → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- Polynomial → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.degree → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.degree_eq_natDegree → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.isUnit_iff_degree_eq_zero → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.natDegree → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.semiring → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.zero → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toDivisionSemiring → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semiring.toMonoidWithZero → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=True。
+- WithBot → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.addMonoidWithOne → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.zero → mathlib2_unit_of_natDegree_zero；Mathlib Reuse；证明项=True；类型=False。
+- Zero.toOfNat0 → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- congrArg → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- id → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=False。
+- instOfNatNat → mathlib2_unit_of_natDegree_zero；Lean Core；证明项=True；类型=True。
+- AddCancelMonoid.toIsCancelAdd → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- AddGroup.toAddCancelMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- AddGroupWithOne.toAddGroup → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- CancelCommMonoidWithZero.toCommMonoidWithZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- CommGroupWithZero.instNormalizedGCDMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- CommMonoidWithZero.toMonoidWithZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- CommRing.toCommSemiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- DecidableEq → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=True。
+- DivisionRing.toRing → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- DivisionSemiring.toSemiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Eq → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- Eq.symm → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- EuclideanDomain.toCommRing → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- EuclideanDomain.to_principal_ideal_domain → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Field → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Field.toDivisionRing → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Field.toEuclideanDomain → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Field.toSemifield → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Iff.mp → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- IsDomain.toCancelCommMonoidWithZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- IsUnit → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- MonoidWithZero.toMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- MonoidWithZero.toMulZeroOneClass → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- MulOne.toOne → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- MulOneClass.toMulOne → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- MulZeroClass.toZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- MulZeroOneClass.toMulOneClass → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- MulZeroOneClass.toMulZeroClass → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- Ne → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=True。
+- NormalizedGCDMonoid.toNormalizationMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- OfNat.ofNat → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=True。
+- One.toOfNat1 → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- Or → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- Or.resolve_left → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- Polynomial → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commRing → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commSemiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instEuclideanDomain → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instIsDomainOfIsCancelAdd → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instNormalizationMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.one → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.semiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.zero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- PrincipalIdealRing.to_uniqueFactorizationMonoid → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Ring.toAddGroupWithOne → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommGroupWithZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommSemiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toDivisionSemiring → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Semiring.toMonoidWithZero → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- Trans.trans → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- UniqueFactorizationMonoid.radical → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- UniqueFactorizationMonoid.radical_eq_one_iff → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- UniqueFactorizationMonoid.radical_of_isUnit → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- UniqueFactorizationMonoid.radical_radical → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=False。
+- Zero.toOfNat0 → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=True。
+- instIsDomain → mathlib2_unit_of_radical_unit；Mathlib Reuse；证明项=True；类型=True。
+- instTransEq → mathlib2_unit_of_radical_unit；Lean Core；证明项=True；类型=False。
+- AddCancelMonoid.toIsCancelAdd → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- AddGroup.toAddCancelMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- AddGroupWithOne.toAddGroup → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- CommGroupWithZero.instNormalizedGCDMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- CommRing.toCommSemiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- DecidableEq → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- DivisionRing.toRing → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- DivisionSemiring.toSemiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Eq → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- Eq.trans → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- EuclideanDomain.toCommRing → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- EuclideanDomain.toNontrivial → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- EuclideanDomain.to_principal_ideal_domain → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Field → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Field.toDivisionRing → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Field.toEuclideanDomain → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Field.toSemifield → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- IsDomain.toCancelCommMonoidWithZero → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- IsDomain.to_noZeroDivisors → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- IsUnit → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- LE.le → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- MonoidWithZero.toMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- Nat → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- Nat.lt_of_lt_of_le → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- Nat.ne_of_gt → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- Nat.zero_lt_one → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- Ne → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- NormalizedGCDMonoid.toNormalizationMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- OfNat.ofNat → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- Polynomial → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commRing → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commSemiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instEuclideanDomain → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instIsDomainOfIsCancelAdd → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instNormalizationMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.natDegree → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.natDegree_eq_zero_of_isUnit → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.nontrivial → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.semiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.zero → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- PrincipalIdealRing.to_uniqueFactorizationMonoid → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Ring.toAddGroupWithOne → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommGroupWithZero → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommSemiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toDivisionSemiring → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- Semiring.toMonoidWithZero → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- True → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- UniqueFactorizationMonoid.radical → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- UniqueFactorizationMonoid.radical_ne_zero → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=False。
+- Zero.toOfNat0 → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- congrArg → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- eq_self → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- instIsDomain → mathlib2_radical_natDegree_ne_zero；Mathlib Reuse；证明项=True；类型=True。
+- instLENat → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- instOfNatNat → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=True。
+- mathlib2_unit_of_natDegree_zero → mathlib2_radical_natDegree_ne_zero；Lemma Composition；证明项=True；类型=False。
+- mathlib2_unit_of_radical_unit → mathlib2_radical_natDegree_ne_zero；Lemma Composition；证明项=True；类型=False。
+- of_eq_true → mathlib2_radical_natDegree_ne_zero；Lean Core；证明项=True；类型=False。
+- AddCancelMonoid.toIsCancelAdd → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- AddGroup.toAddCancelMonoid → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- AddGroupWithOne.toAddGroup → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- CommGroupWithZero.instNormalizedGCDMonoid → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- CommRing.toCommSemiring → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- DecidableEq → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- DivisionRing.toRing → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- DivisionSemiring.toSemiring → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- EuclideanDomain.toCommRing → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- EuclideanDomain.to_principal_ideal_domain → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Field → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Field.toDivisionRing → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Field.toEuclideanDomain → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Field.toSemifield → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Iff.mpr → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=False。
+- IsDomain.toCancelCommMonoidWithZero → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- LE.le → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- Nat → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- Nat.one_le_iff_ne_zero → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=False。
+- Ne → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=False。
+- NormalizedGCDMonoid.toNormalizationMonoid → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- OfNat.ofNat → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- Polynomial → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commRing → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commSemiring → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instEuclideanDomain → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instIsDomainOfIsCancelAdd → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instNormalizationMonoid → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.natDegree → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- PrincipalIdealRing.to_uniqueFactorizationMonoid → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Ring.toAddGroupWithOne → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommGroupWithZero → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommSemiring → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toDivisionSemiring → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- UniqueFactorizationMonoid.radical → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- instIsDomain → mathlib2_mason_lemma3_nat；Mathlib Reuse；证明项=True；类型=True。
+- instLENat → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- instOfNatNat → mathlib2_mason_lemma3_nat；Lean Core；证明项=True；类型=True。
+- mathlib2_radical_natDegree_ne_zero → mathlib2_mason_lemma3_nat；Lemma Composition；证明项=True；类型=False。
+- AddCancelMonoid.toIsCancelAdd → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- AddGroup.toAddCancelMonoid → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- AddGroupWithOne.toAddGroup → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- AddMonoidWithOne.toNatCast → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Bool → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- Bool.true → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- CommGroupWithZero.instNormalizedGCDMonoid → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- CommRing.toCommSemiring → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Decidable.decide → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- DecidableEq → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=True。
+- DivisionRing.toRing → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- DivisionSemiring.toSemiring → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Eq → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- Eq.mpr → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- Eq.refl → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- EuclideanDomain.toCommRing → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- EuclideanDomain.toNontrivial → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- EuclideanDomain.to_principal_ideal_domain → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Field → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Field.toDivisionRing → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Field.toEuclideanDomain → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Field.toSemifield → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Iff.mpr → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- IsDomain.toCancelCommMonoidWithZero → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- LE.le → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=True。
+- LT.lt → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- MulZeroClass.toZero → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Nat → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=True。
+- Nat.cast → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- Nat.decLt → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- Nat.instAddMonoidWithOne → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Nat.instMulZeroClass → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Nat.instOne → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Nat.instPreorder → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Nat.succ_le_of_lt → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- NormalizedGCDMonoid.toNormalizationMonoid → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- OfNat.ofNat → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=True。
+- One.toOfNat1 → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=True。
+- Polynomial → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commRing → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.commSemiring → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.degree → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.degree_eq_natDegree → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.instEuclideanDomain → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instIsDomainOfIsCancelAdd → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.instNormalizationMonoid → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Polynomial.natDegree → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.natDegree_pos_iff_degree_pos → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Polynomial.nontrivial → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Preorder.toLE → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Preorder.toLT → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- PrincipalIdealRing.to_uniqueFactorizationMonoid → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Ring.toAddGroupWithOne → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommGroupWithZero → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toCommSemiring → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- Semifield.toDivisionSemiring → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- UniqueFactorizationMonoid.radical → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- UniqueFactorizationMonoid.radical_ne_zero → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- WithBot.addMonoidWithOne → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.coe_le_coe → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.decidableLT → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.le → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.one → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- WithBot.preorder → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- WithBot.some → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- WithBot.zero → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- Zero.toOfNat0 → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- congrArg → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- id → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- instIsDomain → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=True。
+- instLENat → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- instLTNat → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- instOfNatNat → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。
+- lt_of_lt_of_le → mathlib2_mason_lemma3；Mathlib Reuse；证明项=True；类型=False。
+- mathlib2_mason_lemma3_nat → mathlib2_mason_lemma3；Lemma Composition；证明项=True；类型=False。
+- of_decide_eq_true → mathlib2_mason_lemma3；Lean Core；证明项=True；类型=False。

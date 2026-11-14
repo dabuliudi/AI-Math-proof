@@ -1,0 +1,82 @@
+[
+  {
+    "name": "divRadical_dvd_derivative",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+    "line": 31,
+    "source_excerpt": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a := by\n  induction a using induction_on_coprime\n  · case h0 =>",
+    "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  },
+  {
+    "name": "divRadical_dvd_wronskian_left",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+    "line": 58,
+    "source_excerpt": "theorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b := by\n  rw [wronskian]\n  apply dvd_sub",
+    "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca",
+    "used_in_proof": false,
+    "match_kind": "source_checked_declaration",
+    "reuse": "alternative_not_used"
+  },
+  {
+    "name": "divRadical_dvd_wronskian_right",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+    "line": 66,
+    "source_excerpt": "theorem divRadical_dvd_wronskian_right (a b : k[X]) : divRadical b ∣ wronskian a b := by\n  rw [← wronskian_neg_eq, dvd_neg]\n  exact divRadical_dvd_wronskian_left _ _",
+    "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca",
+    "used_in_proof": false,
+    "match_kind": "source_checked_declaration",
+    "reuse": "alternative_not_used"
+  },
+  {
+    "name": "EuclideanDomain.divRadical_dvd_self",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "line": 426,
+    "source_excerpt": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a :=\n  ⟨radical a, divRadical_mul_radical.symm⟩\n",
+    "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  },
+  {
+    "name": "EuclideanDomain.divRadical",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "line": 399,
+    "source_excerpt": "def divRadical (a : E) : E := a / radical a\n\ntheorem radical_mul_divRadical : radical a * divRadical a = a := by",
+    "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  },
+  {
+    "name": "Polynomial.wronskian",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Wronskian.lean",
+    "line": 39,
+    "source_excerpt": "def wronskian (a b : R[X]) : R[X] :=\n  a * (derivative b) - (derivative a) * b\n",
+    "sha256": "b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  },
+  {
+    "name": "mul_sub",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+    "line": 322,
+    "source_excerpt": "alias mul_sub := mul_sub_left_distrib\n\ntheorem mul_sub_right_distrib (a b c : α) : (a - b) * c = a * c - b * c := by",
+    "sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  },
+  {
+    "name": "mul_assoc",
+    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "line": 200,
+    "source_excerpt": "theorem mul_assoc : ∀ a b c : G, a * b * c = a * (b * c) :=\n  Semigroup.mul_assoc\n",
+    "sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "used_in_proof": true,
+    "match_kind": "source_checked_declaration",
+    "reuse": "used"
+  }
+]

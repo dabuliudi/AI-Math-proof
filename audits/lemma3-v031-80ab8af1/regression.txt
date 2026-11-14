@@ -1,0 +1,38 @@
+test_current_record_and_stale_bindings (test_alignment.AlignmentTests.test_current_record_and_stale_bindings) ... ok
+test_formalization (unittest.loader._FailedTest.test_formalization) ... ERROR
+test_independent_construction_and_scope (test_lemma2.Lemma2Tests.test_independent_construction_and_scope) ... ok
+test_real_compile_all_declarations (test_lemma2.Lemma2Tests.test_real_compile_all_declarations) ... ok
+test_real_dag_evidence_and_history (test_lemma2.Lemma2Tests.test_real_dag_evidence_and_history) ... ok
+test_actual_paper_traceability (test_lemma3.Lemma3Tests.test_actual_paper_traceability) ... ok
+test_certificate_history_costs_and_approval_gate (test_lemma3.Lemma3Tests.test_certificate_history_costs_and_approval_gate) ... ok
+test_multilevel_dag_and_retrieval_evidence (test_lemma3.Lemma3Tests.test_multilevel_dag_and_retrieval_evidence) ... ok
+test_real_compile_and_all_five_axiom_audits (test_lemma3.Lemma3Tests.test_real_compile_and_all_five_axiom_audits) ... ok
+test_scope_and_generation_provenance (test_lemma3.Lemma3Tests.test_scope_and_generation_provenance) ... ok
+
+======================================================================
+ERROR: test_formalization (unittest.loader._FailedTest.test_formalization)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_formalization
+Traceback (most recent call last):
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "D:\mathproof\audits\lemma3-v031-80ab8af1\workspace\tests\test_formalization.py", line 7, in <module>
+    from unittest.mock import patch
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\unittest\mock.py", line 26, in <module>
+    import asyncio
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\__init__.py", line 43, in <module>
+    from .windows_events import *
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\windows_events.py", line 26, in <module>
+    from . import windows_utils
+  File "C:\Users\123\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\asyncio\windows_utils.py", line 125, in <module>
+    class Popen(subprocess.Popen):
+TypeError: function() argument 'code' must be code, not str
+
+
+----------------------------------------------------------------------
+Ran 10 tests in 14.767s
+
+FAILED (errors=1)

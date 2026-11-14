@@ -1,0 +1,10 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "q"
+  ],
+  "assumptions": [],
+  "goals": [
+    "q < q"
+  ]
+}

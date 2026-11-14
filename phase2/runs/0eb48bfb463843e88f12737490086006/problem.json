@@ -1,0 +1,18 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "u",
+    "v",
+    "w",
+    "z"
+  ],
+  "assumptions": [
+    "u ≤ v",
+    "v ≤ w",
+    "w ≤ z"
+  ],
+  "goals": [
+    "u ≤ z"
+  ],
+  "original_text": "给定自然数的三段不大于关系，尝试证明首尾的不大于关系。"
+}

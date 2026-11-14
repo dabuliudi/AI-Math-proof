@@ -1,0 +1,4301 @@
+[
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Lean.Grind.instIsPreorderNat._proof_4",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ (a b c : ℕ), a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Init.GrindInstances.Ring.Nat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "1a3e86ac8b07fe9330881345dea1cb879dfb845e2fee012c0f9399c8333d1702",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.dvd_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {a b c : ℕ}, a ∣ b → b ∣ c → a ∣ c",
+    "variables": 3,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 23,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n ≤ m → m ≤ k → n ≤ k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1881,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.insertIdx_comm._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {n i j : ℕ}, i ≤ j → j ≤ n → i ≤ n",
+    "variables": 3,
+    "module": "Init.Data.Vector.InsertIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\InsertIdx.lean",
+    "line": null,
+    "source_sha256": "52ae541c2fd7a0556d85a391b4113f813090aedf7c73f14d37a98065f619c664",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.geomSum_eq._proof_1_1",
+    "premises": [
+      {
+        "left": {
+          "lit": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {m : ℕ}, 2 ≤ m → 1 ≤ m",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Ring.GeomSum",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\GeomSum.lean",
+    "line": null,
+    "source_sha256": "496d3f0573ff185a8094ce9bfdf3b4976c1dedaf7b8df2a6c636facda7080c0b",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold_congr._proof_10",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → ∀ i ≤ m, i ≤ n",
+    "variables": 3,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_dvd",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, 0 < n → m ∣ n → m ≤ n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 56,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.insertIdx_eraseIdx_of_le._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n i j : ℕ}, i < n → j ≤ i → j ≤ n",
+    "variables": 3,
+    "module": "Init.Data.Vector.InsertIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\InsertIdx.lean",
+    "line": null,
+    "source_sha256": "52ae541c2fd7a0556d85a391b4113f813090aedf7c73f14d37a98065f619c664",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Array.reverse._proof_4",
+    "premises": [],
+    "type": "0 ≤ 1",
+    "variables": 0,
+    "module": "Init.Data.Array.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Array\\Basic.lean",
+    "line": null,
+    "source_sha256": "4b22381a4405bbf6acc8004868b75ef031cd849645539a2be7fe0c4bea3e3026",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.subsingleton_one._proof_1",
+    "premises": [],
+    "type": "1 ≤ 1",
+    "variables": 0,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Fin\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.subsingleton_zero._proof_1",
+    "premises": [],
+    "type": "0 ≤ 1",
+    "variables": 0,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Fin\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.one_nonneg",
+    "premises": [],
+    "type": "0 ≤ 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Int\\Order.lean",
+    "line": 148,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Lean.Grind.instIsPreorderNat._proof_2",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ≤ a",
+    "variables": 1,
+    "module": "Init.GrindInstances.Ring.Nat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "1a3e86ac8b07fe9330881345dea1cb879dfb845e2fee012c0f9399c8333d1702",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold._proof_6",
+    "premises": [],
+    "type": "∀ (n : ℕ), 0 ≤ n",
+    "variables": 1,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold._proof_7",
+    "premises": [],
+    "type": "∀ (n : ℕ), n ≤ n",
+    "variables": 1,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfoldRev_congr._proof_4",
+    "premises": [],
+    "type": "∀ {n : ℕ} {m : ℕ}, n ≤ n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.dfold_zero._proof_7",
+    "premises": [],
+    "type": "0 ≤ 0",
+    "variables": 0,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dvd_refl",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ∣ a",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 16,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.dvd_zero",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ∣ 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 18,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Nat.instLinearOrderedCommMonoidWithZero._proof_2",
+    "premises": [],
+    "type": "0 ≤ 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Ring.Nat",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Order\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "666178321e90374d3921ee1f993ad7082393303162e5fa2e4e1fec2c0b82b7f1",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.leRec._proof_1",
+    "premises": [],
+    "type": "0 ≤ 0",
+    "variables": 0,
+    "module": "Mathlib.Data.Nat.Init",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Nat\\Init.lean",
+    "line": null,
+    "source_sha256": "26f4a225d31d3c77f121dc11cfc732a00dfeeab088a4c2e7cae8c39d656fb5e1",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.le_refl",
+    "premises": [],
+    "type": "∀ (n : ℕ), n ≤ n",
+    "variables": 1,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1897,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.one_dvd",
+    "premises": [],
+    "type": "∀ (n : ℕ), 1 ∣ n",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 75,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.zero_le",
+    "premises": [],
+    "type": "∀ (n : ℕ), 0 ≤ n",
+    "variables": 1,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1867,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.ite._proof_8",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Sat.AIG.If",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\If.lean",
+    "line": null,
+    "source_sha256": "219b1aa9400e2c53e1abc6807a1ad6c263a6e6f377fbb081db58821916b3f15b",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.map._proof_8",
+    "premises": [],
+    "type": "∀ {len : ℕ}, 0 ≤ len",
+    "variables": 1,
+    "module": "Std.Sat.AIG.RefVecOperator.Map",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\RefVecOperator\\Map.lean",
+    "line": null,
+    "source_sha256": "3778f0108bfd00251db42593b01f56eab05d027974f45b20b63ce372ed7becf5",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.zip._proof_8",
+    "premises": [],
+    "type": "∀ {len : ℕ}, 0 ≤ len",
+    "variables": 1,
+    "module": "Std.Sat.AIG.RefVecOperator.Zip",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\RefVecOperator\\Zip.lean",
+    "line": null,
+    "source_sha256": "fd231686bfe2ddaa76ce3beba19bcd6ef948c11482da05b015d69246f15fa37a",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastAdd._proof_2",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Add",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\Add.lean",
+    "line": null,
+    "source_sha256": "4d33b494359961b1e214b189633d17b034b935ba0baea2e19279d7f651783c5a",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastConst._proof_6",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Const",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Const.lean",
+    "line": null,
+    "source_sha256": "44f26c07fa5d09de2cb553df6f1f3e3078a7b6bc904bc4ca466c7add1c5d6b62",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastExtract._proof_8",
+    "premises": [],
+    "type": "∀ {newWidth : ℕ}, 0 ≤ newWidth",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Extract",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\Extract.lean",
+    "line": null,
+    "source_sha256": "44853e7260b2623d280bdc5c53744dd8c385e7bdb6bfb0613856734b01a89e08",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastReplicate._proof_8",
+    "premises": [],
+    "type": "∀ {newWidth : ℕ} (w n : ℕ), 0 ≤ n",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Replicate",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\Replicate.lean",
+    "line": null,
+    "source_sha256": "4e967df0fa80845a1e443795bcbf583d5d8f30988708ab73f1e0283895db8f31",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastRotateLeft._proof_12",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.RotateLeft",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\RotateLeft.lean",
+    "line": null,
+    "source_sha256": "11debb231af6a9d37a7d9cc085107cfd56047e777ff60b8471f19af843d61a46",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastRotateRight._proof_12",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.RotateRight",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\RotateRight.lean",
+    "line": null,
+    "source_sha256": "2937bd582398666e1331e96b7db73217121cf2e14832c8133db5262f1891585b",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastShiftLeftConst._proof_10",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ShiftLeft",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\ShiftLeft.lean",
+    "line": null,
+    "source_sha256": "799781f351046da3e44004e3b4add05b52f1877f59af59ae9750754e16f9567c",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastShiftRightConst._proof_8",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ShiftRight",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\ShiftRight.lean",
+    "line": null,
+    "source_sha256": "efe6677b95789384fbd2488796b77f3dcb61fc3ee470e56d6c08332e3a383dc1",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastVar._proof_6",
+    "premises": [],
+    "type": "∀ {w : ℕ}, 0 ≤ w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Var",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Var.lean",
+    "line": null,
+    "source_sha256": "d0a4ccfcd506e5a68cd24a6baa37693f2390d94aaa07d50e871d8cfbbd1471f3",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastZeroExtend._proof_8",
+    "premises": [],
+    "type": "∀ {newWidth : ℕ}, 0 ≤ newWidth",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.ZeroExtend",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\ZeroExtend.lean",
+    "line": null,
+    "source_sha256": "beea2bb6e6f6b8eb3c0cb9b63e7e4facc7f2e0466fc3fb2a8d76a2840fcdd0f6",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Std.Time.Day.Ordinal.instInhabitedOfYear._proof_1",
+    "premises": [],
+    "type": "1 ≤ 1",
+    "variables": 0,
+    "module": "Std.Time.Date.Unit.Day",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Time\\Date\\Unit\\Day.lean",
+    "line": null,
+    "source_sha256": "df23e53117c852b2acc8c3b8c05d88f9a30f3344a3e54a182fe0717ba3779089",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.insertIdx_size_self._proof_1",
+    "premises": [],
+    "type": "∀ {n : ℕ}, n ≤ n",
+    "variables": 1,
+    "module": "Init.Data.Vector.InsertIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\InsertIdx.lean",
+    "line": null,
+    "source_sha256": "52ae541c2fd7a0556d85a391b4113f813090aedf7c73f14d37a98065f619c664",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.insertIdx_zero._proof_1",
+    "premises": [],
+    "type": "∀ {n : ℕ}, 0 ≤ n",
+    "variables": 1,
+    "module": "Init.Data.Vector.InsertIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\InsertIdx.lean",
+    "line": null,
+    "source_sha256": "52ae541c2fd7a0556d85a391b4113f813090aedf7c73f14d37a98065f619c664",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "BitVec.msb_setWidth'_of_lt._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, m < n → m ≤ n",
+    "variables": 2,
+    "module": "Init.Data.BitVec.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\BitVec\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "720b05c81bc67c7b7bdee7b98e74be64db05a66e3865ebaf656275790bff7e89",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Lean.Grind.Nat.le_of_eq_1",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u = v → u ≤ v",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Offset.lean",
+    "line": 91,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Lean.Grind.Nat.le_of_eq_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u = v → v ≤ u",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Offset.lean",
+    "line": 92,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold._proof_3",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ (n i : ℕ), i < n → i ≤ n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold_congr._proof_8",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → 0 ≤ n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.dfold_zero._proof_4",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "lit": 0
+        }
+      }
+    ],
+    "type": "∀ i < 0, i ≤ 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → n ≤ m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 310,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n < m → n ≤ m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 317,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.one_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a < b → 1 ≤ b",
+    "variables": 2,
+    "module": "Init.Data.Nat.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Lemmas.lean",
+    "line": 153,
+    "source_sha256": "7c590062414f7c8970454eb99af6a497491b8d3454443f33dfa8c8d16add9dad",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dfold_congr._proof_4",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → ∀ i < n, i ≤ n",
+    "variables": 3,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Lean.Grind.Nat.eq_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u ≤ v → v ≤ u → u = v",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Offset.lean",
+    "line": 93,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.dvd_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, m ∣ n → n ∣ m → m = n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 67,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n ≤ m → m ≤ n → n = m",
+    "variables": 2,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1960,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Nat.eq_one_of_dvd_one",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "lit": 1
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, n ∣ 1 → n = 1",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 77,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_le_zero",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "lit": 0
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, n ≤ 0 → n = 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 341,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_zero_dvd",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {a : ℕ}, 0 ∣ a → a = 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 34,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "BitVec.resRec_true_iff._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ s < w, ∀ k ≤ s, k < w",
+    "variables": 3,
+    "module": "Init.Data.BitVec.Bitblast",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\BitVec\\Bitblast.lean",
+    "line": null,
+    "source_sha256": "d718739a26f9818e030a439ad06f9c86d424fdb36fcf8ae7be1d64d80be97def",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_dvd_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a ∣ b → b < a → b = 0",
+    "variables": 2,
+    "module": "Init.Data.Nat.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Lemmas.lean",
+    "line": 1679,
+    "source_sha256": "7c590062414f7c8970454eb99af6a497491b8d3454443f33dfa8c8d16add9dad",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n ≤ m → m < k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1957,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_lt_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m ≤ k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1885,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.pos_of_dvd_of_pos",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, m ∣ n → 0 < n → 0 < m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Dvd.lean",
+    "line": 72,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.ite.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Sat.AIG.If",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\If.lean",
+    "line": null,
+    "source_sha256": "219b1aa9400e2c53e1abc6807a1ad6c263a6e6f377fbb081db58821916b3f15b",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.map.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {len : ℕ}, ∀ curr ≤ len, ∀ idx < curr, idx < len",
+    "variables": 3,
+    "module": "Std.Sat.AIG.RefVecOperator.Map",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\RefVecOperator\\Map.lean",
+    "line": null,
+    "source_sha256": "3778f0108bfd00251db42593b01f56eab05d027974f45b20b63ce372ed7becf5",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Sat.AIG.RefVec.zip.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {len : ℕ}, ∀ curr ≤ len, ∀ idx < curr, idx < len",
+    "variables": 3,
+    "module": "Std.Sat.AIG.RefVecOperator.Zip",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Sat\\AIG\\RefVecOperator\\Zip.lean",
+    "line": null,
+    "source_sha256": "fd231686bfe2ddaa76ce3beba19bcd6ef948c11482da05b015d69246f15fa37a",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastAdd.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Add",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\Add.lean",
+    "line": null,
+    "source_sha256": "a068fbead05a17551c221e9c2a07f58142d3bbe443140533978588f2ce94a148",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastConst.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Const",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Const.lean",
+    "line": null,
+    "source_sha256": "6e6144e298494e95725179576ace830543e3541e36852383d3937b0045ed82ee",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastExtract.go_get_aux._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {newWidth : ℕ}, ∀ curr ≤ newWidth, ∀ idx < curr, idx < newWidth",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.Extract",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\Extract.lean",
+    "line": null,
+    "source_sha256": "cc44ae138078ebb76e34ca9855f3ba63cc088aa1c5a9e75e6fedb74609e2d522",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastRotateLeft.go_get_aux._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.RotateLeft",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\RotateLeft.lean",
+    "line": null,
+    "source_sha256": "41aeb0332a4efe5d28ecab8cb40e209bd36d500401efbcedd3ea0a1b51aa75e2",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastRotateRight.go_get_aux._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.RotateRight",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\RotateRight.lean",
+    "line": null,
+    "source_sha256": "7255a9c82d969a05e4bcc8df2d2f6888e1b9f1fdd94a09deb5864f8c85059494",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastShiftLeftConst.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ShiftLeft",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\ShiftLeft.lean",
+    "line": null,
+    "source_sha256": "abb8b8b895399b3bad77a5b146fddd5b8019bf8a074726b2d0c23e0a491e17a7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastShiftRightConst.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ShiftRight",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\ShiftRight.lean",
+    "line": null,
+    "source_sha256": "df81b40b2baee4a7e623e295323bcf69bef095318089081699a62d229b116a21",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastVar.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, ∀ curr ≤ w, ∀ idx < curr, idx < w",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Var",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Var.lean",
+    "line": null,
+    "source_sha256": "8309016c7c85d0112e1adfa8ff666d459a65c872bf9724364b4f1a49f446ac40",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastZeroExtend.go_get._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ (newWidth curr : ℕ), curr ≤ newWidth → ∀ idx < curr, idx < newWidth",
+    "variables": 3,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Lemmas.Operations.ZeroExtend",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Lemmas\\Operations\\ZeroExtend.lean",
+    "line": null,
+    "source_sha256": "afd788e98b5eb8572bbbb3b2a818c7e55543b19d5de03e8e0facd41f088c1973",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.getElem_insertIdx_of_lt._proof_4",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n i k : ℕ}, i ≤ n → k < i → k < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.InsertIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\InsertIdx.lean",
+    "line": null,
+    "source_sha256": "52ae541c2fd7a0556d85a391b4113f813090aedf7c73f14d37a98065f619c664",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Array.forIn'._proof_1",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Array.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Array\\Basic.lean",
+    "line": null,
+    "source_sha256": "4b22381a4405bbf6acc8004868b75ef031cd849645539a2be7fe0c4bea3e3026",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "BitVec.getElem_zero_ofBool._proof_1",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.BitVec.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\BitVec\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "720b05c81bc67c7b7bdee7b98e74be64db05a66e3865ebaf656275790bff7e89",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "ByteArray.forIn._proof_1",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.ByteArray.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\ByteArray\\Basic.lean",
+    "line": null,
+    "source_sha256": "28eaec723cd93eb3b36abce1b3c97260162929ce55bb1acd0d2a6ad5bb21a9ac",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Dyadic.toRat._proof_4",
+    "premises": [],
+    "type": "0 < 2",
+    "variables": 0,
+    "module": "Init.Data.Dyadic.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Dyadic\\Basic.lean",
+    "line": null,
+    "source_sha256": "fcfb598d35f480b5324e550471965cc451810536e75c5e3e4b36055af8866777",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.one_pos",
+    "premises": [],
+    "type": "∀ {n : ℕ}, 0 < 1",
+    "variables": 1,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Fin\\Lemmas.lean",
+    "line": 389,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.zero_lt_one",
+    "premises": [],
+    "type": "∀ {n : ℕ}, 0 < 1",
+    "variables": 1,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Fin\\Lemmas.lean",
+    "line": 236,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "ISize.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\SInt\\Lemmas.lean",
+    "line": 2339,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.one_pos",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Int\\Order.lean",
+    "line": 144,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Int\\Order.lean",
+    "line": 142,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int16.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\SInt\\Lemmas.lean",
+    "line": 2336,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int32.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\SInt\\Lemmas.lean",
+    "line": 2337,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int64.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\SInt\\Lemmas.lean",
+    "line": 2338,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int8.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\SInt\\Lemmas.lean",
+    "line": 2335,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Lean.Grind.instOrderedRingInt._proof_2",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Grind.Ordered.Int",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Ordered\\Int.lean",
+    "line": null,
+    "source_sha256": "abd0a46e92112e87e21ea7cd0fe8baece5fdea56b28dac2180f64aaadf3839d3",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Lean.Grind.instOrderedRingNat._proof_4",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.GrindInstances.Ring.Nat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "1a3e86ac8b07fe9330881345dea1cb879dfb845e2fee012c0f9399c8333d1702",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Lean.Grind.instOrderedRingRat._proof_1",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Grind.Ordered.Rat",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Grind\\Ordered\\Rat.lean",
+    "line": null,
+    "source_sha256": "2b9add3d8ff3fef9d2ea26a7a916123aa2cef9f87becef1379e49bcbc950df8e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Lean.Grind.instZeroIntIi._proof_1",
+    "premises": [],
+    "type": "0 = 0",
+    "variables": 0,
+    "module": "Init.GrindInstances.ToInt",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\ToInt.lean",
+    "line": null,
+    "source_sha256": "e1d63aefed6c384f6f5c2eada41df7e6c4bd8a44788e56e03238556ac14c78f0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Lean.Grind.instZeroNatCiOfNatInt._proof_1",
+    "premises": [],
+    "type": "0 = 0",
+    "variables": 0,
+    "module": "Init.GrindInstances.ToInt",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\GrindInstances\\ToInt.lean",
+    "line": null,
+    "source_sha256": "e1d63aefed6c384f6f5c2eada41df7e6c4bd8a44788e56e03238556ac14c78f0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "List.Vector.inductionOn._proof_3",
+    "premises": [],
+    "type": "0 = 0",
+    "variables": 0,
+    "module": "Mathlib.Data.Vector.Basic",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Vector\\Basic.lean",
+    "line": null,
+    "source_sha256": "8cd77c02c8ffb18260012525066f85630c8835e20c6791ed3a43657a2710c9be",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.instAddMonoidWithOne._proof_1",
+    "premises": [],
+    "type": "0 = 0",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Ring.Nat",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Nat.lean",
+    "line": null,
+    "source_sha256": "7c23badda396d101a24d184f8145d4ac19ca253775bb5a95d324693924180a01",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.one_lt_two",
+    "premises": [],
+    "type": "1 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 596,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.two_pos",
+    "premises": [],
+    "type": "0 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 590,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Nat.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 499,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.zero_lt_two",
+    "premises": [],
+    "type": "0 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 594,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 10
+      }
+    },
+    "name": "Rat.ofScientific._proof_1",
+    "premises": [],
+    "type": "0 < 10",
+    "variables": 0,
+    "module": "Init.Data.Rat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Rat\\Basic.lean",
+    "line": null,
+    "source_sha256": "f92a643905d91f93d10026264553362081b328b8755f9d7ff2f770bc3bdf0755",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Std.Time.Internal.Bounded.LE.ofNatWrapping._proof_1",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Std.Time.Internal.Bounded",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Time\\Internal\\Bounded.lean",
+    "line": null,
+    "source_sha256": "0a0aeadd096f9c8b6d67060f8915e6ddfd94da94309baf9b7678fd8a4f2ab75a",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt16.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\UInt\\Lemmas.lean",
+    "line": 2456,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt32.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\UInt\\Lemmas.lean",
+    "line": 2457,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt64.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\UInt\\Lemmas.lean",
+    "line": 2458,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt8.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\UInt\\Lemmas.lean",
+    "line": 2455,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "USize.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\UInt\\Lemmas.lean",
+    "line": 2459,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Vector.mapFinIdx_eq_singleton_iff._proof_2",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Vector.MapIdx",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\MapIdx.lean",
+    "line": null,
+    "source_sha256": "1d88e69b61c9f39e72e59764c550bf096e7a764d92d0ad74ee5de4830cb7ce9b",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.leRec._proof_3",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "lit": 0
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, n = 0 → 0 = n",
+    "variables": 1,
+    "module": "Mathlib.Data.Nat.Init",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Nat\\Init.lean",
+    "line": null,
+    "source_sha256": "26f4a225d31d3c77f121dc11cfc732a00dfeeab088a4c2e7cae8c39d656fb5e1",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.zero_lt_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a < b → 0 < b",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 343,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.Tactic.BVDecide.BVExpr.bitblast.blastMul.blast._proof_1",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "lit": 0
+        }
+      }
+    ],
+    "type": "∀ {w : ℕ}, w = 0 → 0 = w",
+    "variables": 1,
+    "module": "Std.Tactic.BVDecide.Bitblast.BVExpr.Circuit.Impl.Operations.Mul",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Std\\Tactic\\BVDecide\\Bitblast\\BVExpr\\Circuit\\Impl\\Operations\\Mul.lean",
+    "line": null,
+    "source_sha256": "ce2d27978ec5402f2f4a527c8ea57f01dd331da24f625d5a44c5bfc2277f1ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Vector.replace_cast._proof_1",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ} {h : n = m}, n = m",
+    "variables": 2,
+    "module": "Init.Data.Vector.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "bd6fbeec6c1409f1bb064b3cd2e68a60a4755b86af5d1749dea7ee263ad54575",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "BitVec.getElem_cast._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {w v i : ℕ}, w = v → i < v → i < w",
+    "variables": 3,
+    "module": "Init.Data.BitVec.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\BitVec\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "720b05c81bc67c7b7bdee7b98e74be64db05a66e3865ebaf656275790bff7e89",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.fold_congr._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → ∀ i < m, i < n",
+    "variables": 3,
+    "module": "Init.Data.Nat.Fold",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Fold.lean",
+    "line": null,
+    "source_sha256": "d08ae281e3580d61017d2bbe58790f2d6811942b7e729b1540b78e77c7d53c81",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_lt_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m = k → n < k",
+    "variables": 3,
+    "module": "Init.Data.Nat.Basic",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "line": 295,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m < k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "line": 1888,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.cast_eq_cast._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ} {wa : n = k} {wb : m = k}, m = n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "bd6fbeec6c1409f1bb064b3cd2e68a60a4755b86af5d1749dea7ee263ad54575",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.eraseIdx_cast._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ} {w : n = m} {k : ℕ}, k < m → k < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Erase",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Erase.lean",
+    "line": null,
+    "source_sha256": "da3c634b272c26ac23f99ee3d0d2c2e4296f0e2f739d13ff1e835ab58384ffb6",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.eraseIdx_set_gt._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {n i j : ℕ}, i < j → ∀ {w : j < n}, i < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Erase",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Erase.lean",
+    "line": null,
+    "source_sha256": "da3c634b272c26ac23f99ee3d0d2c2e4296f0e2f739d13ff1e835ab58384ffb6",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.getElem_cast._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ} {h : n = m} {i : ℕ}, i < m → i < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Lemmas",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Lemmas.lean",
+    "line": null,
+    "source_sha256": "bd6fbeec6c1409f1bb064b3cd2e68a60a4755b86af5d1749dea7ee263ad54575",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.getElem_eraseIdx._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n i : ℕ}, i < n → ∀ {j : ℕ}, j < i → j < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Erase",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Erase.lean",
+    "line": null,
+    "source_sha256": "da3c634b272c26ac23f99ee3d0d2c2e4296f0e2f739d13ff1e835ab58384ffb6",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Vector.lex_eq_true_iff_exists._proof_2",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, ∀ i < n, ∀ j < i, j < n",
+    "variables": 3,
+    "module": "Init.Data.Vector.Lex",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Vector\\Lex.lean",
+    "line": null,
+    "source_sha256": "67a7a588fc671e20914ae03d3e5c9de389443e42805db09926bd7fe1f1231f47",
+    "origin": "Lean Core Reuse"
+  }
+]

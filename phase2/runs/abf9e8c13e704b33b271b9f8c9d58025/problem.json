@@ -1,0 +1,17 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "u",
+    "v",
+    "w",
+    "z"
+  ],
+  "assumptions": [
+    "w ∣ z",
+    "u ∣ v",
+    "v ∣ w"
+  ],
+  "goals": [
+    "u ∣ z"
+  ]
+}

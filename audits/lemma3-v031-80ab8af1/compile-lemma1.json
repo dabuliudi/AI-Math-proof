@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\lean\\Research\\Lemma1.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "returncode": 0,
+  "stdout": "'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "elapsed": 5.792858999979217,
+  "source_sha256": "16eb70221017875b7fd1f08a14e25925fcaf8781a64a43599b29b56a0462647f"
+}

@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\lean\\Research\\Lemma2.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "returncode": 0,
+  "stdout": "'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_dvd_linear_combination' does not depend on any axioms\n'mathlib2_quotient_dvd_self' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma2' depends on axioms: [propext, Classical.choice, Quot.sound]\ntheorem mathlib2_mason_lemma2.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b : k[X]),\n  a ≠ 0 → a / radical a ∣ a.wronskian b :=\nfun {k} [Field k] [DecidableEq k] a b ha =>\n  id (mathlib2_dvd_linear_combination (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha) (derivative b) b)\n",
+  "stderr": "",
+  "elapsed": 6.179715699981898,
+  "source_sha256": "2846525da9ff178afba787a735e5986cf057ba51aab3c2610e2ba59e4cb5528e"
+}

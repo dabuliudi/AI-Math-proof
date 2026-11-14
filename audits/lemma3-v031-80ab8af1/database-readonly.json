@@ -1,0 +1,553 @@
+{
+  "candidates": {
+    "85": {
+      "candidate": [
+        85,
+        9,
+        "{\"original_statement\": \"Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\", \"normalized_statement\": \"Lemma 1.For a nonzero polynomial a∈k[t],a/rad(a)divides a ′.\", \"lean_statement\": null, \"semantic_risk\": [\"polynomial_domain_and_characteristic_require_review\", \"pdf_subscript_superscript_not_reliably_recovered\"], \"semantic_status\": \"unchecked\", \"proposed_corrections\": [], \"boundary_checks\": [], \"normalization\": \"whitespace_and_audited_glyphs\", \"condition_inventory\": [\"1\", \"∈\"], \"classification\": \"formal_mathematical_object\", \"filter_reason\": \"明确数学结构；仍需审核\", \"candidate_eligible\": true, \"relevance_score\": 1.0, \"mathematical_completeness\": 0.55, \"extraction_confidence\": 0.9, \"source_traceability\": 1.0, \"quality_tier\": \"Medium Confidence\", \"quality_policy\": \"启发式提取质量；非数学正确率；Rejected 不代表数学错误\", \"assumptions\": [], \"quantifiers\": [], \"domain_constraints\": [\"nonzero polynomial a∈k[t],a/rad(a)divides a ′\", \"域及特征须核对声明和论文上下文；不自动补充 characteristic=0\"], \"definitions\": [], \"boundary_cases\": [], \"potential_counterexamples\": [], \"source_location\": {\"page\": 4, \"start\": 946, \"end\": 1004}, \"review_status\": \"pending\", \"semantic_review_status\": \"pending\", \"extraction_status\": \"recognized\", \"normalization_changes\": [{\"pattern\": \"\\\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\\\b|∈|\\\\[)\", \"reason\": \"限定词汇与单字符变量边界恢复；待人工复核\"}], \"semantic_field_method\": \"规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件\", \"statement_text\": \"Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\", \"proof_body\": \"\", \"code_fragments\": [], \"parser_version\": \"0.3.0\", \"source_id\": 9, \"title\": \"Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\", \"statement\": \"Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\", \"object_type\": \"Lemma\", \"original_text\": \"Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.\", \"location\": {\"page\": 4, \"line\": 18, \"paragraph\": 1, \"start\": 946, \"end\": 1004}, \"mathematical_domain\": \"unknown\", \"dependencies\": [], \"extraction_method\": \"numbered_heading\", \"confidence\": 0.9, \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"retrieval_status\": \"not_run\", \"planning_status\": \"acyclic\", \"approval_status\": \"pending\", \"stage\": \"Candidate\", \"recognition_status\": \"recognized\", \"reason\": \"\", \"context_before\": \"ormalize.\\nDefinition 2.TheWronskianof two polynomialsa, b∈k[t]isW(a, b) =ab ′ −\\na′b.\\nFroma+b+c= 0, we can check that the valuesW(a, b),W(b, c), andW(c, a)\\nare all equal. Denote the common value asW.\\nNext, we observe the following property.\\n\", \"context_after\": \"\\nProof.We can use the prime factorization ofa. Leta=up e11 pe22 · · ·pemm be a\\nfactorization with unituand primesp i ∈k[x] of exponentse i >0. Then the\\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which \", \"proof_steps\": [], \"boundary_status\": \"local_boundary\", \"object_key\": \"9:0.3.0:4:946:1004:Lemma\", \"kind\": \"document\", \"depends_on\": []}",
+        "unknown",
+        "9:0.3.0:4:946:1004:Lemma"
+      ],
+      "state": {
+        "extraction_status": "extracted",
+        "semantic_review_status": "needs_review",
+        "review_status": "needs_review",
+        "retrieval_status": "completed",
+        "planning_status": "completed",
+        "formalization_status": "formalized",
+        "verification_status": "proved",
+        "approval_status": "pending",
+        "normalized_statement": "Lemma 1.For a nonzero polynomial a∈k[t],a/rad(a)divides a ′.",
+        "revision": 0,
+        "candidate_alignment": "confirmed",
+        "candidate_verified": true,
+        "retrieval_results": [
+          {
+            "name": "divRadical_dvd_derivative",
+            "namespace": "(root)",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+            "line": 31,
+            "text": "theorem divRadical_dvd_derivative (a : k[X]) : divRadical a ∣ derivative a := by",
+            "module": "Mathlib.RingTheory.Polynomial.Radical",
+            "context": "\nvariable {k : Type*} [Field k] [DecidableEq k]\n\ntheorem degree_radical_le {a : k[X]} (h : a ≠ 0) : (radical a).degree ≤ a.degree :=\n  degree_le_of_dvd radical_dvd_self h\n\ntheorem natDegree_radical_le {a : k[X]} :\n    (radical a).natDegree ≤ a.natDegree := by\n  by_cases ha : a = 0\n  · simp [ha]\n  · exact natDegree_le_of_dvd radical_dvd_self ha\n",
+            "kind": "theorem",
+            "score": 100,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "exact_identifier",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "EuclideanDomain.divRadical_dvd_self",
+            "namespace": "EuclideanDomain",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 426,
+            "text": "theorem divRadical_dvd_self (a : E) : divRadical a ∣ a :=",
+            "module": "Mathlib.RingTheory.Radical",
+            "context": "  rwa [divRadical, radical_of_isUnit hu, EuclideanDomain.div_one]\n\ntheorem eq_divRadical (h : radical a * x = a) : x = divRadical a := by\n  apply EuclideanDomain.eq_div_of_mul_eq_left radical_ne_zero\n  rwa [mul_comm]\n\ntheorem divRadical_mul (hab : IsCoprime a b) :\n    divRadical (a * b) = divRadical a * divRadical b := by\n  symm; apply eq_divRadical\n  rw [UniqueFactorizationMonoid.radical_mul hab.isRelPrime]\n  rw [mul_mul_mul_comm, radical_mul_divRadical, radical_mul_divRadical]\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "div",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "EuclideanDomain.mul_div_cancel",
+            "namespace": "EuclideanDomain",
+            "namespace_method": "source_syntax",
+            "declaration": "protected theorem mul_div_cancel' {a b : R} (hb : b ≠ 0) (hab : b ∣ a) : b * (a / b) = a",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Basic.lean",
+            "line": 97,
+            "text": "protected theorem mul_div_cancel' {a b : R} (hb : b ≠ 0) (hab : b ∣ a) : b * (a / b) = a := by",
+            "module": "Mathlib.Algebra.EuclideanDomain.Basic",
+            "context": "  rw [← h, mul_div_cancel_right₀ _ hb]\n\ntheorem eq_div_of_mul_eq_right {a b c : R} (ha : a ≠ 0) (h : a * b = c) : b = c / a := by\n  rw [← h, mul_div_cancel_left₀ _ ha]\n\ntheorem mul_div_assoc (x : R) {y z : R} (h : z ∣ y) : x * y / z = x * (y / z) := by\n  by_cases hz : z = 0\n  · subst hz\n    rw [div_zero, div_zero, mul_zero]\n  rcases h with ⟨p, rfl⟩\n  rw [mul_div_cancel_left₀ _ hz, mul_left_comm, mul_div_cancel_left₀ _ hz]\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "Polynomial.X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic",
+            "namespace": "Polynomial",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic {K : Type*} [Field K] (f : K[X]) {a : K}\n    (hf : (X - C a) ∣ f /ₘ (X - C a)) : X - C a ∣ derivative f",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+            "line": 619,
+            "text": "theorem X_sub_C_dvd_derivative_of_X_sub_C_dvd_divByMonic {K : Type*} [Field K] (f : K[X]) {a : K}",
+            "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+            "context": "\ntheorem divByMonic_add_X_sub_C_mul_derivative_divByMonic_eq_derivative\n    {K : Type*} [CommRing K] (f : K[X]) (a : K) :\n    f /ₘ (X - C a) + (X - C a) * derivative (f /ₘ (X - C a)) = derivative f := by\n  have key := by apply congrArg derivative <| X_sub_C_mul_divByMonic_eq_sub_modByMonic f a\n  simpa only [derivative_mul, derivative_sub, derivative_X, derivative_C, sub_zero, one_mul,\n    modByMonic_X_sub_C_eq_C_eval] using key\n\n@[deprecated (since := \"2025-07-08\")]\nalias divByMonic_add_X_sub_C_mul_derivate_divByMonic_eq_derivative :=\ndivByMonic_add_X_sub_C_mul_derivative_divByMonic_eq_derivative\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "RatFunc.num_div_dvd",
+            "namespace": "RatFunc",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem num_div_dvd' (p : K[X]) {q : K[X]} (hq : q ≠ 0) :\n    C (q / gcd p q).leadingCoeff⁻¹ * (p / gcd p q) ∣ p",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\FieldTheory\\RatFunc\\Basic.lean",
+            "line": 887,
+            "text": "theorem num_div_dvd' (p : K[X]) {q : K[X]} (hq : q ≠ 0) :",
+            "module": "Mathlib.FieldTheory.RatFunc.Basic",
+            "context": "theorem num_algebraMap (p : K[X]) : num (algebraMap _ _ p) = p := by convert num_div p 1 <;> simp\n\ntheorem num_div_dvd (p : K[X]) {q : K[X]} (hq : q ≠ 0) :\n    num (algebraMap _ _ p / algebraMap _ _ q) ∣ p := by\n  classical\n  rw [num_div _ q, C_mul_dvd]\n  · exact EuclideanDomain.div_dvd_of_dvd (gcd_dvd_left p q)\n  · simpa only [Ne, inv_eq_zero, Polynomial.leadingCoeff_eq_zero] using right_div_gcd_ne_zero hq\n\nopen scoped Classical in\n\n@[simp]",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "_root_.IsRadical.dvd_radical",
+            "namespace": "UniqueFactorizationMonoid",
+            "namespace_method": "source_syntax",
+            "declaration": "lemma _root_.IsRadical.dvd_radical (ha : IsRadical a) (ha' : a ≠ 0) : a ∣ radical a",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 177,
+            "text": "lemma _root_.IsRadical.dvd_radical (ha : IsRadical a) (ha' : a ≠ 0) : a ∣ radical a :=",
+            "module": "Mathlib.RingTheory.Radical",
+            "context": "    radical a = radical b := by\n  simp only [radical, h]\n\ntheorem radical_eq_of_associated (h : Associated a b) : radical a = radical b :=\n  radical_eq_of_primeFactors_eq h.primeFactors_eq\n\nlemma radical_associated (ha : IsRadical a) (ha' : a ≠ 0) :\n    Associated (radical a) a := by\n  rw [radical, ← Finset.prod_val, primeFactors_val_eq_normalizedFactors ha]\n  exact prod_normalizedFactors ha'\n\n",
+            "kind": "lemma",
+            "score": 9,
+            "matched_tokens": [
+              "derivative",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "abc_subcall",
+            "namespace": "(root)",
+            "namespace_method": "source_syntax",
+            "declaration": "private theorem abc_subcall {a b c w : k[X]} {hw : w ≠ 0} (wab : w = wronskian a b) (ha : a ≠ 0)\n    (hb : b ≠ 0) (hc : c ≠ 0) (abc_dr_dvd_w : divRadical (a * b * c) ∣ w) :\n      c.natDegree + 1 ≤ (radical (a * b * c)).natDegree",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\NumberTheory\\FLT\\MasonStothers.lean",
+            "line": 26,
+            "text": "private theorem abc_subcall {a b c w : k[X]} {hw : w ≠ 0} (wab : w = wronskian a b) (ha : a ≠ 0)",
+            "module": "Mathlib.NumberTheory.FLT.MasonStothers",
+            "context": "\n\n\n\n\n\n\nopen Polynomial UniqueFactorizationMonoid UniqueFactorizationDomain EuclideanDomain\n\nvariable {k : Type*} [Field k] [DecidableEq k]\n\n-- we use this three times; the assumptions are symmetric in a, b, c.",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "div",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "divRadical_dvd_wronskian_left",
+            "namespace": "(root)",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+            "line": 58,
+            "text": "theorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b := by",
+            "module": "Mathlib.RingTheory.Polynomial.Radical",
+            "context": "      rw [mul_comm, mul_assoc]\n      apply dvd_mul_of_dvd_right\n      rw [pow_succ, mul_dvd_mul_iff_left (pow_ne_zero i hp.ne_zero), dvd_normalize_iff]\n  · -- If it holds for coprime pair a and b, then it also holds for a * b.\n    case hcp x y hpxy hx hy =>\n    have hc : IsCoprime x y :=\n      EuclideanDomain.isCoprime_of_dvd\n        (fun ⟨hx, hy⟩ => not_isUnit_zero (hpxy (zero_dvd_iff.mpr hx) (zero_dvd_iff.mpr hy)))\n        fun p hp _ hpx hpy => hp (hpxy hpx hpy)\n    rw [divRadical_mul hc, derivative_mul]\n    exact dvd_add (mul_dvd_mul hx (divRadical_dvd_self y)) (mul_dvd_mul (divRadical_dvd_self x) hy)\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "div",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "divRadical_dvd_wronskian_right",
+            "namespace": "(root)",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem divRadical_dvd_wronskian_right (a b : k[X]) : divRadical b ∣ wronskian a b",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+            "line": 66,
+            "text": "theorem divRadical_dvd_wronskian_right (a b : k[X]) : divRadical b ∣ wronskian a b := by",
+            "module": "Mathlib.RingTheory.Polynomial.Radical",
+            "context": "        fun p hp _ hpx hpy => hp (hpxy hpx hpy)\n    rw [divRadical_mul hc, derivative_mul]\n    exact dvd_add (mul_dvd_mul hx (divRadical_dvd_self y)) (mul_dvd_mul (divRadical_dvd_self x) hy)\n\ntheorem divRadical_dvd_wronskian_left (a b : k[X]) : divRadical a ∣ wronskian a b := by\n  rw [wronskian]\n  apply dvd_sub\n  · apply dvd_mul_of_dvd_left\n    exact divRadical_dvd_self a\n  · apply dvd_mul_of_dvd_left\n    exact divRadical_dvd_derivative a\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "div",
+              "dvd",
+              "radical"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "padicValNat.div",
+            "namespace": "padicValNat",
+            "namespace_method": "source_syntax",
+            "declaration": "protected theorem div' {m : ℕ} (cpm : Coprime p m) {b : ℕ} (dvd : m ∣ b) :\n    padicValNat p (b / m) = padicValNat p b",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\NumberTheory\\Padics\\PadicVal\\Basic.lean",
+            "line": 431,
+            "text": "protected theorem div' {m : ℕ} (cpm : Coprime p m) {b : ℕ} (dvd : m ∣ b) :",
+            "module": "Mathlib.NumberTheory.Padics.PadicVal.Basic",
+            "context": "\n\nprotected theorem pow (n : ℕ) (ha : a ≠ 0) : padicValNat p (a ^ n) = n * padicValNat p a := by\n  simpa only [← @Nat.cast_inj ℤ, push_cast] using padicValRat.pow (Nat.cast_ne_zero.mpr ha)\n\n@[simp]\nprotected theorem prime_pow (n : ℕ) : padicValNat p (p ^ n) = n := by\n  rw [padicValNat.pow _ (@Fact.out p.Prime).ne_zero, padicValNat_self, mul_one]\n\nprotected theorem div_pow (dvd : p ^ a ∣ b) : padicValNat p (b / p ^ a) = padicValNat p b - a := by\n  rw [padicValNat.div_of_dvd dvd, padicValNat.prime_pow]\n",
+            "kind": "theorem",
+            "score": 9,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "Mathlib.Meta.NormNum.isInt_dvd_false",
+            "namespace": "Mathlib.Meta.NormNum",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem isInt_dvd_false : {a b : ℤ} → {a' b' : ℤ} →\n    IsInt a a' → IsInt b b' → Int.emod b' a' != 0 → ¬a ∣ b\n  | _, _, _, _, ⟨rfl⟩, ⟨rfl⟩, e => mt Int.emod_eq_zero_of_dvd (by simpa using e)\n\nattribute [local instance] monadLiftOptionMetaM in\n\n\n@[norm_num (_ : ℤ) ∣ _] def evalIntDvd : NormNumExt",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Tactic\\NormNum\\DivMod.lean",
+            "line": 151,
+            "text": "theorem isInt_dvd_false : {a b : ℤ} → {a' b' : ℤ} →",
+            "module": "Mathlib.Tactic.NormNum.DivMod",
+            "context": "    have nr : Q(ℕ) := mkRawNatLit r\n    let m := q * b\n    have nm := mkRawIntLit m\n    have pf₁ : Q($nq * $nb = $nm) := (q(Eq.refl $nm) :)\n    have pf₂ : Q($nr + $nm = $na) := (q(Eq.refl $na) :)\n    have pf₃ : Q(Nat.blt $nr $nb = true) := (q(Eq.refl true) :)\n    ⟨nr, q(isInt_emod $pa $pb $pf₁ $pf₂ $pf₃)⟩\n\ntheorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →\n    IsInt a a' → IsInt b b' → Int.mul a' c = b' → a ∣ b\n  | _, _, _, _, _, ⟨rfl⟩, ⟨rfl⟩, rfl => ⟨_, rfl⟩\n",
+            "kind": "theorem",
+            "score": 7,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          },
+          {
+            "name": "Mathlib.Meta.NormNum.isInt_dvd_true",
+            "namespace": "Mathlib.Meta.NormNum",
+            "namespace_method": "source_syntax",
+            "declaration": "theorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →",
+            "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Tactic\\NormNum\\DivMod.lean",
+            "line": 147,
+            "text": "theorem isInt_dvd_true : {a b : ℤ} → {a' b' c : ℤ} →",
+            "module": "Mathlib.Tactic.NormNum.DivMod",
+            "context": "    let b := nb.natLit!\n    let q := za / b\n    have nq := mkRawIntLit q\n    let r := za.natMod b\n    have nr : Q(ℕ) := mkRawNatLit r\n    let m := q * b\n    have nm := mkRawIntLit m\n    have pf₁ : Q($nq * $nb = $nm) := (q(Eq.refl $nm) :)\n    have pf₂ : Q($nr + $nm = $na) := (q(Eq.refl $na) :)\n    have pf₃ : Q(Nat.blt $nr $nb = true) := (q(Eq.refl true) :)\n    ⟨nr, q(isInt_emod $pa $pb $pf₁ $pf₂ $pf₃)⟩\n",
+            "kind": "theorem",
+            "score": 7,
+            "matched_tokens": [
+              "derivative",
+              "div",
+              "dvd"
+            ],
+            "match_kind": "partial_expression",
+            "equivalence": "not_established",
+            "reuse_status": "requires_lean_check",
+            "suggestion": "可尝试复用此声明；核对变量/类型类/假设后用Lean验证，尚不能断言与论文等价"
+          }
+        ],
+        "retrieval_query": "divRadical_dvd_derivative",
+        "last_compile_accepted": true,
+        "lean_statement": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), a ≠ 0 → a / radical a ∣ derivative a",
+        "alignment_record": {
+          "conclusion": "confirmed",
+          "candidate_id": 85,
+          "source_id": 9,
+          "template_id": "mason_lemma1",
+          "reviewer": "assistant_independent_semantic_review",
+          "human_reviewed": false,
+          "created": "2026-11-12T09:38:57.428930+00:00",
+          "revision": 0,
+          "original_sha256": "017717afa650ef1daa2b5fc57052c942a152ffdbc7f3891dbb1d8b000c548c6e",
+          "normalized_sha256": "f5c9b871bf94d64d8fef3ea7e66367b4494207f8713e8b3f4f6ebcc0c2f7a815",
+          "lean_source_sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+          "report_path": "reports/lemma1-alignment.md",
+          "report_sha256": "8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc",
+          "files": [
+            {
+              "path": "2408.15180v2.pdf",
+              "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+            },
+            {
+              "path": "lean/lake-manifest.json",
+              "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+            },
+            {
+              "path": "lean/lean-toolchain",
+              "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/RingTheory/Polynomial/Radical.lean",
+              "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/RingTheory/Radical.lean",
+              "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean",
+              "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean",
+              "sha256": "451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+              "sha256": "fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53"
+            }
+          ],
+          "comparison": "faithful_nonzero_restriction_of_stronger_mathlib_theorem",
+          "proof_origin": "Theorem Reuse"
+        }
+      }
+    },
+    "87": {
+      "candidate": [
+        87,
+        9,
+        "{\"original_statement\": \"Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"normalized_statement\": \"Lemma 2.For any nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"lean_statement\": null, \"semantic_risk\": [\"polynomial_domain_and_characteristic_require_review\", \"pdf_subscript_superscript_not_reliably_recovered\"], \"semantic_status\": \"unchecked\", \"proposed_corrections\": [], \"boundary_checks\": [], \"normalization\": \"whitespace_and_audited_glyphs\", \"condition_inventory\": [\"2\", \"any\", \"∈\", \"=\"], \"classification\": \"formal_mathematical_object\", \"filter_reason\": \"明确数学结构；仍需审核\", \"candidate_eligible\": true, \"relevance_score\": 1.0, \"mathematical_completeness\": 0.55, \"extraction_confidence\": 0.9, \"source_traceability\": 1.0, \"quality_tier\": \"Medium Confidence\", \"quality_policy\": \"启发式提取质量；非数学正确率；Rejected 不代表数学错误\", \"assumptions\": [], \"quantifiers\": [\"any nonzero a∈k[t]\"], \"domain_constraints\": [\"nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b\", \"域及特征须核对声明和论文上下文；不自动补充 characteristic=0\"], \"definitions\": [], \"boundary_cases\": [], \"potential_counterexamples\": [], \"source_location\": {\"page\": 4, \"start\": 1364, \"end\": 1429}, \"review_status\": \"pending\", \"semantic_review_status\": \"pending\", \"extraction_status\": \"recognized\", \"normalization_changes\": [{\"pattern\": \"\\\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\\\b|∈|\\\\[)\", \"reason\": \"限定词汇与单字符变量边界恢复；待人工复核\"}], \"semantic_field_method\": \"规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件\", \"statement_text\": \"Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"proof_body\": \"\", \"code_fragments\": [], \"parser_version\": \"0.3.0\", \"source_id\": 9, \"title\": \"Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"statement\": \"Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"object_type\": \"Lemma\", \"original_text\": \"Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"location\": {\"page\": 4, \"line\": 24, \"paragraph\": 1, \"start\": 1364, \"end\": 1429}, \"mathematical_domain\": \"unknown\", \"dependencies\": [], \"extraction_method\": \"numbered_heading\", \"confidence\": 0.9, \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"retrieval_status\": \"not_run\", \"planning_status\": \"acyclic\", \"approval_status\": \"pending\", \"stage\": \"Candidate\", \"recognition_status\": \"recognized\", \"reason\": \"\", \"context_before\": \"x] of exponentse i >0. Then the\\nproduct rule of derivative givesa ′ = Pmi=1 ueip′ipe11 pe22 · · ·pei−1i · · ·pemm which is\\ndivisible bya/rad(a) =p e1−11 pe2−12 · · ·pem−1m .\\nSincea/rad(a) divides bothaanda ′, an immediate corollary is that\\n\", \"context_after\": \"\\nProof (Proof of Theorem 1).The pairwise coprime polynomialsa/rad(a),b/rad(b),\\nandc/rad(c) all divideW, so their productabc/rad(abc) should also divideW.\\nThis is the key step of the proof.\\nWe split the proof into two cases, depending on whe\", \"proof_steps\": [], \"boundary_status\": \"local_boundary\", \"object_key\": \"9:0.3.0:4:1364:1429:Lemma\", \"kind\": \"document\", \"depends_on\": []}",
+        "unknown",
+        "9:0.3.0:4:1364:1429:Lemma"
+      ],
+      "state": {
+        "extraction_status": "extracted",
+        "semantic_review_status": "needs_review",
+        "review_status": "needs_review",
+        "retrieval_status": "not_run",
+        "planning_status": "completed",
+        "formalization_status": "formalized",
+        "verification_status": "proved",
+        "approval_status": "pending",
+        "normalized_statement": "Lemma 2.For any nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+        "revision": 0,
+        "candidate_alignment": "confirmed",
+        "candidate_verified": true,
+        "alignment_record": {
+          "conclusion": "confirmed",
+          "candidate_id": 87,
+          "source_id": 9,
+          "template_id": "mason_lemma2",
+          "reviewer": "assistant_independent_semantic_review",
+          "human_reviewed": false,
+          "created": "2026-11-12T09:58:34.902121+00:00",
+          "revision": 0,
+          "original_sha256": "191bc8edfd76d1779ba18f8d004a87983bfcc362917a56f11644cc120ed76ace",
+          "normalized_sha256": "b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569",
+          "lean_source_sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+          "report_path": "reports/lemma2-alignment.md",
+          "report_sha256": "9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a",
+          "files": [
+            {
+              "path": "2408.15180v2.pdf",
+              "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+              "sha256": "fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean",
+              "sha256": "451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2"
+            },
+            {
+              "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean",
+              "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+            },
+            {
+              "path": "lean/lake-manifest.json",
+              "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+            },
+            {
+              "path": "lean/lean-toolchain",
+              "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+              "sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+              "sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+              "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Wronskian.lean",
+              "sha256": "b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+              "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+            },
+            {
+              "path": "reports/lemma1-alignment.md",
+              "sha256": "8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc"
+            }
+          ],
+          "proof_origin": {
+            "category": "New Proof",
+            "new_statement": true,
+            "new_proof": true,
+            "meaning": "新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1",
+            "method": "提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律",
+            "author_code_copied": false,
+            "ai_api_calls": 0,
+            "alternative_not_used": "divRadical_dvd_wronskian_left"
+          }
+        },
+        "last_compile_accepted": true,
+        "lean_statement": "∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b"
+      }
+    },
+    "89": {
+      "candidate": [
+        89,
+        9,
+        "{\"original_statement\": \"Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\\nof its radicalrad(a)is also at least one.\\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\\nfirst show that for any elementaof a general monoidM, a primepdividesaif\\nand only if it divides rad(a); this is done by using that the prime divisors ofa\\nand rad(a) are the same.\", \"normalized_statement\": \"Lemma 3.For any fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one. A formal proof of Lemma 3 requires more work, however. We need to explicitly take a prime factorpofaand show that it is also a prime factor of rad(a). We first show that for any elementaof a general monoidM, a primepdividesaif and only if it divides rad(a); this is done by using that the prime divisors ofa and rad(a) are the same.\", \"lean_statement\": null, \"semantic_risk\": [\"polynomial_domain_and_characteristic_require_review\", \"pdf_subscript_superscript_not_reliably_recovered\"], \"semantic_status\": \"unchecked\", \"proposed_corrections\": [], \"boundary_checks\": [], \"normalization\": \"whitespace_and_audited_glyphs\", \"condition_inventory\": [\"3\", \"any\", \"∈\", \"≥\", \"1\", \"at least\", \"3\", \"any\", \"if\"], \"classification\": \"formal_mathematical_object\", \"filter_reason\": \"明确数学结构；仍需审核\", \"candidate_eligible\": true, \"relevance_score\": 1.0, \"mathematical_completeness\": 0.55, \"extraction_confidence\": 0.9, \"source_traceability\": 1.0, \"quality_tier\": \"Medium Confidence\", \"quality_policy\": \"启发式提取质量；非数学正确率；Rejected 不代表数学错误\", \"assumptions\": [\"if it divides rad(a)\"], \"quantifiers\": [\"any fieldkand a polynomial a∈k[X]of degree≥1\", \"any elementaof a general monoidM\"], \"domain_constraints\": [\"fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one\", \"域及特征须核对声明和论文上下文；不自动补充 characteristic=0\"], \"definitions\": [\"divisors\"], \"boundary_cases\": [], \"potential_counterexamples\": [], \"source_location\": {\"page\": 7, \"start\": 1071, \"end\": 1513}, \"review_status\": \"pending\", \"semantic_review_status\": \"pending\", \"extraction_status\": \"recognized\", \"normalization_changes\": [{\"pattern\": \"\\\\b(polynomial|polynomials|field|nonzero|divides)([a-z])(?=\\\\b|∈|\\\\[)\", \"reason\": \"限定词汇与单字符变量边界恢复；待人工复核\"}], \"semantic_field_method\": \"规则摘录，未恢复的黏连文字/公式需复核；空列表不表示不存在条件\", \"statement_text\": \"Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\\nof its radicalrad(a)is also at least one.\\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\\nfirst show that for any elementaof a general monoidM, a primepdividesaif\\nand only if it divides rad(a); this is done by using that the prime divisors ofa\\nand rad(a) are the same.\", \"proof_body\": \"\", \"code_fragments\": [], \"parser_version\": \"0.3.0\", \"source_id\": 9, \"title\": \"Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\", \"statement\": \"Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\\nof its radicalrad(a)is also at least one.\\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\\nfirst show that for any elementaof a general monoidM, a primepdividesaif\\nand only if it divides rad(a); this is done by using that the prime divisors ofa\\nand rad(a) are the same.\", \"object_type\": \"Lemma\", \"original_text\": \"Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\\nof its radicalrad(a)is also at least one.\\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\\nfirst show that for any elementaof a general monoidM, a primepdividesaif\\nand only if it divides rad(a); this is done by using that the prime divisors ofa\\nand rad(a) are the same.\", \"location\": {\"page\": 7, \"line\": 19, \"paragraph\": 1, \"start\": 1071, \"end\": 1513}, \"mathematical_domain\": \"number_theory (keyword_hint)\", \"dependencies\": [], \"extraction_method\": \"numbered_heading\", \"confidence\": 0.9, \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"retrieval_status\": \"not_run\", \"planning_status\": \"acyclic\", \"approval_status\": \"pending\", \"stage\": \"Candidate\", \"recognition_status\": \"recognized\", \"reason\": \"\", \"context_before\": \"Monoid R]\\n[UniqueFactorizationMonoid R],→\\ntheorem radical_mul {a b : R} (hc : IsCoprime a b) :\\nradical (a * b) = (radical a) * (radical b)\\ntheorem radical_neg {a : R} : radical (-a) = radical a\\nThe following seems obvious to the human eye.\\n\", \"context_after\": \"\\ntheorem prime_dvd_radical_iff {a p : M} (ha : a̸=0) (hp : Prime p) :\\np | radical a↔p | a\\nWe then use it to show that a nonzeroa∈Mis a unit if and only if rad(a) is.\\nNote that an element ofMis a unit if and only if it has no prime divisors.\", \"proof_steps\": [], \"boundary_status\": \"local_boundary\", \"object_key\": \"9:0.3.0:7:1071:1513:Lemma\", \"kind\": \"document\", \"depends_on\": []}",
+        "unknown",
+        "9:0.3.0:7:1071:1513:Lemma"
+      ],
+      "state": {
+        "extraction_status": "extracted",
+        "semantic_review_status": "needs_review",
+        "review_status": "needs_review",
+        "retrieval_status": "not_run",
+        "planning_status": "completed",
+        "formalization_status": "formalized",
+        "verification_status": "proved",
+        "approval_status": "pending",
+        "normalized_statement": "Lemma 3.For any fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one. A formal proof of Lemma 3 requires more work, however. We need to explicitly take a prime factorpofaand show that it is also a prime factor of rad(a). We first show that for any elementaof a general monoidM, a primepdividesaif and only if it divides rad(a); this is done by using that the prime divisors ofa and rad(a) are the same.",
+        "revision": 0,
+        "candidate_alignment": "confirmed",
+        "candidate_verified": true,
+        "alignment_record": {
+          "conclusion": "confirmed",
+          "candidate_id": 89,
+          "source_id": 9,
+          "template_id": "mason_lemma3",
+          "reviewer": "assistant_independent_semantic_review",
+          "human_reviewed": false,
+          "created": "2026-11-13T18:17:36.719585+00:00",
+          "revision": 0,
+          "original_sha256": "817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9",
+          "normalized_sha256": "8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2",
+          "lean_source_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+          "report_path": "reports/lemma3-alignment.md",
+          "report_sha256": "abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce",
+          "files": [
+            {
+              "path": "2408.15180v2.pdf",
+              "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+            },
+            {
+              "path": "lean/lake-manifest.json",
+              "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+            },
+            {
+              "path": "lean/lean-toolchain",
+              "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\BigOperators.lean",
+              "sha256": "d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+              "sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+              "sha256": "2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+              "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+              "sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+              "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+            },
+            {
+              "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+              "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+            }
+          ],
+          "proof_origin": {
+            "category": "New Proof",
+            "new_proof": true,
+            "new_statement": true,
+            "generation_source": "AI 生成（本次对话助手编写代码）；随后固化为复跑模板",
+            "autonomous_reasoning_engine": false,
+            "external_ai_api_calls": 0,
+            "author_code_copied": false,
+            "meaning": "新的Lean组合脚本，不主张新数学结果；未复制作者实现",
+            "lemma1_used": false,
+            "lemma2_used": false
+          }
+        },
+        "last_compile_accepted": true,
+        "lean_statement": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree"
+      }
+    }
+  },
+  "counts": {
+    "sources": 9,
+    "candidates": 92,
+    "events": 120,
+    "verified": 0,
+    "document_parses": 5,
+    "math_objects": 171,
+    "workbench_state": 20,
+    "workbench_history": 38,
+    "proof_runs": 9
+  }
+}

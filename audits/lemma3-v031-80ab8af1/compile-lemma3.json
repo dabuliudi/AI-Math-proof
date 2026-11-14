@@ -1,0 +1,16 @@
+{
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\lean\\Research\\Lemma3.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "returncode": 0,
+  "stdout": "'mathlib2_unit_of_natDegree_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_unit_of_radical_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_radical_natDegree_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma3_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma3' depends on axioms: [propext, Classical.choice, Quot.sound]\ntheorem mathlib2_mason_lemma3.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (radical a).degree :=\nfun {k} [Field k] [DecidableEq k] a h =>\n  have hnat :=\n    Nat.succ_le_of_lt (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (of_decide_eq_true (id (Eq.refl true))) h));\n  Eq.mpr (id (congrArg (fun _a => 1 ≤ _a) (degree_eq_natDegree radical_ne_zero)))\n    (WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat))\n",
+  "stderr": "",
+  "elapsed": 6.342012000037357,
+  "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404"
+}

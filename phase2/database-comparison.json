@@ -1,0 +1,93 @@
+{
+  "comparison_baseline": "D:\\mathproof\\audits\\lemma3-v031-80ab8af1\\workspace\\data\\mathlib2.sqlite",
+  "baseline_sha256": "b473e429ce9faf0627b7109cfa73d2a79b29ca3a4f579f15d17fee080e880930",
+  "current_sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+  "tables": {
+    "sources": {
+      "before": 9,
+      "after": 9,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "candidates": {
+      "before": 92,
+      "after": 92,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "events": {
+      "before": 120,
+      "after": 120,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "verified": {
+      "before": 0,
+      "after": 0,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "document_parses": {
+      "before": 5,
+      "after": 5,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "math_objects": {
+      "before": 171,
+      "after": 171,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    },
+    "workbench_state": {
+      "before": 20,
+      "after": 20,
+      "old_rows_retained": false,
+      "exact_equal": false,
+      "removed_rows": 4,
+      "added_rows": 4,
+      "changed_ids": [
+        73,
+        74,
+        75,
+        76
+      ]
+    },
+    "workbench_history": {
+      "before": 38,
+      "after": 42,
+      "old_rows_retained": true,
+      "exact_equal": false,
+      "removed_rows": 0,
+      "added_rows": 4,
+      "changed_ids": [
+        39,
+        40,
+        41,
+        42
+      ]
+    },
+    "proof_runs": {
+      "before": 9,
+      "after": 9,
+      "old_rows_retained": true,
+      "exact_equal": true,
+      "removed_rows": 0,
+      "added_rows": 0
+    }
+  },
+  "integrity_check": "ok",
+  "schema_equal": true
+}

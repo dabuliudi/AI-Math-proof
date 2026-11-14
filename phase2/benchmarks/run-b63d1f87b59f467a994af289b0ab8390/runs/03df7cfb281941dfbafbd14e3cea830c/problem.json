@@ -1,0 +1,18 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a",
+    "b",
+    "c",
+    "d"
+  ],
+  "assumptions": [
+    "a ∣ b",
+    "b ∣ c",
+    "c ∣ d"
+  ],
+  "goals": [
+    "a ∣ d"
+  ],
+  "original_text": "三段自然数整除链的端点仍满足整除。"
+}

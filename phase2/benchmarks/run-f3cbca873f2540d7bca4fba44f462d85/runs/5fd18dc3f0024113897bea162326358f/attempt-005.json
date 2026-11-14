@@ -1,0 +1,59 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:2:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:2:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:2:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:2:145: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:5:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean:5:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext, Quot.sound]\n'p2_n002' depends on axioms: [propext, Quot.sound]\n'p2_n003' depends on axioms: [propext, Quot.sound]\n'p2_n004' depends on axioms: [propext, Quot.sound]\n'p2_target' depends on axioms: [propext, Quot.sound]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.714304900029674,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n004": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_target": {
+      "axioms": [
+        "propext",
+        "Quot.sound"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v3) := by\n  exact @Lean.Grind.instIsPreorderNat._proof_2 p2v3\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v4) := by\n  exact @Lean.Grind.instIsPreorderNat._proof_4 p2v3 p2v1 p2v4 h3 h2\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v2) := by\n  exact @Lean.Grind.instIsPreorderNat._proof_4 p2v3 p2v4 p2v2 (p2_n002 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3) h0\n\ntheorem p2_n004 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v0) := by\n  exact @Lean.Grind.instIsPreorderNat._proof_4 p2v3 p2v2 p2v0 (p2_n003 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3) h1\n\ntheorem p2_target (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v4 ≤ p2v2)) (h1 : (p2v2 ≤ p2v0)) (h2 : (p2v1 ≤ p2v4)) (h3 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v0) := by\n  exact (p2_n004 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3)\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n#print axioms p2_n004\n#print axioms p2_target\n",
+  "source_sha256": "2d785e1d5e109a8267944fda010c0bbc7c14841fd4bca5c388e01790ae7bce25",
+  "goal": "(p2v3 ≤ p2v0)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-f3cbca873f2540d7bca4fba44f462d85\\runs\\5fd18dc3f0024113897bea162326358f\\attempt-005.lean",
+  "log": "attempt-005.json"
+}

@@ -1,0 +1,634 @@
+[
+  {
+    "baseline": "data/backup-before-v021.sqlite",
+    "report": "database-diffs/data__backup-before-v021.sqlite.json",
+    "hash": "70d819a297bc2730d0d826577e08e012a3024f031d29a8a911f9cdfc8ffac703",
+    "tables": {
+      "candidates": {
+        "before": 28,
+        "after": 92,
+        "added": 64,
+        "modified": 28,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "document_parses": {
+        "before": 0,
+        "after": 5,
+        "added": 5,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 0,
+        "after": 171,
+        "added": 171,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "proof_runs": {
+        "before": 0,
+        "after": 9,
+        "added": 9,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "sources": {
+        "before": 8,
+        "after": 9,
+        "added": 1,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 0,
+        "after": 42,
+        "added": 42,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "workbench_state": {
+        "before": 0,
+        "after": 20,
+        "added": 20,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      }
+    }
+  },
+  {
+    "baseline": "data/backup-before-v022.sqlite",
+    "report": "database-diffs/data__backup-before-v022.sqlite.json",
+    "hash": "ea8b769d20649d4fdb8a83dfd5275cad31e8c8f3f7df4fc641b3e15ea54779d5",
+    "tables": {
+      "candidates": {
+        "before": 53,
+        "after": 92,
+        "added": 39,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 1,
+        "after": 5,
+        "added": 4,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 25,
+        "after": 171,
+        "added": 146,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 0,
+        "after": 9,
+        "added": 9,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "sources": {
+        "before": 8,
+        "after": 9,
+        "added": 1,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 0,
+        "after": 42,
+        "added": 42,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "workbench_state": {
+        "before": 0,
+        "after": 20,
+        "added": 20,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      }
+    }
+  },
+  {
+    "baseline": "data/before-lemma1-alignment.sqlite",
+    "report": "database-diffs/data__before-lemma1-alignment.sqlite.json",
+    "hash": "f502cb2a5539141511639a9235120ced651e6533ea30d9c00084a961b7437562",
+    "tables": {
+      "candidates": {
+        "before": 92,
+        "after": 92,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 5,
+        "after": 5,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 171,
+        "after": 171,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 1,
+        "after": 9,
+        "added": 8,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 22,
+        "after": 42,
+        "added": 20,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_state": {
+        "before": 20,
+        "after": 20,
+        "added": 0,
+        "modified": 7,
+        "deleted": 0,
+        "schema_changed": false
+      }
+    }
+  },
+  {
+    "baseline": "data/before-lemma2.sqlite",
+    "report": "database-diffs/data__before-lemma2.sqlite.json",
+    "hash": "043112ce2ec9cab9a97a26537a120f594db120bbe276246604c68986645c66b7",
+    "tables": {
+      "candidates": {
+        "before": 92,
+        "after": 92,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 5,
+        "after": 5,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 171,
+        "after": 171,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 3,
+        "after": 9,
+        "added": 6,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 26,
+        "after": 42,
+        "added": 16,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_state": {
+        "before": 20,
+        "after": 20,
+        "added": 0,
+        "modified": 6,
+        "deleted": 0,
+        "schema_changed": false
+      }
+    }
+  },
+  {
+    "baseline": "data/before-lemma3.sqlite",
+    "report": "database-diffs/data__before-lemma3.sqlite.json",
+    "hash": "1eccd9be943d3d525a59db7f65ec81c5206997e42fdb643d6d97cefe9126ab65",
+    "tables": {
+      "candidates": {
+        "before": 92,
+        "after": 92,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 5,
+        "after": 5,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 171,
+        "after": 171,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 5,
+        "after": 9,
+        "added": 4,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 30,
+        "after": 42,
+        "added": 12,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_state": {
+        "before": 20,
+        "after": 20,
+        "added": 0,
+        "modified": 5,
+        "deleted": 0,
+        "schema_changed": false
+      }
+    }
+  },
+  {
+    "baseline": "data/mathlib2.sqlite.before-v03.bak",
+    "report": "database-diffs/data__mathlib2.sqlite.before-v03.bak.json",
+    "hash": "433acd60a9559f1f9189da5933ebf054712ca805afd8d72035bd426e1f9354e2",
+    "tables": {
+      "candidates": {
+        "before": 72,
+        "after": 92,
+        "added": 20,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 3,
+        "after": 5,
+        "added": 2,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 82,
+        "after": 171,
+        "added": 89,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 0,
+        "after": 9,
+        "added": 9,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 0,
+        "after": 42,
+        "added": 42,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      },
+      "workbench_state": {
+        "before": 0,
+        "after": 20,
+        "added": 20,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": true
+      }
+    }
+  },
+  {
+    "baseline": "audits/lemma3-v031-80ab8af1/workspace/data/mathlib2.sqlite",
+    "report": "database-diffs/audits__lemma3-v031-80ab8af1__workspace__data__mathlib2.sqlite.json",
+    "hash": "b473e429ce9faf0627b7109cfa73d2a79b29ca3a4f579f15d17fee080e880930",
+    "tables": {
+      "candidates": {
+        "before": 92,
+        "after": 92,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 5,
+        "after": 5,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 171,
+        "after": 171,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 38,
+        "after": 42,
+        "added": 4,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_state": {
+        "before": 20,
+        "after": 20,
+        "added": 0,
+        "modified": 4,
+        "deleted": 0,
+        "schema_changed": false
+      }
+    }
+  },
+  {
+    "baseline": "phase2/legacy-regression/f7b2b657d5694e42bcc9375d3960dd33/workspace/data/mathlib2.sqlite",
+    "report": "database-diffs/phase2__legacy-regression__f7b2b657d5694e42bcc9375d3960dd33__workspace__data__mathlib2.sqlite.json",
+    "hash": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+    "tables": {
+      "candidates": {
+        "before": 92,
+        "after": 92,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "document_parses": {
+        "before": 5,
+        "after": 5,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "events": {
+        "before": 120,
+        "after": 120,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "math_objects": {
+        "before": 171,
+        "after": 171,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "proof_runs": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "sources": {
+        "before": 9,
+        "after": 9,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "verified": {
+        "before": 0,
+        "after": 0,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_history": {
+        "before": 42,
+        "after": 42,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      },
+      "workbench_state": {
+        "before": 20,
+        "after": 20,
+        "added": 0,
+        "modified": 0,
+        "deleted": 0,
+        "schema_changed": false
+      }
+    }
+  }
+]

@@ -1,0 +1,1317 @@
+{
+  "result": {
+    "source_id": 8,
+    "extracted": 25,
+    "provider": "rules（本地规则，无 AI 调用）",
+    "results": [
+      {
+        "id": 29,
+        "label": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 30,
+        "label": "Fig.4 The abundant number task",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 31,
+        "label": " If a student realised that the statement is false for k = 1, they",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 32,
+        "label": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 33,
+        "label": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 34,
+        "label": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 35,
+        "label": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 36,
+        "label": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 37,
+        "label": " He then replaces kn and n with the sum of their divisors (since",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 38,
+        "label": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 39,
+        "label": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 40,
+        "label": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 41,
+        "label": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 42,
+        "label": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+        "status": "unknown",
+        "stage": "Extracted"
+      },
+      {
+        "id": 43,
+        "label": "1. Prove that",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 44,
+        "label": "The f is called fine if it has a root",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 45,
+        "label": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 46,
+        "label": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 47,
+        "label": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 48,
+        "label": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 49,
+        "label": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 50,
+        "label": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 51,
+        "label": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 52,
+        "label": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+        "status": "unknown",
+        "stage": "Candidate"
+      },
+      {
+        "id": 53,
+        "label": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+        "status": "unknown",
+        "stage": "Candidate"
+      }
+    ],
+    "stages": {
+      "file": "received",
+      "text": "parsed",
+      "structure": "recognized",
+      "candidates": "extracted",
+      "lean": "not_run"
+    },
+    "reused": true,
+    "dag": {
+      "nodes": [
+        {
+          "id": 29,
+          "title": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+          "location": {
+            "page": 4,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 166
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 30,
+          "title": "Fig.4 The abundant number task",
+          "location": {
+            "page": 8,
+            "line": 30,
+            "paragraph": 1,
+            "start": 2196,
+            "end": 2226
+          },
+          "source_id": 8,
+          "object_type": "Example"
+        },
+        {
+          "id": 31,
+          "title": " If a student realised that the statement is false for k = 1, they",
+          "location": {
+            "page": 9,
+            "line": 8,
+            "paragraph": 1,
+            "start": 563,
+            "end": 677
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 32,
+          "title": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+          "location": {
+            "page": 13,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 136
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 33,
+          "title": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+          "location": {
+            "page": 13,
+            "line": 3,
+            "paragraph": 1,
+            "start": 137,
+            "end": 208
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 34,
+          "title": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+          "location": {
+            "page": 13,
+            "line": 14,
+            "paragraph": 1,
+            "start": 1049,
+            "end": 1117
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 35,
+          "title": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+          "location": {
+            "page": 14,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 136
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 36,
+          "title": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+          "location": {
+            "page": 15,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 165
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 37,
+          "title": " He then replaces kn and n with the sum of their divisors (since",
+          "location": {
+            "page": 15,
+            "line": 10,
+            "paragraph": 1,
+            "start": 798,
+            "end": 915
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 38,
+          "title": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+          "location": {
+            "page": 15,
+            "line": 12,
+            "paragraph": 1,
+            "start": 949,
+            "end": 1015
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 39,
+          "title": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+          "location": {
+            "page": 17,
+            "line": 20,
+            "paragraph": 1,
+            "start": 1358,
+            "end": 1430
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 40,
+          "title": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+          "location": {
+            "page": 18,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 138
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 41,
+          "title": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+          "location": {
+            "page": 20,
+            "line": 2,
+            "paragraph": 1,
+            "start": 66,
+            "end": 136
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 42,
+          "title": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+          "location": {
+            "page": 20,
+            "line": 17,
+            "paragraph": 1,
+            "start": 1220,
+            "end": 1290
+          },
+          "source_id": 8,
+          "object_type": "Proof"
+        },
+        {
+          "id": 43,
+          "title": "1. Prove that",
+          "location": {
+            "page": 28,
+            "line": 6,
+            "paragraph": 1,
+            "start": 278,
+            "end": 306
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 44,
+          "title": "The f is called fine if it has a root",
+          "location": {
+            "page": 28,
+            "line": 11,
+            "paragraph": 1,
+            "start": 351,
+            "end": 412
+          },
+          "source_id": 8,
+          "object_type": "Definition"
+        },
+        {
+          "id": 45,
+          "title": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+          "location": {
+            "page": 28,
+            "line": 14,
+            "paragraph": 1,
+            "start": 467,
+            "end": 574
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 46,
+          "title": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+          "location": {
+            "page": 28,
+            "line": 16,
+            "paragraph": 1,
+            "start": 575,
+            "end": 712
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 47,
+          "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+          "location": {
+            "page": 28,
+            "line": 18,
+            "paragraph": 1,
+            "start": 713,
+            "end": 789
+          },
+          "source_id": 8,
+          "object_type": "Definition"
+        },
+        {
+          "id": 48,
+          "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+          "location": {
+            "page": 28,
+            "line": 19,
+            "paragraph": 1,
+            "start": 790,
+            "end": 859
+          },
+          "source_id": 8,
+          "object_type": "Definition"
+        },
+        {
+          "id": 49,
+          "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+          "location": {
+            "page": 28,
+            "line": 21,
+            "paragraph": 1,
+            "start": 867,
+            "end": 922
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 50,
+          "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+          "location": {
+            "page": 28,
+            "line": 22,
+            "paragraph": 1,
+            "start": 923,
+            "end": 974
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 51,
+          "title": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+          "location": {
+            "page": 28,
+            "line": 23,
+            "paragraph": 1,
+            "start": 975,
+            "end": 1049
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 52,
+          "title": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+          "location": {
+            "page": 28,
+            "line": 25,
+            "paragraph": 1,
+            "start": 1057,
+            "end": 1167
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        },
+        {
+          "id": 53,
+          "title": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+          "location": {
+            "page": 28,
+            "line": 27,
+            "paragraph": 1,
+            "start": 1168,
+            "end": 1347
+          },
+          "source_id": 8,
+          "object_type": "Conjecture"
+        }
+      ],
+      "edges": [],
+      "associations": [],
+      "unresolved": [
+        {
+          "reference": "Lemma 3",
+          "status": "uncertain",
+          "page": 14,
+          "start": 1597,
+          "end": 1604,
+          "context": "lso concerned, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to",
+          "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+        },
+        {
+          "reference": "Lemma 4",
+          "status": "uncertain",
+          "page": 14,
+          "start": 1609,
+          "end": 1616,
+          "context": "d, once a\nclass of objects are introduced, with defining exactly where the objects belong to.\nThis is clear in the start of the proofs of Lemma 3 and Lemma 4. Figure 9 shows\nthe final outcome of the final proof written by Nathan. In this case the student had\nresorted to examples first of all to understand ",
+          "reason": "只有正文引用，未找到唯一的声明；不建立依赖边"
+        }
+      ],
+      "status": "acyclic"
+    }
+  },
+  "source_sha256": "c60c9c32ab6e8daf04e31c624d385ad92a6b97973518050cfcaaedbcfdc5a5da",
+  "source_path": "D:\\mathproof\\data\\uploads\\0357be8b67904937aa2d2491b7f8f0f2.pdf",
+  "candidates": [
+    {
+      "source_id": 8,
+      "title": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+      "statement": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+      "object_type": "Proof",
+      "original_text": "Fig. 1 LEAN online interface - Multiple screenshots of a complete and correct proof illustrating the",
+      "location": {
+        "page": 4,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 166
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nchanges in the goal of the proof with each line of the written code\nshows the goals or sub-goals required for completion of the proof and provides feed-\nback to the user in terms of the symbol consistency and the logical connectedness of\nt",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:4:66:166:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 29
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.4 The abundant number task",
+      "statement": "Fig.4 The abundant number task",
+      "object_type": "Example",
+      "original_text": "Fig.4 The abundant number task",
+      "location": {
+        "page": 8,
+        "line": 30,
+        "paragraph": 1,
+        "start": 2196,
+        "end": 2226
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": " writing litera-\nture that in the context of familiar proofs students may resort to known procedures\nand may try to remember the proof as they had seen it instead of engaging with a\nproof as a problem-solving task (Azrou & Khelladi, 2019).\n",
+      "context_after": "",
+      "proof_steps": [],
+      "boundary_status": "page_limited",
+      "object_key": "8:0.2.1:8:2196:2226:Example",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 30
+    },
+    {
+      "source_id": 8,
+      "title": " If a student realised that the statement is false for k = 1, they",
+      "statement": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1.",
+      "object_type": "Proof",
+      "original_text": " If a student realised that the statement is false for k = 1, they\nwere then prompted to provide a proof for k> 1.",
+      "location": {
+        "page": 9,
+        "line": 8,
+        "paragraph": 1,
+        "start": 563,
+        "end": 677
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "condition_discussion",
+      "confidence": 0.55,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "作者对条件或真假的讨论；不自动修订原始任务",
+      "context_before": "age with this task due to time constraints.\nAt the start of the task the students were told that they had to decide on the truth\nor otherwise of the statement in Fig. 4 and, if they thought the statement was true, to\nprovide a proof for it.",
+      "context_after": "\nDataAnalysis\nThis exploratory study aimed at finding characteristics of proofs by students who had\nengaged with the automated theorem prover and ascertain whether those were also\ncommon characteristics found in proofs written by students w",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:9:563:677:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 31
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "statement": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.5 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "location": {
+        "page": 13,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 136
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nFig.6 No LEAN user student Nathan - formal-rhetorical part of the proof\nFigures 5 and 6 show the formal-rhetorical part of the proofs produced by\nLeonardo and Nathan who scored 4 in the scoring exercise. Both students start their\nproofs by",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:13:66:136:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 32
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+      "statement": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.6 No LEAN user student Nathan - formal-rhetorical part of the proof",
+      "location": {
+        "page": 13,
+        "line": 3,
+        "paragraph": 1,
+        "start": 137,
+        "end": 208
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\nFig.5 LEAN user student Leonardo - formal-rhetorical part of the proof\n",
+      "context_after": "\nFigures 5 and 6 show the formal-rhetorical part of the proofs produced by\nLeonardo and Nathan who scored 4 in the scoring exercise. Both students start their\nproofs by unpacking the definitions given in the statement (perfect number), whic",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:13:137:208:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 33
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+      "statement": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.7 No LEAN user student Ned - formal-rhetorical part of the proof",
+      "location": {
+        "page": 13,
+        "line": 14,
+        "paragraph": 1,
+        "start": 1049,
+        "end": 1117
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "rs. However, the accuracy of mathematical writing varies between the two\nproofs. While Leonardo accurately uses symbolic language and logical connections\nto define a perfect number, Nathan does so to a lesser extent. In Leonardo’s writing,\n",
+      "context_after": "",
+      "proof_steps": [],
+      "boundary_status": "page_limited",
+      "object_key": "8:0.2.1:13:1049:1117:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 34
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "statement": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.8 LEAN user student Leonardo - formal-rhetorical part of the proof",
+      "location": {
+        "page": 14,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 136
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nmathematical symbols are used either to signal the logical connections between the\nproperty of n being perfect and the relationship between the number and the sum of\ndivisors which is 2 n (the use of the logical implication symbol) or to i",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:14:66:136:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 35
+    },
+    {
+      "source_id": 8,
+      "title": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+      "statement": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+      "object_type": "Proof",
+      "original_text": "Fig. 9 No LEAN user student Nathan - formal-rhetorical part of the proof. (During the interview the",
+      "location": {
+        "page": 15,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 165
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nstudents were asked to first produce a proof and then using a different coloured pen to add something\nfurther if they wished - Nathan is one of the students who did use this option)\nOnce he convinced himself of the truth of the statement a",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:15:66:165:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 36
+    },
+    {
+      "source_id": 8,
+      "title": " He then replaces kn and n with the sum of their divisors (since",
+      "statement": " He then replaces kn and n with the sum of their divisors (since\nn is perfect) and moves on to multiply each one byk.",
+      "object_type": "Proof",
+      "original_text": " He then replaces kn and n with the sum of their divisors (since\nn is perfect) and moves on to multiply each one byk.",
+      "location": {
+        "page": 15,
+        "line": 10,
+        "paragraph": 1,
+        "start": 798,
+        "end": 915
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "narrative_proof_step",
+      "confidence": 0.5,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "证明步骤叙述；指代和跨页关联未解析，不自动建立逻辑依赖",
+      "context_before": "ding writing, was coded with [EX] codes\nmainly. For the final write up of the proof Nathan (Fig.9) starts by limiting the values\nthat k can take excluding the casek = 1 but not saying explicitly that the statement is\nnot valid in this case.",
+      "context_after": " He continues by saying that 1 is\nFig.10 LEAN user student Louis - problem centred part of the proof",
+      "proof_steps": [
+        {
+          "text": " He then replaces kn and n with the sum of their divisors (since\nn is perfect) ",
+          "page": 15,
+          "start": 798,
+          "end": 877,
+          "status": "uncertain",
+          "sequence_only": true,
+          "reason": "原文叙述分句，不等于已证明引理或逻辑依赖"
+        },
+        {
+          "text": "and moves on to multiply each one byk.",
+          "page": 15,
+          "start": 877,
+          "end": 915,
+          "status": "uncertain",
+          "sequence_only": true,
+          "reason": "原文叙述分句，不等于已证明引理或逻辑依赖"
+        }
+      ],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:15:798:915:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 37
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+      "statement": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.10 LEAN user student Louis - problem centred part of the proof",
+      "location": {
+        "page": 15,
+        "line": 12,
+        "paragraph": 1,
+        "start": 949,
+        "end": 1015
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "ing the casek = 1 but not saying explicitly that the statement is\nnot valid in this case. He then replaces kn and n with the sum of their divisors (since\nn is perfect) and moves on to multiply each one byk. He continues by saying that 1 is\n",
+      "context_after": "",
+      "proof_steps": [],
+      "boundary_status": "page_limited",
+      "object_key": "8:0.2.1:15:949:1015:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 38
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+      "statement": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.14 No LEAN user student Nataly - formal-rhetorical part of the proof",
+      "location": {
+        "page": 17,
+        "line": 20,
+        "paragraph": 1,
+        "start": 1358,
+        "end": 1430
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "g in the formal-rhetorical part (Fig.14) shows that initially the idea\nof prime factorisation was considered and then abandoned as not so helpful (see\ntranscript - Fig. 14). Then, the sum of divisors is introduced without a clear statement\n",
+      "context_after": "",
+      "proof_steps": [],
+      "boundary_status": "page_limited",
+      "object_key": "8:0.2.1:17:1358:1430:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 39
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+      "statement": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.15 No LEAN user student Norman - formal-rhetorical part of the proof",
+      "location": {
+        "page": 18,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 138
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nas to what each of the involved symbols mean. Indeed, in the next line, Nataly states\nthat what she wrote is valid for each n but does not clarify the set where n belongs\nto. This may be not important at these early stages of the students’",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:18:66:138:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 40
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+      "statement": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.17 No LEAN user student Nataly - problem-centred part of the proof",
+      "location": {
+        "page": 20,
+        "line": 2,
+        "paragraph": 1,
+        "start": 66,
+        "end": 136
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": "InternationalJournalofResearchinUndergraduateMathematicsEducation\n",
+      "context_after": "\nUnsuccessfulProofs:Score1\nSeventeen students scored 1 in this task, one LEAN user and sixteen No LEAN\nusers. Figure 19, shows the formal-rhetorical part of Luke’s proof, a LEAN user,\nwho rewrites the definitions and introduces symbolism us",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:20:66:136:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 41
+    },
+    {
+      "source_id": 8,
+      "title": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+      "statement": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+      "object_type": "Proof",
+      "original_text": "Fig.18 No LEAN user student Norman - problem-centred part of the proof",
+      "location": {
+        "page": 20,
+        "line": 17,
+        "paragraph": 1,
+        "start": 1220,
+        "end": 1290
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "figure_caption_only",
+      "confidence": 0.3,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Extracted",
+      "recognition_status": "uncertain",
+      "reason": "仅图注；图片内容需 OCR 或人工转录，不是完整证明",
+      "context_before": " of the number n and the sum of its divisors, without any explanation to\naccompany it. Note, also, that Noah uses the same notation to mean both the prime\nfactors and the divisors. Although Noah does not write (or say) that di ’s are prime\n",
+      "context_after": "",
+      "proof_steps": [],
+      "boundary_status": "page_limited",
+      "object_key": "8:0.2.1:20:1220:1290:Proof",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 42
+    },
+    {
+      "source_id": 8,
+      "title": "1. Prove that",
+      "statement": "1. Prove that\n√\n3 +\n√\n5 < 4.",
+      "object_type": "Conjecture",
+      "original_text": "1. Prove that\n√\n3 +\n√\n5 < 4.",
+      "location": {
+        "page": 28,
+        "line": 6,
+        "paragraph": 1,
+        "start": 278,
+        "end": 306
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "raduateMathematicsEducation\nAppendix2\nHere are the mathematical tasks the students were given during the interviews. In no\ninterview a student was able to complete all the tasks, and the tasks were proposed to\nthe students one at the time.\n",
+      "context_after": "\n2. Let f : R → R be a real-valued function. The f is called fine if it has a root\n(zero) at each integer. In other words f is fine if n ∈ Z ⇒ f( n )= 0.\nTasks:\n(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(He",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:278:306:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 43
+    },
+    {
+      "source_id": 8,
+      "title": "The f is called fine if it has a root",
+      "statement": "The f is called fine if it has a root\n(zero) at each integer.",
+      "object_type": "Definition",
+      "original_text": "The f is called fine if it has a root\n(zero) at each integer.",
+      "location": {
+        "page": 28,
+        "line": 11,
+        "paragraph": 1,
+        "start": 351,
+        "end": 412
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "explicit_definition_sentence",
+      "confidence": 0.78,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "",
+      "context_before": " students were given during the interviews. In no\ninterview a student was able to complete all the tasks, and the tasks were proposed to\nthe students one at the time.\n1. Prove that\n√\n3 +\n√\n5 < 4.\n2. Let f : R → R be a real-valued function. ",
+      "context_after": " In other words f is fine if n ∈ Z ⇒ f( n )= 0.\nTasks:\n(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x)",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:351:412:Definition",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 44
+    },
+    {
+      "source_id": 8,
+      "title": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+      "statement": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))",
+      "object_type": "Conjecture",
+      "original_text": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))",
+      "location": {
+        "page": 28,
+        "line": 14,
+        "paragraph": 1,
+        "start": 467,
+        "end": 574
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "sks were proposed to\nthe students one at the time.\n1. Prove that\n√\n3 +\n√\n5 < 4.\n2. Let f : R → R be a real-valued function. The f is called fine if it has a root\n(zero) at each integer. In other words f is fine if n ∈ Z ⇒ f( n )= 0.\nTasks:\n",
+      "context_after": "\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an i",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:467:574:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 45
+    },
+    {
+      "source_id": 8,
+      "title": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+      "statement": "(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.",
+      "object_type": "Conjecture",
+      "original_text": "(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.",
+      "location": {
+        "page": 28,
+        "line": 16,
+        "paragraph": 1,
+        "start": 575,
+        "end": 712
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "alued function. The f is called fine if it has a root\n(zero) at each integer. In other words f is fine if n ∈ Z ⇒ f( n )= 0.\nTasks:\n(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))\n",
+      "context_after": "\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, ",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:575:712:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 46
+    },
+    {
+      "source_id": 8,
+      "title": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+      "statement": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+      "object_type": "Definition",
+      "original_text": "3. An abundant number is an integer n whose divisors add up to more than 2n.",
+      "location": {
+        "page": 28,
+        "line": 18,
+        "paragraph": 1,
+        "start": 713,
+        "end": 789
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "explicit_definition_sentence",
+      "confidence": 0.78,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "",
+      "context_before": "t f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n",
+      "context_after": "\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserve",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:713:789:Definition",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 47
+    },
+    {
+      "source_id": 8,
+      "title": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+      "statement": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+      "object_type": "Definition",
+      "original_text": "A perfect number is an integer n whose divisors add up to exactly 2n.",
+      "location": {
+        "page": 28,
+        "line": 19,
+        "paragraph": 1,
+        "start": 790,
+        "end": 859
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "explicit_definition_sentence",
+      "confidence": 0.78,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "",
+      "context_before": "f + g)(x) = f( x)+ g(x))\n(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\n",
+      "context_after": "\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:790:859:Definition",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 48
+    },
+    {
+      "source_id": 8,
+      "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+      "statement": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+      "object_type": "Conjecture",
+      "original_text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+      "location": {
+        "page": 28,
+        "line": 21,
+        "paragraph": 1,
+        "start": 867,
+        "end": 922
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": " function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n",
+      "context_after": "\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved ",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:867:922:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 49
+    },
+    {
+      "source_id": 8,
+      "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+      "statement": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+      "object_type": "Conjecture",
+      "original_text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+      "location": {
+        "page": 28,
+        "line": 22,
+        "paragraph": 1,
+        "start": 923,
+        "end": 974
+      },
+      "mathematical_domain": "number_theory (keyword_hint)",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "ve that g is a fine function.\n3. An abundant number is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n",
+      "context_after": "\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.\n(b) Let f,g : R → R be functions and a ⊂ R. Su",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:923:974:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 50
+    },
+    {
+      "source_id": 8,
+      "title": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+      "statement": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+      "object_type": "Conjecture",
+      "original_text": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+      "location": {
+        "page": 28,
+        "line": 23,
+        "paragraph": 1,
+        "start": 975,
+        "end": 1049
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "is an integer n whose divisors add up to more than 2n.\nA perfect number is an integer n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n",
+      "context_after": "\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.\n(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all\nx,y ∈ A. Prove that if f and g are preserved in A t",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:975:1049:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 51
+    },
+    {
+      "source_id": 8,
+      "title": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+      "statement": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.",
+      "object_type": "Conjecture",
+      "original_text": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.",
+      "location": {
+        "page": 28,
+        "line": 25,
+        "paragraph": 1,
+        "start": 1057,
+        "end": 1167
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "ger n whose divisors add up to exactly 2n.\nTasks:\n(a) If n is perfect, then kn is abundant for any k ∈ N.\n(b) If p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n",
+      "context_after": "\n(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all\nx,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved\nin A.( H e r ef × g = f( x)× g(x).)\nAcknowledgements We would like to thank Professor Kevin Buz",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:1057:1167:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 52
+    },
+    {
+      "source_id": 8,
+      "title": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+      "statement": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all\nx,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved\nin A.( H e r ef × g = f( x)× g(x).)",
+      "object_type": "Conjecture",
+      "original_text": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all\nx,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved\nin A.( H e r ef × g = f( x)× g(x).)",
+      "location": {
+        "page": 28,
+        "line": 27,
+        "paragraph": 1,
+        "start": 1168,
+        "end": 1347
+      },
+      "mathematical_domain": "unknown",
+      "dependencies": [],
+      "extraction_method": "numbered_task",
+      "confidence": 0.82,
+      "formalization_status": "not_formalized",
+      "verification_status": "unknown",
+      "stage": "Candidate",
+      "recognition_status": "recognized",
+      "reason": "练习题原文；真值及隐含假设未判断",
+      "context_before": "f p1 and p2 are primes, then p1p2 is abundant.\n4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.\nTasks:\n(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.\n",
+      "context_after": "\nAcknowledgements We would like to thank Professor Kevin Buzzard and the students who participated\nin our study. We would also like to thank Adrian Simpson for the help with the statistical analysis and\nApostolos Thoma who assisted in the i",
+      "proof_steps": [],
+      "boundary_status": "local_boundary",
+      "object_key": "8:0.2.1:28:1168:1347:Conjecture",
+      "kind": "document",
+      "depends_on": [],
+      "candidate_id": 53
+    }
+  ]
+}

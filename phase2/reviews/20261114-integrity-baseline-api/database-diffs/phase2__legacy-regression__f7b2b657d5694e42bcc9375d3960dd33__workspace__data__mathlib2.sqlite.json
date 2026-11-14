@@ -1,0 +1,81 @@
+{
+  "before": "D:\\mathproof\\phase2\\legacy-regression\\f7b2b657d5694e42bcc9375d3960dd33\\workspace\\data\\mathlib2.sqlite",
+  "after": "D:\\mathproof\\data\\mathlib2.sqlite",
+  "before_sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+  "after_sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+  "sqlite_schema_changed": false,
+  "tables": {
+    "candidates": {
+      "before_count": 92,
+      "after_count": 92,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "document_parses": {
+      "before_count": 5,
+      "after_count": 5,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "events": {
+      "before_count": 120,
+      "after_count": 120,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "math_objects": {
+      "before_count": 171,
+      "after_count": 171,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "proof_runs": {
+      "before_count": 9,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "sources": {
+      "before_count": 9,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "verified": {
+      "before_count": 0,
+      "after_count": 0,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_history": {
+      "before_count": 42,
+      "after_count": 42,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_state": {
+      "before_count": 20,
+      "after_count": 20,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    }
+  }
+}

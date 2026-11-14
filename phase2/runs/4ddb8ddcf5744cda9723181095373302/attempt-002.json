@@ -1,0 +1,36 @@
+{
+  "returncode": 0,
+  "stdout": "'p2_n001' depends on axioms: [propext]\n'p2_target' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\runs\\4ddb8ddcf5744cda9723181095373302\\attempt-002.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.9328871999750845,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_target": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) : (p2v0 ∣ p2v2) := by\n  exact @Nat.dvd_trans p2v0 p2v1 p2v2 h0 h1\n\ntheorem p2_target (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v2)) : (p2v0 ∣ p2v2) := by\n  exact (p2_n001 p2v0 p2v1 p2v2 h0 h1)\n\n#print axioms p2_n001\n#print axioms p2_target\n",
+  "source_sha256": "0a23e5e3601414b49f22f2325572d26cee3f0a1ab7631dc0502522943b757101",
+  "goal": "(p2v0 ∣ p2v2)",
+  "artifact": "D:\\mathproof\\phase2\\runs\\4ddb8ddcf5744cda9723181095373302\\attempt-002.lean",
+  "log": "attempt-002.json"
+}

@@ -1,0 +1,2737 @@
+[
+  {
+    "kind": "definition_or_instance",
+    "line": 197,
+    "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+    "name": "Polynomial.instNormalizationMonoid",
+    "type": "{R : Type u} → [inst : CommRing R] → [inst_1 : IsDomain R] → [NormalizationMonoid R] → NormalizationMonoid R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+    "source_sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1",
+    "source_excerpt": "instance instNormalizationMonoid : NormalizationMonoid R[X] where\n  normUnit p :=\n    ⟨C ↑(normUnit p.leadingCoeff), C ↑(normUnit p.leadingCoeff)⁻¹, by\n      rw [← RingHom.map_mul, Units.mul_inv, C_1], by rw [← RingHom.map_mul, Units.inv_mul, C_1]⟩\n  normUnit_zero := Units.ext (by simp)",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 304,
+    "module": "Mathlib.Order.WithBot",
+    "name": "WithBot.preorder",
+    "type": "{α : Type u_1} → [Preorder α] → Preorder (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+    "source_sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17",
+    "source_excerpt": "instance preorder [Preorder α] : Preorder (WithBot α) where\n  lt_iff_le_not_ge x y := by cases x <;> cases y <;> simp [lt_iff_le_not_ge]\n  le_refl x := by cases x <;> simp [le_def]\n  le_trans x y z := by cases x <;> cases y <;> cases z <;> simp [le_def]; simpa using le_trans\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 187,
+    "module": "Init.Core",
+    "name": "Iff.mpr",
+    "type": "∀ {a b : Prop}, (a ↔ b) → b → a",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Core.lean",
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "source_excerpt": "  mpr : b → a\n\n@[inherit_doc] infix:20 \" <-> \" => Iff\n@[inherit_doc] infix:20 \" ↔ \"   => Iff\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 588,
+    "module": "Mathlib.Algebra.Order.Monoid.Unbundled.WithTop",
+    "name": "WithBot.addMonoidWithOne",
+    "type": "{α : Type u} → [AddMonoidWithOne α] → AddMonoidWithOne (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Order\\Monoid\\Unbundled\\WithTop.lean",
+    "source_sha256": "d81885540bca541286b52b5d06e1d8af82850b4f6c78bc59b7c9faacccaac834",
+    "source_excerpt": "instance addMonoidWithOne : AddMonoidWithOne (WithBot α) := WithTop.addMonoidWithOne\n\n@[norm_cast] lemma coe_natCast (n : ℕ) : ((n : α) : WithBot α) = n := rfl\n\n@[simp] lemma natCast_ne_bot (n : ℕ) : (n : WithBot α) ≠ ⊥ := coe_ne_bot",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 862,
+    "module": "Init.Core",
+    "name": "Eq.mpr",
+    "type": "{α β : Sort u} → α = β → β → α",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Core.lean",
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "source_excerpt": "@[macro_inline] def Eq.mpr {α β : Sort u} (h : α = β) (b : β) : α :=\n  h ▸ b\n\n@[elab_as_elim]\ntheorem Eq.substr {α : Sort u} {p : α → Prop} {a b : α} (h₁ : b = a) (h₂ : p a) : p b :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 31,
+    "module": "_stdin",
+    "name": "mathlib2_mason_lemma3",
+    "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (UniqueFactorizationMonoid.radical a).degree",
+    "path": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "source_excerpt": "theorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))",
+    "used_by": []
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 319,
+    "module": "Mathlib.Algebra.Group.Defs",
+    "name": "MulOne.toOne",
+    "type": "{M : Type u_2} → [self : MulOne M] → One M",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "source_sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "source_excerpt": "class MulOne (M : Type*) extends One M, Mul M\n\n/-- Typeclass for expressing that a type `M` with addition and a zero satisfies\n`0 + a = a` and `a + 0 = a` for all `a : M`. -/\nclass AddZeroClass (M : Type u) extends AddZero M where",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 22,
+    "module": "Mathlib.Algebra.GroupWithZero.Nat",
+    "name": "Nat.instMulZeroClass",
+    "type": "MulZeroClass ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Nat.lean",
+    "source_sha256": "480f91815b192d35ed6bb5e8c5104248f9048d3f93daf5f3da5174206a8f1ddb",
+    "source_excerpt": "instance instMulZeroClass : MulZeroClass ℕ where\n  zero_mul := Nat.zero_mul\n  mul_zero := Nat.mul_zero\n\ninstance instSemigroupWithZero : SemigroupWithZero ℕ where",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 31,
+    "module": "Mathlib.Order.TypeTags",
+    "name": "WithBot.some",
+    "type": "{α : Type u_1} → α → WithBot α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\TypeTags.lean",
+    "source_sha256": "f4f8336f70f4e26b5de36c21abe96f74bab42c74765c846ecb0bbc1bf162f40a",
+    "source_excerpt": "@[coe, match_pattern] def some : α → WithBot α :=\n  Option.some\n\ninstance coe : Coe α (WithBot α) :=\n  ⟨some⟩",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 20,
+    "module": "Mathlib.Order.TypeTags",
+    "name": "WithBot",
+    "type": "Type u_2 → Type u_2",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\TypeTags.lean",
+    "source_sha256": "f4f8336f70f4e26b5de36c21abe96f74bab42c74765c846ecb0bbc1bf162f40a",
+    "source_excerpt": "def WithBot (α : Type*) := Option α\n\nnamespace WithBot\n\ninstance [Repr α] : Repr (WithBot α) :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1299,
+    "module": "Init.Prelude",
+    "name": "Trans.trans",
+    "type": "{α : Sort u_1} →\n  {β : Sort u_2} →\n    {γ : Sort u_3} →\n      {r : α → β → Sort u} →\n        {s : β → γ → Sort v} →\n          {t : outParam (α → γ → Sort w)} → [self : Trans r s t] → {a : α} → {b : β} → {c : γ} → r a b → s b c → t a c",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  trans : r a b → s b c → t a c\n\nexport Trans (trans)\n\ninstance (r : α → γ → Sort u) : Trans Eq r r where",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 222,
+    "module": "Mathlib.Algebra.Ring.Basic",
+    "name": "IsDomain.to_noZeroDivisors",
+    "type": "∀ (α : Type u_3) [inst : Semiring α] [IsDomain α], NoZeroDivisors α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Basic.lean",
+    "source_sha256": "703775a08b753536dcc6b5a882202735384cd9da22842455f48c5c51f695479c",
+    "source_excerpt": "instance (priority := 100) IsDomain.to_noZeroDivisors [Semiring α] [IsDomain α] :\n    NoZeroDivisors α :=\n  IsRightCancelMulZero.to_noZeroDivisors α\n\ninstance Subsingleton.to_isCancelMulZero [Mul α] [Zero α] [Subsingleton α] : IsCancelMulZero α where",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 40,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "name": "Preorder.toLT",
+    "type": "{α : Type u_2} → [self : Preorder α] → LT α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+    "source_sha256": "aca5c17f2ec4a74b12c02a75cafb4afc32f9604ab7ec97b64297d44c8f5f27a7",
+    "source_excerpt": "class Preorder (α : Type*) extends LE α, LT α where\n  le_refl : ∀ a : α, a ≤ a\n  le_trans : ∀ a b c : α, a ≤ b → b ≤ c → a ≤ c\n  lt := fun a b => a ≤ b ∧ ¬b ≤ a\n  lt_iff_le_not_ge : ∀ a b : α, a < b ↔ a ≤ b ∧ ¬b ≤ a := by intros; rfl",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 93,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.degree_eq_natDegree",
+    "type": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, p ≠ 0 → p.degree = ↑p.natDegree",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "theorem degree_eq_natDegree (hp : p ≠ 0) : degree p = (natDegree p : WithBot ℕ) := by\n  let ⟨n, hn⟩ := not_forall.1 (mt Option.eq_none_iff_forall_not_mem.2 (mt degree_eq_bot.1 hp))\n  have hn : degree p = some n := Classical.not_not.1 hn\n  rw [natDegree, hn]; rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "非零多项式的degree/natDegree转换"
+  },
+  {
+    "kind": "theorem",
+    "line": 987,
+    "module": "Init.Prelude",
+    "name": "of_decide_eq_true",
+    "type": "∀ {p : Prop} [inst : Decidable p], Decidable.decide p = Bool.true → p",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "theorem of_decide_eq_true [inst : Decidable p] : Eq (decide p) true → p := fun h =>\n  match (generalizing := false) inst with\n  | isTrue  h₁ => h₁\n  | isFalse h₁ => absurd h (ne_true_of_eq_false (decide_eq_false h₁))\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 64,
+    "module": "Mathlib.Algebra.Group.Nat.Defs",
+    "name": "Nat.instOne",
+    "type": "One ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Nat\\Defs.lean",
+    "source_sha256": "a8839adb1682d7c3cb5c9ab54a78ad1075ae1a2c383971dd32c1f6d179b66506",
+    "source_excerpt": "instance instOne              : One ℕ              := inferInstance\n\ninstance instIsAddTorsionFree : IsAddTorsionFree ℕ where\n  nsmul_right_injective _n hn _x _y hxy := Nat.mul_left_cancel (Nat.pos_of_ne_zero hn) hxy\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 36,
+    "module": "Mathlib.Data.Int.Cast.Defs",
+    "name": "AddGroupWithOne.toAddGroup",
+    "type": "{R : Type u} → [self : AddGroupWithOne R] → AddGroup R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Int\\Cast\\Defs.lean",
+    "source_sha256": "c5ea675cd26a6b153e586c515bd5ff295d866baf39dee7d72fd24f6d21aa1175",
+    "source_excerpt": "class AddGroupWithOne (R : Type u) extends IntCast R, AddMonoidWithOne R, AddGroup R where\n  /-- The canonical homomorphism `ℤ → R`. -/\n  intCast := Int.castDef\n  /-- The canonical homomorphism `ℤ → R` agrees with the one from `ℕ → R` on `ℕ`. -/\n  intCast_ofNat : ∀ n : ℕ, intCast (n : ℕ) = Nat.cast n := by intros; rfl",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 360,
+    "module": "Init.Prelude",
+    "name": "congrArg",
+    "type": "∀ {α : Sort u} {β : Sort v} {a₁ a₂ : α} (f : α → β), a₁ = a₂ → f a₁ = f a₂",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "theorem congrArg {α : Sort u} {β : Sort v} {a₁ a₂ : α} (f : α → β) (h : Eq a₁ a₂) : Eq (f a₁) (f a₂) :=\n  h ▸ rfl\n\n/--\nCongruence in both function and argument. If `f₁ = f₂` and `a₁ = a₂` then",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 1163,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.instIsDomainOfIsCancelAdd",
+    "type": "∀ {R : Type u} [inst : Semiring R] [IsCancelAdd R] [IsDomain R], IsDomain R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance [IsCancelAdd R] [IsDomain R] : IsDomain R[X] where\n\n/-- See also `Polynomial.isCancelMulZero_iff`: in order for `R[X]` to have cancellative\nmultiplication (stronger than `NoZeroDivisors` in general, but equivalent if `R` is a ring),\n`R` must have both cancellative multiplication and cancellative addition. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 212,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_ne_zero",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M} [Nontrivial M], UniqueFactorizationMonoid.radical a ≠ 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "@[simp] theorem radical_ne_zero [Nontrivial M] : radical a ≠ 0 := by\n  rw [radical, ← Finset.prod_val]\n  apply Multiset.prod_ne_zero\n  rw [primeFactors]\n  simp only [Multiset.toFinset_val, Multiset.mem_dedup]",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "排除radical为零，允许次数转换"
+  },
+  {
+    "kind": "theorem",
+    "line": 322,
+    "module": "Init.Data.Nat.Basic",
+    "name": "Nat.succ_le_of_lt",
+    "type": "∀ {n m : ℕ}, n < m → n.succ ≤ m",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "source_excerpt": "theorem succ_le_of_lt {n m : Nat} (h : n < m) : succ n ≤ m := h\n\ntheorem eq_zero_or_pos : ∀ (n : Nat), n = 0 ∨ n > 0\n  | 0   => Or.inl rfl\n  | _+1 => Or.inr (succ_pos _)",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 371,
+    "module": "Mathlib.Algebra.Order.Monoid.Unbundled.WithTop",
+    "name": "WithBot.zero",
+    "type": "{α : Type u} → [Zero α] → Zero (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Order\\Monoid\\Unbundled\\WithTop.lean",
+    "source_sha256": "d81885540bca541286b52b5d06e1d8af82850b4f6c78bc59b7c9faacccaac834",
+    "source_excerpt": "@[to_additive] instance one : One (WithBot α) := WithTop.one\n\n@[to_additive (attr := simp, norm_cast)] lemma coe_one : ((1 : α) : WithBot α) = 1 := rfl\n\n@[to_additive (attr := simp, norm_cast)]",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 758,
+    "module": "Mathlib.Algebra.Group.Defs",
+    "name": "AddCancelMonoid.toIsCancelAdd",
+    "type": "∀ (M : Type u) [inst : AddCancelMonoid M], IsCancelAdd M",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "source_sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "source_excerpt": "@[to_additive /-- Any `AddCancelMonoid G` satisfies `IsCancelAdd G`. -/]\ninstance (priority := 100) CancelMonoid.toIsCancelMul (M : Type u) [CancelMonoid M] :\n    IsCancelMul M where\n\nend CancelMonoid",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 165,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "CancelCommMonoidWithZero.toCommMonoidWithZero",
+    "type": "{M₀ : Type u_2} → [self : CancelCommMonoidWithZero M₀] → CommMonoidWithZero M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class CancelCommMonoidWithZero (M₀ : Type*) extends CommMonoidWithZero M₀, IsLeftCancelMulZero M₀\n\n-- See note [lower cancel priority]\nattribute [instance 75] CancelCommMonoidWithZero.toCommMonoidWithZero\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 365,
+    "module": "Mathlib.Algebra.Group.Units.Defs",
+    "name": "IsUnit",
+    "type": "{M : Type u_1} → [Monoid M] → M → Prop",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Units\\Defs.lean",
+    "source_sha256": "217a2e13327ee742ac5a6fc214642741f083460ed74d8c7dd2f9b7b0ca81fd61",
+    "source_excerpt": "def IsUnit [Monoid M] (a : M) : Prop :=\n  ∃ u : Mˣ, (u : M) = a\n\n/-- See `isUnit_iff_exists_and_exists` for a similar lemma with two existentials. -/\n@[to_additive",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 40,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "name": "Preorder.toLE",
+    "type": "{α : Type u_2} → [self : Preorder α] → LE α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+    "source_sha256": "aca5c17f2ec4a74b12c02a75cafb4afc32f9604ab7ec97b64297d44c8f5f27a7",
+    "source_excerpt": "class Preorder (α : Type*) extends LE α, LT α where\n  le_refl : ∀ a : α, a ≤ a\n  le_trans : ∀ a b c : α, a ≤ b → b ≤ c → a ≤ c\n  lt := fun a b => a ≤ b ∧ ¬b ≤ a\n  lt_iff_le_not_ge : ∀ a b : α, a < b ↔ a ≤ b ∧ ¬b ≤ a := by intros; rfl",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 176,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Field.toDivisionRing",
+    "type": "{K : Type u} → [self : Field K] → DivisionRing K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class Field (K : Type u) extends CommRing K, DivisionRing K\n\n-- see Note [lower instance priority]\ninstance (priority := 100) Field.toSemifield [Field K] : Semifield K := { ‹Field K› with }\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 68,
+    "module": "Mathlib.Algebra.Ring.Regular",
+    "name": "IsDomain.toCancelCommMonoidWithZero",
+    "type": "{α : Type u_1} → [inst : CommSemiring α] → [IsDomain α] → CancelCommMonoidWithZero α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Regular.lean",
+    "source_sha256": "6d5b1712318ecb84999088835f307938e26fc39ca53a7b92110f463d190ff35b",
+    "source_excerpt": "instance (priority := 100) IsDomain.toCancelCommMonoidWithZero : CancelCommMonoidWithZero α :=\n  { mul_left_cancel_of_ne_zero := IsLeftCancelMulZero.mul_left_cancel_of_ne_zero }\n\nend IsDomain",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 38,
+    "module": "Init.Prelude",
+    "name": "id",
+    "type": "{α : Sort u} → α → α",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "@[inline] def id {α : Sort u} (a : α) : α := a\n\n/--\nFunction composition, usually written with the infix operator `∘`. A new function is created from\ntwo existing functions, where one function's output is used as input to the other.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 341,
+    "module": "Mathlib.RingTheory.PrincipalIdealDomain",
+    "name": "PrincipalIdealRing.to_uniqueFactorizationMonoid",
+    "type": "∀ {R : Type u} [inst : CommRing R] [inst_1 : IsDomain R] [IsPrincipalIdealRing R], UniqueFactorizationMonoid R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\PrincipalIdealDomain.lean",
+    "source_sha256": "5b41a5e6617d47674559922d21a41203dcdfdbd9ace51821144430ed6aa54cc8",
+    "source_excerpt": "instance (priority := 100) to_uniqueFactorizationMonoid : UniqueFactorizationMonoid R :=\n  { (IsNoetherianRing.wfDvdMonoid : WfDvdMonoid R) with\n    irreducible_iff_prime := irreducible_iff_prime }\n\nend",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 585,
+    "module": "Init.Prelude",
+    "name": "Or.resolve_left",
+    "type": "∀ {a b : Prop}, a ∨ b → ¬a → b",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "theorem Or.resolve_left  (h: Or a b) (na : Not a) : b := h.elim (absurd · na) id\ntheorem Or.resolve_right (h: Or a b) (nb : Not b) : a := h.elim id (absurd · nb)\ntheorem Or.neg_resolve_left  (h : Or (Not a) b) (ha : a) : b := h.elim (absurd ha) id\ntheorem Or.neg_resolve_right (h : Or a (Not b)) (nb : b) : a := h.elim id (absurd nb)\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 61,
+    "module": "Mathlib.Data.Nat.Cast.Defs",
+    "name": "AddMonoidWithOne.toNatCast",
+    "type": "{R : Type u_2} → [self : AddMonoidWithOne R] → NatCast R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Nat\\Cast\\Defs.lean",
+    "source_sha256": "f79d293bd355ff4c1f25965c924568478f00ca82b4cd86cf76721748631c570f",
+    "source_excerpt": "class AddMonoidWithOne (R : Type*) extends NatCast R, AddMonoid R, One R where\n  natCast := Nat.unaryCast\n  /-- The canonical map `ℕ → R` sends `0 : ℕ` to `0 : R`. -/\n  natCast_zero : natCast 0 = 0 := by intros; rfl\n  /-- The canonical map `ℕ → R` is a homomorphism. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 876,
+    "module": "Init.Core",
+    "name": "Ne",
+    "type": "{α : Sort u} → α → α → Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Core.lean",
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "source_excerpt": "@[reducible] def Ne {α : Sort u} (a b : α) :=\n  ¬(a = b)\n\n@[inherit_doc] infix:50 \" ≠ \"  => Ne\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 113,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "DivisionRing.toRing",
+    "type": "{K : Type u_2} → [self : DivisionRing K] → Ring K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "  extends Ring K, DivInvMonoid K, Nontrivial K, NNRatCast K, RatCast K where\n  /-- For a nonzero `a`, `a⁻¹` is a right multiplicative inverse. -/\n  protected mul_inv_cancel : ∀ (a : K), a ≠ 0 → a * a⁻¹ = 1\n  /-- The inverse of `0` is `0` by convention. -/\n  protected inv_zero : (0 : K)⁻¹ = 0",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1231,
+    "module": "Init.Prelude",
+    "name": "instOfNatNat",
+    "type": "(n : ℕ) → OfNat ℕ n",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "instance instOfNatNat (n : Nat) : OfNat Nat n where\n  ofNat := n\n\n/-- `LE α` is the typeclass which supports the notation `x ≤ y` where `x y : α`.-/\nclass LE (α : Type u) where",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 124,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "CommMonoidWithZero.toMonoidWithZero",
+    "type": "{M₀ : Type u_2} → [self : CommMonoidWithZero M₀] → MonoidWithZero M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class CommMonoidWithZero (M₀ : Type*) extends CommMonoid M₀, MonoidWithZero M₀\n\nsection CancelMonoidWithZero\n\nvariable [CancelMonoidWithZero M₀] {a b c : M₀}",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 48,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.degree",
+    "type": "{R : Type u} → [inst : Semiring R] → R[X] → WithBot ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "def degree (p : R[X]) : WithBot ℕ :=\n  p.support.max\n\n/-- `natDegree p` forces `degree p` to ℕ, by defining `natDegree 0 = 0`. -/\ndef natDegree (p : R[X]) : ℕ :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1237,
+    "module": "Init.Prelude",
+    "name": "LE.le",
+    "type": "{α : Type u} → [self : LE α] → α → α → Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  le : α → α → Prop\n\n/-- `LT α` is the typeclass which supports the notation `x < y` where `x y : α`.-/\nclass LT (α : Type u) where\n  /-- The less-than relation: `x < y` -/",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 1142,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.nontrivial",
+    "type": "∀ {R : Type u} [inst : Semiring R] [Nontrivial R], Nontrivial R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance nontrivial [Nontrivial R] : Nontrivial R[X] := by\n  have h : Nontrivial R[ℕ] := by infer_instance\n  rcases h.exists_pair_ne with ⟨x, y, hxy⟩\n  refine ⟨⟨⟨x⟩, ⟨y⟩, ?_⟩⟩\n  simp [hxy]",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1846,
+    "module": "Init.Prelude",
+    "name": "instLENat",
+    "type": "LE ℕ",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "instance instLENat : LE Nat where\n  le := Nat.le\n\n/--\nStrict inequality of natural numbers, usually accessed via the `<` operator.",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 20,
+    "module": "Mathlib.Algebra.Ring.Nat",
+    "name": "Nat.instAddMonoidWithOne",
+    "type": "AddMonoidWithOne ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Nat.lean",
+    "source_sha256": "7c23badda396d101a24d184f8145d4ac19ca253775bb5a95d324693924180a01",
+    "source_excerpt": "instance instAddMonoidWithOne : AddMonoidWithOne ℕ where\n  natCast n := n\n  natCast_zero := rfl\n  natCast_succ _ := rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 268,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_radical",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M},\n  UniqueFactorizationMonoid.radical (UniqueFactorizationMonoid.radical a) = UniqueFactorizationMonoid.radical a",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "lemma radical_radical : radical (radical a) = radical a :=\n  radical_eq_of_primeFactors_eq primeFactors_radical\n\nlemma radical_dvd_radical_iff_normalizedFactors_subset_normalizedFactors :\n    radical a ∣ radical b ↔ normalizedFactors a ⊆ normalizedFactors b := by",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "radical幂等性"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 70,
+    "module": "Init.Data.Cast",
+    "name": "Nat.cast",
+    "type": "{R : Type u} → [NatCast R] → ℕ → R",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Cast.lean",
+    "source_sha256": "c026135a0ec4ef0bd7cb866815a91167d0bde268aab4db1a5d46c986061f9a69",
+    "source_excerpt": "protected def Nat.cast {R : Type u} [NatCast R] : Nat → R :=\n  NatCast.natCast\n\n-- see the notes about coercions into arbitrary types in the module doc-string\ninstance [NatCast R] : CoeTail Nat R where coe := Nat.cast",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 179,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Field.toSemifield",
+    "type": "{K : Type u_1} → [Field K] → Semifield K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "instance (priority := 100) Field.toSemifield [Field K] : Semifield K := { ‹Field K› with }\n\nnamespace NNRat\nvariable [DivisionSemiring K]\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 245,
+    "module": "Mathlib.Order.WithBot",
+    "name": "WithBot.coe_le_coe",
+    "type": "∀ {α : Type u_1} {a b : α} [inst : LE α], ↑a ≤ ↑b ↔ a ≤ b",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+    "source_sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17",
+    "source_excerpt": "@[simp, norm_cast] lemma coe_le_coe : (a : WithBot α) ≤ b ↔ a ≤ b := by simp [le_def]\n\nlemma not_coe_le_bot (a : α) : ¬(a : WithBot α) ≤ ⊥ := by simp [le_def]\n\ninstance orderBot : OrderBot (WithBot α) where bot_le := by simp [le_def]",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "将自然数次数下界提升到WithBot次数下界"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 371,
+    "module": "Mathlib.Algebra.Order.Monoid.Unbundled.WithTop",
+    "name": "WithBot.one",
+    "type": "{α : Type u} → [One α] → One (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Order\\Monoid\\Unbundled\\WithTop.lean",
+    "source_sha256": "d81885540bca541286b52b5d06e1d8af82850b4f6c78bc59b7c9faacccaac834",
+    "source_excerpt": "@[to_additive] instance one : One (WithBot α) := WithTop.one\n\n@[to_additive (attr := simp, norm_cast)] lemma coe_one : ((1 : α) : WithBot α) = 1 := rfl\n\n@[to_additive (attr := simp, norm_cast)]",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 59,
+    "module": "Mathlib.Algebra.Field.IsField",
+    "name": "instIsDomain",
+    "type": "∀ {R : Type u} [inst : Semifield R], IsDomain R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\IsField.lean",
+    "source_sha256": "a362b1ce452f03d6135b6c5aa38ef60ed8cc84d1bcaa264d22f89fdb46a37ab0",
+    "source_excerpt": "instance {R : Type u} [Semifield R] : IsDomain R :=\n  (Semifield.toIsField _).isDomain\n\n@[simp]\ntheorem not_isField_of_subsingleton (R : Type u) [Semiring R] [Subsingleton R] : ¬IsField R :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 63,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial",
+    "type": "(R : Type u_1) → [Semiring R] → Type u_1",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "structure Polynomial (R : Type*) [Semiring R] where ofFinsupp ::\n  /-- The coefficients `ℕ →₀ R` of a polynomial in `R[X]`. -/\n  toFinsupp : AddMonoidAlgebra R ℕ\n\n@[inherit_doc] scoped[Polynomial] notation:9000 R \"[X]\" => Polynomial R",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 155,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical",
+    "type": "{M : Type u_1} → [inst : CancelCommMonoidWithZero M] → [NormalizationMonoid M] → [UniqueFactorizationMonoid M] → M → M",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "def radical (a : M) : M :=\n  (primeFactors a).prod id\n\n@[simp] theorem radical_zero : radical (0 : M) = 1 := by simp [radical]\n@[deprecated (since := \"2025-05-31\")] alias radical_zero_eq := radical_zero",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 98,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "MulZeroOneClass.toMulOneClass",
+    "type": "{M₀ : Type u} → [self : MulZeroOneClass M₀] → MulOneClass M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class MulZeroOneClass (M₀ : Type u) extends MulOneClass M₀, MulZeroClass M₀\n\n/-- A type `M₀` is a “monoid with zero” if it is a monoid with zero element, and `0` is left\nand right absorbing. -/\nclass MonoidWithZero (M₀ : Type u) extends Monoid M₀, MulZeroOneClass M₀, SemigroupWithZero M₀",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1303,
+    "module": "Init.Prelude",
+    "name": "instTransEq",
+    "type": "{α : Sort u_1} → {γ : Sort u_2} → (r : α → γ → Sort u) → Trans Eq r r",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "instance (r : α → γ → Sort u) : Trans Eq r r where\n  trans heq h' := heq ▸ h'\n\ninstance (r : α → β → Sort u) : Trans r Eq r where\n  trans h' heq := heq ▸ h'",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 602,
+    "module": "Init.Prelude",
+    "name": "Bool.true",
+    "type": "Bool",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  | true : Bool\n\nexport Bool (false true)\n\n/--",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 18,
+    "module": "_stdin",
+    "name": "mathlib2_radical_natDegree_ne_zero",
+    "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → (UniqueFactorizationMonoid.radical a).natDegree ≠ 0",
+    "path": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "source_excerpt": "theorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\n  intro hz",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 343,
+    "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+    "name": "Polynomial.instEuclideanDomain",
+    "type": "{R : Type u} → [inst : Field R] → EuclideanDomain R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+    "source_sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1",
+    "source_excerpt": "instance instEuclideanDomain : EuclideanDomain R[X] :=\n  { Polynomial.commRing,\n    Polynomial.nontrivial with\n    quotient := (· / ·)\n    quotient_zero := by simp [div_def]",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 333,
+    "module": "Mathlib.Algebra.Group.Defs",
+    "name": "MulOneClass.toMulOne",
+    "type": "{M : Type u} → [self : MulOneClass M] → MulOne M",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "source_sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "source_excerpt": "class MulOneClass (M : Type u) extends MulOne M where\n  /-- One is a left neutral element for multiplication -/\n  protected one_mul : ∀ a : M, 1 * a = a\n  /-- One is a right neutral element for multiplication -/\n  protected mul_one : ∀ a : M, a * 1 = a",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 377,
+    "module": "Mathlib.Algebra.Ring.Defs",
+    "name": "CommRing.toCommSemiring",
+    "type": "{α : Type u} → [s : CommRing α] → CommSemiring α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+    "source_sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50",
+    "source_excerpt": "instance (priority := 100) CommRing.toCommSemiring [s : CommRing α] : CommSemiring α :=\n  { s with }\n\n-- see Note [lower instance priority]\ninstance (priority := 100) CommRing.toNonUnitalCommRing [s : CommRing α] : NonUnitalCommRing α :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 164,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Semifield.toDivisionSemiring",
+    "type": "{K : Type u_2} → [self : Semifield K] → DivisionSemiring K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class Semifield (K : Type*) extends CommSemiring K, DivisionSemiring K, CommGroupWithZero K\n\n/-- A `Field` is a `CommRing` with multiplicative inverses for nonzero elements.\n\nAn instance of `Field K` includes maps `ratCast : ℚ → K` and `qsmul : ℚ → K → K`.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 102,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "MonoidWithZero.toMulZeroOneClass",
+    "type": "{M₀ : Type u} → [self : MonoidWithZero M₀] → MulZeroOneClass M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class MonoidWithZero (M₀ : Type u) extends Monoid M₀, MulZeroOneClass M₀, SemigroupWithZero M₀\n\nsection MonoidWithZero\n\nvariable [MonoidWithZero M₀]",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1265,
+    "module": "Mathlib.Algebra.GCDMonoid.Basic",
+    "name": "CommGroupWithZero.instNormalizedGCDMonoid",
+    "type": "(G₀ : Type u_2) → [inst : CommGroupWithZero G₀] → [DecidableEq G₀] → NormalizedGCDMonoid G₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GCDMonoid\\Basic.lean",
+    "source_sha256": "b0a74ed4bb7cad20e7087002c7712132826d1597dfea40bbb8158ca9e7f3e907",
+    "source_excerpt": "instance (priority := 100) : NormalizedGCDMonoid G₀ where\n  normUnit x := if h : x = 0 then 1 else (Units.mk0 x h)⁻¹\n  normUnit_zero := dif_pos rfl\n  normUnit_mul {x y} x0 y0 := Units.ext <| by simp [x0, y0, mul_comm]\n  normUnit_coe_units u := by simp",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 45,
+    "module": "Mathlib.Data.Nat.Basic",
+    "name": "Nat.instPreorder",
+    "type": "Preorder ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Data\\Nat\\Basic.lean",
+    "source_sha256": "fff634d195e720ad98c054c066b6c52c9cd7ac0a6e88053be05e01b8f7b57d95",
+    "source_excerpt": "instance : Preorder ℕ := inferInstance\ninstance : PartialOrder ℕ := inferInstance\n\ninstance instNontrivial : Nontrivial ℕ := ⟨⟨0, 1, Nat.zero_ne_one⟩⟩\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 279,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.semiring",
+    "type": "{R : Type u} → [inst : Semiring R] → Semiring R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance semiring : Semiring R[X] :=\n  fast_instance% Function.Injective.semiring toFinsupp toFinsupp_injective toFinsupp_zero\n    toFinsupp_one toFinsupp_add toFinsupp_mul (fun _ _ => toFinsupp_nsmul _ _) toFinsupp_pow\n    fun _ => rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 265,
+    "module": "Mathlib.Algebra.GCDMonoid.Basic",
+    "name": "NormalizedGCDMonoid.toNormalizationMonoid",
+    "type": "{α : Type u_2} → {inst : CancelCommMonoidWithZero α} → [self : NormalizedGCDMonoid α] → NormalizationMonoid α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GCDMonoid\\Basic.lean",
+    "source_sha256": "b0a74ed4bb7cad20e7087002c7712132826d1597dfea40bbb8158ca9e7f3e907",
+    "source_excerpt": "class NormalizedGCDMonoid (α : Type*) [CancelCommMonoidWithZero α] extends NormalizationMonoid α,\n  GCDMonoid α where\n  /-- The GCD is normalized to itself. -/\n  normalize_gcd : ∀ a b, normalize (gcd a b) = gcd a b\n  /-- The LCM is normalized to itself. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1192,
+    "module": "Init.Prelude",
+    "name": "Nat",
+    "type": "Type",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "inductive Nat where\n  /--\n  Zero, the smallest natural number.\n\n  Using `Nat.zero` explicitly should usually be avoided in favor of the literal `0`, which is the",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 262,
+    "module": "Mathlib.RingTheory.PrincipalIdealDomain",
+    "name": "EuclideanDomain.to_principal_ideal_domain",
+    "type": "∀ {R : Type u} [inst : EuclideanDomain R], IsPrincipalIdealRing R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\PrincipalIdealDomain.lean",
+    "source_sha256": "5b41a5e6617d47674559922d21a41203dcdfdbd9ace51821144430ed6aa54cc8",
+    "source_excerpt": "instance (priority := 100) EuclideanDomain.to_principal_ideal_domain : IsPrincipalIdealRing R where\n  principal S := by classical exact\n    ⟨if h : { x : R | x ∈ S ∧ x ≠ 0 }.Nonempty then\n        have wf : WellFounded (EuclideanDomain.r : R → R → Prop) := EuclideanDomain.r_wellFounded\n        have hmin : WellFounded.min wf { x : R | x ∈ S ∧ x ≠ 0 } h ∈ S ∧",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 27,
+    "module": "_stdin",
+    "name": "mathlib2_mason_lemma3_nat",
+    "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.natDegree → 1 ≤ (UniqueFactorizationMonoid.radical a).natDegree",
+    "path": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "source_excerpt": "theorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\n\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 164,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Semifield.toCommGroupWithZero",
+    "type": "{K : Type u_2} → [self : Semifield K] → CommGroupWithZero K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class Semifield (K : Type*) extends CommSemiring K, DivisionSemiring K, CommGroupWithZero K\n\n/-- A `Field` is a `CommRing` with multiplicative inverses for nonzero elements.\n\nAn instance of `Field K` includes maps `ratCast : ℚ → K` and `qsmul : ℚ → K → K`.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1242,
+    "module": "Init.Prelude",
+    "name": "LT.lt",
+    "type": "{α : Type u} → [self : LT α] → α → α → Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  lt : α → α → Prop\n\n/-- `a ≥ b` is an abbreviation for `b ≤ a`. -/\n@[reducible] def GE.ge {α : Type u} [LE α] (a b : α) : Prop := LE.le b a\n/-- `a > b` is an abbreviation for `b < a`. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 183,
+    "module": "Init.Prelude",
+    "name": "True",
+    "type": "Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "inductive True : Prop where\n  /-- `True` is true, and `True.intro` (or more commonly, `trivial`)\n  is the proof. -/\n  | intro : True\n",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 36,
+    "module": "Init.SimpLemmas",
+    "name": "eq_self",
+    "type": "∀ {α : Sort u_1} (a : α), (a = a) = True",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\SimpLemmas.lean",
+    "source_sha256": "234d956816c27db3d2b120f13e13add88ddabce52687196f034ed431b36dc081",
+    "source_excerpt": "@[simp] theorem eq_self (a : α) : (a = a) = True := eq_true rfl\n\ntheorem implies_congr {p₁ p₂ : Sort u} {q₁ q₂ : Sort v} (h₁ : p₁ = p₂) (h₂ : q₁ = q₂) : (p₁ → q₁) = (p₂ → q₂) :=\n  h₁ ▸ h₂ ▸ rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 180,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_of_isUnit",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, IsUnit a → UniqueFactorizationMonoid.radical a = 1",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "theorem radical_of_isUnit (h : IsUnit a) : radical a = 1 :=\n  (radical_eq_of_associated (associated_one_iff_isUnit.mpr h)).trans radical_one\n\ntheorem radical_mul_of_isUnit_left (h : IsUnit u) : radical (u * a) = radical a :=\n  radical_eq_of_associated (associated_unit_mul_left _ _ h)",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "单位的radical等于1"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 113,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.zero",
+    "type": "{R : Type u} → [inst : Semiring R] → Zero R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance zero : Zero R[X] :=\n  ⟨⟨0⟩⟩\n\ninstance one : One R[X] :=\n  ⟨⟨1⟩⟩",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 185,
+    "module": "Init.Core",
+    "name": "Iff.mp",
+    "type": "∀ {a b : Prop}, (a ↔ b) → a → b",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Core.lean",
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "source_excerpt": "  mp : a → b\n  /-- Modus ponens for if and only if, reversed. If `a ↔ b` and `b`, then `a`. -/\n  mpr : b → a\n\n@[inherit_doc] infix:20 \" <-> \" => Iff",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1133,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.commRing",
+    "type": "{R : Type u} → [inst : CommRing R] → CommRing R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance commRing [CommRing R] : CommRing R[X] :=\n  --TODO: add reference to library note in PR https://github.com/leanprover-community/mathlib4/pull/7432\n  { toRing := Polynomial.ring\n    mul_comm := mul_comm }\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 425,
+    "module": "Mathlib.Order.WithBot",
+    "name": "WithBot.decidableLT",
+    "type": "{α : Type u_1} → [inst : LT α] → [DecidableLT α] → DecidableLT (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+    "source_sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17",
+    "source_excerpt": "instance decidableLT [LT α] [DecidableLT α] : DecidableLT (WithBot α)\n  | _, ⊥ => isFalse <| by simp\n  | ⊥, (a : α) => isTrue <| by simp\n  | (a : α), (b : α) => decidable_of_iff' _ coe_lt_coe\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 84,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "DivisionSemiring.toSemiring",
+    "type": "{K : Type u_2} → [self : DivisionSemiring K] → Semiring K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class DivisionSemiring (K : Type*) extends Semiring K, GroupWithZero K, NNRatCast K where\n  protected nnratCast := NNRat.castRec\n  /-- However `NNRat.cast` is defined, it must be propositionally equal to `a / b`.\n\n  Do not use this lemma directly. Use `NNRat.cast_def` instead. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 286,
+    "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+    "name": "Polynomial.isUnit_iff_degree_eq_zero",
+    "type": "∀ {R : Type u} [inst : Field R] {p : R[X]}, IsUnit p ↔ p.degree = 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+    "source_sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1",
+    "source_excerpt": "theorem isUnit_iff_degree_eq_zero : IsUnit p ↔ degree p = 0 :=\n  ⟨degree_eq_zero_of_isUnit, fun h =>\n    have : degree p ≤ 0 := by simp [*, le_refl]\n    have hc : coeff p 0 ≠ 0 := fun hc => by\n      rw [eq_C_of_degree_le_zero this, hc] at h; simp only [map_zero] at h; contradiction",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "次数零推出单位"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 598,
+    "module": "Init.Prelude",
+    "name": "Bool",
+    "type": "Type",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "inductive Bool : Type where\n  /-- The Boolean value `false`, not to be confused with the proposition `False`. -/\n  | false : Bool\n  /-- The Boolean value `true`, not to be confused with the proposition `True`. -/\n  | true : Bool",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 16,
+    "module": "Init.SimpLemmas",
+    "name": "of_eq_true",
+    "type": "∀ {p : Prop}, p = True → p",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\SimpLemmas.lean",
+    "source_sha256": "234d956816c27db3d2b120f13e13add88ddabce52687196f034ed431b36dc081",
+    "source_excerpt": "theorem of_eq_true (h : p = True) : p := h ▸ trivial\ntheorem of_eq_false (h : p = False) : ¬ p := fun hp => False.elim (h.mp hp)\n\ntheorem eq_true (h : p) : p = True :=\n  propext ⟨fun _ => trivial, fun _ => h⟩",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 2037,
+    "module": "Init.Prelude",
+    "name": "Nat.decLt",
+    "type": "(n m : ℕ) → Decidable (n < m)",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "instance Nat.decLt (n m : @& Nat) : Decidable (LT.lt n m) :=\n  decLe (succ n) m\n\ninstance : Min Nat := minOfLe\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 10,
+    "module": "_stdin",
+    "name": "mathlib2_unit_of_radical_unit",
+    "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  a ≠ 0 → IsUnit (UniqueFactorizationMonoid.radical a) → IsUnit a",
+    "path": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "source_excerpt": "theorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\n  have hr : radical a = 1 := by\n    calc\n      radical a = radical (radical a) := radical_radical.symm",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 27,
+    "module": "Init.Data.Zero",
+    "name": "One.toOfNat1",
+    "type": "{α : Type u_1} → [One α] → OfNat α 1",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Zero.lean",
+    "source_sha256": "03c3ec911d864c87b0164b6bae217b1c055240356e27868bf63c353b7093bddb",
+    "source_excerpt": "instance (priority := 300) One.toOfNat1 {α} [One α] : OfNat α (nat_lit 1) where\n  ofNat := ‹One α›.1\n\ninstance (priority := 200) One.ofOfNat1 {α} [OfNat α (nat_lit 1)] : One α where\n  one := 1",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 17,
+    "module": "Init.Data.Zero",
+    "name": "Zero.toOfNat0",
+    "type": "{α : Type u_1} → [Zero α] → OfNat α 0",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Zero.lean",
+    "source_sha256": "03c3ec911d864c87b0164b6bae217b1c055240356e27868bf63c353b7093bddb",
+    "source_excerpt": "instance (priority := 300) Zero.toOfNat0 {α} [Zero α] : OfNat α (nat_lit 0) where\n  ofNat := ‹Zero α›.1\n\ninstance (priority := 200) Zero.ofOfNat0 {α} [OfNat α (nat_lit 0)] : Zero α where\n  zero := 0",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 277,
+    "module": "Init.Prelude",
+    "name": "Eq.refl",
+    "type": "∀ {α : Sort u_1} (a : α), a = a",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  | refl (a : α) : Eq a a\n\n/-- Non-dependent recursor for the equality type. -/\n@[simp] abbrev Eq.ndrec.{u1, u2} {α : Sort u2} {a : α} {motive : α → Sort u1} (m : motive a) {b : α} (h : Eq a b) : motive b :=\n  h.rec m",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 69,
+    "module": "Mathlib.Algebra.EuclideanDomain.Defs",
+    "name": "EuclideanDomain.toNontrivial",
+    "type": "∀ {R : Type u} [self : EuclideanDomain R], Nontrivial R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Defs.lean",
+    "source_sha256": "82a9ec6b05aa7433cd28ab80c3ae79f622f267fadace91cb3685ba5c559a1e0b",
+    "source_excerpt": "class EuclideanDomain (R : Type u) extends CommRing R, Nontrivial R where\n  /-- A division function (denoted `/`) on `R`.\n    This satisfies the property `b * (a / b) + a % b = a`, where `%` denotes `remainder`. -/\n  protected quotient : R → R → R\n  /-- Division by zero should always give zero by convention. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 4,
+    "module": "_stdin",
+    "name": "mathlib2_unit_of_natDegree_zero",
+    "type": "∀ {k : Type u_1} [inst : Field k] (a : k[X]), a ≠ 0 → a.natDegree = 0 → IsUnit a",
+    "path": "D:\\mathproof\\lean\\Research\\Lemma3.lean",
+    "source_sha256": "7c20f0c27cd0ce2e5a7d293c56859ee41fde0e75d6091259d1e63fe83e4b4404",
+    "source_excerpt": "theorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\n  apply isUnit_iff_degree_eq_zero.mpr\n  rw [degree_eq_natDegree ha, hz]\n  rfl",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 144,
+    "module": "Init.Data.Nat.Lemmas",
+    "name": "Nat.one_le_iff_ne_zero",
+    "type": "∀ {n : ℕ}, 1 ≤ n ↔ n ≠ 0",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Lemmas.lean",
+    "source_sha256": "7c590062414f7c8970454eb99af6a497491b8d3454443f33dfa8c8d16add9dad",
+    "source_excerpt": "theorem one_le_iff_ne_zero : 1 ≤ n ↔ n ≠ 0 := Nat.pos_iff_ne_zero\n\ntheorem one_lt_iff_ne_zero_and_ne_one : ∀ {n : Nat}, 1 < n ↔ n ≠ 0 ∧ n ≠ 1\n  | 0 => by decide\n  | 1 => by decide",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 164,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Semifield.toCommSemiring",
+    "type": "{K : Type u_2} → [self : Semifield K] → CommSemiring K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class Semifield (K : Type*) extends CommSemiring K, DivisionSemiring K, CommGroupWithZero K\n\n/-- A `Field` is a `CommRing` with multiplicative inverses for nonzero elements.\n\nAn instance of `Field K` includes maps `ratCast : ℚ → K` and `qsmul : ℚ → K → K`.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 562,
+    "module": "Init.Prelude",
+    "name": "Or",
+    "type": "Prop → Prop → Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "inductive Or (a b : Prop) : Prop where\n  /-- `Or.inl` is \"left injection\" into an `Or`. If `h : a` then `Or.inl h : a ∨ b`. -/\n  | inl (h : a) : Or a b\n  /-- `Or.inr` is \"right injection\" into an `Or`. If `h : b` then `Or.inr h : a ∨ b`. -/\n  | inr (h : b) : Or a b",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 240,
+    "module": "Mathlib.Order.WithBot",
+    "name": "WithBot.le",
+    "type": "{α : Type u_1} → [LE α] → LE (WithBot α)",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+    "source_sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17",
+    "source_excerpt": "instance (priority := 10) le : LE (WithBot α) :=\n  ⟨fun o₁ o₂ => ∀ a : α, o₁ = ↑a → ∃ b : α, o₂ = ↑b ∧ a ≤ b⟩\n\nlemma le_def : x ≤ y ↔ ∀ a : α, x = ↑a → ∃ b : α, y = ↑b ∧ a ≤ b := .rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1857,
+    "module": "Init.Prelude",
+    "name": "instLTNat",
+    "type": "LT ℕ",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "instance instLTNat : LT Nat where\n  lt := Nat.lt\n\ntheorem Nat.not_succ_le_zero : ∀ (n : Nat), LE.le (succ n) 0 → False\n  | 0      => nofun",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 98,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "MulZeroOneClass.toMulZeroClass",
+    "type": "{M₀ : Type u} → [self : MulZeroOneClass M₀] → MulZeroClass M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class MulZeroOneClass (M₀ : Type u) extends MulOneClass M₀, MulZeroClass M₀\n\n/-- A type `M₀` is a “monoid with zero” if it is a monoid with zero element, and `0` is left\nand right absorbing. -/\nclass MonoidWithZero (M₀ : Type u) extends Monoid M₀, MulZeroOneClass M₀, SemigroupWithZero M₀",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 69,
+    "module": "Mathlib.Algebra.EuclideanDomain.Defs",
+    "name": "EuclideanDomain.toCommRing",
+    "type": "{R : Type u} → [self : EuclideanDomain R] → CommRing R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Defs.lean",
+    "source_sha256": "82a9ec6b05aa7433cd28ab80c3ae79f622f267fadace91cb3685ba5c559a1e0b",
+    "source_excerpt": "class EuclideanDomain (R : Type u) extends CommRing R, Nontrivial R where\n  /-- A division function (denoted `/`) on `R`.\n    This satisfies the property `b * (a / b) + a % b = a`, where `%` denotes `remainder`. -/\n  protected quotient : R → R → R\n  /-- Division by zero should always give zero by convention. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1063,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.commSemiring",
+    "type": "{R : Type u} → [inst : CommSemiring R] → CommSemiring R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance commSemiring : CommSemiring R[X] :=\n  fast_instance% { Function.Injective.commSemigroup toFinsupp toFinsupp_injective toFinsupp_mul with\n    toSemiring := Polynomial.semiring }\n\nend CommSemiring",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 52,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.natDegree",
+    "type": "{R : Type u} → [inst : Semiring R] → R[X] → ℕ",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "def natDegree (p : R[X]) : ℕ :=\n  (degree p).unbotD 0\n\n/-- `leadingCoeff p` gives the coefficient of the highest power of `X` in `p`. -/\ndef leadingCoeff (p : R[X]) : R :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 27,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Units",
+    "name": "Polynomial.natDegree_eq_zero_of_isUnit",
+    "type": "∀ {R : Type u} [inst : Semiring R] [NoZeroDivisors R] {p : R[X]}, IsUnit p → p.natDegree = 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+    "source_sha256": "2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044",
+    "source_excerpt": "lemma natDegree_eq_zero_of_isUnit (h : IsUnit p) : natDegree p = 0 := by\n  nontriviality R\n  obtain ⟨q, hq⟩ := h.exists_right_inv\n  have := natDegree_mul (left_ne_zero_of_mul_eq_one hq) (right_ne_zero_of_mul_eq_one hq)\n  rw [hq, natDegree_one, eq_comm, add_eq_zero] at this",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "原多项式为单位导致natDegree为零，形成矛盾"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1158,
+    "module": "Mathlib.Algebra.Group.Defs",
+    "name": "AddGroup.toAddCancelMonoid",
+    "type": "{G : Type u_1} → [AddGroup G] → AddCancelMonoid G",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "source_sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "source_excerpt": "@[to_additive]\ninstance (priority := 100) Group.toCancelMonoid : CancelMonoid G where\n  mul_right_cancel := fun a b c h ↦ by\n    rw [← mul_inv_cancel_right b a, show b * a = c * a from h, mul_inv_cancel_right]\n  mul_left_cancel := fun a {b c} h ↦ by",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 511,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.natDegree_pos_iff_degree_pos",
+    "type": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, 0 < p.natDegree ↔ 0 < p.degree",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "theorem natDegree_pos_iff_degree_pos : 0 < natDegree p ↔ 0 < degree p :=\n  lt_iff_lt_of_le_iff_le natDegree_le_iff_degree_le\n\nend Semiring\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "最终目标的degree正前提转为natDegree正"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 1228,
+    "module": "Init.Prelude",
+    "name": "OfNat.ofNat",
+    "type": "{α : Type u} → (x : ℕ) → [self : OfNat α x] → α",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "  ofNat : α\n\n@[default_instance 100] /- low prio -/\ninstance instOfNatNat (n : Nat) : OfNat Nat n where\n  ofNat := n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 321,
+    "module": "Init.Prelude",
+    "name": "Eq.symm",
+    "type": "∀ {α : Sort u} {a b : α}, a = b → b = a",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "@[symm] theorem Eq.symm {α : Sort u} {a b : α} (h : Eq a b) : Eq b a :=\n  h ▸ rfl\n\n/--\nEquality is transitive: if `a = b` and `b = c` then `a = c`.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 942,
+    "module": "Init.Prelude",
+    "name": "Decidable.decide",
+    "type": "(p : Prop) → [h : Decidable p] → Bool",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "@[inline_if_reduce, nospecialize] def Decidable.decide (p : Prop) [h : Decidable p] : Bool :=\n  h.casesOn (fun _ => false) (fun _ => true)\n\nexport Decidable (isTrue isFalse decide)\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 274,
+    "module": "Init.Prelude",
+    "name": "Eq",
+    "type": "{α : Sort u_1} → α → α → Prop",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "inductive Eq : α → α → Prop where\n  /-- `Eq.refl a : a = a` is reflexivity, the unique constructor of the\n  equality type. See also `rfl`, which is usually used instead. -/\n  | refl (a : α) : Eq a a\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 176,
+    "module": "Mathlib.Algebra.Field.Defs",
+    "name": "Field",
+    "type": "Type u → Type u",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\Defs.lean",
+    "source_sha256": "048906ba37e5bdd8a7a1e94385fece2f979f55d3fb34017e3619447a76e97c4f",
+    "source_excerpt": "class Field (K : Type u) extends CommRing K, DivisionRing K\n\n-- see Note [lower instance priority]\ninstance (priority := 100) Field.toSemifield [Field K] : Semifield K := { ‹Field K› with }\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 1885,
+    "module": "Init.Prelude",
+    "name": "Nat.lt_of_lt_of_le",
+    "type": "∀ {n m k : ℕ}, n < m → m ≤ k → n < k",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "protected theorem Nat.lt_of_lt_of_le {n m k : Nat} : LT.lt n m → LE.le m k → LT.lt n k :=\n  Nat.le_trans\n\nprotected theorem Nat.lt_trans {n m k : Nat} (h₁ : LT.lt n m) : LT.lt m k → LT.lt n k :=\n  Nat.le_trans (le_step h₁)",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 143,
+    "module": "Mathlib.Algebra.Ring.Defs",
+    "name": "Ring.toAddGroupWithOne",
+    "type": "{R : Type u} → [self : Ring R] → AddGroupWithOne R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+    "source_sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50",
+    "source_excerpt": "class Ring (R : Type u) extends Semiring R, AddCommGroup R, AddGroupWithOne R\n\n/-!\n### Semirings\n-/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 259,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_eq_one_iff",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, UniqueFactorizationMonoid.radical a = 1 ↔ a = 0 ∨ IsUnit a",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "theorem radical_eq_one_iff : radical a = 1 ↔ a = 0 ∨ IsUnit a := by\n  refine ⟨?_, (Or.elim · (by simp +contextual) radical_of_isUnit)⟩\n  intro h\n  rw [or_iff_not_imp_left]\n  intro ha",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "从radical等于1及非零推出单位"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 116,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.one",
+    "type": "{R : Type u} → [inst : Semiring R] → One R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance one : One R[X] :=\n  ⟨⟨1⟩⟩\n\ninstance add' : Add R[X] :=\n  ⟨add⟩",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 20,
+    "module": "Mathlib.Algebra.EuclideanDomain.Field",
+    "name": "Field.toEuclideanDomain",
+    "type": "{K : Type u_1} → [Field K] → EuclideanDomain K",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Field.lean",
+    "source_sha256": "2f19bab0f6894d539b9375a819ef9a55b5e82cd1c39f46e57b34d57f96f71a1d",
+    "source_excerpt": "instance (priority := 100) toEuclideanDomain : EuclideanDomain K :=\n{ toCommRing := toCommRing\n  quotient := (· / ·), remainder := fun a b => a - a * b / b, quotient_zero := div_zero,\n  quotient_mul_add_remainder_eq := fun a b => by\n    by_cases h : b = 0 <;> simp [h, mul_div_cancel₀]",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 102,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "MonoidWithZero.toMonoid",
+    "type": "{M₀ : Type u} → [self : MonoidWithZero M₀] → Monoid M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class MonoidWithZero (M₀ : Type u) extends Monoid M₀, MulZeroOneClass M₀, SemigroupWithZero M₀\n\nsection MonoidWithZero\n\nvariable [MonoidWithZero M₀]",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 333,
+    "module": "Init.Prelude",
+    "name": "Eq.trans",
+    "type": "∀ {α : Sort u} {a b c : α}, a = b → b = c → a = c",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "theorem Eq.trans {α : Sort u} {a b c : α} (h₁ : Eq a b) (h₂ : Eq b c) : Eq a c :=\n  h₂ ▸ h₁\n\n/--\nCast across a type equality. If `h : α = β` is an equality of types, and",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 95,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "name": "lt_of_lt_of_le",
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b ≤ c → a < c",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+    "source_sha256": "aca5c17f2ec4a74b12c02a75cafb4afc32f9604ab7ec97b64297d44c8f5f27a7",
+    "source_excerpt": "lemma lt_of_lt_of_le (hab : a < b) (hbc : b ≤ c) : a < c :=\n  lt_of_le_not_ge (le_trans (le_of_lt hab) hbc) fun hca ↦ not_le_of_gt hab (le_trans hbc hca)\n\nlemma lt_of_le_of_lt (hab : a ≤ b) (hbc : b < c) : a < c :=\n  lt_of_le_not_ge (le_trans hab (le_of_lt hbc)) fun hca ↦ not_le_of_gt hbc (le_trans hca hab)",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式基础顺序定理",
+    "purpose": "由0<1和1≤degree推出0<degree"
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 33,
+    "module": "Mathlib.Algebra.GroupWithZero.Defs",
+    "name": "MulZeroClass.toZero",
+    "type": "{M₀ : Type u} → [self : MulZeroClass M₀] → Zero M₀",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\GroupWithZero\\Defs.lean",
+    "source_sha256": "fe3761e54952b61a63f834237e3f886484d13ae6ada20d13e60637d73863f647",
+    "source_excerpt": "class MulZeroClass (M₀ : Type u) extends Mul M₀, Zero M₀ where\n  /-- Zero is a left absorbing element for multiplication -/\n  zero_mul : ∀ a : M₀, 0 * a = 0\n  /-- Zero is a right absorbing element for multiplication -/\n  mul_zero : ∀ a : M₀, a * 0 = 0",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 436,
+    "module": "Init.Data.Nat.Basic",
+    "name": "Nat.ne_of_gt",
+    "type": "∀ {a b : ℕ}, b < a → a ≠ b",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "source_excerpt": "theorem ne_of_gt {a b : Nat} (h : b < a) : a ≠ b := (ne_of_lt h).symm\nprotected theorem ne_of_lt' : ∀{a b : Nat}, a < b → b ≠ a := ne_of_gt\n\n@[simp] protected theorem not_le {a b : Nat} : ¬ a ≤ b ↔ b < a :=\n  Iff.intro Nat.gt_of_not_le Nat.not_le_of_gt",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 140,
+    "module": "Mathlib.Algebra.Ring.Defs",
+    "name": "Semiring.toMonoidWithZero",
+    "type": "{α : Type u} → [self : Semiring α] → MonoidWithZero α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+    "source_sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50",
+    "source_excerpt": "class Semiring (α : Type u) extends NonUnitalSemiring α, NonAssocSemiring α, MonoidWithZero α\n\n/-- A `Ring` is a `Semiring` with negation making it an additive group. -/\nclass Ring (R : Type u) extends Semiring R, AddCommGroup R, AddGroupWithOne R\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  },
+  {
+    "kind": "definition_or_instance",
+    "line": 969,
+    "module": "Init.Prelude",
+    "name": "DecidableEq",
+    "type": "Sort u → Sort (max 1 u)",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Prelude.lean",
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "source_excerpt": "abbrev DecidableEq (α : Sort u) :=\n  (a b : α) → Decidable (Eq a b)\n\n/--\nChecks whether two terms of a type are equal using the type's `DecidableEq` instance.",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ]
+  },
+  {
+    "kind": "theorem",
+    "line": 499,
+    "module": "Init.Data.Nat.Basic",
+    "name": "Nat.zero_lt_one",
+    "type": "0 < 1",
+    "path": "D:\\mathproof\\.tools\\lean-4.24.0-windows\\src\\lean\\Init\\Data\\Nat\\Basic.lean",
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "source_excerpt": "protected theorem zero_lt_one : 0 < (1:Nat) :=\n  zero_lt_succ 0\n\nprotected theorem pos_iff_ne_zero : 0 < n ↔ n ≠ 0 := ⟨ne_of_gt, Nat.pos_of_ne_zero⟩\n",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ]
+  }
+]

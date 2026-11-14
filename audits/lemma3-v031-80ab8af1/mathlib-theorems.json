@@ -1,0 +1,439 @@
+[
+  {
+    "kind": "theorem",
+    "line": 222,
+    "module": "Mathlib.Algebra.Ring.Basic",
+    "name": "IsDomain.to_noZeroDivisors",
+    "type": "∀ (α : Type u_3) [inst : Semiring α] [IsDomain α], NoZeroDivisors α",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Basic.lean",
+    "source_sha256": "703775a08b753536dcc6b5a882202735384cd9da22842455f48c5c51f695479c",
+    "source_excerpt": "instance (priority := 100) IsDomain.to_noZeroDivisors [Semiring α] [IsDomain α] :\n    NoZeroDivisors α :=\n  IsRightCancelMulZero.to_noZeroDivisors α\n\ninstance Subsingleton.to_isCancelMulZero [Mul α] [Zero α] [Subsingleton α] : IsCancelMulZero α where",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 93,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.degree_eq_natDegree",
+    "type": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, p ≠ 0 → p.degree = ↑p.natDegree",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "theorem degree_eq_natDegree (hp : p ≠ 0) : degree p = (natDegree p : WithBot ℕ) := by\n  let ⟨n, hn⟩ := not_forall.1 (mt Option.eq_none_iff_forall_not_mem.2 (mt degree_eq_bot.1 hp))\n  have hn : degree p = some n := Classical.not_not.1 hn\n  rw [natDegree, hn]; rfl\n",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "非零多项式的degree/natDegree转换"
+  },
+  {
+    "kind": "theorem",
+    "line": 1163,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.instIsDomainOfIsCancelAdd",
+    "type": "∀ {R : Type u} [inst : Semiring R] [IsCancelAdd R] [IsDomain R], IsDomain R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance [IsCancelAdd R] [IsDomain R] : IsDomain R[X] where\n\n/-- See also `Polynomial.isCancelMulZero_iff`: in order for `R[X]` to have cancellative\nmultiplication (stronger than `NoZeroDivisors` in general, but equivalent if `R` is a ring),\n`R` must have both cancellative multiplication and cancellative addition. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 212,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_ne_zero",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M} [Nontrivial M], UniqueFactorizationMonoid.radical a ≠ 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "@[simp] theorem radical_ne_zero [Nontrivial M] : radical a ≠ 0 := by\n  rw [radical, ← Finset.prod_val]\n  apply Multiset.prod_ne_zero\n  rw [primeFactors]\n  simp only [Multiset.toFinset_val, Multiset.mem_dedup]",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "排除radical为零，允许次数转换"
+  },
+  {
+    "kind": "theorem",
+    "line": 758,
+    "module": "Mathlib.Algebra.Group.Defs",
+    "name": "AddCancelMonoid.toIsCancelAdd",
+    "type": "∀ (M : Type u) [inst : AddCancelMonoid M], IsCancelAdd M",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+    "source_sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971",
+    "source_excerpt": "@[to_additive /-- Any `AddCancelMonoid G` satisfies `IsCancelAdd G`. -/]\ninstance (priority := 100) CancelMonoid.toIsCancelMul (M : Type u) [CancelMonoid M] :\n    IsCancelMul M where\n\nend CancelMonoid",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 341,
+    "module": "Mathlib.RingTheory.PrincipalIdealDomain",
+    "name": "PrincipalIdealRing.to_uniqueFactorizationMonoid",
+    "type": "∀ {R : Type u} [inst : CommRing R] [inst_1 : IsDomain R] [IsPrincipalIdealRing R], UniqueFactorizationMonoid R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\PrincipalIdealDomain.lean",
+    "source_sha256": "5b41a5e6617d47674559922d21a41203dcdfdbd9ace51821144430ed6aa54cc8",
+    "source_excerpt": "instance (priority := 100) to_uniqueFactorizationMonoid : UniqueFactorizationMonoid R :=\n  { (IsNoetherianRing.wfDvdMonoid : WfDvdMonoid R) with\n    irreducible_iff_prime := irreducible_iff_prime }\n\nend",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 1142,
+    "module": "Mathlib.Algebra.Polynomial.Basic",
+    "name": "Polynomial.nontrivial",
+    "type": "∀ {R : Type u} [inst : Semiring R] [Nontrivial R], Nontrivial R[X]",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Basic.lean",
+    "source_sha256": "ee254971221329a6a3b8981ea468437ca3fe45c4a66d211464d16ca0a37150fa",
+    "source_excerpt": "instance nontrivial [Nontrivial R] : Nontrivial R[X] := by\n  have h : Nontrivial R[ℕ] := by infer_instance\n  rcases h.exists_pair_ne with ⟨x, y, hxy⟩\n  refine ⟨⟨⟨x⟩, ⟨y⟩, ?_⟩⟩\n  simp [hxy]",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 268,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_radical",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M},\n  UniqueFactorizationMonoid.radical (UniqueFactorizationMonoid.radical a) = UniqueFactorizationMonoid.radical a",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "lemma radical_radical : radical (radical a) = radical a :=\n  radical_eq_of_primeFactors_eq primeFactors_radical\n\nlemma radical_dvd_radical_iff_normalizedFactors_subset_normalizedFactors :\n    radical a ∣ radical b ↔ normalizedFactors a ⊆ normalizedFactors b := by",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "radical幂等性"
+  },
+  {
+    "kind": "theorem",
+    "line": 245,
+    "module": "Mathlib.Order.WithBot",
+    "name": "WithBot.coe_le_coe",
+    "type": "∀ {α : Type u_1} {a b : α} [inst : LE α], ↑a ≤ ↑b ↔ a ≤ b",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+    "source_sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17",
+    "source_excerpt": "@[simp, norm_cast] lemma coe_le_coe : (a : WithBot α) ≤ b ↔ a ≤ b := by simp [le_def]\n\nlemma not_coe_le_bot (a : α) : ¬(a : WithBot α) ≤ ⊥ := by simp [le_def]\n\ninstance orderBot : OrderBot (WithBot α) where bot_le := by simp [le_def]",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "将自然数次数下界提升到WithBot次数下界"
+  },
+  {
+    "kind": "theorem",
+    "line": 59,
+    "module": "Mathlib.Algebra.Field.IsField",
+    "name": "instIsDomain",
+    "type": "∀ {R : Type u} [inst : Semifield R], IsDomain R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Field\\IsField.lean",
+    "source_sha256": "a362b1ce452f03d6135b6c5aa38ef60ed8cc84d1bcaa264d22f89fdb46a37ab0",
+    "source_excerpt": "instance {R : Type u} [Semifield R] : IsDomain R :=\n  (Semifield.toIsField _).isDomain\n\n@[simp]\ntheorem not_isField_of_subsingleton (R : Type u) [Semiring R] [Subsingleton R] : ¬IsField R :=",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 262,
+    "module": "Mathlib.RingTheory.PrincipalIdealDomain",
+    "name": "EuclideanDomain.to_principal_ideal_domain",
+    "type": "∀ {R : Type u} [inst : EuclideanDomain R], IsPrincipalIdealRing R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\PrincipalIdealDomain.lean",
+    "source_sha256": "5b41a5e6617d47674559922d21a41203dcdfdbd9ace51821144430ed6aa54cc8",
+    "source_excerpt": "instance (priority := 100) EuclideanDomain.to_principal_ideal_domain : IsPrincipalIdealRing R where\n  principal S := by classical exact\n    ⟨if h : { x : R | x ∈ S ∧ x ≠ 0 }.Nonempty then\n        have wf : WellFounded (EuclideanDomain.r : R → R → Prop) := EuclideanDomain.r_wellFounded\n        have hmin : WellFounded.min wf { x : R | x ∈ S ∧ x ≠ 0 } h ∈ S ∧",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3_nat",
+        "in_proof_term": true,
+        "in_type": true
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": true
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 180,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_of_isUnit",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, IsUnit a → UniqueFactorizationMonoid.radical a = 1",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "theorem radical_of_isUnit (h : IsUnit a) : radical a = 1 :=\n  (radical_eq_of_associated (associated_one_iff_isUnit.mpr h)).trans radical_one\n\ntheorem radical_mul_of_isUnit_left (h : IsUnit u) : radical (u * a) = radical a :=\n  radical_eq_of_associated (associated_unit_mul_left _ _ h)",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "单位的radical等于1"
+  },
+  {
+    "kind": "theorem",
+    "line": 286,
+    "module": "Mathlib.Algebra.Polynomial.FieldDivision",
+    "name": "Polynomial.isUnit_iff_degree_eq_zero",
+    "type": "∀ {R : Type u} [inst : Field R] {p : R[X]}, IsUnit p ↔ p.degree = 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+    "source_sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1",
+    "source_excerpt": "theorem isUnit_iff_degree_eq_zero : IsUnit p ↔ degree p = 0 :=\n  ⟨degree_eq_zero_of_isUnit, fun h =>\n    have : degree p ≤ 0 := by simp [*, le_refl]\n    have hc : coeff p 0 ≠ 0 := fun hc => by\n      rw [eq_C_of_degree_le_zero this, hc] at h; simp only [map_zero] at h; contradiction",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_natDegree_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "次数零推出单位"
+  },
+  {
+    "kind": "theorem",
+    "line": 69,
+    "module": "Mathlib.Algebra.EuclideanDomain.Defs",
+    "name": "EuclideanDomain.toNontrivial",
+    "type": "∀ {R : Type u} [self : EuclideanDomain R], Nontrivial R",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\EuclideanDomain\\Defs.lean",
+    "source_sha256": "82a9ec6b05aa7433cd28ab80c3ae79f622f267fadace91cb3685ba5c559a1e0b",
+    "source_excerpt": "class EuclideanDomain (R : Type u) extends CommRing R, Nontrivial R where\n  /-- A division function (denoted `/`) on `R`.\n    This satisfies the property `b * (a / b) + a % b = a`, where `%` denotes `remainder`. -/\n  protected quotient : R → R → R\n  /-- Division by zero should always give zero by convention. -/",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      },
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "Lean实例推导中的命题性实例",
+    "purpose": "提供域上多项式非平凡、整环、唯一分解等实例；完整前提及使用者见type和used_by"
+  },
+  {
+    "kind": "theorem",
+    "line": 27,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Units",
+    "name": "Polynomial.natDegree_eq_zero_of_isUnit",
+    "type": "∀ {R : Type u} [inst : Semiring R] [NoZeroDivisors R] {p : R[X]}, IsUnit p → p.natDegree = 0",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+    "source_sha256": "2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044",
+    "source_excerpt": "lemma natDegree_eq_zero_of_isUnit (h : IsUnit p) : natDegree p = 0 := by\n  nontriviality R\n  obtain ⟨q, hq⟩ := h.exists_right_inv\n  have := natDegree_mul (left_ne_zero_of_mul_eq_one hq) (right_ne_zero_of_mul_eq_one hq)\n  rw [hq, natDegree_one, eq_comm, add_eq_zero] at this",
+    "used_by": [
+      {
+        "name": "mathlib2_radical_natDegree_ne_zero",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "原多项式为单位导致natDegree为零，形成矛盾"
+  },
+  {
+    "kind": "theorem",
+    "line": 511,
+    "module": "Mathlib.Algebra.Polynomial.Degree.Definitions",
+    "name": "Polynomial.natDegree_pos_iff_degree_pos",
+    "type": "∀ {R : Type u} [inst : Semiring R] {p : R[X]}, 0 < p.natDegree ↔ 0 < p.degree",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+    "source_sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7",
+    "source_excerpt": "theorem natDegree_pos_iff_degree_pos : 0 < natDegree p ↔ 0 < degree p :=\n  lt_iff_lt_of_le_iff_le natDegree_le_iff_degree_le\n\nend Semiring\n",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "最终目标的degree正前提转为natDegree正"
+  },
+  {
+    "kind": "theorem",
+    "line": 259,
+    "module": "Mathlib.RingTheory.Radical",
+    "name": "UniqueFactorizationMonoid.radical_eq_one_iff",
+    "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M]\n  [inst_2 : UniqueFactorizationMonoid M] {a : M}, UniqueFactorizationMonoid.radical a = 1 ↔ a = 0 ∨ IsUnit a",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+    "source_sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828",
+    "source_excerpt": "theorem radical_eq_one_iff : radical a = 1 ↔ a = 0 ∨ IsUnit a := by\n  refine ⟨?_, (Or.elim · (by simp +contextual) radical_of_isUnit)⟩\n  intro h\n  rw [or_iff_not_imp_left]\n  intro ha",
+    "used_by": [
+      {
+        "name": "mathlib2_unit_of_radical_unit",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式数学主干复用",
+    "purpose": "从radical等于1及非零推出单位"
+  },
+  {
+    "kind": "theorem",
+    "line": 95,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "name": "lt_of_lt_of_le",
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b ≤ c → a < c",
+    "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Defs\\PartialOrder.lean",
+    "source_sha256": "aca5c17f2ec4a74b12c02a75cafb4afc32f9604ab7ec97b64297d44c8f5f27a7",
+    "source_excerpt": "lemma lt_of_lt_of_le (hab : a < b) (hbc : b ≤ c) : a < c :=\n  lt_of_le_not_ge (le_trans (le_of_lt hab) hbc) fun hca ↦ not_le_of_gt hab (le_trans hbc hca)\n\nlemma lt_of_le_of_lt (hab : a ≤ b) (hbc : b < c) : a < c :=\n  lt_of_le_not_ge (le_trans hab (le_of_lt hbc)) fun hca ↦ not_le_of_gt hbc (le_trans hca hab)",
+    "used_by": [
+      {
+        "name": "mathlib2_mason_lemma3",
+        "in_proof_term": true,
+        "in_type": false
+      }
+    ],
+    "reuse_mode": "显式基础顺序定理",
+    "purpose": "由0<1和1≤degree推出0<degree"
+  }
+]

@@ -1,0 +1,991 @@
+{
+  "candidate_id": 89,
+  "alignment": {
+    "conclusion": "confirmed",
+    "candidate_id": 89,
+    "source_id": 9,
+    "template_id": "mason_lemma3",
+    "reviewer": "assistant_independent_semantic_review",
+    "human_reviewed": false,
+    "created": "2026-11-13T18:17:36.719585+00:00",
+    "revision": 0,
+    "original_sha256": "817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9",
+    "normalized_sha256": "8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2",
+    "lean_source_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+    "report_path": "reports/lemma3-alignment.md",
+    "report_sha256": "abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce",
+    "files": [
+      {
+        "path": "2408.15180v2.pdf",
+        "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+      },
+      {
+        "path": "lean/lake-manifest.json",
+        "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+      },
+      {
+        "path": "lean/lean-toolchain",
+        "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\BigOperators.lean",
+        "sha256": "d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+        "sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+        "sha256": "2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+        "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+        "sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+        "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+      },
+      {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+      }
+    ],
+    "proof_origin": {
+      "category": "New Proof",
+      "new_proof": true,
+      "new_statement": true,
+      "generation_source": "AI 生成（本次对话助手编写代码）；随后固化为复跑模板",
+      "autonomous_reasoning_engine": false,
+      "external_ai_api_calls": 0,
+      "author_code_copied": false,
+      "meaning": "新的Lean组合脚本，不主张新数学结果；未复制作者实现",
+      "lemma1_used": false,
+      "lemma2_used": false
+    }
+  },
+  "compile": {
+    "label": "Mason–Stothers Lemma 3：次数与 radical",
+    "source": "import Mathlib.RingTheory.Polynomial.Radical\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\n\ntheorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\n  apply isUnit_iff_degree_eq_zero.mpr\n  rw [degree_eq_natDegree ha, hz]\n  rfl\n\ntheorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\n  have hr : radical a = 1 := by\n    calc\n      radical a = radical (radical a) := radical_radical.symm\n      _ = 1 := radical_of_isUnit hu\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\n\ntheorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\n  intro hz\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\n  have hau := mathlib2_unit_of_radical_unit a ha hu\n  exact hn (natDegree_eq_zero_of_isUnit hau)\n\ntheorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\n\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\n  rw [degree_eq_natDegree radical_ne_zero]\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\n\n#print axioms mathlib2_unit_of_natDegree_zero\n#print axioms mathlib2_unit_of_radical_unit\n#print axioms mathlib2_radical_natDegree_ne_zero\n#print axioms mathlib2_mason_lemma3_nat\n#print axioms mathlib2_mason_lemma3\n#print mathlib2_mason_lemma3\n",
+    "target": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree",
+    "name": "mathlib2_mason_lemma3",
+    "scope": "target",
+    "source_match": "(?is)\\bLemma\\s*3\\b.*?field.*?degree.*?rad",
+    "audit_names": [
+      "mathlib2_unit_of_natDegree_zero",
+      "mathlib2_unit_of_radical_unit",
+      "mathlib2_radical_natDegree_ne_zero",
+      "mathlib2_mason_lemma3_nat",
+      "mathlib2_mason_lemma3"
+    ],
+    "reused_declarations": [
+      {
+        "name": "Polynomial.isUnit_iff_degree_eq_zero",
+        "path": "Mathlib/Algebra/Polynomial/FieldDivision.lean",
+        "line": 286
+      },
+      {
+        "name": "Polynomial.degree_eq_natDegree",
+        "path": "Mathlib/Algebra/Polynomial/Degree/Definitions.lean",
+        "line": 93
+      },
+      {
+        "name": "UniqueFactorizationMonoid.radical_radical",
+        "path": "Mathlib/RingTheory/Radical.lean",
+        "line": 268
+      },
+      {
+        "name": "UniqueFactorizationMonoid.radical_of_isUnit",
+        "path": "Mathlib/RingTheory/Radical.lean",
+        "line": 180
+      },
+      {
+        "name": "UniqueFactorizationMonoid.radical_eq_one_iff",
+        "path": "Mathlib/RingTheory/Radical.lean",
+        "line": 259
+      },
+      {
+        "name": "UniqueFactorizationMonoid.radical_ne_zero",
+        "path": "Mathlib/RingTheory/Radical.lean",
+        "line": 212
+      },
+      {
+        "name": "Polynomial.natDegree_eq_zero_of_isUnit",
+        "path": "Mathlib/Algebra/Polynomial/Degree/Units.lean",
+        "line": 27
+      },
+      {
+        "name": "Polynomial.natDegree_pos_iff_degree_pos",
+        "path": "Mathlib/Algebra/Polynomial/Degree/Definitions.lean",
+        "line": 511
+      },
+      {
+        "name": "WithBot.coe_le_coe",
+        "path": "Mathlib/Order/WithBot.lean",
+        "line": 245
+      }
+    ],
+    "provenance": {
+      "category": "New Proof",
+      "new_proof": true,
+      "new_statement": true,
+      "generation_source": "AI 生成（本次对话助手编写代码）；随后固化为复跑模板",
+      "autonomous_reasoning_engine": false,
+      "external_ai_api_calls": 0,
+      "author_code_copied": false,
+      "meaning": "新的Lean组合脚本，不主张新数学结果；未复制作者实现",
+      "lemma1_used": false,
+      "lemma2_used": false
+    },
+    "template_id": "mason_lemma3",
+    "attempt_id": "0cd93ed19024460a85f4de6f484162c5",
+    "accepted": true,
+    "status": "verified",
+    "stdout": "'mathlib2_unit_of_natDegree_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_unit_of_radical_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_radical_natDegree_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma3_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\n'mathlib2_mason_lemma3' depends on axioms: [propext, Classical.choice, Quot.sound]\ntheorem mathlib2_mason_lemma3.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\n  1 ≤ a.degree → 1 ≤ (radical a).degree :=\nfun {k} [Field k] [DecidableEq k] a h =>\n  have hnat :=\n    Nat.succ_le_of_lt (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (of_decide_eq_true (id (Eq.refl true))) h));\n  Eq.mpr (id (congrArg (fun _a => 1 ≤ _a) (degree_eq_natDegree radical_ne_zero)))\n    (WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat))\n",
+    "stderr": "",
+    "returncode": 0,
+    "axioms": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "artifact": "D:\\mathproof\\lean\\Research\\Attempt_0cd93ed19024460a85f4de6f484162c5.lean",
+    "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+    "elapsed": 7.764999999955762,
+    "toolchain": "leanprover/lean4:v4.24.0",
+    "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+    "manifest_sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5",
+    "command": [
+      "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.EXE",
+      "env",
+      "lean",
+      "-M",
+      "2048",
+      "D:\\mathproof\\lean\\Research\\Attempt_0cd93ed19024460a85f4de6f484162c5.lean"
+    ],
+    "lean_version": "Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)",
+    "declaration_audits": {
+      "mathlib2_unit_of_natDegree_zero": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "mathlib2_unit_of_radical_unit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "mathlib2_radical_natDegree_ne_zero": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "mathlib2_mason_lemma3_nat": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      },
+      "mathlib2_mason_lemma3": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    "log_artifact": "D:\\mathproof\\reports\\lemma3-0cd93ed19024460a85f4de6f484162c5.json",
+    "revision": 0,
+    "normalized_sha256": "8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2",
+    "candidate_alignment": "confirmed",
+    "alignment_report": "reports/lemma3-alignment.md",
+    "alignment_report_sha256": "abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce",
+    "alignment_reviewer": "assistant_independent_semantic_review",
+    "candidate_verified": true
+  },
+  "dag": {
+    "nodes": [
+      {
+        "id": "mathlib2_unit_of_natDegree_zero",
+        "title": "mathlib2_unit_of_natDegree_zero",
+        "object_type": "Lemma",
+        "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+        "location": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 4
+        }
+      },
+      {
+        "id": "mathlib2_unit_of_radical_unit",
+        "title": "mathlib2_unit_of_radical_unit",
+        "object_type": "Lemma",
+        "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+        "location": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 10
+        }
+      },
+      {
+        "id": "mathlib2_radical_natDegree_ne_zero",
+        "title": "mathlib2_radical_natDegree_ne_zero",
+        "object_type": "Lemma",
+        "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+        "location": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 18
+        }
+      },
+      {
+        "id": "mathlib2_mason_lemma3_nat",
+        "title": "mathlib2_mason_lemma3_nat",
+        "object_type": "Lemma",
+        "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+        "location": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 27
+        }
+      },
+      {
+        "id": "mathlib2_mason_lemma3",
+        "title": "mathlib2_mason_lemma3",
+        "object_type": "Lemma",
+        "generation_origin": "AI 生成（本次助手编写，非项目API调用）",
+        "location": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 31
+        }
+      },
+      {
+        "id": "Polynomial.isUnit_iff_degree_eq_zero",
+        "title": "Polynomial.isUnit_iff_degree_eq_zero",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+          "line": 286
+        }
+      },
+      {
+        "id": "Polynomial.degree_eq_natDegree",
+        "title": "Polynomial.degree_eq_natDegree",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+          "line": 93
+        }
+      },
+      {
+        "id": "UniqueFactorizationMonoid.radical_radical",
+        "title": "UniqueFactorizationMonoid.radical_radical",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 268
+        }
+      },
+      {
+        "id": "UniqueFactorizationMonoid.radical_of_isUnit",
+        "title": "UniqueFactorizationMonoid.radical_of_isUnit",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 180
+        }
+      },
+      {
+        "id": "UniqueFactorizationMonoid.radical_eq_one_iff",
+        "title": "UniqueFactorizationMonoid.radical_eq_one_iff",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 259
+        }
+      },
+      {
+        "id": "UniqueFactorizationMonoid.radical_ne_zero",
+        "title": "UniqueFactorizationMonoid.radical_ne_zero",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+          "line": 212
+        }
+      },
+      {
+        "id": "Polynomial.natDegree_eq_zero_of_isUnit",
+        "title": "Polynomial.natDegree_eq_zero_of_isUnit",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+          "line": 27
+        }
+      },
+      {
+        "id": "Polynomial.natDegree_pos_iff_degree_pos",
+        "title": "Polynomial.natDegree_pos_iff_degree_pos",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+          "line": 511
+        }
+      },
+      {
+        "id": "WithBot.coe_le_coe",
+        "title": "WithBot.coe_le_coe",
+        "object_type": "Mathlib Reference",
+        "generation_origin": "Mathlib 定理复用",
+        "location": {
+          "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+          "line": 245
+        }
+      }
+    ],
+    "edges": [
+      {
+        "from": "Polynomial.isUnit_iff_degree_eq_zero",
+        "to": "mathlib2_unit_of_natDegree_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 6,
+          "quote": "  apply isUnit_iff_degree_eq_zero.mpr",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+            "line": 286
+          },
+          "mathematical_reason": "a非零时degree等于natDegree；次数零的域上多项式为单位。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "Polynomial.degree_eq_natDegree",
+        "to": "mathlib2_unit_of_natDegree_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 7,
+          "quote": "  rw [degree_eq_natDegree ha, hz]",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+            "line": 93
+          },
+          "mathematical_reason": "a非零时degree等于natDegree；次数零的域上多项式为单位。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "UniqueFactorizationMonoid.radical_radical",
+        "to": "mathlib2_unit_of_radical_unit",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 14,
+          "quote": "      radical a = radical (radical a) := radical_radical.symm",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 268
+          },
+          "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "UniqueFactorizationMonoid.radical_of_isUnit",
+        "to": "mathlib2_unit_of_radical_unit",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 15,
+          "quote": "      _ = 1 := radical_of_isUnit hu",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 180
+          },
+          "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "UniqueFactorizationMonoid.radical_eq_one_iff",
+        "to": "mathlib2_unit_of_radical_unit",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 16,
+          "quote": "  exact (radical_eq_one_iff.mp hr).resolve_left ha",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 259
+          },
+          "mathematical_reason": "rad(a)为单位时rad(rad(a))=1；幂等性给rad(a)=1；排除a=0后a为单位。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "mathlib2_unit_of_natDegree_zero",
+        "to": "mathlib2_radical_natDegree_ne_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "已有 Lemma 组合",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 23,
+          "quote": "  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz",
+          "dependency_declaration": {
+            "path": "lean/Research/Lemma3.lean",
+            "line": 4
+          },
+          "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "mathlib2_unit_of_radical_unit",
+        "to": "mathlib2_radical_natDegree_ne_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "已有 Lemma 组合",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 24,
+          "quote": "  have hau := mathlib2_unit_of_radical_unit a ha hu",
+          "dependency_declaration": {
+            "path": "lean/Research/Lemma3.lean",
+            "line": 10
+          },
+          "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "UniqueFactorizationMonoid.radical_ne_zero",
+        "to": "mathlib2_radical_natDegree_ne_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 23,
+          "quote": "  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 212
+          },
+          "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "Polynomial.natDegree_eq_zero_of_isUnit",
+        "to": "mathlib2_radical_natDegree_ne_zero",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 25,
+          "quote": "  exact hn (natDegree_eq_zero_of_isUnit hau)",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+            "line": 27
+          },
+          "mathematical_reason": "假设rad(a)的natDegree为零，经前两个引理推出a为单位，与natDegree(a)≥1矛盾。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "mathlib2_radical_natDegree_ne_zero",
+        "to": "mathlib2_mason_lemma3_nat",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "已有 Lemma 组合",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 29,
+          "quote": "  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)",
+          "dependency_declaration": {
+            "path": "lean/Research/Lemma3.lean",
+            "line": 18
+          },
+          "mathematical_reason": "自然数不为零等价于至少为1。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "mathlib2_mason_lemma3_nat",
+        "to": "mathlib2_mason_lemma3",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "已有 Lemma 组合",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 37,
+          "quote": "  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)",
+          "dependency_declaration": {
+            "path": "lean/Research/Lemma3.lean",
+            "line": 27
+          },
+          "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "Polynomial.degree_eq_natDegree",
+        "to": "mathlib2_mason_lemma3",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 36,
+          "quote": "  rw [degree_eq_natDegree radical_ne_zero]",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+            "line": 93
+          },
+          "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "UniqueFactorizationMonoid.radical_ne_zero",
+        "to": "mathlib2_mason_lemma3",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 36,
+          "quote": "  rw [degree_eq_natDegree radical_ne_zero]",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+            "line": 212
+          },
+          "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "Polynomial.natDegree_pos_iff_degree_pos",
+        "to": "mathlib2_mason_lemma3",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 35,
+          "quote": "    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+            "line": 511
+          },
+          "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      },
+      {
+        "from": "WithBot.coe_le_coe",
+        "to": "mathlib2_mason_lemma3",
+        "basis": "explicit",
+        "source": "实际编译脚本显式引用",
+        "origin": "Mathlib 定理复用",
+        "evidence": {
+          "path": "lean/Research/Lemma3.lean",
+          "line": 37,
+          "quote": "  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)",
+          "dependency_declaration": {
+            "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+            "line": 245
+          },
+          "mathematical_reason": "degree正与natDegree正互转；radical非零允许将所得下界还原为degree下界。",
+          "paper_context": {
+            "page": 7,
+            "start": 1071,
+            "end": 2043
+          }
+        },
+        "confidence": 1.0,
+        "human_confirmed": false,
+        "used_in_lean": true
+      }
+    ],
+    "status": "acyclic",
+    "unresolved": [],
+    "scope": "显式数学主干依赖，排除Lean基础逻辑/NatAPI及隐式实例；未连接Lemma1/2",
+    "topological_order": [
+      "UniqueFactorizationMonoid.radical_ne_zero",
+      "WithBot.coe_le_coe",
+      "Polynomial.isUnit_iff_degree_eq_zero",
+      "Polynomial.degree_eq_natDegree",
+      "mathlib2_unit_of_natDegree_zero",
+      "UniqueFactorizationMonoid.radical_radical",
+      "UniqueFactorizationMonoid.radical_of_isUnit",
+      "UniqueFactorizationMonoid.radical_eq_one_iff",
+      "mathlib2_unit_of_radical_unit",
+      "Polynomial.natDegree_eq_zero_of_isUnit",
+      "mathlib2_radical_natDegree_ne_zero",
+      "mathlib2_mason_lemma3_nat",
+      "Polynomial.natDegree_pos_iff_degree_pos",
+      "mathlib2_mason_lemma3"
+    ],
+    "proof_depth": 4,
+    "local_proof_depth": 3
+  },
+  "steps": [
+    {
+      "name": "mathlib2_unit_of_natDegree_zero",
+      "source": "theorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\n  apply isUnit_iff_degree_eq_zero.mpr\n  rw [degree_eq_natDegree ha, hz]\n  rfl\n",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "start_line": 4,
+        "end_line": 9
+      },
+      "generation_origin": "AI 生成（当前对话助手新编写）",
+      "planning_origin": "助手在本轮分解，非项目内置规划器自动发现",
+      "tactic_origin": "预置规则：rw/simp/decide及Lean Nat/逻辑基础API",
+      "external_ai_api_calls": 0,
+      "human_authored_this_run": false,
+      "audit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "mathlib2_unit_of_radical_unit",
+      "source": "theorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\n  have hr : radical a = 1 := by\n    calc\n      radical a = radical (radical a) := radical_radical.symm\n      _ = 1 := radical_of_isUnit hu\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\n",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "start_line": 10,
+        "end_line": 17
+      },
+      "generation_origin": "AI 生成（当前对话助手新编写）",
+      "planning_origin": "助手在本轮分解，非项目内置规划器自动发现",
+      "tactic_origin": "预置规则：rw/simp/decide及Lean Nat/逻辑基础API",
+      "external_ai_api_calls": 0,
+      "human_authored_this_run": false,
+      "audit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "mathlib2_radical_natDegree_ne_zero",
+      "source": "theorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\n  intro hz\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\n  have hau := mathlib2_unit_of_radical_unit a ha hu\n  exact hn (natDegree_eq_zero_of_isUnit hau)\n",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "start_line": 18,
+        "end_line": 26
+      },
+      "generation_origin": "AI 生成（当前对话助手新编写）",
+      "planning_origin": "助手在本轮分解，非项目内置规划器自动发现",
+      "tactic_origin": "预置规则：rw/simp/decide及Lean Nat/逻辑基础API",
+      "external_ai_api_calls": 0,
+      "human_authored_this_run": false,
+      "audit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "mathlib2_mason_lemma3_nat",
+      "source": "theorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\n",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "start_line": 27,
+        "end_line": 30
+      },
+      "generation_origin": "AI 生成（当前对话助手新编写）",
+      "planning_origin": "助手在本轮分解，非项目内置规划器自动发现",
+      "tactic_origin": "预置规则：rw/simp/decide及Lean Nat/逻辑基础API",
+      "external_ai_api_calls": 0,
+      "human_authored_this_run": false,
+      "audit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    },
+    {
+      "name": "mathlib2_mason_lemma3",
+      "source": "theorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\n  rw [degree_eq_natDegree radical_ne_zero]\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\n",
+      "location": {
+        "path": "lean/Research/Lemma3.lean",
+        "start_line": 31,
+        "end_line": 38
+      },
+      "generation_origin": "AI 生成（当前对话助手新编写）",
+      "planning_origin": "助手在本轮分解，非项目内置规划器自动发现",
+      "tactic_origin": "预置规则：rw/simp/decide及Lean Nat/逻辑基础API",
+      "external_ai_api_calls": 0,
+      "human_authored_this_run": false,
+      "audit": {
+        "accepted": true,
+        "axioms": [
+          "propext",
+          "Classical.choice",
+          "Quot.sound"
+        ]
+      }
+    }
+  ],
+  "costs": [
+    {
+      "experiment": "Lemma1",
+      "physical_lines": 8,
+      "new_lean_lines": 5,
+      "reused_mathlib_theorems": 1,
+      "new_intermediate_lemmas": 0,
+      "proof_depth": 1,
+      "local_proof_depth": 0,
+      "compile_elapsed_seconds": 12.530999999988126,
+      "compile_log": "D:\\mathproof\\reports\\lemma1-v03-c314f1a0098f48cb958f51f7126b7bb5.json",
+      "compile_source_sha256": "8db4386a25e548baf91418342d5291915d03a8e24bd01e5d0e9172e4fff005a0",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    },
+    {
+      "experiment": "Lemma2",
+      "physical_lines": 32,
+      "new_lean_lines": 16,
+      "reused_mathlib_theorems": 4,
+      "new_intermediate_lemmas": 2,
+      "proof_depth": 2,
+      "local_proof_depth": 1,
+      "compile_elapsed_seconds": 12.172000000020489,
+      "compile_log": "D:\\mathproof\\reports\\lemma2-a72e7f230d394350bcf87b0302c3f7d8.json",
+      "compile_source_sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    },
+    {
+      "experiment": "Lemma3",
+      "physical_lines": 44,
+      "new_lean_lines": 30,
+      "reused_mathlib_theorems": 9,
+      "new_intermediate_lemmas": 4,
+      "proof_depth": 4,
+      "local_proof_depth": 3,
+      "compile_elapsed_seconds": 7.764999999955762,
+      "compile_log": "D:\\mathproof\\reports\\lemma3-0cd93ed19024460a85f4de6f484162c5.json",
+      "compile_source_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+      "generation_time": "unknown",
+      "tokens": "unknown",
+      "external_ai_api_calls": 0
+    }
+  ],
+  "final_state": {
+    "candidate_alignment": "confirmed",
+    "candidate_verified": true,
+    "verification_status": "proved",
+    "approval_status": "pending"
+  },
+  "history_preserved": {
+    "sources": true,
+    "candidates": true,
+    "events": true,
+    "verified": true,
+    "proof_runs": true,
+    "workbench_history": true,
+    "lemma1_2_states": true,
+    "lemma1_2_files": true
+  },
+  "external_ai_api_calls": 0,
+  "compile_history": [
+    {
+      "attempt_id": "0cd93ed19024460a85f4de6f484162c5",
+      "status": "verified",
+      "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-0cd93ed19024460a85f4de6f484162c5.json",
+      "elapsed": 7.764999999955762,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    },
+    {
+      "attempt_id": "2ba07ebcf17e402cab48c8ee006189e6",
+      "status": "timeout",
+      "reason": "编译超时；结果未知，可补齐缓存后重试",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-2ba07ebcf17e402cab48c8ee006189e6.json",
+      "elapsed": 15.046999999962281,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    },
+    {
+      "attempt_id": "5a84f695300e44af82885e46af4cf47e",
+      "status": "verified",
+      "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-5a84f695300e44af82885e46af4cf47e.json",
+      "elapsed": 12.35899999999674,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    },
+    {
+      "attempt_id": "86c1db60fa354efa8c0fe0c2198403d0",
+      "status": "verified",
+      "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-86c1db60fa354efa8c0fe0c2198403d0.json",
+      "elapsed": 7.7810000000172295,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    },
+    {
+      "attempt_id": "b9d5b576c0244ea9b1f28b318810dc1f",
+      "status": "verified",
+      "reason": "真实 Lean 编译及公理审计通过（New Proof）",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-b9d5b576c0244ea9b1f28b318810dc1f.json",
+      "elapsed": 30.31300000002375,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    },
+    {
+      "attempt_id": "f4ee4017f74d43959b7b0e03d8ce89c3",
+      "status": "timeout",
+      "reason": "编译超时；结果未知，可补齐缓存后重试",
+      "log_artifact": "D:\\mathproof\\reports\\lemma3-f4ee4017f74d43959b7b0e03d8ce89c3.json",
+      "elapsed": 15.079000000027008,
+      "sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b"
+    }
+  ]
+}

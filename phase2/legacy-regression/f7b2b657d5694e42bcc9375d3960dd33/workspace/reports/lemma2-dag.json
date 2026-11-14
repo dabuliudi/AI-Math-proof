@@ -1,0 +1,312 @@
+{
+  "nodes": [
+    {
+      "id": "mathlib2_mason_lemma1",
+      "title": "mathlib2_mason_lemma1",
+      "object_type": "Lemma",
+      "location": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 3
+      }
+    },
+    {
+      "id": "mathlib2_dvd_linear_combination",
+      "title": "mathlib2_dvd_linear_combination",
+      "object_type": "Lemma",
+      "location": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 10
+      }
+    },
+    {
+      "id": "mathlib2_quotient_dvd_self",
+      "title": "mathlib2_quotient_dvd_self",
+      "object_type": "Lemma",
+      "location": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 18
+      }
+    },
+    {
+      "id": "mathlib2_mason_lemma2",
+      "title": "mathlib2_mason_lemma2",
+      "object_type": "Lemma",
+      "location": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 22
+      }
+    },
+    {
+      "id": "divRadical_dvd_derivative",
+      "title": "divRadical_dvd_derivative",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+        "line": 31
+      }
+    },
+    {
+      "id": "EuclideanDomain.divRadical_dvd_self",
+      "title": "EuclideanDomain.divRadical_dvd_self",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 426
+      }
+    },
+    {
+      "id": "EuclideanDomain.divRadical",
+      "title": "EuclideanDomain.divRadical",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+        "line": 399
+      }
+    },
+    {
+      "id": "Polynomial.wronskian",
+      "title": "Polynomial.wronskian",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Wronskian.lean",
+        "line": 39
+      }
+    },
+    {
+      "id": "mul_sub",
+      "title": "mul_sub",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+        "line": 322
+      }
+    },
+    {
+      "id": "mul_assoc",
+      "title": "mul_assoc",
+      "object_type": "Mathlib Reference",
+      "location": {
+        "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+        "line": 200
+      }
+    }
+  ],
+  "edges": [
+    {
+      "from": "divRadical_dvd_derivative",
+      "to": "mathlib2_mason_lemma1",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 7,
+        "quote": "  simpa only [divRadical] using (divRadical_dvd_derivative a)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "EuclideanDomain.divRadical",
+      "to": "mathlib2_mason_lemma1",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Definition Usage",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 7,
+        "quote": "  simpa only [divRadical] using (divRadical_dvd_derivative a)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "mul_sub",
+      "to": "mathlib2_dvd_linear_combination",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 16,
+        "quote": "  rw [mul_sub, mul_assoc, mul_assoc]"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "mul_assoc",
+      "to": "mathlib2_dvd_linear_combination",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 16,
+        "quote": "  rw [mul_sub, mul_assoc, mul_assoc]"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "EuclideanDomain.divRadical_dvd_self",
+      "to": "mathlib2_quotient_dvd_self",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 20,
+        "quote": "  simpa only [divRadical] using (divRadical_dvd_self a)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "EuclideanDomain.divRadical",
+      "to": "mathlib2_quotient_dvd_self",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Definition Usage",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 20,
+        "quote": "  simpa only [divRadical] using (divRadical_dvd_self a)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "mathlib2_mason_lemma1",
+      "to": "mathlib2_mason_lemma2",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 26,
+        "quote": "    (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "mathlib2_dvd_linear_combination",
+      "to": "mathlib2_mason_lemma2",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 25,
+        "quote": "  exact mathlib2_dvd_linear_combination"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "mathlib2_quotient_dvd_self",
+      "to": "mathlib2_mason_lemma2",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Proof Dependency",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 26,
+        "quote": "    (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha)"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    },
+    {
+      "from": "Polynomial.wronskian",
+      "to": "mathlib2_mason_lemma2",
+      "basis": "explicit",
+      "source": "trusted_source_reference_and_lean_elaboration",
+      "edge_type": "Definition Usage",
+      "evidence": {
+        "path": "lean/Research/Lemma2.lean",
+        "line": 24,
+        "quote": "  change a / radical a ∣ a * derivative b - derivative a * b"
+      },
+      "confidence": 1.0,
+      "human_confirmed": false,
+      "used_in_lean": true,
+      "paper_context": {
+        "page": 4,
+        "start": 1364,
+        "end": 1429
+      }
+    }
+  ],
+  "status": "acyclic",
+  "topological_order": [
+    "Polynomial.wronskian",
+    "mul_sub",
+    "mul_assoc",
+    "mathlib2_dvd_linear_combination",
+    "EuclideanDomain.divRadical_dvd_self",
+    "EuclideanDomain.divRadical",
+    "mathlib2_quotient_dvd_self",
+    "divRadical_dvd_derivative",
+    "mathlib2_mason_lemma1",
+    "mathlib2_mason_lemma2"
+  ],
+  "unresolved": [],
+  "scope": "本次脚本显式直接依赖；不是全部内核传递依赖或整篇论文引用",
+  "compile_log": "D:\\mathproof\\reports\\lemma2-a72e7f230d394350bcf87b0302c3f7d8.json"
+}

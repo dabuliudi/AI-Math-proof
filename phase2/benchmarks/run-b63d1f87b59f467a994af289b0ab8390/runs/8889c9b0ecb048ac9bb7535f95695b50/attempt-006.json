@@ -1,0 +1,58 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean:2:30: warning: unused variable `p2v1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean:5:30: warning: unused variable `p2v1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean:8:30: warning: unused variable `p2v1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean:14:17: warning: unused variable `p2v0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean:17:17: warning: unused variable `p2v0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n'p2_n002' depends on axioms: [propext]\n'p2_n003' depends on axioms: [propext]\n'p2_n004' depends on axioms: [propext, Classical.choice, Quot.sound]\n'p2_n005' does not depend on any axioms\n'p2_n006' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.825019800045993,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n004": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n005": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n006": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ≤ p2v0) := by\n  exact @Preorder.le_refl Nat _ p2v0\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ∣ p2v0) := by\n  exact @dvd_refl Nat _ p2v0\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 ∣ 0) := by\n  exact @dvd_zero Nat _ p2v0\n\ntheorem p2_n004 (p2v0 : Nat) (p2v1 : Nat) : (p2v0 = p2v0) := by\n  exact @Dvd.dvd.antisymm Nat _ p2v0 p2v0 _ (p2_n002 p2v0 p2v1) (p2_n002 p2v0 p2v1)\n\ntheorem p2_n005 (p2v0 : Nat) (p2v1 : Nat) : (p2v1 ≤ p2v1) := by\n  exact @Preorder.le_refl Nat _ p2v1\n\ntheorem p2_n006 (p2v0 : Nat) (p2v1 : Nat) : (p2v1 ∣ p2v1) := by\n  exact @dvd_refl Nat _ p2v1\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n#print axioms p2_n004\n#print axioms p2_n005\n#print axioms p2_n006\n",
+  "source_sha256": "53e78b4e197500c75a33eaac9b76bc9202f49828a9f12856c3b7274b27e8c12f",
+  "goal": "(p2v1 ∣ p2v1)",
+  "artifact": "D:\\mathproof\\phase2\\benchmarks\\run-b63d1f87b59f467a994af289b0ab8390\\runs\\8889c9b0ecb048ac9bb7535f95695b50\\attempt-006.lean",
+  "log": "attempt-006.json"
+}

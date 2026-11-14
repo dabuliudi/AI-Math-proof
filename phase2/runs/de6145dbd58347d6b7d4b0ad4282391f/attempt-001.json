@@ -1,0 +1,30 @@
+{
+  "returncode": 1,
+  "stdout": "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f\\attempt-001.lean:3:9: error(lean.unknownIdentifier): Unknown identifier `A_missing_declaration`\n'p2_n001' depends on axioms: [sorryAx]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f\\attempt-001.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.721755900000062,
+  "accepted": false,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "sorryAx"
+      ],
+      "accepted": false
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) : (p2v0 ≤ p2v0) := by\n  exact @A_missing_declaration p2v0\n\n#print axioms p2_n001\n",
+  "source_sha256": "1a94f341e6da1be2520e8a54946956f29150443b8d92aa7c679cfad789d64af5",
+  "goal": "(p2v0 ≤ p2v0)",
+  "artifact": "D:\\mathproof\\phase2\\runs\\de6145dbd58347d6b7d4b0ad4282391f\\attempt-001.lean",
+  "log": "attempt-001.json"
+}

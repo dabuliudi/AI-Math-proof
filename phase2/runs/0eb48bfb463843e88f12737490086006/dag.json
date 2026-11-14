@@ -1,0 +1,88 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "u ≤ v",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "v ≤ w",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "w ≤ z",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "p2_n001",
+      "statement": "u ≤ z",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "le_imp_le_of_le_of_le",
+      "binding": {
+        "2": "u",
+        "0": "v",
+        "1": "w",
+        "3": "z"
+      },
+      "retrieval_source": {
+        "path": "D:\\mathproof\\lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\Basic.lean",
+        "line": 187,
+        "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d"
+      },
+      "planned_event": 8,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v0 ≤ p2v3)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 13,
+      "compile_log": "attempt-002.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h0",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 2,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "p2_n001": 1,
+    "p2_target": 2
+  }
+}

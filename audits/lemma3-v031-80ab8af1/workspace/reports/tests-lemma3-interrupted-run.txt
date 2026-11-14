@@ -1,0 +1,74 @@
+test_current_record_and_stale_bindings (test_alignment.AlignmentTests.test_current_record_and_stale_bindings) ... ok
+test_upload_source_filter_and_unknown (test_app.AppTests.test_upload_source_filter_and_unknown) ... 2026-11-14 02:18:00.186 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_axiom_gate (test_core.CoreTests.test_axiom_gate) ... ok
+test_dag (test_core.CoreTests.test_dag) ... ok
+test_evaluation_policy (test_core.CoreTests.test_evaluation_policy) ... ok
+test_injection_rejected (test_core.CoreTests.test_injection_rejected) ... ok
+test_missing_lean_is_unknown_and_persistent (test_core.CoreTests.test_missing_lean_is_unknown_and_persistent) ... ok
+test_trace (test_core.CoreTests.test_trace) ... ok
+test_real_roundtrip (test_core.LeanIntegration.test_real_roundtrip) ... FAIL
+test_actual_paper (test_documents.DocumentTests.test_actual_paper) ... ok
+test_dedup_and_migration (test_documents.DocumentTests.test_dedup_and_migration) ... ok
+test_graph_evidence_and_cycles (test_documents.DocumentTests.test_graph_evidence_and_cycles) ... ok
+test_image_only_pdf (test_documents.DocumentTests.test_image_only_pdf) ... ok
+test_plain_pdf_and_corrupt (test_documents.DocumentTests.test_plain_pdf_and_corrupt) ... ok
+test_real_paper_to_verified_test_approval (test_e2e_v03.E2ETests.test_real_paper_to_verified_test_approval) ... ok
+test_real_lemma1 (test_formalization.FormalizationTests.test_real_lemma1) ... ok
+test_template_provenance_and_scope (test_formalization.FormalizationTests.test_template_provenance_and_scope) ... ok
+test_untrusted_template_rejected (test_formalization.FormalizationTests.test_untrusted_template_rejected) ... ok
+test_version_timeout_does_not_claim_proof_compilation (test_formalization.FormalizationTests.test_version_timeout_does_not_claim_proof_compilation) ... ok
+test_independent_construction_and_scope (test_lemma2.Lemma2Tests.test_independent_construction_and_scope) ... ok
+test_real_compile_all_declarations (test_lemma2.Lemma2Tests.test_real_compile_all_declarations) ... ok
+test_real_dag_evidence_and_history (test_lemma2.Lemma2Tests.test_real_dag_evidence_and_history) ... ok
+test_actual_paper_traceability (test_lemma3.Lemma3Tests.test_actual_paper_traceability) ... ok
+test_certificate_history_costs_and_approval_gate (test_lemma3.Lemma3Tests.test_certificate_history_costs_and_approval_gate) ... ok
+test_multilevel_dag_and_retrieval_evidence (test_lemma3.Lemma3Tests.test_multilevel_dag_and_retrieval_evidence) ... ok
+test_real_compile_and_all_five_axiom_audits (test_lemma3.Lemma3Tests.test_real_compile_and_all_five_axiom_audits) ... ok
+test_scope_and_generation_provenance (test_lemma3.Lemma3Tests.test_scope_and_generation_provenance) ... ok
+test_dependency_categories_and_duplicates (test_quality.QualityTests.test_dependency_categories_and_duplicates) ... ok
+test_filter_preserves_materials_and_unrelated_exercise (test_quality.QualityTests.test_filter_preserves_materials_and_unrelated_exercise) ... ok
+test_general_document_and_uncertainty (test_quality.QualityTests.test_general_document_and_uncertainty) ... ok
+test_semantic_boundary_keeps_original_and_strictness (test_quality.QualityTests.test_semantic_boundary_keeps_original_and_strictness) ... ok
+test_provider_requires_explicit_endpoint (test_retrieval.RetrievalTests.test_provider_requires_explicit_endpoint) ... ok
+test_source_location (test_retrieval.RetrievalTests.test_source_location) ... ok
+test_both_real_papers (test_semantics_v03.SemanticV03Tests.test_both_real_papers) ... ok
+test_code_and_proof_separation (test_semantics_v03.SemanticV03Tests.test_code_and_proof_separation) ... ok
+test_repeat_does_not_overwrite_review (test_semantics_v03.SemanticV03Tests.test_repeat_does_not_overwrite_review) ... ok
+test_semantic_fields_and_arithmetic_boundary (test_semantics_v03.SemanticV03Tests.test_semantic_fields_and_arithmetic_boundary) ... ok
+test_eight_types_and_offsets (test_structures.StructureTests.test_eight_types_and_offsets) ... ok
+test_proof_and_latex (test_structures.StructureTests.test_proof_and_latex) ... ok
+test_prose_not_theorems (test_structures.StructureTests.test_prose_not_theorems) ... ok
+test_task_is_not_theorem (test_structures.StructureTests.test_task_is_not_theorem) ... ok
+test_uncertain_heading (test_structures.StructureTests.test_uncertain_heading) ... ok
+test_actual_metrics_stability_and_version_isolation (test_v022.V022Tests.test_actual_metrics_stability_and_version_isolation) ... ok
+test_prose_reference_and_student_case_not_formal (test_v022.V022Tests.test_prose_reference_and_student_case_not_formal) ... ok
+test_candidate_review_history_and_pages (test_workbench_ui.WorkbenchUiTests.test_candidate_review_history_and_pages) ... 2026-11-14 16:23:59.383 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_empty_navigation_and_guidance (test_workbench_ui.WorkbenchUiTests.test_empty_navigation_and_guidance) ... 2026-11-14 16:23:59.734 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_additive_migration_backup (test_workflow_v03.WorkflowTests.test_additive_migration_backup) ... ok
+test_optional_ai_requires_configuration (test_workflow_v03.WorkflowTests.test_optional_ai_requires_configuration) ... ok
+test_retrieval_declaration_provenance (test_workflow_v03.WorkflowTests.test_retrieval_declaration_provenance) ... ok
+test_reverse_trace_filters_inferences (test_workflow_v03.WorkflowTests.test_reverse_trace_filters_inferences) ... ok
+test_review_persists_without_changing_original (test_workflow_v03.WorkflowTests.test_review_persists_without_changing_original) ... ok
+
+======================================================================
+FAIL: test_real_roundtrip (test_core.LeanIntegration.test_real_roundtrip)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\mathproof\tests\test_core.py", line 77, in test_real_roundtrip
+    self.assertEqual([r['status'] for r in result['results']], ['proved', 'proved', 'refuted', 'unknown'])
+AssertionError: Lists differ: ['unknown', 'unknown', 'refuted', 'unknown'] != ['proved', 'proved', 'refuted', 'unknown']
+
+First differing element 0:
+'unknown'
+'proved'
+
+- ['unknown', 'unknown', 'refuted', 'unknown']
++ ['proved', 'proved', 'refuted', 'unknown']
+
+----------------------------------------------------------------------
+Ran 51 tests in 50765.019s
+
+FAILED (failures=1)

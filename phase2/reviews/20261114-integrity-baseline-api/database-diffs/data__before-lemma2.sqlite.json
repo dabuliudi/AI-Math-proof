@@ -1,0 +1,734 @@
+{
+  "before": "D:\\mathproof\\data\\before-lemma2.sqlite",
+  "after": "D:\\mathproof\\data\\mathlib2.sqlite",
+  "before_sha256": "043112ce2ec9cab9a97a26537a120f594db120bbe276246604c68986645c66b7",
+  "after_sha256": "369d71eb9a0069203da3cc59836d6be3f5b303e4fe0555647e24f67cdc86305d",
+  "sqlite_schema_changed": false,
+  "tables": {
+    "candidates": {
+      "before_count": 92,
+      "after_count": 92,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "document_parses": {
+      "before_count": 5,
+      "after_count": 5,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "events": {
+      "before_count": 120,
+      "after_count": 120,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "math_objects": {
+      "before_count": 171,
+      "after_count": 171,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "proof_runs": {
+      "before_count": 3,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [
+        {
+          "key": {
+            "id": 4
+          },
+          "after": {
+            "id": 4,
+            "candidate_id": 87,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 2：新编写的组合证明\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (_ha : a ≠ 0) :\\n    a / radical a ∣ derivative a := by\\n  classical\\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\\n#print axioms mathlib2_mason_lemma1\\n\\ntheorem mathlib2_dvd_linear_combination {R : Type*} [Ring R]\\n    {q x y : R} (hx : q ∣ x) (hy : q ∣ y) (r s : R) :\\n    q ∣ x * r - y * s := by\\n  rcases hx with ⟨u, rfl⟩\\n  rcases hy with ⟨v, rfl⟩\\n  refine ⟨u * r - v * s, ?_⟩\\n  rw [mul_sub, mul_assoc, mul_assoc]\\n\\ntheorem mathlib2_quotient_dvd_self {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) : a / radical a ∣ a := by\\n  simpa only [divRadical] using (divRadical_dvd_self a)\\n\\ntheorem mathlib2_mason_lemma2 {k : Type*} [Field k] [DecidableEq k]\\n    (a b : k[X]) (ha : a ≠ 0) : a / radical a ∣ wronskian a b := by\\n  change a / radical a ∣ a * derivative b - derivative a * b\\n  exact mathlib2_dvd_linear_combination\\n    (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha)\\n    (derivative b) b\\n\\n#print axioms mathlib2_dvd_linear_combination\\n#print axioms mathlib2_quotient_dvd_self\\n#print axioms mathlib2_mason_lemma2\\n#print mathlib2_mason_lemma2\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b\", \"name\": \"mathlib2_mason_lemma2\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*2\\\\b.*?nonzero.*?rad\\\\s*\\\\(\\\\s*a\\\\s*\\\\).*?divides\\\\s*W\", \"provenance\": {\"category\": \"New Proof\", \"new_statement\": true, \"new_proof\": true, \"meaning\": \"新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1\", \"method\": \"提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律\", \"author_code_copied\": false, \"ai_api_calls\": 0, \"alternative_not_used\": \"divRadical_dvd_wronskian_left\"}, \"audit_names\": [\"mathlib2_mason_lemma1\", \"mathlib2_dvd_linear_combination\", \"mathlib2_quotient_dvd_self\", \"mathlib2_mason_lemma2\"], \"reused_declarations\": [{\"name\": \"divRadical_dvd_derivative\", \"path\": \"Mathlib/RingTheory/Polynomial/Radical.lean\", \"line\": 31}, {\"name\": \"EuclideanDomain.divRadical_dvd_self\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 426}], \"template_id\": \"mason_lemma2\", \"attempt_id\": \"ef4d7df0719c4610b6522cce23ccc537\", \"accepted\": true, \"status\": \"verified\", \"stdout\": \"'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_dvd_linear_combination' does not depend on any axioms\\n'mathlib2_quotient_dvd_self' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma2' depends on axioms: [propext, Classical.choice, Quot.sound]\\ntheorem mathlib2_mason_lemma2.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b : k[X]),\\n  a ≠ 0 → a / radical a ∣ a.wronskian b :=\\nfun {k} [Field k] [DecidableEq k] a b ha =>\\n  id (mathlib2_dvd_linear_combination (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha) (derivative b) b)\\n\", \"stderr\": \"\", \"returncode\": 0, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_ef4d7df0719c4610b6522cce23ccc537.lean\", \"sha256\": \"840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6\", \"elapsed\": 12.235000000015134, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"真实 Lean 编译及公理审计通过（New Proof）\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.exe\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_ef4d7df0719c4610b6522cce23ccc537.lean\"], \"lean_version\": \"Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)\", \"declaration_audits\": {\"mathlib2_mason_lemma1\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_dvd_linear_combination\": {\"accepted\": true, \"axioms\": []}, \"mathlib2_quotient_dvd_self\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma2\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}}, \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma2-ef4d7df0719c4610b6522cce23ccc537.json\", \"revision\": 0, \"normalized_sha256\": \"b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma2-alignment.md\", \"alignment_report_sha256\": \"9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": true}",
+            "created": "2026-11-12T09:57:54.036987+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 5
+          },
+          "after": {
+            "id": 5,
+            "candidate_id": 87,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 2：新编写的组合证明\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\ntheorem mathlib2_mason_lemma1 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (_ha : a ≠ 0) :\\n    a / radical a ∣ derivative a := by\\n  classical\\n  simpa only [divRadical] using (divRadical_dvd_derivative a)\\n#print axioms mathlib2_mason_lemma1\\n\\ntheorem mathlib2_dvd_linear_combination {R : Type*} [Ring R]\\n    {q x y : R} (hx : q ∣ x) (hy : q ∣ y) (r s : R) :\\n    q ∣ x * r - y * s := by\\n  rcases hx with ⟨u, rfl⟩\\n  rcases hy with ⟨v, rfl⟩\\n  refine ⟨u * r - v * s, ?_⟩\\n  rw [mul_sub, mul_assoc, mul_assoc]\\n\\ntheorem mathlib2_quotient_dvd_self {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) : a / radical a ∣ a := by\\n  simpa only [divRadical] using (divRadical_dvd_self a)\\n\\ntheorem mathlib2_mason_lemma2 {k : Type*} [Field k] [DecidableEq k]\\n    (a b : k[X]) (ha : a ≠ 0) : a / radical a ∣ wronskian a b := by\\n  change a / radical a ∣ a * derivative b - derivative a * b\\n  exact mathlib2_dvd_linear_combination\\n    (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha)\\n    (derivative b) b\\n\\n#print axioms mathlib2_dvd_linear_combination\\n#print axioms mathlib2_quotient_dvd_self\\n#print axioms mathlib2_mason_lemma2\\n#print mathlib2_mason_lemma2\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b\", \"name\": \"mathlib2_mason_lemma2\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*2\\\\b.*?nonzero.*?rad\\\\s*\\\\(\\\\s*a\\\\s*\\\\).*?divides\\\\s*W\", \"provenance\": {\"category\": \"New Proof\", \"new_statement\": true, \"new_proof\": true, \"meaning\": \"新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1\", \"method\": \"提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律\", \"author_code_copied\": false, \"ai_api_calls\": 0, \"alternative_not_used\": \"divRadical_dvd_wronskian_left\"}, \"audit_names\": [\"mathlib2_mason_lemma1\", \"mathlib2_dvd_linear_combination\", \"mathlib2_quotient_dvd_self\", \"mathlib2_mason_lemma2\"], \"reused_declarations\": [{\"name\": \"divRadical_dvd_derivative\", \"path\": \"Mathlib/RingTheory/Polynomial/Radical.lean\", \"line\": 31}, {\"name\": \"EuclideanDomain.divRadical_dvd_self\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 426}], \"template_id\": \"mason_lemma2\", \"attempt_id\": \"a72e7f230d394350bcf87b0302c3f7d8\", \"accepted\": true, \"status\": \"verified\", \"stdout\": \"'mathlib2_mason_lemma1' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_dvd_linear_combination' does not depend on any axioms\\n'mathlib2_quotient_dvd_self' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma2' depends on axioms: [propext, Classical.choice, Quot.sound]\\ntheorem mathlib2_mason_lemma2.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b : k[X]),\\n  a ≠ 0 → a / radical a ∣ a.wronskian b :=\\nfun {k} [Field k] [DecidableEq k] a b ha =>\\n  id (mathlib2_dvd_linear_combination (mathlib2_quotient_dvd_self a) (mathlib2_mason_lemma1 a ha) (derivative b) b)\\n\", \"stderr\": \"\", \"returncode\": 0, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_a72e7f230d394350bcf87b0302c3f7d8.lean\", \"sha256\": \"840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6\", \"elapsed\": 12.172000000020489, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"真实 Lean 编译及公理审计通过（New Proof）\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.exe\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_a72e7f230d394350bcf87b0302c3f7d8.lean\"], \"lean_version\": \"Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)\", \"declaration_audits\": {\"mathlib2_mason_lemma1\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_dvd_linear_combination\": {\"accepted\": true, \"axioms\": []}, \"mathlib2_quotient_dvd_self\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma2\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}}, \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma2-a72e7f230d394350bcf87b0302c3f7d8.json\", \"revision\": 0, \"normalized_sha256\": \"b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma2-alignment.md\", \"alignment_report_sha256\": \"9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": true}",
+            "created": "2026-11-12T09:58:47.098778+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 6
+          },
+          "after": {
+            "id": 6,
+            "candidate_id": 89,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 3：次数与 radical\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\n\\ntheorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\\n  apply isUnit_iff_degree_eq_zero.mpr\\n  rw [degree_eq_natDegree ha, hz]\\n  rfl\\n\\ntheorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\\n  have hr : radical a = 1 := by\\n    calc\\n      radical a = radical (radical a) := radical_radical.symm\\n      _ = 1 := radical_of_isUnit hu\\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\\n\\ntheorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\\n  intro hz\\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\\n  have hau := mathlib2_unit_of_radical_unit a ha hu\\n  exact hn (natDegree_eq_zero_of_isUnit hau)\\n\\ntheorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\\n\\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\\n  rw [degree_eq_natDegree radical_ne_zero]\\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\\n\\n#print axioms mathlib2_unit_of_natDegree_zero\\n#print axioms mathlib2_unit_of_radical_unit\\n#print axioms mathlib2_radical_natDegree_ne_zero\\n#print axioms mathlib2_mason_lemma3_nat\\n#print axioms mathlib2_mason_lemma3\\n#print mathlib2_mason_lemma3\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree\", \"name\": \"mathlib2_mason_lemma3\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*3\\\\b.*?field.*?degree.*?rad\", \"audit_names\": [\"mathlib2_unit_of_natDegree_zero\", \"mathlib2_unit_of_radical_unit\", \"mathlib2_radical_natDegree_ne_zero\", \"mathlib2_mason_lemma3_nat\", \"mathlib2_mason_lemma3\"], \"reused_declarations\": [{\"name\": \"Polynomial.isUnit_iff_degree_eq_zero\", \"path\": \"Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"line\": 286}, {\"name\": \"Polynomial.degree_eq_natDegree\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 93}, {\"name\": \"UniqueFactorizationMonoid.radical_radical\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 268}, {\"name\": \"UniqueFactorizationMonoid.radical_of_isUnit\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 180}, {\"name\": \"UniqueFactorizationMonoid.radical_eq_one_iff\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 259}, {\"name\": \"UniqueFactorizationMonoid.radical_ne_zero\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 212}, {\"name\": \"Polynomial.natDegree_eq_zero_of_isUnit\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Units.lean\", \"line\": 27}, {\"name\": \"Polynomial.natDegree_pos_iff_degree_pos\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 511}, {\"name\": \"WithBot.coe_le_coe\", \"path\": \"Mathlib/Order/WithBot.lean\", \"line\": 245}], \"provenance\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}, \"template_id\": \"mason_lemma3\", \"attempt_id\": \"2ba07ebcf17e402cab48c8ee006189e6\", \"accepted\": false, \"status\": \"timeout\", \"stdout\": \"\", \"stderr\": \"\", \"returncode\": null, \"axioms\": [], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_2ba07ebcf17e402cab48c8ee006189e6.lean\", \"sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"elapsed\": 15.046999999962281, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"编译超时；结果未知，可补齐缓存后重试\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.exe\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_2ba07ebcf17e402cab48c8ee006189e6.lean\"], \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma3-2ba07ebcf17e402cab48c8ee006189e6.json\", \"revision\": 0, \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma3-alignment.md\", \"alignment_report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": false}",
+            "created": "2026-11-13T18:13:20.761819+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 7
+          },
+          "after": {
+            "id": 7,
+            "candidate_id": 89,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 3：次数与 radical\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\n\\ntheorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\\n  apply isUnit_iff_degree_eq_zero.mpr\\n  rw [degree_eq_natDegree ha, hz]\\n  rfl\\n\\ntheorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\\n  have hr : radical a = 1 := by\\n    calc\\n      radical a = radical (radical a) := radical_radical.symm\\n      _ = 1 := radical_of_isUnit hu\\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\\n\\ntheorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\\n  intro hz\\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\\n  have hau := mathlib2_unit_of_radical_unit a ha hu\\n  exact hn (natDegree_eq_zero_of_isUnit hau)\\n\\ntheorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\\n\\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\\n  rw [degree_eq_natDegree radical_ne_zero]\\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\\n\\n#print axioms mathlib2_unit_of_natDegree_zero\\n#print axioms mathlib2_unit_of_radical_unit\\n#print axioms mathlib2_radical_natDegree_ne_zero\\n#print axioms mathlib2_mason_lemma3_nat\\n#print axioms mathlib2_mason_lemma3\\n#print mathlib2_mason_lemma3\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree\", \"name\": \"mathlib2_mason_lemma3\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*3\\\\b.*?field.*?degree.*?rad\", \"audit_names\": [\"mathlib2_unit_of_natDegree_zero\", \"mathlib2_unit_of_radical_unit\", \"mathlib2_radical_natDegree_ne_zero\", \"mathlib2_mason_lemma3_nat\", \"mathlib2_mason_lemma3\"], \"reused_declarations\": [{\"name\": \"Polynomial.isUnit_iff_degree_eq_zero\", \"path\": \"Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"line\": 286}, {\"name\": \"Polynomial.degree_eq_natDegree\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 93}, {\"name\": \"UniqueFactorizationMonoid.radical_radical\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 268}, {\"name\": \"UniqueFactorizationMonoid.radical_of_isUnit\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 180}, {\"name\": \"UniqueFactorizationMonoid.radical_eq_one_iff\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 259}, {\"name\": \"UniqueFactorizationMonoid.radical_ne_zero\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 212}, {\"name\": \"Polynomial.natDegree_eq_zero_of_isUnit\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Units.lean\", \"line\": 27}, {\"name\": \"Polynomial.natDegree_pos_iff_degree_pos\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 511}, {\"name\": \"WithBot.coe_le_coe\", \"path\": \"Mathlib/Order/WithBot.lean\", \"line\": 245}], \"provenance\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}, \"template_id\": \"mason_lemma3\", \"attempt_id\": \"b9d5b576c0244ea9b1f28b318810dc1f\", \"accepted\": true, \"status\": \"verified\", \"stdout\": \"'mathlib2_unit_of_natDegree_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_unit_of_radical_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_radical_natDegree_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma3_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma3' depends on axioms: [propext, Classical.choice, Quot.sound]\\ntheorem mathlib2_mason_lemma3.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\\n  1 ≤ a.degree → 1 ≤ (radical a).degree :=\\nfun {k} [Field k] [DecidableEq k] a h =>\\n  have hnat :=\\n    Nat.succ_le_of_lt (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (of_decide_eq_true (id (Eq.refl true))) h));\\n  Eq.mpr (id (congrArg (fun _a => 1 ≤ _a) (degree_eq_natDegree radical_ne_zero)))\\n    (WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat))\\n\", \"stderr\": \"\", \"returncode\": 0, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_b9d5b576c0244ea9b1f28b318810dc1f.lean\", \"sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"elapsed\": 30.31300000002375, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"真实 Lean 编译及公理审计通过（New Proof）\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.exe\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_b9d5b576c0244ea9b1f28b318810dc1f.lean\"], \"lean_version\": \"Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)\", \"declaration_audits\": {\"mathlib2_unit_of_natDegree_zero\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_unit_of_radical_unit\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_radical_natDegree_ne_zero\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma3_nat\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma3\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}}, \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma3-b9d5b576c0244ea9b1f28b318810dc1f.json\", \"revision\": 0, \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma3-alignment.md\", \"alignment_report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": true}",
+            "created": "2026-11-13T18:14:03.321617+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 8
+          },
+          "after": {
+            "id": 8,
+            "candidate_id": 89,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 3：次数与 radical\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\n\\ntheorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\\n  apply isUnit_iff_degree_eq_zero.mpr\\n  rw [degree_eq_natDegree ha, hz]\\n  rfl\\n\\ntheorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\\n  have hr : radical a = 1 := by\\n    calc\\n      radical a = radical (radical a) := radical_radical.symm\\n      _ = 1 := radical_of_isUnit hu\\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\\n\\ntheorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\\n  intro hz\\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\\n  have hau := mathlib2_unit_of_radical_unit a ha hu\\n  exact hn (natDegree_eq_zero_of_isUnit hau)\\n\\ntheorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\\n\\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\\n  rw [degree_eq_natDegree radical_ne_zero]\\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\\n\\n#print axioms mathlib2_unit_of_natDegree_zero\\n#print axioms mathlib2_unit_of_radical_unit\\n#print axioms mathlib2_radical_natDegree_ne_zero\\n#print axioms mathlib2_mason_lemma3_nat\\n#print axioms mathlib2_mason_lemma3\\n#print mathlib2_mason_lemma3\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree\", \"name\": \"mathlib2_mason_lemma3\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*3\\\\b.*?field.*?degree.*?rad\", \"audit_names\": [\"mathlib2_unit_of_natDegree_zero\", \"mathlib2_unit_of_radical_unit\", \"mathlib2_radical_natDegree_ne_zero\", \"mathlib2_mason_lemma3_nat\", \"mathlib2_mason_lemma3\"], \"reused_declarations\": [{\"name\": \"Polynomial.isUnit_iff_degree_eq_zero\", \"path\": \"Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"line\": 286}, {\"name\": \"Polynomial.degree_eq_natDegree\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 93}, {\"name\": \"UniqueFactorizationMonoid.radical_radical\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 268}, {\"name\": \"UniqueFactorizationMonoid.radical_of_isUnit\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 180}, {\"name\": \"UniqueFactorizationMonoid.radical_eq_one_iff\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 259}, {\"name\": \"UniqueFactorizationMonoid.radical_ne_zero\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 212}, {\"name\": \"Polynomial.natDegree_eq_zero_of_isUnit\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Units.lean\", \"line\": 27}, {\"name\": \"Polynomial.natDegree_pos_iff_degree_pos\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 511}, {\"name\": \"WithBot.coe_le_coe\", \"path\": \"Mathlib/Order/WithBot.lean\", \"line\": 245}], \"provenance\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}, \"template_id\": \"mason_lemma3\", \"attempt_id\": \"f4ee4017f74d43959b7b0e03d8ce89c3\", \"accepted\": false, \"status\": \"timeout\", \"stdout\": \"\", \"stderr\": \"\", \"returncode\": null, \"axioms\": [], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_f4ee4017f74d43959b7b0e03d8ce89c3.lean\", \"sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"elapsed\": 15.079000000027008, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"编译超时；结果未知，可补齐缓存后重试\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.exe\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_f4ee4017f74d43959b7b0e03d8ce89c3.lean\"], \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma3-f4ee4017f74d43959b7b0e03d8ce89c3.json\", \"revision\": 0, \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma3-alignment.md\", \"alignment_report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": false}",
+            "created": "2026-11-13T18:15:49.949177+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 9
+          },
+          "after": {
+            "id": 9,
+            "candidate_id": 89,
+            "payload": "{\"label\": \"Mason–Stothers Lemma 3：次数与 radical\", \"source\": \"import Mathlib.RingTheory.Polynomial.Radical\\nopen Polynomial UniqueFactorizationMonoid EuclideanDomain\\n\\ntheorem mathlib2_unit_of_natDegree_zero {k : Type*} [Field k]\\n    (a : k[X]) (ha : a ≠ 0) (hz : a.natDegree = 0) : IsUnit a := by\\n  apply isUnit_iff_degree_eq_zero.mpr\\n  rw [degree_eq_natDegree ha, hz]\\n  rfl\\n\\ntheorem mathlib2_unit_of_radical_unit {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (ha : a ≠ 0) (hu : IsUnit (radical a)) : IsUnit a := by\\n  have hr : radical a = 1 := by\\n    calc\\n      radical a = radical (radical a) := radical_radical.symm\\n      _ = 1 := radical_of_isUnit hu\\n  exact (radical_eq_one_iff.mp hr).resolve_left ha\\n\\ntheorem mathlib2_radical_natDegree_ne_zero {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : (radical a).natDegree ≠ 0 := by\\n  have hn : a.natDegree ≠ 0 := Nat.ne_of_gt (Nat.lt_of_lt_of_le Nat.zero_lt_one h)\\n  have ha : a ≠ 0 := fun hz => hn (by simp [hz])\\n  intro hz\\n  have hu := mathlib2_unit_of_natDegree_zero (radical a) radical_ne_zero hz\\n  have hau := mathlib2_unit_of_radical_unit a ha hu\\n  exact hn (natDegree_eq_zero_of_isUnit hau)\\n\\ntheorem mathlib2_mason_lemma3_nat {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : 1 ≤ a.natDegree) : 1 ≤ (radical a).natDegree := by\\n  exact Nat.one_le_iff_ne_zero.mpr (mathlib2_radical_natDegree_ne_zero a h)\\n\\ntheorem mathlib2_mason_lemma3 {k : Type*} [Field k] [DecidableEq k]\\n    (a : k[X]) (h : (1 : WithBot ℕ) ≤ a.degree) :\\n    (1 : WithBot ℕ) ≤ (radical a).degree := by\\n  have hnat : 1 ≤ a.natDegree := Nat.succ_le_of_lt\\n    (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (by decide) h))\\n  rw [degree_eq_natDegree radical_ne_zero]\\n  exact WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat)\\n\\n#print axioms mathlib2_unit_of_natDegree_zero\\n#print axioms mathlib2_unit_of_radical_unit\\n#print axioms mathlib2_radical_natDegree_ne_zero\\n#print axioms mathlib2_mason_lemma3_nat\\n#print axioms mathlib2_mason_lemma3\\n#print mathlib2_mason_lemma3\\n\", \"target\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree\", \"name\": \"mathlib2_mason_lemma3\", \"scope\": \"target\", \"source_match\": \"(?is)\\\\bLemma\\\\s*3\\\\b.*?field.*?degree.*?rad\", \"audit_names\": [\"mathlib2_unit_of_natDegree_zero\", \"mathlib2_unit_of_radical_unit\", \"mathlib2_radical_natDegree_ne_zero\", \"mathlib2_mason_lemma3_nat\", \"mathlib2_mason_lemma3\"], \"reused_declarations\": [{\"name\": \"Polynomial.isUnit_iff_degree_eq_zero\", \"path\": \"Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"line\": 286}, {\"name\": \"Polynomial.degree_eq_natDegree\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 93}, {\"name\": \"UniqueFactorizationMonoid.radical_radical\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 268}, {\"name\": \"UniqueFactorizationMonoid.radical_of_isUnit\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 180}, {\"name\": \"UniqueFactorizationMonoid.radical_eq_one_iff\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 259}, {\"name\": \"UniqueFactorizationMonoid.radical_ne_zero\", \"path\": \"Mathlib/RingTheory/Radical.lean\", \"line\": 212}, {\"name\": \"Polynomial.natDegree_eq_zero_of_isUnit\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Units.lean\", \"line\": 27}, {\"name\": \"Polynomial.natDegree_pos_iff_degree_pos\", \"path\": \"Mathlib/Algebra/Polynomial/Degree/Definitions.lean\", \"line\": 511}, {\"name\": \"WithBot.coe_le_coe\", \"path\": \"Mathlib/Order/WithBot.lean\", \"line\": 245}], \"provenance\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}, \"template_id\": \"mason_lemma3\", \"attempt_id\": \"0cd93ed19024460a85f4de6f484162c5\", \"accepted\": true, \"status\": \"verified\", \"stdout\": \"'mathlib2_unit_of_natDegree_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_unit_of_radical_unit' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_radical_natDegree_ne_zero' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma3_nat' depends on axioms: [propext, Classical.choice, Quot.sound]\\n'mathlib2_mason_lemma3' depends on axioms: [propext, Classical.choice, Quot.sound]\\ntheorem mathlib2_mason_lemma3.{u_1} : ∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : k[X]),\\n  1 ≤ a.degree → 1 ≤ (radical a).degree :=\\nfun {k} [Field k] [DecidableEq k] a h =>\\n  have hnat :=\\n    Nat.succ_le_of_lt (natDegree_pos_iff_degree_pos.mpr (lt_of_lt_of_le (of_decide_eq_true (id (Eq.refl true))) h));\\n  Eq.mpr (id (congrArg (fun _a => 1 ≤ _a) (degree_eq_natDegree radical_ne_zero)))\\n    (WithBot.coe_le_coe.mpr (mathlib2_mason_lemma3_nat a hnat))\\n\", \"stderr\": \"\", \"returncode\": 0, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"], \"artifact\": \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_0cd93ed19024460a85f4de6f484162c5.lean\", \"sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"elapsed\": 7.764999999955762, \"toolchain\": \"leanprover/lean4:v4.24.0\", \"reason\": \"真实 Lean 编译及公理审计通过（New Proof）\", \"manifest_sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\", \"command\": [\"D:\\\\mathproof\\\\.tools\\\\lean-4.24.0-windows\\\\bin\\\\lake.EXE\", \"env\", \"lean\", \"-M\", \"2048\", \"D:\\\\mathproof\\\\lean\\\\Research\\\\Attempt_0cd93ed19024460a85f4de6f484162c5.lean\"], \"lean_version\": \"Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)\", \"declaration_audits\": {\"mathlib2_unit_of_natDegree_zero\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_unit_of_radical_unit\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_radical_natDegree_ne_zero\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma3_nat\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}, \"mathlib2_mason_lemma3\": {\"accepted\": true, \"axioms\": [\"propext\", \"Classical.choice\", \"Quot.sound\"]}}, \"log_artifact\": \"D:\\\\mathproof\\\\reports\\\\lemma3-0cd93ed19024460a85f4de6f484162c5.json\", \"revision\": 0, \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"candidate_alignment\": \"confirmed\", \"alignment_report\": \"reports/lemma3-alignment.md\", \"alignment_report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"alignment_reviewer\": \"assistant_independent_semantic_review\", \"candidate_verified\": true}",
+            "created": "2026-11-13T18:17:44.506397+00:00"
+          }
+        }
+      ],
+      "modified": [],
+      "deleted": []
+    },
+    "sources": {
+      "before_count": 9,
+      "after_count": 9,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "verified": {
+      "before_count": 0,
+      "after_count": 0,
+      "schema_changed": false,
+      "added": [],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_history": {
+      "before_count": 26,
+      "after_count": 42,
+      "schema_changed": false,
+      "added": [
+        {
+          "key": {
+            "id": 27
+          },
+          "after": {
+            "id": 27,
+            "candidate_id": 87,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 87, \"source_id\": 9, \"template_id\": \"mason_lemma2\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-12T09:57:41.764780+00:00\", \"revision\": 0, \"original_sha256\": \"191bc8edfd76d1779ba18f8d004a87983bfcc362917a56f11644cc120ed76ace\", \"normalized_sha256\": \"b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569\", \"lean_source_sha256\": \"840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6\", \"report_path\": \"reports/lemma2-alignment.md\", \"report_sha256\": \"9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean\", \"sha256\": \"fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean\", \"sha256\": \"451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Group\\\\Defs.lean\", \"sha256\": \"324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Ring\\\\Defs.lean\", \"sha256\": \"120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Wronskian.lean\", \"sha256\": \"b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}, {\"path\": \"reports/lemma1-alignment.md\", \"sha256\": \"8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_statement\": true, \"new_proof\": true, \"meaning\": \"新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1\", \"method\": \"提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律\", \"author_code_copied\": false, \"ai_api_calls\": 0, \"alternative_not_used\": \"divRadical_dvd_wronskian_left\"}}",
+            "created": "2026-11-12T09:57:41.772515+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 28
+          },
+          "after": {
+            "id": 28,
+            "candidate_id": 87,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": true, \"candidate_verified\": true}",
+            "created": "2026-11-12T09:57:54.040262+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 29
+          },
+          "after": {
+            "id": 29,
+            "candidate_id": 87,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 87, \"source_id\": 9, \"template_id\": \"mason_lemma2\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-12T09:58:34.902121+00:00\", \"revision\": 0, \"original_sha256\": \"191bc8edfd76d1779ba18f8d004a87983bfcc362917a56f11644cc120ed76ace\", \"normalized_sha256\": \"b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569\", \"lean_source_sha256\": \"840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6\", \"report_path\": \"reports/lemma2-alignment.md\", \"report_sha256\": \"9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean\", \"sha256\": \"fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean\", \"sha256\": \"451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Group\\\\Defs.lean\", \"sha256\": \"324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Ring\\\\Defs.lean\", \"sha256\": \"120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Wronskian.lean\", \"sha256\": \"b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}, {\"path\": \"reports/lemma1-alignment.md\", \"sha256\": \"8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_statement\": true, \"new_proof\": true, \"meaning\": \"新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1\", \"method\": \"提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律\", \"author_code_copied\": false, \"ai_api_calls\": 0, \"alternative_not_used\": \"divRadical_dvd_wronskian_left\"}}",
+            "created": "2026-11-12T09:58:34.906169+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 30
+          },
+          "after": {
+            "id": 30,
+            "candidate_id": 87,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": true, \"candidate_verified\": true}",
+            "created": "2026-11-12T09:58:47.102853+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 31
+          },
+          "after": {
+            "id": 31,
+            "candidate_id": 89,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 89, \"source_id\": 9, \"template_id\": \"mason_lemma3\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-13T18:13:05.678043+00:00\", \"revision\": 0, \"original_sha256\": \"817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9\", \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"lean_source_sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"report_path\": \"reports/lemma3-alignment.md\", \"report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Definitions.lean\", \"sha256\": \"3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Units.lean\", \"sha256\": \"2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Order\\\\WithBot.lean\", \"sha256\": \"53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}}",
+            "created": "2026-11-13T18:13:05.691758+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 32
+          },
+          "after": {
+            "id": 32,
+            "candidate_id": 89,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": false, \"candidate_verified\": false}",
+            "created": "2026-11-13T18:13:20.764326+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 33
+          },
+          "after": {
+            "id": 33,
+            "candidate_id": 89,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 89, \"source_id\": 9, \"template_id\": \"mason_lemma3\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-13T18:13:33.002368+00:00\", \"revision\": 0, \"original_sha256\": \"817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9\", \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"lean_source_sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"report_path\": \"reports/lemma3-alignment.md\", \"report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Definitions.lean\", \"sha256\": \"3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Units.lean\", \"sha256\": \"2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Order\\\\WithBot.lean\", \"sha256\": \"53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}}",
+            "created": "2026-11-13T18:13:33.005367+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 34
+          },
+          "after": {
+            "id": 34,
+            "candidate_id": 89,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": true, \"candidate_verified\": true}",
+            "created": "2026-11-13T18:14:03.324615+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 35
+          },
+          "after": {
+            "id": 35,
+            "candidate_id": 89,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 89, \"source_id\": 9, \"template_id\": \"mason_lemma3\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-13T18:15:34.851351+00:00\", \"revision\": 0, \"original_sha256\": \"817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9\", \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"lean_source_sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"report_path\": \"reports/lemma3-alignment.md\", \"report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\BigOperators.lean\", \"sha256\": \"d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Definitions.lean\", \"sha256\": \"3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Units.lean\", \"sha256\": \"2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Order\\\\WithBot.lean\", \"sha256\": \"53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}}",
+            "created": "2026-11-13T18:15:34.859924+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 36
+          },
+          "after": {
+            "id": 36,
+            "candidate_id": 89,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": false, \"candidate_verified\": false}",
+            "created": "2026-11-13T18:15:49.951745+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 37
+          },
+          "after": {
+            "id": 37,
+            "candidate_id": 89,
+            "action": "independent_semantic_alignment",
+            "payload": "{\"conclusion\": \"confirmed\", \"candidate_id\": 89, \"source_id\": 9, \"template_id\": \"mason_lemma3\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-13T18:17:36.719585+00:00\", \"revision\": 0, \"original_sha256\": \"817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9\", \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"lean_source_sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"report_path\": \"reports/lemma3-alignment.md\", \"report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\BigOperators.lean\", \"sha256\": \"d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Definitions.lean\", \"sha256\": \"3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Units.lean\", \"sha256\": \"2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Order\\\\WithBot.lean\", \"sha256\": \"53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}}",
+            "created": "2026-11-13T18:17:36.721585+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 38
+          },
+          "after": {
+            "id": 38,
+            "candidate_id": 89,
+            "action": "lean_compile",
+            "payload": "{\"accepted\": true, \"candidate_verified\": true}",
+            "created": "2026-11-13T18:17:44.509397+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 39
+          },
+          "after": {
+            "id": 39,
+            "candidate_id": 73,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.376715+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 40
+          },
+          "after": {
+            "id": 40,
+            "candidate_id": 74,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.380715+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 41
+          },
+          "after": {
+            "id": 41,
+            "candidate_id": 75,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.384780+00:00"
+          }
+        },
+        {
+          "key": {
+            "id": 42
+          },
+          "after": {
+            "id": 42,
+            "candidate_id": 76,
+            "action": "planning",
+            "payload": "{\"status\": \"acyclic\", \"unresolved\": 2}",
+            "created": "2026-11-14T11:34:46.388785+00:00"
+          }
+        }
+      ],
+      "modified": [],
+      "deleted": []
+    },
+    "workbench_state": {
+      "before_count": 20,
+      "after_count": 20,
+      "schema_changed": false,
+      "added": [],
+      "modified": [
+        {
+          "key": {
+            "candidate_id": 73
+          },
+          "before": {
+            "candidate_id": 73,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"3. An abundant number is an integer n whose divisors add up to more than 2n.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 73,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"3. An abundant number is an integer n whose divisors add up to more than 2n.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 74
+          },
+          "before": {
+            "candidate_id": 74,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"A perfect number is an integer n whose divisors add up to exactly 2n.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 74,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"A perfect number is an integer n whose divisors add up to exactly 2n.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 75
+          },
+          "before": {
+            "candidate_id": 75,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(a) If n is perfect, then kn is abundant for any k ∈ N.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 75,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(a) If n is perfect, then kn is abundant for any k ∈ N.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 76
+          },
+          "before": {
+            "candidate_id": 76,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(b) If p1 and p2 are primes, then p1p2 is abundant.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 76,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"(b) If p1 and p2 are primes, then p1p2 is abundant.\", \"revision\": 0, \"candidate_alignment\": \"unconfirmed\", \"candidate_verified\": false}"
+          },
+          "fields": [
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "unconfirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": false
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 87
+          },
+          "before": {
+            "candidate_id": 87,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"Lemma 2.For any nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 87,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"formalized\", \"verification_status\": \"proved\", \"approval_status\": \"pending\", \"normalized_statement\": \"Lemma 2.For any nonzero a∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.\", \"revision\": 0, \"candidate_alignment\": \"confirmed\", \"candidate_verified\": true, \"alignment_record\": {\"conclusion\": \"confirmed\", \"candidate_id\": 87, \"source_id\": 9, \"template_id\": \"mason_lemma2\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-12T09:58:34.902121+00:00\", \"revision\": 0, \"original_sha256\": \"191bc8edfd76d1779ba18f8d004a87983bfcc362917a56f11644cc120ed76ace\", \"normalized_sha256\": \"b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569\", \"lean_source_sha256\": \"840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6\", \"report_path\": \"reports/lemma2-alignment.md\", \"report_sha256\": \"9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean\", \"sha256\": \"fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean\", \"sha256\": \"451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2\"}, {\"path\": \"lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Group\\\\Defs.lean\", \"sha256\": \"324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Ring\\\\Defs.lean\", \"sha256\": \"120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Wronskian.lean\", \"sha256\": \"b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}, {\"path\": \"reports/lemma1-alignment.md\", \"sha256\": \"8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_statement\": true, \"new_proof\": true, \"meaning\": \"新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1\", \"method\": \"提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律\", \"author_code_copied\": false, \"ai_api_calls\": 0, \"alternative_not_used\": \"divRadical_dvd_wronskian_left\"}}, \"last_compile_accepted\": true, \"lean_statement\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b\"}"
+          },
+          "fields": [
+            {
+              "path": "/payload/alignment_record",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": {
+                "conclusion": "confirmed",
+                "candidate_id": 87,
+                "source_id": 9,
+                "template_id": "mason_lemma2",
+                "reviewer": "assistant_independent_semantic_review",
+                "human_reviewed": false,
+                "created": "2026-11-12T09:58:34.902121+00:00",
+                "revision": 0,
+                "original_sha256": "191bc8edfd76d1779ba18f8d004a87983bfcc362917a56f11644cc120ed76ace",
+                "normalized_sha256": "b7107f0f9e67cd6f27a3cf375a8db9ca771829d5d9ef441809c33c58d18eb569",
+                "lean_source_sha256": "840959c4aa6ee8c06c612dec55016de103dc5568cbfe080d2de41f4b77df07a6",
+                "report_path": "reports/lemma2-alignment.md",
+                "report_sha256": "9ef8d40f4113f71f2039d1b59abd1f6d5adc474b479d1f3cbf5ac01adc2f937a",
+                "files": [
+                  {
+                    "path": "2408.15180v2.pdf",
+                    "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+                  },
+                  {
+                    "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+                    "sha256": "fab5a8f2e9a5847893b62af9e1f980c94785f514f59fe3a4b87e940b5b0ebf53"
+                  },
+                  {
+                    "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/Derivative.lean",
+                    "sha256": "451a242782e11346e494de50c97020509d650cbe69b61ef0dfec1fcd9df447e2"
+                  },
+                  {
+                    "path": "lean/.lake/packages/mathlib/Mathlib/Algebra/Polynomial/FieldDivision.lean",
+                    "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+                  },
+                  {
+                    "path": "lean/lake-manifest.json",
+                    "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+                  },
+                  {
+                    "path": "lean/lean-toolchain",
+                    "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Group\\Defs.lean",
+                    "sha256": "324c0b5352b981cc4e31ba32adab04604e8b5814421481f8848c370287378971"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Ring\\Defs.lean",
+                    "sha256": "120b99c1e847bb24d8575d5ba553f00403ce696fc197dfbed0caf0ca731eae50"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+                    "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Wronskian.lean",
+                    "sha256": "b369cac2477e465356681828038a2e7e696c967fead9422ea5503262abada8dd"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+                    "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+                  },
+                  {
+                    "path": "reports/lemma1-alignment.md",
+                    "sha256": "8fc7ebbb3c184a80806d2d3a4c839a8cfe6f6ca41a1ab88f31f7935999dfbfdc"
+                  }
+                ],
+                "proof_origin": {
+                  "category": "New Proof",
+                  "new_statement": true,
+                  "new_proof": true,
+                  "meaning": "新编写的Lean组合证明，不主张新数学结果或全球独创；依赖已复用的Lemma1",
+                  "method": "提取两个整除见证u,v，构造u*derivative b-v*b，使用分配律和结合律",
+                  "author_code_copied": false,
+                  "ai_api_calls": 0,
+                  "alternative_not_used": "divRadical_dvd_wronskian_left"
+                }
+              }
+            },
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "confirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": true
+            },
+            {
+              "path": "/payload/formalization_status",
+              "before_present": true,
+              "after_present": true,
+              "before": "not_formalized",
+              "after": "formalized"
+            },
+            {
+              "path": "/payload/last_compile_accepted",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": true
+            },
+            {
+              "path": "/payload/lean_statement",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "∀ {k : Type*} [Field k] [DecidableEq k] (a b : k[X]), a ≠ 0 → a / radical a ∣ Polynomial.wronskian a b"
+            },
+            {
+              "path": "/payload/verification_status",
+              "before_present": true,
+              "after_present": true,
+              "before": "unknown",
+              "after": "proved"
+            }
+          ],
+          "serialization_only": false
+        },
+        {
+          "key": {
+            "candidate_id": 89
+          },
+          "before": {
+            "candidate_id": 89,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"not_formalized\", \"verification_status\": \"unknown\", \"approval_status\": \"pending\", \"normalized_statement\": \"Lemma 3.For any fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one. A formal proof of Lemma 3 requires more work, however. We need to explicitly take a prime factorpofaand show that it is also a prime factor of rad(a). We first show that for any elementaof a general monoidM, a primepdividesaif and only if it divides rad(a); this is done by using that the prime divisors ofa and rad(a) are the same.\", \"revision\": 0}"
+          },
+          "after": {
+            "candidate_id": 89,
+            "payload": "{\"extraction_status\": \"extracted\", \"semantic_review_status\": \"needs_review\", \"review_status\": \"needs_review\", \"retrieval_status\": \"not_run\", \"planning_status\": \"completed\", \"formalization_status\": \"formalized\", \"verification_status\": \"proved\", \"approval_status\": \"pending\", \"normalized_statement\": \"Lemma 3.For any fieldkand a polynomial a∈k[X]of degree≥1, the degree of its radicalrad(a)is also at least one. A formal proof of Lemma 3 requires more work, however. We need to explicitly take a prime factorpofaand show that it is also a prime factor of rad(a). We first show that for any elementaof a general monoidM, a primepdividesaif and only if it divides rad(a); this is done by using that the prime divisors ofa and rad(a) are the same.\", \"revision\": 0, \"candidate_alignment\": \"confirmed\", \"candidate_verified\": true, \"alignment_record\": {\"conclusion\": \"confirmed\", \"candidate_id\": 89, \"source_id\": 9, \"template_id\": \"mason_lemma3\", \"reviewer\": \"assistant_independent_semantic_review\", \"human_reviewed\": false, \"created\": \"2026-11-13T18:17:36.719585+00:00\", \"revision\": 0, \"original_sha256\": \"817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9\", \"normalized_sha256\": \"8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2\", \"lean_source_sha256\": \"49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b\", \"report_path\": \"reports/lemma3-alignment.md\", \"report_sha256\": \"abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce\", \"files\": [{\"path\": \"2408.15180v2.pdf\", \"sha256\": \"40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574\"}, {\"path\": \"lean/lake-manifest.json\", \"sha256\": \"016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5\"}, {\"path\": \"lean/lean-toolchain\", \"sha256\": \"42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\BigOperators.lean\", \"sha256\": \"d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Definitions.lean\", \"sha256\": \"3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\Degree\\\\Units.lean\", \"sha256\": \"2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Algebra\\\\Polynomial\\\\FieldDivision.lean\", \"sha256\": \"f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\Order\\\\WithBot.lean\", \"sha256\": \"53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Polynomial\\\\Radical.lean\", \"sha256\": \"63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca\"}, {\"path\": \"lean\\\\.lake\\\\packages\\\\mathlib\\\\Mathlib\\\\RingTheory\\\\Radical.lean\", \"sha256\": \"23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828\"}], \"proof_origin\": {\"category\": \"New Proof\", \"new_proof\": true, \"new_statement\": true, \"generation_source\": \"AI 生成（本次对话助手编写代码）；随后固化为复跑模板\", \"autonomous_reasoning_engine\": false, \"external_ai_api_calls\": 0, \"author_code_copied\": false, \"meaning\": \"新的Lean组合脚本，不主张新数学结果；未复制作者实现\", \"lemma1_used\": false, \"lemma2_used\": false}}, \"last_compile_accepted\": true, \"lean_statement\": \"∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree\"}"
+          },
+          "fields": [
+            {
+              "path": "/payload/alignment_record",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": {
+                "conclusion": "confirmed",
+                "candidate_id": 89,
+                "source_id": 9,
+                "template_id": "mason_lemma3",
+                "reviewer": "assistant_independent_semantic_review",
+                "human_reviewed": false,
+                "created": "2026-11-13T18:17:36.719585+00:00",
+                "revision": 0,
+                "original_sha256": "817d698913421d938b9e4d0da5de2ff423057c8cf30373ba15fc3086b5724ae9",
+                "normalized_sha256": "8ffa4d87e9873648ae1ad9d41c4af27c85bc336898603b485fc7bf1bce44bad2",
+                "lean_source_sha256": "49af9433eadc7bff6dac94937889ae2f090fa414d72c8f7fb3eea5f6ace1050b",
+                "report_path": "reports/lemma3-alignment.md",
+                "report_sha256": "abd2a04ca2538eab6d77fb22cfedbce4142401bb4cb46694506025fce1734dce",
+                "files": [
+                  {
+                    "path": "2408.15180v2.pdf",
+                    "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574"
+                  },
+                  {
+                    "path": "lean/lake-manifest.json",
+                    "sha256": "016d84bc684acdb47691348f12374d8632bd56ea8aaff53fa71168112aafd6a5"
+                  },
+                  {
+                    "path": "lean/lean-toolchain",
+                    "sha256": "42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\BigOperators.lean",
+                    "sha256": "d7d1553450ea311214553fca7c52e2efe2fd7923b79db543f2c745e986109568"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Definitions.lean",
+                    "sha256": "3ee4e30e35cac22f01a5164639907eb21468feef90eb3839e10bdf2d7fc358b7"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\Degree\\Units.lean",
+                    "sha256": "2b642b00fbf6ec7d688d9c24553cd0ccc022a9e255c468953c157af7c4c6f044"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Algebra\\Polynomial\\FieldDivision.lean",
+                    "sha256": "f4cdffb43c4a31b11cda877ce65d2ccdb940c639c1fc735e9303a90bc608d0d1"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\Order\\WithBot.lean",
+                    "sha256": "53a3d893216bd65e42e0888be6205d8cbaf4e6d2a644d788234906d298de5a17"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Polynomial\\Radical.lean",
+                    "sha256": "63b8fed48a0e0c9aaf89e17b86f1111d2f4104e5cea6a1427e6063cf854f86ca"
+                  },
+                  {
+                    "path": "lean\\.lake\\packages\\mathlib\\Mathlib\\RingTheory\\Radical.lean",
+                    "sha256": "23ae1a4d51b2d8383cf385ce8abab9393832da1a6c587c38c019a764b0059828"
+                  }
+                ],
+                "proof_origin": {
+                  "category": "New Proof",
+                  "new_proof": true,
+                  "new_statement": true,
+                  "generation_source": "AI 生成（本次对话助手编写代码）；随后固化为复跑模板",
+                  "autonomous_reasoning_engine": false,
+                  "external_ai_api_calls": 0,
+                  "author_code_copied": false,
+                  "meaning": "新的Lean组合脚本，不主张新数学结果；未复制作者实现",
+                  "lemma1_used": false,
+                  "lemma2_used": false
+                }
+              }
+            },
+            {
+              "path": "/payload/candidate_alignment",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "confirmed"
+            },
+            {
+              "path": "/payload/candidate_verified",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": true
+            },
+            {
+              "path": "/payload/formalization_status",
+              "before_present": true,
+              "after_present": true,
+              "before": "not_formalized",
+              "after": "formalized"
+            },
+            {
+              "path": "/payload/last_compile_accepted",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": true
+            },
+            {
+              "path": "/payload/lean_statement",
+              "before_present": false,
+              "after_present": true,
+              "before": null,
+              "after": "∀ {k : Type*} [Field k] [DecidableEq k] (a : k[X]), (1 : WithBot ℕ) ≤ a.degree → (1 : WithBot ℕ) ≤ (radical a).degree"
+            },
+            {
+              "path": "/payload/verification_status",
+              "before_present": true,
+              "after_present": true,
+              "before": "unknown",
+              "after": "proved"
+            }
+          ],
+          "serialization_only": false
+        }
+      ],
+      "deleted": []
+    }
+  }
+}

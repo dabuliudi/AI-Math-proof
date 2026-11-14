@@ -1,0 +1,36 @@
+{
+  "returncode": 0,
+  "stdout": "D:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:2:69: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:2:90: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:2:111: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:5:69: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:5:90: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\nD:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean:5:111: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n'p2_n002' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "D:\\mathproof\\.tools\\lean-4.24.0-windows\\bin\\lake.exe",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "D:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean"
+  ],
+  "cwd": "D:\\mathproof\\lean",
+  "elapsed": 5.9075946000000386,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v2 ∣ p2v3)) (h1 : (p2v0 ∣ p2v1)) (h2 : (p2v1 ∣ p2v2)) : (p2v0 ∣ p2v0) := by\n  exact @dvd_refl Nat _ p2v0\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v2 ∣ p2v3)) (h1 : (p2v0 ∣ p2v1)) (h2 : (p2v1 ∣ p2v2)) : (p2v0 ∣ 0) := by\n  exact @dvd_zero Nat _ p2v0\n\n#print axioms p2_n001\n#print axioms p2_n002\n",
+  "source_sha256": "bad4a86baca780dd8ab11f4812c1b49e461fa9ea3e020509c3ea145c443f783b",
+  "goal": "(p2v0 ∣ 0)",
+  "artifact": "D:\\mathproof\\phase2\\runs\\51fb3ca3050042838e2b15266aa15966\\attempt-002.lean",
+  "log": "attempt-002.json"
+}

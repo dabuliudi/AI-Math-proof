@@ -1,0 +1,38 @@
+{
+  "candidates": {
+    "old_rows": 2,
+    "current_rows": 2,
+    "old_rows_retained": true,
+    "exact_equal": true
+  },
+  "workbench_state": {
+    "old_rows": 2,
+    "current_rows": 2,
+    "old_rows_retained": true,
+    "exact_equal": true
+  },
+  "proof_runs": {
+    "old_rows": 5,
+    "current_rows": 5,
+    "old_rows_retained": true,
+    "exact_equal": true
+  },
+  "workbench_history": {
+    "old_rows": 12,
+    "current_rows": 12,
+    "old_rows_retained": true,
+    "exact_equal": true
+  },
+  "events": {
+    "old_rows": 0,
+    "current_rows": 0,
+    "old_rows_retained": true,
+    "exact_equal": true
+  },
+  "verified": {
+    "old_rows": 0,
+    "current_rows": 0,
+    "old_rows_retained": true,
+    "exact_equal": true
+  }
+}

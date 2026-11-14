@@ -1,0 +1,14 @@
+{
+  "paper_sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574",
+  "source_location": {
+    "page": 4,
+    "start": 946,
+    "end": 1004
+  },
+  "original_statement": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+  "definitions_pages": [
+    2,
+    6,
+    8
+  ]
+}

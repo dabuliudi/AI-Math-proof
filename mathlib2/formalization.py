@@ -8,6 +8,7 @@ import time
 import uuid
 from pathlib import Path
 from .lean import accepted
+from .toolchain import find_lake, kill_tree
 
 ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / 'lean'
@@ -60,8 +61,7 @@ def check_template(template_id, timeout=120):
                   toolchain=(PROJECT/'lean-toolchain').read_text().strip(),reason='')
     result['reused_declarations'] = template.get('reused_declarations',[{'name':'divRadical_dvd_derivative',
         'path':'Mathlib/RingTheory/Polynomial/Radical.lean','line':31}])
-    portable = ROOT/'.tools/lean-4.24.0-windows/bin/lake.exe'
-    lake = os.environ.get('MATHLIB2_LAKE') or shutil.which('lake') or (str(portable) if portable.exists() else None)
+    lake = find_lake()
     started = time.monotonic()
     manifest=PROJECT/'lake-manifest.json'
     if manifest.exists():

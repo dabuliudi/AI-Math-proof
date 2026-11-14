@@ -7,6 +7,8 @@ import time
 import uuid
 from pathlib import Path
 
+from .toolchain import find_lake
+
 ROOT = Path(__file__).resolve().parents[1]
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 TACTICS = {'omega': 'omega', 'simp': 'simp',
@@ -35,7 +37,7 @@ class LeanWorker:
     def __init__(self, project=None, timeout=30):
         self.project = Path(project or ROOT / 'lean').resolve()
         self.timeout = timeout
-        self.lake = os.environ.get('MATHLIB2_LAKE') or shutil.which('lake')
+        self.lake = find_lake()
 
     def check(self, statement, strategy, negate=False, dependency=None):
         start = time.monotonic()

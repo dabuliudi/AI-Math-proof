@@ -11,11 +11,30 @@ IMPORT='import Mathlib.RingTheory.Polynomial.Radical\n'
 ALLOWED={'propext','Classical.choice','Quot.sound'}
 
 
+def find_lake():
+    """环境变量 > PATH > elan 默认目录 > 仓库内便携版（Windows）。phase2 保持不依赖旧 mathlib2 包。"""
+    import shutil
+    exe='lake.exe' if os.name=='nt' else 'lake'
+    for candidate in (os.environ.get('MATHLIB2_LAKE'),shutil.which('lake'),Path.home()/'.elan'/'bin'/exe,ROOT/'.tools/lean-4.24.0-windows/bin/lake.exe'):
+        if candidate and Path(candidate).exists(): return Path(candidate)
+    raise RuntimeError('未找到 Lake；请安装 elan 或设置 MATHLIB2_LAKE')
+
+
+def kill_tree(p):
+    if os.name=='nt':
+        subprocess.run(['taskkill','/PID',str(p.pid),'/T','/F'],capture_output=True)
+    else:
+        import signal
+        try: os.killpg(p.pid,signal.SIGKILL)
+        except (ProcessLookupError,PermissionError): pass
+    p.kill()
+
+
 class Compiler:
     def __init__(self,journal,timeout=45):
         self.journal=journal
         self.timeout=timeout
-        self.lake=ROOT/'.tools/lean-4.24.0-windows/bin/lake.exe'
+        self.lake=find_lake()
         self.counter=0
         self.env=os.environ.copy()
         self.env['PATH']=str(self.lake.parent)+os.pathsep+self.env.get('PATH','')
@@ -24,13 +43,12 @@ class Compiler:
         command=[str(self.lake),'env','lean','-M','2048',str(Path(path).resolve())]
         start=time.perf_counter()
         try:
-            p=subprocess.Popen(command,cwd=ROOT/'lean',env=self.env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,encoding='utf-8',errors='replace')
+            p=subprocess.Popen(command,cwd=ROOT/'lean',env=self.env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,encoding='utf-8',errors='replace',start_new_session=os.name!='nt')
             try:
                 stdout,stderr=p.communicate(timeout=timeout or self.timeout)
                 result=dict(returncode=p.returncode,stdout=stdout,stderr=stderr,status='completed')
             except subprocess.TimeoutExpired:
-                subprocess.run(['taskkill','/PID',str(p.pid),'/T','/F'],capture_output=True)
-                p.kill(); stdout,stderr=p.communicate()
+                kill_tree(p); stdout,stderr=p.communicate()
                 result=dict(returncode=None,stdout=stdout,stderr=stderr,status='timeout')
         except OSError as exc:
             result=dict(returncode=None,stdout='',stderr=str(exc),status='unavailable')
@@ -56,6 +74,11 @@ class Compiler:
         self.journal.save(stem+'.json',result)
         self.journal.event('compile_finished',goal=goal,log=result['log'],accepted=result['accepted'],status=result['status'])
         return result
+
+    def lean_src(self):
+        """Lean Core 源码目录，由当前工具链报告，不写死安装位置。"""
+        p=subprocess.run([str(self.lake),'env','lean','--print-prefix'],cwd=ROOT/'lean',env=self.env,capture_output=True,text=True,encoding='utf-8',timeout=60)
+        return Path(p.stdout.strip())/'src'/'lean'
 
     def metadata(self):
         try:

@@ -27,10 +27,9 @@
 cd D:\
 git clone https://github.com/dabuliudi/AI-Math-proof.git mathproof
 cd D:\mathproof
-git checkout mac-runnable
 ```
 
-这个仓库是私有的：第一次 clone 时会弹出 GitHub 登录，用有权限的账号登录即可。以后同步 Mac 上的新进展：`git pull`。
+仓库是公开的，clone 不需要登录。以后同步 Mac 上的新进展：`git pull`。
 
 ## 3. 装 Python 环境和 Lean 依赖
 

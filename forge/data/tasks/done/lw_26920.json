@@ -11,5 +11,9 @@
   "type": "∀ (a b : ℝ), 1 ≤ a → 1 ≤ b → 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) ≥ 2 / (1 + a * b)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "open"
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T22:16:25+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T22:17:54+0800"
 }

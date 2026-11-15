@@ -11,5 +11,9 @@
   "type": "∀ (a b c d : ℝ), a ∈ Set.Icc 0 1 → b ∈ Set.Icc 0 1 → c ∈ Set.Icc 0 1 → d ∈ Set.Icc 0 1 → (a + b + c + d + 1) ^ 2 ≥ 4 * (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "open"
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T22:26:37+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T22:27:49+0800"
 }

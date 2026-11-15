@@ -394,4 +394,124 @@ theorem lw_19204 (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
     linarith
 end
 
+-- forge:entry lw_23609 kind=proved origin=external
+section
+/- Prove that the polynomial equation $ x^{8}-x^{7}+x^{2}-x+15=0 $ has no real solution. -/
+theorem lw_23609 : ∀ x : ℝ, ¬(x^8 - x^7 + x^2 - x + 15 = 0) := by
+  intro x heq
+  by_cases hx0 : x ≤ 0
+  · have h7 : x ^ 7 ≤ 0 := by
+      nlinarith [mul_nonpos_of_nonneg_of_nonpos (sq_nonneg (x ^ 3)) hx0]
+    nlinarith [sq_nonneg (x ^ 4), sq_nonneg x]
+  · have hx : 0 ≤ x := le_of_lt (lt_of_not_ge hx0)
+    by_cases hx1 : x ≤ 1
+    · have h7 : x ^ 7 ≤ 1 := pow_le_one₀ hx hx1
+      nlinarith [sq_nonneg (x ^ 4), sq_nonneg x]
+    · have h1 : 0 ≤ x - 1 := by linarith
+      have h7 : 0 ≤ x ^ 7 := pow_nonneg hx 7
+      nlinarith [mul_nonneg h7 h1, mul_nonneg hx h1]
+end
+
+-- forge:entry lw_22467 kind=proved origin=external
+section
+/- x^8+x^6*y*z+2*x^3*y^3*z^2-x^5*y^2*z-x^5*y*z^2-2*x^4*y^4+y^8+y^6*z*x+2*y^3*z^3*x^2-y^5*z^2*x-y^5*z*x^2-2*y^4*z^4+z^8+z^6*x*y+2*z^3*x^3*y^2-z^5*x^2*y-z^5*x*y^2-2*z^4*x^4 =F[8][0,1]+F[8][0,2]+F[8][0,3]+4*F[8][1,1]+2*F[8][1,2]\\geq 0. F[8][0,1]=sigma(x^6*(x-y)*(x-z),[x,y,z]) =x^6*(x-y)*(x-z)+y^6*(y-z)*(y-x)+z^6*(z-x)*(z-y)\\geq 0, F[8][0,2]=sigma(x^5*(y+z)*(x-y)*(x-z),[x,y,z])\\geq 0, F[8][0,3]=sigma(x^2*(x+y+z)^2*(y-z)^2*(x-y)*(x-z),[x,y,z])\\geq 0, F[8][1,1]=sigma(x^4*y*z*(y+z)*(x-y)*(x-z),[x,y,z])\\geq 0, F[8][1,2]=sigma(x^3*y*z*(y+z)*(x-y)*(x-z),[x,y,z])\\geq 0 (x\\geq 0,y\\geq 0,z\\geq 0)$ -/
+theorem lw_22467_aux1 (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) :
+    0 ≤ (c + a + b) ^ 8 + (c + b) ^ 8 + c ^ 8 +
+      (c + a + b) * (c + b) * c * ((c + a + b) ^ 5 + (c + b) ^ 5 + c ^ 5 -
+        (c + a + b) ^ 4 * ((c + b) + c) - (c + b) ^ 4 * ((c + a + b) + c) - c ^ 4 * ((c + a + b) + (c + b))) +
+      2 * ((c + a + b) * (c + b) * c) ^ 2 * ((c + a + b) * (c + b) + (c + b) * c + c * (c + a + b)) -
+      2 * (((c + a + b) * (c + b)) ^ 4 + ((c + b) * c) ^ 4 + (c * (c + a + b)) ^ 4) := by
+  calc
+    0 ≤ 11 * c ^ 6 * a ^ 2 +
+      11 * c ^ 6 * a * b +
+      11 * c ^ 6 * b ^ 2 +
+      44 * c ^ 5 * a ^ 3 +
+      99 * c ^ 5 * a ^ 2 * b +
+      33 * c ^ 5 * a * b ^ 2 +
+      22 * c ^ 5 * b ^ 3 +
+      71 * c ^ 4 * a ^ 4 +
+      252 * c ^ 4 * a ^ 3 * b +
+      268 * c ^ 4 * a ^ 2 * b ^ 2 +
+      32 * c ^ 4 * a * b ^ 3 +
+      16 * c ^ 4 * b ^ 4 +
+      60 * c ^ 3 * a ^ 5 +
+      292 * c ^ 3 * a ^ 4 * b +
+      518 * c ^ 3 * a ^ 3 * b ^ 2 +
+      352 * c ^ 3 * a ^ 2 * b ^ 3 +
+      10 * c ^ 3 * a * b ^ 4 +
+      4 * c ^ 3 * b ^ 5 +
+      29 * c ^ 2 * a ^ 6 +
+      177 * c ^ 2 * a ^ 5 * b +
+      433 * c ^ 2 * a ^ 4 * b ^ 2 +
+      512 * c ^ 2 * a ^ 3 * b ^ 3 +
+      256 * c ^ 2 * a ^ 2 * b ^ 4 +
+      8 * c * a ^ 7 +
+      57 * c * a ^ 6 * b +
+      173 * c * a ^ 5 * b ^ 2 +
+      282 * c * a ^ 4 * b ^ 3 +
+      250 * c * a ^ 3 * b ^ 4 +
+      100 * c * a ^ 2 * b ^ 5 +
+      a ^ 8 +
+      8 * a ^ 7 * b +
+      28 * a ^ 6 * b ^ 2 +
+      56 * a ^ 5 * b ^ 3 +
+      68 * a ^ 4 * b ^ 4 +
+      48 * a ^ 3 * b ^ 5 +
+      16 * a ^ 2 * b ^ 6 := by positivity
+    _ = _ := by ring
+
+theorem lw_22467_aux2 (x y z : ℝ) (hz : 0 ≤ z) (hzy : z ≤ y) (hyx : y ≤ x) :
+    0 ≤ x ^ 8 + y ^ 8 + z ^ 8 +
+      x * y * z * (x ^ 5 + y ^ 5 + z ^ 5 -
+        x ^ 4 * (y + z) - y ^ 4 * (x + z) - z ^ 4 * (x + y)) +
+      2 * (x * y * z) ^ 2 * (x * y + y * z + z * x) -
+      2 * ((x * y) ^ 4 + (y * z) ^ 4 + (z * x) ^ 4) := by
+  obtain ⟨b, hb, hby⟩ := exists_nonneg_add_of_le hzy
+  obtain ⟨a, ha, hax⟩ := exists_nonneg_add_of_le hyx
+  have hx : x = z + a + b := by linarith
+  have hy : y = z + b := by linarith
+  rw [hx, hy]
+  exact lw_22467_aux1 a b z ha hb hz
+
+theorem lw_22467 (x y z : ℝ) (h₀ : 0 ≤ x ∧ 0 ≤ y ∧ 0 ≤ z) (h₁ : x * y * z = 1) :
+    x^8 + x^6 * y * z + 2 * x^3 * y^3 * z^2 - x^5 * y^2 * z - x^5 * y * z^2 - 2 * x^4 * y^4 + y^8 + y^6 * z * x + 2 * y^3 * z^3 * x^2 - y^5 * z^2 * x - y^5 * z * x^2 - 2 * y^4 * z^4 + z^8 + z^6 * x * y + 2 * z^3 * x^3 * y^2 - z^5 * x^2 * y - z^5 * x * y^2 - 2 * z^4 * x^4 ≥ 0 := by
+  rcases h₀ with ⟨hx, hy, hz⟩
+  rcases le_total x y with hxy | hyx
+  · rcases le_total y z with hyz | hzy
+    · nlinarith only [lw_22467_aux2 z y x hx hxy hyz]
+    · rcases le_total x z with hxz | hzx
+      · nlinarith only [lw_22467_aux2 y z x hx hxz hzy]
+      · nlinarith only [lw_22467_aux2 y x z hz hzx hxy]
+  · rcases le_total x z with hxz | hzx
+    · nlinarith only [lw_22467_aux2 z x y hy hyx hxz]
+    · rcases le_total y z with hyz | hzy
+      · nlinarith only [lw_22467_aux2 x z y hy hyz hzx]
+      · nlinarith only [lw_22467_aux2 x y z hz hzy hyx]
+end
+
+-- forge:entry lw_26920 kind=proved origin=external
+section
+/- For $a,b\ge 1$ . Show that $\frac{1}{1+a^2}+\frac{1}{1+b^2}\ge \frac{2}{1+ab}$ -/
+theorem lw_26920 (a b : ℝ) (ha : 1 ≤ a) (hb : 1 ≤ b) :
+    (1 / (1 + a ^ 2) + 1 / (1 + b ^ 2)) ≥ 2 / (1 + a * b) := by
+  have hab : 1 ≤ a * b := by
+    nlinarith [mul_nonneg (sub_nonneg.mpr ha) (sub_nonneg.mpr hb)]
+  have ha2 : 0 < 1 + a ^ 2 := by positivity
+  have hb2 : 0 < 1 + b ^ 2 := by positivity
+  have hab1 : 0 < 1 + a * b := by linarith
+  have hidentity :
+      1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) - 2 / (1 + a * b) =
+        (a - b) ^ 2 * (a * b - 1) /
+          ((1 + a ^ 2) * (1 + b ^ 2) * (1 + a * b)) := by
+    field_simp
+    <;> ring
+  have hnonneg :
+      0 ≤ (a - b) ^ 2 * (a * b - 1) /
+        ((1 + a ^ 2) * (1 + b ^ 2) * (1 + a * b)) :=
+    div_nonneg (mul_nonneg (sq_nonneg _) (sub_nonneg.mpr hab))
+      (le_of_lt (mul_pos (mul_pos ha2 hb2) hab1))
+  rw [← hidentity] at hnonneg
+  linarith
+end
+
 end Mathlib2

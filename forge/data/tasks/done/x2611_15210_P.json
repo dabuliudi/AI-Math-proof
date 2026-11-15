@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15210_P",
+  "statement": "def x2611_15210_P : Fin 9 → Fin 5 → ℕ :=\n  ![![0, 0, 0, 0, 0], ![0, 0, 1, 1, 0], ![0, 0, 1, 1, 1],\n    ![0, 1, 0, 1, 0], ![0, 1, 1, 0, 0], ![0, 1, 1, 1, 1],\n    ![1, 0, 0, 1, 1], ![1, 0, 1, 0, 0], ![1, 0, 1, 1, 0]]",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:10:16+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:10:23+0800",
+  "type": "Fin 9 → Fin 5 → ℕ"
+}

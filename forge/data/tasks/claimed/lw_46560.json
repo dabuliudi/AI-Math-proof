@@ -11,5 +11,7 @@
   "type": "∀ (a b c d : ℝ), (a + b + c + d) / 4 ≥ √√(a * b * c * d)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-lw-r4-w0",
+  "claimed_at": "2026-11-16T02:09:59+0800"
 }

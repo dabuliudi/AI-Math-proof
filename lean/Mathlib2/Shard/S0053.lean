@@ -77,4 +77,51 @@ def x2611_16899_expansion (n d : ℕ)
       MvPolynomial.C (c (fun i => (γ i).val)) * A (fun i => (γ i).val) else 0)
 end
 
+-- forge:entry x2611_10200_B kind=definition origin=definition
+section
+def x2611_10200_B (H : ℕ → ℤ) (n : ℕ) : ℤ :=
+  1 + (Finset.Icc 1 (n - 1)).sum H - H n
+end
+
+-- forge:entry x2611_16458_zeroFree kind=definition origin=definition
+section
+noncomputable def x2611_16458_zeroFree {V : Type*} [Finite V]
+    (P N : SimpleGraph V) : Polynomial ℤ := by
+  classical
+  letI := Fintype.ofFinite V
+  exact Finset.sum (P.edgeFinset.disjSum N.edgeFinset).powerset (fun F =>
+    let P' : SimpleGraph V := SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F}
+    let N' : SimpleGraph V := SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F}
+    if x2611_16458_balanced P' N' then
+      Polynomial.C ((-1 : ℤ) ^ F.card) *
+        Polynomial.X ^ Nat.card (P' ⊔ N').ConnectedComponent
+    else 0)
+end
+
+-- forge:entry x2611_15210_P kind=definition origin=definition
+section
+def x2611_15210_P : Fin 9 → Fin 5 → ℕ :=
+  ![![0, 0, 0, 0, 0], ![0, 0, 1, 1, 0], ![0, 0, 1, 1, 1],
+    ![0, 1, 0, 1, 0], ![0, 1, 1, 0, 0], ![0, 1, 1, 1, 1],
+    ![1, 0, 0, 1, 1], ![1, 0, 1, 0, 0], ![1, 0, 1, 1, 0]]
+end
+
+-- forge:entry x2611_16338_totalLabeling kind=definition origin=definition
+section
+def x2611_16338_totalLabeling {V : Type*} (G : SimpleGraph V) (s : ℕ)
+    (φ : V → ℕ) (ψ : Sym2 V → ℕ) : Prop :=
+  (∀ v, 1 ≤ φ v ∧ φ v ≤ s) ∧
+  (∀ e ∈ G.edgeSet, 1 ≤ ψ e ∧ ψ e ≤ s) ∧
+  Set.InjOn (fun e => x2611_16338_vertexSum φ e + ψ e) G.edgeSet
+end
+
+-- forge:entry x2611_16899_counterexample_polynomial kind=definition origin=definition
+section
+noncomputable def x2611_16899_counterexample_polynomial : Polynomial ℚ :=
+  Polynomial.X^5 + Polynomial.X^6 + 2*Polynomial.X^7 - Polynomial.X^10 +
+  5*Polynomial.X^11 + 10*Polynomial.X^12 + 26*Polynomial.X^13 + 42*Polynomial.X^14 +
+  58*Polynomial.X^15 + 66*Polynomial.X^16 + 59*Polynomial.X^17 + 42*Polynomial.X^18 +
+  22*Polynomial.X^19 + 7*Polynomial.X^20 + Polynomial.X^21
+end
+
 end Mathlib2

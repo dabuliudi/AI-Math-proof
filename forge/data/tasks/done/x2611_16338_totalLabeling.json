@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16338_totalLabeling",
+  "statement": "def x2611_16338_totalLabeling {V : Type*} (G : SimpleGraph V) (s : ℕ)\n    (φ : V → ℕ) (ψ : Sym2 V → ℕ) : Prop :=\n  (∀ v, 1 ≤ φ v ∧ φ v ≤ s) ∧\n  (∀ e ∈ G.edgeSet, 1 ≤ ψ e ∧ ψ e ≤ s) ∧\n  Set.InjOn (fun e => x2611_16338_vertexSum φ e + ψ e) G.edgeSet",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:10:27+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w2",
+  "finished_at": "2026-11-16T02:10:37+0800",
+  "type": "{V : Type u_1} → SimpleGraph V → ℕ → (V → ℕ) → (Sym2 V → ℕ) → Prop"
+}

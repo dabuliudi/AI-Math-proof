@@ -127,9 +127,12 @@ def main(argv=None):
         if args.jobs > 1 and len(rows) > 1:
             # 分诊只读、可并行；登记（查重、入队、自动证出的入库）随后逐条进行，不会出现两条同时通过查重
             from concurrent.futures import ThreadPoolExecutor
+            from concurrent.futures import as_completed
             with ThreadPoolExecutor(max_workers=args.jobs) as pool:
-                futures = {r['name']: pool.submit(tasks.prepare, r['name'], r['statement']) for r in rows}
-                prepared = {name: future.result() for name, future in futures.items()}
+                futures = {pool.submit(tasks.prepare, r['name'], r['statement']): r['name'] for r in rows}
+                for done, future in enumerate(as_completed(futures), 1):
+                    prepared[futures[future]] = future.result()
+                    print(f'[triage {done}/{len(rows)}] {futures[future]}', file=sys.stderr, flush=True)
         results = []
         for index, r in enumerate(rows, 1):
             results.append(tasks.propose(r['name'], r['statement'], r.get('informal', ''), r.get('origin', args.origin),

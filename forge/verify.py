@@ -159,8 +159,11 @@ def triage(name, statement, timeout=240):
     vacuous = [label[4:] for label, _, _ in relations if label.startswith('vac:') and label in passed_relations]
     if vacuous:
         out['vacuous'] = vacuous[0]
+    # 自动化不借助任何库内引理就能证出时，“由某条引理一步推出”的探针成功并不说明用到了那条引理
+    # （例如 `grind [L]` 成功只是因为 `grind` 本身就够了）。这种命题按“自动证出”处理，不判为重复。
+    unaided = bool(passed_symbolic | (passed_evaluating - {'plausible', 'plausible_rat'}) - {'exact?'})
     for label, _, tactic in relations:
-        if label.startswith('lib:') and label in passed_relations:
+        if not unaided and label.startswith('lib:') and label in passed_relations:
             out['follows_from'] = dict(lemma=related[int(label.split(':')[1])], tactic=tactic)
             break
     for label in ('plausible', 'plausible_rat'):

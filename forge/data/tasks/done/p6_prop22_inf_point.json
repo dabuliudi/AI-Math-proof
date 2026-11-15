@@ -1,0 +1,18 @@
+{
+  "name": "p6_prop22_inf_point",
+  "statement": "(r : ℤ) (x y : ℝ) : (((1 * 0 + r * 1 : ℤ) : ℝ) / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = r ∧ 1 / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = (1 : ℝ)) ∧ (y = 1 ∧ (x - r) ^ 2 + (y - 1 / 2) ^ 2 = (1 / 2) ^ 2 ↔ x = r ∧ y = 1)",
+  "closed": "∀ (r : ℤ) (x y : ℝ), (((1 * 0 + r * 1 : ℤ) : ℝ) / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = r ∧ 1 / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = (1 : ℝ)) ∧ (y = 1 ∧ (x - r) ^ 2 + (y - 1 / 2) ^ 2 = (1 / 2) ^ 2 ↔ x = r ∧ y = 1)",
+  "informal": "Proposition 2.2 (Kocik), circle at infinity: First conjunct: formula (1) with (p,q,r,s)=(1,0,r,1) evaluates to (r,1). Second: (r,1) is the unique common point of the line y=1 and K[r,1].",
+  "origin": "paper",
+  "source": "arXiv:2611.07141v1 Prop 2.1/2.2, infinity case added after independent review",
+  "original": "",
+  "proposed_by": "claude-audit",
+  "hash": "2016520942",
+  "type": "∀ (r : ℤ) (x y : ℝ), (↑(1 * 0 + r * 1) / ↑(0 ^ 2 + 1 ^ 2) = ↑r ∧ 1 / ↑(0 ^ 2 + 1 ^ 2) = 1) ∧ (y = 1 ∧ (x - ↑r) ^ 2 + (y - 1 / 2) ^ 2 = (1 / 2) ^ 2 ↔ x = ↑r ∧ y = 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T18:22:31+0800",
+  "tier": "auto",
+  "status": "proved",
+  "closed_by": "auto:grind",
+  "finished_at": "2026-11-15T18:22:59+0800"
+}

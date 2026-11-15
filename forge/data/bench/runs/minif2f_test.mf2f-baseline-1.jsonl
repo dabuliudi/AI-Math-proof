@@ -121,7 +121,6 @@
 {"problem": "algebra_absapbon1pabsapbleqsumabsaon1pabsa", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:08:37+0800"}
 {"problem": "algebra_9onxpypzleqsum2onxpy", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:08:42+0800"}
 {"problem": "mathd_algebra_153", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:09:32+0800"}
-{"problem": "mathd_numbertheory_321", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:28:33+0800"}
 {"problem": "mathd_algebra_329", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:00:52+0800"}
 {"problem": "algebra_sqineq_unitcircatbpamblt1", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:00:53+0800"}
 {"problem": "induction_pprime_pdvdapowpma", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:01:43+0800"}

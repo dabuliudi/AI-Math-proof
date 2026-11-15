@@ -281,7 +281,7 @@ class Scheduler:
             self._record(dict(mode='queue', task=task['name'], worker=agent, outcome=outcome,
                               progress=outcome in ('proved', 'disproved', 'sketched'), seconds=round(time.time() - began),
                               tokens=used, exit=code, timed_out=slow, message=message[-800:],
-                              raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+                              raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
 
     # ---- 评测模式 ----
     def _bench_worker(self, index, set_name, problems):
@@ -319,7 +319,7 @@ class Scheduler:
                                   progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
                                   timed_out=slow, reason=reason[:300], message=message[-500:], attempt=attempt + 1,
                                   effort=effort or self.effort, prompt=self.prompt,
-                                  raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+                                  raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
                 if solved or self.stop_reason:
                     break
                 draft = scratch / f'{item["name"]}.attempt{attempt + 1}.lean'
@@ -351,7 +351,7 @@ class Scheduler:
             outcome = mine[-1]['verdict'] if mine else 'no_review'
             self._record(dict(mode='review', task=item['name'], worker=agent, outcome=outcome, progress=bool(mine),
                               seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
-                              message=message[-500:], raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+                              message=message[-500:], raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
 
     def run_review(self, paper_file, paper_text):
         """复核一篇论文里已有内核结论（证明或证伪）的全部命题；已经有独立复核记录的跳过。"""

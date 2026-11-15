@@ -29,3 +29,7 @@
 {"problem": "putnam_1979_b6", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:08+0800"}
 {"problem": "putnam_1992_a1", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:13:54+0800"}
 {"problem": "putnam_1988_b4", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:15:47+0800"}
+{"problem": "putnam_1993_a6", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:19:33+0800"}
+{"problem": "putnam_2000_b1", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:38+0800"}
+{"problem": "putnam_1998_a2", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:38+0800"}
+{"problem": "putnam_2000_b2", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:25:11+0800"}

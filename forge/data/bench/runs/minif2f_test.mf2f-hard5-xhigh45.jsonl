@@ -1,1 +1,5 @@
 {"problem": "imo_1984_p6", "run": "mf2f-hard5-xhigh45", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:15:03+0800"}
+{"problem": "imo_2001_p6", "run": "mf2f-hard5-xhigh45", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:20:27+0800"}
+{"problem": "mathd_numbertheory_321", "run": "mf2f-hard5-xhigh45", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:09+0800"}
+{"problem": "imosl_2007_algebra_p6", "run": "mf2f-hard5-xhigh45", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:27+0800"}
+{"problem": "mathd_algebra_17", "run": "mf2f-hard5-xhigh45", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:24:54+0800"}

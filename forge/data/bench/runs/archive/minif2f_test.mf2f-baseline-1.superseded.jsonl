@@ -4,3 +4,4 @@
 {"problem": "amc12a_2021_p9", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:08:35+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
 {"problem": "mathd_algebra_342", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:19:40+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
 {"problem": "mathd_algebra_158", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:30:20+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "mathd_numbertheory_321", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:28:33+0800", "superseded": "超时发生在 14:07–14:28，与 Codex 故障时段（14:13–14:32，连续 10 次出错）重叠，判为基础设施问题而非题目太难，按基线设置重跑"}

@@ -50,3 +50,27 @@ def reviews():
             record = json.loads(line)
             out.setdefault(record['task'], []).append(record)
     return out
+
+
+def review_consensus(task_name, prover=''):
+    """一条命题的复核结论：只算证明者以外的独立复核，每个复核者取最后一次意见。
+
+    全部“忠实”→ faithful；过半“不忠实”→ unfaithful；其余（有分歧、存疑、没人复核）→ disputed / unsure / unreviewed，
+    这些需要人看。做法参考 Claude Code 团队的代码审查：多个独立验证者投票，够多人同意才采信一个结论。"""
+    latest = {}
+    for record in reviews().get(task_name, []):
+        if record['agent'] != prover:
+            latest[record['agent']] = record['verdict']
+    votes = list(latest.values())
+    if not votes:
+        return dict(verdict='unreviewed', votes={})
+    tally = {v: votes.count(v) for v in set(votes)}
+    if tally.get('faithful', 0) == len(votes):
+        verdict = 'faithful'
+    elif tally.get('unfaithful', 0) * 2 > len(votes):
+        verdict = 'unfaithful'
+    elif len(votes) == 1:
+        verdict = votes[0]
+    else:
+        verdict = 'disputed'
+    return dict(verdict=verdict, votes=tally)

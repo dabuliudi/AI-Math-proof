@@ -1,0 +1,19 @@
+{
+  "name": "lw_54674",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^3 + b^3 + c^3) / (a * b * c) + 6 ≥ 9 * (a^2 + b^2 + c^2) / (a * b + b * c + c * a)",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c), (a^3 + b^3 + c^3) / (a * b * c) + 6 ≥ 9 * (a^2 + b^2 + c^2) / (a * b + b * c + c * a)",
+  "informal": "The following inequality is stronger. \\n $ a,b,c>0\\Longrightarrow\\frac{a^3+b^3+c^3}{abc}+6\\ge 9\\cdot\\frac{a^2+b^2+c^2}{ab+bc+ca} $",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_54674",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3919506059",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → (a ^ 3 + b ^ 3 + c ^ 3) / (a * b * c) + 6 ≥ 9 * (a ^ 2 + b ^ 2 + c ^ 2) / (a * b + b * c + c * a)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w0",
+  "claimed_at": "2026-11-15T19:22:59+0800",
+  "closed_by": "queue-ab-v2-w0",
+  "finished_at": "2026-11-15T19:25:33+0800"
+}

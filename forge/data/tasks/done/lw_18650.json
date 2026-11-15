@@ -1,0 +1,19 @@
+{
+  "name": "lw_18650",
+  "statement": "(x y z : ℝ) (hx : 1 ≤ x ∧ x ≤ 2) (hy : 1 ≤ y ∧ y ≤ 2) (hz : 1 ≤ z ∧ z ≤ 2): (x^2 + y^2 + z^2) / (x*y + y*z + z*x) ≤ 6/5",
+  "closed": "∀ (x y z : ℝ) (hx : 1 ≤ x ∧ x ≤ 2) (hy : 1 ≤ y ∧ y ≤ 2) (hz : 1 ≤ z ∧ z ≤ 2), (x^2 + y^2 + z^2) / (x*y + y*z + z*x) ≤ 6/5",
+  "informal": "If $ x,y,z\\in [1,2] $ show $ \\frac{x^2+y^2+z^2}{xy+yz+zx}\\le\\frac{6}{5} $",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_18650",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "4134232284",
+  "type": "∀ (x y z : ℝ), 1 ≤ x ∧ x ≤ 2 → 1 ≤ y ∧ y ≤ 2 → 1 ≤ z ∧ z ≤ 2 → (x ^ 2 + y ^ 2 + z ^ 2) / (x * y + y * z + z * x) ≤ 6 / 5",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v1-w1",
+  "claimed_at": "2026-11-15T19:25:59+0800",
+  "closed_by": "queue-ab-v1-w1",
+  "finished_at": "2026-11-15T19:27:52+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lw_29729",
+  "statement": "(a b c : ℝ) (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : a / (3 * a - b + c) + b / (3 * b - c + a) + c / (3 * c - a + b) ≥ 1",
+  "closed": "∀ (a b c : ℝ) (hx: a > 0 ∧ b > 0 ∧ c > 0) (hab : a + b > c) (hbc : b + c > a) (hca : a + c > b), a / (3 * a - b + c) + b / (3 * b - c + a) + c / (3 * c - a + b) ≥ 1",
+  "informal": "Let $a,b,c$ be the side lengths of a triangle. Prove that $\\frac{a}{3a-b+c}+\\frac{b}{3b-c+a}+\\frac{c}{3c-a+b} \\geq 1$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_29729",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "551240581",
+  "type": "∀ (a b c : ℝ), a > 0 ∧ b > 0 ∧ c > 0 → a + b > c → b + c > a → a + c > b → a / (3 * a - b + c) + b / (3 * b - c + a) + c / (3 * c - a + b) ≥ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:14+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T20:30:46+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T20:33:55+0800"
+}

@@ -9,7 +9,7 @@ import time
 
 from . import bench, library
 from .leanrun import DATA
-from .statement import StatementError, check_name, check_statement_text, closed_form
+from .statement import StatementError, check_name, check_statement_text, closed_form, lint_statement
 from .verify import HOLE, check_definition, check_sketch, check_submission, triage, validate_statements
 
 TASKS = DATA / 'tasks'
@@ -101,9 +101,12 @@ def propose(name, statement, informal='', origin='conjecture', source='', propos
         # 假设互相矛盾时命题空真成立，证出来也毫无数学内容；不占名称，改好假设后可原名重提。
         return dict(name=name, status='vacuous', tactic=report['vacuous'],
                     reason=f'签名里的假设互相矛盾（`{report["vacuous"]}` 能从假设推出 False），命题是空真的，不入库')
+    warnings = lint_statement(statement)
     task = dict(name=name, statement=statement, closed=closed_form(statement), informal=informal, origin=origin,
                 source=source, original=original[:6000], proposed_by=proposed_by, hash=report['hash'], type=report['type'], attempts=[],
                 created_at=_now())
+    if warnings:
+        task['warnings'] = warnings
     if report.get('known'):
         task.update(status='known', known_as=report.get('known_as', ''))
         save('done', task)
@@ -133,6 +136,8 @@ def propose(name, statement, informal='', origin='conjecture', source='', propos
     task['status'] = 'open'
     save('open', task)
     out = dict(name=name, status='open', reason='已进入队列，等待证明或证伪')
+    if warnings:
+        out['warnings'] = warnings
     if task.get('counterexample'):
         out.update(refutable=True, counterexample=task['counterexample'], reason='随机测试找到反例，已进入队列，等待形式化证伪')
     return out

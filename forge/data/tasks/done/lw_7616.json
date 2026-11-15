@@ -1,0 +1,19 @@
+{
+  "name": "lw_7616",
+  "statement": "(k : ℤ) (h : 3 ∣ k) : ∃ a b c d : ℤ, k = a^3 + b^3 + c^3 + d^3",
+  "closed": "∀ (k : ℤ) (h : 3 ∣ k), ∃ a b c d : ℤ, k = a^3 + b^3 + c^3 + d^3",
+  "informal": "Show that every integer $k$ divisible by $3$ can be written as the sum of four cubes.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_7616",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3157722155",
+  "type": "∀ (k : ℤ), 3 ∣ k → ∃ a b c d, k = a ^ 3 + b ^ 3 + c ^ 3 + d ^ 3",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w2",
+  "claimed_at": "2026-11-15T19:27:31+0800",
+  "closed_by": "queue-ab-v2-w2",
+  "finished_at": "2026-11-15T19:29:59+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lw_28724",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a * b + b * c + c * a = 1) : Real.sqrt (a^2 + 1 / (b * c)) + Real.sqrt (b^2 + 1 / (c * a)) + Real.sqrt (c^2 + 1 / (a * b)) ≥ Real.sqrt 30",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a * b + b * c + c * a = 1), Real.sqrt (a^2 + 1 / (b * c)) + Real.sqrt (b^2 + 1 / (c * a)) + Real.sqrt (c^2 + 1 / (a * b)) ≥ Real.sqrt 30",
+  "informal": "Let a,b,c >0 and $ ab + bc + ca = 1$ . Prove that:\\n$ \\sqrt {a^2 + \\frac{1}{{bc}}} + \\sqrt {b^2 + \\frac{1}{{ca}}} + \\sqrt {c^2 + \\frac{1}{{ab}}} \\ge \\sqrt {30}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_28724",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2599750208",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b + b * c + c * a = 1 → √(a ^ 2 + 1 / (b * c)) + √(b ^ 2 + 1 / (c * a)) + √(c ^ 2 + 1 / (a * b)) ≥ √30",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T19:43:43+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T19:47:56+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lw_1237",
+  "statement": "(a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b + a * b = 3) : 4 * a / (b + 1) + 4 * b / (a + 1) + 2 * a * b ≥ 4 + Real.sqrt (7 - 3 * a * b)",
+  "closed": "∀ (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b + a * b = 3), 4 * a / (b + 1) + 4 * b / (a + 1) + 2 * a * b ≥ 4 + Real.sqrt (7 - 3 * a * b)",
+  "informal": "Prove \\\\(\\\\frac{4a}{b+1}+\\\\frac{4b}{a+1}+2ab\\\\ge 4+\\\\sqrt{7-3ab}\\\\) for all positive real a and b such that \\\\(a+b+ab=3\\\\).",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_1237",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1682481197",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → a + b + a * b = 3 → 4 * a / (b + 1) + 4 * b / (a + 1) + 2 * a * b ≥ 4 + √(7 - 3 * a * b)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T20:51:30+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T20:53:23+0800"
+}

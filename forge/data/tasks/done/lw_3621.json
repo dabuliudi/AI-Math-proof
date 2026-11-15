@@ -1,0 +1,19 @@
+{
+  "name": "lw_3621",
+  "statement": ": ∀ n : ℕ, Real.sqrt n + Real.sqrt (n + 2) > Real.sqrt (4 * n + 3)",
+  "closed": "∀ n : ℕ, Real.sqrt n + Real.sqrt (n + 2) > Real.sqrt (4 * n + 3)",
+  "informal": "$\\sqrt n+\\sqrt{n+2}>\\sqrt{4n+3}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_3621",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3545093675",
+  "type": "∀ (n : ℕ), √↑n + √(↑n + 2) > √(4 * ↑n + 3)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:14+0800",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T20:32:14+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T20:33:19+0800"
+}

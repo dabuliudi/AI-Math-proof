@@ -1,0 +1,19 @@
+{
+  "name": "lw_28964",
+  "statement": "(x y z : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z) (h₁ : x ≠ y) (h₂ : y ≠ z) (h₃ : z ≠ x) : (x^2 + y^2 + z^2) * (1 / (x - y)^2 + 1 / (y - z)^2 + 1 / (z - x)^2) ≥ (11 + 5 * Real.sqrt 5) / 2",
+  "closed": "∀ (x y z : ℝ) (h₀ : 0 < x ∧ 0 < y ∧ 0 < z) (h₁ : x ≠ y) (h₂ : y ≠ z) (h₃ : z ≠ x), (x^2 + y^2 + z^2) * (1 / (x - y)^2 + 1 / (y - z)^2 + 1 / (z - x)^2) ≥ (11 + 5 * Real.sqrt 5) / 2",
+  "informal": "With x,y,z>0, $x\\\\neq y\\\\neq z$ . $\\left ( \\\\sum x^{2} \\\\right ).\\\\left (\\\\sum \\\\frac{1}{(x-y)^{2}} \\\\right )\\\\geq \\\\frac{11+5\\\\sqrt{5}}{2}$ You can assume $z=0$ . How can you think that? Let $z=\\\\min\\\\{x,y,z\\\\}$ , $x=a+z$ and $y=b+z$ . Hence, $(x^2+y^2+z^2)\\\\sum_{cyc}\\\\frac{1}{(x-y)^{2}}\\\\geq\\\\frac{11+5\\\\sqrt{5}}{2}\\\\Leftrightarrow$ $\\Leftrightarrow((a+z)^2+(b+z)^2+z^2)\\\\left(\\\\frac{1}{(a-b)^2}+\\\\frac{1}{a^2}+\\\\frac{1}{b^2}\\\\right)\\\\geq\\\\frac{11+5\\\\sqrt{5}}{2}$ . But $(a+z)^2+(b+z)^2+z^2)\\\\geq a^2+b^2$ . Hence, it remains to prove that $(a^2+b^2)\\\\left(\\\\frac{1}{(a-b)^2}+\\\\frac{1}{a^2}+\\\\frac",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_28964",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "469473360",
+  "type": "∀ (x y z : ℝ), 0 < x ∧ 0 < y ∧ 0 < z → x ≠ y → y ≠ z → z ≠ x → (x ^ 2 + y ^ 2 + z ^ 2) * (1 / (x - y) ^ 2 + 1 / (y - z) ^ 2 + 1 / (z - x) ^ 2) ≥ (11 + 5 * √5) / 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T21:02:42+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T21:05:40+0800"
+}

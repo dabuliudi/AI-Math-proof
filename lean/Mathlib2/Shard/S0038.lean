@@ -671,4 +671,78 @@ theorem p6_cor36 (k : ℤ) (hk : 1 ≤ k) (m n : ℤ) (P Q : UpperHalfPlane)
   ring
 end
 
+-- forge:entry p6_prop22_inf_point kind=proved origin=paper
+section
+/- Proposition 2.2 (Kocik), circle at infinity: First conjunct: formula (1) with (p,q,r,s)=(1,0,r,1) evaluates to (r,1). Second: (r,1) is the unique common point of the line y=1 and K[r,1]. -/
+theorem p6_prop22_inf_point (r : ℤ) (x y : ℝ) : (((1 * 0 + r * 1 : ℤ) : ℝ) / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = r ∧ 1 / ((0 ^ 2 + 1 ^ 2 : ℤ) : ℝ) = (1 : ℝ)) ∧ (y = 1 ∧ (x - r) ^ 2 + (y - 1 / 2) ^ 2 = (1 / 2) ^ 2 ↔ x = r ∧ y = 1) := by
+  grind
+end
+
+-- forge:entry p6_prop21_inf_tangent kind=proved origin=paper
+section
+/- Proposition 2.1 (Ford), circle at infinity, tangency: K[r,s] has centre height 1/(2s^2) and radius 1/(2s^2); the line y=1 is tangent to it iff the gap 1 - 1/(2s^2) equals the radius. Determinant written literally for (p,q)=(1,0). -/
+theorem p6_prop21_inf_tangent (r s : ℤ) (hs : 0 < s) :
+    1 - 1 / (2 * (s : ℝ) ^ 2) = 1 / (2 * (s : ℝ) ^ 2) ↔
+      (1 * s - 0 * r = 1 ∨ 1 * s - 0 * r = -1) := by
+  have hs0 : (s : ℝ) ≠ 0 := by
+    exact_mod_cast (ne_of_gt hs)
+  constructor
+  · intro h
+    have hsq : (s : ℝ) ^ 2 = 1 := by
+      field_simp [hs0] at h
+      nlinarith
+    have hsq_int : s ^ 2 = 1 := by
+      exact_mod_cast hsq
+    simpa only [one_mul, zero_mul, sub_zero] using (sq_eq_one_iff.mp hsq_int)
+  · intro h
+    have hs1 : s = 1 ∨ s = -1 := by
+      simpa only [one_mul, zero_mul, sub_zero] using h
+    rcases hs1 with h | h <;> norm_num [h]
+end
+
+-- forge:entry p6_prop21_inf_disjoint kind=proved origin=paper
+section
+/- Proposition 2.1 (Ford), circle at infinity, disjointness: Disjoint from the line y=1 means the radius is smaller than the distance from the centre to the line. -/
+theorem p6_prop21_inf_disjoint (r s : ℤ) (hs : 0 < s)
+    (hdet : 1 * s - 0 * r ≠ 1) (hdet2 : 1 * s - 0 * r ≠ -1) :
+    1 / (2 * (s : ℝ) ^ 2) < 1 - 1 / (2 * (s : ℝ) ^ 2) := by
+  have hne : s ≠ 1 := by simpa using hdet
+  have hs2 : (2 : ℤ) ≤ s := by omega
+  have hsreal : (2 : ℝ) ≤ (s : ℝ) := by exact_mod_cast hs2
+  have hsq : (4 : ℝ) ≤ (s : ℝ) ^ 2 := by
+    nlinarith [sq_nonneg ((s : ℝ) - 2)]
+  have hden : 0 < 2 * (s : ℝ) ^ 2 := by nlinarith
+  have hfrac : 1 / (2 * (s : ℝ) ^ 2) < (1 : ℝ) / 2 := by
+    apply (div_lt_div_iff₀ hden (by norm_num : (0 : ℝ) < 2)).2
+    nlinarith
+  linarith
+end
+
+-- forge:entry lw_55950 kind=proved origin=external
+section
+/- If $ x^2-3x+1=0 $ , what is the value of $ x^2 + (1/x)^2? $ -/
+theorem lw_55950 (x : ℝ) (hx : x^2 - 3*x + 1 = 0) : x^2 + (1/x)^2 = 7 := by
+  grind
+end
+
+-- forge:entry lw_8296 kind=proved origin=external
+section
+/- If $x^2 + 1/x^2 = 3$ , what is the value of $\dfrac{x^2}{(x^2+1)^2}$ ?\nSource: MATHCOUNTS 2012 Chapter #29 -/
+theorem lw_8296 (x : ℝ) (h : x^2 + 1/x^2 = 3) : x^2/(x^2 + 1)^2 = 1/5 := by
+  grind
+end
+
+-- forge:entry lw_12138 kind=disproved origin=external
+section
+/- Solve the system of equations: \n\n $\\begin{cases} \\frac{x-y}{\\sqrt[3]{x^2y}-\\sqrt[3]{xy^2}}=\\frac 72 \\\\\n \\\\\n\\sqrt[3]{x}-\\sqrt[3]{y}=3\\end{cases}$ -/
+theorem lw_12138_disproof : ¬ (∀ (x y : ℝ) (hx : x ≠ 0) (hy : y ≠ 0)
+    (hxy : x ≠ y),
+    (x - y) / (x ^ (2 / 3) * y ^ (1 / 3) - x ^ (1 / 3) * y ^ (2 / 3)) = 7 / 2 ∧
+      x ^ (1 / 3) - y ^ (1 / 3) = 3 ↔ x = 216 ∧ y = 27) := by
+  intro h
+  have hsystem := (h 216 27 (by norm_num) (by norm_num) (by norm_num)).mpr
+    ⟨rfl, rfl⟩
+  norm_num at hsystem
+end
+
 end Mathlib2

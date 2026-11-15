@@ -1,0 +1,19 @@
+{
+  "name": "lw_28269",
+  "statement": "(a : ℕ → ℝ) (a1 : a 0 = 1) (a2 : a 1 = 2 / Real.sqrt 3) (a_rec : ∀ n, a (n + 2) = (a n + a (n + 1)) / (1 - a n * a (n + 1))) : |a 2009| = 1",
+  "closed": "∀ (a : ℕ → ℝ) (a1 : a 0 = 1) (a2 : a 1 = 2 / Real.sqrt 3) (a_rec : ∀ n, a (n + 2) = (a n + a (n + 1)) / (1 - a n * a (n + 1))), |a 2009| = 1",
+  "informal": "Let $a_n$ be a sequence such that $a_{n+2} = \\frac{a_n +a_{n+1} }{1-a_n a_{n+1} } $ with $a_1=1 $ and $a_2=\\frac{2}{\\sqrt{3}} $ .\\nThen find $|a_{2009}|$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_28269",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "136232022",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 1 → a 1 = 2 / √3 → (∀ (n : ℕ), a (n + 2) = (a n + a (n + 1)) / (1 - a n * a (n + 1))) → |a 2009| = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T21:01:21+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T21:05:19+0800"
+}

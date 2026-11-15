@@ -337,8 +337,11 @@ class Scheduler:
                     self.stop_reason = self.stop_reason or '队列里没有可领的任务'
                 return
             attempts = '; '.join(a.get('note', '')[:300] for a in task.get('attempts', [])[-3:]) or 'none'
+            informal = (task.get('informal') or '')[:1500] or 'none'
+            if task.get('warnings'):  # 形式化可疑提醒：提示 agent 先想清楚这条 Lean 写法到底说了什么
+                informal += '\nWARNING about the Lean statement: ' + ' '.join(task['warnings'])
             prompt = QUEUE_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
-                                         informal=(task.get('informal') or '')[:1500] or 'none', attempts=attempts,
+                                         informal=informal, attempts=attempts,
                                          scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
             code, message, used, slow = self._invoke(prompt, agent)
@@ -412,6 +415,7 @@ class Scheduler:
     def _review_worker(self, index, paper, items, paper_text):
         agent = f'{self.run}-w{index}'
         (self.scratch / agent).mkdir(parents=True, exist_ok=True)
+        serial = 0
         from .paper import reviews
         while True:
             with self.lock:
@@ -421,20 +425,24 @@ class Scheduler:
                 item, verdict = items.pop(0)
             if not self._may_start():
                 return
-            prompt = REVIEW_PROMPT.format(root=ROOT, agent=agent, forge=FORGE, title=paper.get('title', ''),
+            serial += 1
+            reviewer = f'{agent}-r{serial}'  # 每份复核一个新名字：多份复核按名字计为不同的独立票
+            prompt = REVIEW_PROMPT.format(root=ROOT, agent=reviewer, forge=FORGE, title=paper.get('title', ''),
                                           paper_id=paper.get('arxiv', ''), paper_text=paper_text, label=item.get('label', ''),
                                           original=item.get('original', ''), notes=item.get('notes', ''), name=item['name'],
                                           statement=item['lean'], verdict=verdict)
             began = time.time()
             code, message, used, slow = self._invoke(prompt, agent)
-            mine = [r for r in reviews().get(item['name'], []) if r['agent'] == agent]
+            mine = [r for r in reviews().get(item['name'], []) if r['agent'] == reviewer]
             outcome = mine[-1]['verdict'] if mine else 'no_review'
-            self._record(dict(mode='review', task=item['name'], worker=agent, outcome=outcome, progress=bool(mine),
+            self._record(dict(mode='review', task=item['name'], worker=reviewer, outcome=outcome, progress=bool(mine),
                               seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
                               message=message[-500:], raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
 
-    def run_review(self, paper_file, paper_text):
-        """复核一篇论文里已有内核结论（证明或证伪）的全部命题；已经有独立复核记录的跳过。"""
+    def run_review(self, paper_file, paper_text, reviewers=1):
+        """复核一篇论文里已有内核结论（证明或证伪）的全部命题，每条凑满 reviewers 个独立复核（不算证明者本人）。
+
+        reviewers > 1 时多个互不相干的会话各自读原文判断，最后按多数决（见 review_consensus），意见不一致标为“有争议”交给人。"""
         from .paper import reviews
         paper = json.loads(Path(paper_file).read_text(encoding='utf-8'))
         if not Path(paper_text).exists():
@@ -448,9 +456,8 @@ class Scheduler:
             if state != 'done' or task.get('status') not in ('proved', 'disproved', 'known'):
                 continue  # 还没有内核结论的不复核
             prover = task.get('closed_by', '')
-            if any(r['agent'] != prover for r in done_reviews.get(item['name'], [])):
-                continue  # 已经有人独立复核过
-            items.append((item, task['status']))
+            independent = {r['agent'] for r in done_reviews.get(item['name'], []) if r['agent'] != prover}
+            items += [(item, task['status'])] * max(0, reviewers - len(independent))  # 还差几份独立复核就排几次
         return self._run_threads(self._review_worker, (paper, items, str(Path(paper_text).resolve())))
 
     def _guarded(self, target, index, *args):

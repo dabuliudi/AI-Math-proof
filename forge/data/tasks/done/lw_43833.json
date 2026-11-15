@@ -1,0 +1,19 @@
+{
+  "name": "lw_43833",
+  "statement": "(a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a * b = 1) : a ^ b + b ^ a ≤ 2",
+  "closed": "∀ (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a * b = 1), a ^ b + b ^ a ≤ 2",
+  "informal": "Let $a,b>0,ab=1$ ,prove that: $a^b+b^a \\le2.$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_43833",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3554028081",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → a * b = 1 → a ^ b + b ^ a ≤ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T19:54:07+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T19:56:29+0800"
+}

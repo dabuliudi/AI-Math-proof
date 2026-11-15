@@ -1,0 +1,19 @@
+{
+  "name": "lw_15087",
+  "statement": "(a b c : ℝ) (habc : a + b + c = 1) : a^2 / b + b^2 / c + c^2 / a ≥ a * b / c + b * c / a + c * a / b",
+  "closed": "∀ (a b c : ℝ) (habc : a + b + c = 1), a^2 / b + b^2 / c + c^2 / a ≥ a * b / c + b * c / a + c * a / b",
+  "informal": "Prove that for any $a, b, c$ such that $a + b + c = 1$, the inequality $\\frac{a^2}{b}+\\frac{b^2}{c}+\\frac{c^2}{a}\\ge\\frac{ab}{c}+\\frac{bc}{a}+\\frac{ca}{b}$ holds.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_15087",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3012971069",
+  "type": "∀ (a b c : ℝ), a + b + c = 1 → a ^ 2 / b + b ^ 2 / c + c ^ 2 / a ≥ a * b / c + b * c / a + c * a / b",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T20:53:31+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T20:54:23+0800"
+}

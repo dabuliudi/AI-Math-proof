@@ -1,0 +1,19 @@
+{
+  "name": "lw_14880",
+  "statement": "(a b : ℝ) : (a^2 + b^2) / (a + b) ≥ Real.sqrt (a * b)",
+  "closed": "∀ (a b : ℝ), (a^2 + b^2) / (a + b) ≥ Real.sqrt (a * b)",
+  "informal": "$\\frac{a^2+b^2}{a+b} \\geq \\sqrt{ab}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_14880",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3968490662",
+  "type": "∀ (a b : ℝ), (a ^ 2 + b ^ 2) / (a + b) ≥ √(a * b)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T20:52:50+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T20:54:01+0800"
+}

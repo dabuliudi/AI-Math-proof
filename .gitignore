@@ -36,3 +36,4 @@ forge/data/staging/
 forge/data/library.lock
 forge/data/pending/
 setup-windows-ssh.ps1
+.worktrees/

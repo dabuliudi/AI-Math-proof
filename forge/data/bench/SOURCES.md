@@ -29,3 +29,14 @@
 | amc12a_2021_p25 | 内核验证的反证，细节见对应运行记录 |
 
 这些题保留在评测集里不删，`bench-score` 会单独报告 `refuted` 和扣除它们之后的 `rate_on_true`。
+
+## putnam_noanswer.jsonl
+
+- 内容：PutnamBench 的 Lean 4 部分（William Lowell Putnam 数学竞赛题，1962 年起）中**不需要填答案**的题，共 312 题。
+- 来源：https://github.com/trishullab/PutnamBench （`lean4/` 目录，Apache-2.0 许可），2026-11-15 下载默认分支。
+- 原仓库用 Lean v4.33.1，本库是 v4.24.0。672 题里：
+  - 346 题需要先给出一个答案定义（`putnam_XXXX_solution`），本集合暂不收录；
+  - 剩下 326 题中，5 题带有额外的定义、2 题文件结构特殊、6 题命题内部含 `:=`（如 `let`），都暂不收录；
+  - 1 题在 v4.24 的 Mathlib 上通不过类型检查；
+  - 其余 312 题原样收录，每题自带的 `open` 设置记在 `opens` 字段。
+- 官方排行榜（`docs/results.json`）的数字统计的是全部 672 题（含需要填答案的题），与本集合的分母不同，比较时要注意。

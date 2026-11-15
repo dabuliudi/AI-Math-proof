@@ -353,7 +353,8 @@ class HardeningTests(unittest.TestCase):
                 mock.patch.object(bench, 'statement_hashes', return_value=['h1', None]):
             source = self.root / 'in.jsonl'
             source.write_text('{"name": "p1", "statement": "(n : ℕ) : n = n"}\n{"name": "p2", "statement": "bad"}\n', encoding='utf-8')
-            self.assertEqual(bench.import_set('demo', source), dict(set='demo', imported=1, dropped=['p2']))
+            # p2 的命题格式本身不合法（没有 `binders : conclusion`），在求哈希之前就被剔出
+            self.assertEqual(bench.import_set('demo', source), dict(set='demo', imported=1, dropped=[], unusable=['p2']))
             self.assertEqual(bench.reserved(), {'h1': 'demo/p1'})
             verdicts = iter([dict(ok=False, kind='proved', reason='Lean 报错'), dict(ok=True, kind='proved', reason='通过')])
             with mock.patch.object(bench, 'check_submission', side_effect=lambda *a, **k: next(verdicts)):

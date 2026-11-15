@@ -1,0 +1,16 @@
+{"problem": "mathd_algebra_33", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:27:42+0800"}
+{"problem": "amc12b_2021_p3", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:27:42+0800"}
+{"problem": "amc12b_2021_p3", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:28:06+0800"}
+{"problem": "amc12b_2020_p2", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:28:24+0800"}
+{"problem": "algebra_sqineq_unitcircatbpabsamblt1", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:28:52+0800"}
+{"problem": "mathd_algebra_419", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:28:53+0800"}
+{"problem": "imo_1983_p6", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:29:06+0800"}
+{"problem": "mathd_algebra_398", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:29:25+0800"}
+{"problem": "imo_1960_p2", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:29:40+0800"}
+{"problem": "mathd_numbertheory_430", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:30:02+0800"}
+{"problem": "mathd_numbertheory_559", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:30:13+0800"}
+{"problem": "imo_1963_p5", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:30:13+0800"}
+{"problem": "imo_1963_p5", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:30:31+0800"}
+{"problem": "mathd_algebra_176", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:30:48+0800"}
+{"problem": "numbertheory_notequiv2i2jasqbsqdiv8", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:30:51+0800"}
+{"problem": "induction_sumkexp3eqsumksq", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:31:23+0800"}

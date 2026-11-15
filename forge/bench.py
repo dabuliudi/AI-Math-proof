@@ -9,6 +9,7 @@ import json
 import time
 
 from .leanrun import DATA
+from .statement import StatementError, split_signature
 from .verify import check_submission, statement_hashes
 
 BENCH = DATA / 'bench'
@@ -34,16 +35,24 @@ def import_set(name, source, opens=''):
     `opens`：题目依赖的记号设置（如 `Real Nat`），随题目一起保存，校验证明时自动加上。
     """
     items = [json.loads(line) for line in source.read_text(encoding='utf-8').splitlines() if line.strip()]
-    hashes = statement_hashes([item['statement'] for item in items], opens=opens)
+    unusable = []
+    for item in items:  # 命题本身不符合 `<binders> : <conclusion>` 格式（比如内部带 `:=`）的题先剔出来，不中断整批导入
+        try:
+            split_signature(item['statement'])
+        except StatementError:
+            unusable.append(item['name'])
+    items = [item for item in items if item['name'] not in unusable]
+    per_item = [item.get('opens', opens) for item in items]  # 每题可以自带 opens，否则用命令行给的
+    hashes = statement_hashes([item['statement'] for item in items], opens=per_item)
     kept, dropped = [], []
-    for item, digest in zip(items, hashes):
+    for item, digest, item_opens in zip(items, hashes, per_item):
         row = dict(name=item['name'], statement=item['statement'], hash=digest)
-        if opens:
-            row['opens'] = opens
+        if item_opens:
+            row['opens'] = item_opens
         (kept if digest else dropped).append(row)
     BENCH.mkdir(parents=True, exist_ok=True)
     _path(name).write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in kept), encoding='utf-8')
-    return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped])
+    return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped], unusable=unusable)
 
 
 def reserved():

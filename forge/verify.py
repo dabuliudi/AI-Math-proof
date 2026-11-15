@@ -318,12 +318,15 @@ def statement_hashes(statements, opens='', timeout=900):
     `opens` 只影响记号解析；哈希取自内核里的命题，所以与不带 open 写出的同一命题一致。
     """
     nonce = uuid.uuid4().hex
-    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', f'open Mathlib2 {opens}'.rstrip()]
+    # opens 可以是全体共用的一个字符串，也可以是与 statements 等长的列表（每题各自的记号设置）
+    per_item = opens if isinstance(opens, list) else [opens] * len(statements)
+    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
     spans = []
-    for index, statement in enumerate(statements):
+    for index, (statement, item_opens) in enumerate(zip(statements, per_item)):
         binders, conclusion = split_signature(statement)
         start = len(lines) + 1
-        lines.extend(f'theorem b{index} {binders} : {conclusion} := by\n  sorry'.split('\n'))
+        prefix = f'open {item_opens} in\n' if item_opens else ''
+        lines.extend(f'{prefix}theorem b{index} {binders} : {conclusion} := by\n  sorry'.split('\n'))
         spans.append((start, len(lines)))
     lines.append('end ForgeBench')
     lines += [f'#forge_info "{nonce}" ForgeBench.b{index}' for index in range(len(statements))]

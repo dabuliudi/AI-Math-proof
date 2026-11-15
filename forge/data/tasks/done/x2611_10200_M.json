@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10200_M",
+  "statement": "noncomputable def x2611_10200_M (g k : ℕ) : ℝ :=\n  ((x2611_10200_a g ((g + k : ℕ) : ℤ) : ℝ) + 1) / (2 : ℝ) ^ g",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:02:53+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:03:01+0800",
+  "type": "ℕ → ℕ → ℝ"
+}

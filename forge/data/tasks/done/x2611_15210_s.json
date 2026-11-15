@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15210_s",
+  "statement": "noncomputable def x2611_15210_s (L : ℕ) (G : Type*) [AddCommMonoid G] : ℕ :=\n  sInf {s : ℕ | ∀ a : Fin s → G, ∃ I : Finset (Fin s), I.card = L ∧ ∑ i ∈ I, a i = 0}",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T01:56:08+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T01:56:35+0800",
+  "type": "ℕ → (G : Type u_1) → [AddCommMonoid G] → ℕ"
+}

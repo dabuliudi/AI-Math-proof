@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15210_Q",
+  "statement": "noncomputable def x2611_15210_Q (n m K : ℕ) (p : ℝ) : ℝ :=\n  ∑ j ∈ Finset.range (K + 1), (n.choose (j * m) : ℝ) * p ^ (j * m) * (1 - p) ^ (n - j * m)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:09:22+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:09:30+0800",
+  "type": "ℕ → ℕ → ℕ → ℝ → ℝ"
+}

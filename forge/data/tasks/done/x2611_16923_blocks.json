@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16923_blocks",
+  "statement": "noncomputable def x2611_16923_blocks {r : ℕ} (k : Fin r → ℕ)\n    (c : Composition r) : List (ℕ × (Fin r →₀ ℕ)) :=\n  List.ofFn (fun h : Fin c.length =>\n    ((∑ j : Fin (c.blocksFun h), k (c.embedding h j)),\n      ∑ j : Fin (c.blocksFun h), Finsupp.single (c.embedding h j) 1))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:02:25+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w4",
+  "finished_at": "2026-11-16T02:02:35+0800",
+  "type": "{r : ℕ} → (Fin r → ℕ) → Composition r → List (ℕ × (Fin r →₀ ℕ))"
+}

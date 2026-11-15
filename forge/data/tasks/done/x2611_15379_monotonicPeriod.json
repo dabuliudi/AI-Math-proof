@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15379_monotonicPeriod",
+  "statement": "def x2611_15379_monotonicPeriod (k a b c : ℕ) : ℕ :=\n  (∏ p ∈ (c.primeFactors.filter (fun p => ¬ p ∣ a / Nat.gcd a b)),\n    p ^ c.factorization p) *\n  ∏ p ∈ ((Nat.lcmUpto k).primeFactors.filter (fun p =>\n    ¬ p ∣ a / Nat.gcd a b ∧\n      (k + 1).factorization p < (Nat.lcmUpto k).factorization p)),\n    p ^ (Nat.lcmUpto k).factorization p",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:03:17+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:03:25+0800",
+  "type": "ℕ → ℕ → ℕ → ℕ → ℕ"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10200_Q",
+  "statement": "noncomputable def x2611_10200_Q (g : ℕ) : PowerSeries ℤ :=\n  1 - (Finset.Icc 1 g).sum (fun j => PowerSeries.X ^ j)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T01:58:29+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T01:59:16+0800",
+  "type": "ℕ → PowerSeries ℤ"
+}

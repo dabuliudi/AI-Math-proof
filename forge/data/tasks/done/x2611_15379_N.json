@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15379_N",
+  "statement": "noncomputable def x2611_15379_N (p j k : ℕ) (u z : ℤ) : ℕ :=\n  ((Finset.Icc (0 : ℤ) (k : ℤ)).filter\n    (fun i => (p : ℤ) ^ j ∣ z + u * i)).card",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:07:15+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:07:25+0800",
+  "type": "ℕ → ℕ → ℕ → ℤ → ℤ → ℕ"
+}

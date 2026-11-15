@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10200_a",
+  "statement": "noncomputable def x2611_10200_a (g : ℕ) (m : ℤ) : ℤ :=\n  if m < 0 then 0 else\n    PowerSeries.coeff m.toNat (PowerSeries.invOfUnit\n      (((1 - PowerSeries.X) ^ 2 : PowerSeries ℤ) * x2611_10200_Q g) 1)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:01:16+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:01:24+0800",
+  "type": "ℕ → ℤ → ℤ"
+}

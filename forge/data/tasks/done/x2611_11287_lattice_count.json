@@ -1,0 +1,16 @@
+{
+  "name": "x2611_11287_lattice_count",
+  "statement": "noncomputable def x2611_11287_lattice_count {n : ℕ}\n    (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)) (H : ℤ) : ℕ :=\n  Set.ncard {A : Matrix (Fin n) (Fin n) ℤ | A ∈ S ∧ ∀ i j, |A i j| ≤ H}",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T01:57:07+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T01:57:33+0800",
+  "type": "{n : ℕ} → Submodule ℤ (Matrix (Fin n) (Fin n) ℤ) → ℤ → ℕ"
+}

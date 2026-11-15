@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15379_G",
+  "statement": "noncomputable def x2611_15379_G (k a b c : ℕ) (f : ℕ → ℂ) (n : ℕ) : ℂ :=\n  (∏ i ∈ Finset.range (k + 1), f (b + a * (n + i * c))) /\n    f ((Finset.range (k + 1)).lcm (fun i => b + a * (n + i * c)))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T01:59:54+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:00:09+0800",
+  "type": "ℕ → ℕ → ℕ → ℕ → (ℕ → ℂ) → ℕ → ℂ"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16899_atom_family",
+  "statement": "def x2611_16899_atom_family (n : ℕ) (τ : RatFunc ℚ)\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) : Prop :=\n  (∀ b, Antitone b → A b = Finset.univ.prod (fun i => MvPolynomial.X i ^ b i)) ∧\n  ∀ (b : Fin n → ℕ) (i j : Fin n), j.val = i.val + 1 → b i < b j →\n    (MvPolynomial.X i - MvPolynomial.X j) * A b =\n      MvPolynomial.C (1 - τ) * MvPolynomial.X j *\n        (A (b ∘ Equiv.swap i j) - MvPolynomial.rename (Equiv.swap i j) (A (b ∘ Equiv.swap i j))) +\n      MvPolynomial.C τ * (MvPolynomial.X i - MvPolynomial.X j) *\n        MvPolynomial.rename (Equiv.swap i j) (A (b ∘ Equiv.swap i j))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:08:56+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w7",
+  "finished_at": "2026-11-16T02:09:04+0800",
+  "type": "(n : ℕ) → RatFunc ℚ → ((Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) → Prop"
+}

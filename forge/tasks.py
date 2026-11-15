@@ -5,6 +5,7 @@
 """
 import json
 import os
+import threading
 import time
 
 from . import bench, library
@@ -37,7 +38,8 @@ def load(name):
 
 def save(state, task):
     path = _dir(state) / f'{task["name"]}.json'
-    temporary = path.with_suffix('.tmp')
+    # 每个写入者用自己的临时文件名：多个调度器进程同时写同一任务时，固定的 .tmp 会被别人抢先改名而报错
+    temporary = path.with_name(f'{path.stem}.{os.getpid()}.{threading.get_ident()}.tmp')
     temporary.write_text(json.dumps(task, ensure_ascii=False, indent=2), encoding='utf-8')
     os.replace(temporary, path)
 

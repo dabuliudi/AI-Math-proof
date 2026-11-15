@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10200_f",
+  "statement": "noncomputable def x2611_10200_f (g k N : ℕ) (m : ℤ) : ℤ :=\n  if m < 0 then 0 else\n    PowerSeries.coeff m.toNat\n      ((1 - PowerSeries.C ((N : ℤ) - 1) * PowerSeries.X ^ k +\n          PowerSeries.C ((N : ℤ) - 2) * PowerSeries.X ^ (k + 1)) *\n        PowerSeries.invOfUnit\n          (((1 - PowerSeries.X) ^ 2 : PowerSeries ℤ) *\n            (x2611_10200_Q g - PowerSeries.C (N : ℤ) *\n              PowerSeries.X ^ (g + k + 1))) 1)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:06:52+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:07:00+0800",
+  "type": "ℕ → ℕ → ℕ → ℤ → ℤ"
+}

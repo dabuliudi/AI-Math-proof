@@ -9,9 +9,15 @@
   "proposed_by": "import-leanworkbook",
   "hash": "3589936710",
   "type": "∀ n > 0, 4 ^ n / (2 * √↑n) < ↑((2 * n).choose n) ∧ ↑((2 * n).choose n) < 4 ^ n / √(2 * ↑n)",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-lw-r2-w1",
+      "note": "领取超时，自动回收",
+      "at": "2026-11-16T01:50:36+0800"
+    }
+  ],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "claimed",
+  "status": "open",
   "claimed_by": "queue-lw-r2-w1",
   "claimed_at": "2026-11-15T22:32:59+0800"
 }

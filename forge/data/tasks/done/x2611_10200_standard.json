@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10200_standard",
+  "statement": "def x2611_10200_standard (g k N : ℕ) (H : ℕ → ℤ) : Prop :=\n  H 1 = 1 ∧\n  (∀ n : ℕ, 2 ≤ n → n ≤ g + k + 1 →\n    H n = 1 + (Finset.Icc 1 (min g (n - 1))).sum (fun j => H (n - j))) ∧\n  (∀ n : ℕ, g + k + 2 ≤ n →\n    H n = (Finset.Icc 1 g).sum (fun j => H (n - j)) +\n      (N : ℤ) * H (n - (g + k + 1)))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:08:11+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:08:19+0800",
+  "type": "ℕ → ℕ → ℕ → (ℕ → ℤ) → Prop"
+}

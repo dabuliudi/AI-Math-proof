@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16899_expansion",
+  "statement": "def x2611_16899_expansion (n d : ℕ)\n    (P : MvPolynomial (Fin n) (RatFunc ℚ))\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n    (c : (Fin n → ℕ) → RatFunc ℚ) : Prop :=\n  P = Finset.univ.sum (fun γ : Fin n → Fin (d + 1) =>\n    if Finset.univ.sum (fun i : Fin n => (γ i).val) = d then\n      MvPolynomial.C (c (fun i => (γ i).val)) * A (fun i => (γ i).val) else 0)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:09:35+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w7",
+  "finished_at": "2026-11-16T02:09:43+0800",
+  "type": "(n : ℕ) → ℕ → MvPolynomial (Fin n) (RatFunc ℚ) → ((Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) → ((Fin n → ℕ) → RatFunc ℚ) → Prop"
+}

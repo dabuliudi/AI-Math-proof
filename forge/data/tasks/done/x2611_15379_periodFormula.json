@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15379_periodFormula",
+  "statement": "noncomputable def x2611_15379_periodFormula (k a b c : ℕ) (f : ℕ → ℂ) : ℕ := by\n  classical\n  let d := Nat.gcd a b\n  let A := a / d\n  let L := Nat.lcmUpto k\n  let R : ℕ → ℕ → ℂ := fun p j =>\n    f (p ^ (d.factorization p + c.factorization p + j)) /\n      f (p ^ (d.factorization p + c.factorization p + j - 1))\n  let M : ℕ → ℕ := fun p =>\n    ((Finset.Icc 1 (L.factorization p)).filter\n      (fun j => (k + 1).factorization p < j ∧ R p j ≠ 1)).sup id\n  let K : ℕ → ℂ := fun p =>\n    f (p ^ (d.factorization p + c.factorization p)) ^ k *\n      ∏ j ∈ Finset.Icc 1 (min (L.factorization p) ((k + 1).factorization p)),\n        R p j ^ ((k + 1) / p ^ j - 1)\n  let e : ℕ → ℕ := fun p =>\n    if 0 < M p then c.factorization p + M p\n    else ((Finset.range (c.factorization p)).filter\n      (fun j => f (p ^ (d.factorization p + j)) ^ k ≠ K p)).sup (fun j => j + 1)\n  exact ∏ p ∈ ((c * L).primeFactors.filter (fun p => ¬ p ∣ A)), p ^ e p",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:01:36+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:01:47+0800",
+  "type": "ℕ → ℕ → ℕ → ℕ → (ℕ → ℂ) → ℕ"
+}

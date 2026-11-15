@@ -1,0 +1,16 @@
+{
+  "name": "x2611_10667_torus_regular",
+  "statement": "noncomputable def x2611_10667_torus_regular {K : Type*} [Field K]\n    (P : MvPolynomial (Fin 2) K) : Prop :=\n  ∀ z : Fin 2 → AlgebraicClosure K,\n    (∀ i, z i ≠ 0) →\n    MvPolynomial.eval₂ (algebraMap K (AlgebraicClosure K)) z P = 0 →\n    ∃ i, MvPolynomial.eval₂ (algebraMap K (AlgebraicClosure K)) z\n      (MvPolynomial.pderiv i P) ≠ 0",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T01:59:29+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w2",
+  "finished_at": "2026-11-16T01:59:50+0800",
+  "type": "{K : Type u_1} → [inst : Field K] → MvPolynomial (Fin 2) K → Prop"
+}

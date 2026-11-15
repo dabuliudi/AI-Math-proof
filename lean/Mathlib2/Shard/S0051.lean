@@ -661,4 +661,74 @@ theorem lw_41789_disproof :
   norm_num at hfalse
 end
 
+-- forge:entry x2611_15210_s kind=definition origin=definition
+section
+noncomputable def x2611_15210_s (L : ℕ) (G : Type*) [AddCommMonoid G] : ℕ :=
+  sInf {s : ℕ | ∀ a : Fin s → G, ∃ I : Finset (Fin s), I.card = L ∧ ∑ i ∈ I, a i = 0}
+end
+
+-- forge:entry x2611_11972_euler kind=definition origin=definition
+section
+noncomputable def x2611_11972_euler (k : List ℤ) : ℝ := by
+  classical
+  exact ∑' n : Fin k.length → ℕ, if StrictMono n then
+    ∏ j : Fin k.length,
+      (if k.get j < 0 then (-1 : ℝ) ^ (n j + 1) else 1) /
+        ((n j + 1 : ℕ) : ℝ) ^ (k.get j).natAbs
+    else 0
+end
+
+-- forge:entry x2611_11287_lattice_count kind=definition origin=definition
+section
+noncomputable def x2611_11287_lattice_count {n : ℕ}
+    (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)) (H : ℤ) : ℕ :=
+  Set.ncard {A : Matrix (Fin n) (Fin n) ℤ | A ∈ S ∧ ∀ i j, |A i j| ≤ H}
+end
+
+-- forge:entry x2611_16923_li kind=definition origin=definition
+section
+noncomputable def x2611_16923_li (r : ℕ) (weak : Bool) (lower : ℕ)
+    (upper : Option ℕ) (L : List (ℕ × (Fin r →₀ ℕ))) : MvPowerSeries (Fin r) ℚ :=
+  fun e =>
+    ∑ n : Fin L.length → Fin (e.sum (fun _ a => a) + 1),
+      if (∀ i, lower ≤ (n i).val) ∧
+          (List.ofFn (fun i => (n i).val)).Pairwise
+            (fun a b => if weak then a ≤ b else a < b) ∧
+          (∀ M ∈ upper, ∀ i, (n i).val < M) ∧
+          (∑ i : Fin L.length, (n i).val • (L.get i).2) = e then
+        ∏ i : Fin L.length, (((n i).val : ℚ) ^ (L.get i).1)⁻¹
+      else 0
+end
+
+-- forge:entry x2611_10200_Q kind=definition origin=definition
+section
+noncomputable def x2611_10200_Q (g : ℕ) : PowerSeries ℤ :=
+  1 - (Finset.Icc 1 g).sum (fun j => PowerSeries.X ^ j)
+end
+
+-- forge:entry x2611_10667_torus_regular kind=definition origin=definition
+section
+noncomputable def x2611_10667_torus_regular {K : Type*} [Field K]
+    (P : MvPolynomial (Fin 2) K) : Prop :=
+  ∀ z : Fin 2 → AlgebraicClosure K,
+    (∀ i, z i ≠ 0) →
+    MvPolynomial.eval₂ (algebraMap K (AlgebraicClosure K)) z P = 0 →
+    ∃ i, MvPolynomial.eval₂ (algebraMap K (AlgebraicClosure K)) z
+      (MvPolynomial.pderiv i P) ≠ 0
+end
+
+-- forge:entry x2611_15379_G kind=definition origin=definition
+section
+noncomputable def x2611_15379_G (k a b c : ℕ) (f : ℕ → ℂ) (n : ℕ) : ℂ :=
+  (∏ i ∈ Finset.range (k + 1), f (b + a * (n + i * c))) /
+    f ((Finset.range (k + 1)).lcm (fun i => b + a * (n + i * c)))
+end
+
+-- forge:entry x2611_11287_centralizer_dim kind=definition origin=definition
+section
+noncomputable def x2611_11287_centralizer_dim {F : Type*} [Field F] {n : ℕ}
+    (A : Matrix (Fin n) (Fin n) F) : ℕ :=
+  Module.finrank F (Subalgebra.centralizer F ({A} : Set (Matrix (Fin n) (Fin n) F)))
+end
+
 end Mathlib2

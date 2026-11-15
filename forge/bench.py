@@ -10,7 +10,7 @@ import time
 
 from .leanrun import DATA
 from .statement import StatementError, split_signature
-from .verify import check_submission, statement_hashes
+from .verify import check_submission, constant_hashes, statement_hashes
 
 BENCH = DATA / 'bench'
 RUNS = BENCH / 'runs'
@@ -43,19 +43,33 @@ def import_set(name, source, opens=''):
             unusable.append(item['name'])
     items = [item for item in items if item['name'] not in unusable]
     per_item = [item.get('opens', opens) for item in items]  # 每题可以自带 opens，否则用命令行给的
-    hashes = statement_hashes([item['statement'] for item in items], opens=per_item,
-                              preambles=[item.get('preamble', '') for item in items])
-    kept, dropped = [], []
+    # 题目可以自带模块导入（例如 Formal Conjectures 的题目模块）；求哈希时一次全部导入
+    imports = sorted({m for item in items for m in item.get('imports', [])})
+    origins = [item['origin'] for item in items if item.get('origin')]
+    from .library import locked
+    with locked():  # 导入 Mathlib2 需要库处于构建完的一致状态；别的进程入库时 .olean 会暂时缺失
+        hashes = statement_hashes([item['statement'] for item in items], opens=per_item,
+                                  preambles=[item.get('preamble', '') for item in items], imports=imports)
+        # 题目来自某个已有常量（`origin`）时，重新写出的命题必须与原常量的类型结构相同，否则说明转写改了题意
+        original = constant_hashes(origins, imports=imports) if origins else {}
+    kept, dropped, unfaithful = [], [], []
     for item, digest, item_opens in zip(items, hashes, per_item):
         row = dict(name=item['name'], statement=item['statement'], hash=digest)
         if item_opens:
             row['opens'] = item_opens
-        if item.get('preamble'):
-            row['preamble'] = item['preamble']
-        (kept if digest else dropped).append(row)
+        for key in ('preamble', 'imports', 'origin', 'source', 'category', 'context'):
+            if item.get(key):
+                row[key] = item[key]
+        if not digest:
+            dropped.append(row)
+        elif item.get('origin') and original.get(item['origin']) != digest:
+            unfaithful.append(row)
+        else:
+            kept.append(row)
     BENCH.mkdir(parents=True, exist_ok=True)
     _path(name).write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in kept), encoding='utf-8')
-    return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped], unusable=unusable)
+    return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped],
+                unfaithful=[d['name'] for d in unfaithful], unusable=unusable)
 
 
 def reserved():
@@ -68,13 +82,24 @@ def reserved():
     return out
 
 
+def _library_mid_build(result):
+    return any('.olean' in e.get('message', '') and 'does not exist' in e.get('message', '')
+               for e in result.get('errors') or [])
+
+
 def check(name, problem, body, run, agent):
     """对一道评测题校验一份证明：只判对错，不入库，结果记入该轮次。"""
     item = next((i for i in load(name) if i['name'] == problem), None)
     if item is None:
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
-    task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''), preamble=item.get('preamble', ''))
+    task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''), preamble=item.get('preamble', ''),
+                imports=item.get('imports', []))
     result = check_submission(task, body)
+    if _library_mid_build(result):
+        # 别的进程正在入库重建时 Mathlib2 的 .olean 会暂时缺失，这不是证明的错；拿着库锁重查一次
+        from .library import locked
+        with locked():
+            result = check_submission(task, body)
     solved = bool(result['ok']) and result['kind'] == 'proved'
     RUNS.mkdir(parents=True, exist_ok=True)
     # 交的是反证且内核通过：说明评测集里这道题的 Lean 写法本身为假（写错的题），单独记下，不算没做出。

@@ -495,6 +495,21 @@ class FormalConjecturesImportTests(unittest.TestCase):
             header(['Foo\n#eval 1'])
 
 
+class BenchMidBuildTests(unittest.TestCase):
+    def test_missing_olean_is_rechecked_under_the_lock(self):
+        from forge import bench
+        broken = dict(ok=False, kind='proved', reason='Lean 报错',
+                      errors=[dict(line=0, column=0, message="object file '/x/Mathlib2.olean' of module Mathlib2 does not exist")])
+        good = dict(ok=True, kind='proved', reason='通过：命题匹配，公理合规')
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+                mock.patch.object(bench, 'RUNS', Path(tmp)), \
+                mock.patch('forge.library.LOCK', Path(tmp) / 'lock'), \
+                mock.patch.object(bench, 'check_submission', side_effect=[broken, good]) as checker:
+            self.assertTrue(bench.check('demo', 'p', 'proof', 'r', 'a')['solved'])
+            self.assertEqual(checker.call_count, 2)
+
+
 class UpgradeRepairTests(unittest.TestCase):
     BEFORE = ('-- forge:entry foo kind=proved origin=x\nsection\n'
               'lemma foo_aux1 (n : ℕ) : n + 0 = n := by\n  simp\n'
@@ -644,6 +659,18 @@ class SchedulerTests(unittest.TestCase):
                 mock.patch('forge.bench.load', return_value=items):
             s.run_bench('demo', only_unsolved=False)
         self.assertIn('abbrev px_solution : ℕ := 1', prompts[0])
+
+    def test_bench_prompt_points_to_the_imported_source(self):
+        s = self.scheduler.Scheduler('src', workers=1, max_tasks=5, max_failures=5)
+        items = [dict(name='fc_x', statement='(n : ℕ) : good n', imports=['FormalConjectures.ErdosProblems.«9»'],
+                      source='FormalConjectures/ErdosProblems/9.lean', preamble='open Erdos9')]
+        prompts = []
+        with mock.patch.object(s, '_invoke', side_effect=lambda prompt, worker: (prompts.append(prompt), (0, '', 0, False))[1]), \
+                mock.patch('forge.bench.load', return_value=items):
+            s.run_bench('demo', only_unsolved=False)
+        self.assertIn('FormalConjectures.ErdosProblems.«9»', prompts[0])
+        self.assertIn('formal_conjectures/FormalConjectures/ErdosProblems/9.lean', prompts[0])
+        self.assertIn('sorryAx', prompts[0])
 
     def test_ladder_escalates_only_when_unsolved_and_passes_the_draft_on(self):
         s = self.scheduler.Scheduler('lad', workers=1, max_tasks=5, max_failures=5, ladder=[('low', 5), ('xhigh', 30)])
@@ -909,3 +936,19 @@ class LockTests(unittest.TestCase):
             import threading
             t = threading.Thread(target=nested); t.start(); t.join(5)
             self.assertEqual(done, [1], '同一线程嵌套持锁不能死锁')
+
+
+class ImproveBaselineTests(unittest.TestCase):
+    def test_baseline_from_finished_run(self):
+        from forge import improve
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / 'runs').mkdir()
+        rows = [dict(task='a', outcome='solved', tokens=10, seconds=5), dict(task='b', outcome='unsolved', tokens=20, seconds=6),
+                dict(task='c', outcome='solved', tokens=30, seconds=7)]
+        (root / 'runs' / 'r0.jsonl').write_text('\n'.join(json.dumps(r) for r in rows))
+        with mock.patch('forge.scheduler.RUNS', root / 'runs'):
+            score = improve.from_run('r0', ['a', 'b'])
+            self.assertEqual((score['solved'], score['tokens']), (1, 30))
+            with self.assertRaises(ValueError):
+                improve.from_run('r0', ['a', 'zz'])

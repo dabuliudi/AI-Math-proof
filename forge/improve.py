@@ -39,15 +39,42 @@ Do not edit any other file. End with one line: RESULT: written.
 '''
 
 
-def _load_state():
-    if STATE.exists():
-        return json.loads(STATE.read_text(encoding='utf-8'))
+def _state_path(set_name):
+    # 每个评测集各有一份状态：换评测集时从头测基线，不会拿别的评测集的“当前最好”来比
+    return STATE if set_name is None else STATE.with_name(f'state-{set_name}.json')
+
+
+def _load_state(set_name=None):
+    path = _state_path(set_name)
+    if path.exists():
+        return json.loads(path.read_text(encoding='utf-8'))
     return dict(best=None, iteration=0, tokens_spent=0)
 
 
 def _save_state(state):
-    STATE.parent.mkdir(parents=True, exist_ok=True)
-    STATE.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding='utf-8')
+    path = _state_path(state.get('set'))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding='utf-8')
+
+
+def from_run(run, problems):
+    """用一轮已经跑完的评测当基线（同一配置不必重跑）：只取这组题的记录。"""
+    from .scheduler import RUNS
+    per = {}
+    for line in (RUNS / f'{run}.jsonl').read_text(encoding='utf-8').splitlines():
+        row = json.loads(line)
+        if row['task'] not in problems:
+            continue
+        item = per.setdefault(row['task'], dict(solved=False, tokens=0, seconds=0, reason=''))
+        item['solved'] = item['solved'] or row['outcome'] == 'solved'
+        item['tokens'] += row.get('tokens') or 0
+        item['seconds'] += row['seconds']
+        item['reason'] = row.get('reason', '')
+    missing = set(problems) - set(per)
+    if missing:
+        raise ValueError(f'轮次 {run} 里没有这些题，不能当基线：{sorted(missing)}')
+    return dict(run=run, solved=sum(i['solved'] for i in per.values()), problems=len(problems),
+                tokens=sum(i['tokens'] for i in per.values()), per=per)
 
 
 def _note(row):
@@ -87,10 +114,10 @@ def better(candidate, best, token_margin=0.9):
     return candidate['tokens'] < token_margin * best['tokens']
 
 
-def propose_prompt(base_prompt, base_score, iteration, run):
+def propose_prompt(base_prompt, base_score, iteration, run, set_name=''):
     """让 agent 读当前提示词和开发集成绩，写一版新提示词；不合格就返回 None。"""
     import string
-    name = f'auto{iteration:03d}'
+    name = f'{set_name}-auto{iteration:03d}' if set_name else f'auto{iteration:03d}'
     PROMPT_DIR.mkdir(parents=True, exist_ok=True)
     current = PROMPT_DIR / f'_current_{name}.txt'
     current.write_text(bench_prompt(base_prompt), encoding='utf-8')
@@ -113,17 +140,20 @@ def propose_prompt(base_prompt, base_score, iteration, run):
 
 
 def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, workers=6, minutes=20,
-             token_budget=6_000_000, start=None, dry_run=False):
-    """跑若干轮改进。第一次运行先用 start（默认 v2 + xhigh）测出基线。返回最终状态。"""
-    state = _load_state()
+             token_budget=6_000_000, start=None, dry_run=False, baseline_run=None):
+    """跑若干轮改进。第一次运行先用 start（默认 v2 + xhigh）测出基线；给了 baseline_run 就直接用那一轮的记录。"""
+    state = _load_state(set_name)
     dev, holdout = split(set_name, dev_size, holdout_size, seed)
     if state['best'] is None:
         config = start or dict(prompt='v2', effort='xhigh')
-        score = evaluate('improve-base-dev', set_name, dev, config, workers, minutes, dry_run)
-        hold = evaluate('improve-base-holdout', set_name, holdout, config, workers, minutes, dry_run)
-        state.update(best=dict(config=config, dev=score, holdout=hold), set=set_name, dev=dev, holdout=holdout,
+        if baseline_run:
+            score, hold = from_run(baseline_run, dev), from_run(baseline_run, holdout)
+        else:
+            score = evaluate(f'improve-{set_name}-base-dev', set_name, dev, config, workers, minutes, dry_run)
+            hold = evaluate(f'improve-{set_name}-base-holdout', set_name, holdout, config, workers, minutes, dry_run)
+        state.update(best=dict(config=config, dev=score, holdout=hold), set=set_name, dev=dev, holdout=holdout, baseline_run=baseline_run,
                      tokens_spent=state['tokens_spent'] + score['tokens'] + hold['tokens'])
-        _note(dict(event='baseline', config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
+        _note(dict(event='baseline', set=set_name, from_run=baseline_run, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
                    holdout_solved=hold['solved'], holdout_tokens=hold['tokens']))
         _save_state(state)
     for _ in range(iterations):
@@ -134,7 +164,7 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
         n = state['iteration']
         best = state['best']
         if n % 2 == 1 and not dry_run:   # 奇数轮：让 agent 改写提示词
-            name, problems = propose_prompt(best['config']['prompt'], best['dev'], n, f'improve-{n:03d}')
+            name, problems = propose_prompt(best['config']['prompt'], best['dev'], n, f'improve-{set_name}-{n:03d}', set_name)
             if not name:
                 _note(dict(event='candidate_rejected', iteration=n, kind='prompt', problems=problems))
                 _save_state(state)
@@ -143,12 +173,12 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
         else:            # 偶数轮：换一个推理强度
             others = [e for e in EFFORTS if e != best['config']['effort']]
             config = dict(best["config"], effort=others[(n // 2 - 1) % len(others)])  # 从最便宜的档位试起
-        score = evaluate(f'improve-{n:03d}-dev', set_name, state['dev'], config, workers, minutes, dry_run)
+        score = evaluate(f'improve-{set_name}-{n:03d}-dev', set_name, state['dev'], config, workers, minutes, dry_run)
         state['tokens_spent'] += score['tokens']
-        row = dict(event='candidate', iteration=n, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
+        row = dict(event='candidate', set=set_name, iteration=n, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
                    best_dev_solved=best['dev']['solved'], best_dev_tokens=best['dev']['tokens'])
         if better(score, best['dev']):
-            hold = evaluate(f'improve-{n:03d}-holdout', set_name, state['holdout'], config, workers, minutes, dry_run)
+            hold = evaluate(f'improve-{set_name}-{n:03d}-holdout', set_name, state['holdout'], config, workers, minutes, dry_run)
             state['tokens_spent'] += hold['tokens']
             row.update(holdout_solved=hold['solved'], holdout_tokens=hold['tokens'],
                        best_holdout_solved=best['holdout']['solved'])

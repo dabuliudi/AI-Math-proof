@@ -95,3 +95,88 @@ def putnam_problem(source):
     if head:
         item['preamble'] = head
     return item
+
+
+FC_CATEGORY = re.compile(r'@\[category ([a-z ]+?)\s*(,[^\]]*)?\]')
+
+
+def _fc_module(relative):
+    """`FormalConjectures/ErdosProblems/1.lean` -> `FormalConjectures.ErdosProblems.«1»`。"""
+    parts = relative.with_suffix('').parts
+    return '.'.join(p if re.fullmatch(r'[A-Za-z_][A-Za-z0-9_]*', p) else f'«{p}»' for p in parts)
+
+
+def _fc_bench_name(full):
+    name = re.sub(r'[^A-Za-z0-9_]+', '_', full).strip('_').lower()
+    name = re.sub(r'_+', '_', name)
+    return ('fc_' + name)[:80]
+
+
+def formal_conjectures_problems(root, categories=('research solved',), skip_public_proof=True):
+    """从 Formal Conjectures 仓库里取出还没有证明（`sorry`）的命题，转成评测题。
+
+    每题 `imports` 是题目所在的模块（题目用到的定义都在里面，校验时直接导入，不抄写定义），
+    `preamble` 是文件里的 `open` 设置，`origin` 是原常量名：导入时会核对重写出的命题与原常量结构相同，
+    改了题意的会被拒。`skip_public_proof`：跳过带 `formal_proof` 标注（网上已有 Lean 证明）的，减少泄题。
+    """
+    from pathlib import Path
+    root = Path(root)
+    out = []
+    for path in sorted((root / 'FormalConjectures').rglob('*.lean')):
+        relative = path.relative_to(root)
+        text = path.read_text(encoding='utf-8')
+        code = re.sub(r'/-.*?-/', lambda m: '\n' * m.group(0).count('\n'), text, flags=re.S)  # 保留行号
+        lines = code.split('\n')
+        namespaces, opens = [], []
+        pending_open = []
+        i = 0
+        while i < len(lines):
+            line = lines[i]
+            stripped = line.strip()
+            if stripped.startswith('namespace '):
+                namespaces.append(stripped.split()[1])
+            elif re.fullmatch(r'end\s+\S+', stripped) and namespaces and stripped.split()[1] == namespaces[-1]:
+                namespaces.pop()
+            elif stripped.startswith('open ') and stripped.endswith(' in'):
+                pending_open.append(stripped[:-3].strip())
+            elif stripped.startswith('open '):
+                opens.append(stripped)
+            elif stripped.startswith('@['):
+                attr = stripped
+                while attr.count('[') > attr.count(']') and i + 1 < len(lines):  # 属性可能跨行；按括号配平
+                    i += 1
+                    attr += ' ' + lines[i].strip()
+                if not FC_CATEGORY.search(attr):
+                    pending_open = []
+                    i += 1
+                    continue
+                found = FC_CATEGORY.search(attr)
+                j = i + 1
+                while j < len(lines) and (lines[j].strip().startswith(('@[', 'open ')) or not lines[j].strip()):
+                    if lines[j].strip().startswith('open ') and lines[j].strip().endswith(' in'):
+                        pending_open.append(lines[j].strip()[:-3].strip())
+                    j += 1
+                decl = re.match(r'(theorem|lemma)\s+(\S+)', lines[j].strip()) if j < len(lines) else None
+                if found and decl:
+                    k = j + 1
+                    while k < len(lines) and lines[k].strip() and not re.match(r'(@\[|theorem |lemma |end |namespace |open |def |abbrev )', lines[k].strip()):
+                        k += 1
+                    block = '\n'.join(lines[j:k])
+                    category, extra = found.group(1).strip(), found.group(2) or ''
+                    parsed = theorem_signature(block)
+                    if parsed and category in categories and not (skip_public_proof and 'formal_proof' in extra):
+                        full = '.'.join(namespaces + [parsed[0]])
+                        preamble = '\n'.join(opens + pending_open + [f'open {".".join(namespaces[:n + 1])}'
+                                                                      for n in range(len(namespaces))])
+                        out.append(dict(name=_fc_bench_name(full), statement=parsed[1], origin=full,
+                                        imports=[_fc_module(relative)], preamble=preamble, category=category,
+                                        source=str(relative)))
+                    i = k - 1
+                pending_open = []
+            i += 1
+    seen, unique = set(), []
+    for item in out:  # 名字截断后可能撞车，撞车的只留第一条
+        if item['name'] not in seen:
+            seen.add(item['name'])
+            unique.append(item)
+    return unique

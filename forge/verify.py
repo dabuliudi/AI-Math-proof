@@ -6,6 +6,21 @@ from .leanrun import ALLOWED_AXIOMS, run_source
 from .statement import analyse_definition, analyse_submission, closed_form, is_disproof, split_signature
 
 HEADER = 'import Mathlib\nimport Mathlib2\nimport Forge\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n'
+MODULE = re.compile(r'[A-Za-z_][A-Za-z0-9_]*(\.([A-Za-z_][A-Za-z0-9_]*|«[^«»\n]+»))*')
+
+
+def header(imports=()):
+    """HEADER 加上评测题自带的模块导入（例如 Formal Conjectures 的题目模块，题目里的定义在那里）。
+
+    import 必须在文件最前面，所以插在固定的三行 import 之后。模块名只许是普通的点分名字，防止借 import 行注入别的命令。
+    """
+    extra = []
+    for module in imports or ():
+        if not MODULE.fullmatch(module):
+            raise ValueError(f'不合法的模块名：{module!r}')
+        extra.append(f'import {module}\n')
+    head, _, rest = HEADER.partition('set_option')
+    return head + ''.join(extra) + 'set_option' + rest
 HEARTBEATS = 400000
 
 # 分诊阶梯：先问库里是否已有（exact?），再试一遍常用自动化。能被自动化关掉的命题不值得花 agent 的预算。
@@ -35,7 +50,7 @@ def check_submission(task, body, disproof=False, timeout=300):
     opens = task.get('opens', '')
     # 评测题可以带前置定义（例如 PutnamBench 的 `abbrev …_solution := 官方答案`）：由数据集给出、放在最前面，agent 不能改
     preamble = task.get('preamble', '')
-    prefix = HEADER + (preamble.rstrip('\n') + '\n' if preamble else '') + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
+    prefix = header(task.get('imports')) + (preamble.rstrip('\n') + '\n' if preamble else '') + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
     offset = prefix.count('\n')
     main = names[-1]
     tail = '\nend\nend Mathlib2\n' + ''.join(f'#forge_info "{nonce}" Mathlib2.{n}\n' for n in names)
@@ -331,7 +346,7 @@ def validate_statements(statements, timeout=180):
     return out
 
 
-def statement_hashes(statements, opens='', timeout=900, preambles=None):
+def statement_hashes(statements, opens='', timeout=900, preambles=None, imports=()):
     """一次 Lean 运行里求若干命题（`<绑定> : <结论>` 形式）的结构哈希，与分诊用的是同一个哈希。无效的为 None。
 
     `opens` 只影响记号解析；哈希取自内核里的命题，所以与不带 open 写出的同一命题一致。
@@ -339,7 +354,7 @@ def statement_hashes(statements, opens='', timeout=900, preambles=None):
     nonce = uuid.uuid4().hex
     # opens 可以是全体共用的一个字符串，也可以是与 statements 等长的列表（每题各自的记号设置）
     per_item = opens if isinstance(opens, list) else [opens] * len(statements)
-    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
+    lines = header(imports).rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
     spans = []
     pre = preambles or [''] * len(statements)
     for index, (statement, item_opens, item_pre) in enumerate(zip(statements, per_item, pre)):
@@ -361,6 +376,14 @@ def statement_hashes(statements, opens='', timeout=900, preambles=None):
         broken = any(start <= m['line'] <= end for m in result.errors())
         out.append(None if broken else infos.get(names[index]))
     return out
+
+
+def constant_hashes(names, imports=(), timeout=900):
+    """若干已有常量（例如 Formal Conjectures 里的原题）的结构哈希：name -> hash，取不到的不出现。"""
+    nonce = uuid.uuid4().hex
+    source = header(imports) + ''.join(f'#forge_info "{nonce}" {name}\n' for name in names)
+    result = run_source(source, timeout=timeout, nonce=nonce)
+    return {i['name']: i['hash'] for i in result.tagged('FORGE_INFO')}
 
 
 def describe(names, timeout=600):

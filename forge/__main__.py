@@ -114,6 +114,7 @@ def main(argv=None):
     p.add_argument('--seed', type=int, default=2026); p.add_argument('--workers', type=int, default=6)
     p.add_argument('--task-minutes', type=int, default=20)
     p.add_argument('--token-budget', type=int, default=6_000_000, help='整个循环最多花这么多 token（含基线）')
+    p.add_argument('--baseline-run', help='用这一轮已跑完的评测记录当基线（配置须为 v2 + xhigh），不再重跑')
     p.add_argument('--dry-run', action='store_true')
     p = sub.add_parser('check-statement', help='只做类型检查：命题（`<绑定> : <结论>`）能否通过'); p.add_argument('statement')
     p = sub.add_parser('equiv-check', help='论文体检：校验两版命题的等价证明或反例'); p.add_argument('name'); p.add_argument('file', type=Path)
@@ -318,7 +319,7 @@ def main(argv=None):
         print(json.dumps(improve.run_loop(args.bench, iterations=args.iterations, dev_size=args.dev_size,
                                           holdout_size=args.holdout_size, seed=args.seed, workers=args.workers,
                                           minutes=args.task_minutes, token_budget=args.token_budget,
-                                          dry_run=args.dry_run), ensure_ascii=False, indent=2))
+                                          dry_run=args.dry_run, baseline_run=args.baseline_run), ensure_ascii=False, indent=2))
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))

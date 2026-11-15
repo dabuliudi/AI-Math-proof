@@ -17,3 +17,10 @@ name = "Forge"
 # Mathlib2：机器生成、内核验证、可互相引用的定理库
 [[lean_lib]]
 name = "Mathlib2"
+
+# Formal Conjectures（DeepMind，Apache-2.0）：难题集与开放问题的来源。与本库同一个 Mathlib 提交；
+# 只按需编译评测题用到的模块，不并入 Mathlib2。
+[[require]]
+name = "formal_conjectures"
+git = "https://github.com/google-deepmind/formal-conjectures.git"
+rev = "e028240a61822d970c933f4656f51da025cf200b"

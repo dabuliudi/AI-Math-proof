@@ -24,7 +24,7 @@ import time
 from pathlib import Path
 
 from . import bench, tasks
-from .leanrun import DATA, ROOT
+from .leanrun import DATA, PROJECT, ROOT
 
 RUNS = DATA / 'runs'
 MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
@@ -182,6 +182,13 @@ PREAMBLE_NOTE = '''
 These definitions are fixed and are placed before your proof by the checker (do not repeat or change them;
 you may unfold them in the proof):
 {preamble}
+'''
+
+SOURCE_NOTE = '''
+This problem comes from an external collection. The checker imports the Lean module(s) {imports}, so every definition the
+statement uses is already available - do not redefine anything. Read the original file {source} for the definitions and the
+natural-language statement. The theorems in that file are only stated (proved by `sorry`): citing them makes your proof
+depend on `sorryAx` and it will be rejected. Proved lemmas in the same file may be used.
 '''
 
 RETRY_NOTE = '''
@@ -421,6 +428,10 @@ class Scheduler:
                 if item.get('preamble'):
                     # 评测题自带的前置定义（如 PutnamBench 的官方答案）：检查时放在证明前面，agent 必须知道它们
                     prompt += PREAMBLE_NOTE.format(preamble=item['preamble'])
+                if item.get('imports'):
+                    # 例如 Formal Conjectures 的题：定义在导入的模块里，不在前置部分；告诉 agent 去哪里读，以及不能引用原题
+                    source = PROJECT / '.lake' / 'packages' / 'formal_conjectures' / item['source'] if item.get('source') else '(not recorded)'
+                    prompt += SOURCE_NOTE.format(imports=', '.join(item['imports']), source=source)
                 if previous:
                     prompt += RETRY_NOTE.format(**previous)
                 overrides = dict(effort=effort, seconds=minutes * 60) if effort else {}

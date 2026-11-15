@@ -51,3 +51,16 @@
 - 672 题中：61 题暂时转不了（答案注释格式特殊、前置部分有无法处理的注释等），33 题在 Mathlib v4.24 上通不过类型检查，
   16 题命题格式不兼容（如内部含 `:=`），其余 562 题收录。转换代码在 `forge/importers.py`（`putnam_problem`）。
 - 与官方排行榜比较时，分母要换算：本集合的成绩只覆盖 672 题中的 562 题。
+
+## fc_pilot.jsonl（难题集试点）
+
+- 内容：从 [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures)（DeepMind，Apache-2.0，提交 `e028240`，2026-11-14）
+  抽的 40 题：30 题 `research solved`、10 题 `textbook`，都是原仓库里还没有证明（`sorry`）、也没有标注网上已有 Lean 证明（`formal_proof`）的。
+  固定随机种子 7 抽样，导入 37 题（2 题类型检查不过，1 题命题内部含 `:=`）。
+- 用途：校准难度。先跑一轮低预算基线，删掉一次就解出的题，留下解出率 20%–50% 的那部分作为正式难题集（dev / held-out）。
+- 与其他评测集的不同：不抄写定义。Formal Conjectures 作为 Lean 依赖加入 `lean/lakefile.toml`（与本库同一个 Mathlib 提交），
+  每题的 `imports` 是题目所在模块，校验时直接导入；`preamble` 只有文件里的 `open` 设置。
+- 忠实性：每题记下原常量名 `origin`。导入时用内核算出重写后命题的结构哈希，与原常量的类型逐一比较，不一致的判为 `unfaithful` 并拒收
+  （已测试：把一题的 `p > 7` 改成 `p > 5` 会被拒）。
+- 泄题防护：原仓库里的题目定理本身以 `sorry` 结束，直接引用它会因依赖 `sorryAx` 被拒（已测试）。
+- 题目模块需要先编译：`cd lean && lake build <模块名>`；第一次约 80 秒（编译 Formal Conjectures 的公共部分），之后每个题目文件几秒。

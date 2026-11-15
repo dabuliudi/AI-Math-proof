@@ -73,7 +73,7 @@ def snapshot(message):
     import subprocess
     from .leanrun import ROOT
     from .regressions import consistency
-    paths = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean', 'forge/data/tasks', 'forge/data/helpers.jsonl']
+    paths = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean', 'forge/data/tasks', 'forge/data/helpers.json']
     paths = [p for p in paths if (ROOT / p).exists()]
     with locked():
         problems = consistency()

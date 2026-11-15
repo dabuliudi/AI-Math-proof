@@ -43,6 +43,7 @@ def main(argv=None):
     p.add_argument('--origin', default='conjecture', choices=['conjecture', 'paper', 'human', 'decomposition'])
     p.add_argument('--source', default=''); p.add_argument('--agent', default='')
     p.add_argument('--file', type=Path, help='JSONL，每行 {name, statement, informal?, origin?, source?}')
+    p.add_argument('--jobs', type=int, default=1, help='批量提交时并行分诊的条数（每条分诊会启动 4 个 Lean 进程）')
     p = sub.add_parser('define', help='引入一条新定义（只允许一条 def）')
     p.add_argument('name'); p.add_argument('file', type=Path); p.add_argument('--agent', default='anonymous')
     p.add_argument('--informal', default=''); p.add_argument('--source', default=''); p.add_argument('--original', default='')
@@ -122,10 +123,18 @@ def main(argv=None):
             rows = [dict(name=args.name, statement=args.statement, informal=args.informal, origin=args.origin, source=args.source)]
         else:
             parser.error('propose 需要 --file，或同时给 --name 和 --statement')
+        prepared = {}
+        if args.jobs > 1 and len(rows) > 1:
+            # 分诊只读、可并行；登记（查重、入队、自动证出的入库）随后逐条进行，不会出现两条同时通过查重
+            from concurrent.futures import ThreadPoolExecutor
+            with ThreadPoolExecutor(max_workers=args.jobs) as pool:
+                futures = {r['name']: pool.submit(tasks.prepare, r['name'], r['statement']) for r in rows}
+                prepared = {name: future.result() for name, future in futures.items()}
         results = []
         for index, r in enumerate(rows, 1):
             results.append(tasks.propose(r['name'], r['statement'], r.get('informal', ''), r.get('origin', args.origin),
-                                         r.get('source', args.source), args.agent, r.get('original', '')))
+                                         r.get('source', args.source), args.agent, r.get('original', ''),
+                                         prepared=prepared.get(r['name'])))
             if args.file:  # 批量时逐条报进度（stderr），最终 JSON 仍在 stdout
                 print(f'[{index}/{len(rows)}] {r["name"]}: {results[-1]["status"]}', file=sys.stderr, flush=True)
         emit(results if args.file else results[0])

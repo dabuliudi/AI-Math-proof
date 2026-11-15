@@ -64,16 +64,28 @@ def _known_hashes():
     return seen
 
 
-def propose(name, statement, informal='', origin='conjecture', source='', proposed_by='', original=''):
-    """提出一个命题：分诊后要么判为已知/重复/无效，要么被自动化直接证掉入库，要么进入队列等 agent。"""
+def prepare(name, statement):
+    """提交的第一步：格式检查与分诊。只读、不改任何状态，所以批量提交时可以多条并行。
+    返回 (提前结束时的结果, 分诊报告)；前者为 None 表示可以进入第二步 settle。"""
     try:
         check_name(name)
         check_statement_text(statement)
     except StatementError as exc:
-        return dict(name=name, status='invalid', reason=str(exc))
+        return dict(name=name, status='invalid', reason=str(exc)), None
     if load(name)[0]:
+        return dict(name=name, status='invalid', reason='名称已被占用，换一个'), None
+    return None, triage(name, statement)
+
+
+def propose(name, statement, informal='', origin='conjecture', source='', proposed_by='', original='', prepared=None):
+    """提出一个命题：分诊后要么判为已知/重复/无效，要么被自动化直接证掉入库，要么进入队列等 agent。
+
+    prepared：批量提交时由 prepare() 并行算好的结果；这里（登记、查重、入库）必须逐条执行。"""
+    early, report = prepared if prepared is not None else prepare(name, statement)
+    if early:
+        return early
+    if load(name)[0]:  # 并行分诊期间名称可能已被同一批里的别的条目占用
         return dict(name=name, status='invalid', reason='名称已被占用，换一个')
-    report = triage(name, statement)
     if report.get('timed_out'):
         # 机器忙时类型检查可能超时；这不说明命题有问题，名称也不占用，稍后原样重提即可。
         return dict(name=name, status='busy', reason='类型检查超时（机器繁忙），请稍后用同一名称重新提交')

@@ -1,0 +1,19 @@
+{
+  "name": "fld_irrational_cbrt_two",
+  "statement": "(x : ℝ) (hx : x ^ 3 = 2) : Irrational x",
+  "closed": "∀ (x : ℝ) (hx : x ^ 3 = 2), Irrational x",
+  "informal": "The real cube root of 2 is irrational — Uses Mathlib2.alg_rat_pow_ne_two at the only step: if x = (q : ℝ) then q^3 = 2 in ℚ by Rat.cast injectivity, contradicting alg_rat_pow_ne_two 3.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "997479726",
+  "type": "∀ (x : ℝ), x ^ 3 = 2 → Irrational x",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:29+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:21:41+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:24:32+0800"
+}

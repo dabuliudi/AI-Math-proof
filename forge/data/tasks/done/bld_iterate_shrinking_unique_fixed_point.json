@@ -1,0 +1,19 @@
+{
+  "name": "bld_iterate_shrinking_unique_fixed_point",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X) (n : ℕ) (h : ∀ x y : X, x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y) : ∃! p : X, f p = p",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X) (n : ℕ) (h : ∀ x y : X, x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y), ∃! p : X, f p = p",
+  "informal": "Uses Mathlib2.top_edelstein_unique_fixed_point applied to f^[n]: its unique fixed point p satisfies f^[n] (f p) = f p, so f p = p by uniqueness; any fixed point of f is fixed by f^[n]. (Shrinking analogue of Mathlib2.top_fixed_of_iterate_contraction.)",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_edelstein_unique_fixed_point",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "709767561",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X) (n : ℕ), (∀ (x y : X), x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y) → ∃! p, f p = p",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:59+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:36:45+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:37:15+0800"
+}

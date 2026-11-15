@@ -1,0 +1,19 @@
+{
+  "name": "calc_rpow_self_ge",
+  "statement": "(x : ℝ) (hx : 0 < x) : Real.exp (-Real.exp (-1)) ≤ x ^ x",
+  "closed": "∀ (x : ℝ) (hx : 0 < x), Real.exp (-Real.exp (-1)) ≤ x ^ x",
+  "informal": "xˣ ≥ e^(−1/e) for x > 0 — xˣ = exp(x log x) and x log x ≥ −1/e (apply log t ≤ t − 1 to t = 1/(e x), or Real.mul_log lower bound lemmas).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "2296408954",
+  "type": "∀ (x : ℝ), 0 < x → Real.exp (-Real.exp (-1)) ≤ x ^ x",
+  "attempts": [],
+  "created_at": "2026-11-15T07:42:37+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:04:21+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:04:29+0800"
+}

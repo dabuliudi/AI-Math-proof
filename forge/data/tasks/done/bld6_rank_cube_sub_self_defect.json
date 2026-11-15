@@ -1,0 +1,19 @@
+{
+  "name": "bld6_rank_cube_sub_self_defect",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : A.rank + (A - 1).rank + (A + 1).rank = 2 * Fintype.card ι + (A * A * A - A).rank",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A.rank + (A - 1).rank + (A + 1).rank = 2 * Fintype.card ι + (A * A * A - A).rank",
+  "informal": "Uses Mathlib2.bld3_rank_tripotent_defect and Mathlib2.bld2_rank_add_rank_one_sub: the idempotent-defect identity bld2_rank_add_rank_one_sub applied to A and to -A gives rank(A*A - A) = rank A + rank(A - 1) - n and rank(A*A + A) = rank A + rank(A + 1) - n (ranks invariant under negation); substitute both into bld3_rank_tripotent_defect: rank(A*A+A) + rank(A*A-A) = rank A + rank(A^3 - A). Corollary: A^3 = A iff rank A + rank(A-1) + rank(A+1) = 2n.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_rank_tripotent_defect, Mathlib2.bld2_rank_add_rank_one_sub",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "3524256399",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A.rank + (A - 1).rank + (A + 1).rank = 2 * Fintype.card ι + (A * A * A - A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T08:22:07+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:44+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:38:46+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "comb_sum_card_fixed_points_perm",
+  "statement": "(n : ℕ) : ∑ σ : Equiv.Perm (Fin (n + 1)), (Finset.univ.filter (fun i : Fin (n + 1) => σ i = i)).card = (n + 1).factorial",
+  "closed": "∀ (n : ℕ), ∑ σ : Equiv.Perm (Fin (n + 1)), (Finset.univ.filter (fun i : Fin (n + 1) => σ i = i)).card = (n + 1).factorial",
+  "informal": "The total number of fixed points over all permutations of an m-set (m ≥ 1) is m!, i.e. the average is 1 — double count pairs (σ, i) with σ i = i: for each i the stabiliser has (m-1)! elements; or Burnside for the transitive action of Perm on Fin m.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "866423116",
+  "type": "∀ (n : ℕ), ∑ σ, {i | σ i = i}.card = (n + 1).factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T01:36:06+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T01:59:10+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T01:59:53+0800"
+}

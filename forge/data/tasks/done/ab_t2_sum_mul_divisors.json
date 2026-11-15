@@ -1,0 +1,19 @@
+{
+  "name": "ab_t2_sum_mul_divisors",
+  "statement": "(n k : ℕ) (hn : Nat.Perfect n) : ∑ d ∈ Nat.divisors n, k * d = 2 * (k * n)",
+  "closed": "∀ (n k : ℕ) (hn : Nat.Perfect n), ∑ d ∈ Nat.divisors n, k * d = 2 * (k * n)",
+  "informal": "Table 2 step 8: sum of k d_i over divisors d_i of perfect n equals 2kn.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.11 Table 2 steps [4],[8]",
+  "original": "[4] We have ∑_{i=1}^r di = 2n ... [8] As ∑_{i=1}^r kdi = 2kn",
+  "proposed_by": "paper_2",
+  "hash": "329627922",
+  "type": "∀ (n k : ℕ), n.Perfect → ∑ d ∈ n.divisors, k * d = 2 * (k * n)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:00:34+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_2",
+  "claimed_at": "2026-11-15T01:06:01+0800",
+  "closed_by": "r3_prover_2",
+  "finished_at": "2026-11-15T01:06:15+0800"
+}

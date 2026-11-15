@@ -1,0 +1,19 @@
+{
+  "name": "bld6_abundant_two_mul_totient_lt",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) (h : 2 * n ≤ ArithmeticFunction.sigma 1 n) : 2 * n.totient < n",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n) (h : 2 * n ≤ ArithmeticFunction.sigma 1 n), 2 * n.totient < n",
+  "informal": "Uses Mathlib2.arith_sigma_mul_totient_lt_sq: 2n·φ(n) ≤ σ(n)·φ(n) < n^2 by the hypothesis and arith_sigma_mul_totient_lt_sq; cancel n > 0. So perfect and abundant numbers have φ(n) < n/2.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.arith_sigma_mul_totient_lt_sq",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "3718247618",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 * n ≤ (ArithmeticFunction.sigma 1) n → 2 * n.totient < n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:25:30+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:44+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:38:10+0800"
+}

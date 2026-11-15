@@ -1,0 +1,19 @@
+{
+  "name": "p3_cor1",
+  "statement": ": Filter.Tendsto (fun N : ℕ => sInf ((fun n : ℕ => (p3_pisano n : ℝ) / n) '' Set.Ioo 0 N)) Filter.atTop (nhds 0)",
+  "closed": "Filter.Tendsto (fun N : ℕ => sInf ((fun n : ℕ => (p3_pisano n : ℝ) / n) '' Set.Ioo 0 N)) Filter.atTop (nhds 0)",
+  "informal": "lim_{N→∞} min{π(n)/n : 0 < n < N} = 0",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Corollary 1",
+  "original": "$\\lim_{N\\to\\infty}\\min\\left\\{\\frac{\\pi(n)}{n}:n\\in\\mathbb{N},\\,n<N\\right\\}=0$",
+  "proposed_by": "paper_3",
+  "hash": "1748833400",
+  "type": "Filter.Tendsto (fun N => sInf ((fun n => ↑(Mathlib2.p3_pisano n) / ↑n) '' Set.Ioo 0 N)) Filter.atTop (nhds 0)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:22:33+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_5",
+  "claimed_at": "2026-11-15T02:31:29+0800",
+  "closed_by": "r5_prover_5",
+  "finished_at": "2026-11-15T02:33:20+0800"
+}

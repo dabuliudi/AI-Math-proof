@@ -1,0 +1,19 @@
+{
+  "name": "top_distrib_lattice_median",
+  "statement": "{α : Type*} [DistribLattice α] (a b c : α) : (a ⊓ b) ⊔ (b ⊓ c) ⊔ (c ⊓ a) = (a ⊔ b) ⊓ (b ⊔ c) ⊓ (c ⊔ a)",
+  "closed": "∀ {α : Type*} [DistribLattice α] (a b c : α), (a ⊓ b) ⊔ (b ⊓ c) ⊔ (c ⊓ a) = (a ⊔ b) ⊓ (b ⊔ c) ⊓ (c ⊔ a)",
+  "informal": "The median identity in a distributive lattice — ≤ holds in every lattice (each meet is below each join); for ≥ expand the right side using distributivity and absorb.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "153020568",
+  "type": "∀ {α : Type u_1} [inst : DistribLattice α] (a b c : α), a ⊓ b ⊔ b ⊓ c ⊔ c ⊓ a = (a ⊔ b) ⊓ (b ⊔ c) ⊓ (c ⊔ a)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:12+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:27:30+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:27:59+0800"
+}

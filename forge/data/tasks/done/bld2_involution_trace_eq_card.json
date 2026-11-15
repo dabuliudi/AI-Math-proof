@@ -1,0 +1,19 @@
+{
+  "name": "bld2_involution_trace_eq_card",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = 1) (ht : Matrix.trace A = (Fintype.card ι : K)) : A = 1",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = 1) (ht : Matrix.trace A = (Fintype.card ι : K)), A = 1",
+  "informal": "Uses Mathlib2.bld_involution_trace_rank and Mathlib2.bld_involution_rank_add_rank: the trace formula gives 2 * rank (1 + A) = 2 * card ι in K, hence (CharZero) rank (1 + A) = card ι; the rank identity then gives rank (1 - A) = 0, so 1 - A = 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_involution_trace_rank, Mathlib2.bld_involution_rank_add_rank",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "1583308648",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A * A = 1 → A.trace = ↑(Fintype.card ι) → A = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:36+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_2",
+  "claimed_at": "2026-11-15T02:54:06+0800",
+  "closed_by": "r7_prover_2",
+  "finished_at": "2026-11-15T02:55:14+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "p5_psi_mul_coprime",
+  "statement": "(m n : ℕ) (h : m.Coprime n) : p5_dedekind_psi (m * n) = p5_dedekind_psi m * p5_dedekind_psi n",
+  "closed": "∀ (m n : ℕ) (h : m.Coprime n), p5_dedekind_psi (m * n) = p5_dedekind_psi m * p5_dedekind_psi n",
+  "informal": "Spec: Dedekind psi is multiplicative on coprime arguments.",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 Section 1 (definition of psi)",
+  "original": "psi(n) = prod p_i^{a_i-1}(p_i+1), psi(1)=1",
+  "proposed_by": "paper_5",
+  "hash": "1579989296",
+  "type": "∀ (m n : ℕ), m.Coprime n → Mathlib2.p5_dedekind_psi (m * n) = Mathlib2.p5_dedekind_psi m * Mathlib2.p5_dedekind_psi n",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:22+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T06:56:56+0800"
+}

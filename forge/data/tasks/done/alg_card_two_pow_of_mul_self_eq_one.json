@@ -1,0 +1,19 @@
+{
+  "name": "alg_card_two_pow_of_mul_self_eq_one",
+  "statement": "(G : Type*) [Group G] [Finite G] (h : ∀ g : G, g * g = 1) : ∃ k : ℕ, Nat.card G = 2 ^ k",
+  "closed": "∀ (G : Type*) [Group G] [Finite G] (h : ∀ g : G, g * g = 1), ∃ k : ℕ, Nat.card G = 2 ^ k",
+  "informal": "A finite group in which every element squares to 1 has order a power of 2 — it is a 2-group (IsPGroup 2), then use IsPGroup.iff_card; or Cauchy's theorem for an odd prime divisor.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "368396796",
+  "type": "∀ (G : Type u_1) [inst : Group G] [Finite G], (∀ (g : G), g * g = 1) → ∃ k, Nat.card G = 2 ^ k",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:06+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_1",
+  "claimed_at": "2026-11-15T01:31:18+0800",
+  "closed_by": "r4_prover_1",
+  "finished_at": "2026-11-15T01:32:11+0800"
+}

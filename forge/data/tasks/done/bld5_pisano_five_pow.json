@@ -1,0 +1,19 @@
+{
+  "name": "bld5_pisano_five_pow",
+  "statement": "(k : ℕ) : p3_pisano (5 ^ (k + 1)) = 4 * 5 ^ (k + 1)",
+  "closed": "∀ (k : ℕ), p3_pisano (5 ^ (k + 1)) = 4 * 5 ^ (k + 1)",
+  "informal": "Uses Mathlib2.lib_fib_period_iff, Mathlib2.bld3_pisano_dvd_of_period, Mathlib2.bld3_pisano_dvd_pisano_of_dvd and Mathlib2.lib_pisano_dvd_iff_period: key identity F_{5n} = 25F_n^5 + 25(-1)^n F_n^3 + 5F_n (over ℤ), whence by induction 5^j ∣ F_{5^j} but 5^(j+1) ∤ F_{5^j}. Upper bound: induct with the matrix/binomial argument (Q^{4·5^k} = 1 + 5^k•M ⇒ Q^{4·5^(k+1)} ≡ 1 mod 5^(k+1)), base F_20 = 6765, F_21 = 10946; then lib_fib_period_iff + bld3_pisano_dvd_of_period give pisano ∣ 4·5^(k+1). Lower bound by induction: bld3_pisano_dvd_pisano_of_dvd gives 4·5^k ∣ pisano(5^(k+1)) ∣ 4·5^(k+1), so the quotient is 1 or 5; if pisano = 4·5^k then (lib_pisano_dvd_iff_period, i = 0) 5^(k+1) ∣ F_{4·5^k}, and with 5^(k+1) ∣ F_{5^(k+1)} and Nat.fib_gcd this gives 5^(k+1) ∣ F_{5^k}, contradiction. Base pisano 5 = 20 by direct check of the divisors of 20.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.lib_fib_period_iff, Mathlib2.bld3_pisano_dvd_of_period, Mathlib2.bld3_pisano_dvd_pisano_of_dvd, Mathlib2.lib_pisano_dvd_iff_period",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "1654444044",
+  "type": "∀ (k : ℕ), Mathlib2.p3_pisano (5 ^ (k + 1)) = 4 * 5 ^ (k + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:21:43+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:39:23+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:39:40+0800"
+}

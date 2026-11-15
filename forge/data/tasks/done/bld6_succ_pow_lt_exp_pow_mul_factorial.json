@@ -1,0 +1,19 @@
+{
+  "name": "bld6_succ_pow_lt_exp_pow_mul_factorial",
+  "statement": "(n : ℕ) (hn : 0 < n) : ((n : ℝ) + 1) ^ n < Real.exp 1 ^ n * n.factorial",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ((n : ℝ) + 1) ^ n < Real.exp 1 ^ n * n.factorial",
+  "informal": "Uses Mathlib2.calc_one_add_inv_pow_lt_exp: induction on n via (n+1)^n/n! = ∏_{k=1}^n (1+1/k)^k (ratio of consecutive terms is (1+1/(n+1))^(n+1)); each factor is < e by calc_one_add_inv_pow_lt_exp. Strengthens Mathlib2.calc_factorial_gt_div_exp_pow from n^n to (n+1)^n.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_one_add_inv_pow_lt_exp",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "4106544788",
+  "type": "∀ (n : ℕ), 0 < n → (↑n + 1) ^ n < Real.exp 1 ^ n * ↑n.factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T08:18:20+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:27:39+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:28:56+0800"
+}

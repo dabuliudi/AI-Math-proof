@@ -1,0 +1,19 @@
+{
+  "name": "bld6_sum_choose_alternating_div_eq_beta",
+  "statement": "(m n : ℕ) : ∑ k ∈ Finset.range (n + 1), (-1 : ℝ) ^ k * (n.choose k : ℝ) / ((m : ℝ) + k + 1) = ((m.factorial : ℝ) * n.factorial) / ((m + n + 1).factorial : ℝ)",
+  "closed": "∀ (m n : ℕ), ∑ k ∈ Finset.range (n + 1), (-1 : ℝ) ^ k * (n.choose k : ℝ) / ((m : ℝ) + k + 1) = ((m.factorial : ℝ) * n.factorial) / ((m + n + 1).factorial : ℝ)",
+  "informal": "Uses Mathlib2.calc_integral_beta_nat: expand (1-x)^n by the binomial theorem, so x^m(1-x)^n = ∑ (-1)^k C(n,k) x^(m+k); integrate termwise over [0,1] (integral_pow) to get the left side, and the right side is the value of the same integral by calc_integral_beta_nat m n (final step).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_integral_beta_nat",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1114342604",
+  "type": "∀ (m n : ℕ), ∑ k ∈ Finset.range (n + 1), (-1) ^ k * ↑(n.choose k) / (↑m + ↑k + 1) = ↑m.factorial * ↑n.factorial / ↑(m + n + 1).factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:48+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:35:52+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "top_dist_div_one_add_triangle",
+  "statement": "{X : Type*} [MetricSpace X] (x y z : X) : dist x z / (1 + dist x z) ≤ dist x y / (1 + dist x y) + dist y z / (1 + dist y z)",
+  "closed": "∀ {X : Type*} [MetricSpace X] (x y z : X), dist x z / (1 + dist x z) ≤ dist x y / (1 + dist x y) + dist y z / (1 + dist y z)",
+  "informal": "The bounded metric d/(1+d) satisfies the triangle inequality — t ↦ t/(1+t) is monotone and subadditive on [0,∞); combine with dist_triangle.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "3415218865",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] (x y z : X), dist x z / (1 + dist x z) ≤ dist x y / (1 + dist x y) + dist y z / (1 + dist y z)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:10+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:23:57+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:24:17+0800"
+}

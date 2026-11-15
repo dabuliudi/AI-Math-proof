@@ -1,0 +1,19 @@
+{
+  "name": "r3_imo1988_vieta_jumping_s1h2",
+  "statement": ": (∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b) → ∀ (q a b : ℕ), a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) → (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1)",
+  "closed": "(∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b) → ∀ (q a b : ℕ), a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) → (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1)",
+  "informal": "r3_imo1988_vieta_jumping 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "r3_imo1988_vieta_jumping",
+  "original": "",
+  "proposed_by": "r3_prover_1",
+  "hash": "3210016394",
+  "type": "(∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b) → ∀ (q a b : ℕ), a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) → (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:07:02+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_1",
+  "claimed_at": "2026-11-15T01:07:53+0800",
+  "closed_by": "r3_prover_1",
+  "finished_at": "2026-11-15T01:08:06+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld4_card_orderOf_eq_prime_of_card_prime_mul_prime",
+  "statement": "(p q : ℕ) [Fact p.Prime] (hq : q.Prime) (hpq : p < q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hna : ∃ a b : G, a * b ≠ b * a) : Nat.card {g : G // orderOf g = p} = q * (p - 1)",
+  "closed": "∀ (p q : ℕ) [Fact p.Prime] (hq : q.Prime) (hpq : p < q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hna : ∃ a b : G, a * b ≠ b * a), Nat.card {g : G // orderOf g = p} = q * (p - 1)",
+  "informal": "Uses Mathlib2.bld3_card_sylow_of_card_prime_mul_prime: there are exactly q Sylow p-subgroups, each of order p; two distinct ones meet trivially, and every element of order p generates one. So the elements of order p are the disjoint union over the q Sylow p-subgroups of their p − 1 non-identity elements.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_card_sylow_of_card_prime_mul_prime",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "645200434",
+  "type": "∀ (p q : ℕ) [Fact (Nat.Prime p)], Nat.Prime q → p < q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → (∃ a b, a * b ≠ b * a) → Nat.card { g // orderOf g = p } = q * (p - 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:04+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_1",
+  "claimed_at": "2026-11-15T07:06:59+0800",
+  "closed_by": "r9_prover_1",
+  "finished_at": "2026-11-15T07:08:35+0800"
+}

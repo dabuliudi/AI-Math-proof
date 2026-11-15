@@ -1,0 +1,18 @@
+{
+  "name": "nt_pow4_add_four_not_prime",
+  "statement": "(n : ℕ) (h : 1 < n) : ¬ (n ^ 4 + 4).Prime",
+  "closed": "∀ (n : ℕ) (h : 1 < n), ¬ (n ^ 4 + 4).Prime",
+  "informal": "n^4 + 4 is composite for n > 1 (Sophie Germain identity).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_nt",
+  "hash": "2463857355",
+  "type": "∀ (n : ℕ), 1 < n → ¬Nat.Prime (n ^ 4 + 4)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:12:54+0800",
+  "status": "proved",
+  "claimed_by": "prover_3",
+  "claimed_at": "2026-11-15T00:17:36+0800",
+  "closed_by": "prover_3",
+  "finished_at": "2026-11-15T00:18:04+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld4_rat_sq_add_sq_eq_mul_sq_trivial",
+  "statement": "(p n : ℕ) (hp : p.Prime) (hp3 : p % 4 = 3) (hodd : Odd (padicValNat p n)) (x y z : ℚ) (h : x ^ 2 + y ^ 2 = (n : ℚ) * z ^ 2) : x = 0 ∧ y = 0 ∧ z = 0",
+  "closed": "∀ (p n : ℕ) (hp : p.Prime) (hp3 : p % 4 = 3) (hodd : Odd (padicValNat p n)) (x y z : ℚ) (h : x ^ 2 + y ^ 2 = (n : ℚ) * z ^ 2), x = 0 ∧ y = 0 ∧ z = 0",
+  "informal": "Uses Mathlib2.bld3_rat_sq_add_sq_ne_of_odd_padicValNat: if z ≠ 0 then (x/z)^2 + (y/z)^2 = n, contradicting bld3_rat_sq_add_sq_ne_of_odd_padicValNat; so z = 0, and then x^2 + y^2 = 0 in ℚ forces x = y = 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_rat_sq_add_sq_ne_of_odd_padicValNat",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "905162626",
+  "type": "∀ (p n : ℕ), Nat.Prime p → p % 4 = 3 → Odd (padicValNat p n) → ∀ (x y z : ℚ), x ^ 2 + y ^ 2 = ↑n * z ^ 2 → x = 0 ∧ y = 0 ∧ z = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:45+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:03:12+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:03:22+0800"
+}

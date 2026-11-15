@@ -1,0 +1,19 @@
+{
+  "name": "lib_convex_nat_seq_add_mul_sub_le",
+  "statement": "(f : ℕ → ℕ) (h : ∀ k, 2 * f (k + 1) ≤ f k + f (k + 2)) (m : ℕ) (hm : f (m + 1) ≤ f m) : f (m + 1) + (m + 1) * (f m - f (m + 1)) ≤ f 0",
+  "closed": "∀ (f : ℕ → ℕ) (h : ∀ k, 2 * f (k + 1) ≤ f k + f (k + 2)) (m : ℕ) (hm : f (m + 1) ≤ f m), f (m + 1) + (m + 1) * (f m - f (m + 1)) ≤ f 0",
+  "informal": "For a convex ℕ-valued sequence, a drop d = f m - f (m+1) ≥ 0 at step m propagates backwards, so f 0 ≥ f (m+1) + (m+1)·d (quantitative form; d ≥ 1 gives f (m+1) + (m+1) ≤ f 0). Promoted and generalised from Mathlib2.bld3_rank_pow_card_stabilizes_aux2 (and _aux1; used for rank stabilisation of matrix powers).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld3_rank_pow_card_stabilizes_aux2",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "1253291173",
+  "type": "∀ (f : ℕ → ℕ), (∀ (k : ℕ), 2 * f (k + 1) ≤ f k + f (k + 2)) → ∀ (m : ℕ), f (m + 1) ≤ f m → f (m + 1) + (m + 1) * (f m - f (m + 1)) ≤ f 0",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:57+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:56:32+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:56:43+0800"
+}

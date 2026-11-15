@@ -1,0 +1,19 @@
+{
+  "name": "fld_sum_quadratic_residues_one_mod_four",
+  "statement": "(p : ℕ) (hp : p.Prime) (h : p % 4 = 1) : ∑ a ∈ (Finset.Icc 1 (p - 1)).image (fun x => x ^ 2 % p), a = p * (p - 1) / 4",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h : p % 4 = 1), ∑ a ∈ (Finset.Icc 1 (p - 1)).image (fun x => x ^ 2 % p), a = p * (p - 1) / 4",
+  "informal": "For a prime p ≡ 1 (mod 4) the sum of the quadratic residues in [1, p-1] equals p(p-1)/4 — -1 is a residue, so r ↦ p - r is a fixed-point-free involution on the (p-1)/2 residues, pairing them into (p-1)/4 pairs each of sum p.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "3061720509",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 1 → ∑ a ∈ Finset.image (fun x => x ^ 2 % p) (Finset.Icc 1 (p - 1)), a = p * (p - 1) / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:19+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:26:46+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:36:31+0800"
+}

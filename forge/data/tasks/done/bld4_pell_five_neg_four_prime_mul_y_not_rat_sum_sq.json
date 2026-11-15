@@ -1,0 +1,19 @@
+{
+  "name": "bld4_pell_five_neg_four_prime_mul_y_not_rat_sum_sq",
+  "statement": "(x y p : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2) (hp : p.Prime) (hp3 : p % 4 = 3) (u v : ℚ) : u ^ 2 + v ^ 2 ≠ (p : ℚ) * (y : ℚ)",
+  "closed": "∀ (x y p : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2) (hp : p.Prime) (hp3 : p % 4 = 3) (u v : ℚ), u ^ 2 + v ^ 2 ≠ (p : ℚ) * (y : ℚ)",
+  "informal": "Uses Mathlib2.bld3_pell_five_neg_four_solutions_lucas, Mathlib2.nt2_fib_odd_index_no_prime_factor_three_mod_four and Mathlib2.bld2_rat_sq_add_sq_ne_prime_mul_coprime: the Pell classification gives y = F_{2n+1}; nt2_fib_odd_index_no_prime_factor_three_mod_four gives ¬ p ∣ y; then bld2_rat_sq_add_sq_ne_prime_mul_coprime with m = y is the claim.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pell_five_neg_four_solutions_lucas, Mathlib2.nt2_fib_odd_index_no_prime_factor_three_mod_four, Mathlib2.bld2_rat_sq_add_sq_ne_prime_mul_coprime",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "931261418",
+  "type": "∀ (x y p : ℕ), x ^ 2 + 4 = 5 * y ^ 2 → Nat.Prime p → p % 4 = 3 → ∀ (u v : ℚ), u ^ 2 + v ^ 2 ≠ ↑p * ↑y",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:32+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:01:01+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:01:28+0800"
+}

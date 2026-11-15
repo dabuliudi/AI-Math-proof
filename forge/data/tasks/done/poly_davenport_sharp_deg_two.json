@@ -1,0 +1,19 @@
+{
+  "name": "poly_davenport_sharp_deg_two",
+  "statement": ": IsLeast {d : ℕ | ∃ f g : Polynomial ℚ, f.natDegree = 2 ∧ g.natDegree = 3 ∧ f ^ 3 ≠ g ^ 2 ∧ (f ^ 3 - g ^ 2).natDegree = d} 2",
+  "closed": "IsLeast {d : ℕ | ∃ f g : Polynomial ℚ, f.natDegree = 2 ∧ g.natDegree = 3 ∧ f ^ 3 ≠ g ^ 2 ∧ (f ^ 3 - g ^ 2).natDegree = d} 2",
+  "informal": "Davenport's bound is sharp in degree (2,3): the least possible degree of f^3 - g^2 ≠ 0 with deg f = 2, deg g = 3 over ℚ is exactly 2 — membership by f = X^2 + 2, g = X^3 + 3X (f^3 - g^2 = 3X^2 + 8); lower bound Uses Mathlib2.ms_davenport: f.natDegree + 2 = 4 ≤ 2·d.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "1739592618",
+  "type": "IsLeast {d | ∃ f g, f.natDegree = 2 ∧ g.natDegree = 3 ∧ f ^ 3 ≠ g ^ 2 ∧ (f ^ 3 - g ^ 2).natDegree = d} 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:15:23+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:25:04+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:25:50+0800"
+}

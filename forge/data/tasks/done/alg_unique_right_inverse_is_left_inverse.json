@@ -1,0 +1,19 @@
+{
+  "name": "alg_unique_right_inverse_is_left_inverse",
+  "statement": "(R : Type*) [Ring R] (a b : R) (h : a * b = 1) (hu : ∀ c : R, a * c = 1 → c = b) : b * a = 1",
+  "closed": "∀ (R : Type*) [Ring R] (a b : R) (h : a * b = 1) (hu : ∀ c : R, a * c = 1 → c = b), b * a = 1",
+  "informal": "In a ring, if a has a unique right inverse b then b is also a left inverse — apply uniqueness to c = b + (1 - b*a), which satisfies a*c = 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "1924362306",
+  "type": "∀ (R : Type u_1) [inst : Ring R] (a b : R), a * b = 1 → (∀ (c : R), a * c = 1 → c = b) → b * a = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:35+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_1",
+  "claimed_at": "2026-11-15T01:29:36+0800",
+  "closed_by": "r4_prover_1",
+  "finished_at": "2026-11-15T01:30:08+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "gen_comb_erdos_szekeres_linear_order",
+  "statement": "(α : Type*) [LinearOrder α] (ι : Type*) [LinearOrder ι] [Fintype ι] (r s : ℕ) (hcard : r * s < Fintype.card ι) (f : ι → α) (hf : Function.Injective f) : (∃ t : Finset ι, r < t.card ∧ StrictMonoOn f ↑t) ∨ (∃ t : Finset ι, s < t.card ∧ StrictAntiOn f ↑t)",
+  "closed": "∀ (α : Type*) [LinearOrder α] (ι : Type*) [LinearOrder ι] [Fintype ι] (r s : ℕ) (hcard : r * s < Fintype.card ι) (f : ι → α) (hf : Function.Injective f), (∃ t : Finset ι, r < t.card ∧ StrictMonoOn f ↑t) ∨ (∃ t : Finset ι, s < t.card ∧ StrictAntiOn f ↑t)",
+  "informal": "Generalizes Mathlib2.r3_erdos_szekeres: codomain ℝ → any linear order α; domain Fin (r*s+1) → any finite linear order with more than r*s elements. Proof idea: the original pigeonhole proof on (longest increasing, longest decreasing) labels uses only the order; alternatively transport along the order isomorphism ι ≃o Fin (card ι) and restrict to the first r*s+1 elements.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.r3_erdos_szekeres",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "968235846",
+  "type": "∀ (α : Type u_1) [inst : LinearOrder α] (ι : Type u_2) [inst_1 : LinearOrder ι] [inst_2 : Fintype ι] (r s : ℕ), r * s < Fintype.card ι → ∀ (f : ι → α), Function.Injective f → (∃ t, r < t.card ∧ StrictMonoOn f ↑t) ∨ ∃ t, s < t.card ∧ StrictAntiOn f ↑t",
+  "attempts": [],
+  "created_at": "2026-11-15T02:07:47+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_2",
+  "claimed_at": "2026-11-15T02:09:56+0800",
+  "closed_by": "gen_prover_2",
+  "finished_at": "2026-11-15T02:10:32+0800"
+}

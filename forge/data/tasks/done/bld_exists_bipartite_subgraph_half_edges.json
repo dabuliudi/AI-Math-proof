@@ -1,0 +1,19 @@
+{
+  "name": "bld_exists_bipartite_subgraph_half_edges",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] : ∃ H : SimpleGraph V, H ≤ G ∧ H.Colorable 2 ∧ G.edgeSet.ncard ≤ 2 * H.edgeSet.ncard",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj], ∃ H : SimpleGraph V, H ≤ G ∧ H.Colorable 2 ∧ G.edgeSet.ncard ≤ 2 * H.edgeSet.ncard",
+  "informal": "Uses Mathlib2.comb_exists_cut_half_edges: take the cut s from the library theorem and let H be the subgraph of G consisting of edges between s and sᶜ; it is 2-coloured by membership in s, and its edges biject with the ordered pairs counted in the cut.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.comb_exists_cut_half_edges",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1562534557",
+  "type": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj], ∃ H ≤ G, H.Colorable 2 ∧ G.edgeSet.ncard ≤ 2 * H.edgeSet.ncard",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:13+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:39:16+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:39:39+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld_rat_sq_add_sq_ne_prime_three_mod_four",
+  "statement": "(p : ℕ) (hp : p.Prime) (h3 : p % 4 = 3) (x y : ℚ) : x ^ 2 + y ^ 2 ≠ (p : ℚ)",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h3 : p % 4 = 3) (x y : ℚ), x ^ 2 + y ^ 2 ≠ (p : ℚ)",
+  "informal": "Uses Mathlib2.gen_nt_sq_add_sq_eq_prime_mul_sq: the circle x^2+y^2=p has no rational point when p ≡ 3 mod 4; clear denominators (x = u/w, y = v/w) to get u^2+v^2 = p*w^2 with w ≠ 0, contradicting the library theorem.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_nt_sq_add_sq_eq_prime_mul_sq",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1672362982",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (x y : ℚ), x ^ 2 + y ^ 2 ≠ ↑p",
+  "attempts": [],
+  "created_at": "2026-11-15T02:32:33+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_1",
+  "claimed_at": "2026-11-15T02:41:15+0800",
+  "closed_by": "r6_prover_1",
+  "finished_at": "2026-11-15T02:41:33+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "gen_an_schur_nat_pow_ordered_ring",
+  "statement": "(R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b c : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (t : ℕ) : 0 ≤ a ^ t * (a - b) * (a - c) + b ^ t * (b - a) * (b - c) + c ^ t * (c - a) * (c - b)",
+  "closed": "∀ (R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b c : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (t : ℕ), 0 ≤ a ^ t * (a - b) * (a - c) + b ^ t * (b - a) * (b - c) + c ^ t * (c - a) * (c - b)",
+  "informal": "Generalizes Mathlib2.an_schur_deg_one: ℝ → any linearly ordered commutative ring, and exponent 1 → arbitrary natural exponent t (Schur's inequality; t = 1 is the original). Proof idea: WLOG a ≥ b ≥ c; then a^t(a−b)(a−c) + b^t(b−a)(b−c) = (a−b)(a^t(a−c) − b^t(b−c)) ≥ 0 by monotonicity of x^t on nonnegatives, and the c-term is ≥ 0.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.an_schur_deg_one",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "3875015168",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b c : R), 0 ≤ a → 0 ≤ b → 0 ≤ c → ∀ (t : ℕ), 0 ≤ a ^ t * (a - b) * (a - c) + b ^ t * (b - a) * (b - c) + c ^ t * (c - a) * (c - b)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:08:11+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_2",
+  "claimed_at": "2026-11-15T02:10:35+0800",
+  "closed_by": "gen_prover_2",
+  "finished_at": "2026-11-15T02:11:03+0800"
+}

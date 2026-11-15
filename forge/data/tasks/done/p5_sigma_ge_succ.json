@@ -1,0 +1,19 @@
+{
+  "name": "p5_sigma_ge_succ",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : n + 1 ≤ ArithmeticFunction.sigma 1 n",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), n + 1 ≤ ArithmeticFunction.sigma 1 n",
+  "informal": "Equation (8): sigma(n) >= n+1 for n >= 2.",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 equation (8)",
+  "original": "sigma(n) >= n+1",
+  "proposed_by": "paper_5",
+  "hash": "1157596507",
+  "type": "∀ (n : ℕ), 2 ≤ n → n + 1 ≤ (ArithmeticFunction.sigma 1) n",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:09+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T06:56:08+0800"
+}

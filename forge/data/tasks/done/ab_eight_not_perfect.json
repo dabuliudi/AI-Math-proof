@@ -1,0 +1,19 @@
+{
+  "name": "ab_eight_not_perfect",
+  "statement": ": ¬ Nat.Perfect 8",
+  "closed": "¬ Nat.Perfect 8",
+  "informal": "8 is not perfect.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.19",
+  "original": "he found that 8 was not a perfect number",
+  "proposed_by": "paper_2",
+  "hash": "1543827508",
+  "type": "¬Nat.Perfect 8",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:14+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:03:36+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:03:46+0800"
+}

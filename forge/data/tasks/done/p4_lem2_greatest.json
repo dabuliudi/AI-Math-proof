@@ -1,0 +1,19 @@
+{
+  "name": "p4_lem2_greatest",
+  "statement": "(a q : ℕ) (ha : 0 < a) (hq : 2 * q < (p4_m a + 1) ^ 2) (hqmax : ∀ c : ℕ, 2 * c < (p4_m a + 1) ^ 2 → c ≤ q) : IsGreatest {k : ℕ | 0 < k ∧ p4_r k = p4_r a ∧ p4_m k = p4_m a} (min q (2 ^ p4_r a))",
+  "closed": "∀ (a q : ℕ) (ha : 0 < a) (hq : 2 * q < (p4_m a + 1) ^ 2) (hqmax : ∀ c : ℕ, 2 * c < (p4_m a + 1) ^ 2 → c ≤ q), IsGreatest {k : ℕ | 0 < k ∧ p4_r k = p4_r a ∧ p4_m k = p4_m a} (min q (2 ^ p4_r a))",
+  "informal": "Lemma 2, first part: with s=r(a), t=m(a), q the largest integer with 2q < (t+1)^2 and b(a)=min(q,2^s), b(a) is the largest positive integer k with r(k)=s and m(k)=t.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Lemma 2",
+  "original": "Let r(a)=s, m(a)=t, q the largest integer with 2q<(t+1)^2, b(a)=min(q,2^s). Then b(a) is the largest positive integer k with r(k)=s and m(k)=t.",
+  "proposed_by": "paper_4",
+  "hash": "2292831760",
+  "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → IsGreatest {k | 0 < k ∧ Mathlib2.p4_r k = Mathlib2.p4_r a ∧ Mathlib2.p4_m k = Mathlib2.p4_m a} (min q (2 ^ Mathlib2.p4_r a))",
+  "attempts": [],
+  "created_at": "2026-11-15T02:53:21+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:01:28+0800"
+}

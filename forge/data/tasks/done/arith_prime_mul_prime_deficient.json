@@ -1,0 +1,19 @@
+{
+  "name": "arith_prime_mul_prime_deficient",
+  "statement": "(p q : ℕ) (hp : p.Prime) (hq : q.Prime) (h : p * q ≠ 6) : (p * q).Deficient",
+  "closed": "∀ (p q : ℕ) (hp : p.Prime) (hq : q.Prime) (h : p * q ≠ 6), (p * q).Deficient",
+  "informal": "A product of two primes other than 6 is deficient — Uses Mathlib2.ab_prime_mul_prime_not_abundant at step 1 (not abundant); step 2: not perfect since (p+1)(q+1) = 2pq forces (p-1)(q-1) = 2, i.e. {p,q} = {2,3}, and p² is a prime power; conclude by Nat.deficient_iff_not_abundant_and_not_perfect.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1593029269",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → p * q ≠ 6 → (p * q).Deficient",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:18+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:53:41+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:54:58+0800"
+}

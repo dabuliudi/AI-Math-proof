@@ -1,0 +1,19 @@
+{
+  "name": "arith_odd_perfect_not_dvd_105",
+  "statement": "(n : ℕ) (ho : Odd n) (hp : n.Perfect) : ¬ 105 ∣ n",
+  "closed": "∀ (n : ℕ) (ho : Odd n) (hp : n.Perfect), ¬ 105 ∣ n",
+  "informal": "No odd perfect number is divisible by 105 — by Euler's form the exponents of 3 and 7 (≡ 3 mod 4) are even, so 3²·5·7² | n and σ(n)/n ≥ (13/9)(6/5)(57/49) > 2 (σ(n)/n is monotone under divisibility), contradiction.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1241952454",
+  "type": "∀ (n : ℕ), Odd n → n.Perfect → ¬105 ∣ n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:39+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:09:12+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:12:47+0800"
+}

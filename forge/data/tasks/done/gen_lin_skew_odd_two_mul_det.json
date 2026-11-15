@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_skew_odd_two_mul_det",
+  "statement": "(R : Type*) [CommRing R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (hodd : Odd (Fintype.card ι)) (h : A.transpose = -A) : 2 * A.det = 0",
+  "closed": "∀ (R : Type*) [CommRing R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (hodd : Odd (Fintype.card ι)) (h : A.transpose = -A), 2 * A.det = 0",
+  "informal": "Generalizes Mathlib2.lin_skew_odd_det_zero: ℝ → any commutative ring, with conclusion 2·det A = 0 (det A = 0 follows whenever 2 is regular; the plain conclusion is false in characteristic 2, e.g. A = 1), Fin (2n+1) → Fintype of odd cardinality. Proof idea: det A = det Aᵀ = det(−A) = (−1)^card det A = −det A.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_skew_odd_det_zero",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "3642227862",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι R), Odd (Fintype.card ι) → A.transpose = -A → 2 * A.det = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:43+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:10:54+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:11:11+0800"
+}

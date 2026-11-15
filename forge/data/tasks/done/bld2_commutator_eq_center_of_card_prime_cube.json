@@ -1,0 +1,19 @@
+{
+  "name": "bld2_commutator_eq_center_of_card_prime_cube",
+  "statement": "(p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hnc : ∃ a b : G, a * b ≠ b * a) : commutator G = Subgroup.center G",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hnc : ∃ a b : G, a * b ≠ b * a), commutator G = Subgroup.center G",
+  "informal": "Uses Mathlib2.bld_center_card_of_card_prime_cube: the centre has order p, so G / Z(G) has order p^2 and is abelian, giving commutator G ≤ Z(G); the commutator subgroup is nontrivial (G non-abelian) and Z(G) has prime order, so the inclusion is an equality.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_center_card_of_card_prime_cube",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "1463624133",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → commutator G = Subgroup.center G",
+  "attempts": [],
+  "created_at": "2026-11-15T02:51:15+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_4",
+  "claimed_at": "2026-11-15T03:00:13+0800",
+  "closed_by": "r7_prover_4",
+  "finished_at": "2026-11-15T03:01:04+0800"
+}

@@ -1,0 +1,257 @@
+"""forge 的测试。纯逻辑部分总是运行；需要真实 Lean 的部分设置 FORGE_INTEGRATION=1 才运行，且不修改库和队列。"""
+import json
+import os
+import tempfile
+import threading
+import unittest
+from pathlib import Path
+from unittest import mock
+
+from forge import insight, tasks
+from forge.statement import StatementError, analyse_submission, closed_form, split_signature, strip_comments
+
+
+class StatementTests(unittest.TestCase):
+    def test_split_at_first_top_level_colon(self):
+        self.assertEqual(split_signature('(a b : ℕ) (h : a ∣ b) : a ≤ b'), ('(a b : ℕ) (h : a ∣ b)', 'a ≤ b'))
+        self.assertEqual(split_signature(': ∀ n : ℕ, n = n'), ('', '∀ n : ℕ, n = n'))
+        self.assertEqual(closed_form('{α : Type*} [Group α] (x : α) : x = x'), '∀ {α : Type*} [Group α] (x : α), x = x')
+        self.assertEqual(closed_form(': 1 + 1 = 2'), '1 + 1 = 2')
+        for bad in ('(a : ℕ)', '(a : ℕ) : a = a := rfl', '(a : ℕ) :'):
+            with self.assertRaises(StatementError):
+                split_signature(bad)
+
+    def test_comments_and_strings_do_not_hide_or_trigger_keywords(self):
+        self.assertNotIn('sorry', strip_comments('x -- sorry\n/- sorry /- nested sorry -/ -/ y "sorry"'))
+        ok = 'theorem foo (n : ℕ) : n = n := by\n  -- not a sorry\n  rfl\n'
+        self.assertEqual(analyse_submission(ok, 'foo'), ['foo'])
+
+    def test_submission_rejects_escape_hatches(self):
+        cases = {
+            'theorem foo : True := by\n  sorry\n': 'sorry',
+            'axiom cheat : False\ntheorem foo : True := trivial\n': 'axiom',
+            'instance : LT ℕ := ⟨fun _ _ => True⟩\ntheorem foo : True := trivial\n': 'instance',
+            'theorem foo : True := by\n  native_decide\n': 'native_decide',
+            'set_option maxHeartbeats 0\ntheorem foo : True := trivial\n': 'set_option',
+            'theorem foo : True := by\n  run_tac pure ()\n': 'run_tac',
+            'local notation "X" => True\ntheorem foo : X := trivial\n': 'notation',
+            'theorem foo : True := by\n  simp [local foo]\n': 'local',
+        }
+        for body, word in cases.items():
+            with self.assertRaises(StatementError) as caught:
+                analyse_submission(body, 'foo')
+            self.assertIn(word, str(caught.exception))
+
+    def test_submission_naming_rules(self):
+        helper = 'lemma foo_aux1 : True := trivial\ntheorem foo : True := foo_aux1\n'
+        self.assertEqual(analyse_submission(helper, 'foo'), ['foo_aux1', 'foo'])
+        with self.assertRaises(StatementError):  # 主定理必须最后
+            analyse_submission('theorem foo : True := trivial\nlemma foo_aux1 : True := trivial\n', 'foo')
+        with self.assertRaises(StatementError):  # 辅助引理不能占用别的名字
+            analyse_submission('lemma bar : True := trivial\ntheorem foo : True := bar\n', 'foo')
+        with self.assertRaises(StatementError):  # 证伪须用 _disproof 名
+            analyse_submission('theorem foo : True := trivial\n', 'foo', disproof=True)
+        self.assertEqual(analyse_submission('theorem foo_disproof : ¬ False := id\n', 'foo', disproof=True), ['foo_disproof'])
+        with self.assertRaises(StatementError):  # 顶格只能是声明或 open
+            analyse_submission('theorem foo : True := by\ntrivial\n', 'foo')
+
+    def test_disproof_is_inferred_from_the_declared_name(self):
+        from forge.statement import is_disproof
+        self.assertTrue(is_disproof('theorem foo_disproof : ¬ False := id\n', 'foo'))
+        self.assertFalse(is_disproof('theorem foo : True := trivial\n', 'foo'))
+        self.assertFalse(is_disproof('-- theorem foo_disproof\ntheorem foo : True := trivial\n', 'foo'))
+        self.assertFalse(is_disproof('theorem foo_disproof_aux : True := trivial\n', 'foo'))
+
+    def test_sketch_allows_only_sorry(self):
+        body = 'theorem foo : True := by\n  sorry\n'
+        self.assertEqual(analyse_submission(body, 'foo', allow_holes=True), ['foo'])
+        with self.assertRaises(StatementError):
+            analyse_submission('axiom c : False\n' + body, 'foo', allow_holes=True)
+
+
+class QueueTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.patch = mock.patch.object(tasks, 'TASKS', Path(self.tmp.name) / 'tasks')
+        self.patch.start()
+
+    def tearDown(self):
+        self.patch.stop()
+        self.tmp.cleanup()
+
+    def _task(self, name, attempts=0):
+        tasks.save('open', dict(name=name, statement=': True', attempts=[{}] * attempts, created_at='t', status='open'))
+
+    def test_claim_is_exclusive_under_concurrency(self):
+        for i in range(6):
+            self._task(f'task{i}')
+        claimed = []
+
+        def worker(k):
+            for _ in range(6):
+                task = tasks.claim(f'agent{k}')
+                if task:
+                    claimed.append(task['name'])
+
+        threads = [threading.Thread(target=worker, args=(k,)) for k in range(8)]
+        [t.start() for t in threads]
+        [t.join() for t in threads]
+        self.assertEqual(sorted(claimed), [f'task{i}' for i in range(6)])  # 每个任务恰好被领一次
+        self.assertIsNone(tasks.claim('late'))
+
+    def test_release_records_the_failed_attempt_and_deprioritises(self):
+        self._task('alpha')
+        self._task('beta')
+        first = tasks.claim('a1')
+        self.assertTrue(tasks.release(first['name'], 'a1', '试过归纳，卡在归纳步')['ok'])
+        self.assertNotEqual(tasks.claim('a2')['name'], first['name'])  # 没人试过的优先
+        again = tasks.claim('a3')
+        self.assertEqual(again['name'], first['name'])
+        self.assertEqual(again['attempts'][0]['note'], '试过归纳，卡在归纳步')
+
+    def test_only_the_claimant_can_release_or_retire(self):
+        self._task('alpha')
+        tasks.claim('owner')
+        self.assertFalse(tasks.release('alpha', 'intruder', 'x')['ok'])
+        self.assertFalse(tasks.retire('alpha', 'intruder', 'x')['ok'])
+        self.assertIn('owner', tasks.submit('alpha', 'theorem alpha : True := trivial\n', 'intruder')['reason'])
+        self.assertTrue(tasks.retire('alpha', 'owner', '命题有误')['ok'])
+        self.assertEqual(tasks.load('alpha')[1]['status'], 'retired')
+
+    def test_prefix_filter_and_queue_listing(self):
+        self._task('ab_one')
+        self._task('r3_one')
+        self.assertEqual(tasks.claim('a', prefix='r3_')['name'], 'r3_one')
+        self.assertIsNone(tasks.claim('b', prefix='r3_'))
+        listing = {row['name']: row for row in tasks.queue()}
+        self.assertEqual(listing['r3_one']['claimed_by'], 'a')
+        self.assertEqual(listing['ab_one']['state'], 'open')
+
+    def test_assemble_reports_a_dead_sketch(self):
+        tasks.save('done', dict(name='kid', statement=': True', attempts=[], created_at='a', status='disproved'))
+        tasks.save('open', dict(name='parent', statement=': True', attempts=[], created_at='a', status='open',
+                                sketches=[dict(body='x', children=[dict(task='kid')])]))
+        result = tasks.assemble('parent', 'a')
+        self.assertFalse(result['ok'])
+        self.assertIn('作废', result['reason'])
+
+    def test_parent_waits_for_sketch_children(self):
+        self._task('child')
+        tasks.save('open', dict(name='parent', statement=': True', attempts=[], created_at='a', status='open',
+                                sketches=[dict(children=[dict(task='child')])]))
+        self.assertEqual(tasks.claim('a')['name'], 'child')
+        self.assertIsNone(tasks.claim('b'))  # 子任务还在进行，父任务不发出
+
+
+class InsightTests(unittest.TestCase):
+    ENTRIES = [
+        dict(name='base', task='base', kind='proved', tier='agent', type='∀ (a b : ℕ), a ∣ b → 0 < b → a ≤ b',
+             informal='正数的因子不超过它', library_deps=[], attempts=1),
+        dict(name='mid', task='mid', kind='proved', tier='auto', type='∀ (n : ℕ), n ^ 2 % 4 = 0 ∨ n ^ 2 % 4 = 1',
+             informal='平方数模 4', library_deps=['base'], attempts=1),
+        dict(name='top', task='top', kind='proved', tier='agent', type='∀ (n : ℕ), ∑ i ∈ Finset.range n, i = n',
+             informal='', library_deps=['mid', 'base'], attempts=3),
+    ]
+
+    HELPERS = {'base_aux1': dict(owner='base', type='∀ (c : ℚ) (M : Matrix (Fin 2) (Fin 2) ℚ), c ≠ 0 → (c • M).rank = M.rank', hash='1')}
+
+    def setUp(self):
+        self.patch = mock.patch('forge.library.entries', return_value=self.ENTRIES)
+        self.helpers = mock.patch('forge.library.helper_index', return_value=self.HELPERS)
+        self.patch.start()
+        self.helpers.start()
+
+    def tearDown(self):
+        self.patch.stop()
+        self.helpers.stop()
+
+    def test_helpers_are_found_by_statement_not_by_name(self):
+        hit = insight.search('rank • smul')[0]
+        self.assertEqual(hit['name'], 'Mathlib2.base_aux1')
+        self.assertEqual(hit['tier'], 'helper')
+
+    def test_dag_depth_and_edges_come_from_recorded_dependencies(self):
+        graph = insight.dag('top')
+        self.assertEqual({n['name']: n['depth'] for n in graph['nodes']}, {'base': 0, 'mid': 1, 'top': 2})
+        self.assertEqual(len(graph['edges']), 3)
+        self.assertEqual([n['name'] for n in insight.dag('mid')['nodes']], ['base', 'mid'])
+
+    def test_search_matches_symbols_and_words(self):
+        self.assertEqual(insight.search('∣ ≤')[0]['name'], 'Mathlib2.base')
+        self.assertEqual(insight.search('range sum ∑')[0]['name'], 'Mathlib2.top')
+        self.assertEqual(insight.search('zzz'), [])
+
+    def test_report_prefers_cited_agent_level_results(self):
+        self.assertEqual([r['name'] for r in insight.report()], ['base', 'top', 'mid'])
+
+
+@unittest.skipUnless(os.environ.get('FORGE_INTEGRATION') == '1', '需要真实 Lean/Mathlib；设置 FORGE_INTEGRATION=1')
+class KernelTests(unittest.TestCase):
+    """只调用校验与分诊（不入库、不动队列），确认裁判真的在内核一侧。"""
+    TASK = dict(name='itest_succ', statement='(n : ℕ) : n + 1 = n')
+
+    def test_disproof_accepted_and_wrong_statement_rejected(self):
+        from forge.verify import check_submission
+        good = 'theorem itest_succ_disproof : ¬ (∀ (n : ℕ), n + 1 = n) := by\n  intro h\n  have := h 0\n  omega\n'
+        result = check_submission(self.TASK, good, disproof=True)
+        self.assertTrue(result['ok'], result)
+        self.assertLessEqual(set(result['axioms']), {'propext', 'Classical.choice', 'Quot.sound'})
+        other = good.replace('n + 1 = n', 'n + 2 = n')
+        self.assertIn('不一致', check_submission(self.TASK, other, disproof=True)['reason'])
+
+    def test_errors_are_reported_with_relative_lines(self):
+        from forge.verify import check_submission
+        task = dict(name='itest_refl', statement='(n : ℕ) : n = n')
+        bad = 'theorem itest_refl (n : ℕ) : n = n := by\n  exact no_such_lemma n\n'
+        result = check_submission(task, bad)
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['errors'][0]['line'], 2)
+
+    def test_triage_separates_known_refuted_and_open(self):
+        from forge.verify import triage
+        known = triage('itest_known', '(a b : ℕ) (h : a ∣ b) (hb : 0 < b) : a ≤ b')
+        self.assertTrue(known['known'])
+        self.assertIn('Nat.le_of_dvd', known['known_as'])
+        refuted = triage('itest_false', '(n : ℕ) : n + 1 = n')
+        self.assertIn('counter-example', refuted['counterexample'])
+        self.assertFalse(refuted.get('known'))
+        self.assertFalse(triage('itest_bad', '(n : ℕ) : n +')['valid'])
+        # 缺实例的命题会被 Lean 记成类型里带 sorry 的常量，必须判为无效
+        ill = triage('itest_illtyped', '{k : Type*} [Field k] (a : Polynomial k) : 1 ≤ (UniqueFactorizationMonoid.radical a).natDegree')
+        self.assertFalse(ill['valid'])
+        self.assertTrue(ill['errors'])
+
+    def test_sketch_extracts_closed_goals_from_the_kernel(self):
+        from forge.verify import check_sketch
+        task = dict(name='itest_sq', statement='(n : ℕ) : n ^ 2 % 4 = 0 ∨ n ^ 2 % 4 = 1')
+        body = ('theorem itest_sq (n : ℕ) : n ^ 2 % 4 = 0 ∨ n ^ 2 % 4 = 1 := by\n'
+                '  rcases Nat.even_or_odd n with ⟨k, hk⟩ | ⟨k, hk⟩\n  · left\n    sorry\n  · right\n    sorry\n')
+        result = check_sketch(task, body)
+        self.assertTrue(result['ok'], result)
+        self.assertEqual([h['statement'] for h in result['holes']],
+                         ['∀ (n k : ℕ), n = k + k → n ^ 2 % 4 = 0', '∀ (n k : ℕ), n = 2 * k + 1 → n ^ 2 % 4 = 1'])
+
+
+    def test_sketch_rejects_holes_that_do_not_round_trip(self):
+        # 置换乘积作用于 x：打印后再解析会被读成逐点乘积，含义变了，必须在登记前拦下
+        from forge.verify import check_sketch
+        task = dict(name='itest_perm', statement='(n : ℕ) (τ ρ : Equiv.Perm (Fin n)) (x : Fin n) (h : (τ * ρ) x = x) : ρ x = τ⁻¹ x')
+        body = ('theorem itest_perm (n : ℕ) (τ ρ : Equiv.Perm (Fin n)) (x : Fin n) (h : (τ * ρ) x = x) : ρ x = τ⁻¹ x := by\n'
+                '  have key : ρ x = τ⁻¹ x := by\n    sorry\n  exact key\n')
+        result = check_sketch(task, body)
+        self.assertFalse(result['ok'])
+        self.assertIn('不是原来的命题', result['reason'])
+
+    def test_one_sorry_may_cover_several_goals(self):
+        from forge.verify import check_sketch
+        task = dict(name='itest_conj', statement='(n : ℕ) : n ≤ n * n + n ∧ n + 0 = n')
+        body = ('theorem itest_conj (n : ℕ) : n ≤ n * n + n ∧ n + 0 = n := by\n'
+                '  refine ⟨?_, ?_⟩ <;> sorry\n')
+        result = check_sketch(task, body)
+        self.assertTrue(result['ok'], result)
+        self.assertEqual(len(result['holes']), 2)
+        self.assertEqual(result['holes'][0]['args'], ['n'])
+
+
+if __name__ == '__main__':
+    unittest.main()

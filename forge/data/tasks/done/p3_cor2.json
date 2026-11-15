@@ -1,0 +1,19 @@
+{
+  "name": "p3_cor2",
+  "statement": ": {k : ℕ | Odd k ∧ k ∣ p3_fibsum k}.Infinite",
+  "closed": "{k : ℕ | Odd k ∧ k ∣ p3_fibsum k}.Infinite",
+  "informal": "infinitely many odd k divide F_1+...+F_k (also Conjecture 1 of the paper)",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Corollary 2 (= Conjecture 1)",
+  "original": "There are infinitely many odd integers $k$ such that $k$ divides the sum of the first $k$ Fibonacci numbers. [Conjecture 1: There are infinitely many odd integers $n$ that divide the sum of the first $n$ nonzero Fibonacci numbers.]",
+  "proposed_by": "paper_3",
+  "hash": "3794893161",
+  "type": "{k | Odd k ∧ k ∣ Mathlib2.p3_fibsum k}.Infinite",
+  "attempts": [],
+  "created_at": "2026-11-15T02:22:40+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:31:32+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:31:43+0800"
+}

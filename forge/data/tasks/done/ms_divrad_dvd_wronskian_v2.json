@@ -1,0 +1,19 @@
+{
+  "name": "ms_divrad_dvd_wronskian_v2",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] (a b : Polynomial k) (ha : a ≠ 0) : a / UniqueFactorizationMonoid.radical a ∣ a * Polynomial.derivative b - Polynomial.derivative a * b",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] (a b : Polynomial k) (ha : a ≠ 0), a / UniqueFactorizationMonoid.radical a ∣ a * Polynomial.derivative b - Polynomial.derivative a * b",
+  "informal": "For nonzero a in k[t], a/rad(a) divides the Wronskian W(a,b) = ab' - a'b.",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Lemma 2, p.4",
+  "original": "Lemma 2. For any nonzero a ∈ k[t], a/rad(a) divides W(a, b) = ab′ − a′b.",
+  "proposed_by": "paper_1",
+  "hash": "4270472532",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b : Polynomial k), a ≠ 0 → a / UniqueFactorizationMonoid.radical a ∣ a * Polynomial.derivative b - Polynomial.derivative a * b",
+  "attempts": [],
+  "created_at": "2026-11-15T00:17:50+0800",
+  "status": "proved",
+  "claimed_by": "paper_1",
+  "claimed_at": "2026-11-15T00:18:48+0800",
+  "closed_by": "paper_1",
+  "finished_at": "2026-11-15T00:19:28+0800"
+}

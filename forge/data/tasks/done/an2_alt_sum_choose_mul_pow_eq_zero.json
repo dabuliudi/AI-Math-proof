@@ -1,0 +1,19 @@
+{
+  "name": "an2_alt_sum_choose_mul_pow_eq_zero",
+  "statement": "(n m : ℕ) (h : m < n) : ∑ k ∈ Finset.range (n + 1), (-1 : ℤ) ^ k * (n.choose k : ℤ) * (k : ℤ) ^ m = 0",
+  "closed": "∀ (n m : ℕ) (h : m < n), ∑ k ∈ Finset.range (n + 1), (-1 : ℤ) ^ k * (n.choose k : ℤ) * (k : ℤ) ^ m = 0",
+  "informal": "The n-th finite difference of a monomial of degree m < n vanishes: sum_k (-1)^k C(n,k) k^m = 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "1722770738",
+  "type": "∀ (n m : ℕ), m < n → ∑ k ∈ Finset.range (n + 1), (-1) ^ k * ↑(n.choose k) * ↑k ^ m = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:51+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_b",
+  "claimed_at": "2026-11-15T00:48:03+0800",
+  "closed_by": "r2_prover_b",
+  "finished_at": "2026-11-15T00:48:49+0800"
+}

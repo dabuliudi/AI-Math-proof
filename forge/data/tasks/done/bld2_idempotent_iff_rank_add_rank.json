@@ -1,0 +1,19 @@
+{
+  "name": "bld2_idempotent_iff_rank_add_rank",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : A * A = A ↔ Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A = A ↔ Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι",
+  "informal": "Uses Mathlib2.gen_lin_idempotent_rank_complement_field (and Mathlib2.gen_lin_sylvester_rank_rect): forward direction is the rank-complement theorem; conversely the rank equality forces range A and range (1 - A) to be complementary, and A(1-A)x lies in both, so A - A*A = 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_idempotent_rank_complement_field, Mathlib2.gen_lin_sylvester_rank_rect",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "3642470344",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), A * A = A ↔ A.rank + (1 - A).rank = Fintype.card ι",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:48+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:53:09+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:53:41+0800"
+}

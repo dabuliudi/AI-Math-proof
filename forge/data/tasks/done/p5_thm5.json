@@ -1,0 +1,19 @@
+{
+  "name": "p5_thm5",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : 6 * n ^ 4 + 8 * n ^ 3 + 12 * n ^ 2 + 8 * n ≤ n.totient ^ 3 * (p5_dedekind_psi n + ArithmeticFunction.sigma 1 n) + p5_dedekind_psi n ^ 3 * (n.totient + ArithmeticFunction.sigma 1 n) + ArithmeticFunction.sigma 1 n ^ 3 * (n.totient + p5_dedekind_psi n) + 2",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), 6 * n ^ 4 + 8 * n ^ 3 + 12 * n ^ 2 + 8 * n ≤ n.totient ^ 3 * (p5_dedekind_psi n + ArithmeticFunction.sigma 1 n) + p5_dedekind_psi n ^ 3 * (n.totient + ArithmeticFunction.sigma 1 n) + ArithmeticFunction.sigma 1 n ^ 3 * (n.totient + p5_dedekind_psi n) + 2",
+  "informal": "Theorem 5: phi^3(psi+sigma)+psi^3(phi+sigma)+sigma^3(phi+psi) >= 6n^4+8n^3+12n^2+8n-2 for n >= 2 (the -2 moved to the other side to avoid natural subtraction).",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 Theorem 5",
+  "original": "\\varphi^3(\\psi+\\sigma)+\\psi^3(\\varphi+\\sigma)+\\sigma^3(\\varphi+\\psi)\\ge 6n^4+8n^3+12n^2+8n-2 for n>=2",
+  "proposed_by": "paper_5",
+  "hash": "4186037616",
+  "type": "∀ (n : ℕ), 2 ≤ n → 6 * n ^ 4 + 8 * n ^ 3 + 12 * n ^ 2 + 8 * n ≤ n.totient ^ 3 * (Mathlib2.p5_dedekind_psi n + (ArithmeticFunction.sigma 1) n) + Mathlib2.p5_dedekind_psi n ^ 3 * (n.totient + (ArithmeticFunction.sigma 1) n) + (ArithmeticFunction.sigma 1) n ^ 3 * (n.totient + Mathlib2.p5_dedekind_psi n) + 2",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:52+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:45+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T07:01:38+0800"
+}

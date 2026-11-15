@@ -1,0 +1,19 @@
+{
+  "name": "bld5_prime_three_mod_four_dvd_lucas",
+  "statement": "(p : ℕ) (hp : p.Prime) (h : p % 4 = 3) : ∃ n : ℕ, p ∣ p3_lucas n",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h : p % 4 = 3), ∃ n : ℕ, p ∣ p3_lucas n",
+  "informal": "Uses Mathlib2.bld3_pisano_pos_and_period and Mathlib2.nt2_fib_odd_index_no_prime_factor_three_mod_four: bld3_pisano_pos_and_period at i = 0 gives some k > 0 with p ∣ F_k; take the least such a (Nat.find). The nt2 theorem (no prime ≡ 3 mod 4 divides an odd-indexed Fibonacci number) forces a even, a = 2n with 0 < n < a. Nat.fib_two_mul gives F_{2n} = F_n·L_n (the factor 2F_{n+1} − F_n is p3_lucas n by definition); p ∤ F_n by minimality, so p ∣ L_n.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pisano_pos_and_period, Mathlib2.nt2_fib_odd_index_no_prime_factor_three_mod_four",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "3583245835",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∃ n, p ∣ Mathlib2.p3_lucas n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:22:45+0800",
+  "status": "proved",
+  "claimed_by": "prover_ba",
+  "claimed_at": "2026-11-15T07:29:43+0800",
+  "closed_by": "prover_ba",
+  "finished_at": "2026-11-15T07:31:24+0800"
+}

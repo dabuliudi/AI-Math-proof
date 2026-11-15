@@ -1,0 +1,19 @@
+{
+  "name": "arith_sum_sigma_divisors",
+  "statement": "(n : ℕ) : ∑ d ∈ n.divisors, ArithmeticFunction.sigma 1 d = ∑ d ∈ n.divisors, n / d * d.divisors.card",
+  "closed": "∀ (n : ℕ), ∑ d ∈ n.divisors, ArithmeticFunction.sigma 1 d = ∑ d ∈ n.divisors, n / d * d.divisors.card",
+  "informal": "Σ_{d|n} σ(d) = Σ_{d|n} (n/d)τ(d) — both are the Dirichlet convolution id * ζ * ζ evaluated at n (associativity/commutativity of convolution).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "842232064",
+  "type": "∀ (n : ℕ), ∑ d ∈ n.divisors, (ArithmeticFunction.sigma 1) d = ∑ d ∈ n.divisors, n / d * d.divisors.card",
+  "attempts": [],
+  "created_at": "2026-11-15T07:43:38+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T07:57:08+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T07:57:35+0800"
+}

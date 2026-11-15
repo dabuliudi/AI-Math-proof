@@ -1,0 +1,16 @@
+{
+  "name": "lib_monotone_sum_range_le_mul",
+  "statement": "(R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R) (ha : Monotone a) (n : ℕ) : ∑ i ∈ Finset.range n, a i ≤ (n : R) * a n",
+  "closed": "∀ (R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R) (ha : Monotone a) (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ (n : R) * a n",
+  "informal": "For a monotone sequence in a linearly ordered commutative ring, the sum of the first n terms is at most n * a n. Promoted from Mathlib2.gen_an_chebyshev_index_weighted_ordered_ring_aux1 (also proved over ℝ as an2_chebyshev_index_weighted_aux1).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.gen_an_chebyshev_index_weighted_ordered_ring_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2333006941",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R), Monotone a → ∀ (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ ↑n * a n",
+  "attempts": [],
+  "created_at": "2026-11-15T03:05:51+0800",
+  "status": "known",
+  "known_as": "gen_an_chebyshev_index_weighted_ordered_ring_aux1 R a ha n"
+}

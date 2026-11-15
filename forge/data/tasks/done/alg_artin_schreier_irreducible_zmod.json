@@ -1,0 +1,76 @@
+{
+  "name": "alg_artin_schreier_irreducible_zmod",
+  "statement": "(p : ℕ) [Fact p.Prime] : Irreducible (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p))",
+  "closed": "∀ (p : ℕ) [Fact p.Prime], Irreducible (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p))",
+  "informal": "The Artin–Schreier polynomial X^p - X - 1 is irreducible over ZMod p — if α is a root in an extension then the roots are α + i (i ∈ F_p), so all irreducible factors have the same degree d with d ∣ p; d = 1 is impossible since a^p - a - 1 = -1 ≠ 0 for a ∈ F_p.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "2278438884",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], Irreducible (Polynomial.X ^ p - Polynomial.X - 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:54+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_10",
+  "claimed_at": "2026-11-15T02:11:38+0800",
+  "sketches": [
+    {
+      "agent": "r4_prover_10",
+      "body": "theorem alg_artin_schreier_irreducible_zmod (p : ℕ) [Fact p.Prime] : Irreducible (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p)) := by\n  have H : (∀ (K : Type) [CommRing K] [CharP K p] (α : K), α ^ p = α + 1 →\n        ∀ k : ℕ, α ^ (p ^ k) = α + (k : K)) ∧\n      (∀ g : Polynomial (ZMod p), Irreducible g →\n        (AdjoinRoot.root g) ^ (p ^ g.natDegree) = AdjoinRoot.root g) ∧\n      (∀ g : Polynomial (ZMod p), Irreducible g → CharP (AdjoinRoot g) p) ∧\n      (∀ f : Polynomial (ZMod p), f = Polynomial.X ^ p - Polynomial.X - 1 → f.natDegree = p) := by\n    refine ⟨?_, ?_, ?_, ?_⟩ <;> sorry\n  obtain ⟨hA, hB, hC, hD'⟩ := H\n  have hD := hD' _ rfl\n  have hp : p.Prime := Fact.out\n  have L1 : ∀ g : Polynomial (ZMod p), Irreducible g →\n      g ∣ (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p)) → p ∣ g.natDegree := by\n    intro g hg hdvd\n    haveI := hC g hg\n    have h0 : AdjoinRoot.mk g (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p)) = 0 :=\n      AdjoinRoot.mk_eq_zero.2 hdvd\n    simp only [map_sub, map_pow, map_one, AdjoinRoot.mk_X] at h0\n    have hα : (AdjoinRoot.root g) ^ p = AdjoinRoot.root g + 1 := by\n      linear_combination h0\n    have h1 := hA (AdjoinRoot g) (AdjoinRoot.root g) hα g.natDegree\n    rw [hB g hg] at h1\n    have h2 : ((g.natDegree : ℕ) : AdjoinRoot g) = 0 := by\n      linear_combination -h1\n    exact (CharP.cast_eq_zero_iff (AdjoinRoot g) p g.natDegree).1 h2\n  have hf_ne : (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p)) ≠ 0 := by\n    intro h\n    rw [h, Polynomial.natDegree_zero] at hD\n    exact hp.ne_zero hD.symm\n  obtain ⟨g, hg, hgf⟩ := Polynomial.exists_irreducible_of_natDegree_pos\n    (f := (Polynomial.X ^ p - Polynomial.X - 1 : Polynomial (ZMod p))) (by rw [hD]; exact hp.pos)\n  have hle := Polynomial.natDegree_le_of_dvd hgf hf_ne\n  rw [hD] at hle\n  have hgd : g.natDegree = p :=\n    Nat.le_antisymm hle (Nat.le_of_dvd hg.natDegree_pos (L1 g hg hgf))\n  obtain ⟨q, hq⟩ := hgf\n  have hq0 : q ≠ 0 := by\n    rintro rfl\n    rw [mul_zero] at hq\n    exact hf_ne hq\n  have hqd : q.natDegree = 0 := by\n    have h3 := congrArg Polynomial.natDegree hq\n    rw [hD, Polynomial.natDegree_mul hg.ne_zero hq0, hgd] at h3\n    omega\n  have hu : IsUnit q := by\n    rw [Polynomial.isUnit_iff_degree_eq_zero, Polynomial.degree_eq_natDegree hq0, hqd]\n    rfl\n  rw [hq]\n  exact (irreducible_mul_isUnit hu).2 hg\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "alg_artin_schreier_irreducible_zmod_s1h1",
+          "status": "open",
+          "statement": "∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : CommRing K] [CharP K p] (α : K), α ^ p = α + 1 → ∀ (k : ℕ), α ^ p ^ k = α + (↑k : K)",
+          "args": [
+            "p",
+            "(by assumption)"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "alg_artin_schreier_irreducible_zmod_s1h2",
+          "status": "open",
+          "statement": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → AdjoinRoot.root g ^ p ^ g.natDegree = AdjoinRoot.root g",
+          "args": [
+            "p",
+            "(by assumption)"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "alg_artin_schreier_irreducible_zmod_s1h3",
+          "status": "open",
+          "statement": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → CharP (AdjoinRoot g) p",
+          "args": [
+            "p",
+            "(by assumption)"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 4,
+          "task": "alg_artin_schreier_irreducible_zmod_s1h4",
+          "status": "open",
+          "statement": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (f : Polynomial (ZMod p)), f = Polynomial.X ^ p - Polynomial.X - 1 → f.natDegree = p",
+          "args": [
+            "p",
+            "(by assumption)"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T02:12:41+0800"
+    }
+  ],
+  "closed_by": "r4_prover_10",
+  "finished_at": "2026-11-15T02:14:28+0800"
+}

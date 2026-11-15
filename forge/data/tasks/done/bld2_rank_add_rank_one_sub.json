@@ -1,0 +1,19 @@
+{
+  "name": "bld2_rank_add_rank_one_sub",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι + Matrix.rank (A - A * A)",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι + Matrix.rank (A - A * A)",
+  "informal": "Uses Mathlib2.gen_lin_sylvester_rank_rect: the inequality ≤ is Sylvester applied to A and 1 - A (A * (1 - A) = A - A*A); for ≥ show range A ⊓ range (1 - A) = range (A * (1 - A)) and range A ⊔ range (1 - A) = ⊤, then use the dimension formula.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_sylvester_rank_rect",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "3544047097",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), A.rank + (1 - A).rank = Fintype.card ι + (A - A * A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:39+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:51:59+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:53:06+0800"
+}

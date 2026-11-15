@@ -1,0 +1,19 @@
+{
+  "name": "bld2_rat_sq_add_sq_ne_prime_mul_coprime",
+  "statement": "(p m : ℕ) (hp : p.Prime) (h3 : p % 4 = 3) (hm : ¬ p ∣ m) (x y : ℚ) : x ^ 2 + y ^ 2 ≠ (p : ℚ) * (m : ℚ)",
+  "closed": "∀ (p m : ℕ) (hp : p.Prime) (h3 : p % 4 = 3) (hm : ¬ p ∣ m) (x y : ℚ), x ^ 2 + y ^ 2 ≠ (p : ℚ) * (m : ℚ)",
+  "informal": "Uses Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq (generalising Mathlib2.bld_rat_sq_add_sq_ne_prime_three_mod_four): clear denominators to a^2 + b^2 = p * m * d^2 in ℤ with d ≠ 0; by strong induction on |d| (or on the p-adic valuation), p ∣ a and p ∣ b, so p^2 ∣ p * m * d^2, so p ∣ d (as p ∤ m), and dividing a, b, d by p gives a smaller solution.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq, Mathlib2.bld_rat_sq_add_sq_ne_prime_three_mod_four",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "1947470063",
+  "type": "∀ (p m : ℕ), Nat.Prime p → p % 4 = 3 → ¬p ∣ m → ∀ (x y : ℚ), x ^ 2 + y ^ 2 ≠ ↑p * ↑m",
+  "attempts": [],
+  "created_at": "2026-11-15T02:51:09+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:56:27+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:57:19+0800"
+}

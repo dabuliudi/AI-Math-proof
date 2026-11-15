@@ -1,0 +1,19 @@
+{
+  "name": "poly_real_nonneg_coeff_no_pos_root",
+  "statement": "(p : Polynomial ℝ) (hp : p ≠ 0) (h : ∀ i : ℕ, 0 ≤ p.coeff i) (x : ℝ) (hx : 0 < x) : Polynomial.eval x p ≠ 0",
+  "closed": "∀ (p : Polynomial ℝ) (hp : p ≠ 0) (h : ∀ i : ℕ, 0 ≤ p.coeff i) (x : ℝ) (hx : 0 < x), Polynomial.eval x p ≠ 0",
+  "informal": "A nonzero real polynomial with nonnegative coefficients has no positive root (trivial case of Descartes' rule) — eval x p = Σ coeff i * x^i is a sum of nonnegative terms, at least one (the leading one) strictly positive.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "3369519371",
+  "type": "∀ (p : Polynomial ℝ), p ≠ 0 → (∀ (i : ℕ), 0 ≤ p.coeff i) → ∀ (x : ℝ), 0 < x → Polynomial.eval x p ≠ 0",
+  "attempts": [],
+  "created_at": "2026-11-15T07:17:14+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:21:37+0800"
+}

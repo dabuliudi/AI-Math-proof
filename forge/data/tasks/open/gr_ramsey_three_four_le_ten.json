@@ -1,0 +1,15 @@
+{
+  "name": "gr_ramsey_three_four_le_ten",
+  "statement": "(V : Type) [Fintype V] (h : 10 ≤ Fintype.card V) (G : SimpleGraph V) : ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 4",
+  "closed": "∀ (V : Type) [Fintype V] (h : 10 ≤ Fintype.card V) (G : SimpleGraph V), ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 4",
+  "informal": "R(3,4) ≤ 10: every graph on at least 10 vertices has a triangle or an independent 4-set — pick v; if v has ≥ 4 neighbours, either two are adjacent (triangle with v) or 4 of them form an independent set; otherwise v has ≥ 6 non-neighbours, and Uses Mathlib2.r3_ramsey_three_three at this step on the induced graph on the non-neighbours: a triangle there is a triangle of G, an independent triple plus v is an independent 4-set.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "902842708",
+  "type": "∀ (V : Type) [inst : Fintype V], 10 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 4",
+  "attempts": [],
+  "created_at": "2026-11-15T08:43:51+0800",
+  "status": "open"
+}

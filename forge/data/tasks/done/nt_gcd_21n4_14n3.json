@@ -1,0 +1,18 @@
+{
+  "name": "nt_gcd_21n4_14n3",
+  "statement": "(n : ℕ) : Nat.gcd (21 * n + 4) (14 * n + 3) = 1",
+  "closed": "∀ (n : ℕ), Nat.gcd (21 * n + 4) (14 * n + 3) = 1",
+  "informal": "The fraction (21n+4)/(14n+3) is irreducible (IMO 1959 P1).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_nt",
+  "hash": "3955180377",
+  "type": "∀ (n : ℕ), (21 * n + 4).gcd (14 * n + 3) = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T00:12:08+0800",
+  "status": "proved",
+  "claimed_by": "prover_3",
+  "claimed_at": "2026-11-15T00:15:49+0800",
+  "closed_by": "prover_3",
+  "finished_at": "2026-11-15T00:16:27+0800"
+}

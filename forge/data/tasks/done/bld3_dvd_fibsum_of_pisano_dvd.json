@@ -1,0 +1,19 @@
+{
+  "name": "bld3_dvd_fibsum_of_pisano_dvd",
+  "statement": "(m : ℕ) (h : p3_pisano m ∣ m) : m ∣ p3_fibsum m",
+  "closed": "∀ (m : ℕ) (h : p3_pisano m ∣ m), m ∣ p3_fibsum m",
+  "informal": "Uses Mathlib2.p3_prop1 and Mathlib2.bld2_pisano_fib_odd_eq: if p3_pisano m = 0 then m = 0 and p3_fibsum 0 = 0; otherwise m is a multiple of a period (aux1), so fib (m + 2) ≡ fib 2 = 1 mod m and p3_fibsum m = fib (m + 2) - 1 ≡ 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.p3_prop1, Mathlib2.bld2_pisano_fib_odd_eq",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1930187864",
+  "type": "∀ (m : ℕ), Mathlib2.p3_pisano m ∣ m → m ∣ Mathlib2.p3_fibsum m",
+  "attempts": [],
+  "created_at": "2026-11-15T03:11:57+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:19:35+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:19:52+0800"
+}

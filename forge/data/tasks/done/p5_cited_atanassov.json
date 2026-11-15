@@ -1,0 +1,19 @@
+{
+  "name": "p5_cited_atanassov",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : n ^ 3 + n ^ 2 ≤ n.totient * p5_dedekind_psi n * ArithmeticFunction.sigma 1 n + n + 1",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), n ^ 3 + n ^ 2 ≤ n.totient * p5_dedekind_psi n * ArithmeticFunction.sigma 1 n + n + 1",
+  "informal": "Cited result (Atanassov 2013): phi psi sigma >= n^3+n^2-n-1 for n >= 2 (subtractions moved across).",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 Section 2 (cited, Atanassov 2013)",
+  "original": "\\varphi(n)\\psi(n)\\sigma(n)\\ge n^3+n^2-n-1 for n>=2",
+  "proposed_by": "paper_5",
+  "hash": "1595584562",
+  "type": "∀ (n : ℕ), 2 ≤ n → n ^ 3 + n ^ 2 ≤ n.totient * Mathlib2.p5_dedekind_psi n * (ArithmeticFunction.sigma 1) n + n + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:06+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T07:04:00+0800"
+}

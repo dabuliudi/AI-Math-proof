@@ -1,0 +1,19 @@
+{
+  "name": "fld_prime_one_three_mod_eight_eq_sq_add_two_sq",
+  "statement": "(p : ℕ) (hp : p.Prime) (h : p % 8 = 1 ∨ p % 8 = 3) : ∃ a b : ℕ, p = a ^ 2 + 2 * b ^ 2",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h : p % 8 = 1 ∨ p % 8 = 3), ∃ a b : ℕ, p = a ^ 2 + 2 * b ^ 2",
+  "informal": "Every prime p ≡ 1 or 3 (mod 8) is of the form a^2 + 2b^2 — -2 is a square mod p (ZMod.exists_sq_eq_neg_two_iff / FiniteField.isSquare_neg_two_iff), so p | x^2 + 2; Thue's lemma gives 0 < a^2 + 2b^2 < 3p divisible by p, so it is p or 2p; in the latter case a is even and p = b^2 + 2(a/2)^2. Alternatively use that Z[√-2] is Euclidean.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "3494769742",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 8 = 1 ∨ p % 8 = 3 → ∃ a b, p = a ^ 2 + 2 * b ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T08:18:54+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:21:57+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:28:16+0800"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "lib_lucas_two_mul_cast",
+  "statement": "(R : Type*) [CommRing R] (m : ℕ) : ((Mathlib2.p3_lucas (2 * m) : ℕ) : R) = ((Mathlib2.p3_lucas m : ℕ) : R) ^ 2 - 2 * (-1) ^ m",
+  "closed": "∀ (R : Type*) [CommRing R] (m : ℕ), ((Mathlib2.p3_lucas (2 * m) : ℕ) : R) = ((Mathlib2.p3_lucas m : ℕ) : R) ^ 2 - 2 * (-1) ^ m",
+  "informal": "promoted from Mathlib2.bld5_prime_dvd_lucas_four_mul_mod_eight_aux1: Lucas doubling L_{2m} = L_m^2 - 2(-1)^m in any commutative ring.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "4230254072",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (m : ℕ), ↑(Mathlib2.p3_lucas (2 * m)) = ↑(Mathlib2.p3_lucas m) ^ 2 - 2 * (-1) ^ m",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:35+0800",
+  "status": "known",
+  "known_as": "bld5_prime_dvd_lucas_four_mul_mod_eight_aux1 R m"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arith_card_odd_choose",
+  "statement": "(n : ℕ) : ((Finset.range (n + 1)).filter (fun k => Odd (n.choose k))).card = 2 ^ (Nat.digits 2 n).sum",
+  "closed": "∀ (n : ℕ), ((Finset.range (n + 1)).filter (fun k => Odd (n.choose k))).card = 2 ^ (Nat.digits 2 n).sum",
+  "informal": "Glaisher: the number of odd entries in row n of Pascal's triangle is 2^(number of binary ones of n) — induct on binary digits using C(2n,2k) ≡ C(n,k), C(2n,2k+1) even, C(2n+1,2k) ≡ C(2n+1,2k+1) ≡ C(n,k) mod 2 (Lucas).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3737297828",
+  "type": "∀ (n : ℕ), {k ∈ Finset.range (n + 1) | Odd (n.choose k)}.card = 2 ^ (Nat.digits 2 n).sum",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:24+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T08:08:02+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T08:08:20+0800"
+}

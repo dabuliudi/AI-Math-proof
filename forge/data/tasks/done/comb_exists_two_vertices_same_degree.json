@@ -1,0 +1,19 @@
+{
+  "name": "comb_exists_two_vertices_same_degree",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : 2 ≤ Fintype.card V) : ∃ u v : V, u ≠ v ∧ G.degree u = G.degree v",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : 2 ≤ Fintype.card V), ∃ u v : V, u ≠ v ∧ G.degree u = G.degree v",
+  "informal": "Every finite simple graph on at least two vertices has two distinct vertices of equal degree — degrees lie in {0..n-1}; if injective, degree is a bijection onto range n, so some vertex has degree 0 and another degree n-1, contradiction since the latter is adjacent to the former.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "1505498331",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], 2 ≤ Fintype.card V → ∃ u v, u ≠ v ∧ G.degree u = G.degree v",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:05+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:33:22+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:33:58+0800"
+}

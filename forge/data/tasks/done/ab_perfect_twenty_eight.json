@@ -1,0 +1,19 @@
+{
+  "name": "ab_perfect_twenty_eight",
+  "statement": ": Nat.Perfect 28",
+  "closed": "Nat.Perfect 28",
+  "informal": "28 is perfect.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.17",
+  "original": "6 (the smallest perfect number), and then 28 ... checking that the sum of their divisors was double the original numbers",
+  "proposed_by": "paper_2",
+  "hash": "695616874",
+  "type": "Nat.Perfect 28",
+  "attempts": [],
+  "created_at": "2026-11-15T01:00:55+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:04:35+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:04:46+0800"
+}

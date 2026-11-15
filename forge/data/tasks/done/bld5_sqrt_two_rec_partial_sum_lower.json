@@ -1,0 +1,19 @@
+{
+  "name": "bld5_sqrt_two_rec_partial_sum_lower",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ) : 2 * (n : ℝ) - Real.pi ^ 2 / 3 ≤ ∑ i ∈ Finset.range n, a i",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ), 2 * (n : ℝ) - Real.pi ^ 2 / 3 ≤ ∑ i ∈ Finset.range n, a i",
+  "informal": "Uses Mathlib2.bld2_sqrt_two_rec_defect_summable, Mathlib2.bld3_sqrt_two_rec_defect_tsum_bounds and Mathlib2.ana_sqrt_two_rec_lt_two: ∑_{i<n} (2 − a_i) ≤ ∑' (2 − a_i) by sum_le_tsum (terms non-negative by ana_sqrt_two_rec_lt_two, summable by bld2), and the series is ≤ π²/3 by bld3; rearrange using Finset.sum_sub_distrib and Finset.sum_const.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_sqrt_two_rec_defect_summable, Mathlib2.bld3_sqrt_two_rec_defect_tsum_bounds, Mathlib2.ana_sqrt_two_rec_lt_two",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "3210851330",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), 2 * ↑n - Real.pi ^ 2 / 3 ≤ ∑ i ∈ Finset.range n, a i",
+  "attempts": [],
+  "created_at": "2026-11-15T07:25:14+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:27:07+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:27:48+0800"
+}

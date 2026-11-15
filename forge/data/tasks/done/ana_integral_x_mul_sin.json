@@ -1,0 +1,19 @@
+{
+  "name": "ana_integral_x_mul_sin",
+  "statement": ": (∫ x in (0 : ℝ)..Real.pi, x * Real.sin x) = Real.pi",
+  "closed": "(∫ x in (0 : ℝ)..Real.pi, x * Real.sin x) = Real.pi",
+  "informal": "The integral of x sin x over [0,π] is π — the antiderivative is sin x - x cos x; apply the fundamental theorem of calculus.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1464519930",
+  "type": "∫ (x : ℝ) in 0..Real.pi, x * Real.sin x = Real.pi",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:44+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:32:28+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:33:04+0800"
+}

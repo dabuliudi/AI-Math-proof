@@ -1,0 +1,19 @@
+{
+  "name": "r3_wolstenholme_harmonic_s1h1",
+  "statement": ": ∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k)))",
+  "closed": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k)))",
+  "informal": "r3_wolstenholme_harmonic 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "r3_wolstenholme_harmonic",
+  "original": "",
+  "proposed_by": "r3_prover_5",
+  "hash": "3931092114",
+  "type": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k)))",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:43+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_5",
+  "claimed_at": "2026-11-15T01:34:24+0800",
+  "closed_by": "r3_prover_5",
+  "finished_at": "2026-11-15T01:35:41+0800"
+}

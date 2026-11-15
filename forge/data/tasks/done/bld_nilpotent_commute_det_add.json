@@ -1,0 +1,19 @@
+{
+  "name": "bld_nilpotent_commute_det_add",
+  "statement": "(n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ) (hA : IsNilpotent A) (hAB : A * B = B * A) : Matrix.det (B + A) = Matrix.det B",
+  "closed": "∀ (n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ) (hA : IsNilpotent A) (hAB : A * B = B * A), Matrix.det (B + A) = Matrix.det B",
+  "informal": "Uses Mathlib2.gen_lin_nilpotent_det_one_add_reduced: if B is invertible then B⁻¹A is nilpotent (A, B commute) and det(B + A) = det B * det(1 + B⁻¹A) = det B. For general B apply this to B + t • 1 for the cofinitely many t with det(B + t • 1) ≠ 0 and conclude by the polynomial identity (two polynomials in t agreeing at infinitely many points), then set t = 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_nilpotent_det_one_add_reduced",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "2933546938",
+  "type": "∀ (n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ), IsNilpotent A → A * B = B * A → (B + A).det = B.det",
+  "attempts": [],
+  "created_at": "2026-11-15T02:33:57+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_2",
+  "claimed_at": "2026-11-15T02:40:07+0800",
+  "closed_by": "r6_prover_2",
+  "finished_at": "2026-11-15T02:40:46+0800"
+}

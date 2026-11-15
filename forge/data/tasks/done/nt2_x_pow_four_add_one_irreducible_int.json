@@ -1,0 +1,19 @@
+{
+  "name": "nt2_x_pow_four_add_one_irreducible_int",
+  "statement": ": Irreducible (Polynomial.X ^ 4 + 1 : Polynomial ℤ)",
+  "closed": "Irreducible (Polynomial.X ^ 4 + 1 : Polynomial ℤ)",
+  "informal": "The polynomial X^4 + 1 is irreducible over the integers (it is the 8th cyclotomic polynomial; Eisenstein after X ↦ X+1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_nt2",
+  "hash": "2598252132",
+  "type": "Irreducible (Polynomial.X ^ 4 + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:35:14+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_e",
+  "claimed_at": "2026-11-15T00:49:43+0800",
+  "closed_by": "r2_prover_e",
+  "finished_at": "2026-11-15T00:50:07+0800"
+}

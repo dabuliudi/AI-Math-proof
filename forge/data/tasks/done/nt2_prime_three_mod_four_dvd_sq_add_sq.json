@@ -1,0 +1,19 @@
+{
+  "name": "nt2_prime_three_mod_four_dvd_sq_add_sq",
+  "statement": "(p : ℕ) (hp : Nat.Prime p) (h : p % 4 = 3) (a b : ℤ) (hd : (p : ℤ) ∣ a ^ 2 + b ^ 2) : (p : ℤ) ∣ a ∧ (p : ℤ) ∣ b",
+  "closed": "∀ (p : ℕ) (hp : Nat.Prime p) (h : p % 4 = 3) (a b : ℤ) (hd : (p : ℤ) ∣ a ^ 2 + b ^ 2), (p : ℤ) ∣ a ∧ (p : ℤ) ∣ b",
+  "informal": "Generalization of Mathlib2.nt_seven_dvd_sq_add_sq from 7 to every prime p ≡ 3 (mod 4): if p divides a^2+b^2 then p divides both a and b (-1 is not a square mod p).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_nt2",
+  "hash": "2165156581",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (a b : ℤ), ↑p ∣ a ^ 2 + b ^ 2 → ↑p ∣ a ∧ ↑p ∣ b",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:25+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_c",
+  "claimed_at": "2026-11-15T00:46:41+0800",
+  "closed_by": "r2_prover_c",
+  "finished_at": "2026-11-15T00:47:10+0800"
+}

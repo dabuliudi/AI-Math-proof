@@ -1,0 +1,16 @@
+{
+  "name": "lib_pisano_dvd_of_period",
+  "statement": "(m N : ℕ) (hN : 0 < N) (hper : ∀ i : ℕ, Nat.fib (i + N) ≡ Nat.fib i [MOD m]) : p3_pisano m ∣ N",
+  "closed": "∀ (m N : ℕ) (hN : 0 < N) (hper : ∀ i : ℕ, Nat.fib (i + N) ≡ Nat.fib i [MOD m]), p3_pisano m ∣ N",
+  "informal": "The Pisano period (least positive period of the Fibonacci sequence mod m, p3_pisano) divides every positive period N of Fibonacci mod m. Promoted from Mathlib2.bld2_pisano_fib_dvd_four_mul_aux1.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld2_pisano_fib_dvd_four_mul_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "750893573",
+  "type": "∀ (m N : ℕ), 0 < N → (∀ (i : ℕ), Nat.fib (i + N) ≡ Nat.fib i [MOD m]) → Mathlib2.p3_pisano m ∣ N",
+  "attempts": [],
+  "created_at": "2026-11-15T03:04:38+0800",
+  "status": "known",
+  "known_as": "bld2_pisano_fib_dvd_four_mul_aux1 m N hN hper"
+}

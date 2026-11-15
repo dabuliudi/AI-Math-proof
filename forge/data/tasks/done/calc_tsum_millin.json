@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_millin",
+  "statement": ": ∑' n : ℕ, 1 / (Nat.fib (2 ^ n) : ℝ) = (7 - Real.sqrt 5) / 2",
+  "closed": "∑' n : ℕ, 1 / (Nat.fib (2 ^ n) : ℝ) = (7 - Real.sqrt 5) / 2",
+  "informal": "Millin series ∑_{n≥0} 1/F_{2ⁿ} = (7−√5)/2 — partial sums ∑_{n=0}^{N} 1/F_{2ⁿ} = 3 − F_{2^N − 1}/F_{2^N} for N ≥ 1 (induction, using F_{2m} = F_m L_m and d'Ocagne/Cassini), and F_{k−1}/F_k → 1/φ = (√5−1)/2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "2122055827",
+  "type": "∑' (n : ℕ), 1 / ↑(Nat.fib (2 ^ n)) = (7 - √5) / 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:40:19+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:09:12+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:09:56+0800"
+}

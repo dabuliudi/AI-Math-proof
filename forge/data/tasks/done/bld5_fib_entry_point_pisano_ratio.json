@@ -1,0 +1,19 @@
+{
+  "name": "bld5_fib_entry_point_pisano_ratio",
+  "statement": "(m : ℕ) (hm : 0 < m) : ∃ a : ℕ, 0 < a ∧ (∀ k : ℕ, m ∣ Nat.fib k ↔ a ∣ k) ∧ (p3_pisano m = a ∨ p3_pisano m = 2 * a ∨ p3_pisano m = 4 * a)",
+  "closed": "∀ (m : ℕ) (hm : 0 < m), ∃ a : ℕ, 0 < a ∧ (∀ k : ℕ, m ∣ Nat.fib k ↔ a ∣ k) ∧ (p3_pisano m = a ∨ p3_pisano m = 2 * a ∨ p3_pisano m = 4 * a)",
+  "informal": "Uses Mathlib2.bld3_pisano_pos_and_period, Mathlib2.bld3_pisano_dvd_pisano_of_dvd and Mathlib2.bld2_pisano_fib_dvd_four_mul: bld3_pisano_pos_and_period at i = 0 gives m ∣ F_π with π = pisano m > 0, so a := Nat.find of {k > 0 | m ∣ F_k} exists (rank of apparition). m ∣ F_k ↔ a ∣ k: (⇐) Nat.fib_dvd; (⇒) m ∣ gcd(F_k, F_a) = F_{gcd(k,a)} by Nat.fib_gcd and minimality forces gcd(k,a) = a. Hence a ∣ π. Conversely m ∣ F_a gives π ∣ pisano(F_a) (bld3_pisano_dvd_pisano_of_dvd) ∣ 4a (bld2_pisano_fib_dvd_four_mul). So π = a·t with t ∣ 4, t ∈ {1,2,4}.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pisano_pos_and_period, Mathlib2.bld3_pisano_dvd_pisano_of_dvd, Mathlib2.bld2_pisano_fib_dvd_four_mul",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "1645774698",
+  "type": "∀ (m : ℕ), 0 < m → ∃ a, 0 < a ∧ (∀ (k : ℕ), m ∣ Nat.fib k ↔ a ∣ k) ∧ (Mathlib2.p3_pisano m = a ∨ Mathlib2.p3_pisano m = 2 * a ∨ Mathlib2.p3_pisano m = 4 * a)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:21:58+0800",
+  "status": "proved",
+  "claimed_by": "prover_ba",
+  "claimed_at": "2026-11-15T07:33:10+0800",
+  "closed_by": "prover_ba",
+  "finished_at": "2026-11-15T07:33:28+0800"
+}

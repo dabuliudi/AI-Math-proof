@@ -1,0 +1,19 @@
+{
+  "name": "fld_gaussianInt_one_add_i_prime",
+  "statement": ": Prime (⟨1, 1⟩ : GaussianInt)",
+  "closed": "Prime (⟨1, 1⟩ : GaussianInt)",
+  "informal": "1 + i is prime in ℤ[i] — its norm is 2, a rational prime, so it is irreducible (a factorization gives norms multiplying to 2, one factor is a unit); ℤ[i] is a Euclidean domain hence a PID, so irreducible implies prime.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2428506232",
+  "type": "Prime { re := 1, im := 1 }",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:59+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:35:22+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:36:50+0800"
+}

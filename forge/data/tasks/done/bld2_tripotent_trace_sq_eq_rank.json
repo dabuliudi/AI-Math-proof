@@ -1,0 +1,19 @@
+{
+  "name": "bld2_tripotent_trace_sq_eq_rank",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A * A = A) : Matrix.trace (A * A) = (Matrix.rank A : K)",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A * A = A), Matrix.trace (A * A) = (Matrix.rank A : K)",
+  "informal": "Uses Mathlib2.gen_lin_idempotent_trace_eq_rank_field: A*A is idempotent, so trace (A*A) = rank (A*A); and rank (A*A) = rank A because A = A * (A*A) gives rank A ≤ rank (A*A) ≤ rank A.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_idempotent_trace_eq_rank_field",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "2602828252",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A * A = A → (A * A).trace = ↑A.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:04+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:52:00+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:52:25+0800"
+}

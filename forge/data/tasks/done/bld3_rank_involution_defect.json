@@ -1,0 +1,19 @@
+{
+  "name": "bld3_rank_involution_defect",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : Matrix.rank (1 + A) + Matrix.rank (1 - A) = Fintype.card ι + Matrix.rank (1 - A * A)",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), Matrix.rank (1 + A) + Matrix.rank (1 - A) = Fintype.card ι + Matrix.rank (1 - A * A)",
+  "informal": "Uses Mathlib2.bld2_rank_add_rank_one_sub and Mathlib2.bld2_involution_iff_rank_add_rank: apply the idempotent-defect identity to B = (1/2) • (1 + A): 1 - B = (1/2) • (1 - A) and B - B * B = (1/4) • (1 - A * A), and nonzero scalars do not change rank; this refines the involution criterion.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_rank_add_rank_one_sub, Mathlib2.bld2_involution_iff_rank_add_rank",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1468365001",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), (1 + A).rank + (1 - A).rank = Fintype.card ι + (1 - A * A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T03:10:52+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_1",
+  "claimed_at": "2026-11-15T03:18:42+0800",
+  "closed_by": "r8_prover_1",
+  "finished_at": "2026-11-15T03:19:14+0800"
+}

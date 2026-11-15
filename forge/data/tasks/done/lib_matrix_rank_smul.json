@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_rank_smul",
+  "statement": "(K : Type*) [Field K] (m n : Type*) [Fintype m] [Fintype n] (c : K) (hc : c ≠ 0) (M : Matrix m n K) : Matrix.rank (c • M) = Matrix.rank M",
+  "closed": "∀ (K : Type*) [Field K] (m n : Type*) [Fintype m] [Fintype n] (c : K) (hc : c ≠ 0) (M : Matrix m n K), Matrix.rank (c • M) = Matrix.rank M",
+  "informal": "Scaling a (rectangular) matrix over a field by a nonzero scalar does not change its rank: rank (c • M) = rank M. Promoted from Mathlib2.bld_involution_trace_rank_aux1 (also re-proved as bld2_tripotent_rank_split_aux1 and bld2_involution_iff_rank_add_rank_aux1); generalised from square to rectangular matrices.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld_involution_trace_rank_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "810717545",
+  "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) [Fintype m] [inst_2 : Fintype n] (c : K), c ≠ 0 → ∀ (M : Matrix m n K), (c • M).rank = M.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T03:03:45+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:04:49+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:05:07+0800"
+}

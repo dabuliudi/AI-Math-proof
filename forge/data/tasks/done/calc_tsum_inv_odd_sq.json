@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_inv_odd_sq",
+  "statement": ": ∑' n : ℕ, 1 / (2 * (n : ℝ) + 1) ^ 2 = Real.pi ^ 2 / 8",
+  "closed": "∑' n : ℕ, 1 / (2 * (n : ℝ) + 1) ^ 2 = Real.pi ^ 2 / 8",
+  "informal": "∑ 1/(2n+1)² = π²/8 — split Basel sum hasSum_zeta_two into even and odd indices (tsum_even_add_odd); even part is (1/4)·π²/6.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3878499774",
+  "type": "∑' (n : ℕ), 1 / (2 * ↑n + 1) ^ 2 = Real.pi ^ 2 / 8",
+  "attempts": [],
+  "created_at": "2026-11-15T07:40:29+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:05:39+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:05:49+0800"
+}

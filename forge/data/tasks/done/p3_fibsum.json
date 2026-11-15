@@ -1,0 +1,16 @@
+{
+  "name": "p3_fibsum",
+  "statement": "def p3_fibsum (n : ℕ) : ℕ := ∑ i ∈ Finset.Icc 1 n, Nat.fib i",
+  "informal": "S_n = F_1 + ... + F_n, the sum of the first n nonzero Fibonacci numbers (F_1 = F_2 = 1)",
+  "origin": "definition",
+  "source": "arXiv:2504.09938 Section 1 (notation S_n)",
+  "original": "S_n=\\sum_{i=1}^n F_i",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:05+0800",
+  "status": "defined",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:18:16+0800",
+  "type": "ℕ → ℕ"
+}

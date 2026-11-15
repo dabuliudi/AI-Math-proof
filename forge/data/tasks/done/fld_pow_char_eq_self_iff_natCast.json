@@ -1,0 +1,19 @@
+{
+  "name": "fld_pow_char_eq_self_iff_natCast",
+  "statement": "(K : Type) [Field K] (p : ℕ) [Fact p.Prime] [CharP K p] (x : K) : x ^ p = x ↔ ∃ n : ℕ, x = (n : K)",
+  "closed": "∀ (K : Type) [Field K] (p : ℕ) [Fact p.Prime] [CharP K p] (x : K), x ^ p = x ↔ ∃ n : ℕ, x = (n : K)",
+  "informal": "In any field of characteristic p the fixed points of Frobenius are exactly the prime field: x^p = x iff x is the image of a natural number — (←) Fermat's little theorem in ZMod p pushed along the cast; (→) X^p - X has at most p roots in K and the p distinct elements 0, 1, …, p-1 are roots, so they are all the roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "923710071",
+  "type": "∀ (K : Type) [inst : Field K] (p : ℕ) [Fact (Nat.Prime p)] [CharP K p] (x : K), x ^ p = x ↔ ∃ n, x = ↑n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:23:19+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:33:02+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:36:40+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "p3_prop1",
+  "statement": "(n : ℕ) : p3_fibsum n = Nat.fib (n + 2) - 1",
+  "closed": "∀ (n : ℕ), p3_fibsum n = Nat.fib (n + 2) - 1",
+  "informal": "S_n = F_{n+2} - 1",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Proposition 1",
+  "original": "Let $n\\in\\mathbb{N}$. Then $S_n=F_{n+2}-1$.",
+  "proposed_by": "paper_3",
+  "hash": "1454489148",
+  "type": "∀ (n : ℕ), Mathlib2.p3_fibsum n = Nat.fib (n + 2) - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:55+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:23:55+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:25:50+0800"
+}

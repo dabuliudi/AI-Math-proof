@@ -1,0 +1,19 @@
+{
+  "name": "calc_sum_card_fixed_points_perm",
+  "statement": "(n : ℕ) (hn : 0 < n) : ∑ σ : Equiv.Perm (Fin n), (Finset.univ.filter (fun i => σ i = i)).card = n.factorial",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ∑ σ : Equiv.Perm (Fin n), (Finset.univ.filter (fun i => σ i = i)).card = n.factorial",
+  "informal": "Total number of fixed points over all permutations of Fin n (n ≥ 1) is n! (expected number of fixed points is 1) — double count pairs (σ,i) with σ i = i: each i has (n−1)! stabiliser elements (MulAction.card stabilizer / Equiv.Perm.decomposeFin), so total n·(n−1)!.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "1598148986",
+  "type": "∀ (n : ℕ), 0 < n → ∑ σ, {i | σ i = i}.card = n.factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:32+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T07:58:35+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T07:59:29+0800"
+}

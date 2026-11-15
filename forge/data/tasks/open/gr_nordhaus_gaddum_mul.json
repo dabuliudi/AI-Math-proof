@@ -1,0 +1,15 @@
+{
+  "name": "gr_nordhaus_gaddum_mul",
+  "statement": "(V : Type) [Fintype V] (G : SimpleGraph V) (a b : ℕ) (ha : G.Colorable a) (hb : Gᶜ.Colorable b) : Fintype.card V ≤ a * b",
+  "closed": "∀ (V : Type) [Fintype V] (G : SimpleGraph V) (a b : ℕ) (ha : G.Colorable a) (hb : Gᶜ.Colorable b), Fintype.card V ≤ a * b",
+  "informal": "Nordhaus–Gaddum product bound χ(G)·χ(Gᶜ) ≥ n — with colourings c₁ : V → Fin a of G and c₂ : V → Fin b of Gᶜ the map v ↦ (c₁ v, c₂ v) is injective, since distinct u,v are adjacent in G or in Gᶜ; compare cardinalities.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "1223753786",
+  "type": "∀ (V : Type) [inst : Fintype V] (G : SimpleGraph V) (a b : ℕ), G.Colorable a → Gᶜ.Colorable b → Fintype.card V ≤ a * b",
+  "attempts": [],
+  "created_at": "2026-11-15T08:46:31+0800",
+  "status": "open"
+}

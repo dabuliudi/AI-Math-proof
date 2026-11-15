@@ -1,0 +1,19 @@
+{
+  "name": "calc_rpow_lt_rpow_swap_of_exp_le",
+  "statement": "(x y : ℝ) (hx : Real.exp 1 ≤ x) (hxy : x < y) : y ^ x < x ^ y",
+  "closed": "∀ (x y : ℝ) (hx : Real.exp 1 ≤ x) (hxy : x < y), y ^ x < x ^ y",
+  "informal": "For e ≤ x < y, yˣ < xʸ — log t / t is strictly decreasing on [e, ∞) (derivative (1 − log t)/t² < 0 for t > e), so log y / y < log x / x; exponentiate.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3377349242",
+  "type": "∀ (x y : ℝ), Real.exp 1 ≤ x → x < y → y ^ x < x ^ y",
+  "attempts": [],
+  "created_at": "2026-11-15T07:43:01+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:04:29+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:04:38+0800"
+}

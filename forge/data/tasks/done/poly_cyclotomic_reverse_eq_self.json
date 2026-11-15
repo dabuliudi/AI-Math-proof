@@ -1,0 +1,19 @@
+{
+  "name": "poly_cyclotomic_reverse_eq_self",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : (Polynomial.cyclotomic n ℤ).reverse = Polynomial.cyclotomic n ℤ",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), (Polynomial.cyclotomic n ℤ).reverse = Polynomial.cyclotomic n ℤ",
+  "informal": "Cyclotomic polynomials Φ_n (n ≥ 2) are palindromic — strong induction: X^n - 1 = ∏_{d ∣ n} Φ_d, reverse is multiplicative, reverse(X^n - 1) = -(X^n - 1), reverse(Φ_1) = -Φ_1, and cancel the product over proper divisors d ≥ 2 by the induction hypothesis.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "437499533",
+  "type": "∀ (n : ℕ), 2 ≤ n → (Polynomial.cyclotomic n ℤ).reverse = Polynomial.cyclotomic n ℤ",
+  "attempts": [],
+  "created_at": "2026-11-15T07:18:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:30:21+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:34:11+0800"
+}

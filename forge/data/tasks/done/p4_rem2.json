@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem2",
+  "statement": ": IsLeast {N : ℕ | 0 < N ∧ ∀ m : ℕ, N ≤ m → 0 < p4_x m} 547",
+  "closed": "IsLeast {N : ℕ | 0 < N ∧ ∀ m : ℕ, N ≤ m → 0 < p4_x m} 547",
+  "informal": "Remark 2: 547 is the least positive integer N such that x(m) > 0 for all m >= N.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 2",
+  "original": "547 is the least positive integer n such that x(m)>0 for all m ≥ n",
+  "proposed_by": "paper_4",
+  "hash": "3912634788",
+  "type": "IsLeast {N | 0 < N ∧ ∀ (m : ℕ), N ≤ m → 0 < Mathlib2.p4_x m} 547",
+  "attempts": [],
+  "created_at": "2026-11-15T02:55:48+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:06:27+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "top_finite_monotone_iterate_bot_fixed",
+  "statement": "{α : Type*} [PartialOrder α] [OrderBot α] [Finite α] (f : α → α) (hf : Monotone f) : ∃ n : ℕ, f (f^[n] ⊥) = f^[n] ⊥",
+  "closed": "∀ {α : Type*} [PartialOrder α] [OrderBot α] [Finite α] (f : α → α) (hf : Monotone f), ∃ n : ℕ, f (f^[n] ⊥) = f^[n] ⊥",
+  "informal": "On a finite poset with bottom, iterating a monotone map from ⊥ reaches a fixed point — n ↦ f^[n] ⊥ is monotone; if never stationary it would be strictly monotone hence injective ℕ → α, contradicting finiteness.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "4176798729",
+  "type": "∀ {α : Type u_1} [inst : PartialOrder α] [inst_1 : OrderBot α] [Finite α] (f : α → α), Monotone f → ∃ n, f (f^[n] ⊥) = f^[n] ⊥",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:41+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:25:17+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:25:42+0800"
+}

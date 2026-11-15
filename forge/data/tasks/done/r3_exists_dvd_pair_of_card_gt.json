@@ -1,0 +1,44 @@
+{
+  "name": "r3_exists_dvd_pair_of_card_gt",
+  "statement": "(n : ℕ) (S : Finset ℕ) (hS : S ⊆ Finset.Icc 1 (2 * n)) (hc : n < S.card) : ∃ a ∈ S, ∃ b ∈ S, a ≠ b ∧ a ∣ b",
+  "closed": "∀ (n : ℕ) (S : Finset ℕ) (hS : S ⊆ Finset.Icc 1 (2 * n)) (hc : n < S.card), ∃ a ∈ S, ∃ b ∈ S, a ≠ b ∧ a ∣ b",
+  "informal": "Erdős: among any n+1 numbers from {1,...,2n} one divides another. Proof idea: map each m to its odd part m / 2^{v_2(m)}; the odd parts lie in the n odd numbers below 2n, so by pigeonhole two distinct elements share an odd part, and then the one with the smaller 2-adic valuation divides the other.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "292981862",
+  "type": "∀ (n : ℕ), ∀ S ⊆ Finset.Icc 1 (2 * n), n < S.card → ∃ a ∈ S, ∃ b ∈ S, a ≠ b ∧ a ∣ b",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:47+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:09:34+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_3",
+      "body": "theorem r3_exists_dvd_pair_of_card_gt (n : ℕ) (S : Finset ℕ) (hS : S ⊆ Finset.Icc 1 (2 * n)) (hc : n < S.card) : ∃ a ∈ S, ∃ b ∈ S, a ≠ b ∧ a ∣ b := by\n  have hodd : ∀ m ∈ Finset.Icc 1 (2 * n), m / 2 ^ m.factorization 2 ∈ (Finset.range n).image (fun i => 2 * i + 1) := by\n    clear hc hS S\n    sorry\n  have hdiv : ∀ a b : ℕ, 0 < a → 0 < b → a / 2 ^ a.factorization 2 = b / 2 ^ b.factorization 2 → a ∣ b ∨ b ∣ a := by\n    clear hodd hc hS S n\n    sorry\n  have hcard : ((Finset.range n).image (fun i => 2 * i + 1)).card < S.card :=\n    lt_of_le_of_lt (Finset.card_image_le.trans (by simp)) hc\n  obtain ⟨a, ha, b, hb, hab, he⟩ := Finset.exists_ne_map_eq_of_card_lt_of_maps_to hcard (fun m hm => hodd m (hS hm))\n  have ha0 : 0 < a := (Finset.mem_Icc.mp (hS ha)).1\n  have hb0 : 0 < b := (Finset.mem_Icc.mp (hS hb)).1\n  rcases hdiv a b ha0 hb0 he with h | h\n  · exact ⟨a, ha, b, hb, hab, h⟩\n  · exact ⟨b, hb, a, ha, hab.symm, h⟩\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_exists_dvd_pair_of_card_gt_s1h1",
+          "status": "open",
+          "statement": "∀ (n m : ℕ), m ∈ Finset.Icc 1 (2 * n) → m / 2 ^ m.factorization 2 ∈ Finset.image (fun i => 2 * i + 1) (Finset.range n)",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_exists_dvd_pair_of_card_gt_s1h2",
+          "status": "open",
+          "statement": "∀ (a b : ℕ), 0 < a → 0 < b → a / 2 ^ a.factorization 2 = b / 2 ^ b.factorization 2 → a ∣ b ∨ b ∣ a",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:09:58+0800"
+    }
+  ],
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:11:23+0800"
+}

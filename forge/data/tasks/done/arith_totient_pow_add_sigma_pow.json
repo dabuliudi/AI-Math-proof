@@ -1,0 +1,19 @@
+{
+  "name": "arith_totient_pow_add_sigma_pow",
+  "statement": "(n k : ℕ) (hn : 2 ≤ n) : 2 * n ^ k ≤ n.totient ^ k + ArithmeticFunction.sigma 1 n ^ k",
+  "closed": "∀ (n k : ℕ) (hn : 2 ≤ n), 2 * n ^ k ≤ n.totient ^ k + ArithmeticFunction.sigma 1 n ^ k",
+  "informal": "Power-mean extension of Sandor–Atanassov: φ(n)^k + σ(n)^k ≥ 2n^k for n ≥ 2 — Uses Mathlib2.p5_lemma2 at step 1 (φ + σ ≥ 2n), then convexity of x^k: ((a+b)/2)^k ≤ (a^k+b^k)/2 (inner_le_nnorm_mul_norm / add_pow_le_pow_mul_pow_of_add_eq_one, or induction on k via Chebyshev).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3144065434",
+  "type": "∀ (n k : ℕ), 2 ≤ n → 2 * n ^ k ≤ n.totient ^ k + (ArithmeticFunction.sigma 1) n ^ k",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:33+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:58:14+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:59:18+0800"
+}

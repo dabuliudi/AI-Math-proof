@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_mul_modEq_sq_of_dvd",
+  "statement": "(m N : ℕ) (u v : ℤ) (h0 : (Nat.fib N : ℤ) = (m : ℤ) * u) (h1 : (Nat.fib (N + 1) : ℤ) = 1 + (m : ℤ) * v) (j : ℕ) : (Nat.fib (j * N) : ℤ) ≡ (j : ℤ) * (m : ℤ) * u [ZMOD ((m ^ 2 : ℕ) : ℤ)] ∧ (Nat.fib (j * N + 1) : ℤ) ≡ 1 + (j : ℤ) * (m : ℤ) * v [ZMOD ((m ^ 2 : ℕ) : ℤ)]",
+  "closed": "∀ (m N : ℕ) (u v : ℤ) (h0 : (Nat.fib N : ℤ) = (m : ℤ) * u) (h1 : (Nat.fib (N + 1) : ℤ) = 1 + (m : ℤ) * v) (j : ℕ), (Nat.fib (j * N) : ℤ) ≡ (j : ℤ) * (m : ℤ) * u [ZMOD ((m ^ 2 : ℕ) : ℤ)] ∧ (Nat.fib (j * N + 1) : ℤ) ≡ 1 + (j : ℤ) * (m : ℤ) * v [ZMOD ((m ^ 2 : ℕ) : ℤ)]",
+  "informal": "promoted from Mathlib2.bld5_pisano_mul_dvd_mul_aux2 (the square-zero lifting lemma specialised to ZMod (m^2), stated as congruences): if F_N = m·u and F_{N+1} = 1 + m·v then modulo m^2, F_{jN} ≡ j·m·u and F_{jN+1} ≡ 1 + j·m·v. For the general ring form (μ^2 = 0) use the aux lemma directly.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "1552882716",
+  "type": "∀ (m N : ℕ) (u v : ℤ), ↑(Nat.fib N) = ↑m * u → ↑(Nat.fib (N + 1)) = 1 + ↑m * v → ∀ (j : ℕ), ↑(Nat.fib (j * N)) ≡ ↑j * ↑m * u [ZMOD ↑(m ^ 2)] ∧ ↑(Nat.fib (j * N + 1)) ≡ 1 + ↑j * ↑m * v [ZMOD ↑(m ^ 2)]",
+  "attempts": [],
+  "created_at": "2026-11-15T07:53:03+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:53:25+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:53:33+0800"
+}

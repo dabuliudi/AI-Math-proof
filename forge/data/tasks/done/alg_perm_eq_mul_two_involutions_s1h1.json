@@ -1,0 +1,19 @@
+{
+  "name": "alg_perm_eq_mul_two_involutions_s1h1",
+  "statement": ": ∀ (n : ℕ) (τ : Equiv.Perm (Fin n)), τ.IsCycle → ∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), (τ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x",
+  "closed": "∀ (n : ℕ) (τ : Equiv.Perm (Fin n)), τ.IsCycle → ∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), (τ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x",
+  "informal": "alg_perm_eq_mul_two_involutions 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "alg_perm_eq_mul_two_involutions",
+  "original": "",
+  "proposed_by": "r4_prover_10",
+  "hash": "503782025",
+  "type": "∀ (n : ℕ) (τ : Equiv.Perm (Fin n)), τ.IsCycle → ∃ a, a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), τ x = x → a x = x",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:52+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_10",
+  "claimed_at": "2026-11-15T02:08:02+0800",
+  "closed_by": "r4_prover_10",
+  "finished_at": "2026-11-15T02:08:37+0800"
+}

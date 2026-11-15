@@ -1,0 +1,16 @@
+{
+  "name": "p3_pisano",
+  "statement": "noncomputable def p3_pisano (n : ℕ) : ℕ := sInf {k : ℕ | 0 < k ∧ ∀ i : ℕ, Nat.fib (i + k) ≡ Nat.fib i [MOD n]}",
+  "informal": "Pisano period pi(n): the least positive period of the Fibonacci sequence modulo n",
+  "origin": "definition",
+  "source": "arXiv:2504.09938 Section 1 (Pisano period)",
+  "original": "the period with which the sequence of Fibonacci numbers, taken modulo n, repeats",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:20+0800",
+  "status": "defined",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:18:33+0800",
+  "type": "ℕ → ℕ"
+}

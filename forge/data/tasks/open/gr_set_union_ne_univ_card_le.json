@@ -1,0 +1,15 @@
+{
+  "name": "gr_set_union_ne_univ_card_le",
+  "statement": "(n : ℕ) (𝒜 : Finset (Finset (Fin n))) (h : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ) : 2 * 𝒜.card ≤ 2 ^ n",
+  "closed": "∀ (n : ℕ) (𝒜 : Finset (Finset (Fin n))) (h : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ), 2 * 𝒜.card ≤ 2 ^ n",
+  "informal": "A family of subsets of [n] in which no two members (possibly equal) cover [n] has at most 2^(n−1) members — the family of complements is intersecting (Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ ≠ ∅), has the same cardinality, and Set.Intersecting.card_le applies; alternatively 𝒜 contains at most one of each complementary pair.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "2604203144",
+  "type": "∀ (n : ℕ) (𝒜 : Finset (Finset (Fin n))), (∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ) → 2 * 𝒜.card ≤ 2 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:47:57+0800",
+  "status": "open"
+}

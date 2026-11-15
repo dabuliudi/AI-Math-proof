@@ -1,0 +1,19 @@
+{
+  "name": "arith_prod_properDivisors_eq_self_iff",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : ∏ d ∈ n.properDivisors, d = n ↔ n.divisors.card = 4",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), ∏ d ∈ n.properDivisors, d = n ↔ n.divisors.card = 4",
+  "informal": "The product of the proper divisors of n ≥ 2 equals n iff n has exactly four divisors — with P the proper-divisor product, ∏ divisors = n·P; Uses Mathlib2.nt2_prod_divisors_sq at the key step: (nP)² = n^τ(n), so P = n iff n⁴ = n^τ(n) iff τ(n) = 4 (pow injective for n ≥ 2).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3370538558",
+  "type": "∀ (n : ℕ), 2 ≤ n → (∏ d ∈ n.properDivisors, d = n ↔ n.divisors.card = 4)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:34+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:58:14+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:00:05+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld3_pell_five_neg_four_solutions_lucas",
+  "statement": "(x y : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2) : ∃ n : ℕ, y = Nat.fib (2 * n + 1) ∧ x = p3_lucas (2 * n + 1)",
+  "closed": "∀ (x y : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2), ∃ n : ℕ, y = Nat.fib (2 * n + 1) ∧ x = p3_lucas (2 * n + 1)",
+  "informal": "Uses Mathlib2.bld2_fib_odd_index_iff_five_sq_sub_four and Mathlib2.bld2_lucas_sq_sub_five_fib_sq: the odd-index characterisation gives y = fib (2n+1) (choose n with the right value; fib 1 = fib 2 only matters for y = 1 where n = 0 works), and L^2 = 5 F^2 - 4 at odd index forces x = p3_lucas (2n+1) by injectivity of squaring on ℕ.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_fib_odd_index_iff_five_sq_sub_four, Mathlib2.bld2_lucas_sq_sub_five_fib_sq",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1677033763",
+  "type": "∀ (x y : ℕ), x ^ 2 + 4 = 5 * y ^ 2 → ∃ n, y = Nat.fib (2 * n + 1) ∧ x = Mathlib2.p3_lucas (2 * n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:12:18+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:16:01+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:16:16+0800"
+}

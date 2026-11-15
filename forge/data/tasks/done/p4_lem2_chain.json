@@ -1,0 +1,19 @@
+{
+  "name": "p4_lem2_chain",
+  "statement": "(a q : ℕ) (ha : 0 < a) (hq : 2 * q < (p4_m a + 1) ^ 2) (hqmax : ∀ c : ℕ, 2 * c < (p4_m a + 1) ^ 2 → c ≤ q) (n1 n2 : ℕ) (h1 : a ≤ n1) (h2 : n1 ≤ n2) (h3 : n2 ≤ min q (2 ^ p4_r a)) : p4_x a ≤ p4_x n1 ∧ p4_x n1 = p4_z n1 - ((p4_r a : ℤ) + 1) * (p4_m a : ℤ) ∧ p4_x n1 ≤ p4_x n2 ∧ p4_x n2 ≤ p4_x (min q (2 ^ p4_r a))",
+  "closed": "∀ (a q : ℕ) (ha : 0 < a) (hq : 2 * q < (p4_m a + 1) ^ 2) (hqmax : ∀ c : ℕ, 2 * c < (p4_m a + 1) ^ 2 → c ≤ q) (n1 n2 : ℕ) (h1 : a ≤ n1) (h2 : n1 ≤ n2) (h3 : n2 ≤ min q (2 ^ p4_r a)), p4_x a ≤ p4_x n1 ∧ p4_x n1 = p4_z n1 - ((p4_r a : ℤ) + 1) * (p4_m a : ℤ) ∧ p4_x n1 ≤ p4_x n2 ∧ p4_x n2 ≤ p4_x (min q (2 ^ p4_r a))",
+  "informal": "Lemma 2, second part: for a <= n1 <= n2 <= b(a): x(a) <= x(n1) = z(n1)-(r(a)+1)m(a) <= x(n2) <= x(b(a)).",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Lemma 2",
+  "original": "If a ≤ n1 ≤ n2 ≤ b(a), then x(a) ≤ x(n1) = z(n1)-(r(a)+1)m(a) ≤ x(n2) ≤ x(b(a)).",
+  "proposed_by": "paper_4",
+  "hash": "31805866",
+  "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → ∀ (n1 n2 : ℕ), a ≤ n1 → n1 ≤ n2 → n2 ≤ min q (2 ^ Mathlib2.p4_r a) → Mathlib2.p4_x a ≤ Mathlib2.p4_x n1 ∧ Mathlib2.p4_x n1 = Mathlib2.p4_z n1 - (↑(Mathlib2.p4_r a) + 1) * ↑(Mathlib2.p4_m a) ∧ Mathlib2.p4_x n1 ≤ Mathlib2.p4_x n2 ∧ Mathlib2.p4_x n2 ≤ Mathlib2.p4_x (min q (2 ^ Mathlib2.p4_r a))",
+  "attempts": [],
+  "created_at": "2026-11-15T02:53:30+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:01:46+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "fld_irrational_exp_one",
+  "statement": ": Irrational (Real.exp 1)",
+  "closed": "Irrational (Real.exp 1)",
+  "informal": "e is irrational (Fourier's proof) — if e = a/b then b!·(e - Σ_{k≤b} 1/k!) is an integer, but it equals Σ_{k>b} b!/k!, which lies strictly between 0 and 1/b ≤ 1 (bound the tail by a geometric series; Real.exp_bound / the series expansion of exp).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "3730624604",
+  "type": "Irrational (Real.exp 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:49+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:36:45+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:37:27+0800"
+}

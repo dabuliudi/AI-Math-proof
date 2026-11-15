@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_ker_mulVecLin_le_ker_mul",
+  "statement": "(R : Type*) [CommSemiring R] (m n p : Type*) [Fintype n] [Fintype p] (M : Matrix m n R) (N : Matrix n p R) : LinearMap.ker N.mulVecLin ≤ LinearMap.ker (M * N).mulVecLin",
+  "closed": "∀ (R : Type*) [CommSemiring R] (m n p : Type*) [Fintype n] [Fintype p] (M : Matrix m n R) (N : Matrix n p R), LinearMap.ker N.mulVecLin ≤ LinearMap.ker (M * N).mulVecLin",
+  "informal": "Null space of a product: ker N ≤ ker (M * N), over any commutative semiring (dual companion of range (M * N) ≤ range M). Promoted and generalised from Mathlib2.bld3_rank_tripotent_defect_aux1 (kernel companion; used inline in rank-defect proofs).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld3_rank_tripotent_defect_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "3217009831",
+  "type": "∀ (R : Type u_1) [inst : CommSemiring R] (m : Type u_2) (n : Type u_3) (p : Type u_4) [inst_1 : Fintype n] [inst_2 : Fintype p] (M : Matrix m n R) (N : Matrix n p R), LinearMap.ker N.mulVecLin ≤ LinearMap.ker (M * N).mulVecLin",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:25+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:57:54+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:58:07+0800"
+}

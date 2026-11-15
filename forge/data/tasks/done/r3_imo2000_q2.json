@@ -1,0 +1,60 @@
+{
+  "name": "r3_imo2000_q2",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : (a - 1 + 1 / b) * (b - 1 + 1 / c) * (c - 1 + 1 / a) ≤ 1",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1), (a - 1 + 1 / b) * (b - 1 + 1 / c) * (c - 1 + 1 / a) ≤ 1",
+  "informal": "IMO 2000 Q2. Proof idea: substitute a = x/y, b = y/z, c = z/x to get (x-y+z)(y-z+x)(z-x+y) ≤ xyz (Schur-type); at most one factor is negative (sum of any two is positive), in which case the product is ≤ 0; otherwise multiply the three pairwise AM-GM bounds (x-y+z)(y-z+x) ≤ x^2 and take square roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "3337520785",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → (a - 1 + 1 / b) * (b - 1 + 1 / c) * (c - 1 + 1 / a) ≤ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:54+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_2",
+  "claimed_at": "2026-11-15T01:13:48+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_2",
+      "body": "theorem r3_imo2000_q2 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : (a - 1 + 1 / b) * (b - 1 + 1 / c) * (c - 1 + 1 / a) ≤ 1 := by\n  have pair : ∀ x y z : ℝ, 0 < x → 0 < y → 0 < z → x * y * z = 1 →\n      (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y := by\n    sorry\n  have sgn : ∀ x y z : ℝ, 0 < x → 0 < y → 0 < z → x * y * z = 1 →\n      0 ≤ x - 1 + 1 / y ∨ 0 ≤ y - 1 + 1 / z := by\n    sorry\n  have comb_nonneg : ∀ u v w p q r : ℝ, 0 ≤ u → 0 ≤ v → 0 ≤ w → u * v ≤ p → v * w ≤ q → w * u ≤ r →\n      p * q * r = 1 → u * v * w ≤ 1 := by\n    sorry\n  have comb_sign : ∀ u v w : ℝ, (0 ≤ u ∨ 0 ≤ v) → (0 ≤ v ∨ 0 ≤ w) → (0 ≤ w ∨ 0 ≤ u) →\n      (0 ≤ u ∧ 0 ≤ v ∧ 0 ≤ w) ∨ u * v * w ≤ 0 := by\n    sorry\n  have e2 : b * c * a = 1 := by rw [← habc]; ring\n  have e3 : c * a * b = 1 := by rw [← habc]; ring\n  have h1 := pair a b c ha hb hc habc\n  have h2 := pair b c a hb hc ha e2\n  have h3 := pair c a b hc ha hb e3\n  have s1 := sgn a b c ha hb hc habc\n  have s2 := sgn b c a hb hc ha e2\n  have s3 := sgn c a b hc ha hb e3\n  rcases comb_sign _ _ _ s1 s2 s3 with ⟨hu, hv, hw⟩ | hneg\n  · refine comb_nonneg _ _ _ _ _ _ hu hv hw h1 h2 h3 ?_\n    have : a ^ 2 * b * (b ^ 2 * c) * (c ^ 2 * a) = (a * b * c) ^ 3 := by ring\n    rw [this, habc]; norm_num\n  · linarith\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_imo2000_q2_s1h1",
+          "status": "open",
+          "statement": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → ∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_imo2000_q2_s1h2",
+          "status": "open",
+          "statement": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → (∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y) → ∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 0 ≤ x - 1 + 1 / y ∨ 0 ≤ y - 1 + 1 / z",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_imo2000_q2_s1h3",
+          "status": "open",
+          "statement": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → (∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y) → (∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 0 ≤ x - 1 + 1 / y ∨ 0 ≤ y - 1 + 1 / z) → ∀ (u v w p q r : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → u * v ≤ p → v * w ≤ q → w * u ≤ r → p * q * r = 1 → u * v * w ≤ 1",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 4,
+          "task": "r3_imo2000_q2_s1h4",
+          "status": "open",
+          "statement": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → (∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y) → (∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 0 ≤ x - 1 + 1 / y ∨ 0 ≤ y - 1 + 1 / z) → (∀ (u v w p q r : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → u * v ≤ p → v * w ≤ q → w * u ≤ r → p * q * r = 1 → u * v * w ≤ 1) → ∀ (u v w : ℝ), 0 ≤ u ∨ 0 ≤ v → 0 ≤ v ∨ 0 ≤ w → 0 ≤ w ∨ 0 ≤ u → 0 ≤ u ∧ 0 ≤ v ∧ 0 ≤ w ∨ u * v * w ≤ 0",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:11:57+0800"
+    }
+  ],
+  "closed_by": "r3_prover_2",
+  "finished_at": "2026-11-15T01:14:30+0800"
+}

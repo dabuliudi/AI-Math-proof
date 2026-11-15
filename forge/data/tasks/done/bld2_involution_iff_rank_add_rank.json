@@ -1,0 +1,19 @@
+{
+  "name": "bld2_involution_iff_rank_add_rank",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : A * A = 1 ↔ Matrix.rank (1 + A) + Matrix.rank (1 - A) = Fintype.card ι",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A = 1 ↔ Matrix.rank (1 + A) + Matrix.rank (1 - A) = Fintype.card ι",
+  "informal": "Uses Mathlib2.bld_involution_rank_add_rank and Mathlib2.gen_lin_idempotent_rank_complement_field: forward is the involution rank identity; conversely put P = (1/2)(1 + A), so 1 - P = (1/2)(1 - A) and rank P + rank (1 - P) = n, which forces P idempotent (converse of rank complement), i.e. A*A = 1.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_involution_rank_add_rank, Mathlib2.gen_lin_idempotent_rank_complement_field",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "1918164020",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A * A = 1 ↔ (1 + A).rank + (1 - A).rank = Fintype.card ι",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:56+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:53:44+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:55:02+0800"
+}

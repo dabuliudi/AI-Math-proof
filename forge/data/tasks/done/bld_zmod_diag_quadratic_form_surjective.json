@@ -1,0 +1,19 @@
+{
+  "name": "bld_zmod_diag_quadratic_form_surjective",
+  "statement": "(p : ℕ) [Fact p.Prime] (a b c : ZMod p) (ha : a ≠ 0) (hb : b ≠ 0) : ∃ x y : ZMod p, a * x ^ 2 + b * y ^ 2 = c",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (a b c : ZMod p) (ha : a ≠ 0) (hb : b ≠ 0), ∃ x y : ZMod p, a * x ^ 2 + b * y ^ 2 = c",
+  "informal": "Uses Mathlib2.alg_card_range_sq_zmod_prime: for odd p the sets {a x^2} and {c - b y^2} each have (p+1)/2 elements, so they intersect by pigeonhole in ZMod p; p = 2 by direct check.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.alg_card_range_sq_zmod_prime",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1177821177",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (a b c : ZMod p), a ≠ 0 → b ≠ 0 → ∃ x y, a * x ^ 2 + b * y ^ 2 = c",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:39+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:39:57+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:40:34+0800"
+}

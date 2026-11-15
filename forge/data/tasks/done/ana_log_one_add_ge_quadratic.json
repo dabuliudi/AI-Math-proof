@@ -1,0 +1,19 @@
+{
+  "name": "ana_log_one_add_ge_quadratic",
+  "statement": "(x : ℝ) (hx : 0 ≤ x) : x - x ^ 2 / 2 ≤ Real.log (1 + x)",
+  "closed": "∀ (x : ℝ) (hx : 0 ≤ x), x - x ^ 2 / 2 ≤ Real.log (1 + x)",
+  "informal": "log(1+x) ≥ x - x^2/2 for x ≥ 0 — the difference vanishes at 0 and has derivative 1/(1+x) - 1 + x = x^2/(1+x) ≥ 0, so it is monotone on [0,∞).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1513642864",
+  "type": "∀ (x : ℝ), 0 ≤ x → x - x ^ 2 / 2 ≤ Real.log (1 + x)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:18+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:34:12+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:34:43+0800"
+}

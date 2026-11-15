@@ -1,0 +1,19 @@
+{
+  "name": "p4_thm1_vi",
+  "statement": ": p4_x 129 = -59 ∧ ∀ n : ℕ, 0 < n → n ≠ 129 → -58 ≤ p4_x n",
+  "closed": "p4_x 129 = -59 ∧ ∀ n : ℕ, 0 < n → n ≠ 129 → -58 ≤ p4_x n",
+  "informal": "Theorem 1(vi): x(129) = -59 and x(n) >= -58 for every positive n other than 129.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Theorem 1(vi)",
+  "original": "(vi) x(129) = -59 and x(n) ≥ -58 for n ≠ 129.",
+  "proposed_by": "paper_4",
+  "hash": "2850887760",
+  "type": "Mathlib2.p4_x 129 = -59 ∧ ∀ (n : ℕ), 0 < n → n ≠ 129 → -58 ≤ Mathlib2.p4_x n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:55:40+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:05:56+0800"
+}

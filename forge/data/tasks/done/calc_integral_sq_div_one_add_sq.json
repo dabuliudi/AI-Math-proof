@@ -1,0 +1,19 @@
+{
+  "name": "calc_integral_sq_div_one_add_sq",
+  "statement": ": ∫ x in (0:ℝ)..1, x ^ 2 / (1 + x ^ 2) = 1 - Real.pi / 4",
+  "closed": "∫ x in (0:ℝ)..1, x ^ 2 / (1 + x ^ 2) = 1 - Real.pi / 4",
+  "informal": "∫₀¹ x²/(1+x²) dx = 1 − π/4 — rewrite integrand as 1 − 1/(1+x²); arctan.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3528395337",
+  "type": "∫ (x : ℝ) in 0..1, x ^ 2 / (1 + x ^ 2) = 1 - Real.pi / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T07:39:02+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T07:54:12+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T07:55:29+0800"
+}

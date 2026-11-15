@@ -1,0 +1,16 @@
+{
+  "name": "lib_fib_add_succ_modEq_fib_mul_fib",
+  "statement": "(n i : ℕ) : Nat.fib (i + (n + 1)) ≡ Nat.fib i * Nat.fib n [MOD Nat.fib (n + 1)]",
+  "closed": "∀ (n i : ℕ), Nat.fib (i + (n + 1)) ≡ Nat.fib i * Nat.fib n [MOD Nat.fib (n + 1)]",
+  "informal": "Shift formula for Fibonacci modulo a Fibonacci number: F_(i+n+1) ≡ F_i * F_n (mod F_(n+1)). Promoted from Mathlib2.p3_cor1_aux3.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_cor1_aux3",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "1428757651",
+  "type": "∀ (n i : ℕ), Nat.fib (i + (n + 1)) ≡ Nat.fib i * Nat.fib n [MOD Nat.fib (n + 1)]",
+  "attempts": [],
+  "created_at": "2026-11-15T03:05:02+0800",
+  "status": "known",
+  "known_as": "p3_cor1_aux3 n i"
+}

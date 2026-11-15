@@ -1,0 +1,19 @@
+{
+  "name": "lib_mul_pow_mul_sub_le_pow_succ_sub_pow_succ",
+  "statement": "(R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (m : ℕ) : ((m : R) + 1) * a ^ m * (b - a) ≤ b ^ (m + 1) - a ^ (m + 1) ∧ b ^ (m + 1) - a ^ (m + 1) ≤ ((m : R) + 1) * b ^ m * (b - a)",
+  "closed": "∀ (R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (m : ℕ), ((m : R) + 1) * a ^ m * (b - a) ≤ b ^ (m + 1) - a ^ (m + 1) ∧ b ^ (m + 1) - a ^ (m + 1) ≤ ((m : R) + 1) * b ^ m * (b - a)",
+  "informal": "Two-sided tangent-line (generalised Bernoulli / mean-value) inequality for powers in a linearly ordered commutative ring: for a, b ≥ 0, (m+1) a^m (b - a) ≤ b^(m+1) - a^(m+1) ≤ (m+1) b^m (b - a). Promoted from Mathlib2.gen_an_amgm_finset_ordered_ring_aux1 (the left inequality).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.gen_an_amgm_finset_ordered_ring_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2275104264",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b : R), 0 ≤ a → 0 ≤ b → ∀ (m : ℕ), (↑m + 1) * a ^ m * (b - a) ≤ b ^ (m + 1) - a ^ (m + 1) ∧ b ^ (m + 1) - a ^ (m + 1) ≤ (↑m + 1) * b ^ m * (b - a)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:09:29+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:11:39+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:11:51+0800"
+}

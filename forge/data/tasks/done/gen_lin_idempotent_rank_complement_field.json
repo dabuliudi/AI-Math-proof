@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_idempotent_rank_complement_field",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = A) : Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = A), Matrix.rank A + Matrix.rank (1 - A) = Fintype.card ι",
+  "informal": "Generalizes Mathlib2.lin_idempotent_rank_complement: ℝ → arbitrary field K, Fin n → arbitrary Fintype. Proof idea: avoid the trace argument (fails to conclude in positive characteristic); instead range(1-A) = ker A for idempotent A and rank-nullity, or Sylvester (A(1-A)=0 gives ≤) plus rank subadditivity for A + (1-A) = 1 (gives ≥).",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_idempotent_rank_complement",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "3777067139",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), A * A = A → A.rank + (1 - A).rank = Fintype.card ι",
+  "attempts": [],
+  "created_at": "2026-11-15T02:05:47+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:07:38+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:08:19+0800"
+}

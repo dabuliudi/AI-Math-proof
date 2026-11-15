@@ -1,0 +1,19 @@
+{
+  "name": "alg_artin_schreier_irreducible_zmod_s1h3",
+  "statement": ": ∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → CharP (AdjoinRoot g) p",
+  "closed": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → CharP (AdjoinRoot g) p",
+  "informal": "alg_artin_schreier_irreducible_zmod 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "alg_artin_schreier_irreducible_zmod",
+  "original": "",
+  "proposed_by": "r4_prover_10",
+  "hash": "2697683874",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → CharP (AdjoinRoot g) p",
+  "attempts": [],
+  "created_at": "2026-11-15T02:12:30+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_10",
+  "claimed_at": "2026-11-15T02:13:41+0800",
+  "closed_by": "r4_prover_10",
+  "finished_at": "2026-11-15T02:13:51+0800"
+}

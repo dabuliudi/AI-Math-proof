@@ -1,0 +1,19 @@
+{
+  "name": "bld4_sqrt_two_rec_defect_tsum_lower",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) : Real.pi ^ 2 / 3 - Real.pi ^ 4 / 180 ≤ ∑' n : ℕ, (2 - a n)",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)), Real.pi ^ 2 / 3 - Real.pi ^ 4 / 180 ≤ ∑' n : ℕ, (2 - a n)",
+  "informal": "Uses Mathlib2.bld2_sqrt_two_rec_defect_summable, Mathlib2.ana_sqrt_two_rec_closed_form and Mathlib2.ana_sin_ge_cubic_of_nonneg: termwise 2 − a_n ≥ π^2/4^(n+1) − π^4/(192·16^n) (closed form + cubic sine bound, as in the pointwise estimate). The right side is a difference of geometric series with sum π^2/3 − π^4/180; bld2_sqrt_two_rec_defect_summable supplies summability of the left side so tsum comparison (hasSum_le / tsum_le_tsum) applies. Improves the bound 8/3 of bld3_sqrt_two_rec_defect_tsum_bounds.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_sqrt_two_rec_defect_summable, Mathlib2.ana_sqrt_two_rec_closed_form, Mathlib2.ana_sin_ge_cubic_of_nonneg",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "3560113047",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → Real.pi ^ 2 / 3 - Real.pi ^ 4 / 180 ≤ ∑' (n : ℕ), (2 - a n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:04+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:01:19+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:02:26+0800"
+}

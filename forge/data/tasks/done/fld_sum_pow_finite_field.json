@@ -1,0 +1,19 @@
+{
+  "name": "fld_sum_pow_finite_field",
+  "statement": "(K : Type) [Field K] [Fintype K] (k : ℕ) (hk : 0 < k) : ∑ x : K, x ^ k = if (Fintype.card K - 1) ∣ k then (-1 : K) else 0",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] (k : ℕ) (hk : 0 < k), ∑ x : K, x ^ k = if (Fintype.card K - 1) ∣ k then (-1 : K) else 0",
+  "informal": "Complete power-sum formula over a finite field F_q: for k > 0, the sum of x^k over all x is -1 if (q-1) | k and 0 otherwise — since k > 0 the term x = 0 contributes 0, so the sum equals the sum over units, which is FiniteField.sum_pow_units.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2320367511",
+  "type": "∀ (K : Type) [inst : Field K] [inst_1 : Fintype K] (k : ℕ), 0 < k → ∑ x, x ^ k = if Fintype.card K - 1 ∣ k then -1 else 0",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:01+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:21:41+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:27:03+0800"
+}

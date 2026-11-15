@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_commutator_ne_one_card",
+  "statement": "(R : Type*) [CommRing R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι R) (hc : (Fintype.card ι : R) ≠ 0) : A * B - B * A ≠ 1",
+  "closed": "∀ (R : Type*) [CommRing R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι R) (hc : (Fintype.card ι : R) ≠ 0), A * B - B * A ≠ 1",
+  "informal": "Generalizes Mathlib2.lin_commutator_ne_one: ℝ → any commutative ring in which the size of the matrix is nonzero (covers every characteristic-0 field, and char p with p ∤ n; false when char divides n), Fin (n+1) → Fintype. Proof idea: trace(AB − BA) = 0 but trace 1 = card ι.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_commutator_ne_one",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "640692144",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A B : Matrix ι ι R), ↑(Fintype.card ι) ≠ 0 → A * B - B * A ≠ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:31+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:10:40+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:10:54+0800"
+}

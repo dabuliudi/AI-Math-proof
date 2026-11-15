@@ -1,0 +1,19 @@
+{
+  "name": "geo_equilateral_iff_sum_sq",
+  "statement": "(a b c : ℂ) : (‖a - b‖ = ‖b - c‖ ∧ ‖b - c‖ = ‖c - a‖) ↔ a ^ 2 + b ^ 2 + c ^ 2 = a * b + b * c + c * a",
+  "closed": "∀ (a b c : ℂ), (‖a - b‖ = ‖b - c‖ ∧ ‖b - c‖ = ‖c - a‖) ↔ a ^ 2 + b ^ 2 + c ^ 2 = a * b + b * c + c * a",
+  "informal": "A triangle abc in the complex plane is equilateral (possibly degenerate to a point) iff a² + b² + c² = ab + bc + ca — the difference factors as (a + ωb + ω²c)(a + ω²b + ωc) with ω a primitive cube root of unity; a + ωb + ω²c = 0 says c − a is b − a rotated by 60°, and conversely equal side lengths force (c−a)/(b−a) to be a primitive 6th root of unity.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "749738825",
+  "type": "∀ (a b c : ℂ), ‖a - b‖ = ‖b - c‖ ∧ ‖b - c‖ = ‖c - a‖ ↔ a ^ 2 + b ^ 2 + c ^ 2 = a * b + b * c + c * a",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:48+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:23:33+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:23:49+0800"
+}

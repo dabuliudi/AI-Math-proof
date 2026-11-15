@@ -1,0 +1,19 @@
+{
+  "name": "bld6_tsum_lucas_div_two_pow",
+  "statement": ": ∑' n : ℕ, (p3_lucas n : ℝ) / 2 ^ n = 6",
+  "closed": "∑' n : ℕ, (p3_lucas n : ℝ) / 2 ^ n = 6",
+  "informal": "Uses Mathlib2.calc_tsum_fib_div_two_pow and Mathlib2.lib_p3_lucas_cast: by lib_p3_lucas_cast L_n = 2F_(n+1) - F_n in ℝ; ∑ F_n/2^n = 2 (calc_tsum_fib_div_two_pow, also giving summability), and dropping the zero term n = 0 gives ∑ F_(n+1)/2^n = 2·2 = 4; so the sum is 2·4 - 2 = 6.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_tsum_fib_div_two_pow, Mathlib2.lib_p3_lucas_cast",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1800156948",
+  "type": "∑' (n : ℕ), ↑(Mathlib2.p3_lucas n) / 2 ^ n = 6",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:17+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:34:20+0800"
+}

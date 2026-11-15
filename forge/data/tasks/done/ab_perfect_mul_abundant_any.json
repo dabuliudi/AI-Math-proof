@@ -1,0 +1,19 @@
+{
+  "name": "ab_perfect_mul_abundant_any",
+  "statement": "(n k : ℕ) (hn : Nat.Perfect n) : Nat.Abundant (k * n)",
+  "closed": "∀ (n k : ℕ) (hn : Nat.Perfect n), Nat.Abundant (k * n)",
+  "informal": "Task 3(a) literally, k any natural number (including 0). FALSE (k = 1, k = 0).",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 3(a) / Fig. 4",
+  "original": "If n is perfect, then kn is abundant for any k ∈ N.",
+  "proposed_by": "paper_2",
+  "hash": "3620047189",
+  "type": "∀ (n k : ℕ), n.Perfect → (k * n).Abundant",
+  "attempts": [],
+  "created_at": "2026-11-15T00:59:18+0800",
+  "status": "disproved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:03:55+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:04:05+0800"
+}

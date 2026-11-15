@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_sq_modEq_neg_one_pow",
+  "statement": "(n : ℕ) : (Nat.fib n : ℤ) ^ 2 ≡ (-1) ^ (n + 1) [ZMOD (Nat.fib (n + 1) : ℤ)]",
+  "closed": "∀ (n : ℕ), (Nat.fib n : ℤ) ^ 2 ≡ (-1) ^ (n + 1) [ZMOD (Nat.fib (n + 1) : ℤ)]",
+  "informal": "Cassini's identity as a congruence: F_n^2 ≡ (-1)^(n+1) modulo F_(n+1); in particular F_n^4 ≡ 1 (mod F_(n+1)). Sharpens Mathlib2.p3_cor1_aux1 / p3_cor1_aux2 (squared Cassini), which re-derive Cassini although Mathlib2.an_cassini_int exists (also re-proved as p3_aux_period_aux1 and r3_fib_iff_five_sq_pm_four_is_square_s1h1).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_cor1_aux2",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "622255827",
+  "type": "∀ (n : ℕ), ↑(Nat.fib n) ^ 2 ≡ (-1) ^ (n + 1) [ZMOD ↑(Nat.fib (n + 1))]",
+  "attempts": [],
+  "created_at": "2026-11-15T03:09:09+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:11:12+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:11:25+0800"
+}

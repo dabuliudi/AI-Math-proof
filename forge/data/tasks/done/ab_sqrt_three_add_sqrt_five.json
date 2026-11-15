@@ -1,0 +1,19 @@
+{
+  "name": "ab_sqrt_three_add_sqrt_five",
+  "statement": ": Real.sqrt 3 + Real.sqrt 5 < 4",
+  "closed": "Real.sqrt 3 + Real.sqrt 5 < 4",
+  "informal": "sqrt 3 + sqrt 5 < 4.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 1",
+  "original": "Prove that √3 + √5 < 4.",
+  "proposed_by": "paper_2",
+  "hash": "3240666111",
+  "type": "√3 + √5 < 4",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:25+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:05:25+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:05:34+0800"
+}

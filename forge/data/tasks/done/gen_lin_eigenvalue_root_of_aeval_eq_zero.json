@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_eigenvalue_root_of_aeval_eq_zero",
+  "statement": "(R : Type*) [CommRing R] (V : Type*) [AddCommGroup V] [Module R V] [NoZeroSMulDivisors R V] (f : Module.End R V) (p : Polynomial R) (hp : Polynomial.aeval f p = 0) (μ : R) (hμ : f.HasEigenvalue μ) : p.IsRoot μ",
+  "closed": "∀ (R : Type*) [CommRing R] (V : Type*) [AddCommGroup V] [Module R V] [NoZeroSMulDivisors R V] (f : Module.End R V) (p : Polynomial R) (hp : Polynomial.aeval f p = 0) (μ : R) (hμ : f.HasEigenvalue μ), p.IsRoot μ",
+  "informal": "Generalizes Mathlib2.lin_involution_eigenvalue: ℝ → any commutative ring R acting without zero-smul-divisors (e.g. any field), and the relation f*f = 1 → an arbitrary polynomial relation p(f) = 0: every eigenvalue is a root of p (the original is p = X²−1). Proof idea: for an eigenvector v, p(f) v = p(μ) • v (Module.End.aeval_apply_of_hasEigenvector), so p(μ) • v = 0 with v ≠ 0.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_involution_eigenvalue",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "3276135877",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (V : Type u_2) [inst_1 : AddCommGroup V] [inst_2 : Module R V] [NoZeroSMulDivisors R V] (f : Module.End R V) (p : Polynomial R), (Polynomial.aeval f) p = 0 → ∀ (μ : R), f.HasEigenvalue μ → p.IsRoot μ",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:54+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:11:11+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:11:31+0800"
+}

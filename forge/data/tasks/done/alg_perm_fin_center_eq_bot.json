@@ -1,0 +1,19 @@
+{
+  "name": "alg_perm_fin_center_eq_bot",
+  "statement": "(n : ℕ) (hn : 3 ≤ n) : Subgroup.center (Equiv.Perm (Fin n)) = ⊥",
+  "closed": "∀ (n : ℕ) (hn : 3 ≤ n), Subgroup.center (Equiv.Perm (Fin n)) = ⊥",
+  "informal": "The center of the symmetric group S_n is trivial for n ≥ 3 — if σ i = j ≠ i pick k ∉ {i, j}; then σ does not commute with the transposition swap j k.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "1176638499",
+  "type": "∀ (n : ℕ), 3 ≤ n → Subgroup.center (Equiv.Perm (Fin n)) = ⊥",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:19+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_6",
+  "claimed_at": "2026-11-15T01:53:48+0800",
+  "closed_by": "r4_prover_6",
+  "finished_at": "2026-11-15T01:54:43+0800"
+}

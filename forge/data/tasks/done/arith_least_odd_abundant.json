@@ -1,0 +1,19 @@
+{
+  "name": "arith_least_odd_abundant",
+  "statement": "(n : ℕ) (ho : Odd n) (ha : n.Abundant) : 945 ≤ n",
+  "closed": "∀ (n : ℕ) (ho : Odd n) (ha : n.Abundant), 945 ≤ n",
+  "informal": "945 is the least odd abundant number — for odd n < 945: n has at most 3 distinct prime factors unless n ≥ 3·5·7·11; bound σ(n)/n < ∏ p/(p-1) and handle the families 3^a5^b7^c < 945 (or a finite case check).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "470307878",
+  "type": "∀ (n : ℕ), Odd n → n.Abundant → 945 ≤ n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:28+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:09:12+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:11:34+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "calc_card_surjective_fin_three",
+  "statement": "(n : ℕ) (hn : 0 < n) : (((Finset.univ : Finset (Fin n → Fin 3)).filter (fun f => Function.Surjective f)).card : ℤ) = 3 ^ n - 3 * 2 ^ n + 3",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), (((Finset.univ : Finset (Fin n → Fin 3)).filter (fun f => Function.Surjective f)).card : ℤ) = 3 ^ n - 3 * 2 ^ n + 3",
+  "informal": "Number of surjections from an n-set (n ≥ 1) onto a 3-set is 3ⁿ − 3·2ⁿ + 3 — inclusion–exclusion over the missed values; count functions avoiding a given value (2ⁿ) and avoiding two values (1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3677621439",
+  "type": "∀ (n : ℕ), 0 < n → ↑{f | Function.Surjective f}.card = 3 ^ n - 3 * 2 ^ n + 3",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:16+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T07:57:49+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T07:58:35+0800"
+}

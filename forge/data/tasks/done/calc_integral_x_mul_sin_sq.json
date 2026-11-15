@@ -1,0 +1,19 @@
+{
+  "name": "calc_integral_x_mul_sin_sq",
+  "statement": ": ∫ x in (0:ℝ)..Real.pi, x * Real.sin x ^ 2 = Real.pi ^ 2 / 4",
+  "closed": "∫ x in (0:ℝ)..Real.pi, x * Real.sin x ^ 2 = Real.pi ^ 2 / 4",
+  "informal": "∫₀^π x sin²x dx = π²/4 — sin² = (1−cos 2x)/2, antiderivative x²/4 − x sin(2x)/4 − cos(2x)/8; or symmetry x ↦ π−x with integral_sin_sq.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3780753200",
+  "type": "∫ (x : ℝ) in 0..Real.pi, x * Real.sin x ^ 2 = Real.pi ^ 2 / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T07:39:20+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T07:57:39+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T07:57:48+0800"
+}

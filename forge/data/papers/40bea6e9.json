@@ -1,0 +1,108 @@
+{
+  "file": "2408.15180v2.pdf",
+  "sha256": "40bea6e9f3a5ec4f7b3c89730c3c1934d84279ad31f95d834171f0ee58e29574",
+  "pages": 18,
+  "method": "规则识别；原文切片可追溯不等于数学语义理解；无 OCR",
+  "statements": [
+    {
+      "id": "40bea6e9:1",
+      "kind": "conjecture",
+      "title": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there",
+      "page": 1,
+      "text": "Conjecture 1 (ABC conjecture).For every positive real numberε >0, there\nexist only finitely many triples of coprime integers (a, b, c) such thata+b=c\nand\nc >rad(abc)1+ε.\nHere, rad(n) = Qp|n pis the product of all prime factors ofn.\nThe conjecture implies many deep theorems or conjectures in number theory. For\nexample, Fermat’s Last Theorem (FLT) for exponentn≥6 is a direct corollary\nof an explicit quantitative version of the ABC conjecture [9], while the currently\nknown proof by Wiles [25] and Taylor–Wiles [22] requires heavy machinery (See\n[3] for a detailed survey). Also, Roth’s theorem [17] and Faltings’ theorem [8]\nboth follow from the ABC conjecture [23]; note that the proof of each theorem\nearned its corresponding author a Fields medal.\narXiv:2408.15180v2  [cs.LO]  25 Sep 2025",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:2",
+      "kind": "theorem",
+      "title": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-",
+      "page": 2,
+      "text": "Theorem 1 (Mason–Stothers).Letkbe any field anda, b, c∈k[t]be non-\nzero, pairwise coprime polynomials satisfyinga+b+c= 0. Then we either have\na′ =b ′ =c ′ = 0wheref ′ denotes the (formal) derivative off∈k[t]byt, or\nmax{deg(a),deg(b),deg(c)}<deg(rad(abc)).",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:3",
+      "kind": "theorem",
+      "title": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe",
+      "page": 3,
+      "text": "Theorem 2 (F ermat–Catalan Conjecture for Polynomials).Letkbe\nany field. Letp, q, r≥1be integers not divisible by the characteristic ofksuch\nthat1/p+ 1/q+ 1/r≤1. Letu, v, w∈kbe arbitrary nonzero constants. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nuap +vb q +wc r = 0consists of constantsa, b, c∈k.\nLetu=v=−w= 1 andp=q=r=n≥3 in Theorem 2 to recover the\nFermat’s Last Theorem for polynomials.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:4",
+      "kind": "corollary",
+      "title": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any",
+      "page": 3,
+      "text": "Corollary 1 (F ermat’s Last Theorem for Polynomials).Letkbe any\nfield. Letn≥3be any integer not divisible by the characteristic ofk. Then\nany triple(a, b, c)of nonzero and pairwise coprime polynomials ink[t]satisfying\nan +b n =c n should be constantsa, b, c∈k.\nUsing Theorem 2, we can obtain the following corollary.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:5",
+      "kind": "theorem",
+      "title": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a",
+      "page": 3,
+      "text": "Theorem 3 (Non-parametrizablility of an Elliptic Curve).Letkbe a\nfield of characteristic̸= 2,3. If rational functionsf(t), g(t)∈k(t)satisfyg(t) 2 =\nf(t) 3 + 1, then bothf(t)andg(t)are constants ink.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:6",
+      "kind": "theorem",
+      "title": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈",
+      "page": 4,
+      "text": "Theorem 4 (Davenport).Letkbe a field of characteristic zero. Letf(t), g(t)∈\nk[t]be non-constant polynomials such thatf 3 ̸=g 2. Then\ndeg(f 3 −g 2)≥ 12 deg(f) + 1.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:7",
+      "kind": "lemma",
+      "title": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+      "page": 4,
+      "text": "Lemma 1.For a nonzero polynomiala∈k[t],a/rad(a)dividesa ′.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:8",
+      "kind": "lemma",
+      "title": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+      "page": 4,
+      "text": "Lemma 2.For any nonzeroa∈k[t],a/rad(a)dividesW(a, b) =ab ′ −a ′b.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:9",
+      "kind": "lemma",
+      "title": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree",
+      "page": 7,
+      "text": "Lemma 3.For any fieldkand a polynomiala∈k[X]of degree≥1, the degree\nof its radicalrad(a)is also at least one.\nA formal proof of Lemma 3 requires more work, however. We need to explicitly\ntake a prime factorpofaand show that it is also a prime factor of rad(a). We\nfirst show that for any elementaof a general monoidM, a primepdividesaif\nand only if it divides rad(a); this is done by using that the prime divisors ofa\nand rad(a) are the same.",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:10",
+      "kind": "theorem",
+      "title": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-",
+      "page": 11,
+      "text": "Theorem 5.Letkbe any field of characteristic zero, anda, b, c∈k[t]be non-\nzero polynomials satisfyinga+b+c= 0. Then we either havea, b, c∈kor\nmax{deg(a),deg(b),deg(c)}<deg(rad(a)) + deg(rad(b)) + deg(c).\nNote that we needkto have characteristic zero in Theorem 5. If chark=\np >0, then a counterexample is (a, b, c) = (tp+1,−t(1 +t) p, t).",
+      "has_proof": false,
+      "confidence": 0.9
+    },
+    {
+      "id": "40bea6e9:11",
+      "kind": "theorem",
+      "title": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a",
+      "page": 16,
+      "text": "Theorem 6 (Mason).Letkbe an algebraically closed field andCbe a\nsmooth projective curve overk. Leta, b∈k(C)satisfyinga+b= 1, and let\nSbe a finite subset of points inC(k)containing all the zeros and poles ofa\nandb. Then eithera, b∈k × or\nmax{deg(a),deg(b)} ≤2g−2 +|S|.\nWhenC=P 1, this reduces to the Mason–Stothers theorem: a zero-sum\ncoprime triplea, b, cof polynomials gives (−a/c) + (−b/c) = 1, and the\nabove inequality becomes\nmax{deg(a),deg(b),deg(c)}\n= max\n\u001a\ndeg\n\u0010\n− ac \u0011 ,deg \u0012− bc \u0013\u001b\n≤ −2 +|S|= deg(rad(abc))−1,\nwhereS={zeros ofabc} ∪ {∞}and|S|= deg(rad(abc)) + 1. Silverman [18]\ngives a short proof of the theorem using Riemann–Hurwitz formula.\nAcknowledgement",
+      "has_proof": false,
+      "confidence": 0.9
+    }
+  ],
+  "note": "规则提取可能漏掉或截断命题；页码是 PDF 页序。形式化时以原文为准。"
+}

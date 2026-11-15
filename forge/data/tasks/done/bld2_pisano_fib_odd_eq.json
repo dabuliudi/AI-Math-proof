@@ -1,0 +1,19 @@
+{
+  "name": "bld2_pisano_fib_odd_eq",
+  "statement": "(n : ℕ) (h5 : 5 ≤ n) (hodd : Odd n) : p3_pisano (Nat.fib n) = 4 * n",
+  "closed": "∀ (n : ℕ) (h5 : 5 ≤ n) (hodd : Odd n), p3_pisano (Nat.fib n) = 4 * n",
+  "informal": "Uses Mathlib2.p3_aux_period and Mathlib2.an_cassini_int: 4n is a period (p3_aux_period at index 2n, fib n ∣ fib (2n)), so the period k divides 4n and n ∣ k, k ∈ {n, 2n, 4n}; k = n fails since fib (n+1) ≡ fib (n-1) ≢ 1; k = 2n fails since fib (2n+1) = fib(n)^2 + fib(n+1)^2 ≡ fib(n-1)^2 ≡ (-1)^n = -1 mod fib n by Cassini, and fib n > 2.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.p3_aux_period, Mathlib2.an_cassini_int",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "101219416",
+  "type": "∀ (n : ℕ), 5 ≤ n → Odd n → Mathlib2.p3_pisano (Nat.fib n) = 4 * n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:50:41+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_4",
+  "claimed_at": "2026-11-15T02:58:02+0800",
+  "closed_by": "r7_prover_4",
+  "finished_at": "2026-11-15T02:59:24+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "fld_finrank_adjoin_sqrt_two_add_sqrt_three",
+  "statement": ": Module.finrank ℚ (IntermediateField.adjoin ℚ ({Real.sqrt 2 + Real.sqrt 3} : Set ℝ)) = 4",
+  "closed": "Module.finrank ℚ (IntermediateField.adjoin ℚ ({Real.sqrt 2 + Real.sqrt 3} : Set ℝ)) = 4",
+  "informal": "[ℚ(√2+√3) : ℚ] = 4 — IntermediateField.adjoin.finrank reduces to the degree of the minimal polynomial, which is X^4 - 10X^2 + 1; Uses Mathlib2.poly_x4_sub_10x2_add_1_irreducible_int (irreducibility over ℤ, hence over ℚ by Gauss) to identify the minimal polynomial.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2567375816",
+  "type": "Module.finrank ℚ ↥ℚ⟮√2 + √3⟯ = 4",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:04+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:31:55+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:35:11+0800"
+}

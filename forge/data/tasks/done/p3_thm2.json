@@ -1,0 +1,19 @@
+{
+  "name": "p3_thm2",
+  "statement": "(p n : ℕ) (hp : p.Prime) (hodd : Odd p) (h3 : p % 3 = 2) (h5 : p % 5 = 2 ∨ p % 5 = 3) (hn : n = 2 * p ∨ n = 4 * p) : Nat.fib n ≡ 1 [MOD 2] ∧ (Nat.fib (Nat.fib n + 2) : ℤ) - 1 ≡ 0 [ZMOD Nat.fib n]",
+  "closed": "∀ (p n : ℕ) (hp : p.Prime) (hodd : Odd p) (h3 : p % 3 = 2) (h5 : p % 5 = 2 ∨ p % 5 = 3) (hn : n = 2 * p ∨ n = 4 * p), Nat.fib n ≡ 1 [MOD 2] ∧ (Nat.fib (Nat.fib n + 2) : ℤ) - 1 ≡ 0 [ZMOD Nat.fib n]",
+  "informal": "for n = 2p or 4p with p an odd prime, p = 2 mod 3, p = ±2 mod 5: F_n is odd and F_n divides F_{F_n+2} - 1",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Theorem 2",
+  "original": "Let $n=2p$ or $n=4p$, where $p$ is an odd prime such that $p\\equiv 2\\bmod 3$ and $p\\equiv\\pm 2\\bmod 5$. Then $F_n\\equiv 1\\bmod 2$ and $F_{F_n+2}-1\\equiv 0\\bmod F_n$.",
+  "proposed_by": "paper_3",
+  "hash": "4017202899",
+  "type": "∀ (p n : ℕ), Nat.Prime p → Odd p → p % 3 = 2 → p % 5 = 2 ∨ p % 5 = 3 → n = 2 * p ∨ n = 4 * p → Nat.fib n ≡ 1 [MOD 2] ∧ ↑(Nat.fib (Nat.fib n + 2)) - 1 ≡ 0 [ZMOD ↑(Nat.fib n)]",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:00+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:30:06+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:30:31+0800"
+}

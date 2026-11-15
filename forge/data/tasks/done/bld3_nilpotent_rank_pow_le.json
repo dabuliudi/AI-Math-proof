@@ -1,0 +1,19 @@
+{
+  "name": "bld3_nilpotent_rank_pow_le",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) : Matrix.rank (A ^ k) ≤ Fintype.card ι - k",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ), Matrix.rank (A ^ k) ≤ Fintype.card ι - k",
+  "informal": "Uses Mathlib2.bld2_rank_pow_convex and Mathlib2.bld_nilpotent_rank_bound: by convexity the drops d_k are non-increasing, so once d_k = 0 the rank is constant forever; nilpotency forces that constant to be 0, hence the rank drops by at least 1 at each step until it reaches 0, giving rank A^k ≤ n - k (truncated subtraction).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_rank_pow_convex, Mathlib2.bld_nilpotent_rank_bound",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "2312597371",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ k).rank ≤ Fintype.card ι - k",
+  "attempts": [],
+  "created_at": "2026-11-15T03:10:00+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_1",
+  "claimed_at": "2026-11-15T03:16:08+0800",
+  "closed_by": "r8_prover_1",
+  "finished_at": "2026-11-15T03:16:36+0800"
+}

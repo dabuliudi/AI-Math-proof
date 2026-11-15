@@ -1,0 +1,15 @@
+{
+  "name": "gr_goodman_six_two_mono_triangles",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : Fintype.card V = 6) : 2 ≤ (G.cliqueFinset 3).card + (Gᶜ.cliqueFinset 3).card",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : Fintype.card V = 6), 2 ≤ (G.cliqueFinset 3).card + (Gᶜ.cliqueFinset 3).card",
+  "informal": "Goodman: any 2-colouring of the edges of K₆ has at least two monochromatic triangles (strengthens Mathlib2.r3_ramsey_three_three, which gives one) — count non-monochromatic triangles: each has exactly two vertices where its two edges differ in colour, so their number is ½∑_v deg(v)(5 − deg(v)) ≤ ½·6·6 = 18, and 20 − 18 = 2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "1874708626",
+  "type": "∀ (V : Type) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], Fintype.card V = 6 → 2 ≤ (G.cliqueFinset 3).card + (Gᶜ.cliqueFinset 3).card",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:57+0800",
+  "status": "open"
+}

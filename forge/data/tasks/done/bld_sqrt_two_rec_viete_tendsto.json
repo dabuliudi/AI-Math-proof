@@ -1,0 +1,19 @@
+{
+  "name": "bld_sqrt_two_rec_viete_tendsto",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) : Filter.Tendsto (fun n : ℕ => ∏ i ∈ Finset.range n, a (i + 1) / 2) Filter.atTop (nhds (2 / Real.pi))",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)), Filter.Tendsto (fun n : ℕ => ∏ i ∈ Finset.range n, a (i + 1) / 2) Filter.atTop (nhds (2 / Real.pi))",
+  "informal": "Uses Mathlib2.ana_sqrt_two_rec_closed_form (and the finite product identity derived from it): the partial products equal 1/(2^n sin(π/2^(n+1))), and 2^n sin(π/2^(n+1)) → π/2 since sin t / t → 1. This is Viète's formula 2/π = (√2/2)(√(2+√2)/2)⋯.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.ana_sqrt_two_rec_closed_form",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1915685716",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → Filter.Tendsto (fun n => ∏ i ∈ Finset.range n, a (i + 1) / 2) Filter.atTop (nhds (2 / Real.pi))",
+  "attempts": [],
+  "created_at": "2026-11-15T02:33:08+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_1",
+  "claimed_at": "2026-11-15T02:37:55+0800",
+  "closed_by": "r6_prover_1",
+  "finished_at": "2026-11-15T02:38:49+0800"
+}

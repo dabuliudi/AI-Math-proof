@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_rank_pow_succ_lt_of_isNilpotent_of_ne_zero",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) (hk : A ^ k ≠ 0) : (A ^ (k + 1)).rank < (A ^ k).rank",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) (hk : A ^ k ≠ 0), (A ^ (k + 1)).rank < (A ^ k).rank",
+  "informal": "promoted from Mathlib2.bld5_nilpotent_pow_rank_succ_eq_zero_aux2 (hypothesis restated as A^k ≠ 0 instead of rank ≠ 0): for a nilpotent matrix the ranks of the powers strictly decrease as long as the power is nonzero.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "2323400746",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), A ^ k ≠ 0 → (A ^ (k + 1)).rank < (A ^ k).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T07:55:06+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:56:59+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:57:17+0800"
+}

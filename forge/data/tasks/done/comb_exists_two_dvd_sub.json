@@ -1,0 +1,19 @@
+{
+  "name": "comb_exists_two_dvd_sub",
+  "statement": "(n : ℕ) (hn : 0 < n) (f : Fin (n + 1) → ℤ) : ∃ i j : Fin (n + 1), i ≠ j ∧ (n : ℤ) ∣ f i - f j",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (f : Fin (n + 1) → ℤ), ∃ i j : Fin (n + 1), i ≠ j ∧ (n : ℤ) ∣ f i - f j",
+  "informal": "Among n+1 integers two differ by a multiple of n — pigeonhole on residues: the map i ↦ (f i : ZMod n) from Fin (n+1) to ZMod n cannot be injective.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "893622454",
+  "type": "∀ (n : ℕ), 0 < n → ∀ (f : Fin (n + 1) → ℤ), ∃ i j, i ≠ j ∧ ↑n ∣ f i - f j",
+  "attempts": [],
+  "created_at": "2026-11-15T01:33:55+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T01:57:21+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T01:57:39+0800"
+}

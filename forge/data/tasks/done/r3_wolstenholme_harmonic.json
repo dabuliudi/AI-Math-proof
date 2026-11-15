@@ -1,0 +1,80 @@
+{
+  "name": "r3_wolstenholme_harmonic",
+  "statement": "(p : ℕ) (hp : p.Prime) (h5 : 5 ≤ p) : p ^ 2 ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h5 : 5 ≤ p), p ^ 2 ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k",
+  "informal": "Wolstenholme's theorem: for a prime p ≥ 5 the numerator of H_{p-1} is divisible by p^2, stated as p^2 | (p-1)! * (1 + 1/2 + ... + 1/(p-1)) with exact natural-number divisions. Proof idea: pair k with p-k: 1/k + 1/(p-k) = p/(k(p-k)), so 2·S = p·Σ (p-1)!/(k(p-k)); modulo p the inner sum is -(p-1)!·Σ k^{-2} ≡ -(p-1)!·Σ_{j=1}^{p-1} j^2 = -(p-1)!·(p-1)p(2p-1)/6 ≡ 0 for p ≥ 5 (inversion permutes the units of ZMod p); finally p odd lets one cancel the 2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "2576172964",
+  "type": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → p ^ 2 ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:36+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_5",
+  "claimed_at": "2026-11-15T01:25:37+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_5",
+      "body": "theorem r3_wolstenholme_harmonic (p : ℕ) (hp : p.Prime) (h5 : 5 ≤ p) : p ^ 2 ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k := by\n  have H : (∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k))))\n      ∧ (∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / (p - k) = ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k)\n      ∧ (∀ k ∈ Finset.Icc 1 (p - 1), (((p - 1).factorial / (k * (p - k)) : ℕ) : ZMod p) = ((k : ZMod p)⁻¹) ^ 2)\n      ∧ (∑ k ∈ Finset.Icc 1 (p - 1), ((k : ZMod p)⁻¹) ^ 2 = 0) := by\n    refine ⟨?_, ?_, ?_, ?_⟩\n    · sorry\n    · sorry\n    · sorry\n    · sorry\n  obtain ⟨h1, h2, h3, h4⟩ := H\n  have hT : p ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / (k * (p - k)) := by\n    rw [← ZMod.natCast_eq_zero_iff, Nat.cast_sum, Finset.sum_congr rfl h3, h4]\n  have h2S : 2 * ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k = p * ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / (k * (p - k)) := by\n    rw [two_mul]; nth_rewrite 2 [← h2]; rw [← Finset.sum_add_distrib, Finset.sum_congr rfl h1, Finset.mul_sum]\n  obtain ⟨c, hc⟩ := hT\n  have hd : p ^ 2 ∣ 2 * ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k := by\n    rw [h2S, hc]; exact ⟨c, by ring⟩\n  have hodd : Nat.Coprime (p ^ 2) 2 := by\n    apply Nat.Coprime.pow_left\n    rw [Nat.coprime_primes hp Nat.prime_two]; omega\n  exact hodd.dvd_of_dvd_mul_left hd\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_wolstenholme_harmonic_s1h1",
+          "status": "open",
+          "statement": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k)))",
+          "args": [
+            "p",
+            "hp",
+            "h5"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_wolstenholme_harmonic_s1h2",
+          "status": "open",
+          "statement": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / (p - k) = ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k",
+          "args": [
+            "p",
+            "hp",
+            "h5"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_wolstenholme_harmonic_s1h3",
+          "status": "open",
+          "statement": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (↑((p - 1).factorial / (k * (p - k))) : ZMod p) = (↑k : ZMod p)⁻¹ ^ 2",
+          "args": [
+            "p",
+            "hp",
+            "h5"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 4,
+          "task": "r3_wolstenholme_harmonic_s1h4",
+          "status": "open",
+          "statement": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∑ k ∈ Finset.Icc 1 (p - 1), (↑k : ZMod p)⁻¹ ^ 2 = 0",
+          "args": [
+            "p",
+            "hp",
+            "h5"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:29:47+0800"
+    }
+  ],
+  "closed_by": "r3_prover_5",
+  "finished_at": "2026-11-15T01:52:52+0800"
+}

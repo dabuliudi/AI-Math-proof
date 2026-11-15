@@ -1,0 +1,19 @@
+{
+  "name": "lin_two_by_two_order_three",
+  "statement": "(A : Matrix (Fin 2) (Fin 2) ℝ) (hd : Matrix.det A = 1) (ht : Matrix.trace A = -1) : A ^ 3 = 1",
+  "closed": "∀ (A : Matrix (Fin 2) (Fin 2) ℝ) (hd : Matrix.det A = 1) (ht : Matrix.trace A = -1), A ^ 3 = 1",
+  "informal": "A real 2×2 matrix with determinant 1 and trace −1 satisfies A³ = I — by 2×2 Cayley–Hamilton A² + A + I = 0, then A³ − I = (A − I)(A² + A + I) = 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_lin",
+  "hash": "1471318142",
+  "type": "∀ (A : Matrix (Fin 2) (Fin 2) ℝ), A.det = 1 → A.trace = -1 → A ^ 3 = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:15+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_3",
+  "claimed_at": "2026-11-15T01:37:13+0800",
+  "closed_by": "r4_prover_3",
+  "finished_at": "2026-11-15T01:51:57+0800"
+}

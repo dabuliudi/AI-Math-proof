@@ -1,0 +1,19 @@
+{
+  "name": "fld_minpoly_sqrt_two",
+  "statement": ": minpoly ℚ (Real.sqrt 2) = Polynomial.X ^ 2 - 2",
+  "closed": "minpoly ℚ (Real.sqrt 2) = Polynomial.X ^ 2 - 2",
+  "informal": "The minimal polynomial of √2 over ℚ is X^2 - 2 — it is monic, annihilates √2, and is irreducible over ℚ (degree 2 without rational root since √2 is irrational); conclude with minpoly.eq_of_irreducible_of_monic.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "4170433124",
+  "type": "minpoly ℚ √2 = Polynomial.X ^ 2 - 2",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:40+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:29:27+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:30:52+0800"
+}

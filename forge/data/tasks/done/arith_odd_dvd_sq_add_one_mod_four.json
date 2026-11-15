@@ -1,0 +1,19 @@
+{
+  "name": "arith_odd_dvd_sq_add_one_mod_four",
+  "statement": "(n d : ℕ) (hd : d ∣ n ^ 2 + 1) (ho : Odd d) : d % 4 = 1",
+  "closed": "∀ (n d : ℕ) (hd : d ∣ n ^ 2 + 1) (ho : Odd d), d % 4 = 1",
+  "informal": "Every odd divisor of n² + 1 is ≡ 1 (mod 4) — Uses Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq at step 1 (with b = 1) to show no prime ≡ 3 mod 4 divides n²+1; so all prime factors of d are ≡ 1 mod 4, and a product of such numbers is ≡ 1 mod 4 (induction on d).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "442893768",
+  "type": "∀ (n d : ℕ), d ∣ n ^ 2 + 1 → Odd d → d % 4 = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:17+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:58:14+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:59:09+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld6_sum_fixed_points_sub_one_sq_perm",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : ∑ σ : Equiv.Perm (Fin n), (((Finset.univ.filter (fun i => σ i = i)).card : ℤ) - 1) ^ 2 = (n.factorial : ℤ)",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), ∑ σ : Equiv.Perm (Fin n), (((Finset.univ.filter (fun i => σ i = i)).card : ℤ) - 1) ^ 2 = (n.factorial : ℤ)",
+  "informal": "Uses Mathlib2.calc_sum_sq_card_fixed_points_perm and Mathlib2.calc_sum_card_fixed_points_perm: expand (X - 1)^2 = X^2 - 2X + 1 and sum over the n! permutations: 2·n! (second moment, calc_sum_sq_card_fixed_points_perm) - 2·n! (first moment, calc_sum_card_fixed_points_perm) + n! (Fintype.card_perm) — the number of fixed points of a random permutation has variance 1.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_sum_sq_card_fixed_points_perm, Mathlib2.calc_sum_card_fixed_points_perm",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "2366431640",
+  "type": "∀ (n : ℕ), 2 ≤ n → ∑ σ, (↑{i | σ i = i}.card - 1) ^ 2 = ↑n.factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T08:24:21+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:45+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:39:05+0800"
+}

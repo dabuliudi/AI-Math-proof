@@ -1,0 +1,19 @@
+{
+  "name": "bld4_pell_five_one_iff",
+  "statement": "(x y : ℕ) : x ^ 2 = 5 * y ^ 2 + 1 ↔ ∃ n : ℕ, 2 * y = Nat.fib (6 * n) ∧ 2 * x = p3_lucas (6 * n)",
+  "closed": "∀ (x y : ℕ), x ^ 2 = 5 * y ^ 2 + 1 ↔ ∃ n : ℕ, 2 * y = Nat.fib (6 * n) ∧ 2 * x = p3_lucas (6 * n)",
+  "informal": "Uses Mathlib2.bld3_pell_five_one_solutions and Mathlib2.bld2_lucas_sq_sub_five_fib_sq: the forward direction is exactly bld3_pell_five_one_solutions. Conversely bld2_lucas_sq_sub_five_fib_sq at index 6n gives L^2 − 5F^2 = 4 over ℤ; substituting L = 2x, F = 2y and cancelling 4 gives x^2 = 5y^2 + 1.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pell_five_one_solutions, Mathlib2.bld2_lucas_sq_sub_five_fib_sq",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "53687494",
+  "type": "∀ (x y : ℕ), x ^ 2 = 5 * y ^ 2 + 1 ↔ ∃ n, 2 * y = Nat.fib (6 * n) ∧ 2 * x = Mathlib2.p3_lucas (6 * n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:06+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:00:04+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:00:22+0800"
+}

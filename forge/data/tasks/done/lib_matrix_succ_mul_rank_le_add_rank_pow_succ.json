@@ -1,0 +1,16 @@
+{
+  "name": "lib_matrix_succ_mul_rank_le_add_rank_pow_succ",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (j : ℕ) : (j + 1) * Matrix.rank A ≤ j * Fintype.card ι + Matrix.rank (A ^ (j + 1))",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (j : ℕ), (j + 1) * Matrix.rank A ≤ j * Fintype.card ι + Matrix.rank (A ^ (j + 1))",
+  "informal": "Iterated Sylvester rank inequality for matrix powers: (j+1) * rank A ≤ j * n + rank (A^(j+1)) for an n×n matrix over a field. Promoted from Mathlib2.bld_nilpotent_rank_bound_aux1.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld_nilpotent_rank_bound_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "1112129884",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (j : ℕ), (j + 1) * A.rank ≤ j * Fintype.card ι + (A ^ (j + 1)).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T03:04:28+0800",
+  "status": "known",
+  "known_as": "bld_nilpotent_rank_bound_aux1 K ι A j"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld3_iterate_shrinking_iterates_tendsto",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (n : ℕ) (hf : ∀ x y : X, x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y) (p : X) (hp : f p = p) (x : X) : Filter.Tendsto (fun k : ℕ => f^[k] x) Filter.atTop (nhds p)",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (n : ℕ) (hf : ∀ x y : X, x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y) (p : X) (hp : f p = p) (x : X), Filter.Tendsto (fun k : ℕ => f^[k] x) Filter.atTop (nhds p)",
+  "informal": "Uses Mathlib2.bld_edelstein_iterates_tendsto and Mathlib2.bld_iterate_shrinking_unique_fixed_point: n = 0 forces X subsingleton; otherwise apply Edelstein convergence to g = f^[n] (which fixes p) at each of the n starting points f^[r] x, r < n, and merge the n residue-class subsequences f^[n k + r] x = g^[k] (f^[r] x).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_edelstein_iterates_tendsto, Mathlib2.bld_iterate_shrinking_unique_fixed_point",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "3230266088",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X) (n : ℕ), (∀ (x y : X), x ≠ y → dist (f^[n] x) (f^[n] y) < dist x y) → ∀ (p : X), f p = p → ∀ (x : X), Filter.Tendsto (fun k => f^[k] x) Filter.atTop (nhds p)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:13:35+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:17:50+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:18:21+0800"
+}

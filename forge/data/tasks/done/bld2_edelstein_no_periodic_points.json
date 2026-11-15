@@ -1,0 +1,19 @@
+{
+  "name": "bld2_edelstein_no_periodic_points",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (x : X) (n : ℕ) (hn : 0 < n) (hx : f^[n] x = x) : f x = x",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (x : X) (n : ℕ) (hn : 0 < n) (hx : f^[n] x = x), f x = x",
+  "informal": "Uses Mathlib2.top_edelstein_unique_fixed_point and Mathlib2.bld_edelstein_iterates_tendsto: X is nonempty, so there is a fixed point p and f^[m] x → p; along the subsequence m = n * k the iterates are constantly x, so x = p by uniqueness of limits.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_edelstein_unique_fixed_point, Mathlib2.bld_edelstein_iterates_tendsto",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "815920039",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), x ≠ y → dist (f x) (f y) < dist x y) → ∀ (x : X) (n : ℕ), 0 < n → f^[n] x = x → f x = x",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:54+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:56:43+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:57:10+0800"
+}

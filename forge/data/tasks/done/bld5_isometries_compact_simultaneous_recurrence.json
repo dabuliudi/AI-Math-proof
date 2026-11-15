@@ -1,0 +1,19 @@
+{
+  "name": "bld5_isometries_compact_simultaneous_recurrence",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → X) (g : Y → Y) (hf : Isometry f) (hg : Isometry g) (ε : ℝ) (hε : 0 < ε) : ∃ n : ℕ, 0 < n ∧ (∀ x : X, dist (f^[n] x) x < ε) ∧ ∀ y : Y, dist (g^[n] y) y < ε",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → X) (g : Y → Y) (hf : Isometry f) (hg : Isometry g) (ε : ℝ) (hε : 0 < ε), ∃ n : ℕ, 0 < n ∧ (∀ x : X, dist (f^[n] x) x < ε) ∧ ∀ y : Y, dist (g^[n] y) y < ε",
+  "informal": "Uses Mathlib2.bld4_isometry_compact_uniform_recurrence: apply it to Prod.map f g on the compact metric space X × Y (sup metric; Prod.map of isometries is an isometry, and (Prod.map f g)^[n] = Prod.map f^[n] g^[n]) to get n > 0 with dist((f^[n] x, g^[n] y), (x, y)) < ε for all (x, y); Prod.dist_eq (max) splits it into the two components. If X or Y is empty apply the theorem to the other factor alone.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_isometry_compact_uniform_recurrence",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "2793109641",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] {Y : Type u_2} [inst_2 : MetricSpace Y] [CompactSpace Y] (f : X → X) (g : Y → Y), Isometry f → Isometry g → ∀ (ε : ℝ), 0 < ε → ∃ n, 0 < n ∧ (∀ (x : X), dist (f^[n] x) x < ε) ∧ ∀ (y : Y), dist (g^[n] y) y < ε",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:24+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:32:05+0800"
+}

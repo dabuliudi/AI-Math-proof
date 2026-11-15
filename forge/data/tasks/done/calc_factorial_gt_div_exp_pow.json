@@ -1,0 +1,19 @@
+{
+  "name": "calc_factorial_gt_div_exp_pow",
+  "statement": "(n : ℕ) (hn : 0 < n) : ((n : ℝ) / Real.exp 1) ^ n < (n.factorial : ℝ)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ((n : ℝ) / Real.exp 1) ^ n < (n.factorial : ℝ)",
+  "informal": "n! > (n/e)ⁿ for n ≥ 1 — eⁿ = ∑ nᵏ/k! > nⁿ/n! (a single term of the positive exponential series, Real.sum_le_exp_of_nonneg / strict since other terms are positive); or induction using (1+1/n)ⁿ < e.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "1873148868",
+  "type": "∀ (n : ℕ), 0 < n → (↑n / Real.exp 1) ^ n < ↑n.factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T07:42:48+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:05:36+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:06:35+0800"
+}

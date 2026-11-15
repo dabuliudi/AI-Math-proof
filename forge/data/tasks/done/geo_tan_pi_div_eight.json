@@ -1,0 +1,19 @@
+{
+  "name": "geo_tan_pi_div_eight",
+  "statement": ": Real.tan (Real.pi / 8) = Real.sqrt 2 - 1",
+  "closed": "Real.tan (Real.pi / 8) = Real.sqrt 2 - 1",
+  "informal": "tan(π/8) = √2 − 1 — use tan = sin/cos with Mathlib's closed forms for sin(π/8), cos(π/8), or tan(x/2) = (1 − cos x)/sin x at x = π/4.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "289225673",
+  "type": "Real.tan (Real.pi / 8) = √2 - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:16:18+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:22:22+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:22:49+0800"
+}

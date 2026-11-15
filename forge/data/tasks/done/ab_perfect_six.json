@@ -1,0 +1,19 @@
+{
+  "name": "ab_perfect_six",
+  "statement": ": Nat.Perfect 6",
+  "closed": "Nat.Perfect 6",
+  "informal": "6 is perfect.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.17",
+  "original": "The numbers that were chosen by these students were 6 (the smallest perfect number), and then 28.",
+  "proposed_by": "paper_2",
+  "hash": "4154205678",
+  "type": "Nat.Perfect 6",
+  "attempts": [],
+  "created_at": "2026-11-15T01:00:47+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:04:25+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:04:35+0800"
+}

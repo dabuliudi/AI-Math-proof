@@ -1,0 +1,19 @@
+{
+  "name": "lib_compactSpace_exists_lt_and_dist_lt",
+  "statement": "{Y : Type*} [PseudoMetricSpace Y] [CompactSpace Y] (u : ℕ → Y) (ε : ℝ) (hε : 0 < ε) : ∃ m n : ℕ, m < n ∧ dist (u m) (u n) < ε",
+  "closed": "∀ {Y : Type*} [PseudoMetricSpace Y] [CompactSpace Y] (u : ℕ → Y) (ε : ℝ) (hε : 0 < ε), ∃ m n : ℕ, m < n ∧ dist (u m) (u n) < ε",
+  "informal": "Pigeonhole principle in a compact pseudometric space: every sequence has two terms u m, u n with m < n at distance < ε (take a convergent subsequence). Promoted from Mathlib2.top_expanding_compact_isometry_aux2 (the same argument is used in top_isometry_compact_surjective); generalised from metric to pseudometric spaces.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.top_expanding_compact_isometry_aux2",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2107062827",
+  "type": "∀ {Y : Type u_1} [inst : PseudoMetricSpace Y] [CompactSpace Y] (u : ℕ → Y) (ε : ℝ), 0 < ε → ∃ m n, m < n ∧ dist (u m) (u n) < ε",
+  "attempts": [],
+  "created_at": "2026-11-15T03:09:54+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:12:04+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:12:17+0800"
+}

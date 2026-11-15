@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem1_4096",
+  "statement": ": p4_z 4096 = 2730 ∧ p4_m 4096 = 90 ∧ p4_r 4096 = 12 ∧ p4_x 4096 = 1560",
+  "closed": "p4_z 4096 = 2730 ∧ p4_m 4096 = 90 ∧ p4_r 4096 = 12 ∧ p4_x 4096 = 1560",
+  "informal": "Remark 1: z(4096)=2730, m(4096)=90, r(4096)=12, x(4096)=1560.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 1",
+  "original": "z(4096)=2730, m(4096)=90, r(4096)=12, x(4096)=2730-13·90=1560",
+  "proposed_by": "paper_4",
+  "hash": "4126840666",
+  "type": "Mathlib2.p4_z 4096 = 2730 ∧ Mathlib2.p4_m 4096 = 90 ∧ Mathlib2.p4_r 4096 = 12 ∧ Mathlib2.p4_x 4096 = 1560",
+  "attempts": [],
+  "created_at": "2026-11-15T02:54:27+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:00:19+0800"
+}

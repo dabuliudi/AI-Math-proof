@@ -1,0 +1,19 @@
+{
+  "name": "bld4_tripotent_trace_eq_rank_idempotent",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : A * A * A = A) (ht : A.trace = (A.rank : K)) : A * A = A",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : A * A * A = A) (ht : A.trace = (A.rank : K)), A * A = A",
+  "informal": "Uses Mathlib2.bld2_tripotent_rank_split, Mathlib2.gen_lin_idempotent_trace_eq_rank_field, Mathlib2.lib_matrix_rank_smul and Mathlib2.lib_matrix_rank_eq_zero_iff: as for the trace formula, tr A = rank(A^2 + A) − rank(A^2 − A) (idempotents (A^2 ± A)/2, trace = rank, rank_smul), while bld2_tripotent_rank_split gives rank A = rank(A^2 + A) + rank(A^2 − A). The hypothesis then forces 2·rank(A^2 − A) = 0 in K, so rank(A^2 − A) = 0 by CharZero and A^2 − A = 0 by lib_matrix_rank_eq_zero_iff.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_tripotent_rank_split, Mathlib2.gen_lin_idempotent_trace_eq_rank_field, Mathlib2.lib_matrix_rank_smul, Mathlib2.lib_matrix_rank_eq_zero_iff",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "784433812",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A * A = A → A.trace = ↑A.rank → A * A = A",
+  "attempts": [],
+  "created_at": "2026-11-15T06:58:03+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:00:35+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:01:19+0800"
+}

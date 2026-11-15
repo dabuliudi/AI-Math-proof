@@ -1,0 +1,19 @@
+{
+  "name": "p3_thm1_not_dvd",
+  "statement": "(p : ℕ) (hp : p.Prime) (h5 : 5 < p) : ¬ p ∣ p3_fibsum p",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h5 : 5 < p), ¬ p ∣ p3_fibsum p",
+  "informal": "for a prime p > 5, p does not divide S_p",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Theorem 1 (last sentence)",
+  "original": "In particular, $S_p$ is not divisible by $p$.",
+  "proposed_by": "paper_3",
+  "hash": "1514226340",
+  "type": "∀ (p : ℕ), Nat.Prime p → 5 < p → ¬p ∣ Mathlib2.p3_fibsum p",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:36+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:27:30+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:28:33+0800"
+}

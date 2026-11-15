@@ -1,0 +1,19 @@
+{
+  "name": "bld4_card_pow_prime_eq_one_ge_of_card_prime_cube",
+  "statement": "(p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2) : p ^ 2 ≤ Nat.card {g : G // g ^ p = 1}",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2), p ^ 2 ≤ Nat.card {g : G // g ^ p = 1}",
+  "informal": "Uses Mathlib2.bld3_pow_prime_mem_center_of_card_prime_cube, Mathlib2.bld3_mul_pow_prime_of_card_prime_cube and Mathlib2.bld_center_card_of_card_prime_cube: the p-th power map is a homomorphism φ : G →* center G (first two theorems); |ker φ| · |range φ| = p^3 and |range φ| ≤ |center G| = p by bld_center_card_of_card_prime_cube, so |ker φ| ≥ p^2, and ker φ is the set {g | g^p = 1}.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pow_prime_mem_center_of_card_prime_cube, Mathlib2.bld3_mul_pow_prime_of_card_prime_cube, Mathlib2.bld_center_card_of_card_prime_cube",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "1765448620",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → p ≠ 2 → p ^ 2 ≤ Nat.card { g // g ^ p = 1 }",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:55+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:04:29+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:04:53+0800"
+}

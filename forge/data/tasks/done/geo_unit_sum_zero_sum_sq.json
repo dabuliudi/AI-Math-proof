@@ -1,0 +1,19 @@
+{
+  "name": "geo_unit_sum_zero_sum_sq",
+  "statement": "(a b c : ℂ) (ha : ‖a‖ = 1) (hb : ‖b‖ = 1) (hc : ‖c‖ = 1) (h : a + b + c = 0) : a ^ 2 + b ^ 2 + c ^ 2 = 0",
+  "closed": "∀ (a b c : ℂ) (ha : ‖a‖ = 1) (hb : ‖b‖ = 1) (hc : ‖c‖ = 1) (h : a + b + c = 0), a ^ 2 + b ^ 2 + c ^ 2 = 0",
+  "informal": "For unit complex numbers with a+b+c = 0, also a²+b²+c² = 0 — conj a = a⁻¹ etc., so ab+bc+ca = abc·conj(a+b+c) = 0, and a²+b²+c² = (a+b+c)² − 2(ab+bc+ca).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "1597412207",
+  "type": "∀ (a b c : ℂ), ‖a‖ = 1 → ‖b‖ = 1 → ‖c‖ = 1 → a + b + c = 0 → a ^ 2 + b ^ 2 + c ^ 2 = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:07+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_5",
+  "claimed_at": "2026-11-15T02:30:08+0800",
+  "closed_by": "r5_prover_5",
+  "finished_at": "2026-11-15T02:30:22+0800"
+}

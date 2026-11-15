@@ -1,0 +1,15 @@
+{
+  "name": "an_hockey_stick",
+  "statement": "(n k : ℕ) : ∑ i ∈ Finset.range (n + 1), Nat.choose (i + k) k = Nat.choose (n + k + 1) (k + 1)",
+  "closed": "∀ (n k : ℕ), ∑ i ∈ Finset.range (n + 1), Nat.choose (i + k) k = Nat.choose (n + k + 1) (k + 1)",
+  "informal": "Hockey-stick identity: sum_{i≤n} C(i+k,k) = C(n+k+1,k+1).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_an",
+  "hash": "3136414095",
+  "type": "∀ (n k : ℕ), ∑ i ∈ Finset.range (n + 1), (i + k).choose k = (n + k + 1).choose (k + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:12:38+0800",
+  "status": "known",
+  "known_as": "Nat.sum_range_add_choose n k"
+}

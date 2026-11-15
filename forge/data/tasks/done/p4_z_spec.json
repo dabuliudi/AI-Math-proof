@@ -1,0 +1,19 @@
+{
+  "name": "p4_z_spec",
+  "statement": "(n : ℕ) : 3 * p4_z n < 2 * (n : ℤ) ∧ ∀ k : ℤ, 3 * k < 2 * (n : ℤ) → k ≤ p4_z n",
+  "closed": "∀ (n : ℕ), 3 * p4_z n < 2 * (n : ℤ) ∧ ∀ k : ℤ, 3 * k < 2 * (n : ℤ) → k ≤ p4_z n",
+  "informal": "The Lean definition p4_z agrees with the paper's: z(n) is the largest integer with 3 z(n) < 2n.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Introduction, definition (a)",
+  "original": "z(n) is the largest integer with 3z(n) < 2n",
+  "proposed_by": "paper_4",
+  "hash": "2734496744",
+  "type": "∀ (n : ℕ), 3 * Mathlib2.p4_z n < 2 * ↑n ∧ ∀ (k : ℤ), 3 * k < 2 * ↑n → k ≤ Mathlib2.p4_z n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:51:41+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:55+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:57:58+0800"
+}

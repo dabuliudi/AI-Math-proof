@@ -1,0 +1,19 @@
+{
+  "name": "bld4_rank_pow_eq_of_card_le",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (j : ℕ) (hj : Fintype.card ι ≤ j) : (A ^ j).rank = (A ^ Fintype.card ι).rank",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (j : ℕ) (hj : Fintype.card ι ≤ j), (A ^ j).rank = (A ^ Fintype.card ι).rank",
+  "informal": "Uses Mathlib2.bld3_rank_pow_card_stabilizes and Mathlib2.bld2_rank_pow_convex: induct on j showing rank A^(j+1) = rank A^j for j ≥ n. Base case is bld3_rank_pow_card_stabilizes; for the step, bld2_rank_pow_convex gives 2 r_{j+1} ≤ r_j + r_{j+2} = r_{j+1} + r_{j+2}, so r_{j+2} ≥ r_{j+1}, and r_{j+2} ≤ r_{j+1} by Matrix.rank_mul_le_left.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_rank_pow_card_stabilizes, Mathlib2.bld2_rank_pow_convex",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "1419314702",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (j : ℕ), Fintype.card ι ≤ j → (A ^ j).rank = (A ^ Fintype.card ι).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:33+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:03:25+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:03:49+0800"
+}

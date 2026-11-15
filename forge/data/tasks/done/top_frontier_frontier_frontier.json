@@ -1,0 +1,19 @@
+{
+  "name": "top_frontier_frontier_frontier",
+  "statement": "{X : Type*} [TopologicalSpace X] (A : Set X) : frontier (frontier (frontier A)) = frontier (frontier A)",
+  "closed": "∀ {X : Type*} [TopologicalSpace X] (A : Set X), frontier (frontier (frontier A)) = frontier (frontier A)",
+  "informal": "The frontier operator is idempotent from the second application on — frontier A is closed, so frontier (frontier A) = frontier A \\ interior (frontier A) is closed with empty interior (interior_frontier), and a closed set with empty interior is its own frontier.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "3343443344",
+  "type": "∀ {X : Type u_1} [inst : TopologicalSpace X] (A : Set X), frontier (frontier (frontier A)) = frontier (frontier A)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:26+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:22:48+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:23:15+0800"
+}

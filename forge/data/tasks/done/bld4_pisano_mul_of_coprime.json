@@ -1,0 +1,19 @@
+{
+  "name": "bld4_pisano_mul_of_coprime",
+  "statement": "(m n : ℕ) (h : Nat.Coprime m n) : p3_pisano (m * n) = Nat.lcm (p3_pisano m) (p3_pisano n)",
+  "closed": "∀ (m n : ℕ) (h : Nat.Coprime m n), p3_pisano (m * n) = Nat.lcm (p3_pisano m) (p3_pisano n)",
+  "informal": "Uses Mathlib2.bld3_pisano_dvd_pisano_of_dvd, Mathlib2.bld3_pisano_pos_and_period and Mathlib2.bld3_pisano_dvd_of_period: pisano_dvd_pisano_of_dvd (m ∣ mn, n ∣ mn) gives lcm ∣ π(mn). Conversely pos_and_period makes L = lcm(π m, π n) a period mod m and mod n (iterate the period), hence mod mn by Nat.modEq_and_modEq_iff_modEq_mul for coprime m n, and dvd_of_period gives π(mn) ∣ L. Case m = 0 forces n = 1 (both sides 0).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pisano_dvd_pisano_of_dvd, Mathlib2.bld3_pisano_pos_and_period, Mathlib2.bld3_pisano_dvd_of_period",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "666988561",
+  "type": "∀ (m n : ℕ), m.Coprime n → Mathlib2.p3_pisano (m * n) = (Mathlib2.p3_pisano m).lcm (Mathlib2.p3_pisano n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:46+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_1",
+  "claimed_at": "2026-11-15T07:00:03+0800",
+  "closed_by": "r9_prover_1",
+  "finished_at": "2026-11-15T07:00:49+0800"
+}

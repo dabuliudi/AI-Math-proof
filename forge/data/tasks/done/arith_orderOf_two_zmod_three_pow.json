@@ -1,0 +1,19 @@
+{
+  "name": "arith_orderOf_two_zmod_three_pow",
+  "statement": "(n : ℕ) : orderOf (2 : ZMod (3 ^ (n + 1))) = 2 * 3 ^ n",
+  "closed": "∀ (n : ℕ), orderOf (2 : ZMod (3 ^ (n + 1))) = 2 * 3 ^ n",
+  "informal": "2 is a primitive root modulo every power of 3: its order mod 3^(n+1) is 2·3^n = φ(3^(n+1)) — the order divides φ; Uses Mathlib2.nt2_lte_three_two_pow_three_pow_add_one at the key step: 2^(3^n) ≡ -1 ≠ 1 rules out divisors of 3^n, and the exact valuation v_3(2^(3^(n-1)) + 1) = n (with 3 ∤ 2^(3^(n-1)) - 1) rules out 2·3^(n-1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3851539724",
+  "type": "∀ (n : ℕ), orderOf 2 = 2 * 3 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:04+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:02:01+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:03:13+0800"
+}

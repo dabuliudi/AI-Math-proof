@@ -1,0 +1,19 @@
+{
+  "name": "lib_expanding_iterate_dist_le",
+  "statement": "{X : Type*} [PseudoMetricSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) (k : ℕ) (x y : X) : dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "closed": "∀ {X : Type*} [PseudoMetricSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) (k : ℕ) (x y : X), dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "informal": "Iterates of a distance non-decreasing (expanding) self-map of a pseudometric space are again expanding: dist x y ≤ dist (f^[k] x) (f^[k] y). Promoted from Mathlib2.top_expanding_compact_isometry_aux1 (the isometry analogue is re-derived in top_isometry_compact_surjective); generalised from metric to pseudometric spaces.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.top_expanding_compact_isometry_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "3675481645",
+  "type": "∀ {X : Type u_1} [inst : PseudoMetricSpace X] (f : X → X), (∀ (x y : X), dist x y ≤ dist (f x) (f y)) → ∀ (k : ℕ) (x y : X), dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:09:42+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:11:51+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:12:04+0800"
+}

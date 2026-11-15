@@ -1,0 +1,19 @@
+{
+  "name": "poly_flt_noncoprime_proportional",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (heq : a ^ n + b ^ n = c ^ n) : ∃ (d : Polynomial k) (α β γ : k), a = Polynomial.C α * d ∧ b = Polynomial.C β * d ∧ c = Polynomial.C γ * d",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (heq : a ^ n + b ^ n = c ^ n), ∃ (d : Polynomial k) (α β γ : k), a = Polynomial.C α * d ∧ b = Polynomial.C β * d ∧ c = Polynomial.C γ * d",
+  "informal": "FLT for polynomials without coprimality: in char 0, any nonzero solution of a^n + b^n = c^n (n ≥ 3) is a common polynomial d times a constant solution — take d = gcd(a,b); d^n ∣ c^n gives d ∣ c; the quotients are pairwise coprime and satisfy the same equation, so Uses Mathlib2.ms_flt_poly to make them constants.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "3037428508",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → a ^ n + b ^ n = c ^ n → ∃ d α β γ, a = Polynomial.C α * d ∧ b = Polynomial.C β * d ∧ c = Polynomial.C γ * d",
+  "attempts": [],
+  "created_at": "2026-11-15T07:16:04+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:24:29+0800"
+}

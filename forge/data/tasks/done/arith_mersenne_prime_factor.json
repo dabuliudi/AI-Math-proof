@@ -1,0 +1,19 @@
+{
+  "name": "arith_mersenne_prime_factor",
+  "statement": "(p q : ℕ) (hp : p.Prime) (hp2 : p ≠ 2) (hq : q.Prime) (h : q ∣ 2 ^ p - 1) : q % (2 * p) = 1 ∧ (q % 8 = 1 ∨ q % 8 = 7)",
+  "closed": "∀ (p q : ℕ) (hp : p.Prime) (hp2 : p ≠ 2) (hq : q.Prime) (h : q ∣ 2 ^ p - 1), q % (2 * p) = 1 ∧ (q % 8 = 1 ∨ q % 8 = 7)",
+  "informal": "Prime factors q of 2^p - 1 (p odd prime) satisfy q ≡ 1 mod 2p and q ≡ ±1 mod 8 — the order of 2 mod q is p so p | q-1, q odd gives 2p | q-1; 2 = (2^((p+1)/2))² mod q is a square, so q ≡ ±1 mod 8.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "645679790",
+  "type": "∀ (p q : ℕ), Nat.Prime p → p ≠ 2 → Nat.Prime q → q ∣ 2 ^ p - 1 → q % (2 * p) = 1 ∧ (q % 8 = 1 ∨ q % 8 = 7)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:04+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T08:06:55+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T08:07:06+0800"
+}

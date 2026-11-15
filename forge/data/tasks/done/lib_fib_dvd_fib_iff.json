@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_dvd_fib_iff",
+  "statement": "(m n : ℕ) (hm : m ≠ 2) : Nat.fib m ∣ Nat.fib n ↔ m ∣ n",
+  "closed": "∀ (m n : ℕ) (hm : m ≠ 2), Nat.fib m ∣ Nat.fib n ↔ m ∣ n",
+  "informal": "Fibonacci divisibility criterion: for m ≠ 2, F_m ∣ F_n iff m ∣ n (converse of Nat.fib_dvd, via Nat.fib_gcd). Promoted and generalised from Mathlib2.bld2_pisano_fib_odd_eq_aux2 (also used in bld2_pisano_fib_odd_eq / bld2_pisano_fib_even_eq).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld2_pisano_fib_odd_eq_aux2",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "2137443826",
+  "type": "∀ (m n : ℕ), m ≠ 2 → (Nat.fib m ∣ Nat.fib n ↔ m ∣ n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:32+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:57:06+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:57:26+0800"
+}

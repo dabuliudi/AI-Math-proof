@@ -1,0 +1,215 @@
+{
+ "arxiv": "2611.07141v1",
+ "title": "Metallic Circles: Concyclic Tangency Points of Ford Circles over k-Fibonacci Quotients",
+ "authors": [
+  "Nicolás Piña"
+ ],
+ "url": "https://arxiv.org/abs/2611.07141",
+ "auditor": "paper_6",
+ "method": "read in full (arXiv HTML v1); statements formalised by hand, as printed",
+ "definitions": [
+  {
+   "name": "p6_kfib",
+   "lean": "noncomputable def p6_kfib (k : ℤ) (n : ℤ) : ℤ := ((!![k, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℤ) ^ n) 0 1",
+   "notes": "k-Fibonacci numbers with integer index; consistency with the paper's recurrence is p6_kfib_def"
+  }
+ ],
+ "statements": [
+  {
+   "label": "Definition (Sec 2.2)",
+   "name": "p6_kfib_def",
+   "original": "f_0=0, f_1=1, f_{n+1}=k f_n+f_{n-1}; negative indices by f_{n-1}=f_{n+1}-k f_n",
+   "lean": "(k n : ℤ) : p6_kfib k 0 = 0 ∧ p6_kfib k 1 = 1 ∧ p6_kfib k (n + 1) = k * p6_kfib k n + p6_kfib k (n - 1)",
+   "notes": "Checks that the library definition p6_kfib (entry (0,1) of M^n) satisfies the paper's defining recurrence for every integer n; this characterises it uniquely. Stated for all integers k (paper: k>=1)."
+  },
+  {
+   "label": "Eq. (3) (Sec 2.2)",
+   "name": "p6_kfib_matrix",
+   "original": "M^n = [[f_{n+1}, f_n],[f_n, f_{n-1}]], n in Z",
+   "lean": "(k n : ℤ) : (!![k, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℤ) ^ n = !![p6_kfib k (n + 1), p6_kfib k n; p6_kfib k n, p6_kfib k (n - 1)]",
+   "notes": "Integer matrix power (zpow, inverse for negative n)."
+  },
+  {
+   "label": "Sec 2.2 (unnumbered)",
+   "name": "p6_kfib_neg",
+   "original": "f_{-m} = (-1)^{m+1} f_m",
+   "lean": "(k : ℤ) (m : ℕ) : p6_kfib k (-(m : ℤ)) = (-1) ^ (m + 1) * p6_kfib k (m : ℤ)",
+   "notes": "m taken as a natural number (the paper says 'by induction')."
+  },
+  {
+   "label": "Proof of Lemma 2.3 (unnumbered)",
+   "name": "p6_addition",
+   "original": "f_{m+n} = f_m f_{n+1} + f_{m-1} f_n and companion f_{m+n+1} = f_{m+1} f_{n+1} + f_m f_n",
+   "lean": "(k m n : ℤ) : p6_kfib k (m + n) = p6_kfib k m * p6_kfib k (n + 1) + p6_kfib k (m - 1) * p6_kfib k n ∧ p6_kfib k (m + n + 1) = p6_kfib k (m + 1) * p6_kfib k (n + 1) + p6_kfib k m * p6_kfib k n",
+   "notes": "All integers m, n."
+  },
+  {
+   "label": "Lemma 2.3 (6)",
+   "name": "p6_lem23_eq6",
+   "original": "f_{2n} = f_n (f_{n-1} + f_{n+1})",
+   "lean": "(k n : ℤ) : p6_kfib k (2 * n) = p6_kfib k n * (p6_kfib k (n - 1) + p6_kfib k (n + 1))",
+   "notes": ""
+  },
+  {
+   "label": "Lemma 2.3 (7)",
+   "name": "p6_lem23_eq7",
+   "original": "f_{2n+1} = f_n^2 + f_{n+1}^2",
+   "lean": "(k n : ℤ) : p6_kfib k (2 * n + 1) = p6_kfib k n ^ 2 + p6_kfib k (n + 1) ^ 2",
+   "notes": ""
+  },
+  {
+   "label": "Lemma 2.3 (8) Cassini",
+   "name": "p6_lem23_eq8",
+   "original": "f_{n-1} f_{n+1} - f_n^2 = (-1)^n",
+   "lean": "(k n : ℤ) : p6_kfib k (n - 1) * p6_kfib k (n + 1) - p6_kfib k n ^ 2 = ((Int.negOnePow n : ℤˣ) : ℤ)",
+   "notes": "(-1)^n for integer n is Mathlib's Int.negOnePow."
+  },
+  {
+   "label": "Lemma 2.3 (9)",
+   "name": "p6_lem23_eq9",
+   "original": "f_{n+1}^2 - k f_n f_{n+1} - f_n^2 = (-1)^n",
+   "lean": "(k n : ℤ) : p6_kfib k (n + 1) ^ 2 - k * p6_kfib k n * p6_kfib k (n + 1) - p6_kfib k n ^ 2 = ((Int.negOnePow n : ℤˣ) : ℤ)",
+   "notes": ""
+  },
+  {
+   "label": "Lemma 2.3 (10) d'Ocagne",
+   "name": "p6_lem23_eq10",
+   "original": "f_a f_{b+1} - f_{a+1} f_b = (-1)^b f_{a-b}",
+   "lean": "(k a b : ℤ) : p6_kfib k a * p6_kfib k (b + 1) - p6_kfib k (a + 1) * p6_kfib k b = ((Int.negOnePow b : ℤˣ) : ℤ) * p6_kfib k (a - b)",
+   "notes": ""
+  },
+  {
+   "label": "After Lemma 2.3 (unnumbered)",
+   "name": "p6_coprime",
+   "original": "gcd(f_n, f_{n+1}) = 1",
+   "lean": "(k n : ℤ) : IsCoprime (p6_kfib k n) (p6_kfib k (n + 1))",
+   "notes": ""
+  },
+  {
+   "label": "Sec 3 (unnumbered)",
+   "name": "p6_odd_pos",
+   "original": "Note that f_{2n+1} > 0, since it is a sum of squares",
+   "lean": "(k n : ℤ) : 0 < p6_kfib k (2 * n + 1)",
+   "notes": ""
+  },
+  {
+   "label": "Proposition 2.1 (Ford), first half",
+   "name": "p6_prop21_tangent",
+   "original": "If det [[p,r],[q,s]] = ±1 then K[p,q] and K[r,s] are tangent",
+   "lean": "(p q r s : ℤ) (hq : 0 < q) (hs : 0 < s) : ((p : ℝ) / q - (r : ℝ) / s) ^ 2 + (1 / (2 * (q : ℝ) ^ 2) - 1 / (2 * (s : ℝ) ^ 2)) ^ 2 = (1 / (2 * (q : ℝ) ^ 2) + 1 / (2 * (s : ℝ) ^ 2)) ^ 2 ↔ (p * s - q * r = 1 ∨ p * s - q * r = -1)",
+   "notes": "Tangent = externally tangent: distance of centres equals sum of radii; stated as an iff (stronger than printed). Finite circles only (q,s>0); the K[1,0] line convention is not formalised. Cited result (Ford 1938)."
+  },
+  {
+   "label": "Proposition 2.1 (Ford), second half",
+   "name": "p6_prop21_disjoint",
+   "original": "two distinct Ford circles ... otherwise, they are disjoint",
+   "lean": "(p q r s : ℤ) (hq : 0 < q) (hs : 0 < s) (hne : p * s - q * r ≠ 0) (h1 : p * s - q * r ≠ 1) (h2 : p * s - q * r ≠ -1) : (1 / (2 * (q : ℝ) ^ 2) + 1 / (2 * (s : ℝ) ^ 2)) ^ 2 < ((p : ℝ) / q - (r : ℝ) / s) ^ 2 + (1 / (2 * (q : ℝ) ^ 2) - 1 / (2 * (s : ℝ) ^ 2)) ^ 2",
+   "notes": "Distinct circles read as p/q ≠ r/s i.e. ps-qr ≠ 0; disjoint = distance of centres exceeds sum of radii. Reducedness of the fractions is not needed."
+  },
+  {
+   "label": "Proposition 2.2 (Kocik), formula (1)",
+   "name": "p6_prop22_on_circles",
+   "original": "If K[p,q] and K[r,s] are tangent, their tangency point is ((pq+rs)/(q^2+s^2), 1/(q^2+s^2))",
+   "lean": "(p q r s : ℤ) (hq : 0 < q) (hs : 0 < s) (h : p * s - q * r = 1 ∨ p * s - q * r = -1) : ((((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) - (p : ℝ) / q) ^ 2 + (1 / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) - 1 / (2 * (q : ℝ) ^ 2)) ^ 2 = (1 / (2 * (q : ℝ) ^ 2)) ^ 2) ∧ ((((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) - (r : ℝ) / s) ^ 2 + (1 / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) - 1 / (2 * (s : ℝ) ^ 2)) ^ 2 = (1 / (2 * (s : ℝ) ^ 2)) ^ 2)",
+   "notes": "The point (1) lies on both circles."
+  },
+  {
+   "label": "Proposition 2.2 (Kocik), uniqueness",
+   "name": "p6_prop22_unique",
+   "original": "...their tangency point is (1)",
+   "lean": "(p q r s : ℤ) (hq : 0 < q) (hs : 0 < s) (h : p * s - q * r = 1 ∨ p * s - q * r = -1) (x y : ℝ) (h1 : (x - (p : ℝ) / q) ^ 2 + (y - 1 / (2 * (q : ℝ) ^ 2)) ^ 2 = (1 / (2 * (q : ℝ) ^ 2)) ^ 2) (h2 : (x - (r : ℝ) / s) ^ 2 + (y - 1 / (2 * (s : ℝ) ^ 2)) ^ 2 = (1 / (2 * (s : ℝ) ^ 2)) ^ 2) : x = ((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) ∧ y = 1 / ((q ^ 2 + s ^ 2 : ℤ) : ℝ)",
+   "notes": "Any common point of the two tangent circles is the point (1)."
+  },
+  {
+   "label": "Theorem 3.1 (Metallic circle)",
+   "name": "p6_thm31_circle",
+   "original": "the points P_n=(f_{2n}/f_{2n+1}, 1/f_{2n+1}), n in Z, lie on C_k: (x+k/2)^2+y^2=(k^2+4)/4",
+   "lean": "(k n : ℤ) : (((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) + (k : ℝ) / 2) ^ 2 + (1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) ^ 2 = ((k : ℝ) ^ 2 + 4) / 4",
+   "notes": "Stated for every integer k (paper: k>=1; the hypothesis is not needed)."
+  },
+  {
+   "label": "Theorem 3.1, feet",
+   "name": "p6_thm31_feet",
+   "original": "C_k meets the X-axis at (σ_k^{-1},0) and (-σ_k,0)",
+   "lean": "(k : ℤ) (x : ℝ) : (x + (k : ℝ) / 2) ^ 2 + (0 : ℝ) ^ 2 = ((k : ℝ) ^ 2 + 4) / 4 ↔ (x = (((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2)⁻¹ ∨ x = -(((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2))",
+   "notes": "Read as: the points of C_k on the axis are exactly these two."
+  },
+  {
+   "label": "Proof of Corollary 3.2",
+   "name": "p6_cor32_step",
+   "original": "x_{n+1}-x_n = k/(f_{2n+1} f_{2n+3})",
+   "lean": "(k n : ℤ) : ((p6_kfib k (2 * (n + 1)) : ℤ) : ℝ) / ((p6_kfib k (2 * (n + 1) + 1) : ℤ) : ℝ) - ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) = (k : ℝ) / (((p6_kfib k (2 * n + 1) : ℤ) : ℝ) * ((p6_kfib k (2 * n + 3) : ℤ) : ℝ))",
+   "notes": ""
+  },
+  {
+   "label": "Corollary 3.2, monotonicity",
+   "name": "p6_cor32_mono",
+   "original": "the abscissa x_n=f_{2n}/f_{2n+1} of P_n is strictly increasing in n in Z",
+   "lean": "(k : ℤ) (hk : 1 ≤ k) : StrictMono (fun n : ℤ => ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ))",
+   "notes": ""
+  },
+  {
+   "label": "Corollary 3.2 (12), n→+∞",
+   "name": "p6_cor32_lim_top",
+   "original": "lim_{n→+∞} P_n = (σ_k^{-1}, 0)",
+   "lean": "(k : ℤ) (hk : 1 ≤ k) : Filter.Tendsto (fun n : ℤ => ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) Filter.atTop (nhds ((((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2)⁻¹)) ∧ Filter.Tendsto (fun n : ℤ => 1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) Filter.atTop (nhds 0)",
+   "notes": "Coordinatewise convergence."
+  },
+  {
+   "label": "Corollary 3.2 (12), n→-∞",
+   "name": "p6_cor32_lim_bot",
+   "original": "lim_{n→-∞} P_n = (-σ_k, 0)",
+   "lean": "(k : ℤ) (hk : 1 ≤ k) : Filter.Tendsto (fun n : ℤ => ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) Filter.atBot (nhds (-(((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2))) ∧ Filter.Tendsto (fun n : ℤ => 1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) Filter.atBot (nhds 0)",
+   "notes": "Coordinatewise convergence."
+  },
+  {
+   "label": "Proposition 3.3, first sentence",
+   "name": "p6_prop33_ford",
+   "original": "translation (x,y)→(x+j,y) and reflection (x,y)→(-x,y) preserve the family of Ford circles and map tangency points to tangency points",
+   "lean": "(p q r s j : ℤ) (h : q ^ 2 + s ^ 2 ≠ 0) : (p + j * q) * s - q * (r + j * s) = p * s - q * r ∧ (-p) * s - q * (-r) = -(p * s - q * r) ∧ (((p + j * q) * q + (r + j * s) * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) = ((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) + (j : ℝ) ∧ (((-p) * q + (-r) * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ) = -(((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ))",
+   "notes": "Formalised at the level of the labels: K[p,q]→K[p+jq,q], K[p,q]→K[-p,q]; determinant preserved up to sign and formula (1) transforms accordingly."
+  },
+  {
+   "label": "Proposition 3.3, chain",
+   "name": "p6_prop33_chain",
+   "original": "translated point (f_{2n+2}/f_{2n+1},1/f_{2n+1}); reflected point with index n is the translated point with index -n-1; they lie on the circle with centre (k/2,0) and radius r_k",
+   "lean": "(k n : ℤ) : ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) + (k : ℝ) = ((p6_kfib k (2 * n + 2) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) ∧ -(((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) = ((p6_kfib k (2 * (-n - 1) + 2) : ℤ) : ℝ) / ((p6_kfib k (2 * (-n - 1) + 1) : ℤ) : ℝ) ∧ ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) = ((p6_kfib k (2 * (-n - 1) + 1) : ℤ) : ℝ) ∧ (((p6_kfib k (2 * n + 2) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) - (k : ℝ) / 2) ^ 2 + (1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)) ^ 2 = ((k : ℝ) ^ 2 + 4) / 4",
+   "notes": ""
+  },
+  {
+   "label": "Proposition 3.3, feet",
+   "name": "p6_prop33_feet",
+   "original": "which meets the axis at (σ_k,0) and (-σ_k^{-1},0)",
+   "lean": "(k : ℤ) (x : ℝ) : (x - (k : ℝ) / 2) ^ 2 + (0 : ℝ) ^ 2 = ((k : ℝ) ^ 2 + 4) / 4 ↔ (x = (((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2) ∨ x = -((((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2)⁻¹))",
+   "notes": ""
+  },
+  {
+   "label": "Remark 3.4",
+   "name": "p6_rem34",
+   "original": "the symmetry (x,y)→(-k-x,y) swaps P_n and P_{-n-1}",
+   "lean": "(k n : ℤ) : -(k : ℝ) - ((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) = ((p6_kfib k (2 * (-n - 1)) : ℤ) : ℝ) / ((p6_kfib k (2 * (-n - 1) + 1) : ℤ) : ℝ) ∧ 1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ) = 1 / ((p6_kfib k (2 * (-n - 1) + 1) : ℤ) : ℝ)",
+   "notes": ""
+  },
+  {
+   "label": "Lemma 3.5",
+   "name": "p6_lem35",
+   "original": "p/q, r/s fractions with ps-qr=±1, a>=1 integer, (u,v)=a(r,s)+(p,q); T, T' tangency points of K[p,q],K[r,s] and K[r,s],K[u,v]: d_H(T,T') = 2 arcsinh(a/2)",
+   "lean": "(p q r s a : ℤ) (ha : 1 ≤ a) (h : p * s - q * r = 1 ∨ p * s - q * r = -1) (T T' : UpperHalfPlane) (hT : (T : ℂ) = ⟨((p * q + r * s : ℤ) : ℝ) / ((q ^ 2 + s ^ 2 : ℤ) : ℝ), 1 / ((q ^ 2 + s ^ 2 : ℤ) : ℝ)⟩) (hT' : (T' : ℂ) = ⟨((r * s + (a * r + p) * (a * s + q) : ℤ) : ℝ) / ((s ^ 2 + (a * s + q) ^ 2 : ℤ) : ℝ), 1 / ((s ^ 2 + (a * s + q) ^ 2 : ℤ) : ℝ)⟩) : dist T T' = 2 * Real.arsinh ((a : ℝ) / 2)",
+   "notes": "Tangency points given by formula (1); d_H is Mathlib's hyperbolic distance on the upper half-plane. As printed there are no sign conditions on q, s, v (the formula (1) is used also for q=0 / negative denominators, per the paper's footnote)."
+  },
+  {
+   "label": "Proof of Corollary 3.6",
+   "name": "p6_arsinh_metallic",
+   "original": "arcsinh(k/2) = ln σ_k",
+   "lean": "(k : ℤ) : Real.arsinh ((k : ℝ) / 2) = Real.log (((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2)",
+   "notes": ""
+  },
+  {
+   "label": "Corollary 3.6 (Equidistance)",
+   "name": "p6_cor36",
+   "original": "d_H(P_m,P_n) = 2|m-n| ln σ_k, m,n in Z",
+   "lean": "(k : ℤ) (hk : 1 ≤ k) (m n : ℤ) (P Q : UpperHalfPlane) (hP : (P : ℂ) = ⟨((p6_kfib k (2 * m) : ℤ) : ℝ) / ((p6_kfib k (2 * m + 1) : ℤ) : ℝ), 1 / ((p6_kfib k (2 * m + 1) : ℤ) : ℝ)⟩) (hQ : (Q : ℂ) = ⟨((p6_kfib k (2 * n) : ℤ) : ℝ) / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ), 1 / ((p6_kfib k (2 * n + 1) : ℤ) : ℝ)⟩) : dist P Q = 2 * |((m - n : ℤ) : ℝ)| * Real.log (((k : ℝ) + Real.sqrt ((k : ℝ) ^ 2 + 4)) / 2)",
+   "notes": ""
+  }
+ ]
+}

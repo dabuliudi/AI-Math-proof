@@ -1,0 +1,19 @@
+{
+  "name": "bld6_card_image_two_fin_three",
+  "statement": "(n : ℕ) (hn : 0 < n) : ((Finset.univ : Finset (Fin n → Fin 3)).filter (fun f => (Finset.univ.image f).card = 2)).card = 3 * (2 ^ n - 2)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ((Finset.univ : Finset (Fin n → Fin 3)).filter (fun f => (Finset.univ.image f).card = 2)).card = 3 * (2 ^ n - 2)",
+  "informal": "Uses Mathlib2.calc_card_surjective_fin_three: for n > 0 the image of f : Fin n → Fin 3 has 1, 2 or 3 elements; size 3 means surjective (3^n - 3·2^n + 3 functions by calc_card_surjective_fin_three), size 1 means constant (3 functions), and all functions number 3^n, so size 2 occurs 3^n - (3^n - 3·2^n + 3) - 3 = 3·2^n - 6 times.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_card_surjective_fin_three",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "476167960",
+  "type": "∀ (n : ℕ), 0 < n → {f | (Finset.image f Finset.univ).card = 2}.card = 3 * (2 ^ n - 2)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:25:21+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:34:31+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:39:15+0800"
+}

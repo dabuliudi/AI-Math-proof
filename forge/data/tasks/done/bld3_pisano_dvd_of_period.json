@@ -1,0 +1,19 @@
+{
+  "name": "bld3_pisano_dvd_of_period",
+  "statement": "(m k : ℕ) (hk : ∀ i : ℕ, Nat.fib (i + k) ≡ Nat.fib i [MOD m]) : p3_pisano m ∣ k",
+  "closed": "∀ (m k : ℕ) (hk : ∀ i : ℕ, Nat.fib (i + k) ≡ Nat.fib i [MOD m]), p3_pisano m ∣ k",
+  "informal": "Uses Mathlib2.bld2_pisano_fib_odd_eq: if k = 0 trivial; otherwise by the auxiliary lemma bld2_pisano_fib_odd_eq_aux1 the Pisano period P is a positive period, and k % P is again a period smaller than P, so by minimality (Nat.sInf_le) k % P = 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_pisano_fib_odd_eq",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "2331658814",
+  "type": "∀ (m k : ℕ), (∀ (i : ℕ), Nat.fib (i + k) ≡ Nat.fib i [MOD m]) → Mathlib2.p3_pisano m ∣ k",
+  "attempts": [],
+  "created_at": "2026-11-15T03:11:13+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:19:11+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:19:32+0800"
+}

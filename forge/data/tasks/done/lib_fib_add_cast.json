@@ -1,0 +1,16 @@
+{
+  "name": "lib_fib_add_cast",
+  "statement": "(R : Type*) [CommRing R] (a b : ℕ) : ((Nat.fib (a + b) : ℕ) : R) = ((Nat.fib a : ℕ) : R) * ((Nat.fib (b + 1) : ℕ) : R) + ((Nat.fib (a + 1) : ℕ) : R) * ((Nat.fib b : ℕ) : R) - ((Nat.fib a : ℕ) : R) * ((Nat.fib b : ℕ) : R)",
+  "closed": "∀ (R : Type*) [CommRing R] (a b : ℕ), ((Nat.fib (a + b) : ℕ) : R) = ((Nat.fib a : ℕ) : R) * ((Nat.fib (b + 1) : ℕ) : R) + ((Nat.fib (a + 1) : ℕ) : R) * ((Nat.fib b : ℕ) : R) - ((Nat.fib a : ℕ) : R) * ((Nat.fib b : ℕ) : R)",
+  "informal": "promoted from Mathlib2.bld5_pisano_mul_dvd_mul_aux1 (same identity as Mathlib2.bld5_pisano_five_pow_aux1 over ℤ): subtraction form of the Fibonacci addition law F_{a+b} = F_a F_{b+1} + F_{a+1} F_b - F_a F_b in any commutative ring, with no index shift.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "3332097286",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (a b : ℕ), ↑(Nat.fib (a + b)) = ↑(Nat.fib a) * ↑(Nat.fib (b + 1)) + ↑(Nat.fib (a + 1)) * ↑(Nat.fib b) - ↑(Nat.fib a) * ↑(Nat.fib b)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:23+0800",
+  "status": "known",
+  "known_as": "bld5_pisano_mul_dvd_mul_aux1 R a b"
+}

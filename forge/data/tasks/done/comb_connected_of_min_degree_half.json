@@ -1,0 +1,19 @@
+{
+  "name": "comb_connected_of_min_degree_half",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : ∀ v : V, Fintype.card V ≤ 2 * G.degree v + 1) : G.Connected",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : ∀ v : V, Fintype.card V ≤ 2 * G.degree v + 1), G.Connected",
+  "informal": "A graph on n vertices with every degree ≥ (n-1)/2 is connected — two non-adjacent vertices u ≠ v have neighbourhoods inside V \\ {u,v} (n-2 elements) of total size ≥ n-1, so they share a neighbour; hence any two vertices are at distance ≤ 2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "1662426458",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [inst_3 : DecidableRel G.Adj], (∀ (v : V), Fintype.card V ≤ 2 * G.degree v + 1) → G.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:20+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:34:00+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:34:33+0800"
+}

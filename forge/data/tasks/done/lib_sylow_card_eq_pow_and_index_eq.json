@@ -1,0 +1,19 @@
+{
+  "name": "lib_sylow_card_eq_pow_and_index_eq",
+  "statement": "(p : ℕ) [Fact p.Prime] (G : Type*) [Group G] (n m : ℕ) (hG : Nat.card G = p ^ n * m) (hm : ¬ p ∣ m) (P : Sylow p G) : Nat.card P = p ^ n ∧ (P : Subgroup G).index = m",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (G : Type*) [Group G] (n m : ℕ) (hG : Nat.card G = p ^ n * m) (hm : ¬ p ∣ m) (P : Sylow p G), Nat.card P = p ^ n ∧ (P : Subgroup G).index = m",
+  "informal": "Order and index of a Sylow p-subgroup: if |G| = p^n * m with p ∤ m then |P| = p^n and [G : P] = m. Promoted and generalised from Mathlib2.bld3_card_sylow_of_card_prime_mul_prime_aux1 (the case |G| = r*s; same computation inline in alg_isCyclic_of_card_eq_prime_mul_prime, bld_center_eq_bot_of_card_prime_mul_prime).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld3_card_sylow_of_card_prime_mul_prime_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "1282269349",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (G : Type u_1) [inst : Group G] (n m : ℕ), Nat.card G = p ^ n * m → ¬p ∣ m → ∀ (P : Sylow p G), Nat.card ↥↑P = p ^ n ∧ (↑P).index = m",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:49+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:59:20+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:59:29+0800"
+}

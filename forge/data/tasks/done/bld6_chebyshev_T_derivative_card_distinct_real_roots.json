@@ -1,0 +1,19 @@
+{
+  "name": "bld6_chebyshev_T_derivative_card_distinct_real_roots",
+  "statement": "(n : ℕ) : (Polynomial.derivative (Polynomial.Chebyshev.T ℝ (n : ℤ))).roots.toFinset.card = n - 1",
+  "closed": "∀ (n : ℕ), (Polynomial.derivative (Polynomial.Chebyshev.T ℝ (n : ℤ))).roots.toFinset.card = n - 1",
+  "informal": "Uses Mathlib2.poly_chebyshev_T_card_distinct_real_roots and Mathlib2.lib_chebyshev_T_natDegree_le: Rolle (Polynomial.card_roots_toFinset_le_derivative) gives n = #roots(T_n) ≤ #roots(T_n') + 1 using the poly theorem; conversely #roots(T_n') ≤ natDegree T_n' ≤ natDegree T_n - 1 ≤ n - 1 by the lib degree bound (the cases n = 0, 1 give the zero / constant derivative).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_chebyshev_T_card_distinct_real_roots, Mathlib2.lib_chebyshev_T_natDegree_le",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1286196602",
+  "type": "∀ (n : ℕ), (Polynomial.derivative (Polynomial.Chebyshev.T ℝ ↑n)).roots.toFinset.card = n - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:11+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:37:44+0800"
+}

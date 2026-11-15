@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_nilpotent_det_one_add_reduced",
+  "statement": "(R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A) : Matrix.det (1 + A) = 1",
+  "closed": "∀ (R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A), Matrix.det (1 + A) = 1",
+  "informal": "Generalizes Mathlib2.lin_nilpotent_det_one_add: ℝ → any reduced commutative ring (false in non-reduced rings: det(1+[ε]) = 1+ε), Fin n → Fintype. Proof idea: charpoly(−A) = X^card as for nilpotent matrices over a reduced ring; evaluate at 1: det(1·1 − (−A)) = 1.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_nilpotent_det_one_add",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "1424733099",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [IsReduced R] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι R), IsNilpotent A → (1 + A).det = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:12+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:09:46+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:10:11+0800"
+}

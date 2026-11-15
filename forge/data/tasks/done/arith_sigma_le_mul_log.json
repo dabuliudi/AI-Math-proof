@@ -1,0 +1,19 @@
+{
+  "name": "arith_sigma_le_mul_log",
+  "statement": "(n : ℕ) (hn : 0 < n) : ArithmeticFunction.sigma 1 n ≤ n * (Nat.log 2 n + 1)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ArithmeticFunction.sigma 1 n ≤ n * (Nat.log 2 n + 1)",
+  "informal": "σ(n) ≤ n(1 + ⌊log₂ n⌋) — σ(n) = Σ_{d|n} n/d ≤ Σ_{k ≤ n} ⌊n/k⌋·[k|n] ≤ n·H_n and H_n ≤ 1 + ⌊log₂ n⌋ by dyadic grouping.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "2556829699",
+  "type": "∀ (n : ℕ), 0 < n → (ArithmeticFunction.sigma 1) n ≤ n * (Nat.log 2 n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:42:49+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T08:04:46+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T08:04:55+0800"
+}

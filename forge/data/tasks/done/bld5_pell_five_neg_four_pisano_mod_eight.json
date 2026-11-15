@@ -1,0 +1,19 @@
+{
+  "name": "bld5_pell_five_neg_four_pisano_mod_eight",
+  "statement": "(x y : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2) (hy : 5 ≤ y) : p3_pisano y % 8 = 4",
+  "closed": "∀ (x y : ℕ) (h : x ^ 2 + 4 = 5 * y ^ 2) (hy : 5 ≤ y), p3_pisano y % 8 = 4",
+  "informal": "Uses Mathlib2.bld3_pell_five_neg_four_solutions_lucas and Mathlib2.bld2_pisano_fib_odd_eq: the Pell classification gives y = F_{2n+1}; y ≥ 5 forces 2n+1 ≥ 5 (F_1 = 1, F_3 = 2), so bld2_pisano_fib_odd_eq gives pisano y = 4(2n+1) = 8n + 4.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pell_five_neg_four_solutions_lucas, Mathlib2.bld2_pisano_fib_odd_eq",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "324937498",
+  "type": "∀ (x y : ℕ), x ^ 2 + 4 = 5 * y ^ 2 → 5 ≤ y → Mathlib2.p3_pisano y % 8 = 4",
+  "attempts": [],
+  "created_at": "2026-11-15T07:23:04+0800",
+  "status": "proved",
+  "claimed_by": "prover_ba",
+  "claimed_at": "2026-11-15T07:27:22+0800",
+  "closed_by": "prover_ba",
+  "finished_at": "2026-11-15T07:27:59+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "top_countable_compact_t2_isolated_point",
+  "statement": "{X : Type*} [TopologicalSpace X] [T2Space X] [CompactSpace X] [Countable X] [Nonempty X] : ∃ x : X, IsOpen ({x} : Set X)",
+  "closed": "∀ {X : Type*} [TopologicalSpace X] [T2Space X] [CompactSpace X] [Countable X] [Nonempty X], ∃ x : X, IsOpen ({x} : Set X)",
+  "informal": "A nonempty countable compact Hausdorff space has an isolated point — compact Hausdorff spaces are Baire; if no singleton were open, each complement {x}ᶜ would be open and dense, so their countable intersection (which is empty) would be dense, contradicting nonemptiness.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "624525254",
+  "type": "∀ {X : Type u_1} [inst : TopologicalSpace X] [T2Space X] [CompactSpace X] [Countable X] [Nonempty X], ∃ x, IsOpen {x}",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:51+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_4",
+  "claimed_at": "2026-11-15T02:27:58+0800",
+  "closed_by": "r5_prover_4",
+  "finished_at": "2026-11-15T02:28:16+0800"
+}

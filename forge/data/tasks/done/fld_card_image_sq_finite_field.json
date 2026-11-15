@@ -1,0 +1,19 @@
+{
+  "name": "fld_card_image_sq_finite_field",
+  "statement": "(K : Type) [Field K] [Fintype K] [DecidableEq K] (h : ringChar K ≠ 2) : (Finset.univ.image (fun x : K => x ^ 2)).card = (Fintype.card K + 1) / 2",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] [DecidableEq K] (h : ringChar K ≠ 2), (Finset.univ.image (fun x : K => x ^ 2)).card = (Fintype.card K + 1) / 2",
+  "informal": "A finite field of odd characteristic with q elements has exactly (q+1)/2 squares. Generalizes Mathlib2.alg_card_range_sq_zmod_prime from ZMod p to all finite fields — squaring is 2-to-1 on nonzero elements (x^2 = y^2 iff x = ±y, and x ≠ -x as char ≠ 2), plus 0; q is odd.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "1251857463",
+  "type": "∀ (K : Type) [inst : Field K] [inst_1 : Fintype K] [inst_2 : DecidableEq K], ringChar K ≠ 2 → (Finset.image (fun x => x ^ 2) Finset.univ).card = (Fintype.card K + 1) / 2",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:08+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:29:27+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:31:29+0800"
+}

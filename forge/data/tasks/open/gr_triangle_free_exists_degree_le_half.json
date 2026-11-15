@@ -1,0 +1,15 @@
+{
+  "name": "gr_triangle_free_exists_degree_le_half",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.CliqueFree 3) : ∃ v, 2 * G.degree v ≤ Fintype.card V",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.CliqueFree 3), ∃ v, 2 * G.degree v ≤ Fintype.card V",
+  "informal": "A triangle-free graph has a vertex of degree at most n/2 — take v of minimum degree (G.exists_minimal_degree_vertex) and d = G.minDegree; Uses Mathlib2.bld2_triangle_free_min_degree_le_half at step 2 with d ≤ deg w for all w.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "1745030138",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] [Nonempty V], G.CliqueFree 3 → ∃ v, 2 * G.degree v ≤ Fintype.card V",
+  "attempts": [],
+  "created_at": "2026-11-15T08:44:43+0800",
+  "status": "open"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h1",
+  "statement": ": ∀ (N : ℕ), N % 4 = 3 → ∃ p, Nat.Prime p ∧ p % 4 = 3 ∧ p ∣ N",
+  "closed": "∀ (N : ℕ), N % 4 = 3 → ∃ p, Nat.Prime p ∧ p % 4 = 3 ∧ p ∣ N",
+  "informal": "r3_mordell_y_sq_eq_x_cube_add_seven 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "r3_mordell_y_sq_eq_x_cube_add_seven",
+  "original": "",
+  "proposed_by": "r3_prover_3",
+  "hash": "134000944",
+  "type": "∀ (N : ℕ), N % 4 = 3 → ∃ p, Nat.Prime p ∧ p % 4 = 3 ∧ p ∣ N",
+  "attempts": [],
+  "created_at": "2026-11-15T01:06:57+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:07:49+0800",
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:09:06+0800"
+}

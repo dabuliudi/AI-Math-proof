@@ -1,0 +1,19 @@
+{
+  "name": "bld5_mantel_equality_connected",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (hn : 2 ≤ Fintype.card V) : G.Connected",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (hn : 2 ≤ Fintype.card V), G.Connected",
+  "informal": "Uses Mathlib2.bld4_mantel_equality_complete_bipartite: it gives s with 2|s| = n and Adj x y ↔ (x ∈ s ↔ y ∉ s). Since n ≥ 2, both s and its complement are non-empty; pick u ∈ s, w ∉ s. Any x ∈ s is adjacent to w and any x ∉ s is adjacent to u, and u ~ w, so every two vertices are joined by a walk of length ≤ 3 through u, w: G is preconnected and V is non-empty.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_mantel_equality_complete_bipartite",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "4150739813",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 4 * G.edgeFinset.card = Fintype.card V ^ 2 → 2 ≤ Fintype.card V → G.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T07:25:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:32:01+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:33:36+0800"
+}

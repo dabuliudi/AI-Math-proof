@@ -1,0 +1,19 @@
+{
+  "name": "comb_card_involutions_rec",
+  "statement": "(n : ℕ) : Fintype.card {σ : Equiv.Perm (Fin (n + 2)) // σ * σ = 1} = Fintype.card {σ : Equiv.Perm (Fin (n + 1)) // σ * σ = 1} + (n + 1) * Fintype.card {σ : Equiv.Perm (Fin n) // σ * σ = 1}",
+  "closed": "∀ (n : ℕ), Fintype.card {σ : Equiv.Perm (Fin (n + 2)) // σ * σ = 1} = Fintype.card {σ : Equiv.Perm (Fin (n + 1)) // σ * σ = 1} + (n + 1) * Fintype.card {σ : Equiv.Perm (Fin n) // σ * σ = 1}",
+  "informal": "The number a(n) of involutions (σ² = 1) in S_n satisfies a(n+2) = a(n+1) + (n+1)·a(n) — split on whether σ fixes the last point (restrict to Fin (n+1)) or swaps it with one of the n+1 others (remove both points, leaving an involution of an n-set).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "2820516064",
+  "type": "∀ (n : ℕ), Fintype.card { σ // σ * σ = 1 } = Fintype.card { σ // σ * σ = 1 } + (n + 1) * Fintype.card { σ // σ * σ = 1 }",
+  "attempts": [],
+  "created_at": "2026-11-15T01:33:32+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:53:21+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:55:58+0800"
+}

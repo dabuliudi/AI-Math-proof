@@ -1,0 +1,19 @@
+{
+  "name": "comb_not_acyclic_of_two_le_degree",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : ∀ v : V, 2 ≤ G.degree v) : ¬ G.IsAcyclic",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : ∀ v : V, 2 ≤ G.degree v), ¬ G.IsAcyclic",
+  "informal": "A nonempty finite graph with minimum degree ≥ 2 contains a cycle — take a longest path; its end vertex has a second neighbour which must lie on the path, closing a cycle. Alternatively count: an acyclic graph has fewer than n edges while the handshake lemma gives ≥ n.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "1088770511",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [inst_3 : DecidableRel G.Adj], (∀ (v : V), 2 ≤ G.degree v) → ¬G.IsAcyclic",
+  "attempts": [],
+  "created_at": "2026-11-15T01:37:30+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T02:01:32+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T02:02:11+0800"
+}

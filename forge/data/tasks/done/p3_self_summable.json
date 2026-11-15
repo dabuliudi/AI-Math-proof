@@ -1,0 +1,16 @@
+{
+  "name": "p3_self_summable",
+  "statement": "def p3_self_summable (k : ℕ) : Prop := Nat.fib k ∣ ∑ i ∈ Finset.Icc 1 (Nat.fib k), Nat.fib i",
+  "informal": "k is a self-summable Fibonacci number if F_k divides F_1 + ... + F_{F_k}",
+  "origin": "definition",
+  "source": "arXiv:2504.09938 Definition 1",
+  "original": "We say an integer k is a self-summable Fibonacci number if F_k \\mid \\sum_{i=1}^{F_k} F_i.",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:54+0800",
+  "status": "defined",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:19:06+0800",
+  "type": "ℕ → Prop"
+}

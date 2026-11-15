@@ -1,0 +1,16 @@
+{
+  "name": "is_sophie_germain_prime",
+  "statement": "def is_sophie_germain_prime (p : ℕ) : Prop := Nat.Prime p ∧ Nat.Prime (2 * p + 1)",
+  "informal": "Sophie Germain 素数：p 与 2p+1 都是素数",
+  "origin": "definition",
+  "source": "标准定义（冒烟测试）",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T01:06:27+0800",
+  "status": "defined",
+  "closed_by": "maintainer",
+  "finished_at": "2026-11-15T01:06:34+0800",
+  "type": "ℕ → Prop"
+}

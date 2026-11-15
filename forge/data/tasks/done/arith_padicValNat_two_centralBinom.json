@@ -1,0 +1,19 @@
+{
+  "name": "arith_padicValNat_two_centralBinom",
+  "statement": "(n : ℕ) : padicValNat 2 n.centralBinom = (Nat.digits 2 n).sum",
+  "closed": "∀ (n : ℕ), padicValNat 2 n.centralBinom = (Nat.digits 2 n).sum",
+  "informal": "v_2(C(2n,n)) equals the number of ones in the binary expansion of n — Kummer/Legendre: v_2 = s_2(n) + s_2(n) - s_2(2n) and s_2(2n) = s_2(n).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3424860173",
+  "type": "∀ (n : ℕ), padicValNat 2 n.centralBinom = (Nat.digits 2 n).sum",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:12+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T07:50:32+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T07:52:05+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arith_two_pow_mod_self_ne_one",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : 2 ^ n % n ≠ 1",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), 2 ^ n % n ≠ 1",
+  "informal": "For n ≥ 2, 2^n is never ≡ 1 (mod n) — if 2^n % n = 1 then n | 2^n - 1 and Uses Mathlib2.nt2_dvd_two_pow_sub_one_eq_one at this step to get n = 1, contradiction.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "355799570",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 ^ n % n ≠ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:40+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:53:41+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:54:32+0800"
+}

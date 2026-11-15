@@ -1,0 +1,19 @@
+{
+  "name": "arith_fermat_prime_factor_mod_two_pow_add_two",
+  "statement": "(n p : ℕ) (hn : 2 ≤ n) (hp : p.Prime) (h : p ∣ 2 ^ 2 ^ n + 1) : p % 2 ^ (n + 2) = 1",
+  "closed": "∀ (n p : ℕ) (hn : 2 ≤ n) (hp : p.Prime) (h : p ∣ 2 ^ 2 ^ n + 1), p % 2 ^ (n + 2) = 1",
+  "informal": "Lucas' strengthening: for n ≥ 2 every prime factor of the Fermat number F_n is ≡ 1 mod 2^(n+2) — Uses Mathlib2.nt2_fermat_number_prime_factor_form at step 1 to get p ≡ 1 mod 2^(n+1), hence p ≡ 1 mod 8, so 2 is a quadratic residue mod p (ZMod.exists_sq_eq_two_iff); a square root of 2 then has order 2^(n+2), which divides p - 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "990640347",
+  "type": "∀ (n p : ℕ), 2 ≤ n → Nat.Prime p → p ∣ 2 ^ 2 ^ n + 1 → p % 2 ^ (n + 2) = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:56+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T08:08:10+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T08:09:12+0800"
+}

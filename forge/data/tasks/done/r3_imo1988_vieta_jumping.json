@@ -1,0 +1,52 @@
+{
+  "name": "r3_imo1988_vieta_jumping",
+  "statement": "(a b : ℕ) (h : a * b + 1 ∣ a ^ 2 + b ^ 2) : ∃ k : ℕ, a ^ 2 + b ^ 2 = k ^ 2 * (a * b + 1)",
+  "closed": "∀ (a b : ℕ) (h : a * b + 1 ∣ a ^ 2 + b ^ 2), ∃ k : ℕ, a ^ 2 + b ^ 2 = k ^ 2 * (a * b + 1)",
+  "informal": "IMO 1988 Q6: if ab+1 divides a^2+b^2 then the quotient is a perfect square. Proof idea: Vieta jumping — fix the quotient q, take a solution with a+b minimal and a ≥ b, the other root a' = q b - a = (b^2 - q)/a of the quadratic satisfies 0 ≤ a' < a (needs a' ≥ 0 from positivity of a'b+1), so minimality forces a' = 0 and q = b^2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "678112603",
+  "type": "∀ (a b : ℕ), a * b + 1 ∣ a ^ 2 + b ^ 2 → ∃ k, a ^ 2 + b ^ 2 = k ^ 2 * (a * b + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:03+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_1",
+  "claimed_at": "2026-11-15T01:06:01+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_1",
+      "body": "theorem r3_imo1988_vieta_jumping (a b : ℕ) (h : a * b + 1 ∣ a ^ 2 + b ^ 2) : ∃ k : ℕ, a ^ 2 + b ^ 2 = k ^ 2 * (a * b + 1) := by\n  revert a b\n  have h_nonneg : ∀ q a b : ℕ, 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b := by\n    sorry\n  have h_root : ∀ q a b : ℕ, a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) →\n      (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1) := by\n    sorry\n  have h_lt : ∀ q a b : ℕ, 0 < b → b ≤ a → a ^ 2 + b ^ 2 = q * (a * b + 1) → q * b - a < a := by\n    sorry\n  have key : ∀ q n a b : ℕ, a + b ≤ n → b ≤ a → a ^ 2 + b ^ 2 = q * (a * b + 1) → ∃ k : ℕ, q = k ^ 2 := by\n    intro q n\n    induction n with\n    | zero =>\n      intro a b hn hba e\n      have ha : a = 0 := by omega\n      have hb : b = 0 := by omega\n      subst ha hb\n      simp at e\n      exact ⟨0, by simp [← e]⟩\n    | succ n ih =>\n      intro a b hn hba e\n      rcases Nat.eq_zero_or_pos b with hb | hb\n      · subst hb\n        simp at e\n        exact ⟨a, e.symm⟩\n      · have h1 := h_nonneg q a b hb e\n        have h2 := h_root q a b h1 e\n        have h3 := h_lt q a b hb hba e\n        rcases le_total b (q * b - a) with hbc | hcb\n        · exact ih (q * b - a) b (by omega) hbc h2\n        · refine ih b (q * b - a) (by omega) hcb ?_\n          rw [add_comm, mul_comm b (q * b - a)]\n          exact h2\n  intro a b h\n  obtain ⟨q, hq⟩ := h\n  rcases le_total b a with hba | hab\n  · obtain ⟨k, hk⟩ := key q (a + b) a b le_rfl hba (by rw [hq, mul_comm])\n    exact ⟨k, by rw [hq, hk, mul_comm]⟩\n  · obtain ⟨k, hk⟩ := key q (b + a) b a le_rfl hab (by rw [add_comm, mul_comm b a, hq, mul_comm])\n    exact ⟨k, by rw [hq, hk, mul_comm]⟩\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_imo1988_vieta_jumping_s1h1",
+          "status": "open",
+          "statement": "∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_imo1988_vieta_jumping_s1h2",
+          "status": "open",
+          "statement": "(∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b) → ∀ (q a b : ℕ), a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) → (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1)",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_imo1988_vieta_jumping_s1h3",
+          "status": "open",
+          "statement": "(∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b) → (∀ (q a b : ℕ), a ≤ q * b → a ^ 2 + b ^ 2 = q * (a * b + 1) → (q * b - a) ^ 2 + b ^ 2 = q * ((q * b - a) * b + 1)) → ∀ (q a b : ℕ), 0 < b → b ≤ a → a ^ 2 + b ^ 2 = q * (a * b + 1) → q * b - a < a",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:07:20+0800"
+    }
+  ],
+  "closed_by": "r3_prover_1",
+  "finished_at": "2026-11-15T01:08:44+0800"
+}

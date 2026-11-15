@@ -1,0 +1,19 @@
+{
+  "name": "p4_thm1_i",
+  "statement": "(n : ℕ) (hn : 0 < n) : p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546",
+  "informal": "Theorem 1(i): x(n)=0 iff n is one of 436, 451, 529, 545, 546.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Theorem 1(i)",
+  "original": "(i) x(n)=0 if and only if n ∈ {436, 451, 529, 545, 546}.",
+  "proposed_by": "paper_4",
+  "hash": "2675812296",
+  "type": "∀ (n : ℕ), 0 < n → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:54:37+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:04:43+0800"
+}

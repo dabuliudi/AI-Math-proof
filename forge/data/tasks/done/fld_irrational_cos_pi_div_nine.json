@@ -1,0 +1,19 @@
+{
+  "name": "fld_irrational_cos_pi_div_nine",
+  "statement": ": Irrational (Real.cos (Real.pi / 9))",
+  "closed": "Irrational (Real.cos (Real.pi / 9))",
+  "informal": "cos(π/9) = cos 20° is irrational — by the triple angle formula c = cos(π/9) satisfies 8c^3 - 6c - 1 = 0 (cos(π/3) = 1/2); 2c is a root of the monic integer polynomial y^3 - 3y - 1, so if rational it is an integer dividing 1, but ±1 are not roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "542435210",
+  "type": "Irrational (Real.cos (Real.pi / 9))",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:29+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:35:22+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:37:18+0800"
+}

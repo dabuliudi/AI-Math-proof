@@ -1,0 +1,81 @@
+{
+  "file": "s40753-021-00140-1.pdf",
+  "sha256": "c60c9c32ab6e8daf04e31c624d385ad92a6b97973518050cfcaaedbcfdc5a5da",
+  "pages": 30,
+  "method": "规则识别；原文切片可追溯不等于数学语义理解；无 OCR",
+  "statements": [
+    {
+      "id": "c60c9c32:1",
+      "kind": "conjecture",
+      "title": "1. Prove that",
+      "page": 28,
+      "text": "1. Prove that\n√\n3 +\n√\n5 < 4.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:2",
+      "kind": "conjecture",
+      "title": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+      "page": 28,
+      "text": "(a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.\n(Here (f + g)(x) = f( x)+ g(x))",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:3",
+      "kind": "conjecture",
+      "title": "(b) f : R → R be a fine function. Let g : R → R be a function defined by",
+      "page": 28,
+      "text": "(b) f : R → R be a fine function. Let g : R → R be a function defined by\ng(x) = f( x− k) for some k ∈ N. Prove that g is a fine function.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:4",
+      "kind": "conjecture",
+      "title": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+      "page": 28,
+      "text": "(a) If n is perfect, then kn is abundant for any k ∈ N.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:5",
+      "kind": "conjecture",
+      "title": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+      "page": 28,
+      "text": "(b) If p1 and p2 are primes, then p1p2 is abundant.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:6",
+      "kind": "conjecture",
+      "title": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+      "page": 28,
+      "text": "4. Let A ⊂ R and f : A → R. The function f is preserved in A if f( A )⊂ A.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:7",
+      "kind": "conjecture",
+      "title": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such",
+      "page": 28,
+      "text": "(a) Prove that if f is strictly decreasing function, then there is a fine set A such\nthat f is preserved in A.",
+      "has_proof": false,
+      "confidence": 0.82
+    },
+    {
+      "id": "c60c9c32:8",
+      "kind": "conjecture",
+      "title": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all",
+      "page": 28,
+      "text": "(b) Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all\nx,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved\nin A.( H e r ef × g = f( x)× g(x).)",
+      "has_proof": false,
+      "confidence": 0.82
+    }
+  ],
+  "note": "规则提取可能漏掉或截断命题；页码是 PDF 页序。形式化时以原文为准。"
+}

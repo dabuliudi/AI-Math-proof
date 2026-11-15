@@ -1,0 +1,19 @@
+{
+  "name": "arith_mul_sigma_le_sigma_mul",
+  "statement": "(m n : ℕ) (hm : m ≠ 0) (hn : n ≠ 0) (h : m.primeFactors ⊆ n.primeFactors) : m * ArithmeticFunction.sigma 1 n ≤ ArithmeticFunction.sigma 1 (m * n)",
+  "closed": "∀ (m n : ℕ) (hm : m ≠ 0) (hn : n ≠ 0) (h : m.primeFactors ⊆ n.primeFactors), m * ArithmeticFunction.sigma 1 n ≤ ArithmeticFunction.sigma 1 (m * n)",
+  "informal": "If every prime factor of m divides n then mσ(n) ≤ σ(mn) — induct on m by peeling off a prime p | m: Uses Mathlib2.p5_sigma_prime_mul_of_dvd at each step (p | (m/p)·n since p | n) to get σ(p·(m/p)n) > pσ((m/p)n).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1795005074",
+  "type": "∀ (m n : ℕ), m ≠ 0 → n ≠ 0 → m.primeFactors ⊆ n.primeFactors → m * (ArithmeticFunction.sigma 1) n ≤ (ArithmeticFunction.sigma 1) (m * n)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:48+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:58:14+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:00:31+0800"
+}

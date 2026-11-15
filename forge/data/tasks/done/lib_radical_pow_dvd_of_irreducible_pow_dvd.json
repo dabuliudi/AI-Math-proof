@@ -1,0 +1,19 @@
+{
+  "name": "lib_radical_pow_dvd_of_irreducible_pow_dvd",
+  "statement": "{M : Type*} [CancelCommMonoidWithZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g) : (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
+  "closed": "∀ {M : Type*} [CancelCommMonoidWithZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g), (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
+  "informal": "promoted from Mathlib2.poly_no_consecutive_powerful_aux1 (generalised from k[X], n = 2 to any normalised UFM and any exponent): if every irreducible factor of g occurs to the n-th power then (radical g)^n divides g.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "3653449411",
+  "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M] [inst_2 : UniqueFactorizationMonoid M] (n : ℕ) (g : M), (∀ (p : M), Irreducible p → p ∣ g → p ^ n ∣ g) → UniqueFactorizationMonoid.radical g ^ n ∣ g",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:41+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:48:40+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:50:01+0800"
+}

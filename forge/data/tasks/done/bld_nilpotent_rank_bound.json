@@ -1,0 +1,19 @@
+{
+  "name": "bld_nilpotent_rank_bound",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (k : ℕ) (h : A ^ k = 0) : k * Matrix.rank A ≤ (k - 1) * Fintype.card ι",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (k : ℕ) (h : A ^ k = 0), k * Matrix.rank A ≤ (k - 1) * Fintype.card ι",
+  "informal": "Uses Mathlib2.gen_lin_sylvester_rank_rect: by induction on j, j * rank A ≤ (j-1) * n + rank (A^j) (Sylvester applied to A^j and A); at j = k the last term vanishes. Special case k = 2: A^2 = 0 implies 2 rank A ≤ n.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_sylvester_rank_rect",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "403232340",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (k : ℕ), A ^ k = 0 → k * A.rank ≤ (k - 1) * Fintype.card ι",
+  "attempts": [],
+  "created_at": "2026-11-15T02:33:25+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_2",
+  "claimed_at": "2026-11-15T02:38:30+0800",
+  "closed_by": "r6_prover_2",
+  "finished_at": "2026-11-15T02:38:39+0800"
+}

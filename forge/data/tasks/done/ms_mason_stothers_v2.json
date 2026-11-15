@@ -1,0 +1,19 @@
+{
+  "name": "ms_mason_stothers_v2",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (hsum : a + b + c = 0) : (Polynomial.derivative a = 0 ∧ Polynomial.derivative b = 0 ∧ Polynomial.derivative c = 0) ∨ max (max a.natDegree b.natDegree) c.natDegree < (UniqueFactorizationMonoid.radical (a * b * c)).natDegree",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (hsum : a + b + c = 0), (Polynomial.derivative a = 0 ∧ Polynomial.derivative b = 0 ∧ Polynomial.derivative c = 0) ∨ max (max a.natDegree b.natDegree) c.natDegree < (UniqueFactorizationMonoid.radical (a * b * c)).natDegree",
+  "informal": "Mason–Stothers: nonzero pairwise coprime a+b+c=0 in k[t] have all derivatives zero or max degree < deg rad(abc).",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Theorem 1, p.2",
+  "original": "Theorem 1 (Mason–Stothers). Let k be any field and a, b, c ∈ k[t] be nonzero, pairwise coprime polynomials satisfying a + b + c = 0. Then we either have a′ = b′ = c′ = 0 where f′ denotes the (formal) derivative of f ∈ k[t] by t, or max{deg(a), deg(b), deg(c)} < deg(rad(abc)).",
+  "proposed_by": "paper_1",
+  "hash": "1068161987",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → IsCoprime a b → IsCoprime b c → IsCoprime c a → a + b + c = 0 → Polynomial.derivative a = 0 ∧ Polynomial.derivative b = 0 ∧ Polynomial.derivative c = 0 ∨ max (max a.natDegree b.natDegree) c.natDegree < (UniqueFactorizationMonoid.radical (a * b * c)).natDegree",
+  "attempts": [],
+  "created_at": "2026-11-15T00:17:34+0800",
+  "status": "proved",
+  "claimed_by": "paper_1",
+  "claimed_at": "2026-11-15T00:18:54+0800",
+  "closed_by": "paper_1",
+  "finished_at": "2026-11-15T00:20:21+0800"
+}

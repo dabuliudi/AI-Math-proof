@@ -1,0 +1,16 @@
+{
+  "name": "lib_pow_succ_add_mul_sub_le_pow_succ",
+  "statement": "(R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (m : ℕ) : a ^ (m + 1) + ((m : R) + 1) * a ^ m * (b - a) ≤ b ^ (m + 1)",
+  "closed": "∀ (R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (a b : R) (ha : 0 ≤ a) (hb : 0 ≤ b) (m : ℕ), a ^ (m + 1) + ((m : R) + 1) * a ^ m * (b - a) ≤ b ^ (m + 1)",
+  "informal": "Tangent-line (generalised Bernoulli) inequality for powers in a linearly ordered commutative ring: for a, b ≥ 0, a^(m+1) + (m+1) a^m (b - a) ≤ b^(m+1), i.e. x^(m+1) lies above its tangent at a. Promoted from Mathlib2.gen_an_amgm_finset_ordered_ring_aux1.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.gen_an_amgm_finset_ordered_ring_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "4190575393",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b : R), 0 ≤ a → 0 ≤ b → ∀ (m : ℕ), a ^ (m + 1) + (↑m + 1) * a ^ m * (b - a) ≤ b ^ (m + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:05:27+0800",
+  "status": "known",
+  "known_as": "gen_an_amgm_finset_ordered_ring_aux1 R a b ha hb m"
+}

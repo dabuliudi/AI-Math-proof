@@ -1,0 +1,19 @@
+{
+  "name": "lin_gram_det_nonneg",
+  "statement": "(V : Type) [NormedAddCommGroup V] [InnerProductSpace ℝ V] (x y : V) : 0 ≤ Matrix.det !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y]",
+  "closed": "∀ (V : Type) [NormedAddCommGroup V] [InnerProductSpace ℝ V] (x y : V), 0 ≤ Matrix.det !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y]",
+  "informal": "The 2×2 Gram determinant of two vectors in a real inner product space is nonnegative — expand with det_fin_two; it is Cauchy–Schwarz ⟨x,y⟩² ≤ ⟨x,x⟩⟨y,y⟩ plus symmetry of the inner product.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_lin",
+  "hash": "1802920704",
+  "type": "∀ (V : Type) [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (x y : V), 0 ≤ !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y].det",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:34+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_3",
+  "claimed_at": "2026-11-15T01:33:47+0800",
+  "closed_by": "r4_prover_3",
+  "finished_at": "2026-11-15T01:34:23+0800"
+}

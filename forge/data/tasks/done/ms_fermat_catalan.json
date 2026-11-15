@@ -1,0 +1,19 @@
+{
+  "name": "ms_fermat_catalan",
+  "statement": "{k : Type*} [Field k] (p q r : ℕ) (hp : 1 ≤ p) (hq : 1 ≤ q) (hr : 1 ≤ r) (chp : ¬ ringChar k ∣ p) (chq : ¬ ringChar k ∣ q) (chr : ¬ ringChar k ∣ r) (hineq : (1 : ℚ) / p + 1 / q + 1 / r ≤ 1) (u v w : k) (hu : u ≠ 0) (hv : v ≠ 0) (hw : w ≠ 0) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (heq : Polynomial.C u * a ^ p + Polynomial.C v * b ^ q + Polynomial.C w * c ^ r = 0) : a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "closed": "∀ {k : Type*} [Field k] (p q r : ℕ) (hp : 1 ≤ p) (hq : 1 ≤ q) (hr : 1 ≤ r) (chp : ¬ ringChar k ∣ p) (chq : ¬ ringChar k ∣ q) (chr : ¬ ringChar k ∣ r) (hineq : (1 : ℚ) / p + 1 / q + 1 / r ≤ 1) (u v w : k) (hu : u ≠ 0) (hv : v ≠ 0) (hw : w ≠ 0) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (heq : Polynomial.C u * a ^ p + Polynomial.C v * b ^ q + Polynomial.C w * c ^ r = 0), a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "informal": "Fermat–Catalan for polynomials: u a^p + v b^q + w c^r = 0 with 1/p+1/q+1/r ≤ 1, exponents prime to char, forces coprime nonzero a,b,c to be constant.",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Theorem 2, p.3",
+  "original": "Theorem 2 (Fermat–Catalan Conjecture for Polynomials). Let k be any field. Let p, q, r ≥ 1 be integers not divisible by the characteristic of k such that 1/p + 1/q + 1/r ≤ 1. Let u, v, w ∈ k be arbitrary nonzero constants. Then any triple (a, b, c) of nonzero and pairwise coprime polynomials in k[t] satisfying u a^p + v b^q + w c^r = 0 consists of constants a, b, c ∈ k.",
+  "proposed_by": "paper_1",
+  "hash": "2873129065",
+  "type": "∀ {k : Type u_1} [inst : Field k] (p q r : ℕ), 1 ≤ p → 1 ≤ q → 1 ≤ r → ¬ringChar k ∣ p → ¬ringChar k ∣ q → ¬ringChar k ∣ r → 1 / ↑p + 1 / ↑q + 1 / ↑r ≤ 1 → ∀ (u v w : k), u ≠ 0 → v ≠ 0 → w ≠ 0 → ∀ (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → IsCoprime a b → IsCoprime b c → IsCoprime c a → Polynomial.C u * a ^ p + Polynomial.C v * b ^ q + Polynomial.C w * c ^ r = 0 → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T00:15:26+0800",
+  "status": "proved",
+  "claimed_by": "paper_1",
+  "claimed_at": "2026-11-15T00:18:59+0800",
+  "closed_by": "paper_1",
+  "finished_at": "2026-11-15T00:21:14+0800"
+}

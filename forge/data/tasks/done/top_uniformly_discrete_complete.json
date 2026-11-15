@@ -1,0 +1,19 @@
+{
+  "name": "top_uniformly_discrete_complete",
+  "statement": "{X : Type*} [MetricSpace X] (h : ∀ x y : X, x ≠ y → 1 ≤ dist x y) : CompleteSpace X",
+  "closed": "∀ {X : Type*} [MetricSpace X] (h : ∀ x y : X, x ≠ y → 1 ≤ dist x y), CompleteSpace X",
+  "informal": "A metric space whose distinct points are at distance at least 1 is complete — a Cauchy sequence is eventually within 1/2 of itself hence eventually constant, hence convergent (Metric.complete_of_cauchySeq_tendsto).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "2873639282",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X], (∀ (x y : X), x ≠ y → 1 ≤ dist x y) → CompleteSpace X",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:37+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:26:52+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:27:09+0800"
+}

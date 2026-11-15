@@ -1,0 +1,19 @@
+{
+  "name": "ab_fine_shift",
+  "statement": "(f : ℝ → ℝ) (k : ℕ) (hf : ∀ n : ℤ, f (n : ℝ) = 0) : ∀ n : ℤ, (fun x : ℝ => f (x - (k : ℝ))) (n : ℝ) = 0",
+  "closed": "∀ (f : ℝ → ℝ) (k : ℕ) (hf : ∀ n : ℤ, f (n : ℝ) = 0), ∀ n : ℤ, (fun x : ℝ => f (x - (k : ℝ))) (n : ℝ) = 0",
+  "informal": "Shift of a fine function by a natural number is fine.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 2(b)",
+  "original": "f : R → R be a fine function. Let g : R → R be a function defined by g(x) = f(x − k) for some k ∈ N. Prove that g is a fine function.",
+  "proposed_by": "paper_2",
+  "hash": "3632927644",
+  "type": "∀ (f : ℝ → ℝ) (k : ℕ), (∀ (n : ℤ), f ↑n = 0) → ∀ (n : ℤ), (fun x => f (x - ↑k)) ↑n = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:01+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:03:46+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:03:55+0800"
+}

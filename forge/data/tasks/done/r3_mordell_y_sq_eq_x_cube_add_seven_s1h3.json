@@ -1,0 +1,19 @@
+{
+  "name": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h3",
+  "statement": ": ∀ (a : ℤ), a % 2 = 1 → (a ^ 2 - 2 * a + 4).natAbs % 4 = 3",
+  "closed": "∀ (a : ℤ), a % 2 = 1 → (a ^ 2 - 2 * a + 4).natAbs % 4 = 3",
+  "informal": "r3_mordell_y_sq_eq_x_cube_add_seven 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "r3_mordell_y_sq_eq_x_cube_add_seven",
+  "original": "",
+  "proposed_by": "r3_prover_3",
+  "hash": "2549739825",
+  "type": "∀ (a : ℤ), a % 2 = 1 → (a ^ 2 - 2 * a + 4).natAbs % 4 = 3",
+  "attempts": [],
+  "created_at": "2026-11-15T01:07:21+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:08:15+0800",
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:08:35+0800"
+}

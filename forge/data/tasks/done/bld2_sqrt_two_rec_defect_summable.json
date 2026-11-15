@@ -1,0 +1,19 @@
+{
+  "name": "bld2_sqrt_two_rec_defect_summable",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) : Summable (fun n : ℕ => 2 - a n)",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)), Summable (fun n : ℕ => 2 - a n)",
+  "informal": "Uses Mathlib2.bld_sqrt_two_rec_rate and Mathlib2.ana_sqrt_two_rec_lt_two: 0 ≤ 2 - a n ≤ π^2 / 4^(n+1), and the geometric series on the right is summable, so comparison applies.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_sqrt_two_rec_rate, Mathlib2.ana_sqrt_two_rec_lt_two",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "910434968",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → Summable fun n => 2 - a n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:50:08+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:54:21+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:54:46+0800"
+}

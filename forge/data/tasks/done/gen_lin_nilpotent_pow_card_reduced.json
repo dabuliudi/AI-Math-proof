@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_nilpotent_pow_card_reduced",
+  "statement": "(R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A) : A ^ Fintype.card ι = 0",
+  "closed": "∀ (R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A), A ^ Fintype.card ι = 0",
+  "informal": "Generalizes Mathlib2.lin_nilpotent_pow_card: ℝ → any reduced commutative ring (false for non-reduced rings: the 1×1 matrix [ε], ε²=0), Fin n → Fintype. Proof idea: Matrix.isNilpotent_charpoly_sub_pow_of_isNilpotent gives charpoly − X^card nilpotent in R[X], which is reduced, so charpoly = X^card; then Cayley–Hamilton (Matrix.aeval_self_charpoly).",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_nilpotent_pow_card",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "1271160619",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [IsReduced R] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι R), IsNilpotent A → A ^ Fintype.card ι = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T02:06:04+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:08:51+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:09:46+0800"
+}

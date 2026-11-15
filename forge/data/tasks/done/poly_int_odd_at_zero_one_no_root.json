@@ -1,0 +1,19 @@
+{
+  "name": "poly_int_odd_at_zero_one_no_root",
+  "statement": "(p : Polynomial ℤ) (h0 : Odd (Polynomial.eval 0 p)) (h1 : Odd (Polynomial.eval 1 p)) (n : ℤ) : Polynomial.eval n p ≠ 0",
+  "closed": "∀ (p : Polynomial ℤ) (h0 : Odd (Polynomial.eval 0 p)) (h1 : Odd (Polynomial.eval 1 p)) (n : ℤ), Polynomial.eval n p ≠ 0",
+  "informal": "An integer polynomial with p(0) and p(1) odd has no integer root — n - 0 ∣ p(n) - p(0) and n - 1 ∣ p(n) - p(1) (Polynomial.sub_dvd_eval_sub); if p(n) = 0 then both n and n-1 divide odd numbers, but one of them is even.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "907635564",
+  "type": "∀ (p : Polynomial ℤ), Odd (Polynomial.eval 0 p) → Odd (Polynomial.eval 1 p) → ∀ (n : ℤ), Polynomial.eval n p ≠ 0",
+  "attempts": [],
+  "created_at": "2026-11-15T07:16:21+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:21:11+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "alg_three_consecutive_pow_mul_comm",
+  "statement": "(G : Type*) [Group G] (n : ℕ) (h0 : ∀ a b : G, (a * b) ^ n = a ^ n * b ^ n) (h1 : ∀ a b : G, (a * b) ^ (n + 1) = a ^ (n + 1) * b ^ (n + 1)) (h2 : ∀ a b : G, (a * b) ^ (n + 2) = a ^ (n + 2) * b ^ (n + 2)) : ∀ a b : G, a * b = b * a",
+  "closed": "∀ (G : Type*) [Group G] (n : ℕ) (h0 : ∀ a b : G, (a * b) ^ n = a ^ n * b ^ n) (h1 : ∀ a b : G, (a * b) ^ (n + 1) = a ^ (n + 1) * b ^ (n + 1)) (h2 : ∀ a b : G, (a * b) ^ (n + 2) = a ^ (n + 2) * b ^ (n + 2)), ∀ a b : G, a * b = b * a",
+  "informal": "If (ab)^i = a^i b^i for three consecutive exponents i then the group is abelian (Herstein) — from n and n+1 get a^n b = b a^n, from n+1 and n+2 get a^(n+1) b = b a^(n+1), then cancel.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "1955699158",
+  "type": "∀ (G : Type u_1) [inst : Group G] (n : ℕ), (∀ (a b : G), (a * b) ^ n = a ^ n * b ^ n) → (∀ (a b : G), (a * b) ^ (n + 1) = a ^ (n + 1) * b ^ (n + 1)) → (∀ (a b : G), (a * b) ^ (n + 2) = a ^ (n + 2) * b ^ (n + 2)) → ∀ (a b : G), a * b = b * a",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:51+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_1",
+  "claimed_at": "2026-11-15T01:30:08+0800",
+  "closed_by": "r4_prover_1",
+  "finished_at": "2026-11-15T01:31:15+0800"
+}

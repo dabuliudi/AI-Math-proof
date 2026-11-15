@@ -1,0 +1,19 @@
+{
+  "name": "an2_sum_sqrt_le_sqrt_card_mul_sum",
+  "statement": "(n : ℕ) (a : ℕ → ℝ) (ha : ∀ i, 0 ≤ a i) : ∑ i ∈ Finset.range n, Real.sqrt (a i) ≤ Real.sqrt (n * ∑ i ∈ Finset.range n, a i)",
+  "closed": "∀ (n : ℕ) (a : ℕ → ℝ) (ha : ∀ i, 0 ≤ a i), ∑ i ∈ Finset.range n, Real.sqrt (a i) ≤ Real.sqrt (n * ∑ i ∈ Finset.range n, a i)",
+  "informal": "n-term QM-AM in sqrt form: sum of sqrt(a_i) ≤ sqrt(n * sum a_i). Generalizes Mathlib2.an_sqrt_add_le_sqrt_two_mul (the case n = 2).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "2729566526",
+  "type": "∀ (n : ℕ) (a : ℕ → ℝ), (∀ (i : ℕ), 0 ≤ a i) → ∑ i ∈ Finset.range n, √(a i) ≤ √(↑n * ∑ i ∈ Finset.range n, a i)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:27:40+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_b",
+  "claimed_at": "2026-11-15T00:45:14+0800",
+  "closed_by": "r2_prover_b",
+  "finished_at": "2026-11-15T00:45:32+0800"
+}

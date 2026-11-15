@@ -1,0 +1,19 @@
+{
+  "name": "geo_median_length",
+  "statement": "{V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b c : V) : ‖a - (1 / 2 : ℝ) • (b + c)‖ ^ 2 = (2 * ‖a - b‖ ^ 2 + 2 * ‖a - c‖ ^ 2 - ‖b - c‖ ^ 2) / 4",
+  "closed": "∀ {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b c : V), ‖a - (1 / 2 : ℝ) • (b + c)‖ ^ 2 = (2 * ‖a - b‖ ^ 2 + 2 * ‖a - c‖ ^ 2 - ‖b - c‖ ^ 2) / 4",
+  "informal": "Apollonius' median length formula: the squared distance from a to the midpoint of b and c is (2|ab|² + 2|ac|² − |bc|²)/4 — expand all squared norms into inner products (or apply the parallelogram law to a−b and a−c).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "3722773223",
+  "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (a b c : V), ‖a - (1 / 2) • (b + c)‖ ^ 2 = (2 * ‖a - b‖ ^ 2 + 2 * ‖a - c‖ ^ 2 - ‖b - c‖ ^ 2) / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T02:16:12+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:22:07+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:22:20+0800"
+}

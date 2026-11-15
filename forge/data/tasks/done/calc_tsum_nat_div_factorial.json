@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_nat_div_factorial",
+  "statement": ": ∑' n : ℕ, (n : ℝ) / (n.factorial : ℝ) = Real.exp 1",
+  "closed": "∑' n : ℕ, (n : ℝ) / (n.factorial : ℝ) = Real.exp 1",
+  "informal": "∑ n/n! = e — drop n = 0 term, n/n! = 1/(n−1)!, reindex and use Real.exp series (NormedSpace.exp / Real.exp_eq_tsum / hasSum_nat_add_iff).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "1946474510",
+  "type": "∑' (n : ℕ), ↑n / ↑n.factorial = Real.exp 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:40:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:00:23+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:03:04+0800"
+}

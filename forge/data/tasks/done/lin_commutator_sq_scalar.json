@@ -1,0 +1,19 @@
+{
+  "name": "lin_commutator_sq_scalar",
+  "statement": "(R : Type) [CommRing R] (A B : Matrix (Fin 2) (Fin 2) R) : (A * B - B * A) * (A * B - B * A) = (-Matrix.det (A * B - B * A)) • (1 : Matrix (Fin 2) (Fin 2) R)",
+  "closed": "∀ (R : Type) [CommRing R] (A B : Matrix (Fin 2) (Fin 2) R), (A * B - B * A) * (A * B - B * A) = (-Matrix.det (A * B - B * A)) • (1 : Matrix (Fin 2) (Fin 2) R)",
+  "informal": "The square of a commutator of 2×2 matrices is the scalar matrix −det(AB−BA)·I — the commutator C has trace 0, so 2×2 Cayley–Hamilton gives C² = −(det C) I.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_lin",
+  "hash": "1955600881",
+  "type": "∀ (R : Type) [inst : CommRing R] (A B : Matrix (Fin 2) (Fin 2) R), (A * B - B * A) * (A * B - B * A) = -(A * B - B * A).det • 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:43+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_3",
+  "claimed_at": "2026-11-15T01:37:36+0800",
+  "closed_by": "r4_prover_3",
+  "finished_at": "2026-11-15T01:52:18+0800"
+}

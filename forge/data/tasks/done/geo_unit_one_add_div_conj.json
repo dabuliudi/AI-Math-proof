@@ -1,0 +1,19 @@
+{
+  "name": "geo_unit_one_add_div_conj",
+  "statement": "(z : ℂ) (hz : ‖z‖ = 1) (h : z ≠ -1) : (1 + z) / (1 + (starRingEnd ℂ) z) = z",
+  "closed": "∀ (z : ℂ) (hz : ‖z‖ = 1) (h : z ≠ -1), (1 + z) / (1 + (starRingEnd ℂ) z) = z",
+  "informal": "For z on the unit circle with z ≠ -1, (1+z)/(1+conj z) = z — conj z = z⁻¹ since z * conj z = ‖z‖² = 1, then clear denominators.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "3052287022",
+  "type": "∀ (z : ℂ), ‖z‖ = 1 → z ≠ -1 → (1 + z) / (1 + (starRingEnd ℂ) z) = z",
+  "attempts": [],
+  "created_at": "2026-11-15T02:16:04+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:21:50+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:22:07+0800"
+}

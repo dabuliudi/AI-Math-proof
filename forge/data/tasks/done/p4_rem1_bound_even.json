@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem1_bound_even",
+  "statement": "(k n : ℕ) (hk : 6 ≤ k) (h1 : 2 ^ (2 * k) < n) (h2 : n ≤ 2 ^ (2 * k + 1)) : (2 : ℤ) ^ (k + 1) - 2 ≤ 3 * p4_x n ∧ 0 < p4_x n",
+  "closed": "∀ (k n : ℕ) (hk : 6 ≤ k) (h1 : 2 ^ (2 * k) < n) (h2 : n ≤ 2 ^ (2 * k + 1)), (2 : ℤ) ^ (k + 1) - 2 ≤ 3 * p4_x n ∧ 0 < p4_x n",
+  "informal": "Remark 1: for s=2k, k>=6 and 2^s<n<=2^(s+1): 3x(n) >= 2^(k+1)(2^k-6k-6)-2 >= 2^(k+1)-2 > 0.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 1",
+  "original": "3x(n) ≥ 2^{2k+1}-2-3(2k+2)2^{k+1} = 2^{k+1}(2^k-6k-6)-2 ≥ 2^{k+1}-2 > 0 whenever k≥6.",
+  "proposed_by": "paper_4",
+  "hash": "871514884",
+  "type": "∀ (k n : ℕ), 6 ≤ k → 2 ^ (2 * k) < n → n ≤ 2 ^ (2 * k + 1) → 2 ^ (k + 1) - 2 ≤ 3 * Mathlib2.p4_x n ∧ 0 < Mathlib2.p4_x n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:54:03+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:03:13+0800"
+}

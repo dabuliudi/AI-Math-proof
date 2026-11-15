@@ -1,0 +1,19 @@
+{
+  "name": "lib_convexOn_univ_eq_of_bddAbove",
+  "statement": "{E : Type*} [AddCommGroup E] [Module ℝ E] (f : E → ℝ) (hf : ConvexOn ℝ Set.univ f) (M : ℝ) (hM : ∀ x, f x ≤ M) (x y : E) : f x = f y",
+  "closed": "∀ {E : Type*} [AddCommGroup E] [Module ℝ E] (f : E → ℝ) (hf : ConvexOn ℝ Set.univ f) (M : ℝ) (hM : ∀ x, f x ≤ M) (x y : E), f x = f y",
+  "informal": "A convex function on a real vector space that is bounded above is constant (Liouville-type property of convex functions). Promoted and generalised from Mathlib2.ana_convex_bddAbove_const_aux1 (the case E = ℝ).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.ana_convex_bddAbove_const_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "1859751302",
+  "type": "∀ {E : Type u_1} [inst : AddCommGroup E] [inst_1 : Module ℝ E] (f : E → ℝ), ConvexOn ℝ Set.univ f → ∀ (M : ℝ), (∀ (x : E), f x ≤ M) → ∀ (x y : E), f x = f y",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:02+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:56:22+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:56:32+0800"
+}

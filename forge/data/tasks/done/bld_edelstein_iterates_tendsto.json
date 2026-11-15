@@ -1,0 +1,19 @@
+{
+  "name": "bld_edelstein_iterates_tendsto",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (p : X) (hp : f p = p) (x : X) : Filter.Tendsto (fun n : ℕ => f^[n] x) Filter.atTop (nhds p)",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (p : X) (hp : f p = p) (x : X), Filter.Tendsto (fun n : ℕ => f^[n] x) Filter.atTop (nhds p)",
+  "informal": "Uses Mathlib2.top_tendsto_of_subseq_limits_unique (and complements Mathlib2.top_edelstein_unique_fixed_point): dist (f^[n] x) p is antitone with limit c; any subsequential limit b satisfies dist b p = c = dist (f b) p by continuity, forcing b = p by strict contraction; conclude by the subsequence criterion on the compact space.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_tendsto_of_subseq_limits_unique, Mathlib2.top_edelstein_unique_fixed_point",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "3164004928",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), x ≠ y → dist (f x) (f y) < dist x y) → ∀ (p : X), f p = p → ∀ (x : X), Filter.Tendsto (fun n => f^[n] x) Filter.atTop (nhds p)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:53+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:37:33+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:38:01+0800"
+}

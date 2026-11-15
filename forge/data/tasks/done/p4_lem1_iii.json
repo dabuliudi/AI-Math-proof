@@ -1,0 +1,19 @@
+{
+  "name": "p4_lem1_iii",
+  "statement": "(a b n : ℕ) (ha : 0 < a) (h1 : a ≤ n) (h2 : n ≤ b) (hx : 0 < p4_x b) (hamin : 3 * (p4_r b + 1) * p4_m b + 4 ≤ 2 * a) (haleast : ∀ c : ℕ, 3 * (p4_r b + 1) * p4_m b + 4 ≤ 2 * c → a ≤ c) : 0 < p4_x n",
+  "closed": "∀ (a b n : ℕ) (ha : 0 < a) (h1 : a ≤ n) (h2 : n ≤ b) (hx : 0 < p4_x b) (hamin : 3 * (p4_r b + 1) * p4_m b + 4 ≤ 2 * a) (haleast : ∀ c : ℕ, 3 * (p4_r b + 1) * p4_m b + 4 ≤ 2 * c → a ≤ c), 0 < p4_x n",
+  "informal": "Lemma 1(iii): if x(b) > 0 and a is the least integer with 2a >= 3(r(b)+1)m(b)+4, then x(n) > 0 for a <= n <= b.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Lemma 1(iii)",
+  "original": "(iii) If x(b) > 0 and a is the least integer with 2a ≥ 3(r(b)+1)m(b)+4, then x(n) > 0.",
+  "proposed_by": "paper_4",
+  "hash": "1172817182",
+  "type": "∀ (a b n : ℕ), 0 < a → a ≤ n → n ≤ b → 0 < Mathlib2.p4_x b → 3 * (Mathlib2.p4_r b + 1) * Mathlib2.p4_m b + 4 ≤ 2 * a → (∀ (c : ℕ), 3 * (Mathlib2.p4_r b + 1) * Mathlib2.p4_m b + 4 ≤ 2 * c → a ≤ c) → 0 < Mathlib2.p4_x n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:53:12+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:59:51+0800"
+}

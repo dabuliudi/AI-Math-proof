@@ -1,0 +1,19 @@
+{
+  "name": "calc_sum_mul_choose_sq",
+  "statement": "(n : ℕ) : ∑ k ∈ Finset.range (n + 2), k * (n + 1).choose k ^ 2 = (n + 1) * (2 * n + 1).choose n",
+  "closed": "∀ (n : ℕ), ∑ k ∈ Finset.range (n + 2), k * (n + 1).choose k ^ 2 = (n + 1) * (2 * n + 1).choose n",
+  "informal": "∑ₖ k·C(n+1,k)² = (n+1)·C(2n+1,n) — absorb k·C(n+1,k) = (n+1)·C(n,k−1), then Vandermonde ∑ C(n,k−1)C(n+1,n+1−k) = C(2n+1,n) (Nat.add_choose_eq).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "986135234",
+  "type": "∀ (n : ℕ), ∑ k ∈ Finset.range (n + 2), k * (n + 1).choose k ^ 2 = (n + 1) * (2 * n + 1).choose n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:49:45+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T07:54:13+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T07:54:45+0800"
+}

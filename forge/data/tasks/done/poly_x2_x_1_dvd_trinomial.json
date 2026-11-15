@@ -1,0 +1,19 @@
+{
+  "name": "poly_x2_x_1_dvd_trinomial",
+  "statement": "(k m : ℕ) : (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial ℤ) ∣ Polynomial.X ^ (3 * k + 2) + Polynomial.X ^ (3 * m + 1) + 1",
+  "closed": "∀ (k m : ℕ), (Polynomial.X ^ 2 + Polynomial.X + 1 : Polynomial ℤ) ∣ Polynomial.X ^ (3 * k + 2) + Polynomial.X ^ (3 * m + 1) + 1",
+  "informal": "X^2+X+1 divides X^(3k+2) + X^(3m+1) + 1 over ℤ — X^3 ≡ 1 mod X^2+X+1 (since X^3 - 1 = (X-1)(X^2+X+1)), so the trinomial is ≡ X^2 + X + 1 ≡ 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "2172862804",
+  "type": "∀ (k m : ℕ), Polynomial.X ^ 2 + Polynomial.X + 1 ∣ Polynomial.X ^ (3 * k + 2) + Polynomial.X ^ (3 * m + 1) + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:16:13+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:20:00+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:21:02+0800"
+}

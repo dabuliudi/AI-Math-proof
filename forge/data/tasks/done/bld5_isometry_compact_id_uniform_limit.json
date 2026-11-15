@@ -1,0 +1,19 @@
+{
+  "name": "bld5_isometry_compact_id_uniform_limit",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f) : ∃ φ : ℕ → ℕ, StrictMono φ ∧ TendstoUniformly (fun k x => f^[φ k] x) id Filter.atTop",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f), ∃ φ : ℕ → ℕ, StrictMono φ ∧ TendstoUniformly (fun k x => f^[φ k] x) id Filter.atTop",
+  "informal": "Uses Mathlib2.bld4_isometry_compact_uniform_recurrence: first upgrade to arbitrarily large return times: for ε > 0 and N ≥ 1, the bld4 theorem with ε/N gives n > 0 with dist(f^[n] x, x) < ε/N for all x; since f^[n] is an isometry, the triangle inequality gives dist(f^[nN] x, x) ≤ N·sup dist(f^[n] y, y) < ε with nN ≥ N. Then build φ recursively (φ(k+1) > φ(k) with sup-distance < 1/(k+2)) and unfold Metric.tendstoUniformly_iff.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_isometry_compact_uniform_recurrence",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "527357244",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), Isometry f → ∃ φ, StrictMono φ ∧ TendstoUniformly (fun k x => f^[φ k] x) id Filter.atTop",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:15+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:32:16+0800"
+}

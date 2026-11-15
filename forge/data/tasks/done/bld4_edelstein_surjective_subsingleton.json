@@ -1,0 +1,19 @@
+{
+  "name": "bld4_edelstein_surjective_subsingleton",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (hs : Function.Surjective f) : Subsingleton X",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) (hs : Function.Surjective f), Subsingleton X",
+  "informal": "Uses Mathlib2.bld_surjective_nonexpanding_compact_isometry: f is non-expanding (≤ from <, equality case x = y) and surjective, hence an isometry by the cited theorem; for x ≠ y this gives dist (f x) (f y) = dist x y, contradicting the strict inequality.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_surjective_nonexpanding_compact_isometry",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "694314786",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), x ≠ y → dist (f x) (f y) < dist x y) → Function.Surjective f → Subsingleton X",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:20+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_1",
+  "claimed_at": "2026-11-15T07:05:55+0800",
+  "closed_by": "r9_prover_1",
+  "finished_at": "2026-11-15T07:06:27+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "calc_integral_dalzell",
+  "statement": ": ∫ x in (0:ℝ)..1, x ^ 4 * (1 - x) ^ 4 / (1 + x ^ 2) = 22 / 7 - Real.pi",
+  "closed": "∫ x in (0:ℝ)..1, x ^ 4 * (1 - x) ^ 4 / (1 + x ^ 2) = 22 / 7 - Real.pi",
+  "informal": "Dalzell's integral ∫₀¹ x⁴(1−x)⁴/(1+x²) dx = 22/7 − π — polynomial division: integrand = x⁶ − 4x⁵ + 5x⁴ − 4x² + 4 − 4/(1+x²); integrate termwise, integral_inv_one_add_sq / arctan 1 = π/4.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "2996971927",
+  "type": "∫ (x : ℝ) in 0..1, x ^ 4 * (1 - x) ^ 4 / (1 + x ^ 2) = 22 / 7 - Real.pi",
+  "attempts": [],
+  "created_at": "2026-11-15T07:38:54+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T07:57:03+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T07:57:26+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "fld_irreducible_X_sq_add_one_zmod_iff",
+  "statement": "(p : ℕ) [Fact p.Prime] : Irreducible (Polynomial.X ^ 2 + 1 : Polynomial (ZMod p)) ↔ p % 4 = 3",
+  "closed": "∀ (p : ℕ) [Fact p.Prime], Irreducible (Polynomial.X ^ 2 + 1 : Polynomial (ZMod p)) ↔ p % 4 = 3",
+  "informal": "X^2 + 1 is irreducible over F_p iff p ≡ 3 (mod 4) — a monic quadratic is irreducible iff it has no root (Polynomial.Monic.irreducible_iff_roots_eq_zero_of_degree_le_three), and a root is a square root of -1, which exists iff p % 4 ≠ 3 (ZMod.exists_sq_eq_neg_one_iff).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "433817027",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], Irreducible (Polynomial.X ^ 2 + 1) ↔ p % 4 = 3",
+  "attempts": [],
+  "created_at": "2026-11-15T08:23:51+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:31:07+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:32:35+0800"
+}

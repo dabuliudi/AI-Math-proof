@@ -1,0 +1,19 @@
+{
+  "name": "ana_hasSum_inv_mul_succ",
+  "statement": ": HasSum (fun n : ℕ => 1 / (((n : ℝ) + 1) * ((n : ℝ) + 2))) 1",
+  "closed": "HasSum (fun n : ℕ => 1 / (((n : ℝ) + 1) * ((n : ℝ) + 2))) 1",
+  "informal": "The telescoping series sum 1/((n+1)(n+2)) equals 1 — partial sums are 1 - 1/(N+1) by induction; conclude with hasSum_iff_tendsto_nat_of_nonneg.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "4058425958",
+  "type": "HasSum (fun n => 1 / ((↑n + 1) * (↑n + 2))) 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:15+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:30:43+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:31:46+0800"
+}

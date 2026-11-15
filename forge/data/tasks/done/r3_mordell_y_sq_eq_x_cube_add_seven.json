@@ -1,0 +1,52 @@
+{
+  "name": "r3_mordell_y_sq_eq_x_cube_add_seven",
+  "statement": "(x y : ℤ) : y ^ 2 ≠ x ^ 3 + 7",
+  "closed": "∀ (x y : ℤ), y ^ 2 ≠ x ^ 3 + 7",
+  "informal": "V. A. Lebesgue: the Mordell equation y^2 = x^3 + 7 has no integer solutions. Builds on Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq (a prime p ≡ 3 mod 4 dividing y^2+1^2 would divide 1). Proof idea: x even gives y^2 ≡ 7 mod 8, impossible; for x odd write y^2 + 1 = (x+2)(x^2-2x+4), where x^2-2x+4 = (x-1)^2+3 is positive and ≡ 3 mod 4, hence has a prime factor p ≡ 3 mod 4 (lemma: a product of primes each ≡ 1 mod 4 is ≡ 1 mod 4), and p | y^2+1 contradicts the catalog theorem.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "4087555281",
+  "type": "∀ (x y : ℤ), y ^ 2 ≠ x ^ 3 + 7",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:45+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:06:21+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_3",
+      "body": "theorem r3_mordell_y_sq_eq_x_cube_add_seven (x y : ℤ) : y ^ 2 ≠ x ^ 3 + 7 := by\n  have key : ∀ N : ℕ, N % 4 = 3 → ∃ p : ℕ, p.Prime ∧ p % 4 = 3 ∧ p ∣ N := by\n    clear x y\n    sorry\n  have hodd : ∀ a b : ℤ, b ^ 2 = a ^ 3 + 7 → a % 2 = 1 := by\n    clear x y key\n    sorry\n  have hmod : ∀ a : ℤ, a % 2 = 1 → (a ^ 2 - 2 * a + 4).natAbs % 4 = 3 := by\n    clear x y key hodd\n    sorry\n  intro h\n  obtain ⟨p, hp, hp3, hpd⟩ := key _ (hmod x (hodd x y h))\n  have hd : (p : ℤ) ∣ y ^ 2 + 1 ^ 2 := by\n    have h1 : (p : ℤ) ∣ x ^ 2 - 2 * x + 4 := Int.natCast_dvd.mpr hpd\n    have e : y ^ 2 + 1 ^ 2 = (x + 2) * (x ^ 2 - 2 * x + 4) := by rw [h]; ring\n    rw [e]; exact Dvd.dvd.mul_left h1 _\n  have h2 := (nt2_prime_three_mod_four_dvd_sq_add_sq p hp hp3 y 1 hd).2\n  have h1 : p ∣ 1 := by exact_mod_cast h2\n  exact hp.one_lt.ne' (Nat.dvd_one.mp h1)\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h1",
+          "status": "open",
+          "statement": "∀ (N : ℕ), N % 4 = 3 → ∃ p, Nat.Prime p ∧ p % 4 = 3 ∧ p ∣ N",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h2",
+          "status": "open",
+          "statement": "∀ (a b : ℤ), b ^ 2 = a ^ 3 + 7 → a % 2 = 1",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h3",
+          "status": "open",
+          "statement": "∀ (a : ℤ), a % 2 = 1 → (a ^ 2 - 2 * a + 4).natAbs % 4 = 3",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:07:21+0800"
+    }
+  ],
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:09:16+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "p4_ex1_mono",
+  "statement": "(a b : ℕ) (h : a ≤ b) : p4_z a ≤ p4_z b ∧ p4_m a ≤ p4_m b ∧ p4_r a ≤ p4_r b",
+  "closed": "∀ (a b : ℕ) (h : a ≤ b), p4_z a ≤ p4_z b ∧ p4_m a ≤ p4_m b ∧ p4_r a ≤ p4_r b",
+  "informal": "The sequences z, m, r are non-decreasing.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Exercise 1 (observations)",
+  "original": "z, m and r are non-decreasing",
+  "proposed_by": "paper_4",
+  "hash": "699133376",
+  "type": "∀ (a b : ℕ), a ≤ b → Mathlib2.p4_z a ≤ Mathlib2.p4_z b ∧ Mathlib2.p4_m a ≤ Mathlib2.p4_m b ∧ Mathlib2.p4_r a ≤ Mathlib2.p4_r b",
+  "attempts": [],
+  "created_at": "2026-11-15T02:52:33+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:55+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:58:22+0800"
+}

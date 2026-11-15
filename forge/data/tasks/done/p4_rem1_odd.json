@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem1_odd",
+  "statement": "(k : ℕ) : p4_m (2 ^ (2 * k + 1)) = 2 ^ (k + 1) ∧ (2 : ℤ) ^ (2 * k + 2) = 3 * p4_z (2 ^ (2 * k + 1)) + 1",
+  "closed": "∀ (k : ℕ), p4_m (2 ^ (2 * k + 1)) = 2 ^ (k + 1) ∧ (2 : ℤ) ^ (2 * k + 2) = 3 * p4_z (2 ^ (2 * k + 1)) + 1",
+  "informal": "Remark 1, s=2k+1: m(2^s)=2^(k+1) and z(2^s)=q where 2^(2k+2)=3q+1.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 1",
+  "original": "If s=2k+1: m(2^s)=2^{k+1}; 2^{2k+2}=3q+1 and z(2^s)=q.",
+  "proposed_by": "paper_4",
+  "hash": "1638473027",
+  "type": "∀ (k : ℕ), Mathlib2.p4_m (2 ^ (2 * k + 1)) = 2 ^ (k + 1) ∧ 2 ^ (2 * k + 2) = 3 * Mathlib2.p4_z (2 ^ (2 * k + 1)) + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:53:47+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:02:45+0800"
+}

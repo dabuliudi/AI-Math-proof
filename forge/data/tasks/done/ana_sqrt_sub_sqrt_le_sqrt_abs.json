@@ -1,0 +1,19 @@
+{
+  "name": "ana_sqrt_sub_sqrt_le_sqrt_abs",
+  "statement": "(x y : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y) : |Real.sqrt x - Real.sqrt y| ≤ Real.sqrt |x - y|",
+  "closed": "∀ (x y : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y), |Real.sqrt x - Real.sqrt y| ≤ Real.sqrt |x - y|",
+  "informal": "The square root is 1/2-Hölder with constant 1 — WLOG y ≤ x; then (sqrt x - sqrt y)^2 ≤ (sqrt x - sqrt y)(sqrt x + sqrt y) = x - y, and take square roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1554400830",
+  "type": "∀ (x y : ℝ), 0 ≤ x → 0 ≤ y → |√x - √y| ≤ √|x - y|",
+  "attempts": [],
+  "created_at": "2026-11-15T01:31:05+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_8",
+  "claimed_at": "2026-11-15T01:59:38+0800",
+  "closed_by": "r4_prover_8",
+  "finished_at": "2026-11-15T02:00:03+0800"
+}

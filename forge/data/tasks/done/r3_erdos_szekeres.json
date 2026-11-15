@@ -1,0 +1,46 @@
+{
+  "name": "r3_erdos_szekeres",
+  "statement": "(r s : ℕ) (f : Fin (r * s + 1) → ℝ) (hf : Function.Injective f) : (∃ t : Finset (Fin (r * s + 1)), r < t.card ∧ StrictMonoOn f (t : Set (Fin (r * s + 1)))) ∨ (∃ t : Finset (Fin (r * s + 1)), s < t.card ∧ StrictAntiOn f (t : Set (Fin (r * s + 1))))",
+  "closed": "∀ (r s : ℕ) (f : Fin (r * s + 1) → ℝ) (hf : Function.Injective f), (∃ t : Finset (Fin (r * s + 1)), r < t.card ∧ StrictMonoOn f (t : Set (Fin (r * s + 1)))) ∨ (∃ t : Finset (Fin (r * s + 1)), s < t.card ∧ StrictAntiOn f (t : Set (Fin (r * s + 1))))",
+  "informal": "Erdős–Szekeres: any sequence of rs+1 distinct reals has an increasing subsequence of length r+1 or a decreasing one of length s+1. Proof idea: label each index i with (length of longest increasing subsequence ending at i, longest decreasing ending at i); labels are pairwise distinct (for i<j one of the two coordinates strictly grows); if all labels lay in [1,r]×[1,s] pigeonhole would be violated.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "1591935643",
+  "type": "∀ (r s : ℕ) (f : Fin (r * s + 1) → ℝ), Function.Injective f → (∃ t, r < t.card ∧ StrictMonoOn f ↑t) ∨ ∃ t, s < t.card ∧ StrictAntiOn f ↑t",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:28+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_4",
+  "claimed_at": "2026-11-15T01:19:44+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_4",
+      "body": "theorem r3_erdos_szekeres (r s : ℕ) (f : Fin (r * s + 1) → ℝ) (hf : Function.Injective f) : (∃ t : Finset (Fin (r * s + 1)), r < t.card ∧ StrictMonoOn f (t : Set (Fin (r * s + 1)))) ∨ (∃ t : Finset (Fin (r * s + 1)), s < t.card ∧ StrictAntiOn f (t : Set (Fin (r * s + 1)))) := by\n  have labels : ∀ (n : ℕ) (g : Fin n → ℝ), ∃ a : Fin n → ℕ, (∀ i, 1 ≤ a i ∧ ∃ t : Finset (Fin n), t.card = a i ∧ StrictMonoOn g (t : Set (Fin n))) ∧ ∀ i j, i < j → g i < g j → a i < a j := by\n    clear hf f r s\n    sorry\n  have pigeon : ∀ (r s : ℕ) (a b : Fin (r * s + 1) → ℕ), (∀ i, 1 ≤ a i ∧ a i ≤ r) → (∀ i, 1 ≤ b i ∧ b i ≤ s) → ∃ i j, i < j ∧ a i = a j ∧ b i = b j := by\n    clear labels hf f r s\n    sorry\n  by_contra hcon\n  push_neg at hcon\n  obtain ⟨hinc, hdec⟩ := hcon\n  obtain ⟨a, ha1, ha2⟩ := labels _ f\n  obtain ⟨b, hb1, hb2⟩ := labels _ (fun i => - f i)\n  have hA : ∀ i, 1 ≤ a i ∧ a i ≤ r := by\n    intro i\n    obtain ⟨h1, t, ht, hmono⟩ := ha1 i\n    refine ⟨h1, ?_⟩\n    by_contra hc\n    exact hinc t (by omega) hmono\n  have hB : ∀ i, 1 ≤ b i ∧ b i ≤ s := by\n    intro i\n    obtain ⟨h1, t, ht, hmono⟩ := hb1 i\n    refine ⟨h1, ?_⟩\n    by_contra hc\n    refine hdec t (by omega) ?_\n    intro x hx y hy hxy\n    have := hmono hx hy hxy\n    simp only at this\n    linarith\n  obtain ⟨i, j, hij, hae, hbe⟩ := pigeon r s a b hA hB\n  have hne : f i ≠ f j := fun h => (ne_of_lt hij) (hf h)\n  rcases lt_or_gt_of_ne hne with h | h\n  · have := ha2 i j hij h; omega\n  · have := hb2 i j hij (neg_lt_neg h); omega\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_erdos_szekeres_s1h1",
+          "status": "open",
+          "statement": "∀ (n : ℕ) (g : Fin n → ℝ), ∃ (a : Fin n → ℕ), (∀ (i : Fin n), 1 ≤ a i ∧ ∃ (t : Finset (Fin n)), t.card = a i ∧ StrictMonoOn g (↑t : Set (Fin n))) ∧ ∀ (i j : Fin n), i < j → g i < g j → a i < a j",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_erdos_szekeres_s1h2",
+          "status": "open",
+          "statement": "∀ (r s : ℕ) (a b : Fin (r * s + 1) → ℕ), (∀ (i : Fin (r * s + 1)), 1 ≤ a i ∧ a i ≤ r) → (∀ (i : Fin (r * s + 1)), 1 ≤ b i ∧ b i ≤ s) → ∃ (i : Fin (r * s + 1)) (j : Fin (r * s + 1)), i < j ∧ a i = a j ∧ b i = b j",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:20:28+0800"
+    }
+  ],
+  "closed_by": "r3_prover_4",
+  "finished_at": "2026-11-15T01:22:48+0800"
+}

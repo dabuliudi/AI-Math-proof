@@ -1,0 +1,19 @@
+{
+  "name": "p4_r_spec",
+  "statement": "(n : ℕ) : n ≤ 2 ^ p4_r n ∧ ∀ k : ℕ, n ≤ 2 ^ k → p4_r n ≤ k",
+  "closed": "∀ (n : ℕ), n ≤ 2 ^ p4_r n ∧ ∀ k : ℕ, n ≤ 2 ^ k → p4_r n ≤ k",
+  "informal": "The Lean definition p4_r agrees with the paper's: r(n) is the least non-negative integer with n <= 2^r(n).",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Introduction, definition (c)",
+  "original": "r(n) is the least non-negative integer with n ≤ 2^{r(n)}",
+  "proposed_by": "paper_4",
+  "hash": "2045480038",
+  "type": "∀ (n : ℕ), n ≤ 2 ^ Mathlib2.p4_r n ∧ ∀ (k : ℕ), n ≤ 2 ^ k → Mathlib2.p4_r n ≤ k",
+  "attempts": [],
+  "created_at": "2026-11-15T02:52:03+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:55+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:58:14+0800"
+}

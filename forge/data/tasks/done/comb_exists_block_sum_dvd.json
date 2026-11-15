@@ -1,0 +1,19 @@
+{
+  "name": "comb_exists_block_sum_dvd",
+  "statement": "(n : ℕ) (hn : 0 < n) (a : ℕ → ℤ) : ∃ i j : ℕ, i < j ∧ j ≤ n ∧ (n : ℤ) ∣ ∑ k ∈ Finset.Ico i j, a k",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (a : ℕ → ℤ), ∃ i j : ℕ, i < j ∧ j ≤ n ∧ (n : ℤ) ∣ ∑ k ∈ Finset.Ico i j, a k",
+  "informal": "Among any n integers a_0..a_{n-1} some nonempty consecutive block has sum divisible by n — the n+1 prefix sums S_0..S_n take two equal values mod n by pigeonhole; their difference is a block sum (Finset.sum_Ico_eq_sub).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "40467481",
+  "type": "∀ (n : ℕ), 0 < n → ∀ (a : ℕ → ℤ), ∃ i j, i < j ∧ j ≤ n ∧ ↑n ∣ ∑ k ∈ Finset.Ico i j, a k",
+  "attempts": [],
+  "created_at": "2026-11-15T01:33:43+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:55:58+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:56:24+0800"
+}

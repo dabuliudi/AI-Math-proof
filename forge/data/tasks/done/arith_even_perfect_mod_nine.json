@@ -1,0 +1,19 @@
+{
+  "name": "arith_even_perfect_mod_nine",
+  "statement": "(n : ℕ) (he : Even n) (hp : n.Perfect) (h6 : n ≠ 6) : n % 9 = 1",
+  "closed": "∀ (n : ℕ) (he : Even n) (hp : n.Perfect) (h6 : n ≠ 6), n % 9 = 1",
+  "informal": "Every even perfect number other than 6 is ≡ 1 (mod 9) — Euclid–Euler gives n = 2^(q-1)(2^q-1) with q an odd prime; 2 has order 6 mod 9 and q-1 is even, check the three residues of q-1 mod 6.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "2080925231",
+  "type": "∀ (n : ℕ), Even n → n.Perfect → n ≠ 6 → n % 9 = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:02+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:03:41+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:06:07+0800"
+}

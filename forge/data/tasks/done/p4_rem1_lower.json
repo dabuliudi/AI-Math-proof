@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem1_lower",
+  "statement": "(s n : ℕ) (h1 : 2 ^ s < n) (h2 : n ≤ 2 ^ (s + 1)) : p4_r n = s + 1 ∧ p4_z (2 ^ s) - ((s : ℤ) + 2) * (p4_m (2 ^ (s + 1)) : ℤ) ≤ p4_x n",
+  "closed": "∀ (s n : ℕ) (h1 : 2 ^ s < n) (h2 : n ≤ 2 ^ (s + 1)), p4_r n = s + 1 ∧ p4_z (2 ^ s) - ((s : ℤ) + 2) * (p4_m (2 ^ (s + 1)) : ℤ) ≤ p4_x n",
+  "informal": "Remark 1: for 2^s < n <= 2^(s+1), r(n)=s+1 and x(n) >= z(2^s)-(s+2)m(2^(s+1)).",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 1",
+  "original": "For 2^s<n≤2^{s+1}: r(n)=s+1 and x(n) ≥ z(2^s)-(s+2)m(2^{s+1}).",
+  "proposed_by": "paper_4",
+  "hash": "2729131631",
+  "type": "∀ (s n : ℕ), 2 ^ s < n → n ≤ 2 ^ (s + 1) → Mathlib2.p4_r n = s + 1 ∧ Mathlib2.p4_z (2 ^ s) - (↑s + 2) * ↑(Mathlib2.p4_m (2 ^ (s + 1))) ≤ Mathlib2.p4_x n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:53:55+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:02:00+0800"
+}

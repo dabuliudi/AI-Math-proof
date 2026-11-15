@@ -1,0 +1,19 @@
+{
+  "name": "poly_chebyshev_T_abs_le_one",
+  "statement": "(n : ℤ) (x : ℝ) (hx : |x| ≤ 1) : |Polynomial.eval x (Polynomial.Chebyshev.T ℝ n)| ≤ 1",
+  "closed": "∀ (n : ℤ) (x : ℝ) (hx : |x| ≤ 1), |Polynomial.eval x (Polynomial.Chebyshev.T ℝ n)| ≤ 1",
+  "informal": "Chebyshev polynomials of the first kind are bounded by 1 on [-1,1] — write x = cos θ with θ = arccos x, then T_n(cos θ) = cos(nθ) (Polynomial.Chebyshev.T_real_cos) and |cos| ≤ 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "3890952254",
+  "type": "∀ (n : ℤ) (x : ℝ), |x| ≤ 1 → |Polynomial.eval x (Polynomial.Chebyshev.T ℝ n)| ≤ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:17:00+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:21:59+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:23:47+0800"
+}

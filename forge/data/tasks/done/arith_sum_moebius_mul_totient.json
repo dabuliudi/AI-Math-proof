@@ -1,0 +1,19 @@
+{
+  "name": "arith_sum_moebius_mul_totient",
+  "statement": "(n : ℕ) (hn : 0 < n) : ∑ d ∈ n.divisors, ArithmeticFunction.moebius d * (d.totient : ℤ) = ∏ p ∈ n.primeFactors, (2 - (p : ℤ))",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), ∑ d ∈ n.divisors, ArithmeticFunction.moebius d * (d.totient : ℤ) = ∏ p ∈ n.primeFactors, (2 - (p : ℤ))",
+  "informal": "Σ_{d|n} μ(d)φ(d) = ∏_{p|n} (2 - p) — sum over squarefree divisors of a multiplicative function expands as ∏_{p|n}(1 + μ(p)φ(p)) = ∏(1 - (p-1)).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3521215793",
+  "type": "∀ (n : ℕ), 0 < n → ∑ d ∈ n.divisors, ArithmeticFunction.moebius d * ↑d.totient = ∏ p ∈ n.primeFactors, (2 - ↑p)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:43:27+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T08:00:54+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T08:01:04+0800"
+}

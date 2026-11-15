@@ -1,0 +1,19 @@
+{
+  "name": "lib_real_sqrt_sub_sqrt_bounds",
+  "statement": "(a b : ℝ) (ha : 0 < a) (hab : a ≤ b) : (b - a) / (2 * Real.sqrt b) ≤ Real.sqrt b - Real.sqrt a ∧ Real.sqrt b - Real.sqrt a ≤ (b - a) / (2 * Real.sqrt a)",
+  "closed": "∀ (a b : ℝ) (ha : 0 < a) (hab : a ≤ b), (b - a) / (2 * Real.sqrt b) ≤ Real.sqrt b - Real.sqrt a ∧ Real.sqrt b - Real.sqrt a ≤ (b - a) / (2 * Real.sqrt a)",
+  "informal": "Two-sided mean-value bound for the square root: (b-a)/(2√b) ≤ √b - √a ≤ (b-a)/(2√a) for 0 < a ≤ b (the telescoping estimate behind ∑ 1/√k ~ 2√n). Promoted and generalised from Mathlib2.an2_sum_inv_sqrt_bounds_aux1 (the case b = a + 1; used in bld_sum_inv_sqrt_div_sqrt_tendsto).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.an2_sum_inv_sqrt_bounds_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "460122036",
+  "type": "∀ (a b : ℝ), 0 < a → a ≤ b → (b - a) / (2 * √b) ≤ √b - √a ∧ √b - √a ≤ (b - a) / (2 * √a)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:15+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:59:12+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:59:20+0800"
+}

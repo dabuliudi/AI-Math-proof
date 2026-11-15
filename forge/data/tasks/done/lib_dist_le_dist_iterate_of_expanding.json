@@ -1,0 +1,16 @@
+{
+  "name": "lib_dist_le_dist_iterate_of_expanding",
+  "statement": "{X : Type*} [MetricSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) (k : ℕ) : ∀ x y : X, dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "closed": "∀ {X : Type*} [MetricSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) (k : ℕ), ∀ x y : X, dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "informal": "Iterates of a distance non-decreasing (expanding) self-map are expanding: dist x y ≤ dist (f^[k] x) (f^[k] y). Promoted from Mathlib2.top_expanding_compact_isometry_aux1 (the isometry analogue is re-derived inside top_isometry_compact_surjective).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.top_expanding_compact_isometry_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "1164546245",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] (f : X → X), (∀ (x y : X), dist x y ≤ dist (f x) (f y)) → ∀ (k : ℕ) (x y : X), dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:05:35+0800",
+  "status": "known",
+  "known_as": "fun x y => top_expanding_compact_isometry_aux1 f hf k x y"
+}

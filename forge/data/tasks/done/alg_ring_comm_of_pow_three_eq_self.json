@@ -1,0 +1,19 @@
+{
+  "name": "alg_ring_comm_of_pow_three_eq_self",
+  "statement": "(R : Type*) [Ring R] (h : ∀ x : R, x ^ 3 = x) : ∀ x y : R, x * y = y * x",
+  "closed": "∀ (R : Type*) [Ring R] (h : ∀ x : R, x ^ 3 = x), ∀ x y : R, x * y = y * x",
+  "informal": "A ring in which x³ = x for all x is commutative — show 6 = 0 and 3(x² + x) = 0, squares are central (via idempotents e = x² and (e y - e y e)² = 0 implies nilpotents vanish), then x = x³ - ... combine 3x(x+1) and 2-torsion parts to get commutativity.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "251893086",
+  "type": "∀ (R : Type u_1) [inst : Ring R], (∀ (x : R), x ^ 3 = x) → ∀ (x y : R), x * y = y * x",
+  "attempts": [],
+  "created_at": "2026-11-15T01:31:44+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_6",
+  "claimed_at": "2026-11-15T01:57:38+0800",
+  "closed_by": "r4_prover_6",
+  "finished_at": "2026-11-15T01:57:48+0800"
+}

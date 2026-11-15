@@ -1,0 +1,19 @@
+{
+  "name": "ab_t2_mul_mem_divisors",
+  "statement": "(n k d : ℕ) (hk : 0 < k) (hd : d ∈ Nat.divisors n) : k * d ∈ Nat.divisors (k * n)",
+  "closed": "∀ (n k d : ℕ) (hk : 0 < k) (hd : d ∈ Nat.divisors n), k * d ∈ Nat.divisors (k * n)",
+  "informal": "Table 2 step 5: if d divides n then k d is a divisor of k n.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.11 Table 2 step [5]",
+  "original": "[5] Consider now kd1, kd2, ... kdr these are also among the divisors of kn",
+  "proposed_by": "paper_2",
+  "hash": "1310848373",
+  "type": "∀ (n k d : ℕ), 0 < k → d ∈ n.divisors → k * d ∈ (k * n).divisors",
+  "attempts": [],
+  "created_at": "2026-11-15T01:00:02+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:05:35+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:05:44+0800"
+}

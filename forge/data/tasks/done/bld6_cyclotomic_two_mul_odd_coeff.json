@@ -1,0 +1,19 @@
+{
+  "name": "bld6_cyclotomic_two_mul_odd_coeff",
+  "statement": "(n k : ℕ) (hn : Odd n) (h1 : 1 < n) : (Polynomial.cyclotomic (2 * n) ℤ).coeff k = (-1) ^ k * (Polynomial.cyclotomic n ℤ).coeff k",
+  "closed": "∀ (n k : ℕ) (hn : Odd n) (h1 : 1 < n), (Polynomial.cyclotomic (2 * n) ℤ).coeff k = (-1) ^ k * (Polynomial.cyclotomic n ℤ).coeff k",
+  "informal": "Uses Mathlib2.poly_cyclotomic_two_mul_odd_comp_neg: rewrite Φ_(2n) = Φ_n ∘ (-X) and compute the k-th coefficient of p.comp(-X) as (-1)^k p.coeff k (write -X = C(-1)·X and use the coefficient formula for comp with C a * X).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_cyclotomic_two_mul_odd_comp_neg",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1369456973",
+  "type": "∀ (n k : ℕ), Odd n → 1 < n → (Polynomial.cyclotomic (2 * n) ℤ).coeff k = (-1) ^ k * (Polynomial.cyclotomic n ℤ).coeff k",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:39+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:21:27+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:26:27+0800"
+}

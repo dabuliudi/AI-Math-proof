@@ -1,0 +1,16 @@
+{
+  "name": "lib_group_card_centralizer_eq_orderOf_of_card_prime_mul_prime",
+  "statement": "(p q : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hnc : ∃ a b : G, a * b ≠ b * a) (a : G) (ha : a ≠ 1) : Nat.card { b : G // Commute a b } = orderOf a ∧ (orderOf a = p ∨ orderOf a = q)",
+  "closed": "∀ (p q : ℕ) (hp : Nat.Prime p) (hq : Nat.Prime q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hnc : ∃ a b : G, a * b ≠ b * a) (a : G) (ha : a ≠ 1), Nat.card { b : G // Commute a b } = orderOf a ∧ (orderOf a = p ∨ orderOf a = q)",
+  "informal": "promoted from Mathlib2.bld3_card_conjClasses_of_card_prime_mul_prime_aux1: in a non-abelian group of order pq every non-identity element has order p or q and its centraliser is the cyclic group it generates.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "1568464981",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → (∃ a b, a * b ≠ b * a) → ∀ (a : G), a ≠ 1 → Nat.card { b // Commute a b } = orderOf a ∧ (orderOf a = p ∨ orderOf a = q)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:49:44+0800",
+  "status": "known",
+  "known_as": "bld3_card_conjClasses_of_card_prime_mul_prime_aux1 p q hp hq G hG hnc a ha"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "gen_an_amgm_finset_ordered_ring",
+  "statement": "(R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (ι : Type*) (s : Finset ι) (a : ι → R) (ha : ∀ i ∈ s, 0 ≤ a i) : (s.card : R) ^ s.card * ∏ i ∈ s, a i ≤ (∑ i ∈ s, a i) ^ s.card",
+  "closed": "∀ (R : Type*) [CommRing R] [LinearOrder R] [IsStrictOrderedRing R] (ι : Type*) (s : Finset ι) (a : ι → R) (ha : ∀ i ∈ s, 0 ≤ a i), (s.card : R) ^ s.card * ∏ i ∈ s, a i ≤ (∑ i ∈ s, a i) ^ s.card",
+  "informal": "Generalizes Mathlib2.an2_amgm_range_pow: ℝ → any linearly ordered commutative ring via a division-free form card^card · ∏ a ≤ (∑ a)^card, range (n+1) → arbitrary Finset. Also implies an_amgm_three_cube. Proof idea: no n-th roots available, so induct on the finset (e.g. Cauchy forward–backward induction, or the smoothing step replacing min and max by mean-preserving pair).",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.an2_amgm_range_pow",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "1885643886",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (ι : Type u_2) (s : Finset ι) (a : ι → R), (∀ i ∈ s, 0 ≤ a i) → ↑s.card ^ s.card * ∏ i ∈ s, a i ≤ (∑ i ∈ s, a i) ^ s.card",
+  "attempts": [],
+  "created_at": "2026-11-15T02:07:06+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:11:31+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:12:45+0800"
+}

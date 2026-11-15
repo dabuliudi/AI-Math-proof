@@ -1,0 +1,18 @@
+{
+  "name": "an_div_add_div_ge_two_ne",
+  "statement": "(a b : ℝ) (ha : a ≠ 0) (hb : b ≠ 0) : 2 ≤ a / b + b / a",
+  "closed": "∀ (a b : ℝ) (ha : a ≠ 0) (hb : b ≠ 0), 2 ≤ a / b + b / a",
+  "informal": "[suspected false] a/b + b/a ≥ 2 assuming only a, b nonzero (fails for opposite signs).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_an",
+  "hash": "3741933353",
+  "type": "∀ (a b : ℝ), a ≠ 0 → b ≠ 0 → 2 ≤ a / b + b / a",
+  "attempts": [],
+  "created_at": "2026-11-15T00:13:28+0800",
+  "status": "disproved",
+  "claimed_by": "prover_4",
+  "claimed_at": "2026-11-15T00:20:41+0800",
+  "closed_by": "prover_4",
+  "finished_at": "2026-11-15T00:21:05+0800"
+}

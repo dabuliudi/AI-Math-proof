@@ -1,0 +1,19 @@
+{
+  "name": "r3_hardy_inequality_finite_s1h3",
+  "statement": ": ∀ (T B Q : ℝ), 0 ≤ T → T ≤ 2 * Q → Q ^ 2 ≤ T * B → T ≤ 4 * B",
+  "closed": "∀ (T B Q : ℝ), 0 ≤ T → T ≤ 2 * Q → Q ^ 2 ≤ T * B → T ≤ 4 * B",
+  "informal": "r3_hardy_inequality_finite 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "r3_hardy_inequality_finite",
+  "original": "",
+  "proposed_by": "r3_prover_3",
+  "hash": "2691281044",
+  "type": "∀ (T B Q : ℝ), 0 ≤ T → T ≤ 2 * Q → Q ^ 2 ≤ T * B → T ≤ 4 * B",
+  "attempts": [],
+  "created_at": "2026-11-15T01:12:19+0800",
+  "status": "disproved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:13:53+0800",
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:14:16+0800"
+}

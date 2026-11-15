@@ -1,0 +1,19 @@
+{
+  "name": "ab_six_le_of_perfect",
+  "statement": "(n : ℕ) (hn : Nat.Perfect n) : 6 ≤ n",
+  "closed": "∀ (n : ℕ) (hn : Nat.Perfect n), 6 ≤ n",
+  "informal": "6 is the smallest perfect number.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.17",
+  "original": "6 (the smallest perfect number)",
+  "proposed_by": "paper_2",
+  "hash": "2507553062",
+  "type": "∀ (n : ℕ), n.Perfect → 6 ≤ n",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:05+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:05:16+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:05:25+0800"
+}

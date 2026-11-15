@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_cube_div_two_pow",
+  "statement": ": ∑' n : ℕ, (n : ℝ) ^ 3 / 2 ^ n = 26",
+  "closed": "∑' n : ℕ, (n : ℝ) ^ 3 / 2 ^ n = 26",
+  "informal": "∑ n³/2ⁿ = 26 — expand n³ in binomials C(n,1)+6C(n,2)+6C(n,3) and use ∑ C(n,k) rⁿ = rᵏ/(1−r)^(k+1) at r = 1/2; or telescoping with S(n)= -(n³+3n²+9n+13)/2^(n-1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "4094311422",
+  "type": "∑' (n : ℕ), ↑n ^ 3 / 2 ^ n = 26",
+  "attempts": [],
+  "created_at": "2026-11-15T07:39:46+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:00:02+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:00:23+0800"
+}

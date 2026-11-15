@@ -1,0 +1,15 @@
+{
+  "name": "gr_exists_clique_or_indep_three",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : 6 ≤ Fintype.card V) : ∃ s : Finset V, s.card = 3 ∧ (G.IsClique (s : Set V) ∨ G.IsIndepSet (s : Set V))",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : 6 ≤ Fintype.card V), ∃ s : Finset V, s.card = 3 ∧ (G.IsClique (s : Set V) ∨ G.IsIndepSet (s : Set V))",
+  "informal": "Among any 6 vertices there is a clique or an independent set of size 3 — Uses Mathlib2.r3_ramsey_three_three at step 1 to get ¬CliqueFree 3 for G or Gᶜ; unfold CliqueFree/IsNClique to extract the 3-set, and translate a clique of Gᶜ into an independent set of G (SimpleGraph.isClique_compl / isIndepSet_iff).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "563438726",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj], 6 ≤ Fintype.card V → ∃ s, s.card = 3 ∧ (G.IsClique ↑s ∨ G.IsIndepSet ↑s)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:44:49+0800",
+  "status": "open"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld4_tripotent_trace_eq_rank_sub_rank",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : A * A * A = A) : A.trace = ((A * A + A).rank : K) - ((A * A - A).rank : K)",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : A * A * A = A), A.trace = ((A * A + A).rank : K) - ((A * A - A).rank : K)",
+  "informal": "Uses Mathlib2.gen_lin_idempotent_trace_eq_rank_field and Mathlib2.lib_matrix_rank_smul: P = (1/2)(A^2 + A) and Q = (1/2)(A^2 − A) are idempotent when A^3 = A, and A = P − Q. So tr A = tr P − tr Q = rank P − rank Q by gen_lin_idempotent_trace_eq_rank_field, and lib_matrix_rank_smul removes the scalar 1/2 from the ranks.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_idempotent_trace_eq_rank_field, Mathlib2.lib_matrix_rank_smul",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "2484718068",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A * A = A → A.trace = ↑(A * A + A).rank - ↑(A * A - A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:53+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:00:04+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:00:31+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld_center_eq_bot_of_card_prime_mul_prime",
+  "statement": "(p q : ℕ) (hp : p.Prime) (hq : q.Prime) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hnc : ∃ a b : G, a * b ≠ b * a) : Subgroup.center G = ⊥",
+  "closed": "∀ (p q : ℕ) (hp : p.Prime) (hq : q.Prime) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hnc : ∃ a b : G, a * b ≠ b * a), Subgroup.center G = ⊥",
+  "informal": "Uses Mathlib2.alg_center_index_not_prime: |Z| divides p*q; |Z| = p or q gives prime index, contradicting the library theorem, and |Z| = p*q contradicts non-commutativity, so |Z| = 1.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.alg_center_index_not_prime",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "3233935896",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → (∃ a b, a * b ≠ b * a) → Subgroup.center G = ⊥",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:31+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_2",
+  "claimed_at": "2026-11-15T02:42:08+0800",
+  "closed_by": "r6_prover_2",
+  "finished_at": "2026-11-15T02:42:17+0800"
+}

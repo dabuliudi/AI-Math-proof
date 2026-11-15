@@ -1,0 +1,15 @@
+{
+  "name": "gr_mantel_equality_compl_not_connected",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) : ¬ Gᶜ.Connected",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2), ¬ Gᶜ.Connected",
+  "informal": "The complement of an extremal triangle-free graph is disconnected — Uses Mathlib2.bld4_mantel_equality_complete_bipartite at step 1 to get s with 2|s| = n and Adj x y ↔ (x ∈ s ↔ y ∉ s); then Gᶜ has no edge between s and sᶜ; if n = 0 Connected fails by emptiness, otherwise both sides are nonempty and a Gᶜ-walk from s to sᶜ would need a crossing edge.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3942177795",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ¬Gᶜ.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T08:43:58+0800",
+  "status": "open"
+}

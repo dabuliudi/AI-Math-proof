@@ -1,0 +1,19 @@
+{
+  "name": "arith_abundant_mul",
+  "statement": "(n k : ℕ) (hn : n.Abundant) (hk : 0 < k) : (k * n).Abundant",
+  "closed": "∀ (n k : ℕ) (hn : n.Abundant) (hk : 0 < k), (k * n).Abundant",
+  "informal": "Every positive multiple of an abundant number is abundant — Uses Mathlib2.ab_abundant_def at the first and last step to pass to full divisor sums, and Mathlib2.ab_t2_mul_mem_divisors to inject d ↦ k·d from divisors of n into divisors of k·n, so σ(kn) ≥ kσ(n) > 2kn.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "2640596774",
+  "type": "∀ (n k : ℕ), n.Abundant → 0 < k → (k * n).Abundant",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:00+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:54:58+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:56:43+0800"
+}

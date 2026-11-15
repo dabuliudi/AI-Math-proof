@@ -1,0 +1,19 @@
+{
+  "name": "fld_card_circle_zmod",
+  "statement": "(p : ℕ) [Fact p.Prime] (hp : p ≠ 2) : ((Finset.univ : Finset (ZMod p × ZMod p)).filter (fun v => v.1 ^ 2 + v.2 ^ 2 = 1)).card = if p % 4 = 1 then p - 1 else p + 1",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (hp : p ≠ 2), ((Finset.univ : Finset (ZMod p × ZMod p)).filter (fun v => v.1 ^ 2 + v.2 ^ 2 = 1)).card = if p % 4 = 1 then p - 1 else p + 1",
+  "informal": "The circle x^2 + y^2 = 1 over F_p (p odd) has p - (-1/p) points: p-1 if p ≡ 1 mod 4 and p+1 if p ≡ 3 mod 4 — if -1 = i^2 the substitution u = x+iy, v = x-iy gives the hyperbola uv = 1 with p-1 points; otherwise count via N = Σ_x (1 + χ(1-x^2)) and the Jacobsthal sum Σ χ(x^2 - 1)·χ(-1) = -χ(-1), or parametrize rationally by lines through (1,0).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "1063711147",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → {v | v.1 ^ 2 + v.2 ^ 2 = 1}.card = if p % 4 = 1 then p - 1 else p + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:36+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:26:46+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:31:50+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "comb_compl_connected_of_not_connected",
+  "statement": "(V : Type) [Nonempty V] (G : SimpleGraph V) (h : ¬ G.Connected) : Gᶜ.Connected",
+  "closed": "∀ (V : Type) [Nonempty V] (G : SimpleGraph V) (h : ¬ G.Connected), Gᶜ.Connected",
+  "informal": "The complement of a disconnected graph is connected — pick a, b not G-reachable; for any x, y: if not G-reachable from each other they are adjacent in the complement, otherwise one of a, b is G-unreachable from both and is a common complement-neighbour.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "2890151342",
+  "type": "∀ (V : Type) [Nonempty V] (G : SimpleGraph V), ¬G.Connected → Gᶜ.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T01:37:22+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T02:00:54+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T02:01:09+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "p4_small_classify",
+  "statement": "(n : ℕ) (hn : 0 < n) (h : n ≤ 4096) : (p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ (513 ≤ n ∧ n ≤ 528)) ∧ (n ≠ 129 → -58 ≤ p4_x n)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (h : n ≤ 4096), (p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ (513 ≤ n ∧ n ≤ 528)) ∧ (n ≠ 129 → -58 ≤ p4_x n)",
+  "informal": "Auditor's helper lemma (not a numbered statement of the paper): the finite verification for 1 <= n <= 4096 underlying Theorem 1, done block by block on the maximal intervals where r and m are constant (the paper's Lemma 2 / table).",
+  "origin": "conjecture",
+  "source": "arXiv:2503.03469v1 proof of Theorem 1 (finite check)",
+  "original": "",
+  "proposed_by": "paper_4",
+  "hash": "3184459726",
+  "type": "∀ (n : ℕ), 0 < n → n ≤ 4096 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:57:43+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:57:43+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:00:45+0800"
+}

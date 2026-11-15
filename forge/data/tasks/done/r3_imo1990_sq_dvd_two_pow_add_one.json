@@ -1,0 +1,83 @@
+{
+  "name": "r3_imo1990_sq_dvd_two_pow_add_one",
+  "statement": "(n : ℕ) (h : n ^ 2 ∣ 2 ^ n + 1) : n = 1 ∨ n = 3",
+  "closed": "∀ (n : ℕ) (h : n ^ 2 ∣ 2 ^ n + 1), n = 1 ∨ n = 3",
+  "informal": "IMO 1990 Q3: n^2 | 2^n + 1 only for n = 1, 3. Builds on Mathlib2.nt2_lte_three_two_pow_three_pow_add_one (LTE at 3; here one needs the general form v_3(2^n+1) = v_3(n)+1 for odd n) and the least-prime-factor/order technique of Mathlib2.nt2_dvd_two_pow_sub_one_eq_one. Proof idea: n is odd; least prime factor is 3 (order of 2 mod p divides gcd(2n, p-1) = 2); LTE gives 2 v_3(n) ≤ v_3(n)+1 so n = 3m with 3 ∤ m; the least prime factor q of m has ord_q(2) | gcd(6m, q-1) | 6, so q | 63, q = 7, but 2^n+1 mod 7 ∈ {2,3,5}: contradiction, so m = 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "1795474361",
+  "type": "∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → n = 1 ∨ n = 3",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:13+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_1",
+  "claimed_at": "2026-11-15T01:08:44+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_1",
+      "body": "theorem r3_imo1990_sq_dvd_two_pow_add_one (n : ℕ) (h : n ^ 2 ∣ 2 ^ n + 1) : n = 1 ∨ n = 3 := by\n  revert n\n  have h_ord : ∀ c m q : ℕ, q.Prime → q ∣ m → (∀ r : ℕ, r.Prime → r ∣ m → q ≤ r) →\n      q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1 := by\n    sorry\n  have h_lte : ∀ n : ℕ, n ^ 2 ∣ 2 ^ n + 1 → ¬ 9 ∣ n := by\n    sorry\n  have h7 : ∀ n : ℕ, ¬ 7 ∣ 2 ^ n + 1 := by\n    sorry\n  intro n h\n  by_cases hn1 : n = 1\n  · left; exact hn1\n  right\n  have hdvd : n ∣ 2 ^ n + 1 := (dvd_pow_self n two_ne_zero).trans h\n  have hp := Nat.minFac_prime hn1\n  have hpn := Nat.minFac_dvd n\n  have h3 : n.minFac ∣ 2 ^ (2 * 1) - 1 :=\n    h_ord 1 n n.minFac hp hpn (fun r hr hrn => Nat.minFac_le_of_dvd hr.two_le hrn)\n      (by rw [one_mul]; exact hpn.trans hdvd)\n  have e3 : (2 ^ (2 * 1) - 1 : ℕ) = 3 := by norm_num\n  rw [e3] at h3\n  have hp3 : n.minFac = 3 := (Nat.prime_dvd_prime_iff_eq hp Nat.prime_three).mp h3\n  have h3n : 3 ∣ n := by rw [← hp3]; exact hpn\n  obtain ⟨m, rfl⟩ := h3n\n  have hm3 : ¬ 3 ∣ m := fun ⟨k, hk⟩ => h_lte (3 * m) h ⟨k, by rw [hk]; ring⟩\n  by_cases hm1 : m = 1\n  · subst hm1; rfl\n  exfalso\n  have hq := Nat.minFac_prime hm1\n  have hqm := Nat.minFac_dvd m\n  have h63 : m.minFac ∣ 2 ^ (2 * 3) - 1 :=\n    h_ord 3 m m.minFac hq hqm (fun r hr hrm => Nat.minFac_le_of_dvd hr.two_le hrm)\n      (hqm.trans ((dvd_mul_left m 3).trans hdvd))\n  have e63 : (2 ^ (2 * 3) - 1 : ℕ) = 3 ^ 2 * 7 := by norm_num\n  rw [e63] at h63\n  rcases (Nat.Prime.dvd_mul hq).mp h63 with h9 | h7'\n  · have h3' := hq.dvd_of_dvd_pow h9\n    have e : m.minFac = 3 := (Nat.prime_dvd_prime_iff_eq hq Nat.prime_three).mp h3'\n    exact hm3 (by rw [← e]; exact hqm)\n  · have e : m.minFac = 7 := (Nat.prime_dvd_prime_iff_eq hq (by norm_num)).mp h7'\n    exact h7 (3 * m) (by rw [← e]; exact hqm.trans ((dvd_mul_left m 3).trans hdvd))\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s1h1",
+          "status": "open",
+          "statement": "∀ (c m q : ℕ), Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s1h2",
+          "status": "open",
+          "statement": "(∀ (c m q : ℕ), Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1) → ∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → ¬9 ∣ n",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s1h3",
+          "status": "open",
+          "statement": "(∀ (c m q : ℕ), Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1) → (∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → ¬9 ∣ n) → ∀ (n : ℕ), ¬7 ∣ 2 ^ n + 1",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:10:04+0800"
+    },
+    {
+      "agent": "r3_prover_1",
+      "body": "theorem r3_imo1990_sq_dvd_two_pow_add_one (n : ℕ) (h : n ^ 2 ∣ 2 ^ n + 1) : n = 1 ∨ n = 3 := by\n  revert n\n  have h_ord : ∀ c m q : ℕ, m ≠ 0 → q.Prime → q ∣ m → (∀ r : ℕ, r.Prime → r ∣ m → q ≤ r) →\n      q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1 := by\n    sorry\n  have h_lte : ∀ n : ℕ, n ^ 2 ∣ 2 ^ n + 1 → ¬ 9 ∣ n := by\n    sorry\n  have h7 : ∀ n : ℕ, ¬ 7 ∣ 2 ^ n + 1 := by\n    sorry\n  intro n h\n  have hn0 : n ≠ 0 := by\n    rintro rfl\n    norm_num at h\n  by_cases hn1 : n = 1\n  · left; exact hn1\n  right\n  have hdvd : n ∣ 2 ^ n + 1 := (dvd_pow_self n two_ne_zero).trans h\n  have hp := Nat.minFac_prime hn1\n  have hpn := Nat.minFac_dvd n\n  have h3 : n.minFac ∣ 2 ^ (2 * 1) - 1 :=\n    h_ord 1 n n.minFac hn0 hp hpn (fun r hr hrn => Nat.minFac_le_of_dvd hr.two_le hrn)\n      (by rw [one_mul]; exact hpn.trans hdvd)\n  have e3 : (2 ^ (2 * 1) - 1 : ℕ) = 3 := by norm_num\n  rw [e3] at h3\n  have hp3 : n.minFac = 3 := (Nat.prime_dvd_prime_iff_eq hp Nat.prime_three).mp h3\n  have h3n : 3 ∣ n := by rw [← hp3]; exact hpn\n  obtain ⟨m, rfl⟩ := h3n\n  have hm3 : ¬ 3 ∣ m := fun ⟨k, hk⟩ => h_lte (3 * m) h ⟨k, by rw [hk]; ring⟩\n  by_cases hm1 : m = 1\n  · subst hm1; rfl\n  exfalso\n  have hq := Nat.minFac_prime hm1\n  have hqm := Nat.minFac_dvd m\n  have h63 : m.minFac ∣ 2 ^ (2 * 3) - 1 :=\n    h_ord 3 m m.minFac (by omega) hq hqm (fun r hr hrm => Nat.minFac_le_of_dvd hr.two_le hrm)\n      (hqm.trans ((dvd_mul_left m 3).trans hdvd))\n  have e63 : (2 ^ (2 * 3) - 1 : ℕ) = 3 ^ 2 * 7 := by norm_num\n  rw [e63] at h63\n  rcases (Nat.Prime.dvd_mul hq).mp h63 with h9 | h7'\n  · have h3' := hq.dvd_of_dvd_pow h9\n    have e : m.minFac = 3 := (Nat.prime_dvd_prime_iff_eq hq Nat.prime_three).mp h3'\n    exact hm3 (by rw [← e]; exact hqm)\n  · have e : m.minFac = 7 := (Nat.prime_dvd_prime_iff_eq hq (by norm_num)).mp h7'\n    exact h7 (3 * m) (by rw [← e]; exact hqm.trans ((dvd_mul_left m 3).trans hdvd))\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s2h1",
+          "status": "open",
+          "statement": "∀ (c m q : ℕ), m ≠ 0 → Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s2h2",
+          "status": "open",
+          "statement": "(∀ (c m q : ℕ), m ≠ 0 → Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1) → ∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → ¬9 ∣ n",
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_imo1990_sq_dvd_two_pow_add_one_s2h3",
+          "status": "open",
+          "statement": "(∀ (c m q : ℕ), m ≠ 0 → Nat.Prime q → q ∣ m → (∀ (r : ℕ), Nat.Prime r → r ∣ m → q ≤ r) → q ∣ 2 ^ (c * m) + 1 → q ∣ 2 ^ (2 * c) - 1) → (∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → ¬9 ∣ n) → ∀ (n : ℕ), ¬7 ∣ 2 ^ n + 1",
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:11:46+0800"
+    }
+  ],
+  "closed_by": "r3_prover_1",
+  "finished_at": "2026-11-15T01:13:35+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "top_isometry_compact_surjective",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f) : Function.Surjective f",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f), Function.Surjective f",
+  "informal": "An isometry of a compact metric space into itself is surjective — if y is not in the (closed) range, pick ε > 0 with ball y ε disjoint from range f; the orbit f^[n] y then satisfies dist (f^[m] y) (f^[n] y) = dist y (f^[n-m] y) ≥ ε, so it has no convergent subsequence, contradicting sequential compactness.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "4149497076",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), Isometry f → Function.Surjective f",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:33+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_4",
+  "claimed_at": "2026-11-15T02:27:00+0800",
+  "closed_by": "r5_prover_4",
+  "finished_at": "2026-11-15T02:27:50+0800"
+}

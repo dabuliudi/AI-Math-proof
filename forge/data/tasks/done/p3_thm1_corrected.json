@@ -1,0 +1,19 @@
+{
+  "name": "p3_thm1_corrected",
+  "statement": "(p : ℕ) (hp : p.Prime) (h5 : 5 < p) : ((p % 5 = 1 ∨ p % 5 = 4) → (p3_fibsum p : ℤ) ≡ 1 [ZMOD p]) ∧ ((p % 5 = 2 ∨ p % 5 = 3) → (p3_fibsum p : ℤ) ≡ -2 [ZMOD p])",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h5 : 5 < p), ((p % 5 = 1 ∨ p % 5 = 4) → (p3_fibsum p : ℤ) ≡ 1 [ZMOD p]) ∧ ((p % 5 = 2 ∨ p % 5 = 3) → (p3_fibsum p : ℤ) ≡ -2 [ZMOD p])",
+  "informal": "CORRECTED Theorem 1 (auditor's correction, not the paper's wording): S_p = 1 mod p if p = 1,4 mod 5 and S_p = -2 mod p if p = 2,3 mod 5",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Theorem 1 (corrected by auditor)",
+  "original": "Let $p>5$ be a prime number. Then $S_p\\equiv 3\\bmod p$ if $p\\equiv 1,4\\bmod 5$; $S_p\\equiv 1\\bmod p$ if $p\\equiv 2,3\\bmod 5$. [paper's residues 3 and 1 are wrong; correct residues are 1 and -2]",
+  "proposed_by": "paper_3",
+  "hash": "493578733",
+  "type": "∀ (p : ℕ), Nat.Prime p → 5 < p → (p % 5 = 1 ∨ p % 5 = 4 → ↑(Mathlib2.p3_fibsum p) ≡ 1 [ZMOD ↑p]) ∧ (p % 5 = 2 ∨ p % 5 = 3 → ↑(Mathlib2.p3_fibsum p) ≡ -2 [ZMOD ↑p])",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:23+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:27:29+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:28:08+0800"
+}

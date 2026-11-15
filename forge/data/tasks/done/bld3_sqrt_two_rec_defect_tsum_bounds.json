@@ -1,0 +1,19 @@
+{
+  "name": "bld3_sqrt_two_rec_defect_tsum_bounds",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) : 8 / 3 ≤ ∑' n : ℕ, (2 - a n) ∧ ∑' n : ℕ, (2 - a n) ≤ Real.pi ^ 2 / 3",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)), 8 / 3 ≤ ∑' n : ℕ, (2 - a n) ∧ ∑' n : ℕ, (2 - a n) ≤ Real.pi ^ 2 / 3",
+  "informal": "Uses Mathlib2.bld_sqrt_two_rec_rate and Mathlib2.bld2_sqrt_two_rec_defect_summable: upper bound: compare termwise with the geometric series ∑ π^2/4^(n+1) = π^2/3 using the rate; lower bound: 2 - a (n+1) = (2 - a n)/(2 + a (n+1)) ≥ (2 - a n)/4 gives 2 - a n ≥ 2/4^n, whose sum is 8/3; summability from the library.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_sqrt_two_rec_rate, Mathlib2.bld2_sqrt_two_rec_defect_summable",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1835322771",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → 8 / 3 ≤ ∑' (n : ℕ), (2 - a n) ∧ ∑' (n : ℕ), (2 - a n) ≤ Real.pi ^ 2 / 3",
+  "attempts": [],
+  "created_at": "2026-11-15T03:12:45+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_3",
+  "claimed_at": "2026-11-15T03:16:58+0800",
+  "closed_by": "r8_prover_3",
+  "finished_at": "2026-11-15T03:17:37+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "alg_isCyclic_of_card_eq_prime_mul_prime",
+  "statement": "(p q : ℕ) (hp : p.Prime) (hq : q.Prime) (hpq : p < q) (hndvd : ¬ p ∣ q - 1) (G : Type*) [Group G] (hG : Nat.card G = p * q) : IsCyclic G",
+  "closed": "∀ (p q : ℕ) (hp : p.Prime) (hq : q.Prime) (hpq : p < q) (hndvd : ¬ p ∣ q - 1) (G : Type*) [Group G] (hG : Nat.card G = p * q), IsCyclic G",
+  "informal": "A group of order pq with primes p < q and p ∤ q - 1 is cyclic — by Sylow's theorems both the Sylow p- and Sylow q-subgroup are unique hence normal, so G is their internal direct product C_p × C_q, which is cyclic since p, q are coprime.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "583879636",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → p < q → ¬p ∣ q - 1 → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → IsCyclic G",
+  "attempts": [],
+  "created_at": "2026-11-15T01:31:27+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_6",
+  "claimed_at": "2026-11-15T01:58:07+0800",
+  "closed_by": "r4_prover_6",
+  "finished_at": "2026-11-15T02:00:14+0800"
+}

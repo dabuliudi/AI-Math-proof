@@ -1,0 +1,16 @@
+{
+  "name": "lib_fib_add_mul_period_modEq",
+  "statement": "(N m : ℕ) (h0 : Nat.fib m ≡ 0 [MOD N]) (h1 : Nat.fib (m + 1) ≡ 1 [MOD N]) (k i : ℕ) : Nat.fib (i + m * k) ≡ Nat.fib i [MOD N]",
+  "closed": "∀ (N m : ℕ) (h0 : Nat.fib m ≡ 0 [MOD N]) (h1 : Nat.fib (m + 1) ≡ 1 [MOD N]) (k i : ℕ), Nat.fib (i + m * k) ≡ Nat.fib i [MOD N]",
+  "informal": "Fibonacci period criterion: if F_m ≡ 0 and F_(m+1) ≡ 1 (mod N) then m (and every multiple m*k) is a period of the Fibonacci sequence mod N: F_(i+m*k) ≡ F_i. Promoted from Mathlib2.p3_aux_period_aux3 (and p3_aux_period_aux2, the case k = 1).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_aux_period_aux3",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "4275243975",
+  "type": "∀ (N m : ℕ), Nat.fib m ≡ 0 [MOD N] → Nat.fib (m + 1) ≡ 1 [MOD N] → ∀ (k i : ℕ), Nat.fib (i + m * k) ≡ Nat.fib i [MOD N]",
+  "attempts": [],
+  "created_at": "2026-11-15T03:04:55+0800",
+  "status": "known",
+  "known_as": "p3_aux_period_aux3 N m h0 h1 k i"
+}

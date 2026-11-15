@@ -1,0 +1,55 @@
+{
+  "name": "r3_fib_iff_five_sq_pm_four_is_square",
+  "statement": "(y : ℕ) : (∃ n : ℕ, y = Nat.fib n) ↔ ∃ x : ℕ, x ^ 2 = 5 * y ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * y ^ 2",
+  "closed": "∀ (y : ℕ), (∃ n : ℕ, y = Nat.fib n) ↔ ∃ x : ℕ, x ^ 2 = 5 * y ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * y ^ 2",
+  "informal": "Gessel's criterion: y is a Fibonacci number iff 5y^2+4 or 5y^2-4 is a perfect square. Builds on Cassini's identity Mathlib2.an_cassini_int (the forward direction is L_n^2 - 5F_n^2 = 4(-1)^n with L_n = F_{n-1}+F_{n+1}, a rewriting of Cassini). Proof idea for the converse: descent on the Pell-type equation x^2 - 5y^2 = ±4: x ≡ y mod 2, and for y ≥ 2 the map (x,y) ↦ ((3y - x)/2 ... ) i.e. (y, (x-y)/2) ↦ ((x-y)/2, (3y-x)/2) steps down to a smaller solution of the opposite sign, mirroring (F_{n+1},F_n) ↦ (F_n,F_{n-1}); strong induction with base cases y ≤ 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "1736424273",
+  "type": "∀ (y : ℕ), (∃ n, y = Nat.fib n) ↔ ∃ x, x ^ 2 = 5 * y ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * y ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:58+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_4",
+  "claimed_at": "2026-11-15T01:17:22+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_4",
+      "body": "theorem r3_fib_iff_five_sq_pm_four_is_square (y : ℕ) : (∃ n : ℕ, y = Nat.fib n) ↔ ∃ x : ℕ, x ^ 2 = 5 * y ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * y ^ 2 := by\n  have cassini : ∀ n : ℕ, ((Nat.fib (n + 1) : ℤ)) ^ 2 - (Nat.fib (n + 1) : ℤ) * (Nat.fib n : ℤ) - (Nat.fib n : ℤ) ^ 2 = (-1) ^ n := by\n    clear y\n    sorry\n  have descent : ∀ v u : ℕ, u ≤ v → ((v : ℤ) ^ 2 - (v : ℤ) * (u : ℤ) - (u : ℤ) ^ 2 = 1 ∨ (v : ℤ) ^ 2 - (v : ℤ) * (u : ℤ) - (u : ℤ) ^ 2 = -1) → ∃ n : ℕ, u = Nat.fib n ∧ v = Nat.fib (n + 1) := by\n    clear y cassini\n    sorry\n  have half : ∀ x u : ℕ, (x ^ 2 = 5 * u ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * u ^ 2) → ∃ v : ℕ, x + u = 2 * v ∧ u ≤ v := by\n    clear y cassini descent\n    sorry\n  constructor\n  · rintro ⟨n, rfl⟩\n    have hle : Nat.fib n ≤ 2 * Nat.fib (n + 1) := by\n      have := Nat.fib_le_fib_succ (n := n); omega\n    have hc := cassini n\n    refine ⟨2 * Nat.fib (n + 1) - Nat.fib n, ?_⟩\n    have hx : ((2 * Nat.fib (n + 1) - Nat.fib n : ℕ) : ℤ) = 2 * (Nat.fib (n + 1) : ℤ) - (Nat.fib n : ℤ) := by\n      push_cast [Nat.cast_sub hle]; ring\n    rcases Nat.even_or_odd n with he | ho\n    · left\n      rw [he.neg_one_pow] at hc\n      have : ((2 * Nat.fib (n + 1) - Nat.fib n : ℕ) : ℤ) ^ 2 = 5 * (Nat.fib n : ℤ) ^ 2 + 4 := by\n        rw [hx]; linear_combination 4 * hc\n      exact_mod_cast this\n    · right\n      rw [ho.neg_one_pow] at hc\n      have : ((2 * Nat.fib (n + 1) - Nat.fib n : ℕ) : ℤ) ^ 2 + 4 = 5 * (Nat.fib n : ℤ) ^ 2 := by\n        rw [hx]; linear_combination 4 * hc\n      exact_mod_cast this\n  · rintro ⟨x, hx⟩\n    obtain ⟨v, hxv, huv⟩ := half x y hx\n    have hxv' : (x : ℤ) + (y : ℤ) = 2 * (v : ℤ) := by exact_mod_cast hxv\n    have hq : (v : ℤ) ^ 2 - (v : ℤ) * (y : ℤ) - (y : ℤ) ^ 2 = 1 ∨ (v : ℤ) ^ 2 - (v : ℤ) * (y : ℤ) - (y : ℤ) ^ 2 = -1 := by\n      rcases hx with h1 | h1\n      · left\n        have h1' : (x : ℤ) ^ 2 = 5 * (y : ℤ) ^ 2 + 4 := by exact_mod_cast h1\n        have : 4 * ((v : ℤ) ^ 2 - (v : ℤ) * (y : ℤ) - (y : ℤ) ^ 2) = 4 := by\n          linear_combination h1' - ((x : ℤ) + 2 * v - y) * hxv'\n        linarith\n      · right\n        have h1' : (x : ℤ) ^ 2 + 4 = 5 * (y : ℤ) ^ 2 := by exact_mod_cast h1\n        have : 4 * ((v : ℤ) ^ 2 - (v : ℤ) * (y : ℤ) - (y : ℤ) ^ 2) = -4 := by\n          linear_combination h1' - ((x : ℤ) + 2 * v - y) * hxv'\n        linarith\n    obtain ⟨n, hn, -⟩ := descent v y huv hq\n    exact ⟨n, hn⟩\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_fib_iff_five_sq_pm_four_is_square_s1h1",
+          "status": "open",
+          "statement": "∀ (n : ℕ), (↑(Nat.fib (n + 1)) : ℤ) ^ 2 - (↑(Nat.fib (n + 1)) : ℤ) * (↑(Nat.fib n) : ℤ) - (↑(Nat.fib n) : ℤ) ^ 2 = (-1) ^ n",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_fib_iff_five_sq_pm_four_is_square_s1h2",
+          "status": "open",
+          "statement": "∀ (v u : ℕ), u ≤ v → (↑v : ℤ) ^ 2 - (↑v : ℤ) * (↑u : ℤ) - (↑u : ℤ) ^ 2 = 1 ∨ (↑v : ℤ) ^ 2 - (↑v : ℤ) * (↑u : ℤ) - (↑u : ℤ) ^ 2 = -1 → ∃ (n : ℕ), u = Nat.fib n ∧ v = Nat.fib (n + 1)",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_fib_iff_five_sq_pm_four_is_square_s1h3",
+          "status": "open",
+          "statement": "∀ (x u : ℕ), x ^ 2 = 5 * u ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * u ^ 2 → ∃ (v : ℕ), x + u = 2 * v ∧ u ≤ v",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:17:59+0800"
+    }
+  ],
+  "closed_by": "r3_prover_4",
+  "finished_at": "2026-11-15T01:19:04+0800"
+}

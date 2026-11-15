@@ -1,0 +1,19 @@
+{
+  "name": "bld3_compact_mutual_nonexpanding_surjections_isometry",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X) (hf : Function.Surjective f) (hf' : ∀ x x' : X, dist (f x) (f x') ≤ dist x x') (hg : Function.Surjective g) (hg' : ∀ y y' : Y, dist (g y) (g y') ≤ dist y y') : Isometry f",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X) (hf : Function.Surjective f) (hf' : ∀ x x' : X, dist (f x) (f x') ≤ dist x x') (hg : Function.Surjective g) (hg' : ∀ y y' : Y, dist (g y) (g y') ≤ dist y y'), Isometry f",
+  "informal": "Uses Mathlib2.bld_surjective_nonexpanding_compact_isometry: g ∘ f is a non-expanding surjection of compact X, hence an isometry, so dist x x' = dist (g (f x)) (g (f x')) ≤ dist (f x) (f x') ≤ dist x x'.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_surjective_nonexpanding_compact_isometry",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "3734369841",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] {Y : Type u_2} [inst_2 : MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X), Function.Surjective f → (∀ (x x' : X), dist (f x) (f x') ≤ dist x x') → Function.Surjective g → (∀ (y y' : Y), dist (g y) (g y') ≤ dist y y') → Isometry f",
+  "attempts": [],
+  "created_at": "2026-11-15T03:13:13+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_4",
+  "claimed_at": "2026-11-15T03:20:34+0800",
+  "closed_by": "r8_prover_4",
+  "finished_at": "2026-11-15T03:20:58+0800"
+}

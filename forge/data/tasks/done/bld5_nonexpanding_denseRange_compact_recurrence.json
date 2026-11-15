@@ -1,0 +1,19 @@
+{
+  "name": "bld5_nonexpanding_denseRange_compact_recurrence",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hd : DenseRange f) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y) (ε : ℝ) (hε : 0 < ε) : Isometry f ∧ ∃ n : ℕ, 0 < n ∧ ∀ x : X, dist (f^[n] x) x < ε",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hd : DenseRange f) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y) (ε : ℝ) (hε : 0 < ε), Isometry f ∧ ∃ n : ℕ, 0 < n ∧ ∀ x : X, dist (f^[n] x) x < ε",
+  "informal": "Uses Mathlib2.bld_surjective_nonexpanding_compact_isometry and Mathlib2.bld4_isometry_compact_uniform_recurrence: f is 1-Lipschitz hence continuous, so range f is compact, hence closed, and dense, hence everything (DenseRange.closure_range): f is surjective. bld_surjective_nonexpanding_compact_isometry makes f an isometry and bld4_isometry_compact_uniform_recurrence gives the uniform return time.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_surjective_nonexpanding_compact_isometry, Mathlib2.bld4_isometry_compact_uniform_recurrence",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "4145308095",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), DenseRange f → (∀ (x y : X), dist (f x) (f y) ≤ dist x y) → ∀ (ε : ℝ), 0 < ε → Isometry f ∧ ∃ n, 0 < n ∧ ∀ (x : X), dist (f^[n] x) x < ε",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:33+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:30:09+0800"
+}

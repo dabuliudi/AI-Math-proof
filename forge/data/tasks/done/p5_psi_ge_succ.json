@@ -1,0 +1,19 @@
+{
+  "name": "p5_psi_ge_succ",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : n + 1 ≤ p5_dedekind_psi n",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), n + 1 ≤ p5_dedekind_psi n",
+  "informal": "Equation (8): psi(n) >= n+1 for n >= 2.",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 equation (8)",
+  "original": "psi(n) >= n+1",
+  "proposed_by": "paper_5",
+  "hash": "290746607",
+  "type": "∀ (n : ℕ), 2 ≤ n → n + 1 ≤ Mathlib2.p5_dedekind_psi n",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:58+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T06:58:18+0800"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "ab_fine_add",
+  "statement": "(f g : ℝ → ℝ) (hf : ∀ n : ℤ, f (n : ℝ) = 0) (hg : ∀ n : ℤ, g (n : ℝ) = 0) : ∀ n : ℤ, (f + g) (n : ℝ) = 0",
+  "closed": "∀ (f g : ℝ → ℝ) (hf : ∀ n : ℤ, f (n : ℝ) = 0) (hg : ∀ n : ℤ, g (n : ℝ) = 0), ∀ n : ℤ, (f + g) (n : ℝ) = 0",
+  "informal": "Sum of two fine functions (vanishing at every integer) is fine.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 2(a)",
+  "original": "f is fine if n ∈ Z ⇒ f(n) = 0. (a) Let f,g : R → R be fine functions. Prove that f + g is a fine function.",
+  "proposed_by": "paper_2",
+  "hash": "284283729",
+  "type": "∀ (f g : ℝ → ℝ), (∀ (n : ℤ), f ↑n = 0) → (∀ (n : ℤ), g ↑n = 0) → ∀ (n : ℤ), (f + g) ↑n = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:36+0800",
+  "tier": "auto",
+  "status": "proved",
+  "closed_by": "auto:aesop",
+  "finished_at": "2026-11-15T01:01:49+0800"
+}

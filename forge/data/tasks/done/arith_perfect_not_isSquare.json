@@ -1,0 +1,19 @@
+{
+  "name": "arith_perfect_not_isSquare",
+  "statement": "(n : ℕ) (hp : n.Perfect) : ¬ IsSquare n",
+  "closed": "∀ (n : ℕ) (hp : n.Perfect), ¬ IsSquare n",
+  "informal": "No perfect number is a square — σ(m²) is odd (each σ(p^(2a)) is a sum of an odd number of odd terms, or p = 2) but σ(n) = 2n is even.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1698924327",
+  "type": "∀ (n : ℕ), n.Perfect → ¬IsSquare n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:13+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:06:16+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:08:11+0800"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "lib_isometry_compact_exists_iterate_dist_lt",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f) (ε : ℝ) (hε : 0 < ε) (N : ℕ) : ∃ m, N < m ∧ ∀ x : X, dist (f^[m] x) x < ε",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : Isometry f) (ε : ℝ) (hε : 0 < ε) (N : ℕ), ∃ m, N < m ∧ ∀ x : X, dist (f^[m] x) x < ε",
+  "informal": "promoted from Mathlib2.bld5_isometry_compact_id_uniform_limit_aux1: uniform recurrence — an isometry of a compact metric space has arbitrarily large iterates uniformly ε-close to the identity.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "144306461",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), Isometry f → ∀ (ε : ℝ), 0 < ε → ∀ (N : ℕ), ∃ m, N < m ∧ ∀ (x : X), dist (f^[m] x) x < ε",
+  "attempts": [],
+  "created_at": "2026-11-15T07:50:22+0800",
+  "status": "known",
+  "known_as": "bld5_isometry_compact_id_uniform_limit_aux1 f hf ε hε N"
+}

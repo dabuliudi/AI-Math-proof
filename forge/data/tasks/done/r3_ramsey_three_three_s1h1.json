@@ -1,0 +1,19 @@
+{
+  "name": "r3_ramsey_three_three_s1h1",
+  "statement": ": ∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G H : SimpleGraph V) (x y z : V), H.Adj x y → H.Adj x z → H.Adj y z → ¬H.CliqueFree 3",
+  "closed": "∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G H : SimpleGraph V) (x y z : V), H.Adj x y → H.Adj x z → H.Adj y z → ¬H.CliqueFree 3",
+  "informal": "r3_ramsey_three_three 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "r3_ramsey_three_three",
+  "original": "",
+  "proposed_by": "r3_prover_2",
+  "hash": "740369256",
+  "type": "∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G H : SimpleGraph V) (x y z : V), H.Adj x y → H.Adj x z → H.Adj y z → ¬H.CliqueFree 3",
+  "attempts": [],
+  "created_at": "2026-11-15T01:07:21+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_2",
+  "claimed_at": "2026-11-15T01:08:37+0800",
+  "closed_by": "r3_prover_2",
+  "finished_at": "2026-11-15T01:08:54+0800"
+}

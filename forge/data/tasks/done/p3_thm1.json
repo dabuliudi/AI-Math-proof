@@ -1,0 +1,20 @@
+{
+  "name": "p3_thm1",
+  "statement": "(p : ℕ) (hp : p.Prime) (h5 : 5 < p) : ((p % 5 = 1 ∨ p % 5 = 4) → (p3_fibsum p : ℤ) ≡ 3 [ZMOD p]) ∧ ((p % 5 = 2 ∨ p % 5 = 3) → (p3_fibsum p : ℤ) ≡ 1 [ZMOD p])",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h5 : 5 < p), ((p % 5 = 1 ∨ p % 5 = 4) → (p3_fibsum p : ℤ) ≡ 3 [ZMOD p]) ∧ ((p % 5 = 2 ∨ p % 5 = 3) → (p3_fibsum p : ℤ) ≡ 1 [ZMOD p])",
+  "informal": "Theorem 1 as literally written: S_p = 3 mod p if p = 1,4 mod 5 and S_p = 1 mod p if p = 2,3 mod 5",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Theorem 1",
+  "original": "Let $p>5$ be a prime number. Then $S_p\\equiv 3\\bmod p$ if $p\\equiv 1,4\\bmod 5$; $S_p\\equiv 1\\bmod p$ if $p\\equiv 2,3\\bmod 5$. In particular, $S_p$ is not divisible by $p$.",
+  "proposed_by": "paper_3",
+  "hash": "3618142103",
+  "type": "∀ (p : ℕ), Nat.Prime p → 5 < p → (p % 5 = 1 ∨ p % 5 = 4 → ↑(Mathlib2.p3_fibsum p) ≡ 3 [ZMOD ↑p]) ∧ (p % 5 = 2 ∨ p % 5 = 3 → ↑(Mathlib2.p3_fibsum p) ≡ 1 [ZMOD ↑p])",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:09+0800",
+  "counterexample": "===================\nFound a counter-example!\np := 7\nguard: ⋯\nguard: 5 < 7\nguard: 2 = 2 ∨ 2 = 3\nissue: ⋯ does not hold\n(0 shrinks)\n-------------------",
+  "status": "disproved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:23:55+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:24:25+0800"
+}

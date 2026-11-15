@@ -1,0 +1,19 @@
+{
+  "name": "ana_one_add_inv_pow_mono",
+  "statement": "(n : ℕ) : (1 + 1 / (n : ℝ)) ^ n ≤ (1 + 1 / ((n : ℝ) + 1)) ^ (n + 1)",
+  "closed": "∀ (n : ℕ), (1 + 1 / (n : ℝ)) ^ n ≤ (1 + 1 / ((n : ℝ) + 1)) ^ (n + 1)",
+  "informal": "The sequence (1 + 1/n)^n is nondecreasing — AM-GM on n copies of (1 + 1/n) and one copy of 1, or equivalently Bernoulli's inequality applied to (1 - 1/(n+1)^2)^(n+1) ≥ 1 - 1/(n+1); n = 0 is trivial.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "798619030",
+  "type": "∀ (n : ℕ), (1 + 1 / ↑n) ^ n ≤ (1 + 1 / (↑n + 1)) ^ (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:24+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_8",
+  "claimed_at": "2026-11-15T01:58:56+0800",
+  "closed_by": "r4_prover_8",
+  "finished_at": "2026-11-15T01:59:20+0800"
+}

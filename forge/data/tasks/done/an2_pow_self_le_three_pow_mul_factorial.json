@@ -1,0 +1,19 @@
+{
+  "name": "an2_pow_self_le_three_pow_mul_factorial",
+  "statement": "(n : ℕ) : n ^ n ≤ 3 ^ n * n.factorial",
+  "closed": "∀ (n : ℕ), n ^ n ≤ 3 ^ n * n.factorial",
+  "informal": "n! ≥ (n/3)^n, stated as n^n ≤ 3^n * n!. Induction using (n+1)^n ≤ 3 n^n.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "213189003",
+  "type": "∀ (n : ℕ), n ^ n ≤ 3 ^ n * n.factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:14+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_c",
+  "claimed_at": "2026-11-15T00:46:16+0800",
+  "closed_by": "r2_prover_c",
+  "finished_at": "2026-11-15T00:46:41+0800"
+}

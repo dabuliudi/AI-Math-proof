@@ -1,0 +1,19 @@
+{
+  "name": "ana_sin_ge_cubic_of_nonneg",
+  "statement": "(x : ℝ) (hx : 0 ≤ x) : x - x ^ 3 / 6 ≤ Real.sin x",
+  "closed": "∀ (x : ℝ) (hx : 0 ≤ x), x - x ^ 3 / 6 ≤ Real.sin x",
+  "informal": "sin x ≥ x - x^3/6 for every x ≥ 0 (Mathlib only has it for x ≤ 1) — differentiate twice: the derivative cos x - 1 + x^2/2 is nonnegative by Real.one_sub_sq_div_two_le_cos, so the difference is monotone from value 0 at 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "3655764317",
+  "type": "∀ (x : ℝ), 0 ≤ x → x - x ^ 3 / 6 ≤ Real.sin x",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:35+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:34:45+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:35:30+0800"
+}

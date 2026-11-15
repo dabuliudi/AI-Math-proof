@@ -1,0 +1,19 @@
+{
+  "name": "gen_nt_sq_add_sq_eq_prime_mul_sq",
+  "statement": "(p : ℕ) (hp : p.Prime) (hp3 : p % 4 = 3) (x y z : ℤ) (h : x ^ 2 + y ^ 2 = (p : ℤ) * z ^ 2) : x = 0 ∧ y = 0 ∧ z = 0",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (hp3 : p % 4 = 3) (x y z : ℤ) (h : x ^ 2 + y ^ 2 = (p : ℤ) * z ^ 2), x = 0 ∧ y = 0 ∧ z = 0",
+  "informal": "Generalizes Mathlib2.nt2_sq_add_sq_eq_seven_mul_sq: 7 → every prime p ≡ 3 (mod 4). Proof idea: infinite descent on |z| (or on x²+y²) using Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq: p ∣ x, p ∣ y, hence p ∣ z², p ∣ z, and (x/p, y/p, z/p) is a smaller solution.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.nt2_sq_add_sq_eq_seven_mul_sq",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "502381063",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (x y z : ℤ), x ^ 2 + y ^ 2 = ↑p * z ^ 2 → x = 0 ∧ y = 0 ∧ z = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T02:07:54+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_2",
+  "claimed_at": "2026-11-15T02:09:09+0800",
+  "closed_by": "gen_prover_2",
+  "finished_at": "2026-11-15T02:09:36+0800"
+}

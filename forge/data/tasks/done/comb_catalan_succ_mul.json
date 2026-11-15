@@ -1,0 +1,19 @@
+{
+  "name": "comb_catalan_succ_mul",
+  "statement": "(n : ℕ) : (n + 2) * catalan (n + 1) = 2 * (2 * n + 1) * catalan n",
+  "closed": "∀ (n : ℕ), (n + 2) * catalan (n + 1) = 2 * (2 * n + 1) * catalan n",
+  "informal": "First-order Catalan recurrence (n+2)·C_{n+1} = 2(2n+1)·C_n — from (n+1)·catalan n = centralBinom n and Nat.succ_mul_centralBinom_succ: (n+1)·centralBinom (n+1) = 2(2n+1)·centralBinom n.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "567028192",
+  "type": "∀ (n : ℕ), (n + 2) * catalan (n + 1) = 2 * (2 * n + 1) * catalan n",
+  "attempts": [],
+  "created_at": "2026-11-15T01:34:55+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T01:57:42+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T01:58:05+0800"
+}

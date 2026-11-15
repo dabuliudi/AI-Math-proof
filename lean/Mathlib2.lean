@@ -1,0 +1,40 @@
+/-
+Mathlib2：机器生成、内核验证的定理库。
+本文件由 forge 维护：每个分片追加后在这里登记。请勿手改。
+-/
+import Mathlib
+import Mathlib2.Shard.S0001
+import Mathlib2.Shard.S0002
+import Mathlib2.Shard.S0003
+import Mathlib2.Shard.S0004
+import Mathlib2.Shard.S0005
+import Mathlib2.Shard.S0006
+import Mathlib2.Shard.S0007
+import Mathlib2.Shard.S0008
+import Mathlib2.Shard.S0009
+import Mathlib2.Shard.S0010
+import Mathlib2.Shard.S0011
+import Mathlib2.Shard.S0012
+import Mathlib2.Shard.S0013
+import Mathlib2.Shard.S0014
+import Mathlib2.Shard.S0015
+import Mathlib2.Shard.S0016
+import Mathlib2.Shard.S0017
+import Mathlib2.Shard.S0018
+import Mathlib2.Shard.S0019
+import Mathlib2.Shard.S0020
+import Mathlib2.Shard.S0021
+import Mathlib2.Shard.S0022
+import Mathlib2.Shard.S0023
+import Mathlib2.Shard.S0024
+import Mathlib2.Shard.S0025
+import Mathlib2.Shard.S0026
+import Mathlib2.Shard.S0027
+import Mathlib2.Shard.S0028
+import Mathlib2.Shard.S0029
+import Mathlib2.Shard.S0030
+import Mathlib2.Shard.S0031
+import Mathlib2.Shard.S0032
+import Mathlib2.Shard.S0033
+import Mathlib2.Shard.S0034
+import Mathlib2.Shard.S0035

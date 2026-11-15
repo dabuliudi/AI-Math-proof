@@ -1,0 +1,19 @@
+{
+  "name": "bld4_pow_prime_monoidHom_center_of_card_prime_cube",
+  "statement": "(p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2) : ∃ φ : G →* Subgroup.center G, ∀ g : G, ((φ g : Subgroup.center G) : G) = g ^ p",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2), ∃ φ : G →* Subgroup.center G, ∀ g : G, ((φ g : Subgroup.center G) : G) = g ^ p",
+  "informal": "Uses Mathlib2.bld3_pow_prime_mem_center_of_card_prime_cube and Mathlib2.bld3_mul_pow_prime_of_card_prime_cube: define φ g = ⟨g^p, _⟩ using pow_prime_mem_center for membership; map_mul is exactly (ab)^p = a^p b^p from mul_pow_prime (p odd), map_one is one_pow.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_pow_prime_mem_center_of_card_prime_cube, Mathlib2.bld3_mul_pow_prime_of_card_prime_cube",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "899084762",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → p ≠ 2 → ∃ φ, ∀ (g : G), ↑(φ g) = g ^ p",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:46+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:03:57+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:04:29+0800"
+}

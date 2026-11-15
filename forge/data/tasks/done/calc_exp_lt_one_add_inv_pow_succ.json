@@ -1,0 +1,19 @@
+{
+  "name": "calc_exp_lt_one_add_inv_pow_succ",
+  "statement": "(n : ℕ) (hn : 0 < n) : Real.exp 1 < (1 + 1 / (n : ℝ)) ^ (n + 1)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), Real.exp 1 < (1 + 1 / (n : ℝ)) ^ (n + 1)",
+  "informal": "e < (1+1/n)^(n+1) — equivalent to 1/(n+1) < log(1+1/n), i.e. exp(−1/(n+1)) > 1 − 1/(n+1) = n/(n+1) (Real.add_one_lt_exp at t = −1/(n+1)); invert and raise to power n+1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3681380026",
+  "type": "∀ (n : ℕ), 0 < n → Real.exp 1 < (1 + 1 / ↑n) ^ (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:42:10+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:03:50+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:04:07+0800"
+}

@@ -1,5 +1,14 @@
 # Mathlib2 Research Workbench v0.3
 
+## Forge：定理铸造厂（新）
+
+以 Lean 内核为唯一裁判的并行流水线：论文命题、人提的问题、agent 提的猜想进同一个队列；
+分诊去掉已知的、重复的和平凡的，随机测试先找反例；agent 通过命令行领任务、校验、提交；
+通过准入的定理进入可互相引用的 Lean 库 `lean/Mathlib2/`。说明见 [forge/README.md](forge/README.md)，
+agent 操作手册见 [forge/AGENT_GUIDE.md](forge/AGENT_GUIDE.md)，当前库目录见 [forge/data/CATALOG.md](forge/data/CATALOG.md)。
+
+macOS / Linux 入口：`./forge.sh status`（Forge）、`./run-demo.sh`（下文的 Streamlit 工作台）。
+
 ## Mason–Stothers Lemma 3 基准实验
 
 完整交付、实际51项回归结果及失败记录见[实验交付报告](reports/lemma3-delivery.md)。

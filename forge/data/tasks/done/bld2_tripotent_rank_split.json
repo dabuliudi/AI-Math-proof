@@ -1,0 +1,19 @@
+{
+  "name": "bld2_tripotent_rank_split",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A * A = A) : Matrix.rank A = Matrix.rank (A * A + A) + Matrix.rank (A * A - A)",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A * A = A), Matrix.rank A = Matrix.rank (A * A + A) + Matrix.rank (A * A - A)",
+  "informal": "Uses Mathlib2.bld_idempotent_sum_rank: P = (1/2)(A*A + A) and Q = (1/2)(A*A - A) are idempotents whose sum A*A is idempotent, so rank (A*A) = rank P + rank Q; scalars 1/2 do not change rank and rank (A*A) = rank A since A = A*(A*A).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_idempotent_sum_rank",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "2318450440",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A * A = A → A.rank = (A * A + A).rank + (A * A - A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:12+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:52:28+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:53:19+0800"
+}

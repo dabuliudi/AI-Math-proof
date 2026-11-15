@@ -1,0 +1,19 @@
+{
+  "name": "arith_odd_perfect_euler_form",
+  "statement": "(n : ℕ) (ho : Odd n) (hp : n.Perfect) : ∃ p a m : ℕ, p.Prime ∧ p % 4 = 1 ∧ a % 4 = 1 ∧ ¬ p ∣ m ∧ n = p ^ a * m ^ 2",
+  "closed": "∀ (n : ℕ) (ho : Odd n) (hp : n.Perfect), ∃ p a m : ℕ, p.Prime ∧ p % 4 = 1 ∧ a % 4 = 1 ∧ ¬ p ∣ m ∧ n = p ^ a * m ^ 2",
+  "informal": "Euler's theorem on odd perfect numbers: n = p^a m² with p ≡ a ≡ 1 (mod 4), p ∤ m — σ(n) = 2n ≡ 2 (mod 4), so exactly one factor σ(q^e) is even and it is ≡ 2 mod 4; σ(q^e) for odd q is odd iff e even, and ≡ 2 mod 4 forces q ≡ e ≡ 1 mod 4.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3573362310",
+  "type": "∀ (n : ℕ), Odd n → n.Perfect → ∃ p a m, Nat.Prime p ∧ p % 4 = 1 ∧ a % 4 = 1 ∧ ¬p ∣ m ∧ n = p ^ a * m ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:27+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:09:12+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:10:34+0800"
+}

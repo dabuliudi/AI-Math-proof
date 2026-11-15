@@ -1,0 +1,19 @@
+{
+  "name": "bld4_carleman_finite_three",
+  "statement": "(a : ℕ → ℝ) (ha : ∀ i : ℕ, 0 ≤ a i) (n : ℕ) : ∑ k ∈ Finset.range n, (∏ i ∈ Finset.range (k + 1), a i) ^ (1 / ((k : ℝ) + 1)) ≤ 3 * ∑ k ∈ Finset.range n, a k",
+  "closed": "∀ (a : ℕ → ℝ) (ha : ∀ i : ℕ, 0 ≤ a i) (n : ℕ), ∑ k ∈ Finset.range n, (∏ i ∈ Finset.range (k + 1), a i) ^ (1 / ((k : ℝ) + 1)) ≤ 3 * ∑ k ∈ Finset.range n, a k",
+  "informal": "Uses Mathlib2.an2_amgm_range_pow and Mathlib2.an2_succ_pow_lt_three_mul_pow (Carleman's inequality with constant 3 > e): with weights c_i = (i+2)^(i+1)/(i+1)^i (0-indexed) one has ∏_{i≤k} c_i = (k+2)^(k+1), so by an2_amgm_range_pow applied to a_i c_i, (∏_{i≤k} a_i)^(1/(k+1)) ≤ (∑_{i≤k} a_i c_i)/((k+1)(k+2)). Summing over k < n, swapping sums and telescoping ∑_{k≥i} 1/((k+1)(k+2)) ≤ 1/(i+1) gives ≤ ∑ a_i c_i/(i+1) = ∑ a_i ((i+2)/(i+1))^(i+1) ≤ 3 ∑ a_i by an2_succ_pow_lt_three_mul_pow.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.an2_amgm_range_pow, Mathlib2.an2_succ_pow_lt_three_mul_pow",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "3816605155",
+  "type": "∀ (a : ℕ → ℝ), (∀ (i : ℕ), 0 ≤ a i) → ∀ (n : ℕ), ∑ k ∈ Finset.range n, (∏ i ∈ Finset.range (k + 1), a i) ^ (1 / (↑k + 1)) ≤ 3 * ∑ k ∈ Finset.range n, a k",
+  "attempts": [],
+  "created_at": "2026-11-15T06:58:41+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:06:22+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:07:43+0800"
+}

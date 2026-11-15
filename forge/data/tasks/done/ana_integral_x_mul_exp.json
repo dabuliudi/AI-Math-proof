@@ -1,0 +1,19 @@
+{
+  "name": "ana_integral_x_mul_exp",
+  "statement": ": (∫ x in (0 : ℝ)..1, x * Real.exp x) = 1",
+  "closed": "(∫ x in (0 : ℝ)..1, x * Real.exp x) = 1",
+  "informal": "The integral of x e^x over [0,1] is 1 — the antiderivative is (x-1)e^x; apply the fundamental theorem of calculus (integral_eq_sub_of_hasDerivAt).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1377114902",
+  "type": "∫ (x : ℝ) in 0..1, x * Real.exp x = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:27:30+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:31:46+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:32:28+0800"
+}

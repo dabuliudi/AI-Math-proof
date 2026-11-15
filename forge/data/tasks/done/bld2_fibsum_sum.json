@@ -1,0 +1,19 @@
+{
+  "name": "bld2_fibsum_sum",
+  "statement": "(n : ℕ) : ∑ i ∈ Finset.Icc 1 n, p3_fibsum i + n + 3 = Nat.fib (n + 4)",
+  "closed": "∀ (n : ℕ), ∑ i ∈ Finset.Icc 1 n, p3_fibsum i + n + 3 = Nat.fib (n + 4)",
+  "informal": "Uses Mathlib2.p3_prop1 twice: p3_fibsum i = fib (i+2) - 1, so the sum is (p3_fibsum (n+2) - fib 1 - fib 2) - n = fib (n+4) - 1 - 2 - n; or induct on n using p3_prop1 in the step.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.p3_prop1",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "2415259262",
+  "type": "∀ (n : ℕ), ∑ i ∈ Finset.Icc 1 n, Mathlib2.p3_fibsum i + n + 3 = Nat.fib (n + 4)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:50:48+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_2",
+  "claimed_at": "2026-11-15T02:56:00+0800",
+  "closed_by": "r7_prover_2",
+  "finished_at": "2026-11-15T02:56:32+0800"
+}

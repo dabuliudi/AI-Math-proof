@@ -1,0 +1,19 @@
+{
+  "name": "ana_sqrt_two_rec_closed_form",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ) : a n = 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (hrec : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ), a n = 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
+  "informal": "Viète-type closed form: the nested radical sequence equals 2cos(π/2^(n+1)) — induction using the half-angle identity 2 + 2cos(2t) = 4cos^2 t and positivity of cos on (0, π/2].",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1560299074",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), a n = 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:31+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_8",
+  "claimed_at": "2026-11-15T01:57:33+0800",
+  "closed_by": "r4_prover_8",
+  "finished_at": "2026-11-15T01:57:57+0800"
+}

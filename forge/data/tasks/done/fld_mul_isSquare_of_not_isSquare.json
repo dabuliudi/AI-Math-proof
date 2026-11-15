@@ -1,0 +1,19 @@
+{
+  "name": "fld_mul_isSquare_of_not_isSquare",
+  "statement": "(K : Type) [Field K] [Fintype K] (a b : K) (ha : ¬ IsSquare a) (hb : ¬ IsSquare b) : IsSquare (a * b)",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] (a b : K) (ha : ¬ IsSquare a) (hb : ¬ IsSquare b), IsSquare (a * b)",
+  "informal": "In a finite field the product of two non-squares is a square — in characteristic 2 everything is a square; otherwise the quadratic character is multiplicative with values ±1 on nonzero elements and equals -1 exactly on non-squares (quadraticChar_neg_one_iff_not_isSquare), so χ(ab) = 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "140368842",
+  "type": "∀ (K : Type) [inst : Field K] [Fintype K] (a b : K), ¬IsSquare a → ¬IsSquare b → IsSquare (a * b)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:24:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:31:07+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:32:01+0800"
+}

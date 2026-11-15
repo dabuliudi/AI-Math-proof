@@ -1,0 +1,19 @@
+{
+  "name": "ab_prime_mul_prime_not_abundant",
+  "statement": "(p q : ℕ) (hp : p.Prime) (hq : q.Prime) : ¬ Nat.Abundant (p * q)",
+  "closed": "∀ (p q : ℕ) (hp : p.Prime) (hq : q.Prime), ¬ Nat.Abundant (p * q)",
+  "informal": "Auditor's correction of Task 3(b) (not stated in paper): a product of two primes is never abundant.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 3(b) (auditor's corrected form; the paper gives none)",
+  "original": "If p1 and p2 are primes, then p1p2 is abundant.",
+  "proposed_by": "paper_2",
+  "hash": "4281340715",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → ¬(p * q).Abundant",
+  "attempts": [],
+  "created_at": "2026-11-15T00:59:54+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:05:06+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:05:16+0800"
+}

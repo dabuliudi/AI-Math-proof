@@ -1,0 +1,19 @@
+{
+  "name": "bld4_permMatrix_involution_rank_fixed_points",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (σ : Equiv.Perm ι) (hσ : σ * σ = 1) : 2 * (1 + σ.permMatrix K).rank = Fintype.card ι + (Finset.univ.filter (fun i : ι => σ i = i)).card",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (σ : Equiv.Perm ι) (hσ : σ * σ = 1), 2 * (1 + σ.permMatrix K).rank = Fintype.card ι + (Finset.univ.filter (fun i : ι => σ i = i)).card",
+  "informal": "Uses Mathlib2.bld_involution_trace_rank: the permutation matrix P of an involution satisfies P * P = 1 (Matrix.permMatrix_mul), so bld_involution_trace_rank gives tr P + n = 2 rank(1 + P) in K; tr P is the number of fixed points of σ (diagonal entries are 1 or 0), and Nat.cast injectivity in characteristic 0 gives the identity in ℕ.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_involution_trace_rank",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "4092475439",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (σ : Equiv.Perm ι), σ * σ = 1 → 2 * (1 + Equiv.Perm.permMatrix K σ).rank = Fintype.card ι + {i | σ i = i}.card",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:13+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:02:00+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:03:31+0800"
+}

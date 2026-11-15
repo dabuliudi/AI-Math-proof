@@ -1,0 +1,19 @@
+{
+  "name": "lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset",
+  "statement": "(V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) : ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card",
+  "closed": "∀ (V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3), ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card",
+  "informal": "In a triangle-free graph on n vertices with e edges the sum of squared degrees is at most n * e (sum deg u + deg v ≤ n over the edges); this is the key step of Mantel's theorem. Promoted from Mathlib2.bld2_mantel_equality_regular_aux1 (also proved inline in bld_mantel_triangle_free); generalised to an arbitrary universe.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld2_mantel_equality_regular_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2997932561",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card",
+  "attempts": [],
+  "created_at": "2026-11-15T03:09:20+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:11:25+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:11:39+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_sq_div_two_pow",
+  "statement": ": ∑' n : ℕ, (n : ℝ) ^ 2 / 2 ^ n = 6",
+  "closed": "∑' n : ℕ, (n : ℝ) ^ 2 / 2 ^ n = 6",
+  "informal": "∑ n²/2ⁿ = 6 — write n² = n(n−1)+n, use hasSum_coe_mul_geometric_of_norm_lt_one and tsum_choose_mul_geometric (or differentiate geometric series twice) at r = 1/2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "836305890",
+  "type": "∑' (n : ℕ), ↑n ^ 2 / 2 ^ n = 6",
+  "attempts": [],
+  "created_at": "2026-11-15T07:39:39+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T07:58:48+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T07:59:56+0800"
+}

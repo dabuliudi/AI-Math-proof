@@ -1,0 +1,19 @@
+{
+  "name": "comb_card_even_card_powerset",
+  "statement": "(n : ℕ) : ((Finset.range (n + 1)).powerset.filter (fun s => Even s.card)).card = 2 ^ n",
+  "closed": "∀ (n : ℕ), ((Finset.range (n + 1)).powerset.filter (fun s => Even s.card)).card = 2 ^ n",
+  "informal": "A nonempty (n+1)-set has exactly 2^n subsets of even size — toggling membership of a fixed element is an involution of the powerset swapping even-size and odd-size subsets; alternatively use Finset.sum_powerset_neg_one_pow_card or Nat.sum_range_choose with the alternating sum.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "2964423371",
+  "type": "∀ (n : ℕ), {s ∈ (Finset.range (n + 1)).powerset | Even s.card}.card = 2 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:20+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:34:35+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:35:19+0800"
+}

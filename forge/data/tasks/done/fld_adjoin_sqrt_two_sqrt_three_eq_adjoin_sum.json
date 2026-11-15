@@ -1,0 +1,19 @@
+{
+  "name": "fld_adjoin_sqrt_two_sqrt_three_eq_adjoin_sum",
+  "statement": ": IntermediateField.adjoin ℚ ({Real.sqrt 2, Real.sqrt 3} : Set ℝ) = IntermediateField.adjoin ℚ ({Real.sqrt 2 + Real.sqrt 3} : Set ℝ)",
+  "closed": "IntermediateField.adjoin ℚ ({Real.sqrt 2, Real.sqrt 3} : Set ℝ) = IntermediateField.adjoin ℚ ({Real.sqrt 2 + Real.sqrt 3} : Set ℝ)",
+  "informal": "ℚ(√2, √3) = ℚ(√2 + √3): the sum is a primitive element — ⊇ is clear; for ⊆, with s = √2+√3 one has s^3 = 11√2 + 9√3, so √2 = (s^3 - 9s)/2 and √3 = (11s - s^3)/2 lie in ℚ(s).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "3685232324",
+  "type": "ℚ⟮√2, √3⟯ = ℚ⟮√2 + √3⟯",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:20+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:31:55+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:35:32+0800"
+}

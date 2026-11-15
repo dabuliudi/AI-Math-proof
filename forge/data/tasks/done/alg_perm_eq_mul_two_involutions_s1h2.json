@@ -1,0 +1,26 @@
+{
+  "name": "alg_perm_eq_mul_two_involutions_s1h2",
+  "statement": ": ∀ (n : ℕ) (τ ρ : Equiv.Perm (Fin n)), τ.Disjoint ρ → (∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), (τ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x) → (∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * ρ * a = ρ⁻¹ ∧ ∀ (x : Fin n), (ρ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x) → ∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * (τ * ρ) * a = (τ * ρ)⁻¹ ∧ ∀ (x : Fin n), (τ * ρ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x",
+  "closed": "∀ (n : ℕ) (τ ρ : Equiv.Perm (Fin n)), τ.Disjoint ρ → (∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), (τ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x) → (∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * ρ * a = ρ⁻¹ ∧ ∀ (x : Fin n), (ρ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x) → ∃ (a : Equiv.Perm (Fin n)), a * a = 1 ∧ a * (τ * ρ) * a = (τ * ρ)⁻¹ ∧ ∀ (x : Fin n), (τ * ρ : Fin n → Fin n) x = x → (a : Fin n → Fin n) x = x",
+  "informal": "alg_perm_eq_mul_two_involutions 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "alg_perm_eq_mul_two_involutions",
+  "original": "",
+  "proposed_by": "r4_prover_10",
+  "hash": "1755752219",
+  "type": "∀ (n : ℕ) (τ ρ : Equiv.Perm (Fin n)), τ.Disjoint ρ → (∃ a, a * a = 1 ∧ a * τ * a = τ⁻¹ ∧ ∀ (x : Fin n), τ x = x → a x = x) → (∃ a, a * a = 1 ∧ a * ρ * a = ρ⁻¹ ∧ ∀ (x : Fin n), ρ x = x → a x = x) → ∃ a, a * a = 1 ∧ a * (τ * ρ) * a = (τ * ρ)⁻¹ ∧ ∀ (x : Fin n), (⇑τ * ⇑ρ) x = x → a x = x",
+  "attempts": [
+    {
+      "agent": "r4_prover_10",
+      "note": "Mis-rendered hole: '(τ * ρ : Fin n → Fin n) x' is the POINTWISE product τ x * ρ x in Fin n, not the composition. Parent is being re-sketched with 'τ (ρ x) = x' instead; do not work on this.",
+      "at": "2026-11-15T02:08:37+0800"
+    }
+  ],
+  "created_at": "2026-11-15T02:07:14+0800",
+  "status": "retired",
+  "claimed_by": "r4_prover_10",
+  "claimed_at": "2026-11-15T02:08:06+0800",
+  "retired_by": "r4_prover_10",
+  "finished_at": "2026-11-15T02:08:58+0800",
+  "retired_note": "alg_perm_eq_mul_two_involutions 重新拆解，这个子任务属于被取代的旧骨架"
+}

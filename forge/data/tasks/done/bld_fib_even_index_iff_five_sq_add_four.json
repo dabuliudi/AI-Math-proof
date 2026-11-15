@@ -1,0 +1,19 @@
+{
+  "name": "bld_fib_even_index_iff_five_sq_add_four",
+  "statement": "(y : ℕ) : (∃ n : ℕ, y = Nat.fib (2 * n)) ↔ ∃ x : ℕ, x ^ 2 = 5 * y ^ 2 + 4",
+  "closed": "∀ (y : ℕ), (∃ n : ℕ, y = Nat.fib (2 * n)) ↔ ∃ x : ℕ, x ^ 2 = 5 * y ^ 2 + 4",
+  "informal": "Uses Mathlib2.r3_fib_iff_five_sq_pm_four_is_square and Mathlib2.an_cassini_int: solutions of the Pell-type equation x^2 - 5y^2 = 4 are exactly even-indexed Fibonacci numbers. (⇐) the library iff gives y = fib m; if m is odd then Cassini gives 5y^2-4 a square as well, and two squares differing by 8 force y = 1 = fib 2. (⇒) L_{2n}^2 = 5 F_{2n}^2 + 4 from Cassini.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.r3_fib_iff_five_sq_pm_four_is_square, Mathlib2.an_cassini_int",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1869837708",
+  "type": "∀ (y : ℕ), (∃ n, y = Nat.fib (2 * n)) ↔ ∃ x, x ^ 2 = 5 * y ^ 2 + 4",
+  "attempts": [],
+  "created_at": "2026-11-15T02:32:39+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:41:11+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:41:23+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lib_monotone_sub_of_convex_seq",
+  "statement": "{α : Type*} [AddCommGroup α] [PartialOrder α] [IsOrderedAddMonoid α] (f : ℕ → α) (h : ∀ k, f (k + 1) + f (k + 1) ≤ f k + f (k + 2)) : Monotone (fun k => f (k + 1) - f k)",
+  "closed": "∀ {α : Type*} [AddCommGroup α] [PartialOrder α] [IsOrderedAddMonoid α] (f : ℕ → α) (h : ∀ k, f (k + 1) + f (k + 1) ≤ f k + f (k + 2)), Monotone (fun k => f (k + 1) - f k)",
+  "informal": "A convex sequence (second differences nonnegative) in an ordered abelian group has monotone increments f(k+1) - f(k). Promoted and generalised from Mathlib2.bld3_rank_pow_card_stabilizes_aux1 (also used with bld2_rank_pow_convex, bld3_nilpotent_rank_pow_le).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld3_rank_pow_card_stabilizes_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "588173323",
+  "type": "∀ {α : Type u_1} [inst : AddCommGroup α] [inst_1 : PartialOrder α] [IsOrderedAddMonoid α] (f : ℕ → α), (∀ (k : ℕ), f (k + 1) + f (k + 1) ≤ f k + f (k + 2)) → Monotone fun k => f (k + 1) - f k",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:44+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:58:29+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:58:48+0800"
+}

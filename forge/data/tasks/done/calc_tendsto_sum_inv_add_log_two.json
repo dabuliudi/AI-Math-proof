@@ -1,0 +1,19 @@
+{
+  "name": "calc_tendsto_sum_inv_add_log_two",
+  "statement": ": Filter.Tendsto (fun n : ℕ => ∑ k ∈ Finset.range n, 1 / ((n : ℝ) + (k : ℝ) + 1)) Filter.atTop (nhds (Real.log 2))",
+  "closed": "Filter.Tendsto (fun n : ℕ => ∑ k ∈ Finset.range n, 1 / ((n : ℝ) + (k : ℝ) + 1)) Filter.atTop (nhds (Real.log 2))",
+  "informal": "lim ∑_{k=1}^{n} 1/(n+k) = log 2 — squeeze: log((n+k+1)/(n+k)) ≤ 1/(n+k) … termwise bounds 1/(m+1) ≤ log(m+1) − log m ≤ 1/m telescope to log((2n+1)/(n+1)) ≤ S_n ≤ log 2; or via H_{2n} − H_n and Euler–Mascheroni asymptotics.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "2360546784",
+  "type": "Filter.Tendsto (fun n => ∑ k ∈ Finset.range n, 1 / (↑n + ↑k + 1)) Filter.atTop (nhds (Real.log 2))",
+  "attempts": [],
+  "created_at": "2026-11-15T07:43:14+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:05:58+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:06:16+0800"
+}

@@ -1,0 +1,18 @@
+{
+  "name": "nt_lcm_consecutive",
+  "statement": "(n : ℕ) : Nat.lcm n (n + 1) = n * (n + 1)",
+  "closed": "∀ (n : ℕ), Nat.lcm n (n + 1) = n * (n + 1)",
+  "informal": "lcm of consecutive naturals is their product.",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_nt",
+  "hash": "650485921",
+  "type": "∀ (n : ℕ), n.lcm (n + 1) = n * (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:13:18+0800",
+  "status": "proved",
+  "claimed_by": "prover_4",
+  "claimed_at": "2026-11-15T00:20:14+0800",
+  "closed_by": "prover_4",
+  "finished_at": "2026-11-15T00:20:39+0800"
+}

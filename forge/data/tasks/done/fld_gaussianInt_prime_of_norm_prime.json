@@ -1,0 +1,19 @@
+{
+  "name": "fld_gaussianInt_prime_of_norm_prime",
+  "statement": "(z : GaussianInt) (h : Nat.Prime z.norm.natAbs) : Prime z",
+  "closed": "∀ (z : GaussianInt) (h : Nat.Prime z.norm.natAbs), Prime z",
+  "informal": "A Gaussian integer whose norm is a rational prime is a Gaussian prime — if z = xy then N(x)N(y) = p so one of x, y has norm 1 and is a unit (Zsqrtd.norm_eq_one_iff), so z is irreducible; ℤ[i] is a PID so irreducible elements are prime.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2706173467",
+  "type": "∀ (z : GaussianInt), Nat.Prime (Zsqrtd.norm z).natAbs → Prime z",
+  "attempts": [],
+  "created_at": "2026-11-15T08:22:12+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:31:07+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:32:13+0800"
+}

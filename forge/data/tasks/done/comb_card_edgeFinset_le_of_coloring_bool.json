@@ -1,0 +1,19 @@
+{
+  "name": "comb_card_edgeFinset_le_of_coloring_bool",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (C : G.Coloring Bool) : 4 * G.edgeFinset.card ≤ Fintype.card V ^ 2",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (C : G.Coloring Bool), 4 * G.edgeFinset.card ≤ Fintype.card V ^ 2",
+  "informal": "A bipartite (2-colourable) graph on n vertices has at most n²/4 edges — edges inject into (colour class true) × (colour class false), of size a·(n-a), and 4a(n-a) ≤ n².",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "140579414",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (C : G.Coloring Bool), 4 * G.edgeFinset.card ≤ Fintype.card V ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T01:37:56+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T02:00:30+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T02:00:42+0800"
+}

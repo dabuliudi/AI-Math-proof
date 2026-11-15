@@ -1,0 +1,19 @@
+{
+  "name": "bld6_pisano_two_pow_mul_five_pow_eq_six_mul_iff",
+  "statement": "(a b : ℕ) : p3_pisano (2 ^ (a + 1) * 5 ^ (b + 1)) = 6 * (2 ^ (a + 1) * 5 ^ (b + 1)) ↔ a = 0",
+  "closed": "∀ (a b : ℕ), p3_pisano (2 ^ (a + 1) * 5 ^ (b + 1)) = 6 * (2 ^ (a + 1) * 5 ^ (b + 1)) ↔ a = 0",
+  "informal": "Uses Mathlib2.bld4_pisano_mul_of_coprime, Mathlib2.bld5_pisano_two_pow and Mathlib2.bld5_pisano_five_pow: π(2^(a+1)5^(b+1)) = lcm(3·2^a, 4·5^(b+1)) by the coprime-lcm rule and the two prime-power formulas; this equals 12·5^(b+1) for a ≤ 1 and 3·2^a·5^(b+1) for a ≥ 2, i.e. 6n, 3n, 3n/2 respectively — so the extremal ratio π(n) = 6n occurs exactly for a = 0 (n = 2·5^(b+1)).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_pisano_mul_of_coprime, Mathlib2.bld5_pisano_two_pow, Mathlib2.bld5_pisano_five_pow",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "4170441301",
+  "type": "∀ (a b : ℕ), Mathlib2.p3_pisano (2 ^ (a + 1) * 5 ^ (b + 1)) = 6 * (2 ^ (a + 1) * 5 ^ (b + 1)) ↔ a = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:40+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:34:02+0800"
+}

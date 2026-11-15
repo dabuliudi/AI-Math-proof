@@ -1,0 +1,19 @@
+{
+  "name": "bld6_pi_dalzell_beta_bounds",
+  "statement": ": 22 / 7 - 1 / 630 < Real.pi ∧ Real.pi < 22 / 7 - 1 / 1260",
+  "closed": "22 / 7 - 1 / 630 < Real.pi ∧ Real.pi < 22 / 7 - 1 / 1260",
+  "informal": "Uses Mathlib2.calc_integral_dalzell and Mathlib2.calc_integral_beta_nat: on (0,1) one has x^4(1-x)^4/2 < x^4(1-x)^4/(1+x^2) < x^4(1-x)^4; integrate (strict monotonicity of the interval integral for continuous functions). The middle integral is 22/7 - π by calc_integral_dalzell, the outer one is 4!4!/9! = 1/630 by calc_integral_beta_nat 4 4.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_integral_dalzell, Mathlib2.calc_integral_beta_nat",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "3284866298",
+  "type": "22 / 7 - 1 / 630 < Real.pi ∧ Real.pi < 22 / 7 - 1 / 1260",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:25+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:34:53+0800"
+}

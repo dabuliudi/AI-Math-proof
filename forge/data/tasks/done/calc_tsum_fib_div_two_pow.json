@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_fib_div_two_pow",
+  "statement": ": ∑' n : ℕ, (Nat.fib n : ℝ) / 2 ^ n = 2",
+  "closed": "∑' n : ℕ, (Nat.fib n : ℝ) / 2 ^ n = 2",
+  "informal": "∑ Fₙ/2ⁿ = 2 — summability by Fₙ ≤ φⁿ-type bound (fib n ≤ (7/4)^n or 2^n·(geometric)), then S = 1/2 + S/2 + S/4 from the recurrence; or closed partial sums 2 − F_{N+3}/2^N… ",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "660622026",
+  "type": "∑' (n : ℕ), ↑(Nat.fib n) / 2 ^ n = 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:40:12+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:00:35+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:00:45+0800"
+}

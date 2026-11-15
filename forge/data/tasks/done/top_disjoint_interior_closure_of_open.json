@@ -1,0 +1,19 @@
+{
+  "name": "top_disjoint_interior_closure_of_open",
+  "statement": "{X : Type*} [TopologicalSpace X] (U V : Set X) (hU : IsOpen U) (hV : IsOpen V) (hd : Disjoint U V) : Disjoint (interior (closure U)) (interior (closure V))",
+  "closed": "∀ {X : Type*} [TopologicalSpace X] (U V : Set X) (hU : IsOpen U) (hV : IsOpen V) (hd : Disjoint U V), Disjoint (interior (closure U)) (interior (closure V))",
+  "informal": "Disjoint open sets have disjoint regularizations — an open set disjoint from V is disjoint from closure V; apply this twice (Disjoint.closure_left/right for open sets) and shrink to interiors.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "2245156251",
+  "type": "∀ {X : Type u_1} [inst : TopologicalSpace X] (U V : Set X), IsOpen U → IsOpen V → Disjoint U V → Disjoint (interior (closure U)) (interior (closure V))",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:40+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:23:18+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:23:32+0800"
+}

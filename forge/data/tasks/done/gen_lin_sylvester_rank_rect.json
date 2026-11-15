@@ -1,0 +1,19 @@
+{
+  "name": "gen_lin_sylvester_rank_rect",
+  "statement": "(K : Type*) [Field K] (m n p : Type*) [Fintype m] [Fintype n] [Fintype p] (A : Matrix m n K) (B : Matrix n p K) : Matrix.rank A + Matrix.rank B ≤ Fintype.card n + Matrix.rank (A * B)",
+  "closed": "∀ (K : Type*) [Field K] (m n p : Type*) [Fintype m] [Fintype n] [Fintype p] (A : Matrix m n K) (B : Matrix n p K), Matrix.rank A + Matrix.rank B ≤ Fintype.card n + Matrix.rank (A * B)",
+  "informal": "Generalizes Mathlib2.lin_sylvester_rank: ℝ → arbitrary field K, square Fin n matrices → rectangular matrices A : m×n, B : n×p over arbitrary Fintypes. Proof idea: the original proof (rank-nullity for A.mulVecLin and for its restriction to range B.mulVecLin) never uses ℝ or squareness.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.lin_sylvester_rank",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "2206279148",
+  "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] (A : Matrix m n K) (B : Matrix n p K), A.rank + B.rank ≤ Fintype.card n + (A * B).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:05:56+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_1",
+  "claimed_at": "2026-11-15T02:08:23+0800",
+  "closed_by": "gen_prover_1",
+  "finished_at": "2026-11-15T02:08:49+0800"
+}

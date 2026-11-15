@@ -1,0 +1,16 @@
+{
+  "name": "lib_dedekind_psi_le_sigma",
+  "statement": "(n : ℕ) (hn : n ≠ 0) : Mathlib2.p5_dedekind_psi n ≤ ArithmeticFunction.sigma 1 n",
+  "closed": "∀ (n : ℕ) (hn : n ≠ 0), Mathlib2.p5_dedekind_psi n ≤ ArithmeticFunction.sigma 1 n",
+  "informal": "promoted from Mathlib2.p5_lemma2_aux1: the Dedekind psi function is bounded by the sum of divisors, ψ(n) ≤ σ(n) for n ≠ 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "3454870490",
+  "type": "∀ (n : ℕ), n ≠ 0 → Mathlib2.p5_dedekind_psi n ≤ (ArithmeticFunction.sigma 1) n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:50:43+0800",
+  "status": "known",
+  "known_as": "p5_lemma2_aux1 n hn"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "nt2_dvd_two_pow_sub_one_eq_one",
+  "statement": "(n : ℕ) (hn : 0 < n) (h : n ∣ 2 ^ n - 1) : n = 1",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (h : n ∣ 2 ^ n - 1), n = 1",
+  "informal": "If n ≥ 1 divides 2^n - 1 then n = 1 (take the least prime factor p of n; the order of 2 mod p divides gcd(n, p-1) = 1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_nt2",
+  "hash": "3623421902",
+  "type": "∀ (n : ℕ), 0 < n → n ∣ 2 ^ n - 1 → n = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:18+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_a",
+  "claimed_at": "2026-11-15T00:46:23+0800",
+  "closed_by": "r2_prover_a",
+  "finished_at": "2026-11-15T00:46:54+0800"
+}

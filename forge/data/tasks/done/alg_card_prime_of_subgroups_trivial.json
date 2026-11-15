@@ -1,0 +1,19 @@
+{
+  "name": "alg_card_prime_of_subgroups_trivial",
+  "statement": "(G : Type*) [Group G] (h : ∀ H : Subgroup G, H = ⊥ ∨ H = ⊤) : Nat.card G = 1 ∨ (Nat.card G).Prime",
+  "closed": "∀ (G : Type*) [Group G] (h : ∀ H : Subgroup G, H = ⊥ ∨ H = ⊤), Nat.card G = 1 ∨ (Nat.card G).Prime",
+  "informal": "A group whose only subgroups are ⊥ and ⊤ is trivial or (finite) of prime order — any g ≠ 1 generates G so G is cyclic; ℤ has proper subgroups so G is finite, and a cyclic group of composite order has a proper subgroup.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "109529259",
+  "type": "∀ (G : Type u_1) [inst : Group G], (∀ (H : Subgroup G), H = ⊥ ∨ H = ⊤) → Nat.card G = 1 ∨ Nat.Prime (Nat.card G)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:29:27+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_1",
+  "claimed_at": "2026-11-15T01:36:01+0800",
+  "closed_by": "r4_prover_1",
+  "finished_at": "2026-11-15T01:37:29+0800"
+}

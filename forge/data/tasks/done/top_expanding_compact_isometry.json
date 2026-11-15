@@ -1,0 +1,19 @@
+{
+  "name": "top_expanding_compact_isometry",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) : Isometry f",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)), Isometry f",
+  "informal": "A distance non-decreasing self-map of a compact metric space is an isometry — for x, y use compactness of X × X to find iterates n with (f^[n] x, f^[n] y) arbitrarily close to (x, y) (recurrence of the orbit of the expanding map f × f); then dist (f x) (f y) ≤ dist (f^[n] x) (f^[n] y) ≤ dist x y + 2ε.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "411417114",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), dist x y ≤ dist (f x) (f y)) → Isometry f",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:44+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:27:38+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:28:25+0800"
+}

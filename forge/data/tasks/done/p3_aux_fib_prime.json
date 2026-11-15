@@ -1,0 +1,19 @@
+{
+  "name": "p3_aux_fib_prime",
+  "statement": "(p : ℕ) (hp : p.Prime) (h2 : p ≠ 2) : (2 * Nat.fib (p + 1) : ℤ) - Nat.fib p ≡ 1 [ZMOD p] ∧ (Nat.fib p : ℤ) ≡ 5 ^ (p / 2) [ZMOD p]",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (h2 : p ≠ 2), (2 * Nat.fib (p + 1) : ℤ) - Nat.fib p ≡ 1 [ZMOD p] ∧ (Nat.fib p : ℤ) ≡ 5 ^ (p / 2) [ZMOD p]",
+  "informal": "auxiliary (used in proofs of Thm 1 and Thm 2): L_p = 1 and F_p = 5^((p-1)/2) mod p for odd primes p",
+  "origin": "conjecture",
+  "source": "arXiv:2504.09938 auxiliary to Theorems 1, 2",
+  "original": "",
+  "proposed_by": "paper_3",
+  "hash": "470207202",
+  "type": "∀ (p : ℕ), Nat.Prime p → p ≠ 2 → 2 * ↑(Nat.fib (p + 1)) - ↑(Nat.fib p) ≡ 1 [ZMOD ↑p] ∧ ↑(Nat.fib p) ≡ 5 ^ (p / 2) [ZMOD ↑p]",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:33+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:22:25+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:23:07+0800"
+}

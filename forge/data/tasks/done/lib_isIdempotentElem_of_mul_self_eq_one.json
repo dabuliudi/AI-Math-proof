@@ -1,0 +1,19 @@
+{
+  "name": "lib_isIdempotentElem_of_mul_self_eq_one",
+  "statement": "(R : Type*) [Ring R] [Invertible (2 : R)] (a : R) (h : a * a = 1) : IsIdempotentElem (⅟(2 : R) * (1 + a)) ∧ IsIdempotentElem (⅟(2 : R) * (1 - a))",
+  "closed": "∀ (R : Type*) [Ring R] [Invertible (2 : R)] (a : R) (h : a * a = 1), IsIdempotentElem (⅟(2 : R) * (1 + a)) ∧ IsIdempotentElem (⅟(2 : R) * (1 - a))",
+  "informal": "Spectral projections of an involution: if a^2 = 1 and 2 is invertible then (1 + a)/2 and (1 - a)/2 are idempotent, in any ring. Promoted and generalised from Mathlib2.bld_involution_trace_rank_aux2 (the case of matrices over a char-0 field; used in bld_involution_rank_add_rank, bld2_involution_iff_rank_add_rank, bld3_rank_involution_defect).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld_involution_trace_rank_aux2",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "4220523009",
+  "type": "∀ (R : Type u_1) [inst : Ring R] [inst_1 : Invertible 2] (a : R), a * a = 1 → IsIdempotentElem (⅟2 * (1 + a)) ∧ IsIdempotentElem (⅟2 * (1 - a))",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:09+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:57:26+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:57:40+0800"
+}

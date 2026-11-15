@@ -1,0 +1,19 @@
+{
+  "name": "arith_perfect_dvd_perfect_eq",
+  "statement": "(m n : ℕ) (hm : m.Perfect) (hn : n.Perfect) (h : m ∣ n) : m = n",
+  "closed": "∀ (m n : ℕ) (hm : m.Perfect) (hn : n.Perfect) (h : m ∣ n), m = n",
+  "informal": "A perfect number never properly divides another perfect number — write n = k·m; k = 0 is impossible, k = 1 gives equality, and for k > 1 Uses Mathlib2.ab_perfect_mul_abundant at the key step: k·m is abundant, contradicting perfection of n (Nat.Perfect excludes Abundant).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3946208652",
+  "type": "∀ (m n : ℕ), m.Perfect → n.Perfect → m ∣ n → m = n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:44:50+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:53:41+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:54:18+0800"
+}

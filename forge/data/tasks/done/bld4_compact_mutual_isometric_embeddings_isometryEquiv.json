@@ -1,0 +1,19 @@
+{
+  "name": "bld4_compact_mutual_isometric_embeddings_isometryEquiv",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X) (hf : Isometry f) (hg : Isometry g) : Nonempty (X ≃ᵢ Y)",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] {Y : Type*} [MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X) (hf : Isometry f) (hg : Isometry g), Nonempty (X ≃ᵢ Y)",
+  "informal": "Uses Mathlib2.bld3_compact_mutual_expanding_isometry: isometries are expanding (dist equality), so the cited theorem gives that f is a surjective isometry; an isometry is injective, so Equiv.ofBijective f packaged with hf is the IsometryEquiv.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_compact_mutual_expanding_isometry",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "1603930206",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] {Y : Type u_2} [inst_2 : MetricSpace Y] [CompactSpace Y] (f : X → Y) (g : Y → X), Isometry f → Isometry g → Nonempty (X ≃ᵢ Y)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:36+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:05:16+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:05:40+0800"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "gr_set_antichain_card_le_half",
+  "statement": "(n : ℕ) (hn : 0 < n) (𝒜 : Finset (Finset (Fin n))) (h : IsAntichain (· ⊆ ·) (𝒜 : Set (Finset (Fin n)))) : 𝒜.card ≤ 2 ^ (n - 1)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (𝒜 : Finset (Finset (Fin n))) (h : IsAntichain (· ⊆ ·) (𝒜 : Set (Finset (Fin n)))), 𝒜.card ≤ 2 ^ (n - 1)",
+  "informal": "For n ≥ 1 an antichain of subsets of [n] has at most 2^(n−1) members — by Sperner (IsAntichain.sperner) |𝒜| ≤ C(n,⌊n/2⌋), and C(n,⌊n/2⌋) ≤ 2^(n−1) for n ≥ 1 since C(n,⌊n/2⌋) = C(n−1,⌊n/2⌋) + C(n−1,⌊n/2⌋−1) ≤ ∑_k C(n−1,k) (the two terms are distinct summands; for n = 1 it is 1 ≤ 1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3226641249",
+  "type": "∀ (n : ℕ), 0 < n → ∀ (𝒜 : Finset (Finset (Fin n))), IsAntichain (fun x1 x2 => x1 ⊆ x2) ↑𝒜 → 𝒜.card ≤ 2 ^ (n - 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:49:08+0800",
+  "status": "open"
+}

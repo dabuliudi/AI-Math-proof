@@ -1,0 +1,19 @@
+{
+  "name": "p4_ex1_levels",
+  "statement": "(n k : ℕ) (hn : 0 < n) : (p4_z n = (k : ℤ) ↔ 3 * k < 2 * n ∧ 2 * n ≤ 3 * k + 3) ∧ (p4_m n = k ↔ k ^ 2 ≤ 2 * n ∧ 2 * n < (k + 1) ^ 2) ∧ (1 ≤ k → (p4_r n = k ↔ 2 ^ (k - 1) < n ∧ n ≤ 2 ^ k))",
+  "closed": "∀ (n k : ℕ) (hn : 0 < n), (p4_z n = (k : ℤ) ↔ 3 * k < 2 * n ∧ 2 * n ≤ 3 * k + 3) ∧ (p4_m n = k ↔ k ^ 2 ≤ 2 * n ∧ 2 * n < (k + 1) ^ 2) ∧ (1 ≤ k → (p4_r n = k ↔ 2 ^ (k - 1) < n ∧ n ≤ 2 ^ k))",
+  "informal": "Level sets: z(n)=k iff 3k < 2n <= 3k+3; m(n)=k iff k^2 <= 2n < (k+1)^2; for k>=1, r(n)=k iff 2^(k-1) < n <= 2^k.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Exercise 1 (observations)",
+  "original": "z(n)=k iff 3k<2n≤3k+3; m(n)=k iff k^2≤2n<(k+1)^2; for k≥1, r(n)=k iff 2^{k-1}<n≤2^k",
+  "proposed_by": "paper_4",
+  "hash": "3112809701",
+  "type": "∀ (n k : ℕ), 0 < n → (Mathlib2.p4_z n = ↑k ↔ 3 * k < 2 * n ∧ 2 * n ≤ 3 * k + 3) ∧ (Mathlib2.p4_m n = k ↔ k ^ 2 ≤ 2 * n ∧ 2 * n < (k + 1) ^ 2) ∧ (1 ≤ k → (Mathlib2.p4_r n = k ↔ 2 ^ (k - 1) < n ∧ n ≤ 2 ^ k))",
+  "attempts": [],
+  "created_at": "2026-11-15T02:52:41+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:55+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:58:31+0800"
+}

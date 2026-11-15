@@ -1,0 +1,19 @@
+{
+  "name": "arith_even_perfect_last_digit",
+  "statement": "(n : ℕ) (he : Even n) (hp : n.Perfect) : n % 10 = 6 ∨ n % 10 = 8",
+  "closed": "∀ (n : ℕ) (he : Even n) (hp : n.Perfect), n % 10 = 6 ∨ n % 10 = 8",
+  "informal": "Every even perfect number ends in 6 or 8 — by Euclid–Euler (Mathlib) n = 2^k(2^(k+1)-1) with 2^(k+1)-1 prime; k+1 = 2 or odd; reduce 2^k mod 10 by k mod 4.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3994219477",
+  "type": "∀ (n : ℕ), Even n → n.Perfect → n % 10 = 6 ∨ n % 10 = 8",
+  "attempts": [],
+  "created_at": "2026-11-15T07:43:50+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T08:03:41+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T08:05:58+0800"
+}

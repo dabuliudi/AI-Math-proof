@@ -1,0 +1,19 @@
+{
+  "name": "comb_card_surjective_fin_three",
+  "statement": "(n : ℕ) : Fintype.card {f : Fin (n + 1) → Fin 3 // Function.Surjective f} + 3 * 2 ^ (n + 1) = 3 ^ (n + 1) + 3",
+  "closed": "∀ (n : ℕ), Fintype.card {f : Fin (n + 1) → Fin 3 // Function.Surjective f} + 3 * 2 ^ (n + 1) = 3 ^ (n + 1) + 3",
+  "informal": "The number of surjections from an m-set (m = n+1 ≥ 1) onto a 3-set is 3^m - 3·2^m + 3 — inclusion–exclusion over the set of missed values: functions missing value i number 2^m, missing two fixed values number 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "3965383772",
+  "type": "∀ (n : ℕ), Fintype.card { f // Function.Surjective f } + 3 * 2 ^ (n + 1) = 3 ^ (n + 1) + 3",
+  "attempts": [],
+  "created_at": "2026-11-15T01:32:21+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_4",
+  "claimed_at": "2026-11-15T01:36:39+0800",
+  "closed_by": "r4_prover_4",
+  "finished_at": "2026-11-15T01:38:03+0800"
+}

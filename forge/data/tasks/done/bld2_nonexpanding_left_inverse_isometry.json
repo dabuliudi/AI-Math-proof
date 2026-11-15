@@ -1,0 +1,19 @@
+{
+  "name": "bld2_nonexpanding_left_inverse_isometry",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f g : X → X) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y) (hfg : ∀ x : X, f (g x) = x) : Isometry g ∧ ∀ x : X, g (f x) = x",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f g : X → X) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y) (hfg : ∀ x : X, f (g x) = x), Isometry g ∧ ∀ x : X, g (f x) = x",
+  "informal": "Uses Mathlib2.bld_surjective_nonexpanding_compact_isometry: f is surjective (right inverse g) and non-expanding, hence an isometry, hence injective; so g (f x) = x from f (g (f x)) = f x, and dist (g x) (g y) = dist (f (g x)) (f (g y)) = dist x y.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_surjective_nonexpanding_compact_isometry",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "3364413984",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f g : X → X), (∀ (x y : X), dist (f x) (f y) ≤ dist x y) → (∀ (x : X), f (g x) = x) → Isometry g ∧ ∀ (x : X), g (f x) = x",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:42+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_2",
+  "claimed_at": "2026-11-15T02:53:35+0800",
+  "closed_by": "r7_prover_2",
+  "finished_at": "2026-11-15T02:54:03+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "poly_trinomial_3k2_not_irreducible_int",
+  "statement": "(k : ℕ) (hk : 1 ≤ k) : ¬ Irreducible (Polynomial.X ^ (3 * k + 2) + Polynomial.X + 1 : Polynomial ℤ)",
+  "closed": "∀ (k : ℕ) (hk : 1 ≤ k), ¬ Irreducible (Polynomial.X ^ (3 * k + 2) + Polynomial.X + 1 : Polynomial ℤ)",
+  "informal": "X^n + X + 1 is reducible over ℤ for n ≡ 2 mod 3, n ≥ 5 (e.g. X^5+X+1 = (X^2+X+1)(X^3-X^2+1)) — X^2+X+1 divides it since X^3 ≡ 1; the monic cofactor has degree 3k ≥ 3 so neither factor is a unit.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "2822264656",
+  "type": "∀ (k : ℕ), 1 ≤ k → ¬Irreducible (Polynomial.X ^ (3 * k + 2) + Polynomial.X + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:17:28+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:24:58+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:27:14+0800"
+}

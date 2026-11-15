@@ -1,0 +1,19 @@
+{
+  "name": "fld_minpoly_sqrt_two_add_sqrt_three",
+  "statement": ": minpoly ℚ (Real.sqrt 2 + Real.sqrt 3) = Polynomial.X ^ 4 - 10 * Polynomial.X ^ 2 + 1",
+  "closed": "minpoly ℚ (Real.sqrt 2 + Real.sqrt 3) = Polynomial.X ^ 4 - 10 * Polynomial.X ^ 2 + 1",
+  "informal": "The minimal polynomial of √2 + √3 over ℚ is X^4 - 10X^2 + 1 — the polynomial is monic and vanishes at √2+√3 ((√2+√3)^2 = 5 + 2√6); Uses Mathlib2.poly_x4_sub_10x2_add_1_irreducible_int for irreducibility over ℤ, transferred to ℚ by Gauss's lemma (Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map), then minpoly.eq_of_irreducible_of_monic.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2137843255",
+  "type": "minpoly ℚ (√2 + √3) = Polynomial.X ^ 4 - 10 * Polynomial.X ^ 2 + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:52+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:29:27+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:31:16+0800"
+}

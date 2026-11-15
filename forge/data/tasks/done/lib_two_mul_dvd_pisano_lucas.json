@@ -1,0 +1,16 @@
+{
+  "name": "lib_two_mul_dvd_pisano_lucas",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n)",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n)",
+  "informal": "promoted from Mathlib2.bld5_pisano_lucas_odd_eq_aux3: 2n divides the Pisano period of the Lucas number L_n for n ≥ 2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "3741247876",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:12+0800",
+  "status": "known",
+  "known_as": "bld5_pisano_lucas_odd_eq_aux3 n hn"
+}

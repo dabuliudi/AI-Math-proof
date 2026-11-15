@@ -1,0 +1,19 @@
+{
+  "name": "p3_prop2",
+  "statement": "(n : ℕ) (h1 : 1 < n) (h2 : 2 ∣ n) : p3_pisano (Nat.fib n) ∣ 2 * n",
+  "closed": "∀ (n : ℕ) (h1 : 1 < n) (h2 : 2 ∣ n), p3_pisano (Nat.fib n) ∣ 2 * n",
+  "informal": "for even n > 1 the Pisano period of F_n divides 2n",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Proposition 2",
+  "original": "Let $n>1$ and $2\\mid n$. Then $\\pi(F_n)\\mid 2n$.",
+  "proposed_by": "paper_3",
+  "hash": "2758355608",
+  "type": "∀ (n : ℕ), 1 < n → 2 ∣ n → Mathlib2.p3_pisano (Nat.fib n) ∣ 2 * n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:22+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:30:06+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:30:14+0800"
+}

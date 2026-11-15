@@ -1,0 +1,19 @@
+{
+  "name": "calc_tsum_alternating_inv_sq",
+  "statement": ": ∑' n : ℕ, (-1 : ℝ) ^ n / ((n : ℝ) + 1) ^ 2 = Real.pi ^ 2 / 12",
+  "closed": "∑' n : ℕ, (-1 : ℝ) ^ n / ((n : ℝ) + 1) ^ 2 = Real.pi ^ 2 / 12",
+  "informal": "∑ (−1)ⁿ/(n+1)² = π²/12 — equals (odd part) − (even part) of Basel sum = π²/8 − π²/24; uses hasSum_zeta_two and even/odd splitting.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "622081033",
+  "type": "∑' (n : ℕ), (-1) ^ n / (↑n + 1) ^ 2 = Real.pi ^ 2 / 12",
+  "attempts": [],
+  "created_at": "2026-11-15T07:40:40+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:06:36+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:06:46+0800"
+}

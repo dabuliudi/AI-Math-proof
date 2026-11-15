@@ -1,0 +1,16 @@
+{
+  "name": "p4_r",
+  "statement": "def p4_r (n : ℕ) : ℕ := Nat.clog 2 n",
+  "informal": "r(n): the least non-negative integer r with n <= 2^r, i.e. ceil(log2 n)",
+  "origin": "definition",
+  "source": "arXiv:2503.03469v1 Introduction, definition (c)",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:41+0800",
+  "status": "defined",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:48:51+0800",
+  "type": "ℕ → ℕ"
+}

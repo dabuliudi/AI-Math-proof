@@ -1,0 +1,19 @@
+{
+  "name": "bld2_pisano_fib_dvd_four_mul",
+  "statement": "(n : ℕ) (hn : 0 < n) : p3_pisano (Nat.fib n) ∣ 4 * n",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), p3_pisano (Nat.fib n) ∣ 4 * n",
+  "informal": "Uses Mathlib2.p3_aux_period (and the argument of Mathlib2.p3_prop2): p3_aux_period with index 2n gives fib (i + 4n) ≡ fib i mod fib (2n), and fib n ∣ fib (2n), so 4n is a period modulo fib n; the least period divides every period (division with remainder), as in p3_prop2.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.p3_aux_period, Mathlib2.p3_prop2",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "1950459368",
+  "type": "∀ (n : ℕ), 0 < n → Mathlib2.p3_pisano (Nat.fib n) ∣ 4 * n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:50:28+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:57:12+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:57:50+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld6_nilpotent_rank_pow_succ_le_rank_sub",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) : (A ^ (k + 1)).rank ≤ A.rank - k",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ), (A ^ (k + 1)).rank ≤ A.rank - k",
+  "informal": "Uses Mathlib2.lib_matrix_rank_pow_succ_lt_of_isNilpotent_of_ne_zero: induction on k; if A^(k+1) = 0 then A^(k+2) = 0 has rank 0, otherwise the lib lemma gives rank(A^(k+2)) < rank(A^(k+1)) ≤ rank A - k with rank(A^(k+1)) > 0, so rank(A^(k+2)) ≤ rank A - (k+1). Sharpens Mathlib2.bld3_nilpotent_rank_pow_le (card ι - k) and reproves Mathlib2.bld5_nilpotent_pow_rank_succ_eq_zero at k = rank A.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.lib_matrix_rank_pow_succ_lt_of_isNilpotent_of_ne_zero",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1803490955",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ (k + 1)).rank ≤ A.rank - k",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:52+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:44+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:38:36+0800"
+}

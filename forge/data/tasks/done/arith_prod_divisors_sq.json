@@ -1,0 +1,19 @@
+{
+  "name": "arith_prod_divisors_sq",
+  "statement": "(m : ℕ) (hm : 0 < m) : ∏ d ∈ (m ^ 2).divisors, d = m ^ (m ^ 2).divisors.card",
+  "closed": "∀ (m : ℕ) (hm : 0 < m), ∏ d ∈ (m ^ 2).divisors, d = m ^ (m ^ 2).divisors.card",
+  "informal": "The product of the divisors of m² is m^τ(m²) — Uses Mathlib2.nt2_prod_divisors_sq at step 1 with n = m²: (∏ d)² = (m²)^τ = (m^τ)², then take square roots in ℕ.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "477003490",
+  "type": "∀ (m : ℕ), 0 < m → ∏ d ∈ (m ^ 2).divisors, d = m ^ (m ^ 2).divisors.card",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:51+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:54:58+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:56:11+0800"
+}

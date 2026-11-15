@@ -1,0 +1,16 @@
+{
+  "name": "lib_list_exists_perm_isChain_of_total",
+  "statement": "{α : Type} (r : α → α → Prop) (l : List α) (hnd : l.Nodup) (hl : ∀ a ∈ l, ∀ b ∈ l, a ≠ b → r a b ∨ r b a) : ∃ l' : List α, l'.Perm l ∧ List.IsChain r l'",
+  "closed": "∀ {α : Type} (r : α → α → Prop) (l : List α) (hnd : l.Nodup) (hl : ∀ a ∈ l, ∀ b ∈ l, a ≠ b → r a b ∨ r b a), ∃ l' : List α, l'.Perm l ∧ List.IsChain r l'",
+  "informal": "Rédei's theorem in list form (every tournament has a Hamiltonian path): a duplicate-free list whose distinct elements are pairwise r-comparable can be permuted into an r-chain. Promoted from Mathlib2.comb_tournament_hamiltonian_path_aux2.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.comb_tournament_hamiltonian_path_aux2",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2831583552",
+  "type": "∀ {α : Type} (r : α → α → Prop) (l : List α), l.Nodup → (∀ a ∈ l, ∀ b ∈ l, a ≠ b → r a b ∨ r b a) → ∃ l', l'.Perm l ∧ List.IsChain r l'",
+  "attempts": [],
+  "created_at": "2026-11-15T03:05:59+0800",
+  "status": "known",
+  "known_as": "comb_tournament_hamiltonian_path_aux2 r l hnd hl"
+}

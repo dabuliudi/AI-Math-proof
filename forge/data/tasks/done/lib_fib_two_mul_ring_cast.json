@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_two_mul_ring_cast",
+  "statement": "(R : Type*) [Ring R] (m : ℕ) : ((Nat.fib (2 * m) : ℕ) : R) = ((Nat.fib m : ℕ) : R) * (2 * ((Nat.fib (m + 1) : ℕ) : R) - ((Nat.fib m : ℕ) : R))",
+  "closed": "∀ (R : Type*) [Ring R] (m : ℕ), ((Nat.fib (2 * m) : ℕ) : R) = ((Nat.fib m : ℕ) : R) * (2 * ((Nat.fib (m + 1) : ℕ) : R) - ((Nat.fib m : ℕ) : R))",
+  "informal": "promoted from Mathlib2.bld4_pisano_lucas_dvd_four_mul_aux1 (generalised from commutative rings to any ring): cast form of Nat.fib_two_mul without truncated subtraction, F_{2m} = F_m (2 F_{m+1} - F_m).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "3264719183",
+  "type": "∀ (R : Type u_1) [inst : Ring R] (m : ℕ), ↑(Nat.fib (2 * m)) = ↑(Nat.fib m) * (2 * ↑(Nat.fib (m + 1)) - ↑(Nat.fib m))",
+  "attempts": [],
+  "created_at": "2026-11-15T07:54:52+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:56:32+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:56:59+0800"
+}

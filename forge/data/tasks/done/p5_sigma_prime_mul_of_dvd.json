@@ -1,0 +1,19 @@
+{
+  "name": "p5_sigma_prime_mul_of_dvd",
+  "statement": "(p n : ℕ) (hp : p.Prime) (h : p ∣ n) (hn : n ≠ 0) : p * ArithmeticFunction.sigma 1 n < ArithmeticFunction.sigma 1 (p * n)",
+  "closed": "∀ (p n : ℕ) (hp : p.Prime) (h : p ∣ n) (hn : n ≠ 0), p * ArithmeticFunction.sigma 1 n < ArithmeticFunction.sigma 1 (p * n)",
+  "informal": "Equation (7), sigma part: if p | n then sigma(np) > p sigma(n).",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 equation (7)",
+  "original": "sigma(np) > p sigma(n) when p | n",
+  "proposed_by": "paper_5",
+  "hash": "3172585618",
+  "type": "∀ (p n : ℕ), Nat.Prime p → p ∣ n → n ≠ 0 → p * (ArithmeticFunction.sigma 1) n < (ArithmeticFunction.sigma 1) (p * n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:52:46+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T06:56:18+0800"
+}

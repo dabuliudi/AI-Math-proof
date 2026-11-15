@@ -1,0 +1,16 @@
+{
+  "name": "p4_m",
+  "statement": "def p4_m (n : ℕ) : ℕ := Nat.sqrt (2 * n)",
+  "informal": "m(n): the largest integer m with m^2 <= 2n, i.e. floor(sqrt(2n))",
+  "origin": "definition",
+  "source": "arXiv:2503.03469v1 Introduction, definition (b)",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:29+0800",
+  "status": "defined",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:48:38+0800",
+  "type": "ℕ → ℕ"
+}

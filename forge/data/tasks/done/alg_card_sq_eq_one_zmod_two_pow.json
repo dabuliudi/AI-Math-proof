@@ -1,0 +1,19 @@
+{
+  "name": "alg_card_sq_eq_one_zmod_two_pow",
+  "statement": "(k : ℕ) (hk : 3 ≤ k) : Nat.card {x : ZMod (2 ^ k) // x ^ 2 = 1} = 4",
+  "closed": "∀ (k : ℕ) (hk : 3 ≤ k), Nat.card {x : ZMod (2 ^ k) // x ^ 2 = 1} = 4",
+  "informal": "For k ≥ 3 the congruence x² = 1 mod 2^k has exactly four solutions (±1 and 2^(k-1) ± 1) — 2^k | (x-1)(x+1) with gcd(x-1, x+1) = 2 forces 2^(k-1) | x - 1 or 2^(k-1) | x + 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "2694626169",
+  "type": "∀ (k : ℕ), 3 ≤ k → Nat.card { x // x ^ 2 = 1 } = 4",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:03+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_6",
+  "claimed_at": "2026-11-15T02:01:10+0800",
+  "closed_by": "r4_prover_6",
+  "finished_at": "2026-11-15T02:02:58+0800"
+}

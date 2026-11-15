@@ -1,0 +1,19 @@
+{
+  "name": "bld_involution_trace_rank",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = 1) : Matrix.trace A + (Fintype.card ι : K) = 2 * (Matrix.rank (1 + A) : K)",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (h : A * A = 1), Matrix.trace A + (Fintype.card ι : K) = 2 * (Matrix.rank (1 + A) : K)",
+  "informal": "Uses Mathlib2.gen_lin_idempotent_trace_eq_rank_field: P = (1/2) • (1 + A) is idempotent, so tr P = rank P = rank (1 + A) (scaling by a unit preserves rank), and tr P = (n + tr A)/2.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_idempotent_trace_eq_rank_field",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "2997994181",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A * A = 1 → A.trace + ↑(Fintype.card ι) = 2 * ↑(1 + A).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:33:41+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_2",
+  "claimed_at": "2026-11-15T02:37:10+0800",
+  "closed_by": "r6_prover_2",
+  "finished_at": "2026-11-15T02:37:43+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "alg_artin_schreier_irreducible_zmod_s1h1",
+  "statement": ": ∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : CommRing K] [CharP K p] (α : K), α ^ p = α + 1 → ∀ (k : ℕ), α ^ p ^ k = α + (↑k : K)",
+  "closed": "∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : CommRing K] [CharP K p] (α : K), α ^ p = α + 1 → ∀ (k : ℕ), α ^ p ^ k = α + (↑k : K)",
+  "informal": "alg_artin_schreier_irreducible_zmod 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "alg_artin_schreier_irreducible_zmod",
+  "original": "",
+  "proposed_by": "r4_prover_10",
+  "hash": "3429134589",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (K : Type) [inst : CommRing K] [CharP K p] (α : K), α ^ p = α + 1 → ∀ (k : ℕ), α ^ p ^ k = α + ↑k",
+  "attempts": [],
+  "created_at": "2026-11-15T02:12:14+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_10",
+  "claimed_at": "2026-11-15T02:13:29+0800",
+  "closed_by": "r4_prover_10",
+  "finished_at": "2026-11-15T02:14:18+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld2_commuting_idempotents_rank_join",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A) : Matrix.rank (A + B - A * B) + Matrix.rank (A * B) = Matrix.rank A + Matrix.rank B",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A), Matrix.rank (A + B - A * B) + Matrix.rank (A * B) = Matrix.rank A + Matrix.rank B",
+  "informal": "Uses Mathlib2.bld_idempotent_sum_rank twice: A and B - A*B are idempotents with idempotent sum A + B - A*B, so rank (A + B - A*B) = rank A + rank (B - A*B); A*B and B - A*B are idempotents with sum B, so rank B = rank (A*B) + rank (B - A*B).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_idempotent_sum_rank",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "3823857834",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → A * B = B * A → (A + B - A * B).rank + (A * B).rank = A.rank + B.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:28+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:55:42+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:56:14+0800"
+}

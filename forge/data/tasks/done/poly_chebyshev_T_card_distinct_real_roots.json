@@ -1,0 +1,19 @@
+{
+  "name": "poly_chebyshev_T_card_distinct_real_roots",
+  "statement": "(n : ℕ) : (Polynomial.Chebyshev.T ℝ (n : ℤ)).roots.toFinset.card = n",
+  "closed": "∀ (n : ℕ), (Polynomial.Chebyshev.T ℝ (n : ℤ)).roots.toFinset.card = n",
+  "informal": "T_n has exactly n distinct real roots — the n points cos((2k+1)π/(2n)), k < n, are distinct (cos is injective on [0,π]) roots since T_n(cos θ) = cos(nθ); and T_n has degree n so at most n roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "422995451",
+  "type": "∀ (n : ℕ), (Polynomial.Chebyshev.T ℝ ↑n).roots.toFinset.card = n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:17:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:31:48+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:33:06+0800"
+}

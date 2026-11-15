@@ -1,0 +1,19 @@
+{
+  "name": "lib_pisano_lucas_two_mul_dvd_and_dvd_four_mul",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∧ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∣ 4 * n",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∧ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∣ 4 * n",
+  "informal": "promoted from Mathlib2.bld5_pisano_lucas_odd_eq_aux3 (combined with Mathlib2.bld4_pisano_lucas_dvd_four_mul): for n ≥ 2 the Pisano period of the Lucas number L_n is 2n or 4n — it is a multiple of 2n and a divisor of 4n.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "2733888044",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∧ Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∣ 4 * n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:53:16+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:53:36+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:53:45+0800"
+}

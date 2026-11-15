@@ -1,0 +1,19 @@
+{
+  "name": "r3_fib_iff_five_sq_pm_four_is_square_s1h3",
+  "statement": ": ∀ (x u : ℕ), x ^ 2 = 5 * u ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * u ^ 2 → ∃ (v : ℕ), x + u = 2 * v ∧ u ≤ v",
+  "closed": "∀ (x u : ℕ), x ^ 2 = 5 * u ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * u ^ 2 → ∃ (v : ℕ), x + u = 2 * v ∧ u ≤ v",
+  "informal": "r3_fib_iff_five_sq_pm_four_is_square 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "r3_fib_iff_five_sq_pm_four_is_square",
+  "original": "",
+  "proposed_by": "r3_prover_4",
+  "hash": "2462715009",
+  "type": "∀ (x u : ℕ), x ^ 2 = 5 * u ^ 2 + 4 ∨ x ^ 2 + 4 = 5 * u ^ 2 → ∃ v, x + u = 2 * v ∧ u ≤ v",
+  "attempts": [],
+  "created_at": "2026-11-15T01:17:59+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_4",
+  "claimed_at": "2026-11-15T01:18:41+0800",
+  "closed_by": "r3_prover_4",
+  "finished_at": "2026-11-15T01:18:51+0800"
+}

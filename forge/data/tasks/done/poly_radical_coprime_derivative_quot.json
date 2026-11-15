@@ -1,0 +1,19 @@
+{
+  "name": "poly_radical_coprime_derivative_quot",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (f : Polynomial k) (hf : f ≠ 0) : IsCoprime (UniqueFactorizationMonoid.radical f) (Polynomial.derivative f / (f / UniqueFactorizationMonoid.radical f))",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (f : Polynomial k) (hf : f ≠ 0), IsCoprime (UniqueFactorizationMonoid.radical f) (Polynomial.derivative f / (f / UniqueFactorizationMonoid.radical f))",
+  "informal": "Snyder's ingredient, sharp form in char 0: the cofactor f' / (f / rad f) is coprime to rad f (so gcd(f, f') is associated to f / rad f) — Uses Mathlib2.ms_divrad_dvd_derivative_v2 to know the division is exact; then for each prime p ∣ f with multiplicity e, f = p^e·g gives f'/(f/rad f) ≡ e·p'·rad(g)·(g/..) mod p, which is nonzero mod p since e ≠ 0 in char 0 and p ∤ p'.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "3012487872",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [CharZero k] (f : Polynomial k), f ≠ 0 → IsCoprime (UniqueFactorizationMonoid.radical f) (Polynomial.derivative f / (f / UniqueFactorizationMonoid.radical f))",
+  "attempts": [],
+  "created_at": "2026-11-15T07:15:55+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:25:04+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:31:36+0800"
+}

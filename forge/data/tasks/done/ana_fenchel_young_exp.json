@@ -1,0 +1,19 @@
+{
+  "name": "ana_fenchel_young_exp",
+  "statement": "(a b : ℝ) (hb : 0 < b) : a * b ≤ Real.exp a + b * Real.log b - b",
+  "closed": "∀ (a b : ℝ) (hb : 0 < b), a * b ≤ Real.exp a + b * Real.log b - b",
+  "informal": "Fenchel–Young inequality for the conjugate pair exp and b log b - b — apply 1 + t ≤ exp t with t = a - log b and multiply by b = exp(log b).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "4292237270",
+  "type": "∀ (a b : ℝ), 0 < b → a * b ≤ Real.exp a + b * Real.log b - b",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:45+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_8",
+  "claimed_at": "2026-11-15T01:59:22+0800",
+  "closed_by": "r4_prover_8",
+  "finished_at": "2026-11-15T01:59:36+0800"
+}

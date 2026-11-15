@@ -1,0 +1,26 @@
+{
+  "name": "ms_abc_noncoprime_char0",
+  "statement": "{k : Type*} [Field k] [CharZero k] (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hsum : a + b + c = 0) : (a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0) ∨ max (max a.natDegree b.natDegree) c.natDegree < (UniqueFactorizationMonoid.radical a).natDegree + (UniqueFactorizationMonoid.radical b).natDegree + c.natDegree",
+  "closed": "∀ {k : Type*} [Field k] [CharZero k] (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hsum : a + b + c = 0), (a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0) ∨ max (max a.natDegree b.natDegree) c.natDegree < (UniqueFactorizationMonoid.radical a).natDegree + (UniqueFactorizationMonoid.radical b).natDegree + c.natDegree",
+  "informal": "Non-coprime Mason–Stothers in char 0: nonzero a+b+c=0 are all constant or max degree < deg rad(a) + deg rad(b) + deg(c).",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Theorem 5, p.11",
+  "original": "Theorem 5. Let k be any field of characteristic zero, and a, b, c ∈ k[t] be nonzero polynomials satisfying a + b + c = 0. Then we either have a, b, c ∈ k or max{deg(a), deg(b), deg(c)} < deg(rad(a)) + deg(rad(b)) + deg(c).",
+  "proposed_by": "paper_1",
+  "hash": "2322153334",
+  "type": "∀ {k : Type u_1} [inst : Field k] [CharZero k] (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → a + b + c = 0 → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0 ∨ max (max a.natDegree b.natDegree) c.natDegree < sorry + sorry + c.natDegree",
+  "attempts": [
+    {
+      "agent": "paper_1",
+      "note": "STATEMENT ILL-TYPED: missing [DecidableEq k], so NormalizationMonoid (Polynomial k) cannot be synthesized and the stored type contains sorry. Unprovable as stated; superseded by the corresponding ms_*_v2 task.",
+      "at": "2026-11-15T00:21:14+0800"
+    }
+  ],
+  "created_at": "2026-11-15T00:16:42+0800",
+  "status": "retired",
+  "claimed_by": "paper_1",
+  "claimed_at": "2026-11-15T00:21:14+0800",
+  "retired_by": "maintainer",
+  "retired_note": "命题缺 [DecidableEq k]，类型无法通过检查（NormalizationMonoid (Polynomial k) 合成失败）；已由对应的 _v2 任务取代。这类命题现在会在 propose 时被判为 invalid。",
+  "finished_at": "2026-11-15T00:24:59+0800"
+}

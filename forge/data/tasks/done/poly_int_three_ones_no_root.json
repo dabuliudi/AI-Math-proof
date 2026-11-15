@@ -1,0 +1,19 @@
+{
+  "name": "poly_int_three_ones_no_root",
+  "statement": "(p : Polynomial ℤ) (a b c : ℤ) (hab : a ≠ b) (hbc : b ≠ c) (hac : a ≠ c) (ha : Polynomial.eval a p = 1) (hb : Polynomial.eval b p = 1) (hc : Polynomial.eval c p = 1) (r : ℤ) : Polynomial.eval r p ≠ 0",
+  "closed": "∀ (p : Polynomial ℤ) (a b c : ℤ) (hab : a ≠ b) (hbc : b ≠ c) (hac : a ≠ c) (ha : Polynomial.eval a p = 1) (hb : Polynomial.eval b p = 1) (hc : Polynomial.eval c p = 1) (r : ℤ), Polynomial.eval r p ≠ 0",
+  "informal": "An integer polynomial taking the value 1 at three distinct integers has no integer root — if p(r) = 0 then r-a, r-b, r-c each divide p(r) - 1 = -1 (sub_dvd_eval_sub), so they are three distinct elements of {1,-1}, impossible.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "1368440160",
+  "type": "∀ (p : Polynomial ℤ) (a b c : ℤ), a ≠ b → b ≠ c → a ≠ c → Polynomial.eval a p = 1 → Polynomial.eval b p = 1 → Polynomial.eval c p = 1 → ∀ (r : ℤ), Polynomial.eval r p ≠ 0",
+  "attempts": [],
+  "created_at": "2026-11-15T07:16:29+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:21:24+0800"
+}

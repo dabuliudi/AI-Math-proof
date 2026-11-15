@@ -1,0 +1,19 @@
+{
+  "name": "r3_ramsey_three_three",
+  "statement": "(V : Type) [Fintype V] (h : 6 ≤ Fintype.card V) (G : SimpleGraph V) : ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 3",
+  "closed": "∀ (V : Type) [Fintype V] (h : 6 ≤ Fintype.card V) (G : SimpleGraph V), ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 3",
+  "informal": "R(3,3) ≤ 6: every graph on at least 6 vertices contains a triangle or its complement does. Proof idea: pick a vertex v; among the ≥ 5 other vertices, pigeonhole gives 3 neighbours or 3 non-neighbours; if two of the 3 neighbours are adjacent we get a triangle in G with v, otherwise they form a triangle in the complement (and symmetrically).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "1255789776",
+  "type": "∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 3",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:17+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_2",
+  "claimed_at": "2026-11-15T01:06:48+0800",
+  "closed_by": "r3_prover_2",
+  "finished_at": "2026-11-15T01:09:39+0800"
+}

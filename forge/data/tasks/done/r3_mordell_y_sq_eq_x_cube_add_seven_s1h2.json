@@ -1,0 +1,19 @@
+{
+  "name": "r3_mordell_y_sq_eq_x_cube_add_seven_s1h2",
+  "statement": ": ∀ (a b : ℤ), b ^ 2 = a ^ 3 + 7 → a % 2 = 1",
+  "closed": "∀ (a b : ℤ), b ^ 2 = a ^ 3 + 7 → a % 2 = 1",
+  "informal": "r3_mordell_y_sq_eq_x_cube_add_seven 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "r3_mordell_y_sq_eq_x_cube_add_seven",
+  "original": "",
+  "proposed_by": "r3_prover_3",
+  "hash": "3554871901",
+  "type": "∀ (a b : ℤ), b ^ 2 = a ^ 3 + 7 → a % 2 = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T01:07:08+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:07:57+0800",
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:08:15+0800"
+}

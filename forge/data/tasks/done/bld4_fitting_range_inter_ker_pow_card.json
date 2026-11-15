@@ -1,0 +1,19 @@
+{
+  "name": "bld4_fitting_range_inter_ker_pow_card",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (v : ι → K) (h : (A ^ Fintype.card ι).mulVec ((A ^ Fintype.card ι).mulVec v) = 0) : (A ^ Fintype.card ι).mulVec v = 0",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (v : ι → K) (h : (A ^ Fintype.card ι).mulVec ((A ^ Fintype.card ι).mulVec v) = 0), (A ^ Fintype.card ι).mulVec v = 0",
+  "informal": "Uses Mathlib2.bld3_rank_pow_card_stabilizes and Mathlib2.bld2_rank_pow_convex: with N = A^n, stabilisation (base case from rank_pow_card_stabilizes, propagated to exponent 2n by rank_pow_convex) gives rank(N * N) = rank N. By rank–nullity ker N ≤ ker (N * N) have equal finrank, hence are equal, which is the claim (Fitting: range N ∩ ker N = 0).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_rank_pow_card_stabilizes, Mathlib2.bld2_rank_pow_convex",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "501342432",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (v : ι → K), (A ^ Fintype.card ι).mulVec ((A ^ Fintype.card ι).mulVec v) = 0 → (A ^ Fintype.card ι).mulVec v = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:44+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:03:36+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:04:10+0800"
+}

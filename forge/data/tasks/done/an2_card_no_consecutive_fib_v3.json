@@ -1,0 +1,19 @@
+{
+  "name": "an2_card_no_consecutive_fib_v3",
+  "statement": "(n : ℕ) : (Finset.filter (fun s : Finset ℕ => ∀ i ∈ s, i + 1 ∉ s) (Finset.range n).powerset).card = Nat.fib (n + 2)",
+  "closed": "∀ (n : ℕ), (Finset.filter (fun s : Finset ℕ => ∀ i ∈ s, i + 1 ∉ s) (Finset.range n).powerset).card = Nat.fib (n + 2)",
+  "informal": "The number of subsets of {0,...,n-1} containing no two consecutive integers is the Fibonacci number F_{n+2}.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "383786629",
+  "type": "∀ (n : ℕ), {s ∈ (Finset.range n).powerset | ∀ i ∈ s, i + 1 ∉ s}.card = Nat.fib (n + 2)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:45:34+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_e",
+  "claimed_at": "2026-11-15T00:53:06+0800",
+  "closed_by": "r2_prover_e",
+  "finished_at": "2026-11-15T00:54:11+0800"
+}

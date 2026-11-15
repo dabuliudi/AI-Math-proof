@@ -1,0 +1,19 @@
+{
+  "name": "arith_sum_lcm",
+  "statement": "(n : ℕ) (hn : 0 < n) : 2 * ∑ k ∈ Finset.Icc 1 n, Nat.lcm k n = n * (1 + ∑ d ∈ n.divisors, d * d.totient)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), 2 * ∑ k ∈ Finset.Icc 1 n, Nat.lcm k n = n * (1 + ∑ d ∈ n.divisors, d * d.totient)",
+  "informal": "Σ_{k=1}^n lcm(k,n) = (n/2)(1 + Σ_{d|n} dφ(d)) — group k by g = gcd(k,n): lcm = n·(k/g) with k/g a totative of d = n/g; Uses Mathlib2.nt2_two_mul_sum_coprime_eq_mul_totient at the inner step for every d > 1 (twice the totative sum is dφ(d)); the d = 1 term contributes the extra 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "840975461",
+  "type": "∀ (n : ℕ), 0 < n → 2 * ∑ k ∈ Finset.Icc 1 n, k.lcm n = n * (1 + ∑ d ∈ n.divisors, d * d.totient)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:21+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T08:09:27+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T08:12:11+0800"
+}

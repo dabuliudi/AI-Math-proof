@@ -1,0 +1,19 @@
+{
+  "name": "bld_surjective_nonexpanding_compact_isometry",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hs : Function.Surjective f) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y) : Isometry f",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hs : Function.Surjective f) (hf : ∀ x y : X, dist (f x) (f y) ≤ dist x y), Isometry f",
+  "informal": "Uses Mathlib2.top_expanding_compact_isometry and Mathlib2.top_isometry_compact_surjective: a right inverse g of f is expanding, hence an isometry by the first theorem and surjective by the second; so g is a bijective isometry and f = g⁻¹ is an isometry.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_expanding_compact_isometry, Mathlib2.top_isometry_compact_surjective",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "3976771086",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), Function.Surjective f → (∀ (x y : X), dist (f x) (f y) ≤ dist x y) → Isometry f",
+  "attempts": [],
+  "created_at": "2026-11-15T02:34:45+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:37:15+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:37:33+0800"
+}

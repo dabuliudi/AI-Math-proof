@@ -1,0 +1,19 @@
+{
+  "name": "top_tendsto_of_subseq_limits_unique",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (u : ℕ → X) (a : X) (h : ∀ φ : ℕ → ℕ, StrictMono φ → ∀ b : X, Filter.Tendsto (u ∘ φ) Filter.atTop (nhds b) → b = a) : Filter.Tendsto u Filter.atTop (nhds a)",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (u : ℕ → X) (a : X) (h : ∀ φ : ℕ → ℕ, StrictMono φ → ∀ b : X, Filter.Tendsto (u ∘ φ) Filter.atTop (nhds b) → b = a), Filter.Tendsto u Filter.atTop (nhds a)",
+  "informal": "In a compact metric space a sequence all of whose convergent subsequences have limit a converges to a — otherwise infinitely many terms stay ε-far from a; extract a subsequence of those, then a convergent sub-subsequence by sequential compactness, whose limit is ≠ a.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "3910293025",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (u : ℕ → X) (a : X), (∀ (φ : ℕ → ℕ), StrictMono φ → ∀ (b : X), Filter.Tendsto (u ∘ φ) Filter.atTop (nhds b) → b = a) → Filter.Tendsto u Filter.atTop (nhds a)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:50+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:27:09+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:27:30+0800"
+}

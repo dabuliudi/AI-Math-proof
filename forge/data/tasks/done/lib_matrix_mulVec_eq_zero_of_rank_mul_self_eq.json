@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_mulVec_eq_zero_of_rank_mul_self_eq",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (N : Matrix ι ι K) (hN : (N * N).rank = N.rank) (v : ι → K) (hv : N.mulVec (N.mulVec v) = 0) : N.mulVec v = 0",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (N : Matrix ι ι K) (hN : (N * N).rank = N.rank) (v : ι → K) (hv : N.mulVec (N.mulVec v) = 0), N.mulVec v = 0",
+  "informal": "promoted from Mathlib2.bld4_fitting_range_inter_ker_pow_card_aux2: if rank(N^2) = rank N then range N meets ker N trivially, i.e. N(Nv) = 0 implies Nv = 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "678660278",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (N : Matrix ι ι K), (N * N).rank = N.rank → ∀ (v : ι → K), N.mulVec (N.mulVec v) = 0 → N.mulVec v = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T07:50:11+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:51:19+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:51:29+0800"
+}

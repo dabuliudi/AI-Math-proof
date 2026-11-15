@@ -1,0 +1,19 @@
+{
+  "name": "p4_rem1_large",
+  "statement": "(n : ℕ) (h : 4096 < n) : 0 < p4_x n",
+  "closed": "∀ (n : ℕ) (h : 4096 < n), 0 < p4_x n",
+  "informal": "Remark 1 conclusion: x(n) > 0 for every n > 2^12 = 4096.",
+  "origin": "paper",
+  "source": "arXiv:2503.03469v1 Remark 1",
+  "original": "We have proved that x(n)>0 for every n>2^{12}=4096.",
+  "proposed_by": "paper_4",
+  "hash": "1115220999",
+  "type": "∀ (n : ℕ), 4096 < n → 0 < Mathlib2.p4_x n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:54:21+0800",
+  "status": "proved",
+  "claimed_by": "paper_4",
+  "claimed_at": "2026-11-15T02:55:56+0800",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T03:04:29+0800"
+}

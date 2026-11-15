@@ -1,0 +1,16 @@
+{
+  "name": "lib_fib_mul_cast_of_sq_eq_zero",
+  "statement": "(R : Type*) [CommRing R] (N : ℕ) (μ u v : R) (hμ : μ ^ 2 = 0) (h0 : ((Nat.fib N : ℕ) : R) = μ * u) (h1 : ((Nat.fib (N + 1) : ℕ) : R) = 1 + μ * v) (j : ℕ) : ((Nat.fib (j * N) : ℕ) : R) = (j : R) * μ * u ∧ ((Nat.fib (j * N + 1) : ℕ) : R) = 1 + (j : R) * μ * v",
+  "closed": "∀ (R : Type*) [CommRing R] (N : ℕ) (μ u v : R) (hμ : μ ^ 2 = 0) (h0 : ((Nat.fib N : ℕ) : R) = μ * u) (h1 : ((Nat.fib (N + 1) : ℕ) : R) = 1 + μ * v) (j : ℕ), ((Nat.fib (j * N) : ℕ) : R) = (j : R) * μ * u ∧ ((Nat.fib (j * N + 1) : ℕ) : R) = 1 + (j : R) * μ * v",
+  "informal": "promoted from Mathlib2.bld5_pisano_mul_dvd_mul_aux2: square-zero lifting for Fibonacci — if μ^2 = 0, F_N = μu and F_{N+1} = 1 + μv in a commutative ring then F_{jN} = jμu and F_{jN+1} = 1 + jμv.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "2393560942",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (N : ℕ) (μ u v : R), μ ^ 2 = 0 → ↑(Nat.fib N) = μ * u → ↑(Nat.fib (N + 1)) = 1 + μ * v → ∀ (j : ℕ), ↑(Nat.fib (j * N)) = ↑j * μ * u ∧ ↑(Nat.fib (j * N + 1)) = 1 + ↑j * μ * v",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:37+0800",
+  "status": "known",
+  "known_as": "bld5_pisano_mul_dvd_mul_aux2 R N μ u v hμ h0 h1 j"
+}

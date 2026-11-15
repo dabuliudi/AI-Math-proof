@@ -9,3 +9,11 @@ rev = "v4.24.0"
 
 [[lean_lib]]
 name = "Demo"
+
+# Forge：准入校验用的元程序（只依赖 Lean 核心）
+[[lean_lib]]
+name = "Forge"
+
+# Mathlib2：机器生成、内核验证、可互相引用的定理库
+[[lean_lib]]
+name = "Mathlib2"

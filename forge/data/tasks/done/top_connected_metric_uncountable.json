@@ -1,0 +1,19 @@
+{
+  "name": "top_connected_metric_uncountable",
+  "statement": "{X : Type*} [MetricSpace X] [PreconnectedSpace X] (x y : X) (h : x ≠ y) : ¬ (Set.univ : Set X).Countable",
+  "closed": "∀ {X : Type*} [MetricSpace X] [PreconnectedSpace X] (x y : X) (h : x ≠ y), ¬ (Set.univ : Set X).Countable",
+  "informal": "A connected metric space with two distinct points is uncountable — the image of z ↦ dist x z contains the interval [0, dist x y] by the intermediate value theorem, a nondegenerate real interval is uncountable, and images of countable sets are countable.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "2750145922",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [PreconnectedSpace X] (x y : X), x ≠ y → ¬Set.univ.Countable",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:23+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:26:37+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:27:19+0800"
+}

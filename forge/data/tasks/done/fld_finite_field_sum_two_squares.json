@@ -1,0 +1,19 @@
+{
+  "name": "fld_finite_field_sum_two_squares",
+  "statement": "(K : Type) [Field K] [Fintype K] (a : K) : ∃ x y : K, x ^ 2 + y ^ 2 = a",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] (a : K), ∃ x y : K, x ^ 2 + y ^ 2 = a",
+  "informal": "Every element of a finite field is a sum of two squares — in characteristic 2 every element is a square (FiniteField.isSquare_of_char_two); otherwise apply FiniteField.exists_root_sum_quadratic to X^2 and X^2 - a (card is odd), or pigeonhole on the (q+1)/2 squares.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "1766232201",
+  "type": "∀ (K : Type) [inst : Field K] [Fintype K] (a : K), ∃ x y, x ^ 2 + y ^ 2 = a",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:14+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:21:41+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:22:53+0800"
+}

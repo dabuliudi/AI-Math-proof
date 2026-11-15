@@ -1,0 +1,1417 @@
+{
+ "alg_card_sq_eq_one_zmod_two_pow_aux1": {
+  "owner": "alg_card_sq_eq_one_zmod_two_pow",
+  "type": "∀ (n : ℕ) (a : ℤ), 2 ^ (n + 2) ∣ a ^ 2 - 1 → ∃ c, a = 2 ^ (n + 1) * c + 1 ∨ a = 2 ^ (n + 1) * c - 1",
+  "hash": "2401676422"
+ },
+ "alg_isCyclic_of_card_eq_prime_mul_prime_aux1": {
+  "owner": "alg_isCyclic_of_card_eq_prime_mul_prime",
+  "type": "∀ (r s : ℕ), Nat.Prime r → Nat.Prime s → r ≠ s → (∀ (n : ℕ), n ∣ s → n ≡ 1 [MOD r] → n = 1) → ∀ (G : Type u_1) [inst : Group G], Nat.card G = r * s → ∃ P, P.Normal ∧ IsPGroup r ↥P ∧ ∀ (g : G), orderOf g = r → g ∈ P",
+  "hash": "1309798927"
+ },
+ "alg_three_consecutive_pow_mul_comm_aux1": {
+  "owner": "alg_three_consecutive_pow_mul_comm",
+  "type": "∀ (G : Type u_1) [inst : Group G] (n : ℕ), (∀ (a b : G), (a * b) ^ n = a ^ n * b ^ n) → (∀ (a b : G), (a * b) ^ (n + 1) = a ^ (n + 1) * b ^ (n + 1)) → ∀ (a b : G), b ^ n * a = a * b ^ n",
+  "hash": "2383253212"
+ },
+ "alg_x_pow_four_add_one_not_irreducible_zmod_aux1": {
+  "owner": "alg_x_pow_four_add_one_not_irreducible_zmod",
+  "type": "∀ (F : Type) [inst : Field F] (a b c d : F), ¬Irreducible ((Polynomial.X ^ 2 + Polynomial.C a * Polynomial.X + Polynomial.C b) * (Polynomial.X ^ 2 + Polynomial.C c * Polynomial.X + Polynomial.C d))",
+  "hash": "1976160218"
+ },
+ "an2_card_no_consecutive_fib_v3_aux1": {
+  "owner": "an2_card_no_consecutive_fib_v3",
+  "type": "∀ (n : ℕ), {s ∈ (Finset.range (n + 2)).powerset | ∀ i ∈ s, i + 1 ∉ s}.card = {s ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ s, i + 1 ∉ s}.card + {s ∈ (Finset.range n).powerset | ∀ i ∈ s, i + 1 ∉ s}.card",
+  "hash": "2644315723"
+ },
+ "an2_chebyshev_index_weighted_aux1": {
+  "owner": "an2_chebyshev_index_weighted",
+  "type": "∀ (a : ℕ → ℝ), Monotone a → ∀ (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ ↑n * a n",
+  "hash": "2274517029"
+ },
+ "an2_num_derangements_bounds_v3_aux1": {
+  "owner": "an2_num_derangements_bounds_v3",
+  "type": "∀ (n : ℕ), ((n + 2).factorial ≤ 3 * numDerangements (n + 2) ∧ 2 * numDerangements (n + 2) ≤ (n + 2).factorial) ∧ (n + 3).factorial ≤ 3 * numDerangements (n + 3) ∧ 2 * numDerangements (n + 3) ≤ (n + 3).factorial",
+  "hash": "1215315938"
+ },
+ "an2_sum_inv_sqrt_bounds_aux1": {
+  "owner": "an2_sum_inv_sqrt_bounds",
+  "type": "∀ (t : ℝ), 0 ≤ t → 2 * (√(t + 1 + 1) - √(t + 1)) ≤ 1 / √(t + 1) ∧ 1 / √(t + 1) ≤ 2 * (√(t + 1) - √t)",
+  "hash": "3169006852"
+ },
+ "an_cyclic_div_ge_three_aux1": {
+  "owner": "an_cyclic_div_ge_three",
+  "type": "∀ (a b c : ℝ), 0 < b → 0 < c → c ≤ a → c ≤ b → 3 * (a * b * c) ≤ a * a * c + b * b * a + c * c * b",
+  "hash": "4231979927"
+ },
+ "an_schur_deg_one_aux1": {
+  "owner": "an_schur_deg_one",
+  "type": "∀ (a b c : ℝ), 0 ≤ c → b ≤ a → c ≤ b → 0 ≤ a * (a - b) * (a - c) + b * (b - a) * (b - c) + c * (c - a) * (c - b)",
+  "hash": "2665496634"
+ },
+ "an_sum_cubes_eq_sq_sum_aux1": {
+  "owner": "an_sum_cubes_eq_sq_sum",
+  "type": "∀ (n : ℕ), (∑ i ∈ Finset.range (n + 1), i) * 2 = n * (n + 1)",
+  "hash": "3196160461"
+ },
+ "ana_convex_bddAbove_const_aux1": {
+  "owner": "ana_convex_bddAbove_const",
+  "type": "∀ (f : ℝ → ℝ), ConvexOn ℝ Set.univ f → ∀ (M : ℝ), (∀ (x : ℝ), f x ≤ M) → ∀ (x y : ℝ), f y ≤ f x",
+  "hash": "2272043196"
+ },
+ "ana_tsum_inv_cube_le_aux1": {
+  "owner": "ana_tsum_inv_cube_le",
+  "type": "∀ (x : ℝ), 0 ≤ x → 1 / (x + 2) ^ 3 ≤ 1 / (2 * (x + 1) * (x + 2)) - 1 / (2 * (x + 2) * (x + 3))",
+  "hash": "677177839"
+ },
+ "ana_tsum_inv_cube_le_aux2": {
+  "owner": "ana_tsum_inv_cube_le",
+  "type": "∀ (N : ℕ), ∑ n ∈ Finset.range (N + 1), 1 / (↑n + 1) ^ 3 ≤ 5 / 4 - 1 / (2 * (↑N + 1) * (↑N + 2))",
+  "hash": "3185709632"
+ },
+ "bld2_card_conjClasses_of_card_prime_cube_aux1": {
+  "owner": "bld2_card_conjClasses_of_card_prime_cube",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → ∀ (a : G) [inst_1 : Decidable (a ∈ Subgroup.center G)], Nat.card { b // Commute a b } = if a ∈ Subgroup.center G then p ^ 3 else p ^ 2",
+  "hash": "3474099441"
+ },
+ "bld2_involution_iff_rank_add_rank_aux1": {
+  "owner": "bld2_involution_iff_rank_add_rank",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (c : K), c ≠ 0 → ∀ (M : Matrix ι ι K), (c • M).rank = M.rank",
+  "hash": "2749793321"
+ },
+ "bld2_mantel_equality_regular_aux1": {
+  "owner": "bld2_mantel_equality_regular",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card",
+  "hash": "1026381994"
+ },
+ "bld2_pisano_fib_dvd_four_mul_aux1": {
+  "owner": "bld2_pisano_fib_dvd_four_mul",
+  "type": "∀ (m N : ℕ), 0 < N → (∀ (i : ℕ), Nat.fib (i + N) ≡ Nat.fib i [MOD m]) → Mathlib2.p3_pisano m ∣ N",
+  "hash": "750893573"
+ },
+ "bld2_pisano_fib_odd_eq_aux1": {
+  "owner": "bld2_pisano_fib_odd_eq",
+  "type": "∀ (m N : ℕ), 0 < N → (∀ (i : ℕ), Nat.fib (i + N) ≡ Nat.fib i [MOD m]) → 0 < Mathlib2.p3_pisano m ∧ ∀ (i : ℕ), Nat.fib (i + Mathlib2.p3_pisano m) ≡ Nat.fib i [MOD m]",
+  "hash": "3103962857"
+ },
+ "bld2_pisano_fib_odd_eq_aux2": {
+  "owner": "bld2_pisano_fib_odd_eq",
+  "type": "∀ (n k : ℕ), 3 ≤ n → 0 < k → Nat.fib (0 + k) ≡ Nat.fib 0 [MOD Nat.fib n] → n ∣ k",
+  "hash": "2617620180"
+ },
+ "bld2_rat_sq_add_sq_ne_prime_mul_coprime_aux1": {
+  "owner": "bld2_rat_sq_add_sq_ne_prime_mul_coprime",
+  "type": "∀ (p m : ℕ), Nat.Prime p → p % 4 = 3 → ¬p ∣ m → ∀ (d : ℕ) (a b : ℤ), a ^ 2 + b ^ 2 = ↑p * ↑m * ↑d ^ 2 → d = 0",
+  "hash": "2117743498"
+ },
+ "bld2_tripotent_rank_split_aux1": {
+  "owner": "bld2_tripotent_rank_split",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (M : Matrix ι ι K) (c : K), c ≠ 0 → (c • M).rank = M.rank",
+  "hash": "3706260657"
+ },
+ "bld2_tripotent_rank_split_aux2": {
+  "owner": "bld2_tripotent_rank_split",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = B → B * A = A → A * B = A → B * B = B → B.rank = (B + A).rank + (B - A).rank",
+  "hash": "2969320899"
+ },
+ "bld_fib_consecutive_of_quadratic_form_aux1": {
+  "owner": "bld_fib_consecutive_of_quadratic_form",
+  "type": "∀ (u v Y : ℤ), u ^ 2 = 5 * Y ^ 2 + 4 → v ^ 2 + 4 = 5 * Y ^ 2 → Y ^ 2 = 1",
+  "hash": "1901952012"
+ },
+ "bld_fib_consecutive_of_quadratic_form_aux2": {
+  "owner": "bld_fib_consecutive_of_quadratic_form",
+  "type": "∀ (x y : ℕ), ↑y ^ 2 = 1 → (↑x ^ 2 - ↑x * ↑y - ↑y ^ 2) ^ 2 = 1 → 0 < x → ∃ n, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
+  "hash": "1249582984"
+ },
+ "bld_fib_even_index_iff_five_sq_add_four_aux1": {
+  "owner": "bld_fib_even_index_iff_five_sq_add_four",
+  "type": "∀ (n : ℕ), ∃ x, x ^ 2 = 5 * Nat.fib (2 * n) ^ 2 + 4",
+  "hash": "1425854608"
+ },
+ "bld_frobenius_rank_inequality_aux1": {
+  "owner": "bld_frobenius_rank_inequality",
+  "type": "∀ (K : Type u_1) [inst : Field K] (n : Type u_2) (p : Type u_3) [Fintype n] [inst_2 : Fintype p] (B : Matrix n p K), ∃ M N, B = M * N",
+  "hash": "2845141906"
+ },
+ "bld_involution_trace_rank_aux1": {
+  "owner": "bld_involution_trace_rank",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (M : Matrix ι ι K) (c : K), c ≠ 0 → (c • M).rank = M.rank",
+  "hash": "3706260657"
+ },
+ "bld_involution_trace_rank_aux2": {
+  "owner": "bld_involution_trace_rank",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A * A = 1 → 2⁻¹ • (1 + A) * 2⁻¹ • (1 + A) = 2⁻¹ • (1 + A)",
+  "hash": "426892472"
+ },
+ "bld_nilpotent_commute_det_add_aux1": {
+  "owner": "bld_nilpotent_commute_det_add",
+  "type": "∀ (n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ), IsNilpotent A → A * B = B * A → IsUnit B.det → (B + A).det = B.det",
+  "hash": "949475752"
+ },
+ "bld_nilpotent_rank_bound_aux1": {
+  "owner": "bld_nilpotent_rank_bound",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (j : ℕ), (j + 1) * A.rank ≤ j * Fintype.card ι + (A ^ (j + 1)).rank",
+  "hash": "1112129884"
+ },
+ "bld_zmod_diag_quadratic_form_surjective_aux1": {
+  "owner": "bld_zmod_diag_quadratic_form_surjective",
+  "type": "∀ (a b c : ZMod 2), a ≠ 0 → b ≠ 0 → ∃ x y, a * x ^ 2 + b * y ^ 2 = c",
+  "hash": "4091327524"
+ },
+ "comb_card_involutions_rec_aux1": {
+  "owner": "comb_card_involutions_rec",
+  "type": "∀ (n : ℕ) (e : Equiv.Perm (Fin n)), Equiv.Perm.decomposeFin.symm (0, e) * Equiv.Perm.decomposeFin.symm (0, e) = 1 ↔ e * e = 1",
+  "hash": "692910956"
+ },
+ "comb_card_involutions_rec_aux2": {
+  "owner": "comb_card_involutions_rec",
+  "type": "∀ (n : ℕ) (r : Fin n) (e : Equiv.Perm (Fin n)), Equiv.Perm.decomposeFin.symm (r.succ, e) * Equiv.Perm.decomposeFin.symm (r.succ, e) = 1 ↔ e r = r ∧ e * e = 1",
+  "hash": "2323816388"
+ },
+ "comb_card_involutions_rec_aux3": {
+  "owner": "comb_card_involutions_rec",
+  "type": "∀ (n : ℕ) (q : Fin (n + 1)), {e | e q = q ∧ e * e = 1}.card = {e | e * e = 1}.card",
+  "hash": "3952439114"
+ },
+ "comb_compl_connected_of_not_connected_aux1": {
+  "owner": "comb_compl_connected_of_not_connected",
+  "type": "∀ (V : Type) (G : SimpleGraph V) (x y : V), ¬G.Reachable x y → Gᶜ.Adj x y",
+  "hash": "1241345764"
+ },
+ "comb_exists_cut_half_edges_aux1": {
+  "owner": "comb_exists_cut_half_edges",
+  "type": "∀ (V : Type) [inst : DecidableEq V] (f : V → V → ℕ), (∀ (u v : V), f u v = f v u) → (∀ (u : V), f u u = 0) → ∀ (S : Finset V), ∃ s ⊆ S, ∑ u ∈ S, ∑ v ∈ S, f u v ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
+  "hash": "184427284"
+ },
+ "comb_tournament_hamiltonian_path_aux1": {
+  "owner": "comb_tournament_hamiltonian_path",
+  "type": "∀ {α : Type} (r : α → α → Prop) (a : α) (l : List α), (∀ b ∈ l, r a b ∨ r b a) → List.IsChain r l → ∃ l', l'.Perm (a :: l) ∧ List.IsChain r l' ∧ ∀ x ∈ l'.head?, x = a ∨ x ∈ l.head?",
+  "hash": "4110940782"
+ },
+ "comb_tournament_hamiltonian_path_aux2": {
+  "owner": "comb_tournament_hamiltonian_path",
+  "type": "∀ {α : Type} (r : α → α → Prop) (l : List α), l.Nodup → (∀ a ∈ l, ∀ b ∈ l, a ≠ b → r a b ∨ r b a) → ∃ l', l'.Perm l ∧ List.IsChain r l'",
+  "hash": "2831583552"
+ },
+ "gen_an_amgm_finset_ordered_ring_aux1": {
+  "owner": "gen_an_amgm_finset_ordered_ring",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b : R), 0 ≤ a → 0 ≤ b → ∀ (m : ℕ), a ^ (m + 1) + (↑m + 1) * a ^ m * (b - a) ≤ b ^ (m + 1)",
+  "hash": "4190575393"
+ },
+ "gen_an_chebyshev_index_weighted_ordered_ring_aux1": {
+  "owner": "gen_an_chebyshev_index_weighted_ordered_ring",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R), Monotone a → ∀ (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ ↑n * a n",
+  "hash": "2333006941"
+ },
+ "gen_an_hardy_finite_ordered_field_aux1": {
+  "owner": "gen_an_hardy_finite_ordered_field",
+  "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a : ℕ → K) (k : ℕ), ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 - 2 * ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) * a k ≤ (∑ i ∈ Finset.range k, a i) ^ 2 / ↑k - (∑ i ∈ Finset.range (k + 1), a i) ^ 2 / (↑k + 1)",
+  "hash": "3341960544"
+ },
+ "gen_an_hardy_finite_ordered_field_aux2": {
+  "owner": "gen_an_hardy_finite_ordered_field",
+  "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a : ℕ → K) (n : ℕ), ∑ k ∈ Finset.range n, ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 ≤ 2 * ∑ k ∈ Finset.range n, (∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1) * a k",
+  "hash": "3100646496"
+ },
+ "gen_an_hardy_finite_ordered_field_aux3": {
+  "owner": "gen_an_hardy_finite_ordered_field",
+  "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (T B Q : K), 0 ≤ T → 0 ≤ B → T ≤ 2 * Q → Q ^ 2 ≤ T * B → T ≤ 4 * B",
+  "hash": "908238259"
+ },
+ "gen_an_schur_nat_pow_ordered_ring_aux1": {
+  "owner": "gen_an_schur_nat_pow_ordered_ring",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b c : R), 0 ≤ c → b ≤ a → c ≤ b → ∀ (t : ℕ), 0 ≤ a ^ t * (a - b) * (a - c) + b ^ t * (b - a) * (b - c) + c ^ t * (c - a) * (c - b)",
+  "hash": "1335020659"
+ },
+ "gen_lin_symm_nilpotent_eq_zero_ordered_aux1": {
+  "owner": "gen_lin_symm_nilpotent_eq_zero_ordered",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (ι : Type u_2) [inst_3 : Fintype ι] [DecidableEq ι] (B : Matrix ι ι R), B.transpose * B = 0 → B = 0",
+  "hash": "1226542035"
+ },
+ "gen_nt_sq_add_sq_eq_prime_mul_sq_aux1": {
+  "owner": "gen_nt_sq_add_sq_eq_prime_mul_sq",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (n : ℕ) (x y z : ℤ), z.natAbs < n → x ^ 2 + y ^ 2 = ↑p * z ^ 2 → z = 0",
+  "hash": "2661698747"
+ },
+ "geo_cos_sum_two_pi_div_seven_aux1": {
+  "owner": "geo_cos_sum_two_pi_div_seven",
+  "type": "∀ (x y : ℝ), 2 * Real.sin x * Real.cos y = Real.sin (y + x) - Real.sin (y - x)",
+  "hash": "1195475126"
+ },
+ "geo_prod_sin_pi_mul_div_aux1": {
+  "owner": "geo_prod_sin_pi_mul_div",
+  "type": "∀ (θ : ℝ), 0 ≤ Real.sin θ → ‖1 - Complex.exp (↑(2 * θ) * Complex.I)‖ = 2 * Real.sin θ",
+  "hash": "2165699321"
+ },
+ "geo_unit_sum_zero_equilateral_aux1": {
+  "owner": "geo_unit_sum_zero_equilateral",
+  "type": "∀ (a b c : ℂ), ‖a‖ = 1 → ‖b‖ = 1 → ‖c‖ = 1 → a + b + c = 0 → ‖a - b‖ = √3",
+  "hash": "2236404911"
+ },
+ "geo_unit_sum_zero_sum_sq_aux1": {
+  "owner": "geo_unit_sum_zero_sum_sq",
+  "type": "∀ (a : ℂ), ‖a‖ = 1 → a * (starRingEnd ℂ) a = 1",
+  "hash": "2872294256"
+ },
+ "lib_list_exists_perm_isChain_of_pairwise_or_aux1": {
+  "owner": "lib_list_exists_perm_isChain_of_pairwise_or",
+  "type": "∀ {α : Type u_1} (r : α → α → Prop) (a : α) (l : List α), (∀ b ∈ l, r a b ∨ r b a) → List.IsChain r l → ∃ l', l'.Perm (a :: l) ∧ List.IsChain r l' ∧ ∀ x ∈ l'.head?, x = a ∨ x ∈ l.head?",
+  "hash": "3673395874"
+ },
+ "lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset_aux1": {
+  "owner": "lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∀ (u v : V), G.Adj u v → G.degree u + G.degree v ≤ Fintype.card V",
+  "hash": "2356042451"
+ },
+ "lin_idempotent_rank_complement_aux1": {
+  "owner": "lin_idempotent_rank_complement",
+  "type": "∀ (n : ℕ) (A : Matrix (Fin n) (Fin n) ℝ), A * A = A → A.trace = ↑A.rank",
+  "hash": "2832748490"
+ },
+ "ms_no_param_y2_x3_1_aux1": {
+  "owner": "ms_no_param_y2_x3_1",
+  "type": "∀ {k : Type u_1} [inst : Field k], 2 ≠ 0 → 3 ≠ 0 → ∀ (a b c d : Polynomial k), c.Monic → d.Monic → IsCoprime a c → IsCoprime b d → b ^ 2 * c ^ 3 = (a ^ 3 + c ^ 3) * d ^ 2 → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0 ∧ d.natDegree = 0",
+  "hash": "3111334195"
+ },
+ "nt2_sq_add_sq_eq_seven_mul_sq_aux1": {
+  "owner": "nt2_sq_add_sq_eq_seven_mul_sq",
+  "type": "∀ (n : ℕ) (x y z : ℤ), z.natAbs < n → x ^ 2 + y ^ 2 = 7 * z ^ 2 → z = 0",
+  "hash": "346037471"
+ },
+ "nt2_sq_sum_eq_two_mul_prod_descent_aux1": {
+  "owner": "nt2_sq_sum_eq_two_mul_prod_descent",
+  "type": "∀ (m x y z : ℤ), x ^ 2 + y ^ 2 + z ^ 2 = 2 * m * x * y * z → ∃ a b c, x = 2 * a ∧ y = 2 * b ∧ z = 2 * c",
+  "hash": "1348403658"
+ },
+ "nt2_sq_sum_eq_two_mul_prod_descent_aux2": {
+  "owner": "nt2_sq_sum_eq_two_mul_prod_descent",
+  "type": "∀ (n k : ℕ) (x y z : ℤ), 1 ≤ k → x ^ 2 + y ^ 2 + z ^ 2 = 2 ^ k * x * y * z → 2 ^ n ∣ x",
+  "hash": "3505865989"
+ },
+ "nt_five_consec_prod_dvd_120_aux1": {
+  "owner": "nt_five_consec_prod_dvd_120",
+  "type": "∀ (m : ℕ), m = 8 ∨ m = 3 ∨ m = 5 → ∀ (n : ℤ), ↑m ∣ n ^ 5 - 5 * n ^ 3 + 4 * n",
+  "hash": "2084810474"
+ },
+ "nt_nine_dvd_sum_cubes_three_dvd_prod_aux1": {
+  "owner": "nt_nine_dvd_sum_cubes_three_dvd_prod",
+  "type": "∀ (x y z : ZMod 9), x ^ 3 + y ^ 3 + z ^ 3 = 0 → 3 * (x * y * z) = 0",
+  "hash": "3727736125"
+ },
+ "nt_odd_sq_add_odd_sq_not_square_aux1": {
+  "owner": "nt_odd_sq_add_odd_sq_not_square",
+  "type": "∀ (k m c : ZMod 4), (2 * k + 1) ^ 2 + (2 * m + 1) ^ 2 ≠ c * c",
+  "hash": "2429548475"
+ },
+ "nt_pow5_sub_self_dvd_30_aux1": {
+  "owner": "nt_pow5_sub_self_dvd_30",
+  "type": "∀ (x : ZMod 30), x ^ 5 - x = 0",
+  "hash": "3296597514"
+ },
+ "nt_seven_dvd_sq_add_sq_aux1": {
+  "owner": "nt_seven_dvd_sq_add_sq",
+  "type": "∀ (x y : ZMod 7), x ^ 2 + y ^ 2 = 0 → x = 0 ∧ y = 0",
+  "hash": "3156004153"
+ },
+ "p3_aux_fib_prime_aux1": {
+  "owner": "p3_aux_fib_prime",
+  "type": "∀ (n : ℕ), { re := 2, im := 0 } * { re := 1, im := 1 } ^ n = { re := 2, im := 0 } ^ n * { re := 2 * ↑(Nat.fib (n + 1)) - ↑(Nat.fib n), im := ↑(Nat.fib n) }",
+  "hash": "1467404763"
+ },
+ "p3_aux_fib_prime_aux2": {
+  "owner": "p3_aux_fib_prime",
+  "type": "∀ (n : ℕ), { re := 2, im := 0 } ^ n = { re := 2 ^ n, im := 0 }",
+  "hash": "1651824925"
+ },
+ "p3_aux_fib_prime_aux3": {
+  "owner": "p3_aux_fib_prime",
+  "type": "∀ (n : ℕ), { re := 0, im := 1 } ^ (2 * n + 1) = { re := 0, im := 5 ^ n }",
+  "hash": "894917483"
+ },
+ "p3_aux_period_aux1": {
+  "owner": "p3_aux_period",
+  "type": "∀ (n : ℕ), ↑(Nat.fib (n + 1)) ^ 2 - ↑(Nat.fib n) * ↑(Nat.fib (n + 2)) = (-1) ^ n",
+  "hash": "3746905523"
+ },
+ "p3_aux_period_aux2": {
+  "owner": "p3_aux_period",
+  "type": "∀ (N m : ℕ), Nat.fib m ≡ 0 [MOD N] → Nat.fib (m + 1) ≡ 1 [MOD N] → ∀ (i : ℕ), Nat.fib (i + m) ≡ Nat.fib i [MOD N]",
+  "hash": "1584096262"
+ },
+ "p3_aux_period_aux3": {
+  "owner": "p3_aux_period",
+  "type": "∀ (N m : ℕ), Nat.fib m ≡ 0 [MOD N] → Nat.fib (m + 1) ≡ 1 [MOD N] → ∀ (k i : ℕ), Nat.fib (i + m * k) ≡ Nat.fib i [MOD N]",
+  "hash": "4275243975"
+ },
+ "p3_aux_period_aux4": {
+  "owner": "p3_aux_period",
+  "type": "∀ (n : ℕ), 2 ∣ n → Nat.fib (2 * n) ≡ 0 [MOD Nat.fib n] ∧ Nat.fib (2 * n + 1) ≡ 1 [MOD Nat.fib n]",
+  "hash": "1252230120"
+ },
+ "p3_cor1_aux1": {
+  "owner": "p3_cor1",
+  "type": "∀ (n : ℕ), ((↑(Nat.fib n) + ↑(Nat.fib (n + 1))) * ↑(Nat.fib n) - ↑(Nat.fib (n + 1)) ^ 2) ^ 2 = 1",
+  "hash": "1892300317"
+ },
+ "p3_cor1_aux2": {
+  "owner": "p3_cor1",
+  "type": "∀ (n : ℕ), Nat.fib n ^ 4 ≡ 1 [MOD Nat.fib (n + 1)]",
+  "hash": "140953868"
+ },
+ "p3_cor1_aux3": {
+  "owner": "p3_cor1",
+  "type": "∀ (n i : ℕ), Nat.fib (i + (n + 1)) ≡ Nat.fib i * Nat.fib n [MOD Nat.fib (n + 1)]",
+  "hash": "1428757651"
+ },
+ "p3_cor1_aux4": {
+  "owner": "p3_cor1",
+  "type": "∀ (n i : ℕ), Nat.fib (i + 4 * (n + 1)) ≡ Nat.fib i [MOD Nat.fib (n + 1)]",
+  "hash": "3124114651"
+ },
+ "p3_cor1_aux5": {
+  "owner": "p3_cor1",
+  "type": "∀ (m : ℕ), 0 < m → Mathlib2.p3_pisano (Nat.fib m) ≤ 4 * m",
+  "hash": "1282066789"
+ },
+ "p3_prop1_aux1": {
+  "owner": "p3_prop1",
+  "type": "∀ (n : ℕ), Mathlib2.p3_fibsum n + 1 = Nat.fib (n + 2)",
+  "hash": "1559490457"
+ },
+ "p3_remark3_aux0": {
+  "owner": "p3_remark3",
+  "type": "∀ (m : ℕ), ↑(Nat.fib (m + 2)) = ↑(Nat.fib m) + ↑(Nat.fib (m + 1))",
+  "hash": "2405589085"
+ },
+ "p3_remark3_aux1": {
+  "owner": "p3_remark3",
+  "type": "∀ (n : ℕ), ↑(Mathlib2.p3_lucas n) = 2 * ↑(Nat.fib (n + 1)) - ↑(Nat.fib n)",
+  "hash": "3526987977"
+ },
+ "p3_remark3_aux2": {
+  "owner": "p3_remark3",
+  "type": "∀ (t b : ℕ), ↑(Nat.fib (b + 4 * t)) - ↑(Nat.fib b) = ↑(Nat.fib (2 * t)) * (2 * ↑(Nat.fib (b + 2 * t + 1)) - ↑(Nat.fib (b + 2 * t)))",
+  "hash": "3311821578"
+ },
+ "p3_remark3_aux3": {
+  "owner": "p3_remark3",
+  "type": "∀ (t b : ℕ), ↑(Nat.fib (b + 2 + 4 * t)) - ↑(Nat.fib b) = ↑(Nat.fib (b + 2 * t + 1)) * (2 * ↑(Nat.fib (2 * t + 1 + 1)) - ↑(Nat.fib (2 * t + 1)))",
+  "hash": "2256362264"
+ },
+ "p3_thm1_corrected_aux0": {
+  "owner": "p3_thm1_corrected",
+  "type": "↑1 ≠ 0 ∧ ↑4 ≠ 0 ∧ IsSquare ↑1 ∧ IsSquare ↑4 ∧ ¬IsSquare ↑2 ∧ ¬IsSquare ↑3",
+  "hash": "3468910841"
+ },
+ "p3_thm1_corrected_aux1": {
+  "owner": "p3_thm1_corrected",
+  "type": "∀ (p : ℕ), Nat.Prime p → p ≠ 2 → (p % 5 = 1 ∨ p % 5 = 4 → ↑(Nat.fib p) = 1 ∧ ↑(Nat.fib (p + 1)) = 1) ∧ (p % 5 = 2 ∨ p % 5 = 3 → ↑(Nat.fib p) = -1 ∧ ↑(Nat.fib (p + 1)) = 0)",
+  "hash": "1424009765"
+ },
+ "p3_thm2_aux1": {
+  "owner": "p3_thm2",
+  "type": "∀ (m : ℕ), ↑(Nat.fib (2 * m)) = ↑(Nat.fib m) * (2 * ↑(Nat.fib (m + 1)) - ↑(Nat.fib m))",
+  "hash": "196774326"
+ },
+ "p3_thm2_aux2": {
+  "owner": "p3_thm2",
+  "type": "∀ (p : ℕ), Nat.Prime p → Odd p → p % 5 = 2 ∨ p % 5 = 3 → p ∣ Nat.fib (2 * p) + 1 ∧ p ∣ Nat.fib (4 * p) + 3",
+  "hash": "4081035422"
+ },
+ "p3_thm2_aux3": {
+  "owner": "p3_thm2",
+  "type": "∀ (j : ℕ), Nat.fib (2 * (6 * j + 5)) ≡ 1 [MOD 2] ∧ Nat.fib (4 * (6 * j + 5)) ≡ 1 [MOD 2] ∧ 4 ∣ Nat.fib (2 * (6 * j + 5)) + 1 ∧ 8 ∣ Nat.fib (4 * (6 * j + 5)) + 3",
+  "hash": "2520366666"
+ },
+ "p4_lem2_chain_aux1": {
+  "owner": "p4_lem2_chain",
+  "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → ∀ (n : ℕ), a ≤ n → n ≤ min q (2 ^ Mathlib2.p4_r a) → Mathlib2.p4_r n = Mathlib2.p4_r a ∧ Mathlib2.p4_m n = Mathlib2.p4_m a",
+  "hash": "2832990830"
+ },
+ "p4_lem2_greatest_aux1": {
+  "owner": "p4_lem2_greatest",
+  "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → ∀ (n : ℕ), a ≤ n → n ≤ min q (2 ^ Mathlib2.p4_r a) → Mathlib2.p4_r n = Mathlib2.p4_r a ∧ Mathlib2.p4_m n = Mathlib2.p4_m a",
+  "hash": "2832990830"
+ },
+ "p4_rem1_bound_even_aux1": {
+  "owner": "p4_rem1_bound_even",
+  "type": "∀ (k : ℕ), 6 ≤ k → 6 * ↑k + 7 ≤ 2 ^ k",
+  "hash": "2384999203"
+ },
+ "p4_rem1_bound_odd_aux1": {
+  "owner": "p4_rem1_bound_odd",
+  "type": "∀ (k : ℕ), 6 ≤ k → 6 * ↑k + 10 ≤ 2 ^ k",
+  "hash": "623222829"
+ },
+ "p4_small_classify_aux1": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n s t p : ℕ) (c : ℤ), 2 ^ s = p → (↑s + 1) * ↑t = c → n ≤ p → p < 2 * n → t * t ≤ 2 * n → 2 * n < (t + 1) * (t + 1) → Mathlib2.p4_x n = (2 * ↑n - 1) / 3 - c",
+  "hash": "2281607781"
+ },
+ "p4_small_classify_aux_b0": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1 ≤ n → n ≤ 1 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1714475269"
+ },
+ "p4_small_classify_aux_b1": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2 ≤ n → n ≤ 2 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1883593674"
+ },
+ "p4_small_classify_aux_b2": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3 ≤ n → n ≤ 4 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1572820277"
+ },
+ "p4_small_classify_aux_b3": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 5 ≤ n → n ≤ 7 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1714266212"
+ },
+ "p4_small_classify_aux_b4": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 8 ≤ n → n ≤ 8 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3475338264"
+ },
+ "p4_small_classify_aux_b5": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 9 ≤ n → n ≤ 12 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "115236493"
+ },
+ "p4_small_classify_aux_b6": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 13 ≤ n → n ≤ 16 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1198118938"
+ },
+ "p4_small_classify_aux_b7": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 17 ≤ n → n ≤ 17 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4049828721"
+ },
+ "p4_small_classify_aux_b8": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 18 ≤ n → n ≤ 24 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2872792989"
+ },
+ "p4_small_classify_aux_b9": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 25 ≤ n → n ≤ 31 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "174742571"
+ },
+ "p4_small_classify_aux_b10": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 32 ≤ n → n ≤ 32 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4255609670"
+ },
+ "p4_small_classify_aux_b11": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 33 ≤ n → n ≤ 40 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2978830532"
+ },
+ "p4_small_classify_aux_b12": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 41 ≤ n → n ≤ 49 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2522152991"
+ },
+ "p4_small_classify_aux_b13": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 50 ≤ n → n ≤ 60 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3903452850"
+ },
+ "p4_small_classify_aux_b14": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 61 ≤ n → n ≤ 64 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4276232444"
+ },
+ "p4_small_classify_aux_b15": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 65 ≤ n → n ≤ 71 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4025035624"
+ },
+ "p4_small_classify_aux_b16": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 72 ≤ n → n ≤ 84 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "426730397"
+ },
+ "p4_small_classify_aux_b17": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 85 ≤ n → n ≤ 97 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2997110652"
+ },
+ "p4_small_classify_aux_b18": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 98 ≤ n → n ≤ 112 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3665376798"
+ },
+ "p4_small_classify_aux_b19": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 113 ≤ n → n ≤ 127 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "687924906"
+ },
+ "p4_small_classify_aux_b20": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 128 ≤ n → n ≤ 128 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2492396988"
+ },
+ "p4_small_classify_aux_b21": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 129 ≤ n → n ≤ 144 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4190896164"
+ },
+ "p4_small_classify_aux_b22": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 145 ≤ n → n ≤ 161 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3275244008"
+ },
+ "p4_small_classify_aux_b23": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 162 ≤ n → n ≤ 180 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3845156753"
+ },
+ "p4_small_classify_aux_b24": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 181 ≤ n → n ≤ 199 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2300657661"
+ },
+ "p4_small_classify_aux_b25": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 200 ≤ n → n ≤ 220 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1737577148"
+ },
+ "p4_small_classify_aux_b26": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 221 ≤ n → n ≤ 241 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4275142638"
+ },
+ "p4_small_classify_aux_b27": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 242 ≤ n → n ≤ 256 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2746444795"
+ },
+ "p4_small_classify_aux_b28": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 257 ≤ n → n ≤ 264 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1100210522"
+ },
+ "p4_small_classify_aux_b29": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 265 ≤ n → n ≤ 287 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "304049233"
+ },
+ "p4_small_classify_aux_b30": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 288 ≤ n → n ≤ 312 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3327212049"
+ },
+ "p4_small_classify_aux_b31": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 313 ≤ n → n ≤ 337 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3955998360"
+ },
+ "p4_small_classify_aux_b32": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 338 ≤ n → n ≤ 364 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2784942242"
+ },
+ "p4_small_classify_aux_b33": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 365 ≤ n → n ≤ 391 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1603539837"
+ },
+ "p4_small_classify_aux_b34": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 392 ≤ n → n ≤ 420 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1949495179"
+ },
+ "p4_small_classify_aux_b35": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 421 ≤ n → n ≤ 449 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "253201907"
+ },
+ "p4_small_classify_aux_b36": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 450 ≤ n → n ≤ 480 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3538506270"
+ },
+ "p4_small_classify_aux_b37": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 481 ≤ n → n ≤ 511 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1482599156"
+ },
+ "p4_small_classify_aux_b38": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 512 ≤ n → n ≤ 512 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1137700333"
+ },
+ "p4_small_classify_aux_b39": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 513 ≤ n → n ≤ 544 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3118258968"
+ },
+ "p4_small_classify_aux_b40": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 545 ≤ n → n ≤ 577 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2800008394"
+ },
+ "p4_small_classify_aux_b41": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 578 ≤ n → n ≤ 612 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4068585887"
+ },
+ "p4_small_classify_aux_b42": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 613 ≤ n → n ≤ 647 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4025364219"
+ },
+ "p4_small_classify_aux_b43": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 648 ≤ n → n ≤ 684 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3287033912"
+ },
+ "p4_small_classify_aux_b44": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 685 ≤ n → n ≤ 721 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "102044939"
+ },
+ "p4_small_classify_aux_b45": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 722 ≤ n → n ≤ 760 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1550629019"
+ },
+ "p4_small_classify_aux_b46": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 761 ≤ n → n ≤ 799 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "244119399"
+ },
+ "p4_small_classify_aux_b47": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 800 ≤ n → n ≤ 840 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1246753347"
+ },
+ "p4_small_classify_aux_b48": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 841 ≤ n → n ≤ 881 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2786834575"
+ },
+ "p4_small_classify_aux_b49": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 882 ≤ n → n ≤ 924 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3976735304"
+ },
+ "p4_small_classify_aux_b50": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 925 ≤ n → n ≤ 967 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2148519798"
+ },
+ "p4_small_classify_aux_b51": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 968 ≤ n → n ≤ 1012 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1124124677"
+ },
+ "p4_small_classify_aux_b52": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1013 ≤ n → n ≤ 1024 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3761107729"
+ },
+ "p4_small_classify_aux_b53": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1025 ≤ n → n ≤ 1057 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1625861129"
+ },
+ "p4_small_classify_aux_b54": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1058 ≤ n → n ≤ 1104 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3302231597"
+ },
+ "p4_small_classify_aux_b55": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1105 ≤ n → n ≤ 1151 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3945295282"
+ },
+ "p4_small_classify_aux_b56": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1152 ≤ n → n ≤ 1200 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1070116300"
+ },
+ "p4_small_classify_aux_b57": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1201 ≤ n → n ≤ 1249 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3481156985"
+ },
+ "p4_small_classify_aux_b58": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1250 ≤ n → n ≤ 1300 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "603362871"
+ },
+ "p4_small_classify_aux_b59": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1301 ≤ n → n ≤ 1351 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2106900193"
+ },
+ "p4_small_classify_aux_b60": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1352 ≤ n → n ≤ 1404 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3521697511"
+ },
+ "p4_small_classify_aux_b61": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1405 ≤ n → n ≤ 1457 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3629087492"
+ },
+ "p4_small_classify_aux_b62": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1458 ≤ n → n ≤ 1512 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2452077418"
+ },
+ "p4_small_classify_aux_b63": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1513 ≤ n → n ≤ 1567 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2723595154"
+ },
+ "p4_small_classify_aux_b64": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1568 ≤ n → n ≤ 1624 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3284739380"
+ },
+ "p4_small_classify_aux_b65": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1625 ≤ n → n ≤ 1681 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "181879307"
+ },
+ "p4_small_classify_aux_b66": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1682 ≤ n → n ≤ 1740 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1671933340"
+ },
+ "p4_small_classify_aux_b67": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1741 ≤ n → n ≤ 1799 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1062507482"
+ },
+ "p4_small_classify_aux_b68": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1800 ≤ n → n ≤ 1860 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1635125926"
+ },
+ "p4_small_classify_aux_b69": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1861 ≤ n → n ≤ 1921 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "480103043"
+ },
+ "p4_small_classify_aux_b70": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1922 ≤ n → n ≤ 1984 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "391574719"
+ },
+ "p4_small_classify_aux_b71": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 1985 ≤ n → n ≤ 2047 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3945127811"
+ },
+ "p4_small_classify_aux_b72": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2048 ≤ n → n ≤ 2048 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1407195886"
+ },
+ "p4_small_classify_aux_b73": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2049 ≤ n → n ≤ 2112 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "540655218"
+ },
+ "p4_small_classify_aux_b74": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2113 ≤ n → n ≤ 2177 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1741564938"
+ },
+ "p4_small_classify_aux_b75": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2178 ≤ n → n ≤ 2244 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1255040231"
+ },
+ "p4_small_classify_aux_b76": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2245 ≤ n → n ≤ 2311 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "788965750"
+ },
+ "p4_small_classify_aux_b77": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2312 ≤ n → n ≤ 2380 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "598642810"
+ },
+ "p4_small_classify_aux_b78": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2381 ≤ n → n ≤ 2449 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1600516136"
+ },
+ "p4_small_classify_aux_b79": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2450 ≤ n → n ≤ 2520 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1667853677"
+ },
+ "p4_small_classify_aux_b80": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2521 ≤ n → n ≤ 2591 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1545093724"
+ },
+ "p4_small_classify_aux_b81": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2592 ≤ n → n ≤ 2664 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2493224201"
+ },
+ "p4_small_classify_aux_b82": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2665 ≤ n → n ≤ 2737 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "399857033"
+ },
+ "p4_small_classify_aux_b83": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2738 ≤ n → n ≤ 2812 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "175262978"
+ },
+ "p4_small_classify_aux_b84": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2813 ≤ n → n ≤ 2887 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2010831118"
+ },
+ "p4_small_classify_aux_b85": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2888 ≤ n → n ≤ 2964 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1441661612"
+ },
+ "p4_small_classify_aux_b86": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 2965 ≤ n → n ≤ 3041 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1443563186"
+ },
+ "p4_small_classify_aux_b87": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3042 ≤ n → n ≤ 3120 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2212732297"
+ },
+ "p4_small_classify_aux_b88": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3121 ≤ n → n ≤ 3199 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1050269506"
+ },
+ "p4_small_classify_aux_b89": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3200 ≤ n → n ≤ 3280 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3870011690"
+ },
+ "p4_small_classify_aux_b90": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3281 ≤ n → n ≤ 3361 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "2027848317"
+ },
+ "p4_small_classify_aux_b91": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3362 ≤ n → n ≤ 3444 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3055160660"
+ },
+ "p4_small_classify_aux_b92": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3445 ≤ n → n ≤ 3527 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4265856498"
+ },
+ "p4_small_classify_aux_b93": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3528 ≤ n → n ≤ 3612 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "1823416318"
+ },
+ "p4_small_classify_aux_b94": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3613 ≤ n → n ≤ 3697 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "83569064"
+ },
+ "p4_small_classify_aux_b95": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3698 ≤ n → n ≤ 3784 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "454474483"
+ },
+ "p4_small_classify_aux_b96": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3785 ≤ n → n ≤ 3871 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "255275772"
+ },
+ "p4_small_classify_aux_b97": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3872 ≤ n → n ≤ 3960 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "818237003"
+ },
+ "p4_small_classify_aux_b98": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 3961 ≤ n → n ≤ 4049 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "4119073529"
+ },
+ "p4_small_classify_aux_b99": {
+  "owner": "p4_small_classify",
+  "type": "∀ (n : ℕ), 4050 ≤ n → n ≤ 4096 → (Mathlib2.p4_x n = 0 ↔ n = 436 ∨ n = 451 ∨ n = 529 ∨ n = 545 ∨ n = 546) ∧ (Mathlib2.p4_x n < 0 ↔ n ≤ 435 ∨ n = 450 ∨ 513 ≤ n ∧ n ≤ 528) ∧ (n ≠ 129 → -58 ≤ Mathlib2.p4_x n)",
+  "hash": "3686356525"
+ },
+ "p4_thm1_v_step_fixed_aux1": {
+  "owner": "p4_thm1_v_step_fixed",
+  "type": "∀ (k : ℕ), 4 ≤ k → 18 * ↑k + 31 ≤ 8 * 2 ^ k",
+  "hash": "4249366013"
+ },
+ "r3_wolstenholme_harmonic_s1h1_aux1": {
+  "owner": "r3_wolstenholme_harmonic_s1h1",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ k ∈ Finset.Icc 1 (p - 1), ∃ m c, p = k + m ∧ 0 < k ∧ 0 < m ∧ (p - 1).factorial = k * m * c",
+  "hash": "1210287561"
+ },
+ "r3_wolstenholme_harmonic_s1h3_aux1": {
+  "owner": "r3_wolstenholme_harmonic_s1h3",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ k ∈ Finset.Icc 1 (p - 1), ∃ m c, p = k + m ∧ 0 < k ∧ 0 < m ∧ (p - 1).factorial = k * m * c",
+  "hash": "1210287561"
+ },
+ "top_expanding_compact_isometry_aux1": {
+  "owner": "top_expanding_compact_isometry",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] (f : X → X), (∀ (x y : X), dist x y ≤ dist (f x) (f y)) → ∀ (k : ℕ) (x y : X), dist x y ≤ dist (f^[k] x) (f^[k] y)",
+  "hash": "1164546245"
+ },
+ "top_expanding_compact_isometry_aux2": {
+  "owner": "top_expanding_compact_isometry",
+  "type": "∀ {Y : Type u_1} [inst : MetricSpace Y] [CompactSpace Y] (u : ℕ → Y) (ε : ℝ), 0 < ε → ∃ m n, m < n ∧ dist (u m) (u n) < ε",
+  "hash": "4018584044"
+ },
+ "bld3_rank_pow_card_stabilizes_aux1": {
+  "owner": "bld3_rank_pow_card_stabilizes",
+  "type": "∀ (f : ℕ → ℕ), (∀ (k : ℕ), 2 * f (k + 1) ≤ f k + f (k + 2)) → ∀ (k j : ℕ), f (k + j + 1) < f (k + j) → f (k + 1) < f k",
+  "hash": "1730458293"
+ },
+ "bld3_rank_pow_card_stabilizes_aux2": {
+  "owner": "bld3_rank_pow_card_stabilizes",
+  "type": "∀ (f : ℕ → ℕ), (∀ (k : ℕ), 2 * f (k + 1) ≤ f k + f (k + 2)) → ∀ (m : ℕ), f (m + 1) < f m → f (m + 1) + (m + 1) ≤ f 0",
+  "hash": "276008259"
+ },
+ "bld3_rank_tripotent_defect_aux1": {
+  "owner": "bld3_rank_tripotent_defect",
+  "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] [DecidableEq n] [DecidableEq p] (M : Matrix m n K) (N : Matrix n p K), LinearMap.range (M * N).mulVecLin ≤ LinearMap.range M.mulVecLin",
+  "hash": "2953650193"
+ },
+ "bld3_pisano_fib_div_fib_tendsto_zero_aux1": {
+  "owner": "bld3_pisano_fib_div_fib_tendsto_zero",
+  "type": "∀ (n : ℕ), n ^ 2 ≤ 6 * Nat.fib n",
+  "hash": "2290833584"
+ },
+ "bld3_mul_pow_prime_of_card_prime_cube_aux1": {
+  "owner": "bld3_mul_pow_prime_of_card_prime_cube",
+  "type": "∀ {M : Type u_1} [inst : Monoid M] (a b c : M), Commute c a → Commute c b → b * a = c * a * b → ∀ (k : ℕ), b ^ k * a = c ^ k * a * b ^ k",
+  "hash": "182980324"
+ },
+ "bld3_mul_pow_prime_of_card_prime_cube_aux2": {
+  "owner": "bld3_mul_pow_prime_of_card_prime_cube",
+  "type": "∀ {M : Type u_1} [inst : Monoid M] (a b c : M), Commute c a → Commute c b → b * a = c * a * b → ∀ (k : ℕ), (a * b) ^ k = a ^ k * b ^ k * c ^ k.choose 2",
+  "hash": "2880314318"
+ },
+ "bld3_card_sylow_of_card_prime_mul_prime_aux1": {
+  "owner": "bld3_card_sylow_of_card_prime_mul_prime",
+  "type": "∀ (r s : ℕ) [Fact (Nat.Prime r)], Nat.Prime s → r ≠ s → ∀ (G : Type u_1) [inst : Group G], Nat.card G = r * s → ∀ (P : Sylow r G), Nat.card ↥↑P = r ∧ (↑P).index = s",
+  "hash": "2518745053"
+ },
+ "bld3_card_conjClasses_of_card_prime_mul_prime_aux1": {
+  "owner": "bld3_card_conjClasses_of_card_prime_mul_prime",
+  "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → (∃ a b, a * b ≠ b * a) → ∀ (a : G), a ≠ 1 → Nat.card { b // Commute a b } = orderOf a ∧ (orderOf a = p ∨ orderOf a = q)",
+  "hash": "1568464981"
+ },
+ "p5_psi_ge_succ_aux1": {
+  "owner": "p5_psi_ge_succ",
+  "type": "∀ (p n : ℕ), Nat.Prime p → ¬p ∣ n → Mathlib2.p5_dedekind_psi (p * n) = (p + 1) * Mathlib2.p5_dedekind_psi n",
+  "hash": "3879091782"
+ },
+ "p5_psi_ge_succ_aux2": {
+  "owner": "p5_psi_ge_succ",
+  "type": "Mathlib2.p5_dedekind_psi 1 = 1",
+  "hash": "480396370"
+ },
+ "p5_lemma1_aux1": {
+  "owner": "p5_lemma1",
+  "type": "∀ (n : ℕ), 2 * n ≤ n.totient + Mathlib2.p5_dedekind_psi n",
+  "hash": "4189524652"
+ },
+ "p5_lemma2_aux1": {
+  "owner": "p5_lemma2",
+  "type": "∀ (n : ℕ), n ≠ 0 → Mathlib2.p5_dedekind_psi n ≤ (ArithmeticFunction.sigma 1) n",
+  "hash": "3454870490"
+ },
+ "p5_thm1_aux1": {
+  "owner": "p5_thm1",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 3 + 3 * n ^ 2 + 9 * n + 1 ≤ x ^ 3 + y ^ 3 + z ^ 3",
+  "hash": "4265263448"
+ },
+ "p5_thm2_aux1": {
+  "owner": "p5_thm2",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 4 + 4 * n ^ 3 + 18 * n ^ 2 + 4 * n + 3 ≤ x ^ 4 + y ^ 4 + z ^ 4",
+  "hash": "1794735797"
+ },
+ "p5_thm3_aux1": {
+  "owner": "p5_thm3",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 4 + 4 * n ^ 3 + 2 * n ^ 2 + 4 * n + 3 ≤ x ^ 2 * y ^ 2 + x ^ 2 * z ^ 2 + z ^ 2 * y ^ 2",
+  "hash": "1868366692"
+ },
+ "bld4_pisano_mul_of_coprime_aux1": {
+  "owner": "bld4_pisano_mul_of_coprime",
+  "type": "Mathlib2.p3_pisano 0 = 0",
+  "hash": "3331991309"
+ },
+ "p5_thm4_aux1": {
+  "owner": "p5_thm4",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 6 * n ^ 3 + 6 * n ^ 2 + 2 * n + 2 ≤ x ^ 2 * (y + z) + y ^ 2 * (x + z) + z ^ 2 * (x + y)",
+  "hash": "811673412"
+ },
+ "p5_thm5_aux1": {
+  "owner": "p5_thm5",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 6 * n ^ 4 + 8 * n ^ 3 + 12 * n ^ 2 + 8 * n ≤ x ^ 3 * (y + z) + y ^ 3 * (x + z) + z ^ 3 * (x + y) + 2",
+  "hash": "393111082"
+ },
+ "p5_cited_squares_aux1": {
+  "owner": "p5_cited_squares",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 2 + 2 * n + 3 ≤ x ^ 2 + y ^ 2 + z ^ 2",
+  "hash": "3072178769"
+ },
+ "p5_cited_products_aux1": {
+  "owner": "p5_cited_products",
+  "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 2 + 2 * n ≤ x * y + x * z + z * y + 1",
+  "hash": "1175559848"
+ },
+ "bld4_sqrt_two_rec_defect_tsum_lower_aux1": {
+  "owner": "bld4_sqrt_two_rec_defect_tsum_lower",
+  "type": "∀ (n : ℕ), Real.pi ^ 2 / 4 ^ (n + 1) - Real.pi ^ 4 / (192 * 16 ^ n) ≤ 2 - 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
+  "hash": "948720356"
+ },
+ "bld4_fitting_range_inter_ker_pow_card_aux1": {
+  "owner": "bld4_fitting_range_inter_ker_pow_card",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (m : ℕ), (A ^ (Fintype.card ι + m)).rank = (A ^ Fintype.card ι).rank",
+  "hash": "2508639213"
+ },
+ "bld4_fitting_range_inter_ker_pow_card_aux2": {
+  "owner": "bld4_fitting_range_inter_ker_pow_card",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (N : Matrix ι ι K), (N * N).rank = N.rank → ∀ (v : ι → K), N.mulVec (N.mulVec v) = 0 → N.mulVec v = 0",
+  "hash": "678660278"
+ },
+ "bld4_pisano_lucas_dvd_four_mul_aux1": {
+  "owner": "bld4_pisano_lucas_dvd_four_mul",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (m : ℕ), ↑(Nat.fib (2 * m)) = ↑(Nat.fib m) * (2 * ↑(Nat.fib (m + 1)) - ↑(Nat.fib m))",
+  "hash": "3062251844"
+ },
+ "bld4_carleman_finite_three_aux1": {
+  "owner": "bld4_carleman_finite_three",
+  "type": "∀ (m : ℕ), ∏ i ∈ Finset.range m, (↑i + 2) ^ (i + 1) / (↑i + 1) ^ i = (↑m + 1) ^ m",
+  "hash": "913231211"
+ },
+ "bld4_carleman_finite_three_aux2": {
+  "owner": "bld4_carleman_finite_three",
+  "type": "∀ (b : ℕ → ℝ) (n : ℕ), ∑ k ∈ Finset.range n, (∑ i ∈ Finset.range (k + 1), b i) / ((↑k + 1) * (↑k + 2)) = ∑ i ∈ Finset.range n, b i * (1 / (↑i + 1) - 1 / (↑n + 1))",
+  "hash": "13926810"
+ },
+ "bld4_carleman_finite_three_aux3": {
+  "owner": "bld4_carleman_finite_three",
+  "type": "∀ (a : ℕ → ℝ), (∀ (i : ℕ), 0 ≤ a i) → ∀ (k : ℕ), (∏ i ∈ Finset.range (k + 1), a i) ^ (1 / (↑k + 1)) ≤ (∑ i ∈ Finset.range (k + 1), a i * ((↑i + 2) ^ (i + 1) / (↑i + 1) ^ i)) / ((↑k + 1) * (↑k + 2))",
+  "hash": "657876103"
+ },
+ "poly_ratfunc_fermat_curve_const_aux1": {
+  "owner": "poly_ratfunc_fermat_curve_const",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (A B E : Polynomial k), E ≠ 0 → A ^ n + B ^ n = E ^ n → ∃ c, (algebraMap (Polynomial k) (RatFunc k)) A / (algebraMap (Polynomial k) (RatFunc k)) E = RatFunc.C c",
+  "hash": "2682695942"
+ },
+ "poly_no_consecutive_powerful_aux1": {
+  "owner": "poly_no_consecutive_powerful",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (g : Polynomial k), (∀ (p : Polynomial k), Irreducible p → p ∣ g → p ^ 2 ∣ g) → UniqueFactorizationMonoid.radical g ^ 2 ∣ g",
+  "hash": "140383115"
+ },
+ "poly_abc_distinct_roots_complex_aux1": {
+  "owner": "poly_abc_distinct_roots_complex",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [IsAlgClosed k] (p : Polynomial k), p ≠ 0 → (UniqueFactorizationMonoid.radical p).natDegree ≤ p.roots.toFinset.card",
+  "hash": "1658577895"
+ },
+ "bld5_prime_dvd_lucas_four_mul_mod_eight_aux1": {
+  "owner": "bld5_prime_dvd_lucas_four_mul_mod_eight",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (m : ℕ), ↑(Mathlib2.p3_lucas (2 * m)) = ↑(Mathlib2.p3_lucas m) ^ 2 - 2 * (-1) ^ m",
+  "hash": "4230254072"
+ },
+ "bld5_isometry_compact_id_uniform_limit_aux1": {
+  "owner": "bld5_isometry_compact_id_uniform_limit",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), Isometry f → ∀ (ε : ℝ), 0 < ε → ∀ (N : ℕ), ∃ m, N < m ∧ ∀ (x : X), dist (f^[m] x) x < ε",
+  "hash": "144306461"
+ },
+ "poly_chebyshev_T_card_distinct_real_roots_aux1": {
+  "owner": "poly_chebyshev_T_card_distinct_real_roots",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (n : ℕ), (Polynomial.Chebyshev.T R ↑n).natDegree ≤ n ∧ (Polynomial.Chebyshev.T R ↑(n + 1)).natDegree ≤ n + 1",
+  "hash": "3645808349"
+ },
+ "bld5_pisano_lucas_odd_eq_aux1": {
+  "owner": "bld5_pisano_lucas_odd_eq",
+  "type": "∀ (n : ℕ), ↑(Nat.fib (2 * n + 1)) = ↑(Nat.fib (n + 1)) * ↑(Mathlib2.p3_lucas n) - (-1) ^ n",
+  "hash": "392445053"
+ },
+ "bld5_pisano_lucas_odd_eq_aux2": {
+  "owner": "bld5_pisano_lucas_odd_eq",
+  "type": "∀ (n : ℕ), 2 ≤ n → Nat.fib (n + 1) < Mathlib2.p3_lucas n",
+  "hash": "3032731352"
+ },
+ "bld5_pisano_lucas_odd_eq_aux3": {
+  "owner": "bld5_pisano_lucas_odd_eq",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 * n ∣ Mathlib2.p3_pisano (Mathlib2.p3_lucas n)",
+  "hash": "3741247876"
+ },
+ "bld5_nilpotent_pow_rank_succ_eq_zero_aux1": {
+  "owner": "bld5_nilpotent_pow_rank_succ_eq_zero",
+  "type": "∀ (r : ℕ → ℕ), (∀ (k : ℕ), r (k + 1) ≤ r k) → (∀ (k : ℕ), 2 * r (k + 1) ≤ r k + r (k + 2)) → ∀ (k : ℕ), r (k + 1) = r k → ∀ (j : ℕ), r (k + j) = r k ∧ r (k + j + 1) = r k",
+  "hash": "3128067807"
+ },
+ "bld5_nilpotent_pow_rank_succ_eq_zero_aux2": {
+  "owner": "bld5_nilpotent_pow_rank_succ_eq_zero",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ k).rank ≠ 0 → (A ^ (k + 1)).rank < (A ^ k).rank",
+  "hash": "1798495877"
+ },
+ "bld5_pisano_mul_dvd_mul_aux1": {
+  "owner": "bld5_pisano_mul_dvd_mul",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (a b : ℕ), ↑(Nat.fib (a + b)) = ↑(Nat.fib a) * ↑(Nat.fib (b + 1)) + ↑(Nat.fib (a + 1)) * ↑(Nat.fib b) - ↑(Nat.fib a) * ↑(Nat.fib b)",
+  "hash": "3332097286"
+ },
+ "bld5_pisano_mul_dvd_mul_aux2": {
+  "owner": "bld5_pisano_mul_dvd_mul",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (N : ℕ) (μ u v : R), μ ^ 2 = 0 → ↑(Nat.fib N) = μ * u → ↑(Nat.fib (N + 1)) = 1 + μ * v → ∀ (j : ℕ), ↑(Nat.fib (j * N)) = ↑j * μ * u ∧ ↑(Nat.fib (j * N + 1)) = 1 + ↑j * μ * v",
+  "hash": "2393560942"
+ },
+ "bld5_pisano_two_pow_aux1": {
+  "owner": "bld5_pisano_two_pow",
+  "type": "∀ (i : ℕ), ∃ u v, ↑(Nat.fib (3 * 2 ^ (i + 1))) = 2 ^ (i + 3) * (2 * u + 1) ∧ ↑(Nat.fib (3 * 2 ^ (i + 1) + 1)) = 1 + 2 ^ (i + 2) * (2 * v + 1)",
+  "hash": "1440983434"
+ },
+ "bld5_pisano_two_pow_aux2": {
+  "owner": "bld5_pisano_two_pow",
+  "type": "∀ (k : ℕ), Mathlib2.p3_pisano (2 ^ (k + 1)) ∣ 3 * 2 ^ k",
+  "hash": "2099810896"
+ },
+ "bld5_pisano_five_pow_aux1": {
+  "owner": "bld5_pisano_five_pow",
+  "type": "∀ (m n : ℕ), ↑(Nat.fib (m + n)) = ↑(Nat.fib m) * (↑(Nat.fib (n + 1)) - ↑(Nat.fib n)) + ↑(Nat.fib (m + 1)) * ↑(Nat.fib n)",
+  "hash": "14195178"
+ },
+ "bld5_pisano_five_pow_aux2": {
+  "owner": "bld5_pisano_five_pow",
+  "type": "∀ (n : ℕ) (a b : ℤ), ↑(Nat.fib n) = a → ↑(Nat.fib (n + 1)) = b → ↑(Nat.fib (5 * n)) = 5 * a * (b ^ 4 + a * (-4 * b ^ 3 + 6 * a * b ^ 2 - 4 * a ^ 2 * b + a ^ 3 + 2 * (b - a) ^ 3 + 4 * a * (b - a) ^ 2 + 3 * a ^ 2 * (b - a) + a ^ 3))",
+  "hash": "1159331201"
+ },
+ "bld5_pisano_five_pow_aux3": {
+  "owner": "bld5_pisano_five_pow",
+  "type": "∀ (k : ℕ), ∃ t, ¬5 ∣ t ∧ ↑(Nat.fib (4 * 5 ^ (k + 1))) = 5 ^ (k + 1) * t",
+  "hash": "1699089317"
+ },
+ "bld5_pisano_five_pow_aux4": {
+  "owner": "bld5_pisano_five_pow",
+  "type": "∀ (k : ℕ), Mathlib2.p3_pisano (5 ^ (k + 1)) ∣ 4 * 5 ^ (k + 1)",
+  "hash": "4223770827"
+ },
+ "calc_card_no_adjacent_subsets_aux1": {
+  "owner": "calc_card_no_adjacent_subsets",
+  "type": "∀ (n : ℕ), {t ∈ (Finset.range (n + 2)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card + {t ∈ (Finset.range n).powerset | ∀ i ∈ t, i + 1 ∉ t}.card",
+  "hash": "2644315723"
+ },
+ "calc_card_no_adjacent_subsets_aux2": {
+  "owner": "calc_card_no_adjacent_subsets",
+  "type": "∀ (n : ℕ), {t ∈ (Finset.range n).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = Nat.fib (n + 2) ∧ {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = Nat.fib (n + 3)",
+  "hash": "2644074161"
+ },
+ "arith_sigma_mul_totient_lt_sq_aux1": {
+  "owner": "arith_sigma_mul_totient_lt_sq",
+  "type": "∀ (q k : ℕ), q * ∑ i ∈ Finset.range (k + 1), (q + 1) ^ i + 1 = (q + 1) ^ (k + 1)",
+  "hash": "323014450"
+ },
+ "arith_totient_pow_add_sigma_pow_aux1": {
+  "owner": "arith_totient_pow_add_sigma_pow",
+  "type": "∀ (a b n k : ℕ), 2 * n ≤ a + b → 2 * n ^ k ≤ a ^ k + b ^ k",
+  "hash": "1168690003"
+ },
+ "calc_sum_card_fixed_points_perm_aux1": {
+  "owner": "calc_sum_card_fixed_points_perm",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (S : Finset α), {σ | ∀ a ∈ S, σ a = a}.card = (Fintype.card α - S.card).factorial",
+  "hash": "4280235957"
+ },
+ "calc_tsum_inv_three_consecutive_aux1": {
+  "owner": "calc_tsum_inv_three_consecutive",
+  "type": "∀ (f g : ℕ → ℝ), (∀ (n : ℕ), 0 ≤ f n) → (∀ (n : ℕ), f n = g n - g (n + 1)) → Filter.Tendsto g Filter.atTop (nhds 0) → HasSum f (g 0)",
+  "hash": "1859910647"
+ },
+ "calc_tsum_fib_div_two_pow_aux1": {
+  "owner": "calc_tsum_fib_div_two_pow",
+  "type": "∀ (n : ℕ), ↑(Nat.fib n) ≤ (7 / 4) ^ n ∧ ↑(Nat.fib (n + 1)) ≤ (7 / 4) ^ (n + 1)",
+  "hash": "331040332"
+ },
+ "arith_sum_moebius_mul_totient_aux1": {
+  "owner": "arith_sum_moebius_mul_totient",
+  "type": "∀ (s : Finset ℕ), (∀ p ∈ s, Nat.Prime p) → ArithmeticFunction.moebius (∏ p ∈ s, p) * ↑(∏ p ∈ s, p).totient = ∏ p ∈ s, (1 - ↑p)",
+  "hash": "2748232568"
+ },
+ "calc_card_perm_one_fixed_point_aux1": {
+  "owner": "calc_card_perm_one_fixed_point",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (i : α), {σ | ∀ (a : α), σ a = a ↔ a = i}.card = numDerangements (Fintype.card α - 1)",
+  "hash": "2945799252"
+ },
+ "arith_card_divisors_odd_iff_isSquare_aux1": {
+  "owner": "arith_card_divisors_odd_iff_isSquare",
+  "type": "∀ {ι : Type u_1} (s : Finset ι) (f : ι → ℕ), Odd (∏ i ∈ s, f i) ↔ ∀ i ∈ s, Odd (f i)",
+  "hash": "2922983826"
+ },
+ "calc_cos_le_quartic_aux1": {
+  "owner": "calc_cos_le_quartic",
+  "type": "∀ (x : ℝ), 0 ≤ x → Real.cos x ≤ 1 - x ^ 2 / 2 + x ^ 4 / 24",
+  "hash": "2608665684"
+ },
+ "arith_sigma_le_mul_log_aux1": {
+  "owner": "arith_sigma_le_mul_log",
+  "type": "∀ (n k : ℕ), ∑ e ∈ Finset.Ico 1 (2 ^ k), n / e ≤ n * k",
+  "hash": "2065931325"
+ },
+ "calc_tsum_inv_odd_sq_aux1": {
+  "owner": "calc_tsum_inv_odd_sq",
+  "type": "HasSum (fun n => 1 / (2 * ↑n + 1) ^ 2) (Real.pi ^ 2 / 8)",
+  "hash": "1435038189"
+ },
+ "arith_even_perfect_last_digit_aux1": {
+  "owner": "arith_even_perfect_last_digit",
+  "type": "∀ (n : ℕ), Even n → n.Perfect → ∃ k, 0 < k ∧ Nat.Prime (k + 1) ∧ Nat.Prime (2 ^ (k + 1) - 1) ∧ n = 2 ^ k * (2 ^ (k + 1) - 1)",
+  "hash": "70459639"
+ },
+ "arith_sigma_odd_iff_aux1": {
+  "owner": "arith_sigma_odd_iff",
+  "type": "∀ (p : ℕ), Odd p → ∀ (j : ℕ), (∑ k ∈ Finset.range j, p ^ k) % 2 = j % 2",
+  "hash": "2753364956"
+ },
+ "arith_sigma_odd_iff_aux2": {
+  "owner": "arith_sigma_odd_iff",
+  "type": "∀ (m : ℕ), Odd m → (Odd (∑ d ∈ m.divisors, d) ↔ IsSquare m)",
+  "hash": "4177646957"
+ },
+ "arith_sigma_odd_iff_aux3": {
+  "owner": "arith_sigma_odd_iff",
+  "type": "∀ (k m : ℕ), Odd m → (IsSquare m ↔ IsSquare (2 ^ k * m) ∨ ∃ x, 2 ^ k * m = 2 * x ^ 2)",
+  "hash": "4229169376"
+ },
+ "arith_liouville_sum_card_divisors_cube_aux1": {
+  "owner": "arith_liouville_sum_card_divisors_cube",
+  "type": "∀ (k : ℕ), 2 * ∑ j ∈ Finset.range (k + 1), (j + 1) = (k + 1) * (k + 2)",
+  "hash": "510920362"
+ },
+ "arith_liouville_sum_card_divisors_cube_aux2": {
+  "owner": "arith_liouville_sum_card_divisors_cube",
+  "type": "∀ (k : ℕ), ∑ j ∈ Finset.range (k + 1), (j + 1) ^ 3 = (∑ j ∈ Finset.range (k + 1), (j + 1)) ^ 2",
+  "hash": "207377188"
+ },
+ "arith_card_odd_choose_aux1": {
+  "owner": "arith_card_odd_choose",
+  "type": "∀ (n k : ℕ), Odd (n.choose k) ↔ k % 2 ≤ n % 2 ∧ Odd ((n / 2).choose (k / 2))",
+  "hash": "1714426020"
+ },
+ "arith_card_odd_choose_aux2": {
+  "owner": "arith_card_odd_choose",
+  "type": "∀ (n k : ℕ), k ∈ {k ∈ Finset.range (n + 1) | Odd (n.choose k)} ↔ Odd (n.choose k)",
+  "hash": "1739466561"
+ },
+ "arith_card_odd_choose_aux3": {
+  "owner": "arith_card_odd_choose",
+  "type": "∀ (m : ℕ), {k ∈ Finset.range (2 * m + 1) | Odd ((2 * m).choose k)}.card = {k ∈ Finset.range (m + 1) | Odd (m.choose k)}.card",
+  "hash": "794392899"
+ },
+ "arith_card_odd_choose_aux4": {
+  "owner": "arith_card_odd_choose",
+  "type": "∀ (m : ℕ), {k ∈ Finset.range (2 * m + 1 + 1) | Odd ((2 * m + 1).choose k)}.card = 2 * {k ∈ Finset.range (m + 1) | Odd (m.choose k)}.card",
+  "hash": "1901567628"
+ },
+ "calc_integral_beta_nat_aux1": {
+  "owner": "calc_integral_beta_nat",
+  "type": "∀ (m n : ℕ), ∫ (x : ℝ) in 0..1, x ^ m * (1 - x) ^ (n + 1) = (↑n + 1) / (↑m + 1) * ∫ (x : ℝ) in 0..1, x ^ (m + 1) * (1 - x) ^ n",
+  "hash": "3959171673"
+ },
+ "arith_totient_dvd_self_iff_aux1": {
+  "owner": "arith_totient_dvd_self_iff",
+  "type": "∀ (m : ℕ), Odd m → m.totient ∣ 2 * m → ∃ b, m = 3 ^ b",
+  "hash": "1693229991"
+ },
+ "calc_tsum_millin_aux1": {
+  "owner": "calc_tsum_millin",
+  "type": "∀ (N : ℕ), ∃ n, n + 1 = 2 ^ (N + 1) ∧ 1 ≤ ↑(Nat.fib n) ∧ ↑N + 1 ≤ ↑(Nat.fib (n + 1)) ∧ ↑(Nat.fib n) ^ 2 + ↑(Nat.fib n) * ↑(Nat.fib (n + 1)) - ↑(Nat.fib (n + 1)) ^ 2 = 1 ∧ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) = 3 - ↑(Nat.fib n) / ↑(Nat.fib (n + 1))",
+  "hash": "468603361"
+ },
+ "calc_tsum_millin_aux2": {
+  "owner": "calc_tsum_millin",
+  "type": "∀ (N : ℕ), (7 - √5) / 2 - 1 / (↑N + 1) ≤ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) ∧ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) ≤ (7 - √5) / 2",
+  "hash": "572173217"
+ },
+ "arith_odd_perfect_euler_form_aux1": {
+  "owner": "arith_odd_perfect_euler_form",
+  "type": "∀ (p : ℕ), p % 4 = 1 → ∀ (j : ℕ), (∑ k ∈ Finset.range j, p ^ k) % 4 = j % 4",
+  "hash": "2519019707"
+ },
+ "arith_odd_perfect_euler_form_aux2": {
+  "owner": "arith_odd_perfect_euler_form",
+  "type": "∀ (p : ℕ), p % 4 = 3 → ∀ (j : ℕ), (∑ k ∈ Finset.range (2 * j), p ^ k) % 4 = 0",
+  "hash": "3930453623"
+ },
+ "arith_sum_lcm_aux1": {
+  "owner": "arith_sum_lcm",
+  "type": "∀ (d e : ℕ), 0 < d → 0 < e → ∑ k ∈ Finset.Icc 1 (d * e) with d * e / k.gcd (d * e) = d, k.lcm (d * e) = ∑ j ∈ Finset.Icc 1 d with j.Coprime d, d * e * j",
+  "hash": "708239840"
+ },
+ "arith_sum_lcm_aux2": {
+  "owner": "arith_sum_lcm",
+  "type": "∀ (d : ℕ), 0 < d → 2 * ∑ j ∈ Finset.Icc 1 d with j.Coprime d, j = d * d.totient + if d = 1 then 1 else 0",
+  "hash": "2624809772"
+ },
+ "fld_prime_one_mod_three_eq_sq_add_three_sq_aux1": {
+  "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (x : ℤ), ∃ a b, (a ≠ 0 ∨ b ≠ 0) ∧ a ^ 2 < ↑p ∧ b ^ 2 < ↑p ∧ ↑p ∣ a - x * b",
+  "hash": "861720583"
+ },
+ "fld_prime_one_mod_three_eq_sq_add_three_sq_aux2": {
+  "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (d : ℕ), 0 < d → (∃ x, ↑p ∣ x ^ 2 + ↑d) → ∃ a b, 0 < a ^ 2 + ↑d * b ^ 2 ∧ a ^ 2 + ↑d * b ^ 2 < (1 + ↑d) * ↑p ∧ ↑p ∣ a ^ 2 + ↑d * b ^ 2",
+  "hash": "1178394233"
+ },
+ "fld_prime_one_mod_three_eq_sq_add_three_sq_aux3": {
+  "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
+  "type": "∀ (p : ℕ), Nat.Prime p → p % 3 = 1 → ∃ x, ↑p ∣ x ^ 2 + ↑3",
+  "hash": "1631140583"
+ },
+ "fld_sum_quadraticChar_sq_add_aux1": {
+  "owner": "fld_sum_quadraticChar_sq_add",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (c : ZMod p), ↑{y | y ^ 2 = c}.card = (quadraticChar (ZMod p)) c + 1",
+  "hash": "3394963925"
+ },
+ "fld_sum_quadraticChar_sq_add_aux2": {
+  "owner": "fld_sum_quadraticChar_sq_add",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (f : ZMod p → ZMod p), ↑{v | v.2 ^ 2 = f v.1}.card = ↑p + ∑ x, (quadraticChar (ZMod p)) (f x)",
+  "hash": "966348424"
+ },
+ "fld_isSquare_neg_three_zmod_iff_aux1": {
+  "owner": "fld_isSquare_neg_three_zmod_iff",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], 3 < p → ∀ (w : ZMod p), w ^ 2 + w + 1 = 0 → p % 3 = 1",
+  "hash": "843797685"
+ },
+ "fld_irreducible_X_sq_add_X_add_one_zmod_iff_aux1": {
+  "owner": "fld_irreducible_X_sq_add_X_add_one_zmod_iff",
+  "type": "∀ (v : ZMod 2), v * v + v + 1 ≠ 0",
+  "hash": "345241557"
+ },
+ "bld6_tsum_inv_fib_mul_fib_add_two_aux1": {
+  "owner": "bld6_tsum_inv_fib_mul_fib_add_two",
+  "type": "∀ (n : ℕ), n + 1 ≤ Nat.fib (n + 2)",
+  "hash": "3214339830"
+ },
+ "fld_sum_quadratic_residues_one_mod_four_aux1": {
+  "owner": "fld_sum_quadratic_residues_one_mod_four",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (r : ℕ), r ∈ Finset.image (fun x => x ^ 2 % p) (Finset.Icc 1 (p - 1)) ↔ (1 ≤ r ∧ r < p) ∧ IsSquare ↑r",
+  "hash": "1088856530"
+ },
+ "bld6_card_circular_no_adjacent_subsets_aux1": {
+  "owner": "bld6_card_circular_no_adjacent_subsets",
+  "type": "∀ (n : ℕ), 1 ≤ n → {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, (i + 1) % (n + 1) ∉ t}.card = Nat.fib n + Nat.fib (n + 2)",
+  "hash": "3963425841"
+ },
+ "bld6_rank_cube_sub_self_defect_aux1": {
+  "owner": "bld6_rank_cube_sub_self_defect",
+  "type": "∀ {K : Type u_1} [inst : Field K] {m : Type u_2} {n : Type u_3} [inst_1 : Fintype n] [DecidableEq n] (A : Matrix m n K), (-A).rank = A.rank",
+  "hash": "1435135910"
+ }
+}

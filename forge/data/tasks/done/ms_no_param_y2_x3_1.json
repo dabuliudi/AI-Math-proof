@@ -1,0 +1,19 @@
+{
+  "name": "ms_no_param_y2_x3_1",
+  "statement": "{k : Type*} [Field k] (h2 : ringChar k ≠ 2) (h3 : ringChar k ≠ 3) (f g : RatFunc k) (heq : g ^ 2 = f ^ 3 + 1) : (∃ c : k, f = RatFunc.C c) ∧ (∃ d : k, g = RatFunc.C d)",
+  "closed": "∀ {k : Type*} [Field k] (h2 : ringChar k ≠ 2) (h3 : ringChar k ≠ 3) (f g : RatFunc k) (heq : g ^ 2 = f ^ 3 + 1), (∃ c : k, f = RatFunc.C c) ∧ (∃ d : k, g = RatFunc.C d)",
+  "informal": "If char k ≠ 2,3 and rational functions f,g in k(t) satisfy g^2 = f^3 + 1 then f and g are constants.",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Theorem 3, p.3",
+  "original": "Theorem 3 (Non-parametrizablility of an Elliptic Curve). Let k be a field of characteristic ≠ 2, 3. If rational functions f(t), g(t) ∈ k(t) satisfy g(t)^2 = f(t)^3 + 1, then both f(t) and g(t) are constants in k.",
+  "proposed_by": "paper_1",
+  "hash": "38723426",
+  "type": "∀ {k : Type u_1} [inst : Field k], ringChar k ≠ 2 → ringChar k ≠ 3 → ∀ (f g : RatFunc k), g ^ 2 = f ^ 3 + 1 → (∃ c, f = RatFunc.C c) ∧ ∃ d, g = RatFunc.C d",
+  "attempts": [],
+  "created_at": "2026-11-15T00:15:48+0800",
+  "status": "proved",
+  "claimed_by": "prover_5",
+  "claimed_at": "2026-11-15T00:21:22+0800",
+  "closed_by": "prover_5",
+  "finished_at": "2026-11-15T00:24:38+0800"
+}

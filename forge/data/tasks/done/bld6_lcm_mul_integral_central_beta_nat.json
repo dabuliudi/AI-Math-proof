@@ -1,0 +1,19 @@
+{
+  "name": "bld6_lcm_mul_integral_central_beta_nat",
+  "statement": "(n : ℕ) : ∃ q : ℕ, 0 < q ∧ (((Finset.Icc 1 (2 * n)).lcm id : ℕ) : ℝ) * (2 * (n : ℝ) + 1) * (∫ x in (0:ℝ)..1, (x * (1 - x)) ^ n) = (q : ℝ)",
+  "closed": "∀ (n : ℕ), ∃ q : ℕ, 0 < q ∧ (((Finset.Icc 1 (2 * n)).lcm id : ℕ) : ℝ) * (2 * (n : ℝ) + 1) * (∫ x in (0:ℝ)..1, (x * (1 - x)) ^ n) = (q : ℝ)",
+  "informal": "Uses Mathlib2.calc_integral_beta_nat and Mathlib2.arith_centralBinom_dvd_lcm: by mul_pow and calc_integral_beta_nat n n the integral is (n!)^2/(2n+1)! = 1/((2n+1)·centralBinom n) (Nat.centralBinom, Nat.choose factorial formula); so the left side equals lcm(1..2n)/centralBinom n, which is a positive natural number q by arith_centralBinom_dvd_lcm (Nair's integrality argument made explicit).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_integral_beta_nat, Mathlib2.arith_centralBinom_dvd_lcm",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1939730838",
+  "type": "∀ (n : ℕ), ∃ q, 0 < q ∧ ↑((Finset.Icc 1 (2 * n)).lcm id) * (2 * ↑n + 1) * ∫ (x : ℝ) in 0..1, (x * (1 - x)) ^ n = ↑q",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:58+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:36:11+0800"
+}

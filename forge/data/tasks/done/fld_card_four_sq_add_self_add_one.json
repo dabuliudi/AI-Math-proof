@@ -1,0 +1,19 @@
+{
+  "name": "fld_card_four_sq_add_self_add_one",
+  "statement": "(K : Type) [Field K] [Fintype K] (h : Fintype.card K = 4) (x : K) (h0 : x ≠ 0) (h1 : x ≠ 1) : x ^ 2 + x + 1 = 0",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] (h : Fintype.card K = 4) (x : K) (h0 : x ≠ 0) (h1 : x ≠ 1), x ^ 2 + x + 1 = 0",
+  "informal": "In a field with 4 elements every element other than 0, 1 is a root of X^2 + X + 1 — x^3 = 1 by FiniteField.pow_card_sub_one_eq_one, so (x - 1)(x^2 + x + 1) = 0 and x ≠ 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "4059165708",
+  "type": "∀ (K : Type) [inst : Field K] [inst_1 : Fintype K], Fintype.card K = 4 → ∀ (x : K), x ≠ 0 → x ≠ 1 → x ^ 2 + x + 1 = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T08:23:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:31:07+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:32:24+0800"
+}

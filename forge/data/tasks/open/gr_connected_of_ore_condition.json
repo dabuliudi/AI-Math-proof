@@ -1,0 +1,15 @@
+{
+  "name": "gr_connected_of_ore_condition",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : ∀ u v, u ≠ v → ¬ G.Adj u v → Fintype.card V ≤ G.degree u + G.degree v + 1) : G.Connected",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : ∀ u v, u ≠ v → ¬ G.Adj u v → Fintype.card V ≤ G.degree u + G.degree v + 1), G.Connected",
+  "informal": "Ore-type connectivity criterion generalising Mathlib2.comb_connected_of_min_degree_half: if deg u + deg v ≥ n − 1 for all non-adjacent u ≠ v then G is connected (indeed of diameter ≤ 2) — for non-adjacent u ≠ v the neighbour sets lie in V \\ {u,v} of size n − 2 and have total size ≥ n − 1, so they intersect, giving a walk u-w-v.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "390876221",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] [Nonempty V], (∀ (u v : V), u ≠ v → ¬G.Adj u v → Fintype.card V ≤ G.degree u + G.degree v + 1) → G.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T08:47:26+0800",
+  "status": "open"
+}

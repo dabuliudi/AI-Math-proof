@@ -1,0 +1,19 @@
+{
+  "name": "comb_tournament_hamiltonian_path",
+  "statement": "(n : ℕ) (r : Fin n → Fin n → Prop) (h : ∀ i j : Fin n, i ≠ j → r i j ∨ r j i) : ∃ σ : Equiv.Perm (Fin n), ∀ (i : Fin n) (hi : i.val + 1 < n), r (σ i) (σ ⟨i.val + 1, hi⟩)",
+  "closed": "∀ (n : ℕ) (r : Fin n → Fin n → Prop) (h : ∀ i j : Fin n, i ≠ j → r i j ∨ r j i), ∃ σ : Equiv.Perm (Fin n), ∀ (i : Fin n) (hi : i.val + 1 < n), r (σ i) (σ ⟨i.val + 1, hi⟩)",
+  "informal": "Rédei: every tournament (indeed every semicomplete digraph) on n vertices has a directed Hamiltonian path — induction on n: given a path through the first n vertices, insert the new vertex v before the first path vertex that v beats (or at the end if none).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "3939423551",
+  "type": "∀ (n : ℕ) (r : Fin n → Fin n → Prop), (∀ (i j : Fin n), i ≠ j → r i j ∨ r j i) → ∃ σ, ∀ (i : Fin n) (hi : ↑i + 1 < n), r (σ i) (σ ⟨↑i + 1, hi⟩)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:35:05+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_9",
+  "claimed_at": "2026-11-15T02:04:47+0800",
+  "closed_by": "r4_prover_9",
+  "finished_at": "2026-11-15T02:06:00+0800"
+}

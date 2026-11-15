@@ -1,0 +1,19 @@
+{
+  "name": "bld_one_add_div_pow_mono",
+  "statement": "(n : ℕ) (x : ℝ) (hx : 0 ≤ x) : (1 + x / (n : ℝ)) ^ n ≤ (1 + x / ((n : ℝ) + 1)) ^ (n + 1)",
+  "closed": "∀ (n : ℕ) (x : ℝ) (hx : 0 ≤ x), (1 + x / (n : ℝ)) ^ n ≤ (1 + x / ((n : ℝ) + 1)) ^ (n + 1)",
+  "informal": "Uses Mathlib2.an2_amgm_range_pow: apply AM-GM to the n+1 numbers consisting of n copies of 1 + x/n and one copy of 1; their mean is 1 + x/(n+1). Generalises Mathlib2.ana_one_add_inv_pow_mono (x = 1).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.an2_amgm_range_pow, Mathlib2.ana_one_add_inv_pow_mono",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "4818735",
+  "type": "∀ (n : ℕ) (x : ℝ), 0 ≤ x → (1 + x / ↑n) ^ n ≤ (1 + x / (↑n + 1)) ^ (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:35:06+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_1",
+  "claimed_at": "2026-11-15T02:39:42+0800",
+  "closed_by": "r6_prover_1",
+  "finished_at": "2026-11-15T02:40:04+0800"
+}

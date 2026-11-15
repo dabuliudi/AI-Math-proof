@@ -1,0 +1,19 @@
+{
+  "name": "gen_an_perm_div_sum_ge_card",
+  "statement": "(K : Type*) [Field K] [LinearOrder K] [IsStrictOrderedRing K] (ι : Type*) [Fintype ι] (σ : Equiv.Perm ι) (x : ι → K) (hx : ∀ i, 0 < x i) : (Fintype.card ι : K) ≤ ∑ i, x i / x (σ i)",
+  "closed": "∀ (K : Type*) [Field K] [LinearOrder K] [IsStrictOrderedRing K] (ι : Type*) [Fintype ι] (σ : Equiv.Perm ι) (x : ι → K) (hx : ∀ i, 0 < x i), (Fintype.card ι : K) ≤ ∑ i, x i / x (σ i)",
+  "informal": "Generalizes Mathlib2.an2_cyclic_div_ge_card: ℝ → any linearly ordered field, cyclic shift on range → an arbitrary permutation σ of an arbitrary Fintype: card ι ≤ ∑ x i / x (σ i). Also implies an_cyclic_div_ge_three. Proof idea: the ratios y i = x i / x (σ i) are positive with product 1 (Equiv.prod_comp); prove ∑ y ≥ card for positive y with ∏ y = 1 by induction (merge a term ≤ 1 with a term ≥ 1 using u + v ≥ 1 + u v), which needs no roots.",
+  "origin": "conjecture",
+  "source": "generalization of Mathlib2.an2_cyclic_div_ge_card",
+  "original": "",
+  "proposed_by": "generalizer_1",
+  "hash": "3096792349",
+  "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (ι : Type u_2) [inst_3 : Fintype ι] (σ : Equiv.Perm ι) (x : ι → K), (∀ (i : ι), 0 < x i) → ↑(Fintype.card ι) ≤ ∑ i, x i / x (σ i)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:07:15+0800",
+  "status": "proved",
+  "claimed_by": "gen_prover_2",
+  "claimed_at": "2026-11-15T02:13:02+0800",
+  "closed_by": "gen_prover_2",
+  "finished_at": "2026-11-15T02:13:16+0800"
+}

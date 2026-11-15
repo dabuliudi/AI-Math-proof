@@ -1,0 +1,19 @@
+{
+  "name": "bld_fib_consecutive_of_quadratic_form",
+  "statement": "(x y : ℕ) (hx : 0 < x) (h : ((x : ℤ) ^ 2 - (x : ℤ) * (y : ℤ) - (y : ℤ) ^ 2) ^ 2 = 1) : ∃ n : ℕ, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
+  "closed": "∀ (x y : ℕ) (hx : 0 < x) (h : ((x : ℤ) ^ 2 - (x : ℤ) * (y : ℤ) - (y : ℤ) ^ 2) ^ 2 = 1), ∃ n : ℕ, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
+  "informal": "Uses Mathlib2.r3_fib_iff_five_sq_pm_four_is_square and Mathlib2.an_cassini_int: (2x-y)^2 = 5y^2 ± 4, so y = fib n by the library characterisation; Cassini shows fib (n+1) is a root of the same quadratic in x, and positivity of x pins it down (small cases y ≤ 1 by hand). Key lemma of IMO 1981 Q3.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.r3_fib_iff_five_sq_pm_four_is_square, Mathlib2.an_cassini_int",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1458089250",
+  "type": "∀ (x y : ℕ), 0 < x → (↑x ^ 2 - ↑x * ↑y - ↑y ^ 2) ^ 2 = 1 → ∃ n, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T02:32:46+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_3",
+  "claimed_at": "2026-11-15T02:42:03+0800",
+  "closed_by": "r6_prover_3",
+  "finished_at": "2026-11-15T02:42:28+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "calc_integral_beta_nat",
+  "statement": "(m n : ℕ) : ∫ x in (0:ℝ)..1, x ^ m * (1 - x) ^ n = ((m.factorial : ℝ) * n.factorial) / ((m + n + 1).factorial : ℝ)",
+  "closed": "∀ (m n : ℕ), ∫ x in (0:ℝ)..1, x ^ m * (1 - x) ^ n = ((m.factorial : ℝ) * n.factorial) / ((m + n + 1).factorial : ℝ)",
+  "informal": "Beta integral at naturals: ∫₀¹ xᵐ(1−x)ⁿ dx = m! n!/(m+n+1)! — induction on n with integration by parts B(m,n+1) = (n+1)/(m+1)·B(m+1,n); base ∫ xᵐ = 1/(m+1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "1684866401",
+  "type": "∀ (m n : ℕ), ∫ (x : ℝ) in 0..1, x ^ m * (1 - x) ^ n = ↑m.factorial * ↑n.factorial / ↑(m + n + 1).factorial",
+  "attempts": [],
+  "created_at": "2026-11-15T07:39:31+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:08:53+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:09:03+0800"
+}

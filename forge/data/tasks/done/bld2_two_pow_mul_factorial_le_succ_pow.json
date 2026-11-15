@@ -1,0 +1,19 @@
+{
+  "name": "bld2_two_pow_mul_factorial_le_succ_pow",
+  "statement": "(n : ℕ) : 2 ^ n * n.factorial ≤ (n + 1) ^ n",
+  "closed": "∀ (n : ℕ), 2 ^ n * n.factorial ≤ (n + 1) ^ n",
+  "informal": "Uses Mathlib2.gen_an_amgm_finset_ordered_ring (or Mathlib2.an2_amgm_range_pow): apply AM-GM to a i = i + 1 on Finset.range n: n^n * n! ≤ (n(n+1)/2)^n, i.e. 2^n * n^n * n! ≤ n^n * (n+1)^n; cancel n^n for n > 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_an_amgm_finset_ordered_ring",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "4220045",
+  "type": "∀ (n : ℕ), 2 ^ n * n.factorial ≤ (n + 1) ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:52:06+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:55:32+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:56:23+0800"
+}

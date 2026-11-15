@@ -1,0 +1,19 @@
+{
+  "name": "bld5_prime_dvd_fib_succ_of_not_isSquare_five",
+  "statement": "(p : ℕ) [Fact p.Prime] (h : ¬ IsSquare (5 : ZMod p)) : p ∣ Nat.fib (p + 1)",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (h : ¬ IsSquare (5 : ZMod p)), p ∣ Nat.fib (p + 1)",
+  "informal": "Uses Mathlib2.bld4_prime_dvd_fib_pred_mul_fib_mul_fib_succ, Mathlib2.bld4_pisano_prime_dvd_two_mul_succ_of_not_isSquare_five and Mathlib2.lib_pisano_dvd_iff_period: p is odd (5 = 1 is a square in ZMod 2). The second bld4 theorem with lib_pisano_dvd_iff_period (i = 0) gives p ∣ F_{2(p+1)}. By the first, p divides F_{p-1}, F_p or F_{p+1}. If p ∣ F_p then Nat.fib_gcd gives p ∣ F_{gcd(p, 2p+2)} = F_1 = 1; if p ∣ F_{p-1} then p ∣ F_{gcd(p-1, 2p+2)} with gcd(p-1, 2p+2) ∣ 4, so p ∣ F_4 = 3, p = 3, but then F_{p-1} = F_2 = 1. Both impossible, so p ∣ F_{p+1}.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_prime_dvd_fib_pred_mul_fib_mul_fib_succ, Mathlib2.bld4_pisano_prime_dvd_two_mul_succ_of_not_isSquare_five, Mathlib2.lib_pisano_dvd_iff_period",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "3571986914",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], ¬IsSquare 5 → p ∣ Nat.fib (p + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:22:07+0800",
+  "status": "proved",
+  "claimed_by": "prover_ba",
+  "claimed_at": "2026-11-15T07:29:43+0800",
+  "closed_by": "prover_ba",
+  "finished_at": "2026-11-15T07:30:34+0800"
+}

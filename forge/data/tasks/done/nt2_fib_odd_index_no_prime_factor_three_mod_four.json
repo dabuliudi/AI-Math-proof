@@ -1,0 +1,19 @@
+{
+  "name": "nt2_fib_odd_index_no_prime_factor_three_mod_four",
+  "statement": "(n p : ℕ) (hp : Nat.Prime p) (h : p % 4 = 3) : ¬ p ∣ Nat.fib (2 * n + 1)",
+  "closed": "∀ (n p : ℕ) (hp : Nat.Prime p) (h : p % 4 = 3), ¬ p ∣ Nat.fib (2 * n + 1)",
+  "informal": "No prime p ≡ 3 (mod 4) divides an odd-indexed Fibonacci number: F_{2n+1} = F_n^2 + F_{n+1}^2 is a sum of two coprime squares.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_nt2",
+  "hash": "3944345720",
+  "type": "∀ (n p : ℕ), Nat.Prime p → p % 4 = 3 → ¬p ∣ Nat.fib (2 * n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:50+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_a",
+  "claimed_at": "2026-11-15T00:47:34+0800",
+  "closed_by": "r2_prover_a",
+  "finished_at": "2026-11-15T00:48:21+0800"
+}

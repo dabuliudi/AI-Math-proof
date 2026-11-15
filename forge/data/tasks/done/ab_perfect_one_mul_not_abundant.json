@@ -1,0 +1,19 @@
+{
+  "name": "ab_perfect_one_mul_not_abundant",
+  "statement": "(n : ℕ) (hn : Nat.Perfect n) : ¬ Nat.Abundant (1 * n)",
+  "closed": "∀ (n : ℕ) (hn : Nat.Perfect n), ¬ Nat.Abundant (1 * n)",
+  "informal": "The task statement fails at k = 1 for every perfect n.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.9; 11 Table 2 step [1]",
+  "original": "[1] False for k = 1 (Limit case)",
+  "proposed_by": "paper_2",
+  "hash": "2609433293",
+  "type": "∀ (n : ℕ), n.Perfect → ¬(1 * n).Abundant",
+  "attempts": [],
+  "created_at": "2026-11-15T00:59:39+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:04:15+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:04:25+0800"
+}

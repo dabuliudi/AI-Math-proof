@@ -1,0 +1,19 @@
+{
+  "name": "lin_symm_nilpotent_eq_zero",
+  "statement": "(n k : ℕ) (A : Matrix (Fin n) (Fin n) ℝ) (hs : A.IsSymm) (h : A ^ k = 0) : A = 0",
+  "closed": "∀ (n k : ℕ) (A : Matrix (Fin n) (Fin n) ℝ) (hs : A.IsSymm) (h : A ^ k = 0), A = 0",
+  "informal": "A nilpotent real symmetric matrix is zero — for symmetric B, B² = BᵀB = 0 forces B = 0 (sum of squares of entries); apply repeatedly to A^(2^m) with 2^m ≥ k, noting powers of a symmetric matrix are symmetric.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_lin",
+  "hash": "3383330048",
+  "type": "∀ (n k : ℕ) (A : Matrix (Fin n) (Fin n) ℝ), A.IsSymm → A ^ k = 0 → A = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:05+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_5",
+  "claimed_at": "2026-11-15T01:53:00+0800",
+  "closed_by": "r4_prover_5",
+  "finished_at": "2026-11-15T01:53:30+0800"
+}

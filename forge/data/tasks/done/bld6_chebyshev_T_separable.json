@@ -1,0 +1,19 @@
+{
+  "name": "bld6_chebyshev_T_separable",
+  "statement": "(n : ℕ) : (Polynomial.Chebyshev.T ℝ (n : ℤ)).Separable",
+  "closed": "∀ (n : ℕ), (Polynomial.Chebyshev.T ℝ (n : ℤ)).Separable",
+  "informal": "Uses Mathlib2.poly_chebyshev_T_card_distinct_real_roots and Mathlib2.lib_chebyshev_T_natDegree_le: n = #distinct roots ≤ card roots ≤ natDegree ≤ n (the first equality from the poly theorem, the last bound from the lib lemma), so T_n has natDegree n, splits over ℝ with all roots simple; a polynomial with natDegree-many distinct roots is squarefree, hence separable in characteristic 0.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_chebyshev_T_card_distinct_real_roots, Mathlib2.lib_chebyshev_T_natDegree_le",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1510830819",
+  "type": "∀ (n : ℕ), (Polynomial.Chebyshev.T ℝ ↑n).Separable",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:00+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:37:36+0800"
+}

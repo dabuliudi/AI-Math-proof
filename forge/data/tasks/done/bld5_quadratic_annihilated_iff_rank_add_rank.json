@@ -1,0 +1,19 @@
+{
+  "name": "bld5_quadratic_annihilated_iff_rank_add_rank",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (a b : K) (hab : a ≠ b) : (A - a • (1 : Matrix ι ι K)) * (A - b • (1 : Matrix ι ι K)) = 0 ↔ (A - a • (1 : Matrix ι ι K)).rank + (A - b • (1 : Matrix ι ι K)).rank = Fintype.card ι",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (a b : K) (hab : a ≠ b), (A - a • (1 : Matrix ι ι K)) * (A - b • (1 : Matrix ι ι K)) = 0 ↔ (A - a • (1 : Matrix ι ι K)).rank + (A - b • (1 : Matrix ι ι K)).rank = Fintype.card ι",
+  "informal": "Uses Mathlib2.bld2_idempotent_iff_rank_add_rank and Mathlib2.lib_matrix_rank_smul: put P = (b − a)⁻¹ • (A − a•1), so 1 − P = −(b − a)⁻¹ • (A − b•1). A direct computation gives P*P − P = (b − a)⁻² • (A − a•1)(A − b•1), so the left side is equivalent to P*P = P, which by bld2_idempotent_iff_rank_add_rank is rank P + rank(1 − P) = card ι; lib_matrix_rank_smul (non-zero scalars (b−a)⁻¹ and −(b−a)⁻¹) rewrites the ranks as those of A − a•1 and A − b•1. Generalises the idempotent (a,b) = (0,1) and involution (1,−1) criteria to any split quadratic, with no characteristic assumption.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_idempotent_iff_rank_add_rank, Mathlib2.lib_matrix_rank_smul",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "1615717794",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (a b : K), a ≠ b → ((A - a • 1) * (A - b • 1) = 0 ↔ (A - a • 1).rank + (A - b • 1).rank = Fintype.card ι)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:00+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:33:19+0800"
+}

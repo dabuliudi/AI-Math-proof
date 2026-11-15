@@ -1,0 +1,19 @@
+{
+  "name": "bld4_pisano_lucas_dvd_four_mul",
+  "statement": "(n : ℕ) : p3_pisano (p3_lucas n) ∣ 4 * n",
+  "closed": "∀ (n : ℕ), p3_pisano (p3_lucas n) ∣ 4 * n",
+  "informal": "Uses Mathlib2.an_cassini_int, Mathlib2.lib_fib_period_iff and Mathlib2.bld3_pisano_dvd_of_period: modulo L_n = F_{n+1} + F_{n−1} one has F_{2n} = F_n L_n ≡ 0 and F_{2n+1} = F_{n+1}^2 + F_n^2 ≡ F_n^2 − F_{n+1}F_{n−1} = ±1 by an_cassini_int. Hence F_{4n} ≡ 0 and F_{4n+1} ≡ F_{2n+1}^2 ≡ 1, so lib_fib_period_iff makes 4n a period mod L_n and bld3_pisano_dvd_of_period concludes (n = 0 trivial).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.an_cassini_int, Mathlib2.lib_fib_period_iff, Mathlib2.bld3_pisano_dvd_of_period",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "712198090",
+  "type": "∀ (n : ℕ), Mathlib2.p3_pisano (Mathlib2.p3_lucas n) ∣ 4 * n",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:39+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_1",
+  "claimed_at": "2026-11-15T07:03:40+0800",
+  "closed_by": "r9_prover_1",
+  "finished_at": "2026-11-15T07:04:19+0800"
+}

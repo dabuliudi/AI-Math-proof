@@ -1,0 +1,19 @@
+{
+  "name": "r3_sylvester_nonrepresentable_count_v2_s1h2",
+  "statement": ": ∀ (a b : ℕ), 0 < a → 0 < b → a.Coprime b → ∀ n < (a - 1) * (b - 1), (¬∃ (x : ℕ) (y : ℕ), a * x + b * y = n) → ∃ (x : ℕ) (y : ℕ), a * x + b * y = (a - 1) * (b - 1) - 1 - n",
+  "closed": "∀ (a b : ℕ), 0 < a → 0 < b → a.Coprime b → ∀ n < (a - 1) * (b - 1), (¬∃ (x : ℕ) (y : ℕ), a * x + b * y = n) → ∃ (x : ℕ) (y : ℕ), a * x + b * y = (a - 1) * (b - 1) - 1 - n",
+  "informal": "r3_sylvester_nonrepresentable_count_v2 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "r3_sylvester_nonrepresentable_count_v2",
+  "original": "",
+  "proposed_by": "r3_prover_5",
+  "hash": "1771976541",
+  "type": "∀ (a b : ℕ), 0 < a → 0 < b → a.Coprime b → ∀ n < (a - 1) * (b - 1), (¬∃ x y, a * x + b * y = n) → ∃ x y, a * x + b * y = (a - 1) * (b - 1) - 1 - n",
+  "attempts": [],
+  "created_at": "2026-11-15T01:31:09+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_5",
+  "claimed_at": "2026-11-15T01:34:24+0800",
+  "closed_by": "r3_prover_5",
+  "finished_at": "2026-11-15T01:52:39+0800"
+}

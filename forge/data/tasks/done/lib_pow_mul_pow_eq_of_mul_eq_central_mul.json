@@ -1,0 +1,19 @@
+{
+  "name": "lib_pow_mul_pow_eq_of_mul_eq_central_mul",
+  "statement": "{M : Type*} [Monoid M] (a b c : M) (hca : Commute c a) (hcb : Commute c b) (h : b * a = c * a * b) (k l : ℕ) : b ^ k * a ^ l = c ^ (k * l) * a ^ l * b ^ k",
+  "closed": "∀ {M : Type*} [Monoid M] (a b c : M) (hca : Commute c a) (hcb : Commute c b) (h : b * a = c * a * b) (k l : ℕ), b ^ k * a ^ l = c ^ (k * l) * a ^ l * b ^ k",
+  "informal": "Commutation of powers when the commutator is central (class-2 / Heisenberg relation): if c commutes with a, b and b*a = c*a*b then b^k * a^l = c^(k*l) * a^l * b^k. Promoted and generalised from Mathlib2.bld3_mul_pow_prime_of_card_prime_cube_aux1 (the l = 1 case; see also _aux2 for (a*b)^k = a^k*b^k*c^(k.choose 2)).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld3_mul_pow_prime_of_card_prime_cube_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "794289349",
+  "type": "∀ {M : Type u_1} [inst : Monoid M] (a b c : M), Commute c a → Commute c b → b * a = c * a * b → ∀ (k l : ℕ), b ^ k * a ^ l = c ^ (k * l) * a ^ l * b ^ k",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:35+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:59:04+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:59:12+0800"
+}

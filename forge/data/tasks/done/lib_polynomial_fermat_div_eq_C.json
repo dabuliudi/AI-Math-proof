@@ -1,0 +1,16 @@
+{
+  "name": "lib_polynomial_fermat_div_eq_C",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (A B E : Polynomial k) (hE : E ≠ 0) (heq : A ^ n + B ^ n = E ^ n) : ∃ c : k, algebraMap (Polynomial k) (RatFunc k) A / algebraMap (Polynomial k) (RatFunc k) E = RatFunc.C c",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (A B E : Polynomial k) (hE : E ≠ 0) (heq : A ^ n + B ^ n = E ^ n), ∃ c : k, algebraMap (Polynomial k) (RatFunc k) A / algebraMap (Polynomial k) (RatFunc k) E = RatFunc.C c",
+  "informal": "promoted from Mathlib2.poly_ratfunc_fermat_curve_const_aux1: polynomial FLT without coprimality, in quotient form — if A^n + B^n = E^n with n ≥ 3, E ≠ 0 in char 0 then A/E is a constant rational function.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "2682695942",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (A B E : Polynomial k), E ≠ 0 → A ^ n + B ^ n = E ^ n → ∃ c, (algebraMap (Polynomial k) (RatFunc k)) A / (algebraMap (Polynomial k) (RatFunc k)) E = RatFunc.C c",
+  "attempts": [],
+  "created_at": "2026-11-15T07:47:23+0800",
+  "status": "known",
+  "known_as": "poly_ratfunc_fermat_curve_const_aux1 n hn A B E hE heq"
+}

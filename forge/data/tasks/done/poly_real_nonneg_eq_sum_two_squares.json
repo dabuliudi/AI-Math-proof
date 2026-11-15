@@ -1,0 +1,19 @@
+{
+  "name": "poly_real_nonneg_eq_sum_two_squares",
+  "statement": "(p : Polynomial ℝ) (h : ∀ x : ℝ, 0 ≤ Polynomial.eval x p) : ∃ f g : Polynomial ℝ, p = f ^ 2 + g ^ 2",
+  "closed": "∀ (p : Polynomial ℝ) (h : ∀ x : ℝ, 0 ≤ Polynomial.eval x p), ∃ f g : Polynomial ℝ, p = f ^ 2 + g ^ 2",
+  "informal": "A real polynomial that is nonnegative on ℝ is a sum of two squares of real polynomials — strong induction on degree: real roots have even multiplicity (factor out (X-r)^2), irreducible quadratic factors are (X-u)^2 + v^2, and sums of two squares are closed under multiplication (Brahmagupta identity).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "967478488",
+  "type": "∀ (p : Polynomial ℝ), (∀ (x : ℝ), 0 ≤ Polynomial.eval x p) → ∃ f g, p = f ^ 2 + g ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:17:47+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:33:53+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:35:09+0800"
+}

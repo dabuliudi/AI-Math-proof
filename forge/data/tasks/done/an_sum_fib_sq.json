@@ -1,0 +1,18 @@
+{
+  "name": "an_sum_fib_sq",
+  "statement": "(n : ℕ) : ∑ i ∈ Finset.range (n + 1), Nat.fib i ^ 2 = Nat.fib n * Nat.fib (n + 1)",
+  "closed": "∀ (n : ℕ), ∑ i ∈ Finset.range (n + 1), Nat.fib i ^ 2 = Nat.fib n * Nat.fib (n + 1)",
+  "informal": "Sum of squares of Fibonacci numbers F_0..F_n equals F_n * F_{n+1}.",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_an",
+  "hash": "514485412",
+  "type": "∀ (n : ℕ), ∑ i ∈ Finset.range (n + 1), Nat.fib i ^ 2 = Nat.fib n * Nat.fib (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:11:38+0800",
+  "status": "proved",
+  "claimed_by": "prover_1",
+  "claimed_at": "2026-11-15T00:14:39+0800",
+  "closed_by": "prover_1",
+  "finished_at": "2026-11-15T00:14:56+0800"
+}

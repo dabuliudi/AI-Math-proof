@@ -1,0 +1,16 @@
+{
+  "name": "p4_x",
+  "statement": "def p4_x (n : ℕ) : ℤ := p4_z n - ((p4_r n : ℤ) + 1) * (p4_m n : ℤ)",
+  "informal": "x(n) = z(n) - (r(n)+1) m(n), the quantity whose sign the paper determines",
+  "origin": "definition",
+  "source": "arXiv:2503.03469v1 Introduction, definition (d)",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-15T02:48:54+0800",
+  "status": "defined",
+  "closed_by": "paper_4",
+  "finished_at": "2026-11-15T02:49:03+0800",
+  "type": "ℕ → ℤ"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_cassini_cast",
+  "statement": "(R : Type*) [CommRing R] (n : ℕ) : (Nat.fib (n + 2) : R) * (Nat.fib n : R) - (Nat.fib (n + 1) : R) ^ 2 = (-1) ^ (n + 1)",
+  "closed": "∀ (R : Type*) [CommRing R] (n : ℕ), (Nat.fib (n + 2) : R) * (Nat.fib n : R) - (Nat.fib (n + 1) : R) ^ 2 = (-1) ^ (n + 1)",
+  "informal": "Cassini's identity F_(n+2) F_n - F_(n+1)^2 = (-1)^(n+1) in an arbitrary commutative ring (e.g. ZMod p). Promoted and generalised from Mathlib2.p3_aux_period_aux1 (same identity over ℤ as Mathlib2.an_cassini_int, r3_fib_iff_five_sq_pm_four_is_square_s1h1, p3_cor1_aux1).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_aux_period_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "875209209",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (n : ℕ), ↑(Nat.fib (n + 2)) * ↑(Nat.fib n) - ↑(Nat.fib (n + 1)) ^ 2 = (-1) ^ (n + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:55:24+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:56:45+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:57:06+0800"
+}

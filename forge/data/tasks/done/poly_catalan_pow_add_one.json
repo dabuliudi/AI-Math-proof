@@ -1,0 +1,19 @@
+{
+  "name": "poly_catalan_pow_add_one",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (m n : ℕ) (hm : 2 ≤ m) (hn : 2 ≤ n) (g h : Polynomial k) (heq : g ^ m + 1 = h ^ n) : g.natDegree = 0 ∧ h.natDegree = 0",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (m n : ℕ) (hm : 2 ≤ m) (hn : 2 ≤ n) (g h : Polynomial k) (heq : g ^ m + 1 = h ^ n), g.natDegree = 0 ∧ h.natDegree = 0",
+  "informal": "Catalan for polynomials: in char 0 two perfect powers g^m, h^n (m,n ≥ 2) differing by 1 are constants — Uses Mathlib2.ms_mason_stothers_v2 with a = g^m, b = 1, c = -h^n (pairwise coprime since g^m and h^n differ by a unit): if g is non-constant, D = m·deg g = n·deg h < deg rad(g^m h^n) ≤ deg g + deg h = D/m + D/n ≤ D, contradiction; g = 0 or g constant handled separately.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "138902248",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (m n : ℕ), 2 ≤ m → 2 ≤ n → ∀ (g h : Polynomial k), g ^ m + 1 = h ^ n → g.natDegree = 0 ∧ h.natDegree = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T07:15:11+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:22:51+0800"
+}

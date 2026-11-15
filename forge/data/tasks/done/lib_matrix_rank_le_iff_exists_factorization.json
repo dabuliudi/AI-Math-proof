@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_rank_le_iff_exists_factorization",
+  "statement": "(K : Type*) [Field K] (n p : Type*) [Fintype n] [Fintype p] (B : Matrix n p K) (r : ℕ) : B.rank ≤ r ↔ ∃ (M : Matrix n (Fin r) K) (N : Matrix (Fin r) p K), B = M * N",
+  "closed": "∀ (K : Type*) [Field K] (n p : Type*) [Fintype n] [Fintype p] (B : Matrix n p K) (r : ℕ), B.rank ≤ r ↔ ∃ (M : Matrix n (Fin r) K) (N : Matrix (Fin r) p K), B = M * N",
+  "informal": "Rank factorisation, as a characterisation of rank: an n×p matrix B over a field has rank ≤ r iff it factors as B = M * N through K^r (M : n×r, N : r×p). The case r = rank B is Mathlib2.bld_frobenius_rank_inequality_aux1, from which this is promoted.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld_frobenius_rank_inequality_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2185881190",
+  "type": "∀ (K : Type u_1) [inst : Field K] (n : Type u_2) (p : Type u_3) [Fintype n] [inst_2 : Fintype p] (B : Matrix n p K) (r : ℕ), B.rank ≤ r ↔ ∃ M N, B = M * N",
+  "attempts": [],
+  "created_at": "2026-11-15T03:08:37+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:10:24+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:10:37+0800"
+}

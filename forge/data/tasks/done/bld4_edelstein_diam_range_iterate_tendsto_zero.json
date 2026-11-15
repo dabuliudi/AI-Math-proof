@@ -1,0 +1,19 @@
+{
+  "name": "bld4_edelstein_diam_range_iterate_tendsto_zero",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) : Filter.Tendsto (fun n : ℕ => Metric.diam (Set.range (f^[n]))) Filter.atTop (nhds 0)",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y), Filter.Tendsto (fun n : ℕ => Metric.diam (Set.range (f^[n]))) Filter.atTop (nhds 0)",
+  "informal": "Uses Mathlib2.top_edelstein_unique_fixed_point and Mathlib2.bld3_edelstein_iterates_tendsto_uniformly: if X is empty the diameters are 0. Otherwise top_edelstein_unique_fixed_point gives a fixed point p, and bld3_edelstein_iterates_tendsto_uniformly gives N with dist (f^[n] x) p < ε/2 for all n ≥ N and x, so diam (range f^[n]) ≤ ε by Metric.diam_le_of_forall_dist_le.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_edelstein_unique_fixed_point, Mathlib2.bld3_edelstein_iterates_tendsto_uniformly",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "2635364069",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), x ≠ y → dist (f x) (f y) < dist x y) → Filter.Tendsto (fun n => Metric.diam (Set.range f^[n])) Filter.atTop (nhds 0)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:56:29+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_1",
+  "claimed_at": "2026-11-15T07:06:27+0800",
+  "closed_by": "r9_prover_1",
+  "finished_at": "2026-11-15T07:06:56+0800"
+}

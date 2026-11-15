@@ -1,0 +1,19 @@
+{
+  "name": "an2_cyclic_div_ge_card",
+  "statement": "(n : ℕ) (x : ℕ → ℝ) (hx : ∀ i, 0 < x i) : (n : ℝ) + 1 ≤ ∑ i ∈ Finset.range n, x i / x (i + 1) + x n / x 0",
+  "closed": "∀ (n : ℕ) (x : ℕ → ℝ) (hx : ∀ i, 0 < x i), (n : ℝ) + 1 ≤ ∑ i ∈ Finset.range n, x i / x (i + 1) + x n / x 0",
+  "informal": "Cyclic ratio inequality for n+1 positive reals: x_0/x_1 + x_1/x_2 + ... + x_{n-1}/x_n + x_n/x_0 ≥ n+1. Generalizes Mathlib2.an_cyclic_div_ge_three (n = 2).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "1438840515",
+  "type": "∀ (n : ℕ) (x : ℕ → ℝ), (∀ (i : ℕ), 0 < x i) → ↑n + 1 ≤ ∑ i ∈ Finset.range n, x i / x (i + 1) + x n / x 0",
+  "attempts": [],
+  "created_at": "2026-11-15T00:27:46+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_c",
+  "claimed_at": "2026-11-15T00:45:14+0800",
+  "closed_by": "r2_prover_c",
+  "finished_at": "2026-11-15T00:45:49+0800"
+}

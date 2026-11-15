@@ -1,0 +1,19 @@
+{
+  "name": "geo_stewart",
+  "statement": "{V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b c : V) (t : ℝ) : ‖a - ((1 - t) • b + t • c)‖ ^ 2 = (1 - t) * ‖a - b‖ ^ 2 + t * ‖a - c‖ ^ 2 - t * (1 - t) * ‖b - c‖ ^ 2",
+  "closed": "∀ {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b c : V) (t : ℝ), ‖a - ((1 - t) • b + t • c)‖ ^ 2 = (1 - t) * ‖a - b‖ ^ 2 + t * ‖a - c‖ ^ 2 - t * (1 - t) * ‖b - c‖ ^ 2",
+  "informal": "Stewart's theorem in vector form: for d = (1−t)b + tc on line bc, |ad|² = (1−t)|ab|² + t|ac|² − t(1−t)|bc|² — write a − d = (1−t)(a−b) + t(a−c) and expand squared norms via inner products.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "2141176797",
+  "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (a b c : V) (t : ℝ), ‖a - ((1 - t) • b + t • c)‖ ^ 2 = (1 - t) * ‖a - b‖ ^ 2 + t * ‖a - c‖ ^ 2 - t * (1 - t) * ‖b - c‖ ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:07+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:24:34+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:25:08+0800"
+}

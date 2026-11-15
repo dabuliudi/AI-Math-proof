@@ -1,0 +1,19 @@
+{
+  "name": "ab_t2_sum_divisors_ge",
+  "statement": "(n k : ℕ) (hn : Nat.Perfect n) (hk : 1 < k) : 2 * (k * n) + 1 ≤ ∑ d ∈ Nat.divisors (k * n), d",
+  "closed": "∀ (n k : ℕ) (hn : Nat.Perfect n) (hk : 1 < k), 2 * (k * n) + 1 ≤ ∑ d ∈ Nat.divisors (k * n), d",
+  "informal": "Table 2 step 9: sum of divisors of kn is at least 2kn + 1 (the k d_i together with 1).",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.11 Table 2 step [9]",
+  "original": "[9] ∑ divisors of kn ≥ ∑_{i=1}^r kdi = 2kn + 1 > ∑_{i=1}^r kdi = 2kn",
+  "proposed_by": "paper_2",
+  "hash": "320379862",
+  "type": "∀ (n k : ℕ), n.Perfect → 1 < k → 2 * (k * n) + 1 ≤ ∑ d ∈ (k * n).divisors, d",
+  "attempts": [],
+  "created_at": "2026-11-15T01:00:41+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:05:53+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:06:02+0800"
+}

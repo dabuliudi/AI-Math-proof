@@ -1,0 +1,18 @@
+{
+  "name": "an_sqrt_add_le_sqrt_two_mul",
+  "statement": "(a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) : Real.sqrt a + Real.sqrt b ≤ Real.sqrt (2 * (a + b))",
+  "closed": "∀ (a b : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b), Real.sqrt a + Real.sqrt b ≤ Real.sqrt (2 * (a + b))",
+  "informal": "For nonnegative a, b: sqrt a + sqrt b ≤ sqrt(2(a+b)).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_an",
+  "hash": "3285808315",
+  "type": "∀ (a b : ℝ), 0 ≤ a → 0 ≤ b → √a + √b ≤ √(2 * (a + b))",
+  "attempts": [],
+  "created_at": "2026-11-15T00:12:09+0800",
+  "status": "proved",
+  "claimed_by": "prover_2",
+  "claimed_at": "2026-11-15T00:16:03+0800",
+  "closed_by": "prover_2",
+  "finished_at": "2026-11-15T00:16:38+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arith_two_mul_dvd_totient_pow_add_one",
+  "statement": "(a n : ℕ) (ha : 1 < a) (hn : 0 < n) : 2 * n ∣ (a ^ n + 1).totient",
+  "closed": "∀ (a n : ℕ) (ha : 1 < a) (hn : 0 < n), 2 * n ∣ (a ^ n + 1).totient",
+  "informal": "2n divides φ(a^n + 1) for a > 1, n ≥ 1 — a is a unit mod N = a^n + 1 with a^n = -1 ≠ 1 and a^k < N - 1 for k < n, so its order is exactly 2n, and the order divides φ(N).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "2441944212",
+  "type": "∀ (a n : ℕ), 1 < a → 0 < n → 2 * n ∣ (a ^ n + 1).totient",
+  "attempts": [],
+  "created_at": "2026-11-15T07:49:26+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T08:04:34+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T08:06:25+0800"
+}

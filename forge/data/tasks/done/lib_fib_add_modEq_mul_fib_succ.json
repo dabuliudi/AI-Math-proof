@@ -1,0 +1,19 @@
+{
+  "name": "lib_fib_add_modEq_mul_fib_succ",
+  "statement": "(N m i : ℕ) (h : N ∣ Nat.fib m) : Nat.fib (i + m) ≡ Nat.fib i * Nat.fib (m + 1) [MOD N]",
+  "closed": "∀ (N m i : ℕ) (h : N ∣ Nat.fib m), Nat.fib (i + m) ≡ Nat.fib i * Nat.fib (m + 1) [MOD N]",
+  "informal": "Fibonacci shift congruence: if N ∣ F_m then F_(i+m) ≡ F_i * F_(m+1) (mod N), i.e. shifting by a zero of the sequence mod N multiplies by F_(m+1). Promoted and generalised from Mathlib2.p3_cor1_aux3 (the case N = F_(n+1); re-derived in p3_cor1_aux4, p3_aux_period_aux4, bld2_pisano_fib_dvd_four_mul).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_cor1_aux3",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "4068426783",
+  "type": "∀ (N m i : ℕ), N ∣ Nat.fib m → Nat.fib (i + m) ≡ Nat.fib i * Nat.fib (m + 1) [MOD N]",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:42+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:56:43+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T07:00:04+0800"
+}

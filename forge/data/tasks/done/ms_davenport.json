@@ -1,0 +1,19 @@
+{
+  "name": "ms_davenport",
+  "statement": "{k : Type*} [Field k] [CharZero k] (f g : Polynomial k) (hf : 0 < f.natDegree) (hg : 0 < g.natDegree) (hne : f ^ 3 ≠ g ^ 2) : f.natDegree + 2 ≤ 2 * (f ^ 3 - g ^ 2).natDegree",
+  "closed": "∀ {k : Type*} [Field k] [CharZero k] (f g : Polynomial k) (hf : 0 < f.natDegree) (hg : 0 < g.natDegree) (hne : f ^ 3 ≠ g ^ 2), f.natDegree + 2 ≤ 2 * (f ^ 3 - g ^ 2).natDegree",
+  "informal": "Davenport: in characteristic zero, non-constant f,g with f^3 ≠ g^2 satisfy deg(f^3 - g^2) ≥ deg(f)/2 + 1.",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Theorem 4, p.4",
+  "original": "Theorem 4 (Davenport). Let k be a field of characteristic zero. Let f(t), g(t) ∈ k[t] be non-constant polynomials such that f^3 ≠ g^2. Then deg(f^3 − g^2) ≥ (1/2) deg(f) + 1.",
+  "proposed_by": "paper_1",
+  "hash": "2827816970",
+  "type": "∀ {k : Type u_1} [inst : Field k] [CharZero k] (f g : Polynomial k), 0 < f.natDegree → 0 < g.natDegree → f ^ 3 ≠ g ^ 2 → f.natDegree + 2 ≤ 2 * (f ^ 3 - g ^ 2).natDegree",
+  "attempts": [],
+  "created_at": "2026-11-15T00:16:01+0800",
+  "status": "proved",
+  "claimed_by": "prover_4",
+  "claimed_at": "2026-11-15T00:21:52+0800",
+  "closed_by": "paper_1",
+  "finished_at": "2026-11-15T00:22:55+0800"
+}

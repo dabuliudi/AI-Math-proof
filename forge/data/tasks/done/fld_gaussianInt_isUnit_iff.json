@@ -1,0 +1,19 @@
+{
+  "name": "fld_gaussianInt_isUnit_iff",
+  "statement": "(z : GaussianInt) : IsUnit z ↔ z = 1 ∨ z = -1 ∨ z = ⟨0, 1⟩ ∨ z = ⟨0, -1⟩",
+  "closed": "∀ (z : GaussianInt), IsUnit z ↔ z = 1 ∨ z = -1 ∨ z = ⟨0, 1⟩ ∨ z = ⟨0, -1⟩",
+  "informal": "The units of ℤ[i] are exactly 1, -1, i, -i — by Zsqrtd.norm_eq_one_iff' a unit has norm re^2 + im^2 = 1, forcing (re, im) ∈ {(±1, 0), (0, ±1)}; the converse is a direct check.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "3706226146",
+  "type": "∀ (z : GaussianInt), IsUnit z ↔ z = 1 ∨ z = -1 ∨ z = { re := 0, im := 1 } ∨ z = { re := 0, im := -1 }",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:46+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:31:07+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:32:46+0800"
+}

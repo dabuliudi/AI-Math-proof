@@ -1,0 +1,19 @@
+{
+  "name": "p3_remark2",
+  "statement": "(k : ℕ) : p3_self_summable k ↔ Nat.fib k ∣ Nat.fib (Nat.fib k + 2) - 1",
+  "closed": "∀ (k : ℕ), p3_self_summable k ↔ Nat.fib k ∣ Nat.fib (Nat.fib k + 2) - 1",
+  "informal": "k is self-summable iff F_k divides F_{F_k+2} - 1",
+  "origin": "paper",
+  "source": "arXiv:2504.09938 Remark 2",
+  "original": "It follows from Proposition 1 that the self-summable Fibonacci numbers are the integers $k$ such that $F_k\\mid(F_{F_k+2}-1)$.",
+  "proposed_by": "paper_3",
+  "hash": "3582648958",
+  "type": "∀ (k : ℕ), Mathlib2.p3_self_summable k ↔ Nat.fib k ∣ Nat.fib (Nat.fib k + 2) - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:49+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:25:25+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:26:08+0800"
+}

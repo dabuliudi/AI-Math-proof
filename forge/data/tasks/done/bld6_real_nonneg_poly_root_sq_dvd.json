@@ -1,0 +1,19 @@
+{
+  "name": "bld6_real_nonneg_poly_root_sq_dvd",
+  "statement": "(p : Polynomial ℝ) (h : ∀ x : ℝ, 0 ≤ Polynomial.eval x p) (a : ℝ) (ha : Polynomial.eval a p = 0) : (Polynomial.X - Polynomial.C a) ^ 2 ∣ p",
+  "closed": "∀ (p : Polynomial ℝ) (h : ∀ x : ℝ, 0 ≤ Polynomial.eval x p) (a : ℝ) (ha : Polynomial.eval a p = 0), (Polynomial.X - Polynomial.C a) ^ 2 ∣ p",
+  "informal": "Uses Mathlib2.poly_real_nonneg_eq_sum_two_squares: write p = f^2 + g^2; evaluating at a gives f(a)^2 + g(a)^2 = 0, so f(a) = g(a) = 0, hence X - a divides both f and g (Polynomial.dvd_iff_isRoot) and (X - a)^2 divides f^2 + g^2.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_real_nonneg_eq_sum_two_squares",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "2859095799",
+  "type": "∀ (p : Polynomial ℝ), (∀ (x : ℝ), 0 ≤ Polynomial.eval x p) → ∀ (a : ℝ), Polynomial.eval a p = 0 → (Polynomial.X - Polynomial.C a) ^ 2 ∣ p",
+  "attempts": [],
+  "created_at": "2026-11-15T08:21:22+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:44+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:38:56+0800"
+}

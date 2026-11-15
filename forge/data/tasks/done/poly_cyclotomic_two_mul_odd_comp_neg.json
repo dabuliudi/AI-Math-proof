@@ -1,0 +1,19 @@
+{
+  "name": "poly_cyclotomic_two_mul_odd_comp_neg",
+  "statement": "(n : ℕ) (hn : Odd n) (h1 : 1 < n) : Polynomial.cyclotomic (2 * n) ℤ = (Polynomial.cyclotomic n ℤ).comp (-Polynomial.X)",
+  "closed": "∀ (n : ℕ) (hn : Odd n) (h1 : 1 < n), Polynomial.cyclotomic (2 * n) ℤ = (Polynomial.cyclotomic n ℤ).comp (-Polynomial.X)",
+  "informal": "For odd n > 1, Φ_{2n}(X) = Φ_n(-X) — Polynomial.cyclotomic_mul_prime_of_not_dvd-type identity Φ_{2n}(X)·Φ_n(X) = Φ_n(X^2) (expand by the prime 2 ∤ n), together with Φ_n(X^2) = Φ_n(X)·Φ_n(-X) up to sign, proved via strong induction on n using X^n - 1 = ∏_{d ∣ n} Φ_d and (-X)^n - 1 = -(X^n + 1) for odd n; φ(n) even for n > 1 fixes the sign.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "3391316542",
+  "type": "∀ (n : ℕ), Odd n → 1 < n → Polynomial.cyclotomic (2 * n) ℤ = (Polynomial.cyclotomic n ℤ).comp (-Polynomial.X)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:18:00+0800",
+  "status": "proved",
+  "claimed_by": "prover_pb",
+  "claimed_at": "2026-11-15T07:30:21+0800",
+  "closed_by": "prover_pb",
+  "finished_at": "2026-11-15T07:33:58+0800"
+}

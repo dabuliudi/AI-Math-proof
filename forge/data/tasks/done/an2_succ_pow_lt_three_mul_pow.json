@@ -1,0 +1,19 @@
+{
+  "name": "an2_succ_pow_lt_three_mul_pow",
+  "statement": "(n : ℕ) (hn : 0 < n) : (n + 1) ^ n < 3 * n ^ n",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), (n + 1) ^ n < 3 * n ^ n",
+  "informal": "(1 + 1/n)^n < 3 for n ≥ 1, stated in naturals as (n+1)^n < 3 n^n.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "2627344457",
+  "type": "∀ (n : ℕ), 0 < n → (n + 1) ^ n < 3 * n ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T00:28:06+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_c",
+  "claimed_at": "2026-11-15T00:45:49+0800",
+  "closed_by": "r2_prover_c",
+  "finished_at": "2026-11-15T00:46:14+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld5_commuting_idempotents_rank_sub_iff",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A) : (A - B).rank + B.rank = A.rank ↔ A * B = B",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A), (A - B).rank + B.rank = A.rank ↔ A * B = B",
+  "informal": "Uses Mathlib2.bld3_commuting_idempotents_rank_sub, Mathlib2.bld_idempotent_sum_rank and Mathlib2.lib_matrix_rank_eq_zero_iff: bld3 gives rank(A−B) + 2·rank(AB) = rank A + rank B, so the left side is equivalent to rank(AB) = rank B. AB and B − AB are idempotents (commutativity) with idempotent sum B, so bld_idempotent_sum_rank gives rank B = rank(AB) + rank(B − AB). Hence rank(AB) = rank B ↔ rank(B − AB) = 0 ↔ B − AB = 0 by lib_matrix_rank_eq_zero_iff.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_commuting_idempotents_rank_sub, Mathlib2.bld_idempotent_sum_rank, Mathlib2.lib_matrix_rank_eq_zero_iff",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "1991566418",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → A * B = B * A → ((A - B).rank + B.rank = A.rank ↔ A * B = B)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:23:47+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:31:54+0800"
+}

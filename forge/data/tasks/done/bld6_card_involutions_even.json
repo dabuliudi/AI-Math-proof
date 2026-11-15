@@ -1,0 +1,19 @@
+{
+  "name": "bld6_card_involutions_even",
+  "statement": "(n : ℕ) : Even ((Finset.univ : Finset (Equiv.Perm (Fin (n + 2)))).filter (fun σ => σ * σ = 1)).card",
+  "closed": "∀ (n : ℕ), Even ((Finset.univ : Finset (Equiv.Perm (Fin (n + 2)))).filter (fun σ => σ * σ = 1)).card",
+  "informal": "Uses Mathlib2.calc_card_involutions_rec: two-step induction with I(m+2) = I(m+1) + (m+1)·I(m) from calc_card_involutions_rec; base cases I(2) = 2 and I(3) = I(2) + 2·I(1) = 4 (again from the recurrence, I(0) = I(1) = 1 by decide), and for m ≥ 2 both I(m+1) and I(m) are even.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_card_involutions_rec",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "761632177",
+  "type": "∀ (n : ℕ), Even {σ | σ * σ = 1}.card",
+  "attempts": [],
+  "created_at": "2026-11-15T08:24:07+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:44+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:38:19+0800"
+}

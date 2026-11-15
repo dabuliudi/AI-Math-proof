@@ -1,0 +1,19 @@
+{
+  "name": "comb_degree_add_degree_le_of_triangle_free",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) (u v : V) (huv : G.Adj u v) : G.degree u + G.degree v ≤ Fintype.card V",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) (u v : V) (huv : G.Adj u v), G.degree u + G.degree v ≤ Fintype.card V",
+  "informal": "In a triangle-free graph adjacent vertices u, v satisfy deg u + deg v ≤ n (the key step of Mantel's theorem) — the neighbour sets of u and v are disjoint, since a common neighbour w gives the 3-clique {u,v,w}.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "3787003373",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∀ (u v : V), G.Adj u v → G.degree u + G.degree v ≤ Fintype.card V",
+  "attempts": [],
+  "created_at": "2026-11-15T01:36:15+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T01:58:09+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T01:58:37+0800"
+}

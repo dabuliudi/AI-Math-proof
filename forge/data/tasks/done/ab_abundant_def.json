@@ -1,0 +1,19 @@
+{
+  "name": "ab_abundant_def",
+  "statement": "(n : ℕ) : Nat.Abundant n ↔ 2 * n < ∑ d ∈ Nat.divisors n, d",
+  "closed": "∀ (n : ℕ), Nat.Abundant n ↔ 2 * n < ∑ d ∈ Nat.divisors n, d",
+  "informal": "Paper's definition of abundant (all divisors sum to more than 2n) agrees with Mathlib's Nat.Abundant (proper divisors sum > n).",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 3 definition",
+  "original": "An abundant number is an integer n whose divisors add up to more than 2n. A perfect number is an integer n whose divisors add up to exactly 2n.",
+  "proposed_by": "paper_2",
+  "hash": "3187722132",
+  "type": "∀ (n : ℕ), n.Abundant ↔ 2 * n < ∑ d ∈ n.divisors, d",
+  "attempts": [],
+  "created_at": "2026-11-15T00:59:03+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:03:26+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:03:36+0800"
+}

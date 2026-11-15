@@ -1,0 +1,19 @@
+{
+  "name": "top_lfp_comp_self",
+  "statement": "{α : Type*} [CompleteLattice α] (f : α →o α) : OrderHom.lfp (f.comp f) = OrderHom.lfp f",
+  "closed": "∀ {α : Type*} [CompleteLattice α] (f : α →o α), OrderHom.lfp (f.comp f) = OrderHom.lfp f",
+  "informal": "The least fixed point of f∘f equals that of f — ≤ since lfp f is fixed by f∘f; for ≥ put a = lfp (f∘f): f a is a fixed point of f∘f so a ≤ f a, hence f a ≤ f (f a) = a, so a is a fixed point of f.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "3879184578",
+  "type": "∀ {α : Type u_1} [inst : CompleteLattice α] (f : α →o α), OrderHom.lfp (f.comp f) = OrderHom.lfp f",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:30+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_3",
+  "claimed_at": "2026-11-15T02:24:51+0800",
+  "closed_by": "r5_prover_3",
+  "finished_at": "2026-11-15T02:25:17+0800"
+}

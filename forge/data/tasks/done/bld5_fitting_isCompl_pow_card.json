@@ -1,0 +1,19 @@
+{
+  "name": "bld5_fitting_isCompl_pow_card",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) : IsCompl (LinearMap.range (A ^ Fintype.card ι).mulVecLin) (LinearMap.ker (A ^ Fintype.card ι).mulVecLin)",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), IsCompl (LinearMap.range (A ^ Fintype.card ι).mulVecLin) (LinearMap.ker (A ^ Fintype.card ι).mulVecLin)",
+  "informal": "Uses Mathlib2.bld4_fitting_range_inter_ker_pow_card: that theorem says exactly that range(A^n) ⊓ ker(A^n) = ⊥ (a vector A^n v killed by A^n is 0), giving Disjoint. For Codisjoint, rank–nullity (LinearMap.finrank_range_add_finrank_ker) gives finrank range + finrank ker = card ι, so by Submodule.finrank_sup_add_finrank_inf_eq the sup has full finrank and equals ⊤ (Submodule.eq_top_of_finrank_eq). Mathlib only has the 'eventually' version (LinearMap.eventually_isCompl_ker_pow_range_pow); this pins the exponent to card ι.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_fitting_range_inter_ker_pow_card",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "2462340302",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsCompl (LinearMap.range (A ^ Fintype.card ι).mulVecLin) (LinearMap.ker (A ^ Fintype.card ι).mulVecLin)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:23:34+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:31:09+0800"
+}

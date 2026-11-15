@@ -1,0 +1,19 @@
+{
+  "name": "arith_even_gt_46_sum_two_abundant",
+  "statement": "(n : ℕ) (he : Even n) (hn : 46 < n) : ∃ a b : ℕ, a.Abundant ∧ b.Abundant ∧ a + b = n",
+  "closed": "∀ (n : ℕ) (he : Even n) (hn : 46 < n), ∃ a b : ℕ, a.Abundant ∧ b.Abundant ∧ a + b = n",
+  "informal": "Every even integer greater than 46 is a sum of two abundant numbers — Uses Mathlib2.ab_perfect_mul_abundant with Mathlib2.ab_perfect_six at the key step: every multiple 6k with k > 1 is abundant; split n mod 6: n = 12 + (n-12), n = 20 + (n-20), or n = 40 + (n-40) with 20, 40 abundant and the other summand a multiple of 6 that is ≥ 12.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1656323532",
+  "type": "∀ (n : ℕ), Even n → 46 < n → ∃ a b, a.Abundant ∧ b.Abundant ∧ a + b = n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:45:10+0800",
+  "status": "proved",
+  "claimed_by": "prover_aa",
+  "claimed_at": "2026-11-15T07:58:14+0800",
+  "closed_by": "prover_aa",
+  "finished_at": "2026-11-15T07:58:58+0800"
+}

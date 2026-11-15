@@ -1,0 +1,19 @@
+{
+  "name": "p3_aux_period",
+  "statement": "(n k i : ℕ) (h2 : 2 ∣ n) : Nat.fib (i + 2 * n * k) ≡ Nat.fib i [MOD Nat.fib n]",
+  "closed": "∀ (n k i : ℕ) (h2 : 2 ∣ n), Nat.fib (i + 2 * n * k) ≡ Nat.fib i [MOD Nat.fib n]",
+  "informal": "auxiliary: for even n, 2n is a period of Fibonacci mod F_n",
+  "origin": "conjecture",
+  "source": "arXiv:2504.09938 auxiliary to Proposition 2 / Theorem 2",
+  "original": "",
+  "proposed_by": "paper_3",
+  "hash": "658649022",
+  "type": "∀ (n k i : ℕ), 2 ∣ n → Nat.fib (i + 2 * n * k) ≡ Nat.fib i [MOD Nat.fib n]",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:45+0800",
+  "status": "proved",
+  "claimed_by": "paper_3",
+  "claimed_at": "2026-11-15T02:23:55+0800",
+  "closed_by": "paper_3",
+  "finished_at": "2026-11-15T02:25:00+0800"
+}

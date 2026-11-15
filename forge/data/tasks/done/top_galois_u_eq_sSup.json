@@ -1,0 +1,19 @@
+{
+  "name": "top_galois_u_eq_sSup",
+  "statement": "{α β : Type*} [CompleteLattice α] [CompleteLattice β] (l : α → β) (u : β → α) (gc : GaloisConnection l u) (b : β) : u b = sSup {a : α | l a ≤ b}",
+  "closed": "∀ {α β : Type*} [CompleteLattice α] [CompleteLattice β] (l : α → β) (u : β → α) (gc : GaloisConnection l u) (b : β), u b = sSup {a : α | l a ≤ b}",
+  "informal": "The upper adjoint of a Galois connection between complete lattices is given by u b = sSup {a | l a ≤ b} — the set equals Set.Iic (u b) by the adjunction, whose supremum is u b.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "3688348961",
+  "type": "∀ {α : Type u_1} {β : Type u_2} [inst : CompleteLattice α] [inst_1 : CompleteLattice β] (l : α → β) (u : β → α), GaloisConnection l u → ∀ (b : β), u b = sSup {a | l a ≤ b}",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:00+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:27:19+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:27:38+0800"
+}

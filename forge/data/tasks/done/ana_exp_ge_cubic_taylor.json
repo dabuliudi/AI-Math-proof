@@ -1,0 +1,19 @@
+{
+  "name": "ana_exp_ge_cubic_taylor",
+  "statement": "(x : ℝ) : 1 + x + x ^ 2 / 2 + x ^ 3 / 6 ≤ Real.exp x",
+  "closed": "∀ (x : ℝ), 1 + x + x ^ 2 / 2 + x ^ 3 / 6 ≤ Real.exp x",
+  "informal": "The cubic Taylor polynomial of exp is a lower bound on all of ℝ (odd degree) — g = exp - T3 has g' = exp - T2 ≥ ... ; iterate: exp - (1+x) ≥ 0 everywhere, so exp - T2 is increasing with zero at 0, so exp - T3 has a minimum 0 at 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "1036274811",
+  "type": "∀ (x : ℝ), 1 + x + x ^ 2 / 2 + x ^ 3 / 6 ≤ Real.exp x",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:02+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_2",
+  "claimed_at": "2026-11-15T01:33:04+0800",
+  "closed_by": "r4_prover_2",
+  "finished_at": "2026-11-15T01:34:12+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "alg_isunit_one_sub_mul_comm",
+  "statement": "(R : Type*) [Ring R] (a b : R) (h : IsUnit (1 - a * b)) : IsUnit (1 - b * a)",
+  "closed": "∀ (R : Type*) [Ring R] (a b : R) (h : IsUnit (1 - a * b)), IsUnit (1 - b * a)",
+  "informal": "In any ring, if 1 - ab is a unit then so is 1 - ba — if c is the inverse of 1 - ab then 1 + b*c*a is a two-sided inverse of 1 - ba.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "2753333422",
+  "type": "∀ (R : Type u_1) [inst : Ring R] (a b : R), IsUnit (1 - a * b) → IsUnit (1 - b * a)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:36+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_6",
+  "claimed_at": "2026-11-15T01:53:16+0800",
+  "closed_by": "r4_prover_6",
+  "finished_at": "2026-11-15T01:53:41+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arith_two_mul_totient_eq_self_iff",
+  "statement": "(n : ℕ) (hn : 0 < n) : 2 * n.totient = n ↔ ∃ k : ℕ, n = 2 ^ (k + 1)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), 2 * n.totient = n ↔ ∃ k : ℕ, n = 2 ^ (k + 1)",
+  "informal": "φ(n) = n/2 iff n is a power of 2 with n ≥ 2 — n must be even; write n = 2^a m with m odd, then φ(n) = 2^(a-1) φ(m) so φ(m) = m forcing m = 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "1682764621",
+  "type": "∀ (n : ℕ), 0 < n → (2 * n.totient = n ↔ ∃ k, n = 2 ^ (k + 1))",
+  "attempts": [],
+  "created_at": "2026-11-15T07:41:45+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T07:52:15+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T07:52:24+0800"
+}

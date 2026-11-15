@@ -1,0 +1,19 @@
+{
+  "name": "alg_center_index_not_prime",
+  "statement": "(G : Type*) [Group G] : ¬ (Subgroup.center G).index.Prime",
+  "closed": "∀ (G : Type*) [Group G], ¬ (Subgroup.center G).index.Prime",
+  "informal": "The index of the center of a group is never a prime — if [G : Z(G)] = p then G/Z(G) is cyclic, so G is abelian and the index is 1.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_alg",
+  "hash": "2236723153",
+  "type": "∀ (G : Type u_1) [inst : Group G], ¬Nat.Prime (Subgroup.center G).index",
+  "attempts": [],
+  "created_at": "2026-11-15T01:28:34+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_1",
+  "claimed_at": "2026-11-15T01:32:48+0800",
+  "closed_by": "r4_prover_1",
+  "finished_at": "2026-11-15T01:33:19+0800"
+}

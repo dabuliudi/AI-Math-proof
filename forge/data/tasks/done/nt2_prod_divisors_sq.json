@@ -1,0 +1,19 @@
+{
+  "name": "nt2_prod_divisors_sq",
+  "statement": "(n : ℕ) : (∏ d ∈ Nat.divisors n, d) ^ 2 = n ^ (Nat.divisors n).card",
+  "closed": "∀ (n : ℕ), (∏ d ∈ Nat.divisors n, d) ^ 2 = n ^ (Nat.divisors n).card",
+  "informal": "The square of the product of the divisors of n equals n^{d(n)}.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_nt2",
+  "hash": "1018160449",
+  "type": "∀ (n : ℕ), (∏ d ∈ n.divisors, d) ^ 2 = n ^ n.divisors.card",
+  "attempts": [],
+  "created_at": "2026-11-15T00:35:48+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_d",
+  "claimed_at": "2026-11-15T00:50:19+0800",
+  "closed_by": "r2_prover_d",
+  "finished_at": "2026-11-15T00:50:37+0800"
+}

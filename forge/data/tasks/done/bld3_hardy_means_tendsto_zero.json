@@ -1,0 +1,19 @@
+{
+  "name": "bld3_hardy_means_tendsto_zero",
+  "statement": "(a : ℕ → ℝ) (ha : Summable (fun k : ℕ => a k ^ 2)) : Filter.Tendsto (fun k : ℕ => (∑ i ∈ Finset.range (k + 1), a i) / ((k : ℝ) + 1)) Filter.atTop (nhds 0)",
+  "closed": "∀ (a : ℕ → ℝ) (ha : Summable (fun k : ℕ => a k ^ 2)), Filter.Tendsto (fun k : ℕ => (∑ i ∈ Finset.range (k + 1), a i) / ((k : ℝ) + 1)) Filter.atTop (nhds 0)",
+  "informal": "Uses Mathlib2.bld2_hardy_inequality_tsum: by Hardy the squares of the Cesàro means are summable, so they tend to 0, hence so do the means (continuity of sqrt / abs).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_hardy_inequality_tsum",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1475198973",
+  "type": "∀ (a : ℕ → ℝ), (Summable fun k => a k ^ 2) → Filter.Tendsto (fun k => (∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) Filter.atTop (nhds 0)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:15:06+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_4",
+  "claimed_at": "2026-11-15T03:26:56+0800",
+  "closed_by": "r8_prover_4",
+  "finished_at": "2026-11-15T03:27:14+0800"
+}

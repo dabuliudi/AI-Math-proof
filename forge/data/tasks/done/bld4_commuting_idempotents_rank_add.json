@@ -1,0 +1,19 @@
+{
+  "name": "bld4_commuting_idempotents_rank_add",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A) : (A + B).rank + (A * B).rank = A.rank + B.rank",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A), (A + B).rank + (A * B).rank = A.rank + B.rank",
+  "informal": "Uses Mathlib2.bld2_commuting_idempotents_rank_join: A + B = (A + B − AB)(1 + AB), and 1 + AB is invertible with inverse 1 − (1/2)AB because (AB)^2 = AB (char ≠ 2); multiplying by a unit preserves rank, so rank(A + B) = rank(A + B − AB), and the cited join formula finishes.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_commuting_idempotents_rank_join",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "1664329049",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → A * B = B * A → (A + B).rank + (A * B).rank = A.rank + B.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T06:57:24+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:05:42+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:06:18+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld2_triangle_free_min_degree_le_half",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.CliqueFree 3) (d : ℕ) (hd : ∀ v : V, d ≤ G.degree v) : 2 * d ≤ Fintype.card V",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.CliqueFree 3) (d : ℕ) (hd : ∀ v : V, d ≤ G.degree v), 2 * d ≤ Fintype.card V",
+  "informal": "Uses Mathlib2.comb_degree_add_degree_le_of_triangle_free: if d = 0 trivial; otherwise a vertex v has a neighbour u and 2d ≤ deg u + deg v ≤ card V.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.comb_degree_add_degree_le_of_triangle_free",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "2719601079",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] [Nonempty V], G.CliqueFree 3 → ∀ (d : ℕ), (∀ (v : V), d ≤ G.degree v) → 2 * d ≤ Fintype.card V",
+  "attempts": [],
+  "created_at": "2026-11-15T02:51:43+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_3",
+  "claimed_at": "2026-11-15T02:53:22+0800",
+  "closed_by": "r7_prover_3",
+  "finished_at": "2026-11-15T02:53:52+0800"
+}

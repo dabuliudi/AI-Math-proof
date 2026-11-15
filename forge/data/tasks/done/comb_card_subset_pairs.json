@@ -1,0 +1,19 @@
+{
+  "name": "comb_card_subset_pairs",
+  "statement": "(n : ℕ) : ((Finset.univ : Finset (Finset (Fin n) × Finset (Fin n))).filter (fun p => p.1 ⊆ p.2)).card = 3 ^ n",
+  "closed": "∀ (n : ℕ), ((Finset.univ : Finset (Finset (Fin n) × Finset (Fin n))).filter (fun p => p.1 ⊆ p.2)).card = 3 ^ n",
+  "informal": "The number of pairs A ⊆ B ⊆ [n] is 3^n — group by B: ∑_B 2^|B| = ∑_k C(n,k)2^k = 3^n; or biject with functions Fin n → Fin 3.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_comb",
+  "hash": "2890091008",
+  "type": "∀ (n : ℕ), {p | p.1 ⊆ p.2}.card = 3 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T01:37:15+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_7",
+  "claimed_at": "2026-11-15T01:58:46+0800",
+  "closed_by": "r4_prover_7",
+  "finished_at": "2026-11-15T01:59:04+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld3_commuting_idempotents_rank_sub",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A) : Matrix.rank (A - B) + 2 * Matrix.rank (A * B) = Matrix.rank A + Matrix.rank B",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : A * B = B * A), Matrix.rank (A - B) + 2 * Matrix.rank (A * B) = Matrix.rank A + Matrix.rank B",
+  "informal": "Uses Mathlib2.bld_idempotent_sum_rank and Mathlib2.bld2_commuting_idempotents_rank_join: P = A - AB and Q = B - AB are orthogonal idempotents with A = AB + P, B = AB + Q, so rank P = rank A - rank AB and rank Q = rank B - rank AB; (P - Q)^2 = P + Q is idempotent of rank rank P + rank Q, which squeezes rank (A - B) = rank (P - Q) between rank (P + Q) and rank P + rank Q.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_idempotent_sum_rank, Mathlib2.bld2_commuting_idempotents_rank_join",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "320423540",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → A * B = B * A → (A - B).rank + 2 * (A * B).rank = A.rank + B.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T03:10:27+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_1",
+  "claimed_at": "2026-11-15T03:16:39+0800",
+  "closed_by": "r8_prover_1",
+  "finished_at": "2026-11-15T03:17:27+0800"
+}

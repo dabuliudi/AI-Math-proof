@@ -1,0 +1,19 @@
+{
+  "name": "lib_polynomial_natDegree_radical_eq_card_roots_toFinset",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [IsAlgClosed k] (p : Polynomial k) (hp : p ≠ 0) : (UniqueFactorizationMonoid.radical p).natDegree = p.roots.toFinset.card",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [IsAlgClosed k] (p : Polynomial k) (hp : p ≠ 0), (UniqueFactorizationMonoid.radical p).natDegree = p.roots.toFinset.card",
+  "informal": "promoted from Mathlib2.poly_abc_distinct_roots_complex_aux1 (strengthened from ≤ to =): over an algebraically closed field the degree of the radical of a nonzero polynomial is its number of distinct roots.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "2750989633",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [IsAlgClosed k] (p : Polynomial k), p ≠ 0 → (UniqueFactorizationMonoid.radical p).natDegree = p.roots.toFinset.card",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:55+0800",
+  "status": "proved",
+  "claimed_by": "curator_3",
+  "claimed_at": "2026-11-15T07:48:45+0800",
+  "closed_by": "curator_3",
+  "finished_at": "2026-11-15T07:50:13+0800"
+}

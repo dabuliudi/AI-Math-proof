@@ -1,0 +1,19 @@
+{
+  "name": "lib_matrix_charpoly_eq_X_pow_of_isNilpotent",
+  "statement": "(R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A) : A.charpoly = Polynomial.X ^ Fintype.card ι",
+  "closed": "∀ (R : Type*) [CommRing R] [IsReduced R] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι R) (h : IsNilpotent A), A.charpoly = Polynomial.X ^ Fintype.card ι",
+  "informal": "The characteristic polynomial of a nilpotent square matrix over a reduced commutative ring is X^n (n = size). Promoted from the inline first step of Mathlib2.gen_lin_nilpotent_pow_card_reduced (also re-derived in gen_lin_nilpotent_det_one_add_reduced).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.gen_lin_nilpotent_pow_card_reduced",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2168322315",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] [IsReduced R] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι R), IsNilpotent A → A.charpoly = Polynomial.X ^ Fintype.card ι",
+  "attempts": [],
+  "created_at": "2026-11-15T03:04:01+0800",
+  "status": "proved",
+  "claimed_by": "curator_1",
+  "claimed_at": "2026-11-15T03:06:39+0800",
+  "closed_by": "curator_1",
+  "finished_at": "2026-11-15T03:06:48+0800"
+}

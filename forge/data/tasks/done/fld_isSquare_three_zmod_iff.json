@@ -1,0 +1,19 @@
+{
+  "name": "fld_isSquare_three_zmod_iff",
+  "statement": "(p : ℕ) [Fact p.Prime] (hp : 3 < p) : IsSquare (3 : ZMod p) ↔ p % 12 = 1 ∨ p % 12 = 11",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (hp : 3 < p), IsSquare (3 : ZMod p) ↔ p % 12 = 1 ∨ p % 12 = 11",
+  "informal": "3 is a quadratic residue mod a prime p > 3 iff p ≡ ±1 (mod 12) — quadratic reciprocity (ZMod.exists_sq_eq_prime_iff_of_mod_four_eq_one / _three) reduces to whether p is a square mod 3, i.e. p ≡ 1 mod 3, with a sign flip when p ≡ 3 mod 4; combine residues mod 4 and mod 3.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2771706045",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], 3 < p → (IsSquare 3 ↔ p % 12 = 1 ∨ p % 12 = 11)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:18:09+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:25:35+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:30:02+0800"
+}

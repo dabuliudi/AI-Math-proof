@@ -1,0 +1,19 @@
+{
+  "name": "bld3_pell_five_neg_one_solutions",
+  "statement": "(x y : ℕ) (h : x ^ 2 + 1 = 5 * y ^ 2) : ∃ n : ℕ, 2 * y = Nat.fib (6 * n + 3) ∧ 2 * x = p3_lucas (6 * n + 3)",
+  "closed": "∀ (x y : ℕ) (h : x ^ 2 + 1 = 5 * y ^ 2), ∃ n : ℕ, 2 * y = Nat.fib (6 * n + 3) ∧ 2 * x = p3_lucas (6 * n + 3)",
+  "informal": "Uses Mathlib2.bld2_fib_odd_index_iff_five_sq_sub_four and Mathlib2.bld2_lucas_sq_sub_five_fib_sq: (2x)^2 + 4 = 5 (2y)^2, so 2y = fib (2m+1) and 2x = L_(2m+1) by the odd-index description and the Lucas–Fibonacci identity; fib (2m+1) even forces 3 ∣ 2m+1, i.e. 2m+1 = 6n+3.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_fib_odd_index_iff_five_sq_sub_four, Mathlib2.bld2_lucas_sq_sub_five_fib_sq",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "167832710",
+  "type": "∀ (x y : ℕ), x ^ 2 + 1 = 5 * y ^ 2 → ∃ n, 2 * y = Nat.fib (6 * n + 3) ∧ 2 * x = Mathlib2.p3_lucas (6 * n + 3)",
+  "attempts": [],
+  "created_at": "2026-11-15T03:12:38+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:15:31+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:15:56+0800"
+}

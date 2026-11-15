@@ -1,0 +1,19 @@
+{
+  "name": "an2_nesbitt_general",
+  "statement": "(n : ℕ) (a : ℕ → ℝ) (ha : ∀ i, 0 < a i) : ((n : ℝ) + 2) / ((n : ℝ) + 1) ≤ ∑ i ∈ Finset.range (n + 2), a i / (∑ j ∈ Finset.range (n + 2), a j - a i)",
+  "closed": "∀ (n : ℕ) (a : ℕ → ℝ) (ha : ∀ i, 0 < a i), ((n : ℝ) + 2) / ((n : ℝ) + 1) ≤ ∑ i ∈ Finset.range (n + 2), a i / (∑ j ∈ Finset.range (n + 2), a j - a i)",
+  "informal": "Nesbitt's inequality for N = n+2 positive reals with sum S: sum a_i/(S - a_i) ≥ N/(N-1). Generalizes Mathlib2.an_nesbitt (n = 1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_an2",
+  "hash": "3488983534",
+  "type": "∀ (n : ℕ) (a : ℕ → ℝ), (∀ (i : ℕ), 0 < a i) → (↑n + 2) / (↑n + 1) ≤ ∑ i ∈ Finset.range (n + 2), a i / (∑ j ∈ Finset.range (n + 2), a j - a i)",
+  "attempts": [],
+  "created_at": "2026-11-15T00:27:53+0800",
+  "status": "proved",
+  "claimed_by": "r2_prover_b",
+  "claimed_at": "2026-11-15T00:45:32+0800",
+  "closed_by": "r2_prover_b",
+  "finished_at": "2026-11-15T00:46:32+0800"
+}

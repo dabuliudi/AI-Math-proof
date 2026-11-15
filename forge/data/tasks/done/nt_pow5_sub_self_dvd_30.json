@@ -1,0 +1,18 @@
+{
+  "name": "nt_pow5_sub_self_dvd_30",
+  "statement": "(n : ℤ) : 30 ∣ n ^ 5 - n",
+  "closed": "∀ (n : ℤ), 30 ∣ n ^ 5 - n",
+  "informal": "n^5 - n is divisible by 30 for every integer n.",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_nt",
+  "hash": "497118922",
+  "type": "∀ (n : ℤ), 30 ∣ n ^ 5 - n",
+  "attempts": [],
+  "created_at": "2026-11-15T00:11:17+0800",
+  "status": "proved",
+  "claimed_by": "prover_2",
+  "claimed_at": "2026-11-15T00:14:02+0800",
+  "closed_by": "prover_2",
+  "finished_at": "2026-11-15T00:14:28+0800"
+}

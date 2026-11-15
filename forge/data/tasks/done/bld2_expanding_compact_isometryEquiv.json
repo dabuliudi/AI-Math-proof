@@ -1,0 +1,19 @@
+{
+  "name": "bld2_expanding_compact_isometryEquiv",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)) : ∃ e : X ≃ᵢ X, ∀ x : X, e x = f x",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] (f : X → X) (hf : ∀ x y : X, dist x y ≤ dist (f x) (f y)), ∃ e : X ≃ᵢ X, ∀ x : X, e x = f x",
+  "informal": "Uses Mathlib2.top_expanding_compact_isometry and Mathlib2.top_isometry_compact_surjective: an expanding self-map of a compact metric space is an isometry, hence surjective; with injectivity of isometries this gives a bijective isometry, packaged as an IsometryEquiv.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.top_expanding_compact_isometry, Mathlib2.top_isometry_compact_surjective",
+  "original": "",
+  "proposed_by": "conj_build2",
+  "hash": "3955096849",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] (f : X → X), (∀ (x y : X), dist x y ≤ dist (f x) (f y)) → ∃ e, ∀ (x : X), e x = f x",
+  "attempts": [],
+  "created_at": "2026-11-15T02:49:48+0800",
+  "status": "proved",
+  "claimed_by": "r7_prover_1",
+  "claimed_at": "2026-11-15T02:56:17+0800",
+  "closed_by": "r7_prover_1",
+  "finished_at": "2026-11-15T02:56:40+0800"
+}

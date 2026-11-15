@@ -1,0 +1,19 @@
+{
+  "name": "bld5_prime_dvd_pred_of_card_prime_mul_prime",
+  "statement": "(p q : ℕ) [Fact p.Prime] (hq : q.Prime) (hpq : p < q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hna : ∃ a b : G, a * b ≠ b * a) : p ∣ q - 1",
+  "closed": "∀ (p q : ℕ) [Fact p.Prime] (hq : q.Prime) (hpq : p < q) (G : Type*) [Group G] (hG : Nat.card G = p * q) (hna : ∃ a b : G, a * b ≠ b * a), p ∣ q - 1",
+  "informal": "Uses Mathlib2.bld3_card_sylow_of_card_prime_mul_prime: a non-abelian group of order pq (p < q) has exactly q Sylow p-subgroups by the bld3 theorem; Sylow's third theorem (card_sylow_modEq_one) gives q ≡ 1 mod p, i.e. p ∣ q − 1 ((Nat.modEq_iff_dvd' hq.one_le).mp after symmetry).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_card_sylow_of_card_prime_mul_prime",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "3839829712",
+  "type": "∀ (p q : ℕ) [Fact (Nat.Prime p)], Nat.Prime q → p < q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → (∃ a b, a * b ≠ b * a) → p ∣ q - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:49+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:28:40+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:30:46+0800"
+}

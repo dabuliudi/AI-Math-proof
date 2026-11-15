@@ -1,0 +1,19 @@
+{
+  "name": "geo_prod_sin_pi_mul_div",
+  "statement": "(n : ℕ) : ∏ k ∈ Finset.range n, Real.sin (((k : ℝ) + 1) * Real.pi / ((n : ℝ) + 1)) = ((n : ℝ) + 1) / 2 ^ n",
+  "closed": "∀ (n : ℕ), ∏ k ∈ Finset.range n, Real.sin (((k : ℝ) + 1) * Real.pi / ((n : ℝ) + 1)) = ((n : ℝ) + 1) / 2 ^ n",
+  "informal": "∏_{k=1}^{m−1} sin(kπ/m) = m / 2^{m−1} (with m = n+1) — from ∏_{k=1}^{m−1}(1 − ζ^k) = m for ζ = exp(2πi/m) (IsPrimitiveRoot.prod_one_sub_pow_eq_order), take norms and use |1 − e^{2iθ}| = 2 sin θ for θ ∈ [0, π].",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "2964929033",
+  "type": "∀ (n : ℕ), ∏ k ∈ Finset.range n, Real.sin ((↑k + 1) * Real.pi / (↑n + 1)) = (↑n + 1) / 2 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:34+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:21:59+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:22:58+0800"
+}

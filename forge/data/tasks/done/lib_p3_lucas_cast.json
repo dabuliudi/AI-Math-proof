@@ -1,0 +1,19 @@
+{
+  "name": "lib_p3_lucas_cast",
+  "statement": "(R : Type*) [Ring R] (n : ℕ) : ((p3_lucas n : ℕ) : R) = 2 * (Nat.fib (n + 1) : R) - (Nat.fib n : R)",
+  "closed": "∀ (R : Type*) [Ring R] (n : ℕ), ((p3_lucas n : ℕ) : R) = 2 * (Nat.fib (n + 1) : R) - (Nat.fib n : R)",
+  "informal": "Cast formula for the Lucas numbers L_n = 2 F_(n+1) - F_n (Mathlib2.p3_lucas) in an arbitrary ring: the truncated subtraction in the definition is exact. Promoted and generalised from Mathlib2.p3_remark3_aux1 (the case R = ℤ; re-derived in bld2_lucas_sq_sub_five_fib_sq, bld2_pell_five_solutions_lucas, bld3_pell_five_neg_four_solutions_lucas).",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.p3_remark3_aux1",
+  "original": "",
+  "proposed_by": "curator_2",
+  "hash": "2974094687",
+  "type": "∀ (R : Type u_1) [inst : Ring R] (n : ℕ), ↑(Mathlib2.p3_lucas n) = 2 * ↑(Nat.fib (n + 1)) - ↑(Nat.fib n)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:54:56+0800",
+  "status": "proved",
+  "claimed_by": "curator_2",
+  "claimed_at": "2026-11-15T06:58:48+0800",
+  "closed_by": "curator_2",
+  "finished_at": "2026-11-15T06:59:04+0800"
+}

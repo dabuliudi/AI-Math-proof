@@ -1,0 +1,19 @@
+{
+  "name": "bld6_poly_mul_add_one_eq_pow_const",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 2 ≤ n) (f h : Polynomial k) (heq : f * (f + 1) = h ^ n) : f.natDegree = 0",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 2 ≤ n) (f h : Polynomial k) (heq : f * (f + 1) = h ^ n), f.natDegree = 0",
+  "informal": "Uses Mathlib2.poly_no_consecutive_powerful: f and f+1 are coprime, so in the UFD k[X] any irreducible p dividing f has p-adic multiplicity in f equal to its multiplicity in h^n, a multiple of n ≥ 2, hence p^2 ∣ f; same for f+1. Both powerfulness hypotheses of poly_no_consecutive_powerful hold, giving natDegree f = 0 (last step).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_no_consecutive_powerful",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "1606038140",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 2 ≤ n → ∀ (f h : Polynomial k), f * (f + 1) = h ^ n → f.natDegree = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:37:53+0800"
+}

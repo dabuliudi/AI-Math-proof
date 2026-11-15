@@ -1,0 +1,19 @@
+{
+  "name": "bld3_pow_prime_mem_center_of_card_prime_cube",
+  "statement": "(p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (g : G) : g ^ p ∈ Subgroup.center G",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (g : G), g ^ p ∈ Subgroup.center G",
+  "informal": "Uses Mathlib2.bld_center_card_of_card_prime_cube and Mathlib2.bld2_commutator_eq_center_of_card_prime_cube: the centre has order p so G/Z has order p^2 and is not cyclic (else G abelian), hence every element of G/Z has order dividing p, i.e. g^p ∈ Z.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_center_card_of_card_prime_cube, Mathlib2.bld2_commutator_eq_center_of_card_prime_cube",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "2212824967",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → ∀ (g : G), g ^ p ∈ Subgroup.center G",
+  "attempts": [],
+  "created_at": "2026-11-15T03:13:42+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_3",
+  "claimed_at": "2026-11-15T03:19:30+0800",
+  "closed_by": "r8_prover_3",
+  "finished_at": "2026-11-15T03:20:01+0800"
+}

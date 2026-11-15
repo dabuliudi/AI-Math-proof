@@ -1,0 +1,19 @@
+{
+  "name": "bld5_hardy_sqrt_two_rec_defect_means",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) : ∑' k : ℕ, ((∑ i ∈ Finset.range (k + 1), (2 - a i)) / ((k : ℝ) + 1)) ^ 2 ≤ 4 * Real.pi ^ 4 / 15",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)), ∑' k : ℕ, ((∑ i ∈ Finset.range (k + 1), (2 - a i)) / ((k : ℝ) + 1)) ^ 2 ≤ 4 * Real.pi ^ 4 / 15",
+  "informal": "Uses Mathlib2.bld2_hardy_inequality_tsum, Mathlib2.bld_sqrt_two_rec_rate and Mathlib2.ana_sqrt_two_rec_lt_two: by ana_sqrt_two_rec_lt_two and bld_sqrt_two_rec_rate, 0 ≤ 2 − a_k ≤ π²/4^(k+1), so (2 − a_k)² ≤ π⁴/16^(k+1), which is summable (geometric) with sum π⁴/15 (tsum_geometric_of_lt_one, tsum_le_tsum). Hardy's inequality bld2_hardy_inequality_tsum applied to the defect sequence bounds the left side by 4·∑'(2 − a_k)² ≤ 4π⁴/15.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_hardy_inequality_tsum, Mathlib2.bld_sqrt_two_rec_rate, Mathlib2.ana_sqrt_two_rec_lt_two",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "356955477",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∑' (k : ℕ), ((∑ i ∈ Finset.range (k + 1), (2 - a i)) / (↑k + 1)) ^ 2 ≤ 4 * Real.pi ^ 4 / 15",
+  "attempts": [],
+  "created_at": "2026-11-15T07:25:23+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:27:07+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:28:36+0800"
+}

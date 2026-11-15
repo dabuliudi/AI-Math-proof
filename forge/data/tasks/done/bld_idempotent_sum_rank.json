@@ -1,0 +1,19 @@
+{
+  "name": "bld_idempotent_sum_rank",
+  "statement": "(K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : (A + B) * (A + B) = A + B) : Matrix.rank (A + B) = Matrix.rank A + Matrix.rank B",
+  "closed": "∀ (K : Type*) [Field K] [CharZero K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K) (hA : A * A = A) (hB : B * B = B) (hAB : (A + B) * (A + B) = A + B), Matrix.rank (A + B) = Matrix.rank A + Matrix.rank B",
+  "informal": "Uses Mathlib2.gen_lin_idempotent_trace_eq_rank_field three times: rank(A+B) = tr(A+B) = tr A + tr B = rank A + rank B in K, then Nat.cast injectivity in characteristic zero.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.gen_lin_idempotent_trace_eq_rank_field",
+  "original": "",
+  "proposed_by": "conj_build",
+  "hash": "1956030947",
+  "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → (A + B) * (A + B) = A + B → (A + B).rank = A.rank + B.rank",
+  "attempts": [],
+  "created_at": "2026-11-15T02:33:33+0800",
+  "status": "proved",
+  "claimed_by": "r6_prover_2",
+  "claimed_at": "2026-11-15T02:36:46+0800",
+  "closed_by": "r6_prover_2",
+  "finished_at": "2026-11-15T02:37:06+0800"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "lib_finset_exists_cut_sum_ge_quarter",
+  "statement": "(V : Type) [DecidableEq V] (f : V → V → ℕ) (hsym : ∀ u v, f u v = f v u) (hirr : ∀ u, f u u = 0) (S : Finset V) : ∃ s : Finset V, s ⊆ S ∧ (∑ u ∈ S, ∑ v ∈ S, f u v) ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
+  "closed": "∀ (V : Type) [DecidableEq V] (f : V → V → ℕ) (hsym : ∀ u v, f u v = f v u) (hirr : ∀ u, f u u = 0) (S : Finset V), ∃ s : Finset V, s ⊆ S ∧ (∑ u ∈ S, ∑ v ∈ S, f u v) ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
+  "informal": "Weighted max-cut bound: for a symmetric, zero-diagonal weight f on a finset S there is a cut (s, S \\ s) carrying at least half of the total weight (ordered-pair sum over S×S ≤ 4 × the one-directional cut sum). Promoted from Mathlib2.comb_exists_cut_half_edges_aux1.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.comb_exists_cut_half_edges_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "184427284",
+  "type": "∀ (V : Type) [inst : DecidableEq V] (f : V → V → ℕ), (∀ (u v : V), f u v = f v u) → (∀ (u : V), f u u = 0) → ∀ (S : Finset V), ∃ s ⊆ S, ∑ u ∈ S, ∑ v ∈ S, f u v ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
+  "attempts": [],
+  "created_at": "2026-11-15T03:06:08+0800",
+  "status": "known",
+  "known_as": "comb_exists_cut_half_edges_aux1 V f hsym hirr S"
+}

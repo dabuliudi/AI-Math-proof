@@ -1,0 +1,19 @@
+{
+  "name": "ms_flt_poly",
+  "statement": "{k : Type*} [Field k] (n : ℕ) (hn : 3 ≤ n) (chn : ¬ ringChar k ∣ n) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (heq : a ^ n + b ^ n = c ^ n) : a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "closed": "∀ {k : Type*} [Field k] (n : ℕ) (hn : 3 ≤ n) (chn : ¬ ringChar k ∣ n) (a b c : Polynomial k) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : IsCoprime a b) (hbc : IsCoprime b c) (hca : IsCoprime c a) (heq : a ^ n + b ^ n = c ^ n), a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "informal": "Fermat's Last Theorem for polynomials: for n ≥ 3 prime to char k, nonzero pairwise coprime solutions of a^n+b^n=c^n in k[t] are constants.",
+  "origin": "paper",
+  "source": "arXiv:2408.15180v2 Corollary 1, p.3",
+  "original": "Corollary 1 (Fermat's Last Theorem for Polynomials). Let k be any field. Let n ≥ 3 be any integer not divisible by the characteristic of k. Then any triple (a, b, c) of nonzero and pairwise coprime polynomials in k[t] satisfying a^n + b^n = c^n should be constants a, b, c ∈ k.",
+  "proposed_by": "paper_1",
+  "hash": "297628910",
+  "type": "∀ {k : Type u_1} [inst : Field k] (n : ℕ), 3 ≤ n → ¬ringChar k ∣ n → ∀ (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → IsCoprime a b → IsCoprime b c → IsCoprime c a → a ^ n + b ^ n = c ^ n → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T00:15:37+0800",
+  "status": "proved",
+  "claimed_by": "paper_1",
+  "claimed_at": "2026-11-15T00:18:56+0800",
+  "closed_by": "paper_1",
+  "finished_at": "2026-11-15T00:20:47+0800"
+}

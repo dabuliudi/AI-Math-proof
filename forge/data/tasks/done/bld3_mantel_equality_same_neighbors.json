@@ -1,0 +1,19 @@
+{
+  "name": "bld3_mantel_equality_same_neighbors",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (x y : V) (hxy : ¬ G.Adj x y) (z : V) : G.Adj x z ↔ G.Adj y z",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (x y : V) (hxy : ¬ G.Adj x y) (z : V), G.Adj x z ↔ G.Adj y z",
+  "informal": "Uses Mathlib2.bld2_mantel_equality_regular and Mathlib2.comb_degree_add_degree_le_of_triangle_free: all degrees are n/2; for an edge u v the neighbourhoods are disjoint of total size n so they partition V; if z ~ x then y lies in N(x) or N(z), the former is excluded, so y ~ z (the extremal graph is complete bipartite).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_mantel_equality_regular, Mathlib2.comb_degree_add_degree_le_of_triangle_free",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "835228642",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ∀ (x y : V), ¬G.Adj x y → ∀ (z : V), G.Adj x z ↔ G.Adj y z",
+  "attempts": [],
+  "created_at": "2026-11-15T03:14:30+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_2",
+  "claimed_at": "2026-11-15T03:16:49+0800",
+  "closed_by": "r8_prover_2",
+  "finished_at": "2026-11-15T03:17:14+0800"
+}

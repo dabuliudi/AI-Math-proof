@@ -1,0 +1,19 @@
+{
+  "name": "arith_sigma_mul_totient_lt_sq",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : ArithmeticFunction.sigma 1 n * n.totient < n ^ 2",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), ArithmeticFunction.sigma 1 n * n.totient < n ^ 2",
+  "informal": "σ(n)φ(n) < n² for n ≥ 2 — both sides multiplicative; on a prime power σ(p^a)φ(p^a) = p^(a-1)(p^(a+1)-1) < p^(2a); multiply over the factorization (strong induction splitting off ordCompl).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3970941632",
+  "type": "∀ (n : ℕ), 2 ≤ n → (ArithmeticFunction.sigma 1) n * n.totient < n ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T07:41:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T07:57:56+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T07:58:04+0800"
+}

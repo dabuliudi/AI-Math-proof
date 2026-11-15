@@ -1,0 +1,19 @@
+{
+  "name": "bld5_pell_five_four_prime_y",
+  "statement": "(x y : ℕ) (h : x ^ 2 = 5 * y ^ 2 + 4) (hy : y.Prime) : y = 3 ∧ x = 7",
+  "closed": "∀ (x y : ℕ) (h : x ^ 2 = 5 * y ^ 2 + 4) (hy : y.Prime), y = 3 ∧ x = 7",
+  "informal": "Uses Mathlib2.bld2_pell_five_solutions_lucas: it gives n with y = F_{2n}, x = L_{2n}. By Nat.fib_two_mul, y = F_n·L_n (p3_lucas n unfolds to 2F_{n+1} − F_n). For n ≥ 3 both factors exceed 1 (F_n ≥ 2, L_n ≥ 4), contradicting primality; n ≤ 1 gives y ≤ 1; so n = 2, y = F_4 = 3 and x = L_4 = 7.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_pell_five_solutions_lucas",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "4053011567",
+  "type": "∀ (x y : ℕ), x ^ 2 = 5 * y ^ 2 + 4 → Nat.Prime y → y = 3 ∧ x = 7",
+  "attempts": [],
+  "created_at": "2026-11-15T07:22:54+0800",
+  "status": "proved",
+  "claimed_by": "prover_ba",
+  "claimed_at": "2026-11-15T07:29:43+0800",
+  "closed_by": "prover_ba",
+  "finished_at": "2026-11-15T07:30:57+0800"
+}

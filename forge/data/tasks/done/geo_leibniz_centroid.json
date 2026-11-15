@@ -1,0 +1,19 @@
+{
+  "name": "geo_leibniz_centroid",
+  "statement": "{V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] {ι : Type*} (s : Finset ι) (x : ι → V) (p : V) : ∑ i ∈ s, ‖p - x i‖ ^ 2 = (s.card : ℝ) * ‖p - (s.card : ℝ)⁻¹ • ∑ j ∈ s, x j‖ ^ 2 + ∑ i ∈ s, ‖(s.card : ℝ)⁻¹ • ∑ j ∈ s, x j - x i‖ ^ 2",
+  "closed": "∀ {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] {ι : Type*} (s : Finset ι) (x : ι → V) (p : V), ∑ i ∈ s, ‖p - x i‖ ^ 2 = (s.card : ℝ) * ‖p - (s.card : ℝ)⁻¹ • ∑ j ∈ s, x j‖ ^ 2 + ∑ i ∈ s, ‖(s.card : ℝ)⁻¹ • ∑ j ∈ s, x j - x i‖ ^ 2",
+  "informal": "Leibniz (moment of inertia / parallel axis) identity: for the centroid g of points x_i, Σ|p − x_i|² = n|p − g|² + Σ|g − x_i|² — write p − x_i = (p − g) + (g − x_i), expand, and the cross term vanishes because Σ(g − x_i) = 0 (empty s is trivial).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "917174979",
+  "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] {ι : Type u_2} (s : Finset ι) (x : ι → V) (p : V), ∑ i ∈ s, ‖p - x i‖ ^ 2 = ↑s.card * ‖p - (↑s.card)⁻¹ • ∑ j ∈ s, x j‖ ^ 2 + ∑ i ∈ s, ‖(↑s.card)⁻¹ • ∑ j ∈ s, x j - x i‖ ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:20+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_5",
+  "claimed_at": "2026-11-15T02:30:39+0800",
+  "closed_by": "r5_prover_5",
+  "finished_at": "2026-11-15T02:30:47+0800"
+}

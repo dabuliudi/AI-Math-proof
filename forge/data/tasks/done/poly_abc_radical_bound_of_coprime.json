@@ -1,0 +1,19 @@
+{
+  "name": "poly_abc_radical_bound_of_coprime",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (a b : Polynomial k) (hab : IsCoprime a b) (ha : 0 < a.natDegree) : max a.natDegree b.natDegree + 1 ≤ (UniqueFactorizationMonoid.radical (a * b * (a + b))).natDegree",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (a b : Polynomial k) (hab : IsCoprime a b) (ha : 0 < a.natDegree), max a.natDegree b.natDegree + 1 ≤ (UniqueFactorizationMonoid.radical (a * b * (a + b))).natDegree",
+  "informal": "ABC for polynomials in two-variable form: coprime a, b in char 0 with a non-constant satisfy max(deg a, deg b) + 1 ≤ deg rad(ab(a+b)) — b ≠ 0 and a+b ≠ 0 follow from coprimality and deg a > 0; Uses Mathlib2.ms_mason_stothers_v2 with c = -(a+b) (derivative a ≠ 0 in char 0 kills the first alternative), and radical(a*b*(-(a+b))) = radical(a*b*(a+b)) by associatedness.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "4257972590",
+  "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [CharZero k] (a b : Polynomial k), IsCoprime a b → 0 < a.natDegree → max a.natDegree b.natDegree + 1 ≤ (UniqueFactorizationMonoid.radical (a * b * (a + b))).natDegree",
+  "attempts": [],
+  "created_at": "2026-11-15T07:15:31+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:22:21+0800"
+}

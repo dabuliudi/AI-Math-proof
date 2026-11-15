@@ -1,0 +1,19 @@
+{
+  "name": "nt_gcd_factorial_succ_add_one",
+  "statement": "(n : ℕ) : Nat.gcd (Nat.factorial n + 1) (Nat.factorial (n + 1) + 1) = 1",
+  "closed": "∀ (n : ℕ), Nat.gcd (Nat.factorial n + 1) (Nat.factorial (n + 1) + 1) = 1",
+  "informal": "[suspected false] n!+1 and (n+1)!+1 are always coprime (fails at n = 0, where both are 2).",
+  "origin": "conjecture",
+  "source": "",
+  "proposed_by": "conj_nt",
+  "hash": "3311111129",
+  "type": "∀ (n : ℕ), (n.factorial + 1).gcd ((n + 1).factorial + 1) = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T00:11:58+0800",
+  "counterexample": "===================\nFound a counter-example!\nn := 0\nissue: 2 = 1 does not hold\n(0 shrinks)\n-------------------",
+  "status": "disproved",
+  "claimed_by": "prover_2",
+  "claimed_at": "2026-11-15T00:15:23+0800",
+  "closed_by": "prover_2",
+  "finished_at": "2026-11-15T00:16:03+0800"
+}

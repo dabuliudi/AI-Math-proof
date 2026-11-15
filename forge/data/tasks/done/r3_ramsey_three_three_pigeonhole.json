@@ -1,0 +1,19 @@
+{
+  "name": "r3_ramsey_three_three_pigeonhole",
+  "statement": "(V : Type) [Fintype V] (h : 6 ≤ Fintype.card V) (G : SimpleGraph V) : ∃ v x y z : V, x ≠ y ∧ x ≠ z ∧ y ≠ z ∧ ((G.Adj v x ∧ G.Adj v y ∧ G.Adj v z) ∨ (Gᶜ.Adj v x ∧ Gᶜ.Adj v y ∧ Gᶜ.Adj v z))",
+  "closed": "∀ (V : Type) [Fintype V] (h : 6 ≤ Fintype.card V) (G : SimpleGraph V), ∃ v x y z : V, x ≠ y ∧ x ≠ z ∧ y ≠ z ∧ ((G.Adj v x ∧ G.Adj v y ∧ G.Adj v z) ∨ (Gᶜ.Adj v x ∧ Gᶜ.Adj v y ∧ Gᶜ.Adj v z))",
+  "informal": "Pigeonhole step of R(3,3)<=6 (hole 2 of the r3_ramsey_three_three skeleton; proposed by hand because sketch left an orphan child that blocks re-sketching): in a graph on >= 6 vertices some vertex v has three distinct neighbours or three distinct non-neighbours.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "r3_prover_2",
+  "hash": "2447799506",
+  "type": "∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ∃ v x y z, x ≠ y ∧ x ≠ z ∧ y ≠ z ∧ (G.Adj v x ∧ G.Adj v y ∧ G.Adj v z ∨ Gᶜ.Adj v x ∧ Gᶜ.Adj v y ∧ Gᶜ.Adj v z)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:09:04+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_2",
+  "claimed_at": "2026-11-15T01:09:16+0800",
+  "closed_by": "r3_prover_2",
+  "finished_at": "2026-11-15T01:09:26+0800"
+}

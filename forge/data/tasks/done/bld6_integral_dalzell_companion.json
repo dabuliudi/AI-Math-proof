@@ -1,0 +1,19 @@
+{
+  "name": "bld6_integral_dalzell_companion",
+  "statement": ": ∫ x in (0:ℝ)..1, x ^ 6 * (1 - x) ^ 4 / (1 + x ^ 2) = Real.pi - 22 / 7 + 1 / 630",
+  "closed": "∫ x in (0:ℝ)..1, x ^ 6 * (1 - x) ^ 4 / (1 + x ^ 2) = Real.pi - 22 / 7 + 1 / 630",
+  "informal": "Uses Mathlib2.calc_integral_dalzell and Mathlib2.calc_integral_beta_nat: x^6(1-x)^4/(1+x^2) = x^4(1-x)^4 - x^4(1-x)^4/(1+x^2) pointwise; split the integral (intervalIntegral.integral_sub), the first piece is 1/630 by calc_integral_beta_nat 4 4 and the second is 22/7 - π by calc_integral_dalzell.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_integral_dalzell, Mathlib2.calc_integral_beta_nat",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "749864201",
+  "type": "∫ (x : ℝ) in 0..1, x ^ 6 * (1 - x) ^ 4 / (1 + x ^ 2) = Real.pi - 22 / 7 + 1 / 630",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:35+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:34:42+0800"
+}

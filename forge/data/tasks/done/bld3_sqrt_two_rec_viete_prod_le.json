@@ -1,0 +1,19 @@
+{
+  "name": "bld3_sqrt_two_rec_viete_prod_le",
+  "statement": "(a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ) : ∏ i ∈ Finset.range n, a (i + 1) / 2 ≤ 2 / Real.pi + 2 * Real.pi / (3 * 4 ^ (n + 1))",
+  "closed": "∀ (a : ℕ → ℝ) (h0 : a 0 = 0) (h : ∀ n : ℕ, a (n + 1) = Real.sqrt (2 + a n)) (n : ℕ), ∏ i ∈ Finset.range n, a (i + 1) / 2 ≤ 2 / Real.pi + 2 * Real.pi / (3 * 4 ^ (n + 1))",
+  "informal": "Uses Mathlib2.bld_sqrt_two_rec_viete_prod and Mathlib2.bld2_sqrt_two_rec_viete_prod_gt: by the finite Viète product the product equals 1/(2^n sin x) with x = π/2^(n+1); sin x ≥ x - x^3/6 and 1/(1-t) ≤ 1 + 2t for t = x^2/6 ≤ 1/2 give the explicit O(4^-n) upper bound matching the library lower bound 2/π.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld_sqrt_two_rec_viete_prod, Mathlib2.bld2_sqrt_two_rec_viete_prod_gt",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "1240314370",
+  "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), ∏ i ∈ Finset.range n, a (i + 1) / 2 ≤ 2 / Real.pi + 2 * Real.pi / (3 * 4 ^ (n + 1))",
+  "attempts": [],
+  "created_at": "2026-11-15T03:12:53+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_3",
+  "claimed_at": "2026-11-15T03:15:29+0800",
+  "closed_by": "r8_prover_3",
+  "finished_at": "2026-11-15T03:16:26+0800"
+}

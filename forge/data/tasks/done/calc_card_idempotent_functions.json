@@ -1,0 +1,19 @@
+{
+  "name": "calc_card_idempotent_functions",
+  "statement": "(n : ℕ) : ((Finset.univ : Finset (Fin n → Fin n)).filter (fun f => ∀ i, f (f i) = f i)).card = ∑ k ∈ Finset.range (n + 1), n.choose k * k ^ (n - k)",
+  "closed": "∀ (n : ℕ), ((Finset.univ : Finset (Fin n → Fin n)).filter (fun f => ∀ i, f (f i) = f i)).card = ∑ k ∈ Finset.range (n + 1), n.choose k * k ^ (n - k)",
+  "informal": "Number of idempotent self-maps of an n-set is ∑ₖ C(n,k) k^(n−k) — classify by the image S (= fixed-point set) of size k; the n−k other points map arbitrarily into S.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3187883763",
+  "type": "∀ (n : ℕ), {f | ∀ (i : Fin n), f (f i) = f i}.card = ∑ k ∈ Finset.range (n + 1), n.choose k * k ^ (n - k)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:46:30+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T08:02:53+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T08:03:59+0800"
+}

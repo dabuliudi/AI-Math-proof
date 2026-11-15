@@ -1,0 +1,19 @@
+{
+  "name": "ab_preserved_mul",
+  "statement": "(f g : ℝ → ℝ) (A : Set ℝ) (hA : ∀ x ∈ A, ∀ y ∈ A, x * y ∈ A) (hf : f '' A ⊆ A) (hg : g '' A ⊆ A) : (fun x => f x * g x) '' A ⊆ A",
+  "closed": "∀ (f g : ℝ → ℝ) (A : Set ℝ) (hA : ∀ x ∈ A, ∀ y ∈ A, x * y ∈ A) (hf : f '' A ⊆ A) (hg : g '' A ⊆ A), (fun x => f x * g x) '' A ⊆ A",
+  "informal": "If A is closed under multiplication and f, g are preserved in A then f × g is preserved in A.",
+  "origin": "paper",
+  "source": "s40753-021-00140-1 p.28 Appendix 2 Task 4(b)",
+  "original": "Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all x,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved in A. (Here f × g = f(x) × g(x).)",
+  "proposed_by": "paper_2",
+  "hash": "1274648385",
+  "type": "∀ (f g : ℝ → ℝ) (A : Set ℝ), (∀ x ∈ A, ∀ y ∈ A, x * y ∈ A) → f '' A ⊆ A → g '' A ⊆ A → (fun x => f x * g x) '' A ⊆ A",
+  "attempts": [],
+  "created_at": "2026-11-15T01:02:13+0800",
+  "status": "proved",
+  "claimed_by": "paper_2",
+  "claimed_at": "2026-11-15T01:04:46+0800",
+  "closed_by": "paper_2",
+  "finished_at": "2026-11-15T01:04:56+0800"
+}

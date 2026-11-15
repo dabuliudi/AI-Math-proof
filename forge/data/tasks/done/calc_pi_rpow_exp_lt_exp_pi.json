@@ -1,0 +1,19 @@
+{
+  "name": "calc_pi_rpow_exp_lt_exp_pi",
+  "statement": ": Real.pi ^ Real.exp 1 < Real.exp Real.pi",
+  "closed": "Real.pi ^ Real.exp 1 < Real.exp Real.pi",
+  "informal": "π^e < e^π — log x / x is strictly decreasing for x ≥ e, or directly log π < π/e from log t ≤ t − 1 with t = π/e ≠ 1 (Real.log_lt_sub_one_of_pos).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3311424842",
+  "type": "Real.pi ^ Real.exp 1 < Real.exp Real.pi",
+  "attempts": [],
+  "created_at": "2026-11-15T07:42:24+0800",
+  "status": "proved",
+  "claimed_by": "prover_ca",
+  "claimed_at": "2026-11-15T08:04:12+0800",
+  "closed_by": "prover_ca",
+  "finished_at": "2026-11-15T08:04:21+0800"
+}

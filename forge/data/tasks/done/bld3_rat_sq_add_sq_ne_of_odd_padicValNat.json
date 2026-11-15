@@ -1,0 +1,19 @@
+{
+  "name": "bld3_rat_sq_add_sq_ne_of_odd_padicValNat",
+  "statement": "(p n : ℕ) (hp : p.Prime) (hp4 : p % 4 = 3) (hodd : Odd (padicValNat p n)) (x y : ℚ) : x ^ 2 + y ^ 2 ≠ (n : ℚ)",
+  "closed": "∀ (p n : ℕ) (hp : p.Prime) (hp4 : p % 4 = 3) (hodd : Odd (padicValNat p n)) (x y : ℚ), x ^ 2 + y ^ 2 ≠ (n : ℚ)",
+  "informal": "Uses Mathlib2.bld2_rat_sq_add_sq_ne_prime_mul_coprime: write n = p^(2k+1) m with p ∤ m; if x^2 + y^2 = n then (x/p^k)^2 + (y/p^k)^2 = p m, contradicting the library theorem (rational form of the two-squares obstruction).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_rat_sq_add_sq_ne_prime_mul_coprime",
+  "original": "",
+  "proposed_by": "conj_build3",
+  "hash": "4135108763",
+  "type": "∀ (p n : ℕ), Nat.Prime p → p % 4 = 3 → Odd (padicValNat p n) → ∀ (x y : ℚ), x ^ 2 + y ^ 2 ≠ ↑n",
+  "attempts": [],
+  "created_at": "2026-11-15T03:14:44+0800",
+  "status": "proved",
+  "claimed_by": "r8_prover_3",
+  "claimed_at": "2026-11-15T03:18:42+0800",
+  "closed_by": "r8_prover_3",
+  "finished_at": "2026-11-15T03:19:23+0800"
+}

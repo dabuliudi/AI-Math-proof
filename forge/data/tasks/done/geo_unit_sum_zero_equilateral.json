@@ -1,0 +1,19 @@
+{
+  "name": "geo_unit_sum_zero_equilateral",
+  "statement": "(a b c : ℂ) (ha : ‖a‖ = 1) (hb : ‖b‖ = 1) (hc : ‖c‖ = 1) (h : a + b + c = 0) : ‖a - b‖ = Real.sqrt 3 ∧ ‖b - c‖ = Real.sqrt 3 ∧ ‖c - a‖ = Real.sqrt 3",
+  "closed": "∀ (a b c : ℂ) (ha : ‖a‖ = 1) (hb : ‖b‖ = 1) (hc : ‖c‖ = 1) (h : a + b + c = 0), ‖a - b‖ = Real.sqrt 3 ∧ ‖b - c‖ = Real.sqrt 3 ∧ ‖c - a‖ = Real.sqrt 3",
+  "informal": "Three unit complex numbers with sum zero form an equilateral triangle of side √3 — ‖a+b‖² = ‖c‖² = 1 and the parallelogram law give ‖a−b‖² = 2+2−1 = 3; symmetric for the others.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "1556785197",
+  "type": "∀ (a b c : ℂ), ‖a‖ = 1 → ‖b‖ = 1 → ‖c‖ = 1 → a + b + c = 0 → ‖a - b‖ = √3 ∧ ‖b - c‖ = √3 ∧ ‖c - a‖ = √3",
+  "attempts": [],
+  "created_at": "2026-11-15T02:18:49+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_5",
+  "claimed_at": "2026-11-15T02:30:22+0800",
+  "closed_by": "r5_prover_5",
+  "finished_at": "2026-11-15T02:30:39+0800"
+}

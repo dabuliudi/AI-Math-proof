@@ -1,0 +1,19 @@
+{
+  "name": "p5_lemma2",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : 2 * n ≤ n.totient + ArithmeticFunction.sigma 1 n",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), 2 * n ≤ n.totient + ArithmeticFunction.sigma 1 n",
+  "informal": "Lemma 2 (Sandor-Atanassov): phi(n)+sigma(n) >= 2n for n >= 2.",
+  "origin": "paper",
+  "source": "arXiv:2404.19332v1 Lemma 2",
+  "original": "For n>=2: phi(n)+sigma(n) >= 2n",
+  "proposed_by": "paper_5",
+  "hash": "3147091511",
+  "type": "∀ (n : ℕ), 2 ≤ n → 2 * n ≤ n.totient + (ArithmeticFunction.sigma 1) n",
+  "attempts": [],
+  "created_at": "2026-11-15T06:53:34+0800",
+  "status": "proved",
+  "claimed_by": "paper_5",
+  "claimed_at": "2026-11-15T06:55:44+0800",
+  "closed_by": "paper_5",
+  "finished_at": "2026-11-15T06:58:56+0800"
+}

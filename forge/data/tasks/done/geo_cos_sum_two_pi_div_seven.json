@@ -1,0 +1,19 @@
+{
+  "name": "geo_cos_sum_two_pi_div_seven",
+  "statement": ": Real.cos (2 * Real.pi / 7) + Real.cos (4 * Real.pi / 7) + Real.cos (6 * Real.pi / 7) = -1 / 2",
+  "closed": "Real.cos (2 * Real.pi / 7) + Real.cos (4 * Real.pi / 7) + Real.cos (6 * Real.pi / 7) = -1 / 2",
+  "informal": "cos(2π/7) + cos(4π/7) + cos(6π/7) = −1/2 — multiply by 2 sin(π/7) ≠ 0 and telescope with 2 sin x cos y = sin(x+y) − sin(y−x), leaving sin(π) − sin(π/7); or take real parts of the sum of the 7th roots of unity.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "3093297659",
+  "type": "Real.cos (2 * Real.pi / 7) + Real.cos (4 * Real.pi / 7) + Real.cos (6 * Real.pi / 7) = -1 / 2",
+  "attempts": [],
+  "created_at": "2026-11-15T02:20:18+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:24:18+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:24:42+0800"
+}

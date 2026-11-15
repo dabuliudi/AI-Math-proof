@@ -1,0 +1,19 @@
+{
+  "name": "fld_sum_quadraticChar_sq_add",
+  "statement": "(p : ℕ) [Fact p.Prime] (hp : p ≠ 2) (a : ZMod p) (ha : a ≠ 0) : ∑ x : ZMod p, quadraticChar (ZMod p) (x ^ 2 + a) = -1",
+  "closed": "∀ (p : ℕ) [Fact p.Prime] (hp : p ≠ 2) (a : ZMod p) (ha : a ≠ 0), ∑ x : ZMod p, quadraticChar (ZMod p) (x ^ 2 + a) = -1",
+  "informal": "Quadratic character sum Σ_x χ(x^2 + a) = -1 for a ≠ 0 in F_p, p odd — count solutions of y^2 = x^2 + a two ways: it equals Σ_x (1 + χ(x^2 + a)) by quadraticChar_card_sqrts and equals p - 1 by the hyperbola count (y-x)(y+x) = a.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "4049901902",
+  "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (a : ZMod p), a ≠ 0 → ∑ x, (quadraticChar (ZMod p)) (x ^ 2 + a) = -1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:17:57+0800",
+  "status": "proved",
+  "claimed_by": "prover_6x",
+  "claimed_at": "2026-11-15T08:28:21+0800",
+  "closed_by": "prover_6x",
+  "finished_at": "2026-11-15T08:31:05+0800"
+}

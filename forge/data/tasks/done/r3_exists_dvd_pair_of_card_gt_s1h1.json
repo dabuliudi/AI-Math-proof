@@ -1,0 +1,19 @@
+{
+  "name": "r3_exists_dvd_pair_of_card_gt_s1h1",
+  "statement": ": ∀ (n m : ℕ), m ∈ Finset.Icc 1 (2 * n) → m / 2 ^ m.factorization 2 ∈ Finset.image (fun i => 2 * i + 1) (Finset.range n)",
+  "closed": "∀ (n m : ℕ), m ∈ Finset.Icc 1 (2 * n) → m / 2 ^ m.factorization 2 ∈ Finset.image (fun i => 2 * i + 1) (Finset.range n)",
+  "informal": "r3_exists_dvd_pair_of_card_gt 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "r3_exists_dvd_pair_of_card_gt",
+  "original": "",
+  "proposed_by": "r3_prover_3",
+  "hash": "283104493",
+  "type": "∀ (n m : ℕ), m ∈ Finset.Icc 1 (2 * n) → m / 2 ^ m.factorization 2 ∈ Finset.image (fun i => 2 * i + 1) (Finset.range n)",
+  "attempts": [],
+  "created_at": "2026-11-15T01:09:48+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_3",
+  "claimed_at": "2026-11-15T01:10:46+0800",
+  "closed_by": "r3_prover_3",
+  "finished_at": "2026-11-15T01:10:56+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "top_edelstein_unique_fixed_point",
+  "statement": "{X : Type*} [MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y) : ∃! p : X, f p = p",
+  "closed": "∀ {X : Type*} [MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X) (hf : ∀ x y : X, x ≠ y → dist (f x) (f y) < dist x y), ∃! p : X, f p = p",
+  "informal": "Edelstein: a strictly distance-decreasing self-map of a nonempty compact metric space has exactly one fixed point — f is 1-Lipschitz hence continuous, x ↦ dist x (f x) attains its minimum at some p; if f p ≠ p then dist (f p) (f (f p)) < dist p (f p) contradicts minimality; uniqueness is immediate from strictness.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_top",
+  "hash": "2792359802",
+  "type": "∀ {X : Type u_1} [inst : MetricSpace X] [CompactSpace X] [Nonempty X] (f : X → X), (∀ (x y : X), x ≠ y → dist (f x) (f y) < dist x y) → ∃! p, f p = p",
+  "attempts": [],
+  "created_at": "2026-11-15T02:21:23+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_4",
+  "claimed_at": "2026-11-15T02:26:34+0800",
+  "closed_by": "r5_prover_4",
+  "finished_at": "2026-11-15T02:27:00+0800"
+}

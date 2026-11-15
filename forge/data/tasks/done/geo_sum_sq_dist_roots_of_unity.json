@@ -1,0 +1,19 @@
+{
+  "name": "geo_sum_sq_dist_roots_of_unity",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) (z : ℂ) (hz : ‖z‖ = 1) : ∑ k ∈ Finset.range n, ‖z - Complex.exp (2 * (Real.pi : ℂ) * Complex.I * (k : ℂ) / (n : ℂ))‖ ^ 2 = 2 * (n : ℝ)",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n) (z : ℂ) (hz : ‖z‖ = 1), ∑ k ∈ Finset.range n, ‖z - Complex.exp (2 * (Real.pi : ℂ) * Complex.I * (k : ℂ) / (n : ℂ))‖ ^ 2 = 2 * (n : ℝ)",
+  "informal": "The sum of squared distances from a point of the unit circle to the vertices of the regular n-gon inscribed in it is 2n — ‖z − ζ^k‖² = 2 − 2 Re(z · conj ζ^k), and Σ ζ^k = 0 for the primitive root ζ = exp(2πi/n), n ≥ 2.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "951713348",
+  "type": "∀ (n : ℕ), 2 ≤ n → ∀ (z : ℂ), ‖z‖ = 1 → ∑ k ∈ Finset.range n, ‖z - Complex.exp (2 * ↑Real.pi * Complex.I * ↑k / ↑n)‖ ^ 2 = 2 * ↑n",
+  "attempts": [],
+  "created_at": "2026-11-15T02:19:46+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_2",
+  "claimed_at": "2026-11-15T02:25:54+0800",
+  "closed_by": "r5_prover_2",
+  "finished_at": "2026-11-15T02:26:17+0800"
+}

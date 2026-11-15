@@ -1,0 +1,19 @@
+{
+  "name": "bld4_mantel_equality_complete_bipartite",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) : ∃ s : Finset V, 2 * s.card = Fintype.card V ∧ ∀ x y : V, G.Adj x y ↔ (x ∈ s ↔ y ∉ s)",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.CliqueFree 3) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2), ∃ s : Finset V, 2 * s.card = Fintype.card V ∧ ∀ x y : V, G.Adj x y ↔ (x ∈ s ↔ y ∉ s)",
+  "informal": "Uses Mathlib2.bld2_mantel_equality_regular and Mathlib2.bld3_mantel_equality_same_neighbors: if V is empty take s = ∅; otherwise fix v and let s = G.neighborFinset v, of size n/2 by bld2_mantel_equality_regular. Two vertices of s are non-adjacent (triangle-free); a vertex y ∉ s is non-adjacent to v so by bld3_mantel_equality_same_neighbors it has the same neighbours as v, i.e. it is adjacent exactly to the vertices of s; this gives Adj x y ↔ (x ∈ s ↔ y ∉ s) in all four cases.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld2_mantel_equality_regular, Mathlib2.bld3_mantel_equality_same_neighbors",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "3498447098",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ∃ s, 2 * s.card = Fintype.card V ∧ ∀ (x y : V), G.Adj x y ↔ (x ∈ s ↔ y ∉ s)",
+  "attempts": [],
+  "created_at": "2026-11-15T06:58:22+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_3",
+  "claimed_at": "2026-11-15T07:05:01+0800",
+  "closed_by": "r9_prover_3",
+  "finished_at": "2026-11-15T07:05:26+0800"
+}

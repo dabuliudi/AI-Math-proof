@@ -1,0 +1,19 @@
+{
+  "name": "fld_eval_eq_zero_forall_iff_dvd",
+  "statement": "(K : Type) [Field K] [Fintype K] (f : Polynomial K) : (∀ a : K, Polynomial.eval a f = 0) ↔ (Polynomial.X ^ Fintype.card K - Polynomial.X) ∣ f",
+  "closed": "∀ (K : Type) [Field K] [Fintype K] (f : Polynomial K), (∀ a : K, Polynomial.eval a f = 0) ↔ (Polynomial.X ^ Fintype.card K - Polynomial.X) ∣ f",
+  "informal": "A polynomial over a finite field F_q vanishes at every point iff it is divisible by X^q - X — X^q - X = ∏_{a} (X - a) (FiniteField.roots_X_pow_card_sub_X, separable with all q roots); the factors X - a are pairwise coprime, so each dividing f gives the product dividing f; the converse is FiniteField.pow_card.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_field",
+  "hash": "2290227573",
+  "type": "∀ (K : Type) [inst : Field K] [inst_1 : Fintype K] (f : Polynomial K), (∀ (a : K), Polynomial.eval a f = 0) ↔ Polynomial.X ^ Fintype.card K - Polynomial.X ∣ f",
+  "attempts": [],
+  "created_at": "2026-11-15T08:23:29+0800",
+  "status": "proved",
+  "claimed_by": "prover_fa",
+  "claimed_at": "2026-11-15T08:35:22+0800",
+  "closed_by": "prover_fa",
+  "finished_at": "2026-11-15T08:36:59+0800"
+}

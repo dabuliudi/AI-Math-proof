@@ -1,0 +1,19 @@
+{
+  "name": "bld6_tsum_inv_fib_mul_fib_add_two",
+  "statement": ": ∑' n : ℕ, 1 / ((Nat.fib (n + 1) : ℝ) * (Nat.fib (n + 3) : ℝ)) = 1",
+  "closed": "∑' n : ℕ, 1 / ((Nat.fib (n + 1) : ℝ) * (Nat.fib (n + 3) : ℝ)) = 1",
+  "informal": "Uses Mathlib2.calc_tsum_inv_three_consecutive_aux1 (general telescoping HasSum lemma): take g n = 1/(F_(n+1) F_(n+2)); then g n - g (n+1) = (F_(n+3) - F_(n+1))/(F_(n+1)F_(n+2)F_(n+3)) = 1/(F_(n+1)F_(n+3)) by Nat.fib_add_two, g → 0 since F_(n+1) ≥ n/…→∞ (Nat.fib_lt_fib_succ / le_fib_self), and g 0 = 1.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_tsum_inv_three_consecutive",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "422947127",
+  "type": "∑' (n : ℕ), 1 / (↑(Nat.fib (n + 1)) * ↑(Nat.fib (n + 3))) = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:19:06+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:30:29+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:35:02+0800"
+}

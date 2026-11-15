@@ -1,0 +1,16 @@
+{
+  "name": "lib_matrix_exists_rank_factorization",
+  "statement": "(K : Type*) [Field K] (n p : Type*) [Fintype n] [Fintype p] (B : Matrix n p K) : ∃ (M : Matrix n (Fin B.rank) K) (N : Matrix (Fin B.rank) p K), B = M * N",
+  "closed": "∀ (K : Type*) [Field K] (n p : Type*) [Fintype n] [Fintype p] (B : Matrix n p K), ∃ (M : Matrix n (Fin B.rank) K) (N : Matrix (Fin B.rank) p K), B = M * N",
+  "informal": "Rank factorisation: every n×p matrix B over a field factors as B = M * N with M of size n×r and N of size r×p, r = rank B. Promoted from Mathlib2.bld_frobenius_rank_inequality_aux1.",
+  "origin": "conjecture",
+  "source": "curation of Mathlib2.bld_frobenius_rank_inequality_aux1",
+  "original": "",
+  "proposed_by": "curator_1",
+  "hash": "2845141906",
+  "type": "∀ (K : Type u_1) [inst : Field K] (n : Type u_2) (p : Type u_3) [Fintype n] [inst_2 : Fintype p] (B : Matrix n p K), ∃ M N, B = M * N",
+  "attempts": [],
+  "created_at": "2026-11-15T03:04:18+0800",
+  "status": "known",
+  "known_as": "bld_frobenius_rank_inequality_aux1 K n p B"
+}

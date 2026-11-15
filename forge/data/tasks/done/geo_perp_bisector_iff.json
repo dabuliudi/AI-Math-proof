@@ -1,0 +1,19 @@
+{
+  "name": "geo_perp_bisector_iff",
+  "statement": "{V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b p : V) : ‖p - a‖ = ‖p - b‖ ↔ inner ℝ (p - (1 / 2 : ℝ) • (a + b)) (b - a) = 0",
+  "closed": "∀ {V : Type*} [NormedAddCommGroup V] [InnerProductSpace ℝ V] (a b p : V), ‖p - a‖ = ‖p - b‖ ↔ inner ℝ (p - (1 / 2 : ℝ) • (a + b)) (b - a) = 0",
+  "informal": "p is equidistant from a and b iff p − midpoint(a,b) is orthogonal to b − a — ‖p−a‖² − ‖p−b‖² = 2⟨p − (a+b)/2, b − a⟩, and norms are nonnegative.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "4290202975",
+  "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (a b p : V), ‖p - a‖ = ‖p - b‖ ↔ inner ℝ (p - (1 / 2) • (a + b)) (b - a) = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T02:17:52+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:23:40+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:24:06+0800"
+}

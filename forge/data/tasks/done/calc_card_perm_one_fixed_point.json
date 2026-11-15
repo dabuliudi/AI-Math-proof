@@ -1,0 +1,19 @@
+{
+  "name": "calc_card_perm_one_fixed_point",
+  "statement": "(n : ℕ) : ((Finset.univ : Finset (Equiv.Perm (Fin (n + 1)))).filter (fun σ => (Finset.univ.filter (fun i => σ i = i)).card = 1)).card = (n + 1) * numDerangements n",
+  "closed": "∀ (n : ℕ), ((Finset.univ : Finset (Equiv.Perm (Fin (n + 1)))).filter (fun σ => (Finset.univ.filter (fun i => σ i = i)).card = 1)).card = (n + 1) * numDerangements n",
+  "informal": "Permutations of an (n+1)-set with exactly one fixed point number (n+1)·D(n) — choose the fixed point, derange the remaining n points (card_derangements_eq_numDerangements, Equiv.Perm.subtypeEquivSubtypePerm / derangements.atMostOneFixedPointEquivSum_derangements).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_calc",
+  "hash": "3582863720",
+  "type": "∀ (n : ℕ), {σ | {i | σ i = i}.card = 1}.card = (n + 1) * numDerangements n",
+  "attempts": [],
+  "created_at": "2026-11-15T07:51:45+0800",
+  "status": "proved",
+  "claimed_by": "prover_cb",
+  "claimed_at": "2026-11-15T08:00:13+0800",
+  "closed_by": "prover_cb",
+  "finished_at": "2026-11-15T08:01:37+0800"
+}

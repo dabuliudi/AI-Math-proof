@@ -1,0 +1,19 @@
+{
+  "name": "geo_sin_mul_sin_pi_div_three_sub_add",
+  "statement": "(x : ℝ) : Real.sin x * Real.sin (Real.pi / 3 - x) * Real.sin (Real.pi / 3 + x) = Real.sin (3 * x) / 4",
+  "closed": "∀ (x : ℝ), Real.sin x * Real.sin (Real.pi / 3 - x) * Real.sin (Real.pi / 3 + x) = Real.sin (3 * x) / 4",
+  "informal": "sin x · sin(π/3 − x) · sin(π/3 + x) = sin(3x)/4 — expand with addition formulas (sin(π/3)=√3/2, cos(π/3)=1/2) to get sin x (3/4 cos²x − 1/4 sin²x), then use the triple angle formula.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_geo",
+  "hash": "462909387",
+  "type": "∀ (x : ℝ), Real.sin x * Real.sin (Real.pi / 3 - x) * Real.sin (Real.pi / 3 + x) = Real.sin (3 * x) / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T02:17:59+0800",
+  "status": "proved",
+  "claimed_by": "r5_prover_1",
+  "claimed_at": "2026-11-15T02:24:06+0800",
+  "closed_by": "r5_prover_1",
+  "finished_at": "2026-11-15T02:24:34+0800"
+}

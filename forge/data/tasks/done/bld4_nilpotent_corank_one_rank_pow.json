@@ -1,0 +1,19 @@
+{
+  "name": "bld4_nilpotent_corank_one_rank_pow",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (hr : A.rank + 1 = Fintype.card ι) (k : ℕ) (hk : k ≤ Fintype.card ι) : (A ^ k).rank = Fintype.card ι - k",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (hr : A.rank + 1 = Fintype.card ι) (k : ℕ) (hk : k ≤ Fintype.card ι), (A ^ k).rank = Fintype.card ι - k",
+  "informal": "Uses Mathlib2.bld3_nilpotent_rank_pow_le and Mathlib2.lib_matrix_mul_rank_le_add_rank_pow: the upper bound rank A^k ≤ n − k is bld3_nilpotent_rank_pow_le. For the lower bound, lib_matrix_mul_rank_le_add_rank_pow gives k(n − 1) ≤ (k − 1)n + rank A^k, i.e. rank A^k ≥ n − k (k = 0 separately: rank 1 = n). This is the single-Jordan-block case.",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld3_nilpotent_rank_pow_le, Mathlib2.lib_matrix_mul_rank_le_add_rank_pow",
+  "original": "",
+  "proposed_by": "conj_build4",
+  "hash": "3233115150",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → A.rank + 1 = Fintype.card ι → ∀ k ≤ Fintype.card ι, (A ^ k).rank = Fintype.card ι - k",
+  "attempts": [],
+  "created_at": "2026-11-15T06:58:12+0800",
+  "status": "proved",
+  "claimed_by": "r9_prover_2",
+  "claimed_at": "2026-11-15T07:01:31+0800",
+  "closed_by": "r9_prover_2",
+  "finished_at": "2026-11-15T07:01:57+0800"
+}

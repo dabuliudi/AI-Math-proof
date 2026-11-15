@@ -1,0 +1,19 @@
+{
+  "name": "ana_continuous_additive_linear",
+  "statement": "(f : ℝ → ℝ) (hf : Continuous f) (hadd : ∀ x y : ℝ, f (x + y) = f x + f y) (x : ℝ) : f x = f 1 * x",
+  "closed": "∀ (f : ℝ → ℝ) (hf : Continuous f) (hadd : ∀ x y : ℝ, f (x + y) = f x + f y) (x : ℝ), f x = f 1 * x",
+  "informal": "Cauchy's functional equation: a continuous additive function on ℝ is linear — additivity gives f(q) = q f(1) for rational q, and both sides are continuous so they agree on the closure of ℚ (or package f as a continuous AddMonoidHom and use map_real_smul).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_ana",
+  "hash": "107392058",
+  "type": "∀ (f : ℝ → ℝ), Continuous f → (∀ (x y : ℝ), f (x + y) = f x + f y) → ∀ (x : ℝ), f x = f 1 * x",
+  "attempts": [],
+  "created_at": "2026-11-15T01:31:27+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_8",
+  "claimed_at": "2026-11-15T02:00:05+0800",
+  "closed_by": "r4_prover_8",
+  "finished_at": "2026-11-15T02:00:26+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "bld6_nat_pow_lt_pow_swap",
+  "statement": "(m n : ℕ) (hm : 3 ≤ m) (hmn : m < n) : n ^ m < m ^ n",
+  "closed": "∀ (m n : ℕ) (hm : 3 ≤ m) (hmn : m < n), n ^ m < m ^ n",
+  "informal": "Uses Mathlib2.calc_rpow_lt_rpow_swap_of_exp_le: apply it with x = m, y = n; the hypothesis e ≤ m follows from Real.exp_one_lt_d9 (e < 3 ≤ m); then convert rpow with natural exponents to Nat powers (Real.rpow_natCast, Nat.cast_lt).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.calc_rpow_lt_rpow_swap_of_exp_le",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "434207916",
+  "type": "∀ (m n : ℕ), 3 ≤ m → m < n → n ^ m < m ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:18:31+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:26:36+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:27:39+0800"
+}

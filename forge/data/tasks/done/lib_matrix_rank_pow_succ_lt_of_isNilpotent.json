@@ -1,0 +1,16 @@
+{
+  "name": "lib_matrix_rank_pow_succ_lt_of_isNilpotent",
+  "statement": "(K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) (hk : (A ^ k).rank ≠ 0) : (A ^ (k + 1)).rank < (A ^ k).rank",
+  "closed": "∀ (K : Type*) [Field K] (ι : Type*) [Fintype ι] [DecidableEq ι] (A : Matrix ι ι K) (hA : IsNilpotent A) (k : ℕ) (hk : (A ^ k).rank ≠ 0), (A ^ (k + 1)).rank < (A ^ k).rank",
+  "informal": "promoted from Mathlib2.bld5_nilpotent_pow_rank_succ_eq_zero_aux2: for a nilpotent matrix the ranks of the powers strictly decrease until they reach 0.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "curator_3",
+  "hash": "1798495877",
+  "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ k).rank ≠ 0 → (A ^ (k + 1)).rank < (A ^ k).rank",
+  "attempts": [],
+  "created_at": "2026-11-15T07:48:52+0800",
+  "status": "known",
+  "known_as": "bld5_nilpotent_pow_rank_succ_eq_zero_aux2 K ι A hA k hk"
+}

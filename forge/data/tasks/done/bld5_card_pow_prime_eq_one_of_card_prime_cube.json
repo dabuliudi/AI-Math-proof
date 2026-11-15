@@ -1,0 +1,19 @@
+{
+  "name": "bld5_card_pow_prime_eq_one_of_card_prime_cube",
+  "statement": "(p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2) : Nat.card {g : G // g ^ p = 1} = p ^ 2 ∨ Nat.card {g : G // g ^ p = 1} = p ^ 3",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2), Nat.card {g : G // g ^ p = 1} = p ^ 2 ∨ Nat.card {g : G // g ^ p = 1} = p ^ 3",
+  "informal": "Uses Mathlib2.bld4_pow_prime_monoidHom_center_of_card_prime_cube and Mathlib2.bld_center_card_of_card_prime_cube: the bld4 theorem gives a homomorphism φ : G →* Z(G) with φ g = g^p, so {g | g^p = 1} is the carrier of φ.ker. By the first isomorphism theorem |G| = |ker φ|·|range φ|, and |range φ| divides |Z(G)| = p (bld_center_card_of_card_prime_cube, Lagrange), so |range φ| ∈ {1, p} and |ker φ| ∈ {p³, p²}. (Sharpens bld4_card_pow_prime_eq_one_ge_of_card_prime_cube: exponent-p case vs. exponent-p² case.)",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.bld4_pow_prime_monoidHom_center_of_card_prime_cube, Mathlib2.bld_center_card_of_card_prime_cube",
+  "original": "",
+  "proposed_by": "conj_build5",
+  "hash": "184036906",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → p ≠ 2 → Nat.card { g // g ^ p = 1 } = p ^ 2 ∨ Nat.card { g // g ^ p = 1 } = p ^ 3",
+  "attempts": [],
+  "created_at": "2026-11-15T07:24:58+0800",
+  "status": "proved",
+  "claimed_by": "prover_bb",
+  "claimed_at": "2026-11-15T07:32:01+0800",
+  "closed_by": "prover_bb",
+  "finished_at": "2026-11-15T07:35:32+0800"
+}

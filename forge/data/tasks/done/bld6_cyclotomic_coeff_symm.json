@@ -1,0 +1,19 @@
+{
+  "name": "bld6_cyclotomic_coeff_symm",
+  "statement": "(n k : ℕ) (hn : 2 ≤ n) (hk : k ≤ n.totient) : (Polynomial.cyclotomic n ℤ).coeff k = (Polynomial.cyclotomic n ℤ).coeff (n.totient - k)",
+  "closed": "∀ (n k : ℕ) (hn : 2 ≤ n) (hk : k ≤ n.totient), (Polynomial.cyclotomic n ℤ).coeff k = (Polynomial.cyclotomic n ℤ).coeff (n.totient - k)",
+  "informal": "Uses Mathlib2.poly_cyclotomic_reverse_eq_self: rewrite the left side with reverse Φ_n = Φ_n and apply Polynomial.coeff_reverse with natDegree Φ_n = φ(n) (Polynomial.natDegree_cyclotomic) and revAt φ(n) k = φ(n) - k for k ≤ φ(n).",
+  "origin": "conjecture",
+  "source": "builds on Mathlib2.poly_cyclotomic_reverse_eq_self",
+  "original": "",
+  "proposed_by": "conj_build6",
+  "hash": "158311949",
+  "type": "∀ (n k : ℕ), 2 ≤ n → k ≤ n.totient → (Polynomial.cyclotomic n ℤ).coeff k = (Polynomial.cyclotomic n ℤ).coeff (n.totient - k)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:20:50+0800",
+  "status": "proved",
+  "claimed_by": "prover_6a",
+  "claimed_at": "2026-11-15T08:21:26+0800",
+  "closed_by": "prover_6a",
+  "finished_at": "2026-11-15T08:23:43+0800"
+}

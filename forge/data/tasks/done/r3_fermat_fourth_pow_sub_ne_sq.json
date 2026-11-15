@@ -1,0 +1,64 @@
+{
+  "name": "r3_fermat_fourth_pow_sub_ne_sq",
+  "statement": "(x y z : ℤ) (hy : y ≠ 0) (hz : z ≠ 0) : x ^ 4 - y ^ 4 ≠ z ^ 2",
+  "closed": "∀ (x y z : ℤ) (hy : y ≠ 0) (hz : z ≠ 0), x ^ 4 - y ^ 4 ≠ z ^ 2",
+  "informal": "Fermat: x^4 - y^4 = z^2 has no integer solutions with yz ≠ 0 (equivalently, no Pythagorean triangle has square area). Mathlib only has the companion not_fermat_42 (a^4 + b^4 ≠ c^2). Proof idea: infinite descent on x: reduce to gcd(x,y)=1; if z odd then (z, y^2, x^2) is a primitive Pythagorean triple, parametrize x^2 = m^2+n^2, y^2 = m^2-n^2 giving m^4 - n^4 = (xy)^2 with smaller m; if z even then y^2 = m^2-n^2... z = 2mn, x^2 = m^2+n^2 with m, n squares-times-units leading again to a smaller solution (or to not_fermat_42).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_r3",
+  "hash": "534759",
+  "type": "∀ (x y z : ℤ), y ≠ 0 → z ≠ 0 → x ^ 4 - y ^ 4 ≠ z ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T01:01:39+0800",
+  "status": "proved",
+  "claimed_by": "r3_prover_1",
+  "claimed_at": "2026-11-15T01:14:05+0800",
+  "sketches": [
+    {
+      "agent": "r3_prover_1",
+      "body": "theorem r3_fermat_fourth_pow_sub_ne_sq (x y z : ℤ) (hy : y ≠ 0) (hz : z ≠ 0) : x ^ 4 - y ^ 4 ≠ z ^ 2 := by\n  revert x y z\n  have H : ((∀ x y z : ℤ, Int.gcd x y = 1 → y ≠ 0 → z ≠ 0 → x ^ 4 - y ^ 4 ≠ z ^ 2) →\n        ∀ x y z : ℤ, y ≠ 0 → z ≠ 0 → x ^ 4 - y ^ 4 ≠ z ^ 2) ∧\n      (∀ x y z : ℤ, Int.gcd x y = 1 → y % 2 = 1 → z ≠ 0 → x ^ 4 - y ^ 4 = z ^ 2 →\n        ∃ m n w : ℤ, |m| < |x| ∧ Int.gcd m n = 1 ∧ n ≠ 0 ∧ w ≠ 0 ∧ m ^ 4 - n ^ 4 = w ^ 2) ∧\n      (∀ x y z : ℤ, Int.gcd x y = 1 → y % 2 = 0 → y ≠ 0 → x ^ 4 - y ^ 4 = z ^ 2 →\n        ∃ a b : ℤ, x ^ 2 = (2 * a ^ 2) ^ 2 + (b ^ 2) ^ 2 ∧ a ≠ 0 ∧ Int.gcd (2 * a ^ 2) (b ^ 2) = 1) ∧\n      (∀ x a b : ℤ, a ≠ 0 → Int.gcd (2 * a ^ 2) (b ^ 2) = 1 →\n        x ^ 2 = (2 * a ^ 2) ^ 2 + (b ^ 2) ^ 2 →\n        ∃ c d w : ℤ, |c| < |x| ∧ Int.gcd c d = 1 ∧ d ≠ 0 ∧ w ≠ 0 ∧ c ^ 4 - d ^ 4 = w ^ 2) := by\n    refine ⟨?_, ?_, ?_, ?_⟩\n    · sorry\n    · sorry\n    · sorry\n    · sorry\n  obtain ⟨h_red, h_odd, h_even1, h_even2⟩ := H\n  have h_prim : ∀ N : ℕ, ∀ x y z : ℤ, |x| ≤ (N : ℤ) → Int.gcd x y = 1 → y ≠ 0 → z ≠ 0 →\n      x ^ 4 - y ^ 4 ≠ z ^ 2 := by\n    intro N\n    induction N with\n    | zero =>\n      intro x y z hx hg hy hz he\n      have hx0 : x = 0 := abs_nonpos_iff.mp (by simpa using hx)\n      subst hx0\n      have h4 : 0 < y ^ 4 := by positivity\n      nlinarith [sq_nonneg z]\n    | succ N ih =>\n      intro x y z hx hg hy hz he\n      have hx' : |x| ≤ (N : ℤ) + 1 := by push_cast at hx; exact hx\n      rcases Int.emod_two_eq_zero_or_one y with h0 | h1\n      · obtain ⟨a, b, hx2, ha, hab⟩ := h_even1 x y z hg h0 hy he\n        obtain ⟨c, d, w, hlt, hcd, hd, hw, hcdw⟩ := h_even2 x a b ha hab hx2\n        exact ih c d w (Int.le_of_lt_add_one (lt_of_lt_of_le hlt hx')) hcd hd hw hcdw\n      · obtain ⟨m, n, w, hlt, hmn, hn, hw, hmnw⟩ := h_odd x y z hg h1 hz he\n        exact ih m n w (Int.le_of_lt_add_one (lt_of_lt_of_le hlt hx')) hmn hn hw hmnw\n  exact h_red (fun x y z hg hy hz => h_prim x.natAbs x y z (by simp) hg hy hz)\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "r3_fermat_fourth_pow_sub_ne_sq_s1h1v1",
+          "status": "open",
+          "statement": "(∀ (x y z : ℤ), x.gcd y = 1 → y ≠ 0 → z ≠ 0 → x ^ 4 - y ^ 4 ≠ z ^ 2) → ∀ (x y z : ℤ), y ≠ 0 → z ≠ 0 → x ^ 4 - y ^ 4 ≠ z ^ 2",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "r3_fermat_fourth_pow_sub_ne_sq_s1h2",
+          "status": "open",
+          "statement": "∀ (x y z : ℤ), x.gcd y = 1 → y % 2 = 1 → z ≠ 0 → x ^ 4 - y ^ 4 = z ^ 2 → ∃ (m : ℤ) (n : ℤ) (w : ℤ), |m| < |x| ∧ m.gcd n = 1 ∧ n ≠ 0 ∧ w ≠ 0 ∧ m ^ 4 - n ^ 4 = w ^ 2",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "r3_fermat_fourth_pow_sub_ne_sq_s1h3",
+          "status": "open",
+          "statement": "∀ (x y z : ℤ), x.gcd y = 1 → y % 2 = 0 → y ≠ 0 → x ^ 4 - y ^ 4 = z ^ 2 → ∃ (a : ℤ) (b : ℤ), x ^ 2 = (2 * a ^ 2) ^ 2 + (b ^ 2) ^ 2 ∧ a ≠ 0 ∧ (2 * a ^ 2).gcd (b ^ 2) = 1",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 4,
+          "task": "r3_fermat_fourth_pow_sub_ne_sq_s1h4",
+          "status": "open",
+          "statement": "∀ (x a b : ℤ), a ≠ 0 → (2 * a ^ 2).gcd (b ^ 2) = 1 → x ^ 2 = (2 * a ^ 2) ^ 2 + (b ^ 2) ^ 2 → ∃ (c : ℤ) (d : ℤ) (w : ℤ), |c| < |x| ∧ c.gcd d = 1 ∧ d ≠ 0 ∧ w ≠ 0 ∧ c ^ 4 - d ^ 4 = w ^ 2",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-15T01:18:22+0800"
+    }
+  ],
+  "closed_by": "r3_prover_1",
+  "finished_at": "2026-11-15T01:23:00+0800"
+}

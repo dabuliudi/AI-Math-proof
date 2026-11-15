@@ -1,0 +1,19 @@
+{
+  "name": "poly_ratfunc_fermat_curve_const",
+  "statement": "{k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (f g : RatFunc k) (heq : f ^ n + g ^ n = 1) : (∃ c : k, f = RatFunc.C c) ∧ (∃ d : k, g = RatFunc.C d)",
+  "closed": "∀ {k : Type*} [Field k] [DecidableEq k] [CharZero k] (n : ℕ) (hn : 3 ≤ n) (f g : RatFunc k) (heq : f ^ n + g ^ n = 1), (∃ c : k, f = RatFunc.C c) ∧ (∃ d : k, g = RatFunc.C d)",
+  "informal": "The Fermat curve x^n + y^n = 1 (n ≥ 3) has no non-constant rational parametrisation in char 0 — write f = a/c, g = b/c with common denominator, cancel gcd(a,b,c) to get pairwise coprime a^n + b^n = c^n, then Uses Mathlib2.ms_flt_poly to conclude a, b, c constant; the cases a = 0 or b = 0 (g^n = 1 forces g constant) are separate.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_poly",
+  "hash": "538029813",
+  "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (f g : RatFunc k), f ^ n + g ^ n = 1 → (∃ c, f = RatFunc.C c) ∧ ∃ d, g = RatFunc.C d",
+  "attempts": [],
+  "created_at": "2026-11-15T07:15:17+0800",
+  "status": "proved",
+  "claimed_by": "prover_pa",
+  "claimed_at": "2026-11-15T07:20:22+0800",
+  "closed_by": "prover_pa",
+  "finished_at": "2026-11-15T07:25:29+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "arith_totient_add_sigma_eq_two_mul_iff_prime",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) : n.totient + ArithmeticFunction.sigma 1 n = 2 * n ↔ n.Prime",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n), n.totient + ArithmeticFunction.sigma 1 n = 2 * n ↔ n.Prime",
+  "informal": "Equality case of the Sandor–Atanassov inequality φ(n)+σ(n) ≥ 2n (Mathlib2.p5_lemma2): equality iff n is prime — for composite n with least prime factor p, σ(n) ≥ n + n/p + 1 and φ(n) ≥ n - n/p (count of multiples of p is not all non-coprime... use φ(n) ≥ n - Σ_{q|n} n/q carefully, or induct with Mathlib2.p5_sigma_prime_mul_of_dvd), giving strict inequality.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_arith",
+  "hash": "3986592912",
+  "type": "∀ (n : ℕ), 2 ≤ n → (n.totient + (ArithmeticFunction.sigma 1) n = 2 * n ↔ Nat.Prime n)",
+  "attempts": [],
+  "created_at": "2026-11-15T07:41:18+0800",
+  "status": "proved",
+  "claimed_by": "prover_ab",
+  "claimed_at": "2026-11-15T07:56:09+0800",
+  "closed_by": "prover_ab",
+  "finished_at": "2026-11-15T07:56:35+0800"
+}

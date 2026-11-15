@@ -1,0 +1,19 @@
+{
+  "name": "lin_gram_det_eq_zero_iff",
+  "statement": "(V : Type) [NormedAddCommGroup V] [InnerProductSpace ℝ V] (x y : V) : Matrix.det !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y] = 0 ↔ ¬ LinearIndependent ℝ ![x, y]",
+  "closed": "∀ (V : Type) [NormedAddCommGroup V] [InnerProductSpace ℝ V] (x y : V), Matrix.det !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y] = 0 ↔ ¬ LinearIndependent ℝ ![x, y]",
+  "informal": "The Gram determinant of two vectors vanishes exactly when they are linearly dependent — the determinant is ‖x‖²‖y‖² − ⟨x,y⟩²; use the equality case of Cauchy–Schwarz (inner_mul_inner_self_le with equality iff one vector is a multiple of the other) and LinearIndependent.pair_iff.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_lin",
+  "hash": "313470329",
+  "type": "∀ (V : Type) [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (x y : V), !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y].det = 0 ↔ ¬LinearIndependent ℝ ![x, y]",
+  "attempts": [],
+  "created_at": "2026-11-15T01:30:47+0800",
+  "status": "proved",
+  "claimed_by": "r4_prover_5",
+  "claimed_at": "2026-11-15T01:54:35+0800",
+  "closed_by": "r4_prover_5",
+  "finished_at": "2026-11-15T01:56:10+0800"
+}

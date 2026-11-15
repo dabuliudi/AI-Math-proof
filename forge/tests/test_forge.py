@@ -372,7 +372,7 @@ class HardeningTests(unittest.TestCase):
             source = self.root / 'in.jsonl'
             source.write_text('{"name": "p1", "statement": "(n : ℕ) : n = n"}\n{"name": "p2", "statement": "bad"}\n', encoding='utf-8')
             # p2 的命题格式本身不合法（没有 `binders : conclusion`），在求哈希之前就被剔出
-            self.assertEqual(bench.import_set('demo', source), dict(set='demo', imported=1, dropped=[], unusable=['p2']))
+            self.assertEqual(bench.import_set('demo', source), dict(set='demo', imported=1, dropped=[], unfaithful=[], unusable=['p2']))
             self.assertEqual(bench.reserved(), {'h1': 'demo/p1'})
             verdicts = iter([dict(ok=False, kind='proved', reason='Lean 报错'), dict(ok=True, kind='proved', reason='通过')])
             with mock.patch.object(bench, 'check_submission', side_effect=lambda *a, **k: next(verdicts)):
@@ -454,6 +454,45 @@ class PutnamImportTests(unittest.TestCase):
         item = putnam_problem('import Mathlib\n/-- text -/\ntheorem putnam_y (x : ℝ) : x = x :=\nsorry\n')
         self.assertEqual(item, dict(name='putnam_y', statement='(x : ℝ) : x = x'))
         self.assertIsNone(putnam_problem('import Mathlib\nabbrev putnam_z_solution : ℕ := sorry\ntheorem putnam_z : putnam_z_solution = 1 := sorry\n'))
+
+
+class FormalConjecturesImportTests(unittest.TestCase):
+    SOURCE = ('/-\nCopyright\n-/\nmodule\n\npublic import FormalConjecturesUtil\n\n@[expose] public section\n\n'
+              'open Filter\nopen scoped Topology\n\nnamespace Erdos9\n\ndef good (n : ℕ) : Prop := n = n\n\n'
+              '/-- Solved. -/\n@[category research solved, AMS 11]\ntheorem erdos_9 (n : ℕ) : good n := by\n  sorry\n\n'
+              '@[category research solved, AMS 11, formal_proof using lean4 at "https://x"]\n'
+              'theorem erdos_9.variants.known : good 1 := by\n  sorry\n\n'
+              '@[category research open, AMS 11]\ntheorem erdos_9.variants.open : good 2 := by\n  sorry\n\n'
+              '@[category test, AMS 11]\ntheorem erdos_9.test : good 3 := by\n  rfl\n\nend Erdos9\n')
+
+    def extract(self, **kwargs):
+        from forge.importers import formal_conjectures_problems
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / 'FormalConjectures' / 'ErdosProblems' / '9.lean'
+            path.parent.mkdir(parents=True)
+            path.write_text(self.SOURCE, encoding='utf-8')
+            return formal_conjectures_problems(tmp, **kwargs)
+
+    def test_public_section_does_not_hide_the_namespace(self):
+        items = self.extract()
+        self.assertEqual(len(items), 1)  # 带公开 Lean 证明的、开放的、测试用的都不收
+        item = items[0]
+        self.assertEqual(item['origin'], 'Erdos9.erdos_9')
+        self.assertEqual(item['statement'], '(n : ℕ) : good n')
+        self.assertEqual(item['imports'], ['FormalConjectures.ErdosProblems.«9»'])
+        self.assertEqual(item['preamble'], 'open Filter\nopen scoped Topology\nopen Erdos9')
+
+    def test_category_and_public_proof_filters(self):
+        names = {i['origin'] for i in self.extract(categories=('research solved', 'research open'), skip_public_proof=False)}
+        self.assertEqual(names, {'Erdos9.erdos_9', 'Erdos9.erdos_9.variants.known', 'Erdos9.erdos_9.variants.open'})
+
+    def test_extra_imports_go_after_the_fixed_ones_and_are_validated(self):
+        from forge.verify import HEADER, header
+        self.assertEqual(header(), HEADER)
+        text = header(['FormalConjectures.ErdosProblems.«9»'])
+        self.assertTrue(text.startswith('import Mathlib\nimport Mathlib2\nimport Forge\nimport FormalConjectures.ErdosProblems.«9»\nset_option'))
+        with self.assertRaises(ValueError):
+            header(['Foo\n#eval 1'])
 
 
 class UpgradeRepairTests(unittest.TestCase):
@@ -855,3 +894,18 @@ class AuditTests(unittest.TestCase):
             runner.run_audit(['p1', 'p2'])
         self.assertEqual(len(seen), 2 + 4 + 4)
         self.assertEqual(len(set(seen)), len(seen))
+
+
+class LockTests(unittest.TestCase):
+    def test_lock_is_reentrant_in_one_thread(self):
+        from forge import library
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        with mock.patch.object(library, 'DATA', Path(tmp.name)), mock.patch.object(library, 'LOCK', Path(tmp.name) / 'l.lock'):
+            done = []
+            def nested():
+                with library.locked():
+                    with library.locked():
+                        done.append(1)
+            import threading
+            t = threading.Thread(target=nested); t.start(); t.join(5)
+            self.assertEqual(done, [1], '同一线程嵌套持锁不能死锁')

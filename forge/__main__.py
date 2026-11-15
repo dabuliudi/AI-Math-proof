@@ -133,6 +133,7 @@ def main(argv=None):
     p.add_argument('--start', help='从这个分片开始，例如 S0005'); p.add_argument('--effort', default='xhigh')
     p.add_argument('--parallel', type=int, default=0, help='>0 时先打桩再并行修（这么多个 agent 同时修不同的分片）')
     p = sub.add_parser('regress', help='事故回归集：把出过的问题当用例重跑'); p.add_argument('--jobs', type=int, default=3)
+    p = sub.add_parser('snapshot', help='持锁提交库的快照（核对一致后只提交台账、分片、任务）'); p.add_argument('-m', '--message', required=True)
     sub.add_parser('consistency', help='台账与分片是否一致（提交前检查）')
     p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
@@ -337,6 +338,10 @@ def main(argv=None):
     elif args.command == 'regress':
         from .regressions import run
         result = run(args.jobs)
+        emit(result); return 0 if result['ok'] else 1
+    elif args.command == 'snapshot':
+        from .library import snapshot
+        result = snapshot(args.message)
         emit(result); return 0 if result['ok'] else 1
     elif args.command == 'consistency':
         from .regressions import consistency

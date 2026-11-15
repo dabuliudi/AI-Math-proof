@@ -41,16 +41,50 @@ else:
         fcntl.flock(handle, fcntl.LOCK_UN)
 
 
+_held = __import__('threading').local()
+
+
 @contextlib.contextmanager
 def locked():
-    """入库串行化：多个 agent 并行证明，由这一把锁保证库的追加和构建一次只发生一个。macOS/Linux 与 Windows 都可用。"""
-    DATA.mkdir(parents=True, exist_ok=True)
-    with open(LOCK, 'a+') as handle:
-        _lock(handle)
+    """入库串行化：多个 agent 并行证明，由这一把锁保证库的追加和构建一次只发生一个。macOS/Linux 与 Windows 都可用。
+
+    同一线程里可以嵌套（例如持锁时再调用 consistency()）：文件锁按打开的文件计，同一进程再开一次会等自己，
+    以前这样死锁过、把所有入库卡住了六分钟，所以嵌套时直接复用外层的锁。"""
+    if getattr(_held, 'depth', 0):
+        _held.depth += 1
         try:
             yield
         finally:
+            _held.depth -= 1
+        return
+    DATA.mkdir(parents=True, exist_ok=True)
+    with open(LOCK, 'a+') as handle:
+        _lock(handle)
+        _held.depth = 1
+        try:
+            yield
+        finally:
+            _held.depth = 0
             _unlock(handle)
+
+
+def snapshot(message):
+    """持锁提交库的快照（台账、分片、任务、辅助引理索引），提交前核对台账与分片一致。只提交这些路径。"""
+    import subprocess
+    from .leanrun import ROOT
+    from .regressions import consistency
+    paths = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean', 'forge/data/tasks', 'forge/data/helpers.jsonl']
+    with locked():
+        problems = consistency()
+        if any(problems.values()):
+            return dict(ok=False, reason='台账与分片不一致，没有提交', problems=problems)
+        subprocess.run(['git', 'add', '-A', '--'] + [p for p in paths if (ROOT / p).exists()], cwd=ROOT, check=True)
+        staged = subprocess.run(['git', 'diff', '--cached', '--quiet', '--'] + paths, cwd=ROOT).returncode
+        if not staged:
+            return dict(ok=True, committed=False, reason='没有变化')
+        subprocess.run(['git', 'commit', '-q', '-m', message, '--'] + paths, cwd=ROOT, check=True)
+    head = subprocess.run(['git', 'rev-parse', '--short', 'HEAD'], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+    return dict(ok=True, committed=True, commit=head)
 
 
 def entries():

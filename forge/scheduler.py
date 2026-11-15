@@ -190,7 +190,8 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2', parity=None):
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2', parity=None,
+                 cooldowns=2, cooldown_minutes=10):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -210,6 +211,9 @@ class Scheduler:
         self.stop_reason = None
         self.records = []
         self.last_raw = {}
+        self.agent_failures_in_a_row = 0
+        self.cooldowns_left, self.cooldown_seconds = cooldowns, cooldown_minutes * 60
+        self.paused_until, self.probing, self.events = 0, False, []
         self.scratch = DATA / 'staging' / 'agents' / run
         RUNS.mkdir(parents=True, exist_ok=True)
         self.log = RUNS / f'{run}.jsonl'
@@ -262,12 +266,52 @@ class Scheduler:
             self.records.append(row)
             self.tokens += row.get('tokens') or 0
             self.failures_in_a_row = 0 if row['progress'] else self.failures_in_a_row + 1
+            # agent 本身出错或卡死（退出码非 0，包括超时）连续出现，多半是 Codex 服务或网络的问题，不是题目难
+            self.agent_failures_in_a_row = self.agent_failures_in_a_row + 1 if row.get('exit') != 0 and not row['progress'] else 0
             if self.failures_in_a_row >= self.max_failures and not self.stop_reason:
-                self.stop_reason = f'熔断：连续 {self.failures_in_a_row} 次没有进展'
+                if self.agent_failures_in_a_row >= self.max_failures and self.cooldowns_left > 0:
+                    # 冷却后重试：暂停派活，过一段时间探测 agent 是否恢复，恢复了就继续跑
+                    self.cooldowns_left -= 1
+                    self.paused_until = time.time() + self.cooldown_seconds
+                    self.failures_in_a_row = self.agent_failures_in_a_row = 0
+                    self.events.append(dict(at=row['at'], event='cooldown', seconds=self.cooldown_seconds))
+                else:
+                    self.stop_reason = f'熔断：连续 {self.failures_in_a_row} 次没有进展'
             with open(self.log, 'a', encoding='utf-8') as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + '\n')
 
+    def _wait_out_cooldown(self):
+        """冷却期内不派新活；冷却结束后由一个工人探测 agent 是否恢复，没恢复就整体停下。"""
+        while True:
+            with self.lock:
+                if self.stop_reason or time.time() >= self.paused_until:
+                    probing = self.paused_until > 0 and not self.stop_reason and not self.probing
+                    if probing:
+                        self.probing = True
+                    elif self.probing:
+                        pass  # 别的工人在探测，等它的结果
+                    else:
+                        return
+                else:
+                    probing = False
+            if probing:
+                healthy = self._probe()
+                with self.lock:
+                    self.probing = False
+                    self.paused_until = 0
+                    self.events.append(dict(at=time.strftime('%Y-%m-%dT%H:%M:%S%z'), event='probe', healthy=healthy))
+                    if not healthy:
+                        self.stop_reason = self.stop_reason or '冷却后探测：agent 仍不可用，停止'
+                return
+            time.sleep(5)
+
+    def _probe(self):
+        """给 agent 一个极小的任务，看它能否正常回应。"""
+        code, message, _, slow = self._invoke('Reply with the single word: ok', 'probe', seconds=180)
+        return code == 0 and not slow and 'ok' in message.lower()
+
     def _may_start(self):
+        self._wait_out_cooldown()
         with self.lock:
             if self.stop_reason:
                 return False
@@ -351,6 +395,12 @@ class Scheduler:
                                   effort=effort or self.effort, prompt=self.prompt,
                                   raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
                 if solved or self.stop_reason:
+                    break
+                if code != 0 and not proof.exists() and not item.get('_retried'):
+                    # agent 自身出错或卡死、连证明文件都没留下：多半是服务故障，把这题放回队尾重做一次
+                    with self.lock:
+                        problems.append(dict(item, _retried=True))
+                        self.started -= 1  # 重做不占任务配额
                     break
                 draft = scratch / f'{item["name"]}.attempt{attempt + 1}.lean'
                 if proof.exists():
@@ -472,7 +522,7 @@ class Scheduler:
         for row in self.records:
             outcomes[row['outcome']] = outcomes.get(row['outcome'], 0) + 1
         return dict(run=self.run, calls=len(self.records), outcomes=outcomes, tokens=self.tokens,
-                    stopped=self.stop_reason, log=os.path.relpath(self.log, ROOT))
+                    stopped=self.stop_reason, events=self.events, log=os.path.relpath(self.log, ROOT))
 
 
 def report(run):

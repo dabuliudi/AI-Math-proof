@@ -101,6 +101,8 @@ def main(argv=None):
     p.add_argument('--workers', type=int, default=2); p.add_argument('--max-tasks', type=int, default=10)
     p.add_argument('--budget-minutes', type=int, default=60); p.add_argument('--task-minutes', type=int, default=20)
     p.add_argument('--max-failures', type=int, default=4, help='连续这么多次没有进展就整体停下')
+    p.add_argument('--cooldowns', type=int, default=2, help='agent 连续出错时，先暂停再探测恢复的次数（之后才真正停下）')
+    p.add_argument('--cooldown-minutes', type=int, default=10)
     p.add_argument('--agent-cmd', help='自定义 agent 命令（提示词从 stdin 传入）；默认 codex exec')
     p.add_argument('--model', default='gpt-6.1-sol', help='Codex 模型，默认 gpt-6.1-sol')
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
@@ -247,7 +249,8 @@ def main(argv=None):
                            task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
                            model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox,
                            ladder=[(step.split(':')[0], int(step.split(':')[1])) for step in args.ladder.split(',')] if args.ladder else None,
-                           prompt=args.prompt, parity=0 if args.only_even else (1 if args.only_odd else None))
+                           prompt=args.prompt, parity=0 if args.only_even else (1 if args.only_odd else None),
+                           cooldowns=args.cooldowns, cooldown_minutes=args.cooldown_minutes)
         shard = None
         if args.shard:
             k, n = (int(x) for x in args.shard.split('/'))

@@ -588,6 +588,40 @@ class SchedulerTests(unittest.TestCase):
         self.assertIn('kernel verdict in the library: disproved', prompts[1])
         self.assertEqual(summary['outcomes'], {'faithful': 1, 'no_review': 1})
 
+    def _bench_with_outage(self, probe_ok):
+        s = self.scheduler.Scheduler('cool', workers=1, max_tasks=20, max_failures=2, cooldowns=1, cooldown_minutes=0)
+        items = [dict(name=f'p{i}', statement=': True') for i in range(6)]
+        calls = []
+
+        def fake_invoke(prompt, worker, effort=None, seconds=None):
+            if worker == 'probe':
+                calls.append('probe')
+                return (0, 'ok', 1, False) if probe_ok else (1, '', None, False)
+            name = prompt.split('Problem name: ')[1].split('\n')[0]
+            calls.append(name)
+            if name in ('p0', 'p1') and calls.count(name) == 1:  # 前两题第一次碰上 agent 故障（退出码 1、没交文件）
+                return 1, '', None, False
+            (s.scratch / worker / f'{name}.lean').write_text('x', encoding='utf-8')
+            return 0, 'RESULT: solved', 5, False
+
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.bench.load', return_value=items), \
+                mock.patch('forge.bench.check', return_value=dict(ok=True, kind='proved', solved=True, reason='r')):
+            summary = s.run_bench('demo', only_unsolved=False)
+        return summary, calls
+
+    def test_agent_outage_triggers_a_cooldown_then_the_run_continues(self):
+        summary, calls = self._bench_with_outage(probe_ok=True)
+        # 故障中失败的 p0、p1 放回队尾，恢复后补做成功
+        self.assertEqual(calls, ['p0', 'p1', 'probe', 'p2', 'p3', 'p4', 'p5', 'p0', 'p1'])
+        self.assertEqual(summary['outcomes'], {'unsolved': 2, 'solved': 6})
+        self.assertEqual([e['event'] for e in summary['events']], ['cooldown', 'probe'])
+
+    def test_agent_still_down_after_cooldown_stops_the_run(self):
+        summary, calls = self._bench_with_outage(probe_ok=False)
+        self.assertEqual(calls, ['p0', 'p1', 'probe'])
+        self.assertIn('仍不可用', summary['stopped'])
+
     def test_a_crashing_worker_stops_the_run_visibly(self):
         s = self.scheduler.Scheduler('crash', workers=1, max_tasks=3, max_failures=3)
         with mock.patch('forge.tasks.claim', side_effect=RuntimeError('disk full')):

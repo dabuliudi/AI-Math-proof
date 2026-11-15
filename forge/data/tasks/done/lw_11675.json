@@ -1,0 +1,19 @@
+{
+  "name": "lw_11675",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 3) : (a^2 + b) / (b * (a^2 + a * b + b^2)) + (b^2 + c) / (c * (b^2 + b * c + c^2)) + (c^2 + a) / (a * (c^2 + c * a + a^2)) ≥ 2",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a + b + c = 3), (a^2 + b) / (b * (a^2 + a * b + b^2)) + (b^2 + c) / (c * (b^2 + b * c + c^2)) + (c^2 + a) / (a * (c^2 + c * a + a^2)) ≥ 2",
+  "informal": "If $ a,b,c>0$ and $ a+b+c=3$ , then \\n\\n $ \\frac{a^2+b}{b(a^2+ab+b^2)}+\\frac{b^2+c}{c(b^2+bc+c^2)}+\\frac{c^2+a}{a(c^2+ca+a^2)}\\geq2$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_11675",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2916542336",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a + b + c = 3 → (a ^ 2 + b) / (b * (a ^ 2 + a * b + b ^ 2)) + (b ^ 2 + c) / (c * (b ^ 2 + b * c + c ^ 2)) + (c ^ 2 + a) / (a * (c ^ 2 + c * a + a ^ 2)) ≥ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w1",
+  "claimed_at": "2026-11-15T19:30:43+0800",
+  "closed_by": "queue-ab-v2-w1",
+  "finished_at": "2026-11-15T19:35:57+0800"
+}

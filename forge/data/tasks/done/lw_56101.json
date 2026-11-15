@@ -1,0 +1,19 @@
+{
+  "name": "lw_56101",
+  "statement": "(a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (habc : a * b * c = 1) : (a^2 + b^2 + c^2) * (a^2 + b^2 + c^2 + 3)^2 * (b / (a^2 + 1)^2 + c / (b^2 + 1)^2 + a / (c^2 + 1)^2) ≥ 81",
+  "closed": "∀ (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) (habc : a * b * c = 1), (a^2 + b^2 + c^2) * (a^2 + b^2 + c^2 + 3)^2 * (b / (a^2 + 1)^2 + c / (b^2 + 1)^2 + a / (c^2 + 1)^2) ≥ 81",
+  "informal": "Let $ a,\\ b,\\ c$ be positive real numbers such that $ abc = 1$ . Find the possible greatest value of $ M$ satisfying the following inequality: \\n\\n $ (a^2 + b^2 + c^2)(a^2 + b^2 + c^2 + 3)^2\\left\\\\{\\\\frac {b}{(a^2 + 1)^2} + \\\\frac {c}{(b^2 + 1)^2} + \\\\frac {a}{(c^2 + 1)^2}\\\\right\\\\}\\\\geq M.$ \\n\\nBY AM-GM inequality,we have: \\n\\n $ LHS \\ge\\ 81\\sqrt[3]{((a^2+1)(b^2+1)(c^2+1))^2} \\sqrt[3]{\\\\frac{abc}{((a^2+1)(b^2+1)(c^2+1))^2}} =81$ \\n\\nthen M=81",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_56101",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2622866267",
+  "type": "∀ (a b c : ℝ), a > 0 → b > 0 → c > 0 → a * b * c = 1 → (a ^ 2 + b ^ 2 + c ^ 2) * (a ^ 2 + b ^ 2 + c ^ 2 + 3) ^ 2 * (b / (a ^ 2 + 1) ^ 2 + c / (b ^ 2 + 1) ^ 2 + a / (c ^ 2 + 1) ^ 2) ≥ 81",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w0",
+  "claimed_at": "2026-11-15T19:25:41+0800",
+  "closed_by": "queue-ab-v2-w0",
+  "finished_at": "2026-11-15T19:29:20+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "lw_4668",
+  "statement": "(a b c x y z : ℝ) (hx : 0 < x ∧ 0 < y ∧ 0 < z)(hab : a + b > c) (hbc : b + c > a) (hca : a + c > b) : a/x+b/y+c/z > a/(y+z)+b/(x+z)+c/(x+y)",
+  "closed": "∀ (a b c x y z : ℝ) (hx : 0 < x ∧ 0 < y ∧ 0 < z)(hab : a + b > c) (hbc : b + c > a) (hca : a + c > b), a/x+b/y+c/z > a/(y+z)+b/(x+z)+c/(x+y)",
+  "informal": "for $a,b,c$ are three sides of triangle $ABC$ , and $x,y,z$ > $0$ , prove $a/x+b/y+c/z > a/(y+z)+b/(x+z)+c/(x+y)$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_4668",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1331276692",
+  "type": "∀ (a b c x y z : ℝ), 0 < x ∧ 0 < y ∧ 0 < z → a + b > c → b + c > a → a + c > b → a / x + b / y + c / z > a / (y + z) + b / (x + z) + c / (x + y)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w0",
+  "claimed_at": "2026-11-15T19:18:07+0800",
+  "closed_by": "queue-ab-v2-w0",
+  "finished_at": "2026-11-15T19:19:34+0800"
+}

@@ -1513,5 +1513,210 @@
   "owner": "p6_cor36",
   "type": "∀ (a b c d k s : ℝ), b ≠ 0 → d ≠ 0 → b ^ 2 - k * a * b - a ^ 2 = 1 → d ^ 2 - k * c * d - c ^ 2 = 1 → s ^ 2 - k * s = 1 → ((a / b - c / d) ^ 2 + (1 / b) ^ 2 + (1 / d) ^ 2) / (2 * (1 / b) * (1 / d)) = ((b + (s - k) * a) * (d - s * c) + (b - s * a) * (d + (s - k) * c)) / 2",
   "hash": "3364675517"
+ },
+ "lw_12997_aux1": {
+  "owner": "lw_12997",
+  "type": "∀ {K : Type u_1} [inst : CommRing K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a b c : K), 0 ≤ a → 0 ≤ b → 0 ≤ c → a ≤ b → a ≤ c → 0 ≤ a * (a - 2 * b + c) * (b * c + 1) * (c * a + 1) + b * (b - 2 * c + a) * (c * a + 1) * (a * b + 1) + c * (c - 2 * a + b) * (a * b + 1) * (b * c + 1)",
+  "hash": "2679215618"
+ },
+ "lw_24088_aux1": {
+  "owner": "lw_24088",
+  "type": "∀ (p t : ℝ), 1 ≤ p → p + 1 ≤ t → (p + 1) * (t ^ 2 + p ^ 2 - 1 + 2 * p * t) ≤ 4 * p * t ^ 2",
+  "hash": "2001516161"
+ },
+ "lw_29257_aux1": {
+  "owner": "lw_29257",
+  "type": "∀ (x y z : ℝ), 1 ≤ x → 2 ≤ y → 2 ≤ z → Real.log x / (Real.log y + Real.log z) ≤ Real.logb (y + z) x",
+  "hash": "525192851"
+ },
+ "lw_29567_aux1": {
+  "owner": "lw_29567",
+  "type": "∀ {K : Type u_1} [inst : Field K] [CharZero K] (a b c d : K), b + d + 2 * c ≠ 0 → d + b + 2 * a ≠ 0 → (a ^ 2 - b * d) / (b + d + 2 * c) + (c ^ 2 - d * b) / (d + b + 2 * a) = (a + c - b - d) / 2 + (4 * (a + c) * (a - c) ^ 2 + (a + b + c + d) * (b - d) ^ 2) / (2 * (b + d + 2 * c) * (d + b + 2 * a))",
+  "hash": "4026625601"
+ },
+ "lw_32539_aux1": {
+  "owner": "lw_32539",
+  "type": "∀ (x : ℝ), 0 ≤ x → x / (x ^ 3 + 1) ≤ 3 / 5",
+  "hash": "1731698693"
+ },
+ "lw_32539_aux2": {
+  "owner": "lw_32539",
+  "type": "∀ (x : ℝ), 0 ≤ x → x ≤ 9 / 4 → x / (x ^ 3 + 1) ≤ (3 - x) / 4",
+  "hash": "797971832"
+ },
+ "lw_32539_aux3": {
+  "owner": "lw_32539",
+  "type": "∀ (x : ℝ), 9 / 4 ≤ x → x / (x ^ 3 + 1) ≤ 1 / 5",
+  "hash": "495798861"
+ },
+ "lw_42735_aux1": {
+  "owner": "lw_42735",
+  "type": "∀ {K : Type u_1} [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a r : K), 0 < a → 0 < r → (3 * r ^ 2 - a ^ 2) / (2 * r ^ 3) ≤ 1 / a",
+  "hash": "4187346382"
+ },
+ "lw_37015_aux1": {
+  "owner": "lw_37015",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 3 * a * b * c ≤ a ^ 3 + b ^ 3 + c ^ 3",
+  "hash": "1200898994"
+ },
+ "lw_37015_aux2": {
+  "owner": "lw_37015",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 9 * (x * y * z) ^ 2 ≤ (x ^ 2 * y + y ^ 2 * z + z ^ 2 * x) * (x * y ^ 2 + y * z ^ 2 + z * x ^ 2)",
+  "hash": "567128603"
+ },
+ "lw_37015_aux3": {
+  "owner": "lw_37015",
+  "type": "∀ (p s t : ℝ), 0 ≤ p → 3 * p ≤ s → t ^ 3 = p * (s ^ 2 - p ^ 2) → p + t ≤ s",
+  "hash": "1112549536"
+ },
+ "lw_4668_aux1": {
+  "owner": "lw_4668",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → 0 < 1 / x + 1 / y - 1 / (y + z) - 1 / (x + z)",
+  "hash": "1130670726"
+ },
+ "lw_43838_aux1": {
+  "owner": "lw_43838",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 1 ≤ x / (x + 2) + y / (y + 2) + z / (z + 2)",
+  "hash": "2665885536"
+ },
+ "lw_43838_aux2": {
+  "owner": "lw_43838",
+  "type": "∀ (a b c : ℝ), 0 < a → a * b * c = 1 / 3 → 3 * a ^ 5 / (3 * a ^ 5 + 2 * b * c) = 9 * a ^ 6 / (9 * a ^ 6 + 2)",
+  "hash": "644804650"
+ },
+ "lw_48192_aux1": {
+  "owner": "lw_48192",
+  "type": "∀ (a b c : ℝ), (a - b) ^ 2 * (b - c) ^ 2 * (c - a) ^ 2 = (a + b + c) ^ 2 * (a * b + b * c + c * a) ^ 2 - 4 * (a * b + b * c + c * a) ^ 3 - 4 * (a + b + c) ^ 3 * (a * b * c) - 27 * (a * b * c) ^ 2 + 18 * (a + b + c) * (a * b + b * c + c * a) * (a * b * c)",
+  "hash": "3105257385"
+ },
+ "lw_47416_aux1": {
+  "owner": "lw_47416",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 ≤ b → b ≤ a → 0 ≤ c → c ^ 2 = 2 * a ^ 2 - b ^ 2 → b ^ 2 / a + c ≥ a + b",
+  "hash": "2423044982"
+ },
+ "lw_54674_aux1": {
+  "owner": "lw_54674",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 9 * (a ^ 2 + b ^ 2 + c ^ 2) * (a * b * c) ≤ (a ^ 3 + b ^ 3 + c ^ 3 + 6 * (a * b * c)) * (a * b + b * c + c * a)",
+  "hash": "163772755"
+ },
+ "lw_15028_aux1": {
+  "owner": "lw_15028",
+  "type": "∀ (x y z : ℝ), 0 ≤ y → 0 ≤ z → x ^ 3 = y * y * z → 3 * x ≤ 2 * y + z",
+  "hash": "2647983507"
+ },
+ "lw_55543_aux1": {
+  "owner": "lw_55543",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → 3 ≤ a + b + c",
+  "hash": "368524546"
+ },
+ "lw_55543_aux2": {
+  "owner": "lw_55543",
+  "type": "∀ (s q : ℝ), 3 ≤ s → 3 ≤ q → 3 * s ≤ q ^ 2 → 0 ≤ 3 * q ^ 2 + s * q - q - 7 * s - 12",
+  "hash": "2081813415"
+ },
+ "lw_51373_aux1": {
+  "owner": "lw_51373",
+  "type": "∀ (u v w t : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → t ^ 3 ≤ u * v * w → 3 * t ≤ u + v + w",
+  "hash": "609685503"
+ },
+ "lw_51373_aux2": {
+  "owner": "lw_51373",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 3 * ((x + y) * (y + z) * (z + x)) ≤ 4 * (x ^ 4 * z + y ^ 4 * x + z ^ 4 * y + x ^ 2 + y ^ 2 + z ^ 2)",
+  "hash": "2573243086"
+ },
+ "lw_51373_aux3": {
+  "owner": "lw_51373",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 3 / 4 ≤ x ^ 3 * z / ((y + z) * (z + x)) + y ^ 3 * x / ((z + x) * (x + y)) + z ^ 3 * y / ((x + y) * (y + z))",
+  "hash": "2714329809"
+ },
+ "lw_56101_aux1": {
+  "owner": "lw_56101",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * y * z) ≤ (x + y + z) ^ 3",
+  "hash": "3235548846"
+ },
+ "lw_56101_aux2": {
+  "owner": "lw_56101",
+  "type": "∀ (x y z u v w : ℝ), 0 < x → 0 < y → 0 < z → 0 ≤ u → 0 ≤ v → 0 ≤ w → u * v * w = 1 → 27 ≤ (x + y + z) ^ 2 * (u / x ^ 2 + v / y ^ 2 + w / z ^ 2)",
+  "hash": "118431458"
+ },
+ "lw_909_aux1": {
+  "owner": "lw_909",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → (a ^ 3 - 3 * a * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) * (b ^ 3 - 3 * b * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) * (c ^ 3 - 3 * c * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) ≤ 9 * (a + b + c) ^ 9",
+  "hash": "1837400428"
+ },
+ "lw_940_aux1": {
+  "owner": "lw_940",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → 4 / (a * b + 1) ≤ 1 / a + 1 / b",
+  "hash": "2977262753"
+ },
+ "lw_20733_aux1": {
+  "owner": "lw_20733",
+  "type": "∀ (s t : ℝ), 0 < s → 0 ≤ t → √(s ^ 2 + t) ≤ s + t / (2 * s)",
+  "hash": "3349098225"
+ },
+ "lw_20733_aux2": {
+  "owner": "lw_20733",
+  "type": "∀ (a b c : ℝ), 0 ≤ c → b ≤ a → c ≤ b → 0 ≤ 2 * (a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c - a * b * (a + b) - b * c * (b + c) - c * a * (c + a)) * (a + b) * (b + c) * (c + a) - (a * b * (a - b) ^ 2 * (b + c) * (c + a) + b * c * (b - c) ^ 2 * (c + a) * (a + b) + c * a * (c - a) ^ 2 * (a + b) * (b + c))",
+  "hash": "3217018820"
+ },
+ "lw_20733_aux3": {
+  "owner": "lw_20733",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ 2 * (a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c - a * b * (a + b) - b * c * (b + c) - c * a * (c + a)) * (a + b) * (b + c) * (c + a) - (a * b * (a - b) ^ 2 * (b + c) * (c + a) + b * c * (b - c) ^ 2 * (c + a) * (a + b) + c * a * (c - a) ^ 2 * (a + b) * (b + c))",
+  "hash": "1690881752"
+ },
+ "lw_20733_aux4": {
+  "owner": "lw_20733",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * (a + b + (a - b) ^ 2 / (2 * (a + b))) + b * c * (b + c + (b - c) ^ 2 / (2 * (b + c))) + c * a * (c + a + (c - a) ^ 2 / (2 * (c + a))) ≤ a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c",
+  "hash": "1048856068"
+ },
+ "lw_11055_aux1": {
+  "owner": "lw_11055",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → (x ^ 2 + y ^ 2 + z ^ 2 - x * y - y * z - z * x) ^ 2 ≤ (x ^ 2) ^ 2 + (y ^ 2) ^ 2 + (z ^ 2) ^ 2 - x ^ 2 * y ^ 2 - y ^ 2 * z ^ 2 - z ^ 2 * x ^ 2",
+  "hash": "4197721077"
+ },
+ "lw_54762_aux1": {
+  "owner": "lw_54762",
+  "type": "∀ (t b : ℝ), 0 < t → b ≤ t → b * t ^ (b - 1) ≤ t ^ t",
+  "hash": "4186405588"
+ },
+ "lw_54762_aux2": {
+  "owner": "lw_54762",
+  "type": "∀ (t b : ℝ), 0 < t → t ≤ b → b ≤ 1 ∨ 1 ≤ t → t ^ t ≤ b * t ^ (b - 1)",
+  "hash": "106047586"
+ },
+ "lw_54762_aux3": {
+  "owner": "lw_54762",
+  "type": "∀ (a b : ℝ), 0 < a → a ≤ b → b ≤ 1 ∨ 1 ≤ a → ∫ (t : ℝ) in a..b, Real.exp (t * Real.log t) ≤ b ^ b - a ^ b",
+  "hash": "310232574"
+ },
+ "lw_54762_aux4": {
+  "owner": "lw_54762",
+  "type": "∀ (a b : ℝ), 0 < b → b ≤ a → a ^ b - b ^ b ≤ ∫ (t : ℝ) in b..a, Real.exp (t * Real.log t)",
+  "hash": "647911650"
+ },
+ "lw_54762_aux5": {
+  "owner": "lw_54762",
+  "type": "∀ (b : ℝ), 1 ≤ b → ∫ (t : ℝ) in 1..b, Real.exp (t * Real.log t) ≤ b ^ b - 1",
+  "hash": "3702810878"
+ },
+ "lw_54762_aux6": {
+  "owner": "lw_54762",
+  "type": "∀ (a b : ℝ), 0 < a → a ≤ 1 → 1 ≤ b → a ^ b ≤ b ^ b + ∫ (t : ℝ) in b..a, Real.exp (t * Real.log t)",
+  "hash": "2740502879"
+ },
+ "lw_54762_aux7": {
+  "owner": "lw_54762",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → a ^ b ≤ b ^ b + ∫ (t : ℝ) in b..a, Real.exp (t * Real.log t)",
+  "hash": "1082749277"
+ },
+ "lw_11675_aux1": {
+  "owner": "lw_11675",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → a ≤ b → a ≤ c → 0 ≤ (3 * (a + b + c) * a ^ 2 + (a + b + c) ^ 2 * b) * a * c * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2) + (3 * (a + b + c) * b ^ 2 + (a + b + c) ^ 2 * c) * a * b * (c ^ 2 + c * a + a ^ 2) * (a ^ 2 + a * b + b ^ 2) + (3 * (a + b + c) * c ^ 2 + (a + b + c) ^ 2 * a) * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) - 18 * (a * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2))",
+  "hash": "740623689"
+ },
+ "lw_11675_aux2": {
+  "owner": "lw_11675",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (3 * (a + b + c) * a ^ 2 + (a + b + c) ^ 2 * b) * a * c * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2) + (3 * (a + b + c) * b ^ 2 + (a + b + c) ^ 2 * c) * a * b * (c ^ 2 + c * a + a ^ 2) * (a ^ 2 + a * b + b ^ 2) + (3 * (a + b + c) * c ^ 2 + (a + b + c) ^ 2 * a) * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) - 18 * (a * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2))",
+  "hash": "1207332919"
  }
 }

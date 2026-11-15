@@ -1,0 +1,19 @@
+{
+  "name": "lw_11055",
+  "statement": "(a b c : NNReal) : Real.sqrt (a * b) + Real.sqrt (b * c) + Real.sqrt (c * a) + Real.sqrt (a^2 + b^2 + c^2 - a * b - b * c - c * a) ≥ a + b + c",
+  "closed": "∀ (a b c : NNReal), Real.sqrt (a * b) + Real.sqrt (b * c) + Real.sqrt (c * a) + Real.sqrt (a^2 + b^2 + c^2 - a * b - b * c - c * a) ≥ a + b + c",
+  "informal": "$\\bullet$ We have : $$\\sqrt{ab}+\\sqrt{bc}+\\sqrt{ca}+\\sqrt{a^2+b^2+c^2-ab-bc-ca} \\ge a+b+c$$ \\n $$\\iff a^2+b^2+c^2-ab-bc-ca \\ge (a+b+c-\\sqrt{ab}-\\sqrt{bc}-\\sqrt{ca})^2 \\iff \\sum \\sqrt{ab}(\\sqrt{a}-\\sqrt{b})^2 \\ge 0$$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_11055",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1666875243",
+  "type": "∀ (a b c : NNReal), √(↑a * ↑b) + √(↑b * ↑c) + √(↑c * ↑a) + √(↑a ^ 2 + ↑b ^ 2 + ↑c ^ 2 - ↑a * ↑b - ↑b * ↑c - ↑c * ↑a) ≥ ↑a + ↑b + ↑c",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-ab-v2-w2",
+  "claimed_at": "2026-11-15T19:30:06+0800",
+  "closed_by": "queue-ab-v2-w2",
+  "finished_at": "2026-11-15T19:32:29+0800"
+}

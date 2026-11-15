@@ -225,10 +225,40 @@ Millin 级数 ∑ 1/F_{2ⁿ} = (7 − √5)/2；e 的无理性；素数 p ≡ 1 
 | 独立内核重放 | `./forge.sh audit --replay`：复用 Lean 核心的 `Lean.Environment.replay`（lean4checker 的核心），把 Mathlib2 的全部常量放进只导入 Mathlib 的新环境让内核重新检查；另外不许出现新公理和 unsafe/partial 声明 | 3272 个常量全部通过，约 80 秒、内存峰值约 14 GB；反例测试中塞进去的公理和 unsafe 声明都被报出 |
 | 固定评测 | `bench-import` / `bench-check` / `bench-score`：评测题只判对错、不入库，按轮次记成绩；任何新命题或提交里的辅助引理与评测题相同即拒收，防止测试题泄漏进库 | 用自造的两题集合走通（一题因类型错误被丢弃；第一轮 0/1、第二轮 1/1；把评测题当新命题提交被拒为 `reserved`） |
 
-还没做、开跑前需要决定的：
+### 评测集与调度器（同日下午）
 
-- **评测题本身还没导入。** miniF2F、PutnamBench 这类现成集合需要下载；导入前要确认许可证，以及它们用的 Lean/Mathlib 版本与本库的 v4.24 是否兼容。
-- **调度器还没写。** 循环“领题 → 调外部 agent → 提交 → 记账”、预算上限和失败熔断，需要先确定用哪个 CLI 来跑。
+- **评测集**：导入了 miniF2F 的 test 部分 243 题（`forge/data/bench/minif2f_test.jsonl`，来源、许可和所做的语法转换见
+  `forge/data/bench/SOURCES.md`）。导入时核对过：库里没有任何条目或辅助引理与这些题命题相同。
+- **调度器**：`./forge.sh run`，默认调用本机 Codex 命令行（`codex exec`，沙箱为 workspace-write），也可以用 `--agent-cmd` 换成别的 agent。
+
+```bash
+# 清队列：2 个工人，最多 10 道题，总时长 60 分钟，单题 20 分钟，连续 4 次没进展就停
+./forge.sh run --run 2026-11-16-a --prefix gr_ --workers 2 --max-tasks 10
+# 跑评测：成绩只来自调度器自己的内核校验
+./forge.sh run --run mf2f-r1 --bench minif2f_test --limit 20 --workers 3
+./forge.sh bench-score minif2f_test
+./forge.sh run-report 2026-11-16-a
+```
+
+  调度器只认内核的结论：队列模式看任务在库里的最终状态，评测模式自己重新校验 agent 留下的证明文件；agent 没做完就由调度器代为归还并记下原因。
+  每次调用记一行账（耗时、Codex 报告的 token 数、最后一条消息），超时会结束整个进程组，不留 Lean 孤儿进程。
+- **首次实跑**（Codex，模型 gpt-6.1-sol，推理强度 high）：
+
+  | 轮次 | 内容 | 结果 | 耗时 | token |
+  |---|---|---|---|---|
+  | `trial-queue-1` | 队列里 2 道图论题 | 2/2 证出入库（其中 R(3,4) ≤ 10 引用了库里的 R(3,3)） | 101 秒、142 秒 | 约 6.5 万 |
+  | `trial-bench-1` | miniF2F test 前 3 题 | 3/3 解出（调度器自行复核） | 32–58 秒 | 约 5.6 万 |
+
+  之后 `forge audit --replay` 697/697 通过、内核重放 3281 个常量无误，Codex 也没有改动仓库里不该碰的文件。
+  这只是 5 道较容易的题，说明链路通了，不代表 Codex 在整个评测集上的成功率。
+
+- **展示页**：`./forge.sh site` 改成面向非专业读者：一句话结论和四个关键数字，“计算机检查”的通俗解释，以及它不能保证什么；
+  然后是精选发现、论文体检（红绿灯）和领域分布，最后才是给数学家的全部定理（可搜索、可收藏导出）。
+  精选与论文结论的大白话写在 `forge/data/showcase.json`，可以由人或 agent 逐条补充，不用改代码。
+
+剩下的局限：
+
+- agent 在仓库里有写权限，理论上能改队列或日志文件；库的真实性要靠定期跑 `forge audit --replay`，评测成绩只采信调度器自己的校验。
 - 一步推论检查只是“便宜的近似去重”：需要真正证明工作的等价重述仍会被收进来；空真检查也只覆盖自动化能找到的矛盾。
 - 内核重放要同时载入两份 Mathlib 环境，在 16 GB 内存的机器上会很吃紧。
 

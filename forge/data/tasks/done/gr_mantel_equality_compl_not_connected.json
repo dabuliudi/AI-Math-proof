@@ -11,5 +11,9 @@
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ¬Gᶜ.Connected",
   "attempts": [],
   "created_at": "2026-11-15T08:43:58+0800",
-  "status": "open"
+  "status": "proved",
+  "claimed_by": "trial-queue-1-w1",
+  "claimed_at": "2026-11-15T12:33:44+0800",
+  "closed_by": "trial-queue-1-w1",
+  "finished_at": "2026-11-15T12:35:19+0800"
 }

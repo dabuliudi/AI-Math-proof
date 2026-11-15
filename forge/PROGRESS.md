@@ -43,8 +43,10 @@ git status --short
 
 - 分诊新增：空真检查（`vacuous`）、由库内某条定理一步推出的检查（`known`，写明出处）；评测题保护（`reserved`）。
 - 入库改为组提交（并行校验、合并构建、失败逐条回退）；`./forge.sh audit --replay` 做独立内核重放。
-- 固定评测：`bench-import` / `bench-check` / `bench-score`。评测题尚未导入（需要下载，等用户同意）。
-- 下一步：导入评测集 → 写调度器（外部 agent、预算、熔断）→ 改挑选台（面向非专业读者，shadcn）。
+- 固定评测：`bench-import` / `bench-check` / `bench-score`；已导入 miniF2F test 243 题（来源见 `forge/data/bench/SOURCES.md`）。
+- 调度器 `./forge.sh run`：默认调用本机 Codex（`/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex`），
+  首次实跑队列 2/2、评测 3/3。展示页已改为面向非专业读者（`forge/data/showcase.json` 存大白话）。
+- 下一步：用调度器跑完整的 miniF2F 基线成绩（记一个轮次），再清队列里的 57 道题；之后每轮都先跑评测、再跑队列，看成绩是否上升。
 
 ## 接下来按顺序做
 

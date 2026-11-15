@@ -28,13 +28,19 @@ def load(name):
     return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
 
 
-def import_set(name, source):
-    """从 JSONL（每行 {name, statement}）导入一个评测集；求出每题的结构哈希，类型检查不过的题丢弃并报告。"""
+def import_set(name, source, opens=''):
+    """从 JSONL（每行 {name, statement}）导入一个评测集；求出每题的结构哈希，类型检查不过的题丢弃并报告。
+
+    `opens`：题目依赖的记号设置（如 `Real Nat`），随题目一起保存，校验证明时自动加上。
+    """
     items = [json.loads(line) for line in source.read_text(encoding='utf-8').splitlines() if line.strip()]
-    hashes = statement_hashes([item['statement'] for item in items])
+    hashes = statement_hashes([item['statement'] for item in items], opens=opens)
     kept, dropped = [], []
     for item, digest in zip(items, hashes):
-        (kept if digest else dropped).append(dict(name=item['name'], statement=item['statement'], hash=digest))
+        row = dict(name=item['name'], statement=item['statement'], hash=digest)
+        if opens:
+            row['opens'] = opens
+        (kept if digest else dropped).append(row)
     BENCH.mkdir(parents=True, exist_ok=True)
     _path(name).write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in kept), encoding='utf-8')
     return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped])
@@ -55,7 +61,7 @@ def check(name, problem, body, run, agent):
     item = next((i for i in load(name) if i['name'] == problem), None)
     if item is None:
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
-    task = dict(name=problem, statement=item['statement'])
+    task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''))
     result = check_submission(task, body)
     solved = bool(result['ok']) and result['kind'] == 'proved'
     RUNS.mkdir(parents=True, exist_ok=True)

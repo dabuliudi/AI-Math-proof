@@ -488,4 +488,85 @@ section
 noncomputable def p6_kfib (k : ℤ) (n : ℤ) : ℤ := ((!![k, 1; 1, 0] : Matrix (Fin 2) (Fin 2) ℤ) ^ n) 0 1
 end
 
+-- forge:entry gr_mantel_equality_compl_not_connected kind=proved origin=conjecture
+section
+/- The complement of an extremal triangle-free graph is disconnected — Uses Mathlib2.bld4_mantel_equality_complete_bipartite at step 1 to get s with 2|s| = n and Adj x y ↔ (x ∈ s ↔ y ∉ s); then Gᶜ has no edge between s and sᶜ; if n = 0 Connected fails by emptiness, otherwise both sides are nonempty and a Gᶜ-walk from s to sᶜ would need a crossing edge. -/
+theorem gr_mantel_equality_compl_not_connected
+    (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V)
+    [DecidableRel G.Adj] (h : G.CliqueFree 3)
+    (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) : ¬ Gᶜ.Connected := by
+  intro hc
+  letI : Nonempty V := hc.nonempty
+  obtain ⟨s, hs, hadj⟩ := bld4_mantel_equality_complete_bipartite V G h he
+  have hn : 0 < Fintype.card V := Fintype.card_pos
+  have hspos : 0 < s.card := by omega
+  obtain ⟨u, hu⟩ := Finset.card_pos.mp hspos
+  have hex : ∃ w : V, w ∉ s := by
+    by_contra hc'
+    push_neg at hc'
+    have hsu : s = Finset.univ := Finset.eq_univ_iff_forall.mpr hc'
+    rw [hsu, Finset.card_univ] at hs
+    omega
+  obtain ⟨w, hw⟩ := hex
+  have hstep : ∀ {x y : V}, Gᶜ.Adj x y → (x ∈ s ↔ y ∈ s) := by
+    intro x y hxy
+    have hnxy := ((SimpleGraph.compl_adj G x y).mp hxy).2
+    have hiff := hadj x y
+    tauto
+  have hwalk : ∀ {x y : V}, Gᶜ.Walk x y → (x ∈ s ↔ y ∈ s) := by
+    intro x y p
+    induction p with
+    | nil => rfl
+    | cons hxy p ih => exact (hstep hxy).trans ih
+  obtain ⟨p⟩ := hc.preconnected u w
+  exact hw ((hwalk p).mp hu)
+end
+
+-- forge:entry gr_ramsey_three_four_le_ten kind=proved origin=conjecture
+section
+/- R(3,4) ≤ 10: every graph on at least 10 vertices has a triangle or an independent 4-set — pick v; if v has ≥ 4 neighbours, either two are adjacent (triangle with v) or 4 of them form an independent set; otherwise v has ≥ 6 non-neighbours, and Uses Mathlib2.r3_ramsey_three_three at this step on the induced graph on the non-neighbours: a triangle there is a triangle of G, an independent triple plus v is an independent 4-set. -/
+theorem gr_ramsey_three_four_le_ten (V : Type) [Fintype V]
+    (h : 10 ≤ Fintype.card V) (G : SimpleGraph V) :
+    ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 4 := by
+  classical
+  by_contra! hbad
+  obtain ⟨hG, hGc⟩ := hbad
+  obtain ⟨v⟩ := Fintype.card_pos_iff.mp (show 0 < Fintype.card V by omega)
+  have hd : G.degree v ≤ 3 := by
+    by_contra hn
+    obtain ⟨s, hs, hcard⟩ := Finset.exists_subset_card_eq
+      (show 4 ≤ (G.neighborFinset v).card by
+        rw [G.card_neighborFinset_eq_degree]
+        omega)
+    have hi : Gᶜ.IsClique (G.neighborSet v) :=
+      (SimpleGraph.isClique_compl G).mpr (G.isIndepSet_neighborSet_of_triangleFree hG v)
+    apply hGc s
+    refine ⟨hi.subset ?_, hcard⟩
+    intro x hx
+    exact (G.mem_neighborFinset v x).mp (hs hx)
+  let N : Set V := Gᶜ.neighborSet v
+  let H : SimpleGraph N := G.induce N
+  have hN : 6 ≤ Fintype.card N := by
+    change 6 ≤ Fintype.card (Gᶜ.neighborSet v)
+    rw [SimpleGraph.card_neighborSet_eq_degree, G.degree_compl]
+    omega
+  rcases Mathlib2.r3_ramsey_three_three N hN H with htri | hind
+  · exact htri (hG.comap (SimpleGraph.Embedding.induce N))
+  · obtain ⟨s, hs⟩ : ∃ s, Hᶜ.IsNClique 3 s := by
+      simpa only [SimpleGraph.CliqueFree, not_forall, Classical.not_not] using hind
+    let e : Hᶜ ↪g Gᶜ :=
+      SimpleGraph.Embedding.complEquiv (SimpleGraph.Embedding.induce N)
+    have hc : Gᶜ.IsNClique 3 (s.map e.toEmbedding) := by
+      refine ⟨?_, by simpa only [Finset.card_map] using hs.card_eq⟩
+      intro x hx y hy hxy
+      obtain ⟨a, ha, rfl⟩ := Finset.mem_map.mp hx
+      obtain ⟨b, hb, rfl⟩ := Finset.mem_map.mp hy
+      exact e.map_adj_iff.mpr (hs.isClique ha hb (fun hab => hxy (congrArg e hab)))
+    apply hGc (insert v (s.map e.toEmbedding))
+    apply hc.insert
+    intro x hx
+    obtain ⟨a, ha, rfl⟩ := Finset.mem_map.mp hx
+    exact a.property
+end
+
 end Mathlib2

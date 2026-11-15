@@ -390,5 +390,80 @@ class HardeningTests(unittest.TestCase):
             self.assertFalse(any(l.startswith('vac:') for l in ran['labels']))
 
 
+class SchedulerTests(unittest.TestCase):
+    """调度器的控制逻辑：不调用真实 agent，也不碰真实队列。"""
+
+    def setUp(self):
+        from forge import scheduler
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.patches = [mock.patch.object(scheduler, 'RUNS', root / 'runs'), mock.patch.object(scheduler, 'DATA', root)]
+        for p in self.patches:
+            p.start()
+        self.scheduler = scheduler
+
+    def tearDown(self):
+        for p in self.patches:
+            p.stop()
+        self.tmp.cleanup()
+
+    def test_token_count_is_read_from_agent_output(self):
+        self.assertEqual(self.scheduler._tokens('...\ntokens used\n18,291\n684'), 18291)
+        self.assertIsNone(self.scheduler._tokens('no usage here'))
+
+    def test_unfinished_tasks_are_released_and_the_breaker_trips(self):
+        s = self.scheduler.Scheduler('t1', workers=1, max_tasks=10, max_failures=2)
+        queue = [dict(name=f'g{i}', statement=': True', attempts=[]) for i in range(5)]
+        claimed = {}
+        released = []
+
+        def claim(agent, prefix=None):
+            if not queue:
+                return None
+            task = queue.pop(0)
+            claimed[task['name']] = agent
+            return task
+
+        with mock.patch.object(s, '_invoke', return_value=(0, 'RESULT: released', 1000, False)), \
+                mock.patch('forge.tasks.claim', side_effect=claim), \
+                mock.patch('forge.tasks.load', side_effect=lambda n: ('claimed', dict(name=n, claimed_by=claimed[n]))), \
+                mock.patch('forge.tasks.release', side_effect=lambda n, a, note: released.append(n)):
+            summary = s.run_queue()
+        self.assertEqual(released, ['g0', 'g1'])  # 两次没有进展就熔断，没有再领第三道
+        self.assertEqual(summary['outcomes'], {'released_by_scheduler': 2})
+        self.assertEqual(summary['tokens'], 2000)
+        self.assertIn('熔断', summary['stopped'])
+
+    def test_proved_tasks_count_as_progress(self):
+        s = self.scheduler.Scheduler('t2', workers=1, max_tasks=2, max_failures=1)
+        queue = [dict(name='g0', statement=': True', attempts=[]), dict(name='g1', statement=': True', attempts=[])]
+        with mock.patch.object(s, '_invoke', return_value=(0, 'RESULT: proved', None, False)), \
+                mock.patch('forge.tasks.claim', side_effect=lambda agent, prefix=None: queue.pop(0) if queue else None), \
+                mock.patch('forge.tasks.load', side_effect=lambda n: ('done', dict(name=n, status='proved', closed_by='t2-w0'))):
+            summary = s.run_queue()
+        self.assertEqual(summary['outcomes'], {'proved': 2})
+        self.assertEqual(summary['stopped'], '任务数用完')
+
+    def test_bench_score_comes_from_the_schedulers_own_check(self):
+        s = self.scheduler.Scheduler('b1', workers=1, max_tasks=5, max_failures=5)
+        items = [dict(name='p1', statement=': True'), dict(name='p2', statement=': True')]
+        checked = []
+
+        def fake_invoke(prompt, worker):
+            if 'p1' in prompt.split('Problem name:')[1][:10]:  # agent 只为 p1 交了证明文件；p2 只声称做出来了
+                (s.scratch / worker / 'p1.lean').write_text('theorem p1 : True := trivial\n', encoding='utf-8')
+            return 0, 'RESULT: solved', 10, False
+
+        def fake_check(set_name, problem, body, run, agent):
+            checked.append((problem, agent))
+            return dict(ok=True, kind='proved', solved=True, reason='通过')
+
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.bench.load', return_value=items), mock.patch('forge.bench.check', side_effect=fake_check):
+            summary = s.run_bench('demo', only_unsolved=False)
+        self.assertEqual(checked, [('p1', 'scheduler')])
+        self.assertEqual(summary['outcomes'], {'solved': 1, 'unsolved': 1})
+
+
 if __name__ == '__main__':
     unittest.main()

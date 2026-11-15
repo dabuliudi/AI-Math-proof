@@ -1,0 +1,4 @@
+{"problem": "mathd_algebra_478", "run": "trial-bench-1-practice", "agent": "trial-bench-1-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T12:34:02+0800"}
+{"problem": "numbertheory_4x3m7y3neq2003", "run": "trial-bench-1-practice", "agent": "trial-bench-1-w2", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T12:34:13+0800"}
+{"problem": "aime_1983_p1", "run": "trial-bench-1-practice", "agent": "trial-bench-1-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T12:34:25+0800"}
+{"problem": "numbertheory_4x3m7y3neq2003", "run": "trial-bench-1-practice", "agent": "trial-bench-1-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T12:34:31+0800"}

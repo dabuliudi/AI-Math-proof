@@ -31,11 +31,13 @@ def check_submission(task, body, disproof=False, timeout=300):
     disproof = disproof or is_disproof(body, name)
     names = analyse_submission(body, name, disproof)
     nonce = uuid.uuid4().hex
-    prefix = HEADER + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n'
+    # 评测集的题目可能依赖记号设置（例如 miniF2F 的 `open Real Nat …`）；只影响解析，不影响内核里的命题。
+    opens = task.get('opens', '')
+    prefix = HEADER + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
     offset = prefix.count('\n')
     main = names[-1]
     tail = '\nend\nend Mathlib2\n' + ''.join(f'#forge_info "{nonce}" Mathlib2.{n}\n' for n in names)
-    tail += f'open Mathlib2 in\n#forge_match "{nonce}" Mathlib2.{main} "{"disproved" if disproof else "proved"}" ({closed_form(task["statement"])})\n'
+    tail += f'open Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{main} "{"disproved" if disproof else "proved"}" ({closed_form(task["statement"])})\n'
     result = run_source(prefix + body.rstrip('\n') + tail, timeout=timeout, nonce=nonce)
     out = dict(ok=False, kind='disproved' if disproof else 'proved', names=names, elapsed=round(result.elapsed, 1))
     if result.timed_out:
@@ -310,10 +312,13 @@ def validate_statements(statements, timeout=180):
     return out
 
 
-def statement_hashes(statements, timeout=600):
-    """一次 Lean 运行里求若干命题（`<绑定> : <结论>` 形式）的结构哈希，与分诊用的是同一个哈希。无效的为 None。"""
+def statement_hashes(statements, opens='', timeout=900):
+    """一次 Lean 运行里求若干命题（`<绑定> : <结论>` 形式）的结构哈希，与分诊用的是同一个哈希。无效的为 None。
+
+    `opens` 只影响记号解析；哈希取自内核里的命题，所以与不带 open 写出的同一命题一致。
+    """
     nonce = uuid.uuid4().hex
-    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
+    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', f'open Mathlib2 {opens}'.rstrip()]
     spans = []
     for index, statement in enumerate(statements):
         binders, conclusion = split_signature(statement)

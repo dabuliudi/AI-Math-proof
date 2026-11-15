@@ -74,10 +74,22 @@ def main(argv=None):
     sub.add_parser('reindex', help='重建辅助引理索引（按命题内容），供检索与查重')
     p = sub.add_parser('bench-import', help='导入固定评测集（JSONL，每行 {name, statement}）；评测题从此不能进库')
     p.add_argument('set'); p.add_argument('file', type=Path)
+    p.add_argument('--opens', default='', help='题目依赖的记号设置，例如 "BigOperators Real Nat Topology Rat"')
     p = sub.add_parser('bench-check', help='对一道评测题校验证明：只判对错，不入库，记入某个轮次')
     p.add_argument('set'); p.add_argument('problem'); p.add_argument('file', type=Path)
     p.add_argument('--run', required=True, help='轮次名，例如 2026-11-16-a'); p.add_argument('--agent', default='anonymous')
     p = sub.add_parser('bench-score', help='评测集各轮次的成绩'); p.add_argument('set')
+    p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
+    p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
+    p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
+    p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
+    p.add_argument('--workers', type=int, default=2); p.add_argument('--max-tasks', type=int, default=10)
+    p.add_argument('--budget-minutes', type=int, default=60); p.add_argument('--task-minutes', type=int, default=20)
+    p.add_argument('--max-failures', type=int, default=4, help='连续这么多次没有进展就整体停下')
+    p.add_argument('--agent-cmd', help='自定义 agent 命令（提示词从 stdin 传入）；默认 codex exec')
+    p.add_argument('--model'); p.add_argument('--effort', help='Codex 的推理强度，例如 low/medium/high/xhigh')
+    p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
+    p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
     p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
     p.add_argument('--replay', action='store_true', help='另外把整个库放进只含 Mathlib 的环境让内核重放一遍（约 14 GB 内存）')
     sub.add_parser('status', help='队列与库的概况')
@@ -192,7 +204,7 @@ def main(argv=None):
         emit(dict(ok=True, helpers=len(wanted), indexed=len(infos)))
     elif args.command == 'bench-import':
         from . import bench
-        emit(bench.import_set(args.set, args.file))
+        emit(bench.import_set(args.set, args.file, args.opens))
     elif args.command == 'bench-check':
         from . import bench
         result = bench.check(args.set, args.problem, args.file.read_text(encoding='utf-8'), args.run, args.agent)
@@ -200,6 +212,15 @@ def main(argv=None):
     elif args.command == 'bench-score':
         from . import bench
         emit(bench.score(args.set))
+    elif args.command == 'run':
+        from .scheduler import Scheduler
+        runner = Scheduler(args.run, workers=args.workers, max_tasks=args.max_tasks, budget_minutes=args.budget_minutes,
+                           task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
+                           model=args.model, effort=args.effort, dry_run=args.dry_run)
+        emit(runner.run_bench(args.bench, args.limit) if args.bench else runner.run_queue(args.prefix))
+    elif args.command == 'run-report':
+        from .scheduler import report
+        emit(report(args.run))
     elif args.command == 'audit':
         from .leanrun import lake_build
         from .verify import audit

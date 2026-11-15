@@ -1,0 +1,23 @@
+{"problem": "putnam_1972_a2", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:37:05+0800"}
+{"problem": "putnam_1972_a2", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:37:48+0800"}
+{"problem": "putnam_1966_a4", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:37:49+0800"}
+{"problem": "putnam_1966_a4", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:38:04+0800"}
+{"problem": "putnam_1966_a4", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:38:36+0800"}
+{"problem": "putnam_1972_b3", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:41:17+0800"}
+{"problem": "putnam_1969_a4", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:41:44+0800"}
+{"problem": "putnam_1972_b3", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:41:51+0800"}
+{"problem": "putnam_1972_b3", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:42:27+0800"}
+{"problem": "putnam_1973_a6", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:42:55+0800"}
+{"problem": "putnam_1972_b3", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:43:00+0800"}
+{"problem": "putnam_1967_a5", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:43:31+0800"}
+{"problem": "putnam_1983_b6", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:44:24+0800"}
+{"problem": "putnam_1999_b6", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T00:45:09+0800"}
+{"problem": "putnam_1994_a1", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:45:09+0800"}
+{"problem": "putnam_1999_b6", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:45:48+0800"}
+{"problem": "putnam_1966_b5", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:47:00+0800"}
+{"problem": "putnam_2012_b1", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:47:40+0800"}
+{"problem": "putnam_2005_a3", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:49:16+0800"}
+{"problem": "putnam_2011_b5", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w4", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:52:58+0800"}
+{"problem": "putnam_2013_b5", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:54:36+0800"}
+{"problem": "putnam_2007_b6", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T00:57:24+0800"}
+{"problem": "putnam_2013_a5", "run": "improve-base-holdout-practice", "agent": "improve-base-holdout-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:00:21+0800"}

@@ -1,0 +1,20 @@
+{"problem": "putnam_1966_a1", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:37:47+0800"}
+{"problem": "putnam_1973_b2", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:38:30+0800"}
+{"problem": "putnam_1985_b6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:38:30+0800"}
+{"problem": "putnam_1985_b6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:38:56+0800"}
+{"problem": "putnam_1973_b2", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:38:57+0800"}
+{"problem": "putnam_1973_b2", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:39:12+0800"}
+{"problem": "putnam_2003_b5", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:40:21+0800"}
+{"problem": "putnam_1999_a5", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:40:35+0800"}
+{"problem": "putnam_1999_a5", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:40:58+0800"}
+{"problem": "putnam_1999_a5", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:41:11+0800"}
+{"problem": "putnam_2000_b4", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:41:52+0800"}
+{"problem": "putnam_2005_a4", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:42:16+0800"}
+{"problem": "putnam_2000_b4", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:42:20+0800"}
+{"problem": "putnam_2005_a4", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:42:31+0800"}
+{"problem": "putnam_1973_a1", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:42:49+0800"}
+{"problem": "putnam_2005_b6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:42:57+0800"}
+{"problem": "putnam_2007_b2", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:45:51+0800"}
+{"problem": "putnam_2005_b6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:46:24+0800"}
+{"problem": "putnam_2010_a6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T01:46:26+0800"}
+{"problem": "putnam_2010_a6", "run": "improve-003-dev-practice", "agent": "improve-003-dev-w3", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T01:47:07+0800"}

@@ -1,0 +1,255 @@
+{
+  "best": {
+    "config": {
+      "prompt": "v2",
+      "effort": "xhigh"
+    },
+    "dev": {
+      "run": "improve-base-dev",
+      "solved": 16,
+      "problems": 16,
+      "tokens": 843868,
+      "per": {
+        "putnam_1973_b2": {
+          "solved": true,
+          "tokens": 15175,
+          "seconds": 119,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1966_a1": {
+          "solved": true,
+          "tokens": 42635,
+          "seconds": 124,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1985_b6": {
+          "solved": true,
+          "tokens": 48267,
+          "seconds": 160,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2000_b4": {
+          "solved": true,
+          "tokens": 25133,
+          "seconds": 248,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1973_a1": {
+          "solved": true,
+          "tokens": 71928,
+          "seconds": 419,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2003_b5": {
+          "solved": true,
+          "tokens": 67641,
+          "seconds": 336,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2005_a4": {
+          "solved": true,
+          "tokens": 28321,
+          "seconds": 131,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2007_b2": {
+          "solved": true,
+          "tokens": 33437,
+          "seconds": 173,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1989_b6": {
+          "solved": true,
+          "tokens": 118883,
+          "seconds": 692,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2005_b6": {
+          "solved": true,
+          "tokens": 89184,
+          "seconds": 275,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1999_a5": {
+          "solved": true,
+          "tokens": 91224,
+          "seconds": 613,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2010_a6": {
+          "solved": true,
+          "tokens": 29840,
+          "seconds": 372,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2013_a3": {
+          "solved": true,
+          "tokens": 26839,
+          "seconds": 209,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2018_a5": {
+          "solved": true,
+          "tokens": 54346,
+          "seconds": 220,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2018_b4": {
+          "solved": true,
+          "tokens": 31440,
+          "seconds": 293,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2011_b6": {
+          "solved": true,
+          "tokens": 69575,
+          "seconds": 415,
+          "reason": "通过：命题匹配，公理合规"
+        }
+      }
+    },
+    "holdout": {
+      "run": "improve-base-holdout",
+      "solved": 16,
+      "problems": 16,
+      "tokens": 934817,
+      "per": {
+        "putnam_1972_a2": {
+          "solved": true,
+          "tokens": 13915,
+          "seconds": 131,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1966_a4": {
+          "solved": true,
+          "tokens": 25294,
+          "seconds": 181,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1969_a4": {
+          "solved": true,
+          "tokens": 67991,
+          "seconds": 396,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1972_b3": {
+          "solved": true,
+          "tokens": 37895,
+          "seconds": 313,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1973_a6": {
+          "solved": true,
+          "tokens": 61201,
+          "seconds": 263,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1967_a5": {
+          "solved": true,
+          "tokens": 106475,
+          "seconds": 479,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1983_b6": {
+          "solved": true,
+          "tokens": 12542,
+          "seconds": 162,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1994_a1": {
+          "solved": true,
+          "tokens": 31395,
+          "seconds": 153,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1999_b6": {
+          "solved": true,
+          "tokens": 32966,
+          "seconds": 173,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_1966_b5": {
+          "solved": true,
+          "tokens": 80230,
+          "seconds": 711,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2012_b1": {
+          "solved": true,
+          "tokens": 19675,
+          "seconds": 102,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2005_a3": {
+          "solved": true,
+          "tokens": 57231,
+          "seconds": 341,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2011_b5": {
+          "solved": true,
+          "tokens": 41404,
+          "seconds": 448,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2013_b5": {
+          "solved": true,
+          "tokens": 63735,
+          "seconds": 423,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2007_b6": {
+          "solved": true,
+          "tokens": 138588,
+          "seconds": 748,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "putnam_2013_a5": {
+          "solved": true,
+          "tokens": 144280,
+          "seconds": 789,
+          "reason": "通过：命题匹配，公理合规"
+        }
+      }
+    }
+  },
+  "iteration": 2,
+  "tokens_spent": 3260349,
+  "set": "putnam_noanswer",
+  "dev": [
+    "putnam_1966_a1",
+    "putnam_1973_a1",
+    "putnam_1973_b2",
+    "putnam_1985_b6",
+    "putnam_1989_b6",
+    "putnam_1999_a5",
+    "putnam_2000_b4",
+    "putnam_2003_b5",
+    "putnam_2005_a4",
+    "putnam_2005_b6",
+    "putnam_2007_b2",
+    "putnam_2010_a6",
+    "putnam_2011_b6",
+    "putnam_2013_a3",
+    "putnam_2018_a5",
+    "putnam_2018_b4"
+  ],
+  "holdout": [
+    "putnam_1966_a4",
+    "putnam_1966_b5",
+    "putnam_1967_a5",
+    "putnam_1969_a4",
+    "putnam_1972_a2",
+    "putnam_1972_b3",
+    "putnam_1973_a6",
+    "putnam_1983_b6",
+    "putnam_1994_a1",
+    "putnam_1999_b6",
+    "putnam_2005_a3",
+    "putnam_2007_b6",
+    "putnam_2011_b5",
+    "putnam_2012_b1",
+    "putnam_2013_a5",
+    "putnam_2013_b5"
+  ]
+}

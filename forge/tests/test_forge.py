@@ -419,6 +419,27 @@ class ImporterTests(unittest.TestCase):
         self.assertIsNone(theorem_signature('theorem t : 1 = 1 := rfl'))
 
 
+class PutnamImportTests(unittest.TestCase):
+    def test_answer_is_filled_from_the_comment(self):
+        from forge.importers import putnam_problem
+        src = ('import Mathlib\n\nopen Nat\n\ndef helper : ℕ → ℕ\n| 0 => 0\n| (n+1) => helper n + 1\n'
+               'abbrev putnam_x_solution : ℕ → ℕ := sorry\n-- fun n : ℕ => n * 2\n/--\nEvaluate.\n-/\n'
+               'theorem putnam_x\n: ∀ n, putnam_x_solution n = helper n * 2 :=\nsorry\n')
+        item = putnam_problem(src)
+        self.assertEqual(item['name'], 'putnam_x')
+        self.assertEqual(item['statement'], ': ∀ n, putnam_x_solution n = helper n * 2')
+        self.assertEqual(item['opens'], 'Nat')
+        self.assertIn('abbrev putnam_x_solution : ℕ → ℕ := fun n : ℕ => n * 2', item['preamble'])
+        self.assertIn('def helper', item['preamble'])
+        self.assertNotIn('sorry', item['preamble'])
+
+    def test_problems_without_an_answer_or_preamble(self):
+        from forge.importers import putnam_problem
+        item = putnam_problem('import Mathlib\n/-- text -/\ntheorem putnam_y (x : ℝ) : x = x :=\nsorry\n')
+        self.assertEqual(item, dict(name='putnam_y', statement='(x : ℝ) : x = x'))
+        self.assertIsNone(putnam_problem('import Mathlib\nabbrev putnam_z_solution : ℕ := sorry\ntheorem putnam_z : putnam_z_solution = 1 := sorry\n'))
+
+
 class SchedulerTests(unittest.TestCase):
     """调度器的控制逻辑：不调用真实 agent，也不碰真实队列。"""
 

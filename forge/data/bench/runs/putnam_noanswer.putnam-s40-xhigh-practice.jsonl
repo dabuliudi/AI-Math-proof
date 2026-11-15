@@ -33,3 +33,5 @@
 {"problem": "putnam_2000_b1", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:38+0800"}
 {"problem": "putnam_1998_a2", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:23:38+0800"}
 {"problem": "putnam_2000_b2", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:25:11+0800"}
+{"problem": "putnam_2002_b6", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:32:15+0800"}
+{"problem": "putnam_2002_b6", "run": "putnam-s40-xhigh-practice", "agent": "putnam-s40-xhigh-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:34:47+0800"}

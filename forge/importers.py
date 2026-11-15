@@ -57,3 +57,41 @@ def theorem_signature(source):
     if not match or re.search(r'\b(theorem|lemma|def|abbrev|instance)\b', match.group(2)):
         return None
     return match.group(1), ' '.join(match.group(2).split())
+
+
+def putnam_problem(source):
+    """把一个 PutnamBench 的 Lean 文件转成评测题：{name, statement, opens?, preamble?}；转不了的返回 None。
+
+    答案题的 `abbrev X_solution : T := sorry` 后面紧跟的注释是官方答案；按排行榜“填好答案”（with solution）
+    赛道的做法，把官方答案填进去作为前置定义。题目自带的其他辅助定义（def/abbrev）也放进前置定义。
+    """
+    lines = source.split('\n')
+    opens = [line.strip()[5:] for line in lines if line.startswith('open ')]
+    if len(opens) > 1:
+        return None
+    body = '\n'.join(line for line in lines if not line.startswith(('import ', 'open ')))
+    body = re.sub(r'/--.*?-/', '', body, flags=re.S)          # 题目的文档注释（自然语言原题）
+    at = re.search(r'^theorem\s', body, re.M)
+    if not at:
+        return None
+    head, theorem = body[:at.start()], body[at.start():]
+
+    def fill(match):
+        answer = ' '.join(c.strip()[2:].strip() for c in match.group(2).strip().split('\n'))
+        return f'{match.group(1)} {answer}\n' if answer else match.group(0)
+
+    head = re.sub(r'^((?:noncomputable\s+)?abbrev\s+\S+_solution\s*:.*?:=)\s*sorry\s*\n((?:\s*--[^\n]*\n)+)',
+                  fill, head, flags=re.M | re.S)
+    head = re.sub(r'/-.*?-/', '', head, flags=re.S).strip()
+    if re.search(r'\bsorry\b', head) or re.search(r'--', head):
+        return None                                           # 答案没能填上，或者前置部分有无法处理的注释
+    parsed = theorem_signature(theorem)
+    if not parsed:
+        return None
+    name, signature = parsed
+    item = dict(name=name, statement=signature)
+    if opens:
+        item['opens'] = opens[0]
+    if head:
+        item['preamble'] = head
+    return item

@@ -33,7 +33,9 @@ def check_submission(task, body, disproof=False, timeout=300):
     nonce = uuid.uuid4().hex
     # 评测集的题目可能依赖记号设置（例如 miniF2F 的 `open Real Nat …`）；只影响解析，不影响内核里的命题。
     opens = task.get('opens', '')
-    prefix = HEADER + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
+    # 评测题可以带前置定义（例如 PutnamBench 的 `abbrev …_solution := 官方答案`）：由数据集给出、放在最前面，agent 不能改
+    preamble = task.get('preamble', '')
+    prefix = HEADER + (preamble.rstrip('\n') + '\n' if preamble else '') + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
     offset = prefix.count('\n')
     main = names[-1]
     tail = '\nend\nend Mathlib2\n' + ''.join(f'#forge_info "{nonce}" Mathlib2.{n}\n' for n in names)
@@ -315,7 +317,7 @@ def validate_statements(statements, timeout=180):
     return out
 
 
-def statement_hashes(statements, opens='', timeout=900):
+def statement_hashes(statements, opens='', timeout=900, preambles=None):
     """一次 Lean 运行里求若干命题（`<绑定> : <结论>` 形式）的结构哈希，与分诊用的是同一个哈希。无效的为 None。
 
     `opens` 只影响记号解析；哈希取自内核里的命题，所以与不带 open 写出的同一命题一致。
@@ -325,20 +327,25 @@ def statement_hashes(statements, opens='', timeout=900):
     per_item = opens if isinstance(opens, list) else [opens] * len(statements)
     lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
     spans = []
-    for index, (statement, item_opens) in enumerate(zip(statements, per_item)):
+    pre = preambles or [''] * len(statements)
+    for index, (statement, item_opens, item_pre) in enumerate(zip(statements, per_item, pre)):
         binders, conclusion = split_signature(statement)
         start = len(lines) + 1
         prefix = f'open {item_opens} in\n' if item_opens else ''
-        lines.extend(f'{prefix}theorem b{index} {binders} : {conclusion} := by\n  sorry'.split('\n'))
+        body = f'{prefix}theorem b{index} {binders} : {conclusion} := by\n  sorry'
+        if item_pre:
+            body = f'namespace P{index}\n{item_pre.rstrip()}\n{body}\nend P{index}'
+        lines.extend(body.split('\n'))
         spans.append((start, len(lines)))
     lines.append('end ForgeBench')
-    lines += [f'#forge_info "{nonce}" ForgeBench.b{index}' for index in range(len(statements))]
+    names = [f'ForgeBench.P{i}.b{i}' if (pre[i] if i < len(pre) else '') else f'ForgeBench.b{i}' for i in range(len(statements))]
+    lines += [f'#forge_info "{nonce}" {name}' for name in names]
     result = run_source('\n'.join(lines) + '\n', timeout=timeout, nonce=nonce)
     infos = {i['name']: i['hash'] for i in result.tagged('FORGE_INFO')}
     out = []
     for index, (start, end) in enumerate(spans):
         broken = any(start <= m['line'] <= end for m in result.errors())
-        out.append(None if broken else infos.get(f'ForgeBench.b{index}'))
+        out.append(None if broken else infos.get(names[index]))
     return out
 
 

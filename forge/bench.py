@@ -43,12 +43,15 @@ def import_set(name, source, opens=''):
             unusable.append(item['name'])
     items = [item for item in items if item['name'] not in unusable]
     per_item = [item.get('opens', opens) for item in items]  # 每题可以自带 opens，否则用命令行给的
-    hashes = statement_hashes([item['statement'] for item in items], opens=per_item)
+    hashes = statement_hashes([item['statement'] for item in items], opens=per_item,
+                              preambles=[item.get('preamble', '') for item in items])
     kept, dropped = [], []
     for item, digest, item_opens in zip(items, hashes, per_item):
         row = dict(name=item['name'], statement=item['statement'], hash=digest)
         if item_opens:
             row['opens'] = item_opens
+        if item.get('preamble'):
+            row['preamble'] = item['preamble']
         (kept if digest else dropped).append(row)
     BENCH.mkdir(parents=True, exist_ok=True)
     _path(name).write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in kept), encoding='utf-8')
@@ -70,7 +73,7 @@ def check(name, problem, body, run, agent):
     item = next((i for i in load(name) if i['name'] == problem), None)
     if item is None:
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
-    task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''))
+    task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''), preamble=item.get('preamble', ''))
     result = check_submission(task, body)
     solved = bool(result['ok']) and result['kind'] == 'proved'
     RUNS.mkdir(parents=True, exist_ok=True)

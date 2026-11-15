@@ -1,0 +1,19 @@
+{
+  "name": "lw_15096",
+  "statement": "(p : ℕ) (hp : p.Prime) (hp1 : Odd p) {a : ℤ} (ha : a ∉ (⊥ : Ideal ℤ)) : (∃ x : ℤ, x^2 ≡ -(a^2) [ZMOD p]) ↔ p ≡ 1 [ZMOD 4]",
+  "closed": "∀ (p : ℕ) (hp : p.Prime) (hp1 : Odd p) {a : ℤ} (ha : a ∉ (⊥ : Ideal ℤ)), (∃ x : ℤ, x^2 ≡ -(a^2) [ZMOD p]) ↔ p ≡ 1 [ZMOD 4]",
+  "informal": "Let $p$ be an odd prime and $a$ be any integer which is not congruent to 0 modulo p. Prove that the congruence $x^2=-a^2 mod p$ has solutions if and only if $p$ is congruent to $1 mod 4$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_15096",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2163737144",
+  "type": "∀ (p : ℕ), Nat.Prime p → Odd p → ∀ {a : ℤ}, a ∉ ⊥ → ((∃ x, x ^ 2 ≡ -a ^ 2 [ZMOD ↑p]) ↔ ↑p ≡ 1 [ZMOD 4])",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T20:54:09+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T20:55:15+0800"
+}

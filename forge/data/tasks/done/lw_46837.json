@@ -1,0 +1,19 @@
+{
+  "name": "lw_46837",
+  "statement": "(a b c d : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) (habc : a + b + c + d = 4) : (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2) ≥ 81",
+  "closed": "∀ (a b c d : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hd : d ≥ 0) (habc : a + b + c + d = 4), (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2) ≥ 81",
+  "informal": "Let $a,b,c,d$ be non-negative real numbers verifying $a+b+c+d=4$ . Prove that $(2+a^2)(2+b^2)(2+c^2)(2+d^2) \\geqslant 81 $ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_46837",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2429675378",
+  "type": "∀ (a b c d : ℝ), a ≥ 0 → b ≥ 0 → c ≥ 0 → d ≥ 0 → a + b + c + d = 4 → (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2) ≥ 81",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T19:56:16+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T20:02:01+0800"
+}

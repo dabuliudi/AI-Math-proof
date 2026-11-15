@@ -1,0 +1,20 @@
+{
+  "name": "lw_47899",
+  "statement": "(a b c : ℝ) : (b * c * (b + c) / (a ^ 2 + b * c) + c * a * (c + a) / (b ^ 2 + c * a) + a * b * (a + b) / (c ^ 2 + a * b)) ≥ a + b + c",
+  "closed": "∀ (a b c : ℝ), (b * c * (b + c) / (a ^ 2 + b * c) + c * a * (c + a) / (b ^ 2 + c * a) + a * b * (a + b) / (c ^ 2 + a * b)) ≥ a + b + c",
+  "informal": "Prove that: $\\dfrac{bc(b+c)}{a^2+bc}+\\dfrac{ca(c+a)}{b^2+ca}+\\dfrac{ab(a+b)}{c^2+ab}\\ge a+b+c$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_47899",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "206636578",
+  "type": "∀ (a b c : ℝ), b * c * (b + c) / (a ^ 2 + b * c) + c * a * (c + a) / (b ^ 2 + c * a) + a * b * (a + b) / (c ^ 2 + a * b) ≥ a + b + c",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\na := 0\nb := 2\nc := 0\nissue: 2 ≤ 0 does not hold\n(0 shrinks)\n-------------------",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T19:58:04+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T19:59:05+0800"
+}

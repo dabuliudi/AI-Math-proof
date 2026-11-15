@@ -1718,5 +1718,835 @@
   "owner": "lw_11675",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (3 * (a + b + c) * a ^ 2 + (a + b + c) ^ 2 * b) * a * c * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2) + (3 * (a + b + c) * b ^ 2 + (a + b + c) ^ 2 * c) * a * b * (c ^ 2 + c * a + a ^ 2) * (a ^ 2 + a * b + b ^ 2) + (3 * (a + b + c) * c ^ 2 + (a + b + c) ^ 2 * a) * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) - 18 * (a * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2))",
   "hash": "1207332919"
+ },
+ "lw_22697_aux1": {
+  "owner": "lw_22697",
+  "type": "∀ (x y : ℝ), 0 ≤ x → 0 < y → √(2 * x) ≤ x / y + y / 2",
+  "hash": "2508853807"
+ },
+ "lw_22697_aux2": {
+  "owner": "lw_22697",
+  "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → x ^ 2 + y ^ 2 + z ^ 2 ≤ 2 * t ^ 2 → x + y + z ≤ 5 / 2 * t",
+  "hash": "1962773082"
+ },
+ "lw_23175_aux1": {
+  "owner": "lw_23175",
+  "type": "∀ (q p : ℝ), 0 ≤ q → q ≤ 3 → 0 ≤ p → 9 * p ≤ q ^ 2 → 0 ≤ 39015 + 47304 * p + 50544 * p ^ 2 + 28764 * q - 133488 * q * p - 3006 * q ^ 2 - 1944 * q ^ 2 * p + 8460 * q ^ 3 - 81 * q ^ 4",
+  "hash": "4001033012"
+ },
+ "lw_23175_aux2": {
+  "owner": "lw_23175",
+  "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → u ^ 2 + v ^ 2 + w ^ 2 ≤ 21 → ((36 - (u ^ 2 + v ^ 2 + w ^ 2)) ^ 2 - 4 * (u ^ 2 * v ^ 2 + v ^ 2 * w ^ 2 + w ^ 2 * u ^ 2)) ^ 2 ≤ 2304 * (u * v * w) ^ 2 → 6 ≤ u + v + w",
+  "hash": "734473187"
+ },
+ "lw_148_aux1": {
+  "owner": "lw_148",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (a + b + c) ^ 2 * (a * b + b * c + c * a) - 2 * (a * b + b * c + c * a) ^ 2 - 3 * (a + b + c) * a * b * c",
+  "hash": "2065508913"
+ },
+ "lw_148_aux2": {
+  "owner": "lw_148",
+  "type": "∀ (a b c : ℝ), a + b ≠ 0 → b + c ≠ 0 → c + a ≠ 0 → a + b + c ≠ 0 → a * b + b * c + c * a ≠ 0 → a * (a - b) / (a + b) + b * (b - c) / (b + c) + c * (c - a) / (c + a) + 3 * a * b * c / (a * b + b * c + c * a) - (a ^ 2 + b ^ 2 + c ^ 2) / (a + b + c) = a * b * c * ((a + b + c) ^ 2 * (a * b + b * c + c * a) - 2 * (a * b + b * c + c * a) ^ 2 - 3 * (a + b + c) * a * b * c) / ((a + b + c) * (a * b + b * c + c * a) * (a + b) * (b + c) * (c + a))",
+  "hash": "1369331722"
+ },
+ "lw_27428_aux1": {
+  "owner": "lw_27428",
+  "type": "∀ (x y s t k : ℝ), k ≠ 0 → s ^ 2 - x ^ 2 = 1 → t ^ 2 - y ^ 2 = k ^ 2 → (s + x) * (t + y) = k → k * x + y = 0",
+  "hash": "4127620629"
+ },
+ "lw_2629_aux1": {
+  "owner": "lw_2629",
+  "type": "∀ (a b t p : ℝ), 0 ≤ a → 0 ≤ b → 4 * p ≤ a ^ 2 → 4 * p ≤ t ^ 2 → t ^ 2 - 3 * p ≤ b ^ 2 → t ≤ a / 2 + b",
+  "hash": "3325317907"
+ },
+ "lw_28724_aux1": {
+  "owner": "lw_28724",
+  "type": "∀ (x : ℝ), 0 < x → 3 * √3 - 3 * √3 * x ^ 2 ≤ 2 / x",
+  "hash": "4214026720"
+ },
+ "lw_28724_aux2": {
+  "owner": "lw_28724",
+  "type": "∀ (a x : ℝ), 0 ≤ a → 0 ≤ x → a + 3 * x ≤ √10 * √(a ^ 2 + x ^ 2)",
+  "hash": "1198452780"
+ },
+ "lw_37157_aux1": {
+  "owner": "lw_37157",
+  "type": "∀ (x u t : ℝ), 0 ≤ x → 0 < u → 4 * x * (t - u) ≤ x / u * t ^ 2",
+  "hash": "2132872181"
+ },
+ "lw_37157_aux2": {
+  "owner": "lw_37157",
+  "type": "∀ (x y z w : ℝ), 0 < x → 0 < y → 0 < z → 0 < w → 2 ≤ x / (y + z) + y / (z + w) + z / (w + x) + w / (x + y)",
+  "hash": "3934177974"
+ },
+ "lw_41705_aux1": {
+  "owner": "lw_41705",
+  "type": "∀ (x y z : ℝ), 3 * (x * y + z * x + y * z) ≤ (x + y + z) ^ 2",
+  "hash": "1205986543"
+ },
+ "lw_4151_aux1": {
+  "owner": "lw_4151",
+  "type": "∀ (x y z : ℝ), 0 ≤ z → z ≤ x → z ≤ y → 0 ≤ (x + y + z) * ((2 * x + y + 1) * (2 * y + z + 1) * (2 * z + x + 1)) - (x + y + z + 1) * (x * (2 * y + z + 1) * (2 * z + x + 1) + y * (2 * z + x + 1) * (2 * x + y + 1) + z * (2 * x + y + 1) * (2 * y + z + 1))",
+  "hash": "1192568364"
+ },
+ "lw_4151_aux2": {
+  "owner": "lw_4151",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + y + z) * ((2 * x + y + 1) * (2 * y + z + 1) * (2 * z + x + 1)) - (x + y + z + 1) * (x * (2 * y + z + 1) * (2 * z + x + 1) + y * (2 * z + x + 1) * (2 * x + y + 1) + z * (2 * x + y + 1) * (2 * y + z + 1))",
+  "hash": "378913525"
+ },
+ "lw_4151_aux3": {
+  "owner": "lw_4151",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x / (2 * x + y + 1) + y / (2 * y + z + 1) + z / (2 * z + x + 1) ≤ (x + y + z) / (x + y + z + 1)",
+  "hash": "950447004"
+ },
+ "lw_4151_aux4": {
+  "owner": "lw_4151",
+  "type": "∀ (a : ℝ), 0 ≤ a → 4 * a ^ 3 - 1 ≤ 3 * a ^ 4",
+  "hash": "1951972352"
+ },
+ "lw_40072_aux1": {
+  "owner": "lw_40072",
+  "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ (x ^ 2 - (x + y) * (x + y + z)) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + x ^ 2) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y) ^ 2) + ((x + y) ^ 2 - (x + y + z) * x) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y) ^ 2) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + (x + y + z) ^ 2) + ((x + y + z) ^ 2 - x * (x + y)) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + (x + y + z) ^ 2) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + x ^ 2)",
+  "hash": "837029167"
+ },
+ "lw_40072_aux2": {
+  "owner": "lw_40072",
+  "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ (x ^ 2 - (x + y + z) * (x + y)) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + x ^ 2) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y + z) ^ 2) + ((x + y + z) ^ 2 - (x + y) * x) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y + z) ^ 2) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + (x + y) ^ 2) + ((x + y) ^ 2 - x * (x + y + z)) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + (x + y) ^ 2) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + x ^ 2)",
+  "hash": "1255815952"
+ },
+ "lw_40072_aux3": {
+  "owner": "lw_40072",
+  "type": "∀ (a b c p : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 1 ≤ p → 0 ≤ (a ^ 2 - b * c) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) + (b ^ 2 - c * a) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) + (c ^ 2 - a * b) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2)",
+  "hash": "4068966262"
+ },
+ "lw_40072_aux4": {
+  "owner": "lw_40072",
+  "type": "∀ (a b c p : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 < p → 0 ≤ (a ^ 2 - b * c) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) + (b ^ 2 - c * a) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) + (c ^ 2 - a * b) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2)",
+  "hash": "1120198931"
+ },
+ "lw_43833_aux1": {
+  "owner": "lw_43833",
+  "type": "∀ (a b : ℝ), 0 ≤ a → a ≤ 1 → 1 ≤ b → a ^ b + b ^ a ≤ 1 + a * b",
+  "hash": "52032349"
+ },
+ "lw_46837_aux1": {
+  "owner": "lw_46837",
+  "type": "∀ (x y : ℝ), (x + y) ^ 2 + 4 * x * y ≤ 16 → (2 + ((x + y) / 2) ^ 2) ^ 2 ≤ (2 + x ^ 2) * (2 + y ^ 2)",
+  "hash": "2360144081"
+ },
+ "lw_46837_aux2": {
+  "owner": "lw_46837",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a + b + c + d = 4 → a ≤ b → a ≤ c → b ≤ d → c ≤ d → 81 ≤ (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2)",
+  "hash": "2040351093"
+ },
+ "lw_46837_aux3": {
+  "owner": "lw_46837",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a + b + c + d = 4 → a ≤ b → a ≤ c → a ≤ d → 81 ≤ (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2)",
+  "hash": "2025841262"
+ },
+ "lw_51853_aux1": {
+  "owner": "lw_51853",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 1 ≤ x * y * z → 3 ≤ x + y + z",
+  "hash": "3815297541"
+ },
+ "lw_51853_aux2": {
+  "owner": "lw_51853",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → (a + 1) * (b + 1) * (c + 1) ≤ (a + b) * (b + c) * (a + c)",
+  "hash": "1270648230"
+ },
+ "lw_5456_aux1": {
+  "owner": "lw_5456_disproof",
+  "type": "∀ (x : ℝ), 2 * ((x ^ 2) ^ 2 + x ^ 2 + 1) ≥ x * (x ^ 2 + x + 1) + x",
+  "hash": "90469892"
+ },
+ "lw_5456_aux2": {
+  "owner": "lw_5456_disproof",
+  "type": "∀ (x : ℝ), 2 * (x ^ 2 / Real.log (x ^ 2)) = x * (x / Real.log x)",
+  "hash": "724686199"
+ },
+ "lw_5456_aux3": {
+  "owner": "lw_5456_disproof",
+  "type": "∀ (c x : ℝ), 2 * ((x ^ 2) ^ 2 + x ^ 2 + 1 - c * (x ^ 2 / Real.log (x ^ 2))) ≥ x * (x ^ 2 + x + 1 - c * (x / Real.log x)) + x",
+  "hash": "218919633"
+ },
+ "lw_55942_aux1": {
+  "owner": "lw_55942",
+  "type": "∀ (x y z : ℝ), 0 ≤ z → z ≤ y → y ≤ x → 2 * (x * y + y * z + z * x) * ((x + y) * (y + z) * (z + x)) ≤ (x ^ 2 + y ^ 2 + z ^ 2) * ((x + y) * (y + z) * (z + x)) + 8 * x * y * z * (x * y + y * z + z * x)",
+  "hash": "1544493144"
+ },
+ "lw_55942_aux2": {
+  "owner": "lw_55942",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 2 * (x * y + y * z + z * x) * ((x + y) * (y + z) * (z + x)) ≤ (x ^ 2 + y ^ 2 + z ^ 2) * ((x + y) * (y + z) * (z + x)) + 8 * x * y * z * (x * y + y * z + z * x)",
+  "hash": "1823102416"
+ },
+ "lw_56957_aux1": {
+  "owner": "lw_56957",
+  "type": "∀ (x y : ℝ), -2 < x * y → x * y ≤ 2 → 1 / (x ^ 2 + 2) + 1 / (y ^ 2 + 2) ≤ 2 / (x * y + 2)",
+  "hash": "4105012905"
+ },
+ "lw_56957_aux2": {
+  "owner": "lw_56957",
+  "type": "∀ x ≤ 2, 1 / (x ^ 2 + 2) + 2 / (4 - x) ≤ 1 + 1 / 6 * (x - 1) ^ 2",
+  "hash": "3878860939"
+ },
+ "lw_11359_aux1": {
+  "owner": "lw_11359",
+  "type": "∀ (p q : ℝ), 3 ≤ p → 3 ≤ q → 8 * (p ^ 2 + q ^ 2 - 2 * p - 2 * q + 2) ≤ (p * q - 1) ^ 2",
+  "hash": "11609008"
+ },
+ "lw_11359_aux2": {
+  "owner": "lw_11359",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → 8 * ((a ^ 2 + 1) * (b ^ 2 + 1) * (c ^ 2 + 1)) ≤ ((a + b) * (b + c) * (c + a)) ^ 2",
+  "hash": "1932281042"
+ },
+ "lw_11359_aux3": {
+  "owner": "lw_11359",
+  "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → t ^ 3 ≤ x * y * z → 3 * t ≤ x + y + z",
+  "hash": "2622247805"
+ },
+ "lw_11443_aux1": {
+  "owner": "lw_11443",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → x ≤ y → x ≤ z → 0 ≤ (x * y + y * z + z * x) * (x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) - x * y * z * (x + y + z) * ((x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) + (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) + (z * x + 2 * y ^ 2) * (x * y + 2 * z ^ 2))",
+  "hash": "3187975370"
+ },
+ "lw_11443_aux2": {
+  "owner": "lw_11443",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x * y + y * z + z * x) * (x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) - x * y * z * (x + y + z) * ((x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) + (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) + (z * x + 2 * y ^ 2) * (x * y + 2 * z ^ 2))",
+  "hash": "3431606977"
+ },
+ "lw_10713_aux1": {
+  "owner": "lw_10713",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 48 * (x ^ 2 + y ^ 2 + z ^ 2) * (x * y * z) ^ 2 ≤ ((x + 2 * y + z) * (x ^ 2 * z + 2 * x * y ^ 2 + y * z ^ 2)) ^ 2",
+  "hash": "2986981386"
+ },
+ "lw_2456_aux1": {
+  "owner": "lw_2456",
+  "type": "∀ t ≤ 3, 1 / (t ^ 2 - t + 3) ≤ (4 - t) / 9",
+  "hash": "2530903839"
+ },
+ "lw_17592_aux1": {
+  "owner": "lw_17592",
+  "type": "∀ (x y : ℝ), 0 < x → x < y → 1 ≤ Real.log x → x * Real.log y < y * Real.log x",
+  "hash": "3515465047"
+ },
+ "lw_21888_aux1": {
+  "owner": "lw_21888",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ≤ 1 → y ≤ 1 → z ≤ 1 → x * y * z ≤ (x + y + z) * (1 - (x + y + z) + (x * y + y * z + z * x))",
+  "hash": "1368349998"
+ },
+ "lw_21888_aux2": {
+  "owner": "lw_21888",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ≤ 1 → y ≤ 1 → z ≤ 1 → 3 * (x * y * z) ≤ 4 * (1 - (x + y + z) + (x * y + y * z + z * x)) * (x ^ 3 + y ^ 3 + z ^ 3)",
+  "hash": "1517506243"
+ },
+ "lw_31420_aux1": {
+  "owner": "lw_31420",
+  "type": "∀ (x s t : ℝ), 0 ≤ x → 0 < s → 0 ≤ t → x / (s + t * x) ≤ (t * s + 9 * x) / (s * (t + 3) ^ 2)",
+  "hash": "1648794882"
+ },
+ "lw_29729_aux1": {
+  "owner": "lw_29729",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 3 * x * y * z ≤ x ^ 2 * z + x * y ^ 2 + y * z ^ 2",
+  "hash": "1971138875"
+ },
+ "lw_45217_aux1": {
+  "owner": "lw_45217",
+  "type": "∀ (x y : ℝ), 0 < x → 0 < y → x / (y ^ 3 - y ^ 2 * x + x ^ 3) ≤ 1 / (x * y)",
+  "hash": "2490854205"
+ },
+ "lw_4909_aux1": {
+  "owner": "lw_4909",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → (x + y + z) ^ 3 ≤ 16 * (x ^ 3 + y ^ 3 + z ^ 3)",
+  "hash": "2692446911"
+ },
+ "lw_37717_aux1": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)) + (a + b) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)) + (a + b + c) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * (a ^ 2 + a * (a + b)) + (a + b + c + d) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a)) * (a * (a + b + c) + (a + b) * (a + b + c + d)) - (a + (a + b) + (a + b + c) + (a + b + c + d)) * (((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)))",
+  "hash": "484466508"
+ },
+ "lw_37717_aux2": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)) + (a + b) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)) + (a + b + c + d) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * (a ^ 2 + a * (a + b)) + (a + b + c) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a)) * (a * (a + b + c + d) + (a + b) * (a + b + c)) - (a + (a + b) + (a + b + c + d) + (a + b + c)) * (((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)))",
+  "hash": "2513293907"
+ },
+ "lw_37717_aux3": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)) + (a + b) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * (a ^ 2 + a * (a + b + c)) + (a + b + c + d) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a)) * (a * (a + b) + (a + b + c) * (a + b + c + d)) - (a + (a + b + c) + (a + b) + (a + b + c + d)) * (((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)))",
+  "hash": "3115418999"
+ },
+ "lw_37717_aux4": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c + d) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a)) * (a * (a + b) + (a + b + c + d) * (a + b + c)) - (a + (a + b + c + d) + (a + b) + (a + b + c)) * (((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)))",
+  "hash": "3664258383"
+ },
+ "lw_37717_aux5": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c + d) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * (a ^ 2 + a * (a + b + c)) + (a + b) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a)) * (a * (a + b + c + d) + (a + b + c) * (a + b)) - (a + (a + b + c) + (a + b + c + d) + (a + b)) * (((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)))",
+  "hash": "2964499979"
+ },
+ "lw_37717_aux6": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c + d) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * (a ^ 2 + a * (a + b + c + d)) + (a + b) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a)) * (a * (a + b + c) + (a + b + c + d) * (a + b)) - (a + (a + b + c + d) + (a + b + c) + (a + b)) * (((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)))",
+  "hash": "1621483502"
+ },
+ "lw_37717_aux7": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → a ≤ b → a ≤ c → a ≤ d → 0 ≤ (a * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + b * (b ^ 2 + b * c) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + c * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (a ^ 2 + a * b) + d * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a)) * (a * c + b * d) - (a + b + c + d) * ((b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b))",
+  "hash": "313035495"
+ },
+ "lw_37717_aux8": {
+  "owner": "lw_37717",
+  "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + b * (b ^ 2 + b * c) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + c * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (a ^ 2 + a * b) + d * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a)) * (a * c + b * d) - (a + b + c + d) * ((b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b))",
+  "hash": "286206777"
+ },
+ "lw_50334_aux1": {
+  "owner": "lw_50334",
+  "type": "∀ {ι : Type u_1} (s : Finset ι) (f : ι → ℝ), ∏ i ∈ s, Real.sin (f i) ≤ 1",
+  "hash": "3915066912"
+ },
+ "lw_50334_aux2": {
+  "owner": "lw_50334",
+  "type": "∀ (n : ℕ), ↑n * (1 / 2) ^ n < 1",
+  "hash": "408969440"
+ },
+ "lw_53416_aux1": {
+  "owner": "lw_53416",
+  "type": "∀ (a b : ℝ), (a + b) ^ 2 ≤ (a ^ 2 + 1) * (b ^ 2 + 1)",
+  "hash": "3361193187"
+ },
+ "lw_54636_aux1": {
+  "owner": "lw_54636",
+  "type": "∀ (a s : ℝ), 0 ≤ a → 3 ≤ s → 0 < a ^ 2 + s - a → a / (a ^ 2 + s - a) ≤ (6 * a + s) / (9 * s)",
+  "hash": "2399981770"
+ },
+ "lw_56038_aux1": {
+  "owner": "lw_56038",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2 = 3 → 3 * x * y * z ≤ x + y + z",
+  "hash": "3008231013"
+ },
+ "lw_8882_aux1": {
+  "owner": "lw_8882",
+  "type": "∀ (q r : ℝ), 0 ≤ q → q ≤ 12 → 0 ≤ r → r ≤ 8 → 24 * q ≤ 216 + 9 * r → 0 ≤ 280 - 10 * q - 2 * q ^ 2 + 24 * r - r ^ 2",
+  "hash": "3490591395"
+ },
+ "lw_9555_aux1": {
+  "owner": "lw_9555",
+  "type": "∀ (x : ℝ), 0 ≤ x → x / (1 + x ^ 2) ≤ (36 * x + 3) / 50",
+  "hash": "3284201524"
+ },
+ "lw_9555_aux2": {
+  "owner": "lw_9555",
+  "type": "∀ (x y : ℝ), 0 ≤ x → 0 ≤ y → x * (99 - 81 * y) / 100 ≤ x / (1 + y)",
+  "hash": "1521756943"
+ },
+ "lw_1488_aux1": {
+  "owner": "lw_1488",
+  "type": "∀ (x : ℕ → ℝ) (m : ℕ), x 1 * x 2 = ↑m → (∀ (n : ℕ), x (n + 2) = x n - 1 / x (n + 1)) → ∀ n ≤ m, x (n + 1) * x (n + 2) = ↑m - ↑n",
+  "hash": "2000624490"
+ },
+ "lw_16565_aux1": {
+  "owner": "lw_16565",
+  "type": "∀ (x : ℝ), 0 < x → x ≤ 1 → (1 + x ^ 2) / 2 ≤ x ^ x",
+  "hash": "4235674922"
+ },
+ "lw_16565_aux2": {
+  "owner": "lw_16565",
+  "type": "∀ (x : ℝ), 1 ≤ x → x + (x - 1) ^ 2 ≤ x ^ x",
+  "hash": "1352732574"
+ },
+ "lw_19170_aux1": {
+  "owner": "lw_19170",
+  "type": "∀ (x r : ℝ), r ^ 2 = 2 → ((2 + r) * (x ^ 2 + 1) * (x + 1) - 2 * (x + 1) - x * (x ^ 2 + 1)) ^ 2 - 8 * x * (x ^ 2 + 1) * (x + 1) = (x + 1 - r) ^ 2 * ((3 + 2 * r) * x ^ 4 + (10 + 8 * r) * x ^ 3 + (11 + 8 * r) * x ^ 2 + (8 + 6 * r) * x + (6 + 4 * r))",
+  "hash": "3480340059"
+ },
+ "lw_223_aux1": {
+  "owner": "lw_223",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → (a + b + c) ^ 2 ≤ (a * b + b * c + a * c) * (a / b + b / c + c / a)",
+  "hash": "1207374288"
+ },
+ "lw_28269_aux1": {
+  "owner": "lw_28269_disproof",
+  "type": "∀ (θ : ℝ), (∀ (r : ℚ), θ ≠ ↑r * Real.pi) → ∀ (p q : ℚ), p ≠ 0 → ∀ (r : ℚ), ↑p * θ + ↑q * Real.pi ≠ ↑r * Real.pi",
+  "hash": "1471042818"
+ },
+ "lw_28269_aux2": {
+  "owner": "lw_28269_disproof",
+  "type": "∀ (x : ℝ), (∀ (r : ℚ), x ≠ ↑r * Real.pi) → Real.cos x ≠ 0 ∧ |Real.tan x| ≠ 1",
+  "hash": "2934111424"
+ },
+ "lw_28269_aux3": {
+  "owner": "lw_28269_disproof",
+  "type": "∀ (x : ℝ), Real.cos (2 * Real.arctan x) = (1 - x ^ 2) / (1 + x ^ 2)",
+  "hash": "3028520411"
+ },
+ "lw_28964_aux1": {
+  "owner": "lw_28964",
+  "type": "∀ (t : ℝ), 0 < t → (11 + 5 * √5) / 2 ≤ t ^ 2 + 4 * t + 5 + 2 / t",
+  "hash": "791575524"
+ },
+ "lw_28964_aux2": {
+  "owner": "lw_28964",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → a ≠ b → (11 + 5 * √5) / 2 ≤ (a ^ 2 + b ^ 2) * (1 / (a - b) ^ 2 + 1 / a ^ 2 + 1 / b ^ 2)",
+  "hash": "1118397594"
+ },
+ "lw_28964_aux3": {
+  "owner": "lw_28964",
+  "type": "∀ (x y z : ℝ), 0 ≤ z → z < x → z < y → x ≠ y → (11 + 5 * √5) / 2 ≤ (x ^ 2 + y ^ 2 + z ^ 2) * (1 / (x - y) ^ 2 + 1 / (y - z) ^ 2 + 1 / (z - x) ^ 2)",
+  "hash": "1199799039"
+ },
+ "lw_29803_aux1": {
+  "owner": "lw_29803",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * (3 * x + 2 * y + z) + 3 * (x + y) ^ 2) * ((x + y) * (3 * x + 2 * y + z) + 3 * (x + y + z) ^ 2) * ((x + y + z) * (3 * x + 2 * y + z) + 3 * x ^ 2) ≤ 13 * (3 * x + 2 * y + z) ^ 6",
+  "hash": "2227241760"
+ },
+ "lw_29803_aux2": {
+  "owner": "lw_29803",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * (3 * x + 2 * y + z) + 3 * (x + y + z) ^ 2) * ((x + y + z) * (3 * x + 2 * y + z) + 3 * (x + y) ^ 2) * ((x + y) * (3 * x + 2 * y + z) + 3 * x ^ 2) ≤ 13 * (3 * x + 2 * y + z) ^ 6",
+  "hash": "4137351732"
+ },
+ "lw_29803_aux3": {
+  "owner": "lw_29803",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 27 * (a * (a + b + c) + 3 * b ^ 2) * (b * (a + b + c) + 3 * c ^ 2) * (c * (a + b + c) + 3 * a ^ 2) ≤ 13 * (a + b + c) ^ 6",
+  "hash": "2116300039"
+ },
+ "lw_36675_aux1": {
+  "owner": "lw_36675",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → (a + b) / 3 ≤ (a ^ 3 + b ^ 3) / (a ^ 2 + a * b + b ^ 2)",
+  "hash": "2752341992"
+ },
+ "lw_36675_aux2": {
+  "owner": "lw_36675",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 3 * (x * y * z) ≤ x ^ 3 + y ^ 3 + z ^ 3",
+  "hash": "1310142485"
+ },
+ "lw_41804_aux1": {
+  "owner": "lw_41804",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → 3 ≤ a + b + c",
+  "hash": "368524546"
+ },
+ "lw_41804_aux2": {
+  "owner": "lw_41804",
+  "type": "∀ (s q : ℝ), 3 ≤ s → 3 ≤ q → 4 * s * q ≤ s ^ 3 + 9 → 0 ≤ s ^ 2 * q + 3 * s * q - 4 * q ^ 2 - 5 * s - 3",
+  "hash": "196173594"
+ },
+ "lw_41804_aux3": {
+  "owner": "lw_41804",
+  "type": "∀ (a b c : ℝ), a + b ≠ 0 → b + c ≠ 0 → a + c ≠ 0 → (a ^ 2 + b ^ 2) / (a + b) + (b ^ 2 + c ^ 2) / (b + c) + (a ^ 2 + c ^ 2) / (a + c) = 2 * (a + b + c) - 2 * ((a * b + b * c + a * c) ^ 2 + a * b * c * (a + b + c)) / ((a + b) * (b + c) * (a + c))",
+  "hash": "976339986"
+ },
+ "lw_36281_aux1": {
+  "owner": "lw_36281",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (z + x + y + (z + x) + z) * ((z + x + y) * (z + x) + (z + x) * z + z * (z + x + y)) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) - ((z + x + y + (z + x) + z) * ((z + x + y) * (z + x) + (z + x) * z + z * (z + x + y)) - 3 * (z + x + y) * (z + x) * z) * ((z + x + y) ^ 2 * (z + x) * z * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) + (z + x) ^ 2 * z * (z + x + y) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) + z ^ 2 * (z + x + y) * (z + x) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2))",
+  "hash": "2972409061"
+ },
+ "lw_36281_aux2": {
+  "owner": "lw_36281",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + y + z) * (x * y + y * z + z * x) * (x ^ 4 + y ^ 2 * z ^ 2) * (y ^ 4 + z ^ 2 * x ^ 2) * (z ^ 4 + x ^ 2 * y ^ 2) - ((x + y + z) * (x * y + y * z + z * x) - 3 * x * y * z) * (x ^ 2 * y * z * (y ^ 4 + z ^ 2 * x ^ 2) * (z ^ 4 + x ^ 2 * y ^ 2) + y ^ 2 * z * x * (z ^ 4 + x ^ 2 * y ^ 2) * (x ^ 4 + y ^ 2 * z ^ 2) + z ^ 2 * x * y * (x ^ 4 + y ^ 2 * z ^ 2) * (y ^ 4 + z ^ 2 * x ^ 2))",
+  "hash": "2488437863"
+ },
+ "lw_36281_aux3": {
+  "owner": "lw_36281",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → ((y ^ 2 + z ^ 2) / (y * z) + (z ^ 2 + x ^ 2) / (z * x) + (x ^ 2 + y ^ 2) / (x * y)) * (x ^ 2 * y * z / (x ^ 4 + y ^ 2 * z ^ 2) + y ^ 2 * z * x / (y ^ 4 + z ^ 2 * x ^ 2) + z ^ 2 * x * y / (z ^ 4 + x ^ 2 * y ^ 2)) ≤ (x + y + z) * (1 / x + 1 / y + 1 / z)",
+  "hash": "3903822965"
+ },
+ "lw_36281_aux4": {
+  "owner": "lw_36281",
+  "type": "∀ (p q r u v w : ℝ), 0 ≤ p → 0 ≤ q → 0 ≤ r → 0 ≤ u → 0 ≤ v → 0 ≤ w → √(p * u) + √(q * v) + √(r * w) ≤ √((p + q + r) * (u + v + w))",
+  "hash": "2734154341"
+ },
+ "lw_36281_aux5": {
+  "owner": "lw_36281",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → √((x ^ 2 * y ^ 2 + x ^ 2 * z ^ 2) / (x ^ 4 + y ^ 2 * z ^ 2)) + √((y ^ 2 * z ^ 2 + y ^ 2 * x ^ 2) / (y ^ 4 + z ^ 2 * x ^ 2)) + √((z ^ 2 * x ^ 2 + z ^ 2 * y ^ 2) / (z ^ 4 + x ^ 2 * y ^ 2)) ≤ √((x + y + z) * (1 / x + 1 / y + 1 / z))",
+  "hash": "1020275035"
+ },
+ "lw_44804_aux1": {
+  "owner": "lw_44804",
+  "type": "∀ (x u : ℝ), 0 < x → x < u → 1 / (u + 1 - x) < (x + 1) / (u + 1)",
+  "hash": "1140709334"
+ },
+ "lw_43821_aux1": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y - (x + y + z)) * (x + y + (x + y + z)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y + z - (x + y + z + t)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + (x + y)) + (x + y + z + t + u - x) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "1472640690"
+ },
+ "lw_43821_aux2": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y)) + (x + y - (x + y + z)) * (x + y + (x + y + z)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y)) + (x + y + z - (x + y + z + t + u)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + x) * (x + (x + y)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + (x + y)) + (x + y + z + t - x) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "1759516971"
+ },
+ "lw_43821_aux3": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y - (x + y + z + t)) * (x + y + (x + y + z + t)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y + z + t - (x + y + z)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + t + u + x) * (x + (x + y)) + (x + y + z - (x + y + z + t + u)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + (x + y)) + (x + y + z + t + u - x) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "3073868354"
+ },
+ "lw_43821_aux4": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y)) + (x + y - (x + y + z + t + u)) * (x + y + (x + y + z + t + u)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y)) + (x + y + z + t + u - (x + y + z)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + t + x) * (x + (x + y)) + (x + y + z - (x + y + z + t)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + (x + y)) + (x + y + z + t - x) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "3844176581"
+ },
+ "lw_43821_aux5": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x) * (x + (x + y)) + (x + y - (x + y + z + t)) * (x + y + (x + y + z + t)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x) * (x + (x + y)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + x) * (x + (x + y)) + (x + y + z + t + u - (x + y + z)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + (x + y)) + (x + y + z - x) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x)",
+  "hash": "1474372666"
+ },
+ "lw_43821_aux6": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + x) * (x + (x + y)) + (x + y - (x + y + z + t + u)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + (x + y + z)) * (x + y + z + x) * (x + (x + y)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + x) * (x + (x + y)) + (x + y + z + t - (x + y + z)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + (x + y)) + (x + y + z - x) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + x)",
+  "hash": "1110180536"
+ },
+ "lw_43821_aux7": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y + z - (x + y)) * (x + y + z + (x + y)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y - (x + y + z + t)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + (x + y + z)) + (x + y + z + t + u - x) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "2395203750"
+ },
+ "lw_43821_aux8": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y + z - (x + y)) * (x + y + z + (x + y)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y - (x + y + z + t + u)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + (x + y + z)) + (x + y + z + t - x) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "3256942657"
+ },
+ "lw_43821_aux9": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y)) * (x + y + z + t + (x + y)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y - (x + y + z)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y + z - (x + y + z + t + u)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + (x + y + z + t)) + (x + y + z + t + u - x) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "1379069964"
+ },
+ "lw_43821_aux10": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y)) * (x + y + z + t + u + (x + y)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y - (x + y + z)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y + z - (x + y + z + t)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + (x + y + z + t + u)) + (x + y + z + t - x) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "1537236357"
+ },
+ "lw_43821_aux11": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y)) * (x + y + z + t + (x + y)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y - (x + y + z + t + u)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y + z + t + u - (x + y + z)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + (x + y + z + t)) + (x + y + z - x) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + x)",
+  "hash": "3263852224"
+ },
+ "lw_43821_aux12": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y)) * (x + y + z + t + u + (x + y)) * (x + y + z + t + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y - (x + y + z + t)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y + z + t - (x + y + z)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + (x + y + z + t + u)) + (x + y + z - x) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + x)",
+  "hash": "646946614"
+ },
+ "lw_43821_aux13": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y + z - (x + y + z + t)) * (x + y + z + (x + y + z + t)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y + z + t - (x + y)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + z + t + u + x) * (x + (x + y + z)) + (x + y - (x + y + z + t + u)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + (x + y + z)) + (x + y + z + t + u - x) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "1852750631"
+ },
+ "lw_43821_aux14": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y + z - (x + y + z + t + u)) * (x + y + z + (x + y + z + t + u)) * (x + y + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y + z + t + u - (x + y)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + z + t + x) * (x + (x + y + z)) + (x + y - (x + y + z + t)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + (x + y + z)) + (x + y + z + t - x) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "3652599251"
+ },
+ "lw_43821_aux15": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y + z)) * (x + y + z + t + (x + y + z)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y + z - (x + y)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + y + z + t + u + x) * (x + (x + y + z + t)) + (x + y - (x + y + z + t + u)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + (x + y + z + t)) + (x + y + z + t + u - x) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t + u)) * (x + y + z + t + u + x)",
+  "hash": "3665667903"
+ },
+ "lw_43821_aux16": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y + z)) * (x + y + z + t + u + (x + y + z)) * (x + y + (x + y + z + t)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y + z - (x + y)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + y + z + t + x) * (x + (x + y + z + t + u)) + (x + y - (x + y + z + t)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + (x + y + z + t + u)) + (x + y + z + t - x) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + y + (x + y + z + t)) * (x + y + z + t + x)",
+  "hash": "259375089"
+ },
+ "lw_43821_aux17": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y + z + t + u - (x + y)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + z + x) * (x + (x + y + z + t)) + (x + y - (x + y + z)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + (x + y + z + t)) + (x + y + z - x) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + (x + y + z)) * (x + y + z + x)",
+  "hash": "1798544633"
+ },
+ "lw_43821_aux18": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + (x + y + z)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y + z + t - (x + y)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + z + x) * (x + (x + y + z + t + u)) + (x + y - (x + y + z)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + (x + y + z + t + u)) + (x + y + z - x) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + (x + y + z)) * (x + y + z + x)",
+  "hash": "3959397797"
+ },
+ "lw_43821_aux19": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + x) * (x + (x + y + z)) + (x + y + z - (x + y + z + t)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + u + (x + y)) * (x + y + x) * (x + (x + y + z)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + x) * (x + (x + y + z)) + (x + y + z + t + u - (x + y)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + (x + y + z)) + (x + y - x) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + x)",
+  "hash": "3216647487"
+ },
+ "lw_43821_aux20": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + x) * (x + (x + y + z)) + (x + y + z - (x + y + z + t + u)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + (x + y)) * (x + y + x) * (x + (x + y + z)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + x) * (x + (x + y + z)) + (x + y + z + t - (x + y)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + (x + y + z)) + (x + y - x) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + x)",
+  "hash": "2605144528"
+ },
+ "lw_43821_aux21": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y + z)) * (x + y + z + t + (x + y + z)) * (x + y + z + t + u + (x + y)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z - (x + y + z + t + u)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z + t + u - (x + y)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + (x + y + z + t)) + (x + y - x) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y + z + t + u)) * (x + y + z + t + u + (x + y)) * (x + y + x)",
+  "hash": "4009274542"
+ },
+ "lw_43821_aux22": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y + z)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + t + (x + y)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z - (x + y + z + t)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z + t - (x + y)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + (x + y + z + t + u)) + (x + y - x) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y + z + t)) * (x + y + z + t + (x + y)) * (x + y + x)",
+  "hash": "637274344"
+ },
+ "lw_43821_aux23": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z + t - (x + y + z + t + u)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + (x + y)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z + t + u - (x + y + z)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + x) * (x + (x + y + z + t)) + (x + y + z - (x + y)) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + (x + y + z + t)) + (x + y - x) * (x + y + z + t + (x + y + z + t + u)) * (x + y + z + t + u + (x + y + z)) * (x + y + z + (x + y)) * (x + y + x)",
+  "hash": "1234519230"
+ },
+ "lw_43821_aux24": {
+  "owner": "lw_43821",
+  "type": "∀ (x y z t u : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ u → 0 ≤ (x - (x + y + z + t + u)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z + t + u - (x + y + z + t)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + (x + y)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z + t - (x + y + z)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + x) * (x + (x + y + z + t + u)) + (x + y + z - (x + y)) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + (x + y + z + t + u)) + (x + y - x) * (x + y + z + t + u + (x + y + z + t)) * (x + y + z + t + (x + y + z)) * (x + y + z + (x + y)) * (x + y + x)",
+  "hash": "3400913146"
+ },
+ "lw_43821_aux25": {
+  "owner": "lw_43821",
+  "type": "∀ (a b c d e : ℝ), 0 ≤ a → a ≤ b → a ≤ c → a ≤ d → a ≤ e → 0 ≤ (a - b) * (c + d) * (d + e) * (e + a) * (a + b) + (b - c) * (b + c) * (d + e) * (e + a) * (a + b) + (c - d) * (b + c) * (c + d) * (e + a) * (a + b) + (d - e) * (b + c) * (c + d) * (d + e) * (a + b) + (e - a) * (b + c) * (c + d) * (d + e) * (e + a)",
+  "hash": "2008913623"
+ },
+ "lw_43821_aux26": {
+  "owner": "lw_43821",
+  "type": "∀ (a b c d e : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ e → 0 ≤ (a - b) * (c + d) * (d + e) * (e + a) * (a + b) + (b - c) * (b + c) * (d + e) * (e + a) * (a + b) + (c - d) * (b + c) * (c + d) * (e + a) * (a + b) + (d - e) * (b + c) * (c + d) * (d + e) * (a + b) + (e - a) * (b + c) * (c + d) * (d + e) * (e + a)",
+  "hash": "3396401282"
+ },
+ "lw_48244_aux1": {
+  "owner": "lw_48244",
+  "type": "∀ (a b c : ℝ), 0 ≤ c → c ≤ 3 / 4 → 0 ≤ 1 + a ^ 2 + b ^ 2 + c ^ 2 + 4 * a * b * c - (a + b + c + a * b + b * c + c * a)",
+  "hash": "614922479"
+ },
+ "lw_48244_aux2": {
+  "owner": "lw_48244",
+  "type": "∀ (a b c : ℝ), 1 / 2 ≤ a → 1 / 2 ≤ b → 1 / 2 ≤ c → 0 ≤ 1 + a ^ 2 + b ^ 2 + c ^ 2 + 4 * a * b * c - (a + b + c + a * b + b * c + c * a)",
+  "hash": "2898619237"
+ },
+ "lw_50221_aux1": {
+  "owner": "lw_50221",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + z) ^ 5 * (x + y + 2 * z) ^ 2 + (x + y + z) ^ 5 * (x + z) ^ 2 + (x + y + 2 * z) ^ 5 * (x + y + z) ^ 2 - (x + z) ^ 3 * (x + y + z) ^ 2 * (x + y + 2 * z) * (x + z + (x + y + z) - (x + y + 2 * z)) - (x + y + 2 * z) ^ 3 * (x + z) ^ 2 * (x + y + z) * (x + y + 2 * z + (x + z) - (x + y + z)) - (x + y + z) ^ 3 * (x + y + 2 * z) ^ 2 * (x + z) * (x + y + z + (x + y + 2 * z) - (x + z))",
+  "hash": "3653730383"
+ },
+ "lw_50221_aux2": {
+  "owner": "lw_50221",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + z) ^ 5 * (x + y + z) ^ 2 + (x + y + 2 * z) ^ 5 * (x + z) ^ 2 + (x + y + z) ^ 5 * (x + y + 2 * z) ^ 2 - (x + z) ^ 3 * (x + y + 2 * z) ^ 2 * (x + y + z) * (x + z + (x + y + 2 * z) - (x + y + z)) - (x + y + z) ^ 3 * (x + z) ^ 2 * (x + y + 2 * z) * (x + y + z + (x + z) - (x + y + 2 * z)) - (x + y + 2 * z) ^ 3 * (x + y + z) ^ 2 * (x + z) * (x + y + 2 * z + (x + y + z) - (x + z))",
+  "hash": "1172000193"
+ },
+ "lw_50221_aux3": {
+  "owner": "lw_50221",
+  "type": "∀ (a b c : ℝ), 0 ≤ a + b - c → 0 ≤ b + c - a → 0 ≤ a + c - b → 0 ≤ a ^ 5 * c ^ 2 + b ^ 5 * a ^ 2 + c ^ 5 * b ^ 2 - a ^ 3 * b ^ 2 * c * (a + b - c) - c ^ 3 * a ^ 2 * b * (c + a - b) - b ^ 3 * c ^ 2 * a * (b + c - a)",
+  "hash": "3378473717"
+ },
+ "lw_53529_aux1": {
+  "owner": "lw_53529",
+  "type": "∀ (a c d : ℝ), a ∈ Set.Icc 0 1 → 2 ≤ c → 1 ≤ d → AntitoneOn (fun b => c * a / (b + 1) + b / (d * a + 1) + (1 - a) * (1 - b)) (Set.Icc 0 1)",
+  "hash": "209805255"
+ },
+ "lw_53529_aux2": {
+  "owner": "lw_53529",
+  "type": "∀ (a : ℝ), 0 ≤ a → 2 / √3 - 1 / 3 ≤ a + 1 / (3 * a + 1)",
+  "hash": "4262957100"
+ },
+ "lw_53529_aux3": {
+  "owner": "lw_53529",
+  "type": "∀ (a : ℝ), 0 ≤ a → √3 - 3 / 4 ≤ 3 * a / 2 + 1 / (2 * a + 1)",
+  "hash": "3012918138"
+ },
+ "lw_965_aux1": {
+  "owner": "lw_965",
+  "type": "∀ (x : ℝ), 0 < x → 9 * x ≤ 4 * (x + 1 / (x + 1)) ^ 2",
+  "hash": "238392851"
+ },
+ "lw_6289_aux1": {
+  "owner": "lw_6289",
+  "type": "∀ (a b : ℝ), a * b / (a + b) ^ 2 ≤ 1 / 4",
+  "hash": "2156135890"
+ },
+ "lw_6289_aux2": {
+  "owner": "lw_6289",
+  "type": "∀ (a b c : ℝ), a + b = 0 → a * b / (a + b) ^ 2 + b * c / (b + c) ^ 2 + c * a / (c + a) ^ 2 ≤ 1 / 4",
+  "hash": "3939367789"
+ },
+ "lw_10479_aux1": {
+  "owner": "lw_10479",
+  "type": "∀ (a b : ℝ), 2 * a * b / (a ^ 2 + b ^ 2) ≤ 1",
+  "hash": "907973631"
+ },
+ "lw_12165_aux1": {
+  "owner": "lw_12165",
+  "type": "∀ (x y : ℝ), 0 < x → 0 < y → 2 / √(x * y) ≤ 1 / x + 1 / y",
+  "hash": "3336095611"
+ },
+ "lw_12165_aux2": {
+  "owner": "lw_12165",
+  "type": "∀ (a x y : ℝ), 0 ≤ a → 0 < x → 0 < y → 2 * (a / √(x * y)) ≤ a / x + a / y",
+  "hash": "3873026135"
+ },
+ "lw_56592_aux1": {
+  "owner": "lw_56592",
+  "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → 3 * ((w + u + v) * (w + v) * w) ^ 4 * ((w + u + v) ^ 2 + (w + v) ^ 2 + w ^ 2) ^ 4 ≤ ((w + u + v) * (w + v) ^ 3 + (w + v) * w ^ 3 + w * (w + u + v) ^ 3) ^ 5",
+  "hash": "491489765"
+ },
+ "lw_56592_aux2": {
+  "owner": "lw_56592",
+  "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → 3 * ((w + v) * (w + u + v) * w) ^ 4 * ((w + v) ^ 2 + (w + u + v) ^ 2 + w ^ 2) ^ 4 ≤ ((w + v) * (w + u + v) ^ 3 + (w + u + v) * w ^ 3 + w * (w + v) ^ 3) ^ 5",
+  "hash": "2032905501"
+ },
+ "lw_122_aux1": {
+  "owner": "lw_122",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → 3 * (a + b + c) / 4 ≤ a ^ 2 / (a + b) + b ^ 2 / (b + c) + c ^ 2 / (c + a) + 2 * (a + b + c) * a * b * c / (a + b) / (a + c) / (b + c)",
+  "hash": "1799301242"
+ },
+ "lw_16076_aux1": {
+  "owner": "lw_16076",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → 2 / (a + b) ≤ 1 / (2 * a) + 1 / (2 * b)",
+  "hash": "543811213"
+ },
+ "lw_16076_aux2": {
+  "owner": "lw_16076",
+  "type": "∀ (x : ℝ), 0 ≤ x → 1 / (2 * (x + 1)) ≤ 1 / (1 + √x) ^ 2",
+  "hash": "451182307"
+ },
+ "lw_18429_aux1": {
+  "owner": "lw_18429",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → (8 * b ^ 2 - 2 * a ^ 2) / 3 ≤ (a ^ 4 + 5 * b ^ 4) / (a * (a + 2 * b))",
+  "hash": "428843356"
+ },
+ "lw_25706_aux1": {
+  "owner": "lw_25706",
+  "type": "∀ (x y : ℝ), (x ^ 2 + 2 * x * y) / (x ^ 2 + x * y + y ^ 2) ≤ 4 / 3",
+  "hash": "2352646938"
+ },
+ "lw_20431_aux1": {
+  "owner": "lw_20431",
+  "type": "∀ {f : ℕ → ℕ}, Monotone f → (∀ (m : ℕ), Odd m → f (2 * m) = 2 * f m) → ∃ C, ∀ (n : ℕ), f n ≤ C * (n + 1)",
+  "hash": "1287418495"
+ },
+ "lw_20431_aux2": {
+  "owner": "lw_20431",
+  "type": "∀ {f : ℕ → ℕ}, (∀ (m n : ℕ), m.Coprime n → f (m * n) = f m * f n) → StrictMono f → ∀ {n : ℕ}, 2 ≤ n → ∀ (k : ℕ), ∃ m, n ∣ m ∧ m + 2 ≤ 2 * n ^ k ∧ f n ^ k ≤ f m + 1",
+  "hash": "2301704368"
+ },
+ "lw_20431_aux3": {
+  "owner": "lw_20431",
+  "type": "∀ (n k : ℕ), n ^ (k + 1) + (k + 1) * n ^ k ≤ (n + 1) ^ (k + 1)",
+  "hash": "3580531659"
+ },
+ "lw_28812_aux1": {
+  "owner": "lw_28812",
+  "type": "∀ (a b c : ℝ), (a + b) ^ 2 / (a ^ 2 + b ^ 2) ≤ ((a + b) ^ 2 + 2 * c ^ 2) / (a ^ 2 + b ^ 2 + c ^ 2)",
+  "hash": "1756841729"
+ },
+ "lw_26448_aux1": {
+  "owner": "lw_26448",
+  "type": "∀ (a b c : ℝ), 0 ≤ c → c ≤ a → c ≤ b → 0 ≤ 2 * (a * a * c + b * b * a + c * c * b) * (a + b) * (b + c) * (c + a) - a * b * c * (3 * (a + b) * (b + c) * (c + a) + 2 * (a * (c + a) * (a + b) + b * (a + b) * (b + c) + c * (b + c) * (c + a)))",
+  "hash": "700231584"
+ },
+ "lw_26448_aux2": {
+  "owner": "lw_26448",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ 2 * (a * a * c + b * b * a + c * c * b) * (a + b) * (b + c) * (c + a) - a * b * c * (3 * (a + b) * (b + c) * (c + a) + 2 * (a * (c + a) * (a + b) + b * (a + b) * (b + c) + c * (b + c) * (c + a)))",
+  "hash": "93351138"
+ },
+ "lw_26448_aux3": {
+  "owner": "lw_26448",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → 3 + 2 * (a / (b + c) + b / (c + a) + c / (a + b)) ≤ 2 * (a / b + b / c + c / a)",
+  "hash": "2455907406"
+ },
+ "lw_30393_aux1": {
+  "owner": "lw_30393",
+  "type": "∀ (x y z : ℝ), -1 ≤ z → 0 ≤ x * y → 0 ≤ x ^ 2 + y ^ 2 + z ^ 2 + x * y * z",
+  "hash": "24024218"
+ },
+ "lw_30393_aux2": {
+  "owner": "lw_30393",
+  "type": "∀ (x y z : ℝ), -1 ≤ x → -1 ≤ y → -1 ≤ z → 0 ≤ x ^ 2 + y ^ 2 + z ^ 2 + x * y * z",
+  "hash": "3566800371"
+ },
+ "lw_34437_aux1": {
+  "owner": "lw_34437",
+  "type": "∀ (x : ℝ), 0 ≤ x → 0 ≤ 4 - x - x ^ 2 → (4 - x - x ^ 2) ^ 2 * (1 + 3 * x ^ 4) ≤ 16",
+  "hash": "169842980"
+ },
+ "lw_34437_aux2": {
+  "owner": "lw_34437",
+  "type": "∀ (x : ℝ), 0 ≤ x → (4 - x - x ^ 2) / 4 ≤ 1 / √(1 + 3 * x ^ 4)",
+  "hash": "2526560839"
+ },
+ "lw_38140_aux1": {
+  "owner": "lw_38140",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 9 * (x * y * z) ≤ (x + y + z) * (x ^ 2 + y ^ 2 + z ^ 2)",
+  "hash": "2644012946"
+ },
+ "lw_38140_aux2": {
+  "owner": "lw_38140",
+  "type": "∀ (s p t r : ℝ), 0 ≤ s → 0 ≤ p → 0 < t → t ≤ r → r ^ 2 = 3 * s → 9 * p ≤ t * s → 4 * p * r ≤ s ^ 2 + p * t",
+  "hash": "1105056085"
+ },
+ "lw_3832_aux1": {
+  "owner": "lw_3832",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x + y ≤ 2 * z → 0 ≤ 63 * (x ^ 2 + y ^ 2 + z ^ 2) * (x + y + z) ^ 4 + 648 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) * (x + y + z) ^ 2 + 2916 * x ^ 2 * y ^ 2 * z ^ 2 - 49 * (x + y + z) ^ 6",
+  "hash": "3567227748"
+ },
+ "lw_3832_aux2": {
+  "owner": "lw_3832",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ 63 * (x ^ 2 + y ^ 2 + z ^ 2) * (x + y + z) ^ 4 + 648 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) * (x + y + z) ^ 2 + 2916 * x ^ 2 * y ^ 2 * z ^ 2 - 49 * (x + y + z) ^ 6",
+  "hash": "4041003727"
+ },
+ "lw_3832_aux3": {
+  "owner": "lw_3832",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ^ 2 + y ^ 2 + z ^ 2 + 8 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) + 28 * x ^ 2 * y ^ 2 * z ^ 2 = 1 → 7 * (x + y + z) ^ 2 ≤ 9",
+  "hash": "1034859956"
+ },
+ "lw_41213_aux1": {
+  "owner": "lw_41213",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ ((z + x + y) ^ 3 + (z + y) ^ 3 + z ^ 3 - ((z + x + y) ^ 2 * (z + y) + (z + y) ^ 2 * z + z ^ 2 * (z + x + y)) - ((z + x + y) * (z + y) ^ 2 + (z + y) * z ^ 2 + z * (z + x + y) ^ 2)) * ((z + x + y) * (z + y) ^ 2 + (z + y) * z ^ 2 + z * (z + x + y) ^ 2) + 3 * (z + x + y) * (z + y) * z * ((z + x + y) ^ 2 * (z + y) + (z + y) ^ 2 * z + z ^ 2 * (z + x + y))",
+  "hash": "3733230563"
+ },
+ "lw_41213_aux2": {
+  "owner": "lw_41213",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ ((z + y) ^ 3 + (z + x + y) ^ 3 + z ^ 3 - ((z + y) ^ 2 * (z + x + y) + (z + x + y) ^ 2 * z + z ^ 2 * (z + y)) - ((z + y) * (z + x + y) ^ 2 + (z + x + y) * z ^ 2 + z * (z + y) ^ 2)) * ((z + y) * (z + x + y) ^ 2 + (z + x + y) * z ^ 2 + z * (z + y) ^ 2) + 3 * (z + y) * (z + x + y) * z * ((z + y) ^ 2 * (z + x + y) + (z + x + y) ^ 2 * z + z ^ 2 * (z + y))",
+  "hash": "3305886686"
+ },
+ "lw_41213_aux3": {
+  "owner": "lw_41213",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (a ^ 3 + b ^ 3 + c ^ 3 - (a ^ 2 * b + b ^ 2 * c + c ^ 2 * a) - (a * b ^ 2 + b * c ^ 2 + c * a ^ 2)) * (a * b ^ 2 + b * c ^ 2 + c * a ^ 2) + 3 * a * b * c * (a ^ 2 * b + b ^ 2 * c + c ^ 2 * a)",
+  "hash": "1619737201"
+ },
+ "lw_41875_aux1": {
+  "owner": "lw_41875",
+  "type": "∀ (s p : ℝ), 2 ≤ s → 0 ≤ p → s + p ≤ 3 → 0 ≤ s ^ 2 * (s + 1) + (44 - 28 * s) * p ∧ 0 ≤ s ^ 3 * (s + 1) - 3 * p * s * (s + 1) + (112 - 59 * s) * p ^ 2 ∧ 0 ≤ s ^ 4 * (s + 1) - 4 * s ^ 2 * (s + 1) * p + (192 - 96 * s) * p ^ 2",
+  "hash": "3339464545"
+ },
+ "lw_41875_aux2": {
+  "owner": "lw_41875",
+  "type": "∀ (a b : ℝ), 0 ≤ a → 0 ≤ b → a + b ≤ 2 → 0 ≤ (a + b) ^ 2 * (a + b + 1) + (44 - 28 * (a + b)) * (a * b) ∧ 0 ≤ (a + b) ^ 3 * (a + b + 1) - 3 * (a * b) * (a + b) * (a + b + 1) + (112 - 59 * (a + b)) * (a * b) ^ 2 ∧ 0 ≤ (a + b) ^ 4 * (a + b + 1) - 4 * (a + b) ^ 2 * (a + b + 1) * (a * b) + (192 - 96 * (a + b)) * (a * b) ^ 2",
+  "hash": "715241000"
+ },
+ "lw_43396_aux1": {
+  "owner": "lw_43396",
+  "type": "∀ (a b c d e f : ℝ), (a * b + c * d + e * f) ^ 2 = (a ^ 2 + c ^ 2 + e ^ 2) * (b ^ 2 + d ^ 2 + f ^ 2) ↔ a * d = c * b ∧ c * f = e * d ∧ a * f = e * b",
+  "hash": "1069970329"
+ },
+ "lw_49724_aux1": {
+  "owner": "lw_49724",
+  "type": "∀ (a b c d : ℝ), √((a - c) ^ 2 + (b - d) ^ 2) ≤ √(a ^ 2 + b ^ 2) + √(c ^ 2 + d ^ 2)",
+  "hash": "2093540188"
+ },
+ "lw_5275_aux1": {
+  "owner": "lw_5275",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 < b → 0 < c → √(a * b / c) * √(c * a / b) = a",
+  "hash": "4056235856"
+ },
+ "lw_5389_aux1": {
+  "owner": "lw_5389",
+  "type": "∀ (a b k : ℝ), k * (a - b) ^ 2 ≤ (a ^ 2 + k) * (b ^ 2 + k)",
+  "hash": "3378703634"
+ },
+ "lw_5389_aux2": {
+  "owner": "lw_5389",
+  "type": "∀ (p x y : ℝ), x ^ 2 ≤ p → y ^ 2 ≤ p → x * y ≤ p",
+  "hash": "3552508348"
+ },
+ "lw_5389_aux3": {
+  "owner": "lw_5389",
+  "type": "∀ (a b c d k : ℝ), 0 ≤ k → k ^ 2 * (a - b) * (b - c) * (c - d) * (d - a) ≤ (a ^ 2 + k) * (b ^ 2 + k) * (c ^ 2 + k) * (d ^ 2 + k)",
+  "hash": "3211678928"
+ },
+ "lw_19204_aux1": {
+  "owner": "lw_19204",
+  "type": "∀ (x : ℝ), 1 / 8 ≤ x → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ (48 * x - 4) / 125",
+  "hash": "2060490117"
+ },
+ "lw_19204_aux2": {
+  "owner": "lw_19204",
+  "type": "∀ (x : ℝ), 0 ≤ x → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ (540 * x + 108) / 2197",
+  "hash": "4068637746"
+ },
+ "lw_19204_aux3": {
+  "owner": "lw_19204",
+  "type": "∀ (x : ℝ), 0 ≤ x → x ≤ 1 / 8 → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ 540 * x / 2197",
+  "hash": "236651133"
  }
 }

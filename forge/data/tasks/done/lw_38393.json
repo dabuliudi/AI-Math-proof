@@ -1,0 +1,20 @@
+{
+  "name": "lw_38393",
+  "statement": "(x y : ℝ) (h : x ^ 2 + y ^ 2 ≥ 0) : (x + y) * (x ^ 2 + y ^ 2) + 2 ≥ x + y",
+  "closed": "∀ (x y : ℝ) (h : x ^ 2 + y ^ 2 ≥ 0), (x + y) * (x ^ 2 + y ^ 2) + 2 ≥ x + y",
+  "informal": "Prove $(x+y)(x^2 + y^2) + 2 \\ge (x+y)$ given $x^2 + y^2 \\ge 0$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_38393",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "134329921",
+  "type": "∀ (x y : ℝ), x ^ 2 + y ^ 2 ≥ 0 → (x + y) * (x ^ 2 + y ^ 2) + 2 ≥ x + y",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\nx := 0\ny := -2\nguard: 0 ≤ 4\nissue: -2 ≤ -6 does not hold\n(1 shrinks)\n-------------------",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T19:46:06+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T19:47:06+0800"
+}

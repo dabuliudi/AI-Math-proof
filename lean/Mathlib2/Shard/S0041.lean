@@ -833,4 +833,44 @@ theorem lw_11675 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
   nlinarith only [hp, hclear]
 end
 
+-- forge:entry lw_22697 kind=proved origin=external
+section
+/- Let $ a,b,c$ positive real numbers. Prove or disprove that \n\n $ \sum\frac{a}{\sqrt{a+b}} \geq \frac{4(\sqrt{2a} + \sqrt{2b} + \sqrt{2c}) - 5\sqrt{a+b+c}}{4}$ \n\n -/
+lemma lw_22697_aux1 (x y : ℝ) (hx : 0 ≤ x) (hy : 0 < y) :
+    Real.sqrt (2 * x) ≤ x / y + y / 2 := by
+  have hs : Real.sqrt (2 * x) ^ 2 = 2 * x :=
+    Real.sq_sqrt (by positivity)
+  have hd : x / y * y = x := div_mul_cancel₀ x (ne_of_gt hy)
+  have h : Real.sqrt (2 * x) * y ≤ (x / y + y / 2) * y := by
+    nlinarith [sq_nonneg (Real.sqrt (2 * x) - y)]
+  exact (mul_le_mul_iff_left₀ hy).mp (by nlinarith [h])
+
+lemma lw_22697_aux2 (x y z t : ℝ) (hx : 0 ≤ x) (hy : 0 ≤ y)
+    (hz : 0 ≤ z) (ht : 0 ≤ t) (hs : x ^ 2 + y ^ 2 + z ^ 2 ≤ 2 * t ^ 2) :
+    x + y + z ≤ 5 / 2 * t := by
+  have hcs : (x + y + z) ^ 2 ≤ 6 * t ^ 2 := by
+    nlinarith [sq_nonneg (x - y), sq_nonneg (y - z), sq_nonneg (z - x)]
+  nlinarith [sq_nonneg (x + y + z - 5 / 2 * t)]
+
+theorem lw_22697 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
+    (a / Real.sqrt (a + b) + b / Real.sqrt (b + c) + c / Real.sqrt (c + a)) ≥
+      (4 * (Real.sqrt (2 * a) + Real.sqrt (2 * b) + Real.sqrt (2 * c)) -
+        5 * Real.sqrt (a + b + c)) / 4 := by
+  have h1 := lw_22697_aux1 a (Real.sqrt (a + b)) (le_of_lt ha)
+    (Real.sqrt_pos.2 (by linarith))
+  have h2 := lw_22697_aux1 b (Real.sqrt (b + c)) (le_of_lt hb)
+    (Real.sqrt_pos.2 (by linarith))
+  have h3 := lw_22697_aux1 c (Real.sqrt (c + a)) (le_of_lt hc)
+    (Real.sqrt_pos.2 (by linarith))
+  have hab : Real.sqrt (a + b) ^ 2 = a + b := Real.sq_sqrt (by linarith)
+  have hbc : Real.sqrt (b + c) ^ 2 = b + c := Real.sq_sqrt (by linarith)
+  have hca : Real.sqrt (c + a) ^ 2 = c + a := Real.sq_sqrt (by linarith)
+  have hs : Real.sqrt (a + b + c) ^ 2 = a + b + c := Real.sq_sqrt (by linarith)
+  have hd := lw_22697_aux2 (Real.sqrt (a + b)) (Real.sqrt (b + c))
+    (Real.sqrt (c + a)) (Real.sqrt (a + b + c))
+    (Real.sqrt_nonneg _) (Real.sqrt_nonneg _) (Real.sqrt_nonneg _)
+    (Real.sqrt_nonneg _) (by nlinarith)
+  linarith
+end
+
 end Mathlib2

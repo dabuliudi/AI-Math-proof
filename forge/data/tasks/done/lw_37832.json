@@ -1,0 +1,19 @@
+{
+  "name": "lw_37832",
+  "statement": "(a b c : ℝ) (ha : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0)(hab : a + b + c = 3): a + a * b + a * b * c ≤ 4",
+  "closed": "∀ (a b c : ℝ) (ha : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0)(hab : a + b + c = 3), a + a * b + a * b * c ≤ 4",
+  "informal": "Let $ a,b,c \\geq 0$ and $ a+b+c = 3.$ Prove that $ a+ab+abc \\leq 4$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_37832",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3939046867",
+  "type": "∀ (a b c : ℝ), a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 → a + b + c = 3 → a + a * b + a * b * c ≤ 4",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w2",
+  "claimed_at": "2026-11-15T21:09:23+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T21:10:40+0800"
+}

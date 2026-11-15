@@ -1,0 +1,19 @@
+{
+  "name": "lw_1076",
+  "statement": "(a b c d : ℝ) : (a^2+b^2+c^2+d^2)^2+16*a*b*c*d ≥ 2*(a+c)^2*(b+d)^2",
+  "closed": "∀ (a b c d : ℝ), (a^2+b^2+c^2+d^2)^2+16*a*b*c*d ≥ 2*(a+c)^2*(b+d)^2",
+  "informal": "Note that for any reals $a, b, c, d$ we have $(a^2+b^2+c^2+d^2)^2+16abcd\\geq 2(a+c)^2(b+d)^2$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_1076",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3836679025",
+  "type": "∀ (a b c d : ℝ), (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2) ^ 2 + 16 * a * b * c * d ≥ 2 * (a + c) ^ 2 * (b + d) ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T21:35:28+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T21:37:36+0800"
+}

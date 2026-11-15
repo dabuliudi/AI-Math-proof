@@ -1,0 +1,17 @@
+{
+  "name": "lw_24500",
+  "statement": "(x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1) : x / (y ^ 4 + 2) + y / (z ^ 4 + 2) + z / (x ^ 4 + 2) ≥ 1",
+  "closed": "∀ (x y z : ℝ) (hx : x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1), x / (y ^ 4 + 2) + y / (z ^ 4 + 2) + z / (x ^ 4 + 2) ≥ 1",
+  "informal": "Let $ x;y;z$ be poaitive real numbers satisfying $ xyz = 1$ \\nProve that: \\n $ \\frac {x}{y^4 + 2} + \\frac{y}{z^4 + 2} + \\frac {z}{x^4 + 2} \\geq 1$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_24500",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3447811276",
+  "type": "∀ (x y z : ℝ), x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1 → x / (y ^ 4 + 2) + y / (z ^ 4 + 2) + z / (x ^ 4 + 2) ≥ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "claimed",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T22:15:40+0800"
+}

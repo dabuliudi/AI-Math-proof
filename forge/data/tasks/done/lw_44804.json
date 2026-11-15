@@ -1,0 +1,19 @@
+{
+  "name": "lw_44804",
+  "statement": "(a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 9) : 1 / (10 - a) + 1 / (10 - b) + 1 / (10 - c) + 1 / (10 - d) < 13 / 10",
+  "closed": "∀ (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (hab : a + b + c + d = 9), 1 / (10 - a) + 1 / (10 - b) + 1 / (10 - c) + 1 / (10 - d) < 13 / 10",
+  "informal": "Let $a,b,c,d$ be the positive real numbers such that $a+b+c+d=9$ . Prove that $\\frac{1}{10-a}+\\frac{1}{10-b}+\\frac{1}{10-c}+\\frac{1}{10-d} < \\frac{13}{10}.$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_44804",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "4239159511",
+  "type": "∀ (a b c d : ℝ), 0 < a → 0 < b → 0 < c → 0 < d → a + b + c + d = 9 → 1 / (10 - a) + 1 / (10 - b) + 1 / (10 - c) + 1 / (10 - d) < 13 / 10",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T21:16:48+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T21:20:56+0800"
+}

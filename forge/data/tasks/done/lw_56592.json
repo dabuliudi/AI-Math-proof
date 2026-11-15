@@ -1,0 +1,19 @@
+{
+  "name": "lw_56592",
+  "statement": "(x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x*y*z = 1) : (x*y^3 + y*z^3 + z*x^3)^5 ≥ 3*(x^2 + y^2 + z^2)^4",
+  "closed": "∀ (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x*y*z = 1), (x*y^3 + y*z^3 + z*x^3)^5 ≥ 3*(x^2 + y^2 + z^2)^4",
+  "informal": "Let $x,y,z \\in \\mathbb{R}^+$ such that $xyz=1$ . Prove that $$(xy^3+yz^3+zx^3)^5 \\geq 3(x^2+y^2+z^2)^4$$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_56592",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2132880300",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x * y ^ 3 + y * z ^ 3 + z * x ^ 3) ^ 5 ≥ 3 * (x ^ 2 + y ^ 2 + z ^ 2) ^ 4",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T21:30:06+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T21:39:24+0800"
+}

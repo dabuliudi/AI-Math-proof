@@ -1,0 +1,19 @@
+{
+  "name": "lw_43396",
+  "statement": "(a b c d e f : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (he : 0 < e) (hf : 0 < f) : (Real.sqrt (a * b) + Real.sqrt (c * d) + Real.sqrt (e * f)) ≤ Real.sqrt ((a + c + e) * (b + d + f)) ∧ (Real.sqrt (a * b) + Real.sqrt (c * d) + Real.sqrt (e * f)) = Real.sqrt ((a + c + e) * (b + d + f)) ↔ a / b = c / d ∧ c / d = e / f",
+  "closed": "∀ (a b c d e f : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (he : 0 < e) (hf : 0 < f), (Real.sqrt (a * b) + Real.sqrt (c * d) + Real.sqrt (e * f)) ≤ Real.sqrt ((a + c + e) * (b + d + f)) ∧ (Real.sqrt (a * b) + Real.sqrt (c * d) + Real.sqrt (e * f)) = Real.sqrt ((a + c + e) * (b + d + f)) ↔ a / b = c / d ∧ c / d = e / f",
+  "informal": "Suppose that $a, b, c, d, e, f >0$ . Prove that $\\sqrt{ab} + \\sqrt{cd} + \\sqrt{ ef} \\leq \\sqrt{(a+c+e)(b+d+f)}$ , with equality if and only if $\\frac{a}{b} = \\frac{c}{d} = \\frac{e}{f}$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_43396",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2452636561",
+  "type": "∀ (a b c d e f : ℝ), 0 < a → 0 < b → 0 < c → 0 < d → 0 < e → 0 < f → (√(a * b) + √(c * d) + √(e * f) ≤ √((a + c + e) * (b + d + f)) ∧ √(a * b) + √(c * d) + √(e * f) = √((a + c + e) * (b + d + f)) ↔ a / b = c / d ∧ c / d = e / f)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r2-w1",
+  "claimed_at": "2026-11-15T22:00:30+0800",
+  "closed_by": "queue-lw-r2-w1",
+  "finished_at": "2026-11-15T22:03:41+0800"
+}

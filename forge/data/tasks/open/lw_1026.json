@@ -1,0 +1,16 @@
+{
+  "name": "lw_1026",
+  "statement": "(a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hab : a + b + c = 3) : ((a ^ 5 + 2) * (b ^ 5 + 2) * (c ^ 5 + 2))^(1 / 3) ≥ a ^ 2 + b ^ 2 + c ^ 2",
+  "closed": "∀ (a b c : ℝ) (ha : a ≥ 0) (hb : b ≥ 0) (hc : c ≥ 0) (hab : a + b + c = 3), ((a ^ 5 + 2) * (b ^ 5 + 2) * (c ^ 5 + 2))^(1 / 3) ≥ a ^ 2 + b ^ 2 + c ^ 2",
+  "informal": "Prove that $\\sqrt[3]{(a^5+2)(b^5+2)(c^5+2)}\\ge a^2+b^2+c^2$ given $a,b,c\\ge 0$ and $a+b+c=3$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_1026",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1545434307",
+  "type": "∀ (a b c : ℝ), a ≥ 0 → b ≥ 0 → c ≥ 0 → a + b + c = 3 → ((a ^ 5 + 2) * (b ^ 5 + 2) * (c ^ 5 + 2)) ^ (1 / 3) ≥ a ^ 2 + b ^ 2 + c ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:14+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\na := 0\nb := 1\nc := 2\nguard: 0 ≤ 0\nguard: 0 ≤ 1\nguard: 0 ≤ 2\nguard: 3 = 3\nissue: 5 ≤ 1 does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

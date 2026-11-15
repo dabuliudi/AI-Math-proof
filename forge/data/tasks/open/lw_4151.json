@@ -1,0 +1,15 @@
+{
+  "name": "lw_4151",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1) : (a^3 / (2 * a^3 + b^3 + 1) + b^3 / (2 * b^3 + c^3 + 1) + c^3 / (2 * c^3 + a^3 + 1)) ≤ (a^2 + b^2 + c^2)^2 / 12",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (habc : a * b * c = 1), (a^3 / (2 * a^3 + b^3 + 1) + b^3 / (2 * b^3 + c^3 + 1) + c^3 / (2 * c^3 + a^3 + 1)) ≤ (a^2 + b^2 + c^2)^2 / 12",
+  "informal": "For $a, b, c>0, abc=1$ prove that $\\frac{a^3}{2a^3+b^3+1}+\\frac{b^3}{2b^3+c^3+1}+\\frac{c^3}{2c^3+a^3+1}\\le\\frac{(a^2+b^2+c^2)^2}{12}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_4151",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "763497549",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → a ^ 3 / (2 * a ^ 3 + b ^ 3 + 1) + b ^ 3 / (2 * b ^ 3 + c ^ 3 + 1) + c ^ 3 / (2 * c ^ 3 + a ^ 3 + 1) ≤ (a ^ 2 + b ^ 2 + c ^ 2) ^ 2 / 12",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "open"
+}

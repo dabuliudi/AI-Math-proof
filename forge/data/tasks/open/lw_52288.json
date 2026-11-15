@@ -1,0 +1,15 @@
+{
+  "name": "lw_52288",
+  "statement": "(a b : ℝ) : ∃ c ∈ Set.Ioo 0 1, |a*c + b + 1 / c| > 1 / 24",
+  "closed": "∀ (a b : ℝ), ∃ c ∈ Set.Ioo 0 1, |a*c + b + 1 / c| > 1 / 24",
+  "informal": "Prove that for all $a,b{\\in}R$ there is such a number $c{\\in}(0;1)$ such that $|ac+b+\\frac{1}{c}|>\\frac{1}{24}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_52288",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1616573923",
+  "type": "∀ (a b : ℝ), ∃ c ∈ Set.Ioo 0 1, |a * c + b + 1 / c| > 1 / 24",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "open"
+}

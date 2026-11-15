@@ -1,0 +1,15 @@
+{
+  "name": "lw_25858",
+  "statement": "(a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a^2 + b^2 + c^2 = 2) : (a^2 - a * b + b^2) * (b^2 - b * c + c^2) * (c^2 - c * a + a^2) ≤ 8",
+  "closed": "∀ (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) (hab : a^2 + b^2 + c^2 = 2), (a^2 - a * b + b^2) * (b^2 - b * c + c^2) * (c^2 - c * a + a^2) ≤ 8",
+  "informal": "Prove that $(a^2-ab+b^2)(b^2-bc+c^2)(c^2-ca+a^2) \\leq 8$ for non-negative real numbers $a, b, c$ with $a^2+b^2+c^2=2$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_25858",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "4026649523",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a ^ 2 + b ^ 2 + c ^ 2 = 2 → (a ^ 2 - a * b + b ^ 2) * (b ^ 2 - b * c + c ^ 2) * (c ^ 2 - c * a + a ^ 2) ≤ 8",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "open"
+}

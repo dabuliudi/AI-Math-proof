@@ -1,0 +1,15 @@
+{
+  "name": "lw_3063",
+  "statement": "(a b c : ℝ) (k : ℝ) : a + b + c = 3 ∧ 0 < k ∧ k ≤ 1 → a ^ k * b + b ^ k * c + c ^ k * a ≤ 3",
+  "closed": "∀ (a b c : ℝ) (k : ℝ), a + b + c = 3 ∧ 0 < k ∧ k ≤ 1 → a ^ k * b + b ^ k * c + c ^ k * a ≤ 3",
+  "informal": "Prove $a^kb + b^kc + c^ka\\le 3$ given $a+b+c=3$ and $k \\in (0,1]$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_3063",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2606605677",
+  "type": "∀ (a b c k : ℝ), a + b + c = 3 ∧ 0 < k ∧ k ≤ 1 → a ^ k * b + b ^ k * c + c ^ k * a ≤ 3",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "open"
+}

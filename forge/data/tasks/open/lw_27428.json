@@ -1,0 +1,15 @@
+{
+  "name": "lw_27428",
+  "statement": "(a b : ℝ) (h : (Real.sqrt (a ^ 2 - 2 * a + 2) + a - 1) * (Real.sqrt (b ^ 2 - 4 * b + 8) + b - 2) = 2) : a ^ 2 + b ^ 2 ≥ 16 / 5",
+  "closed": "∀ (a b : ℝ) (h : (Real.sqrt (a ^ 2 - 2 * a + 2) + a - 1) * (Real.sqrt (b ^ 2 - 4 * b + 8) + b - 2) = 2), a ^ 2 + b ^ 2 ≥ 16 / 5",
+  "informal": "Let $a,b $ be real numbers such that $(\\sqrt{a^2-2a+2}+a-1)(\\sqrt{b^2-4b+8}+b-2)=2$ . Prove that: $a^2+b^2\\ge\\frac{16}{5}.$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_27428",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "997368844",
+  "type": "∀ (a b : ℝ), (√(a ^ 2 - 2 * a + 2) + a - 1) * (√(b ^ 2 - 4 * b + 8) + b - 2) = 2 → a ^ 2 + b ^ 2 ≥ 16 / 5",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "status": "open"
+}

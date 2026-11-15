@@ -1,0 +1,15 @@
+{
+  "name": "lw_45468",
+  "statement": "(n : ℕ) (a b : ℕ → ℕ) (hab : a ≤ b) : (∑ i ∈ Finset.range n, (a i + ∑ i ∈ Finset.range n, (b i))) ^ 2 ≥ 4 * n * ∑ i ∈ Finset.range n, (a i * b i)",
+  "closed": "∀ (n : ℕ) (a b : ℕ → ℕ) (hab : a ≤ b), (∑ i ∈ Finset.range n, (a i + ∑ i ∈ Finset.range n, (b i))) ^ 2 ≥ 4 * n * ∑ i ∈ Finset.range n, (a i * b i)",
+  "informal": "Prove: $[\\sum_{i=1}^{n}{a_i}+\\sum_{i=1}^{n}{b_i}]^2\\geq4n\\sum_{i=1}^{n}{a_i}{b_i}$\\n$a_1\\leq{a_2}\\leq\\dots\\leq{a_n}\\leq{b_1}\\leq{b_2}\\leq\\dots\\leq{b_n}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_45468",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2373640214",
+  "type": "∀ (n : ℕ) (a b : ℕ → ℕ), a ≤ b → (∑ i ∈ Finset.range n, (a i + ∑ i ∈ Finset.range n, b i)) ^ 2 ≥ 4 * n * ∑ i ∈ Finset.range n, a i * b i",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "open"
+}

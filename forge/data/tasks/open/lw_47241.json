@@ -1,0 +1,15 @@
+{
+  "name": "lw_47241",
+  "statement": "(a b c : ℝ) : 2 * a ^ 2 + 2 * b ^ 2 + c ^ 2 ≥ (Real.sqrt 10 / 5) * (2 * a + 4 * b) * c",
+  "closed": "∀ (a b c : ℝ), 2 * a ^ 2 + 2 * b ^ 2 + c ^ 2 ≥ (Real.sqrt 10 / 5) * (2 * a + 4 * b) * c",
+  "informal": "And for this, we have $2a^2+2b^2+c^2 \\ge \\frac{\\sqrt{10}}{5}(2a+4b)c.$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_47241",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "4051737486",
+  "type": "∀ (a b c : ℝ), 2 * a ^ 2 + 2 * b ^ 2 + c ^ 2 ≥ √10 / 5 * (2 * a + 4 * b) * c",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

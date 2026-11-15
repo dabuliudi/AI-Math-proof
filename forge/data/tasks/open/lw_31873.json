@@ -1,0 +1,15 @@
+{
+  "name": "lw_31873",
+  "statement": "(x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x * y + y * z + z * x = x * y * z) : (x * y / (z ^ 3 * (1 + x) * (1 + y))) + (y * z / (x ^ 3 * (1 + y) * (1 + z))) + (z * x / (y ^ 3 * (1 + z) * (1 + x))) ≥ 1 / 16",
+  "closed": "∀ (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x * y + y * z + z * x = x * y * z), (x * y / (z ^ 3 * (1 + x) * (1 + y))) + (y * z / (x ^ 3 * (1 + y) * (1 + z))) + (z * x / (y ^ 3 * (1 + z) * (1 + x))) ≥ 1 / 16",
+  "informal": "Let $x,y,z>0$ and $xy+yz+xz=xyz$. Prove that: $\\sum\\frac{xy}{z^3(1+x)(1+y)}\\ge \\frac{1}{16}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_31873",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2060493225",
+  "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y + y * z + z * x = x * y * z → x * y / (z ^ 3 * (1 + x) * (1 + y)) + y * z / (x ^ 3 * (1 + y) * (1 + z)) + z * x / (y ^ 3 * (1 + z) * (1 + x)) ≥ 1 / 16",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

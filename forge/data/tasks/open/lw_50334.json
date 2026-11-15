@@ -1,0 +1,15 @@
+{
+  "name": "lw_50334",
+  "statement": "(n : ℕ) (α : ℝ) (hn : 0 < n) (hα : α > 0 ∧ α < Real.pi / n) : (∏ i ∈ Finset.Icc 1 n, (Real.sin (i * α))) < 1 / (n * (Real.sin (α / 2)) ^ n)",
+  "closed": "∀ (n : ℕ) (α : ℝ) (hn : 0 < n) (hα : α > 0 ∧ α < Real.pi / n), (∏ i ∈ Finset.Icc 1 n, (Real.sin (i * α))) < 1 / (n * (Real.sin (α / 2)) ^ n)",
+  "informal": "Let $n$ be a random natural number. $\\alpha$ is a number such that $0 < \\alpha < \\frac{\\pi}{n}$ . \\n $$sin\\alpha sin 2\\alpha\\cdots sin n\\alpha < \\frac{1}{n sin^n \\frac{\\alpha}{2}}$$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_50334",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1448007591",
+  "type": "∀ (n : ℕ) (α : ℝ), 0 < n → α > 0 ∧ α < Real.pi / ↑n → ∏ i ∈ Finset.Icc 1 n, Real.sin (↑i * α) < 1 / (↑n * Real.sin (α / 2) ^ n)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:14+0800",
+  "status": "open"
+}

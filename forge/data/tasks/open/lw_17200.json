@@ -1,0 +1,16 @@
+{
+  "name": "lw_17200",
+  "statement": "(p n : ℕ) (hp : p.Prime) : n ^ (p - 1) ≡ 1 [ZMOD p]",
+  "closed": "∀ (p n : ℕ) (hp : p.Prime), n ^ (p - 1) ≡ 1 [ZMOD p]",
+  "informal": "By Fermat's Little Theorem, we have $n^{p-1}\\equiv 1 (mod p)$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_17200",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2918737302",
+  "type": "∀ (p n : ℕ), Nat.Prime p → ↑n ^ (p - 1) ≡ 1 [ZMOD ↑p]",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "counterexample": "===================\nFound a counter-example!\np := 2\nn := 2\nguard: ⋯\nissue: ⋯ does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

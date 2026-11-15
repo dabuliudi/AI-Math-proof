@@ -1,0 +1,15 @@
+{
+  "name": "lw_29567",
+  "statement": "(a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : (a^2 - b * d)/(b + d + 2 * c) + (b^2 - c * a)/(c + a + 2 * d) + (c^2 - d * b)/(d + b + 2 * a) + (d^2 - a * c)/(a + c + 2 * b) ≥ 0",
+  "closed": "∀ (a b c d : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d), (a^2 - b * d)/(b + d + 2 * c) + (b^2 - c * a)/(c + a + 2 * d) + (c^2 - d * b)/(d + b + 2 * a) + (d^2 - a * c)/(a + c + 2 * b) ≥ 0",
+  "informal": "Assume that $a,b,c,d>0$ ,prove that \\n $\\frac{a^2-bd}{b+d+2c}+\\frac{b^2-ca}{c+a+2d}+\\frac{c^2-db}{d+b+2a}+\\frac{d^2-ac}{a+c+2b}\\ge 0$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_29567",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "645148344",
+  "type": "∀ (a b c d : ℝ), 0 < a → 0 < b → 0 < c → 0 < d → (a ^ 2 - b * d) / (b + d + 2 * c) + (b ^ 2 - c * a) / (c + a + 2 * d) + (c ^ 2 - d * b) / (d + b + 2 * a) + (d ^ 2 - a * c) / (a + c + 2 * b) ≥ 0",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "open"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "lw_24088",
+  "statement": "(a b : ℝ) (ha : 1 < a) (hb : 1 < b) : (a / Real.sqrt (a ^ 2 + 1) + b / Real.sqrt (b ^ 2 + 1)) ≤ (2 * Real.sqrt (a * b)) / Real.sqrt (a * b + 1)",
+  "closed": "∀ (a b : ℝ) (ha : 1 < a) (hb : 1 < b), (a / Real.sqrt (a ^ 2 + 1) + b / Real.sqrt (b ^ 2 + 1)) ≤ (2 * Real.sqrt (a * b)) / Real.sqrt (a * b + 1)",
+  "informal": "Let $a, b > 1$ . Prove that $\\frac{a}{\\sqrt{a^2+1}}+\\frac{b}{\\sqrt{b^2+1}} \\le \\frac{2\\sqrt{ab}}{\\sqrt{ab+1}}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_24088",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3827188224",
+  "type": "∀ (a b : ℝ), 1 < a → 1 < b → a / √(a ^ 2 + 1) + b / √(b ^ 2 + 1) ≤ 2 * √(a * b) / √(a * b + 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "open"
+}

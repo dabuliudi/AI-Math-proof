@@ -1,0 +1,15 @@
+{
+  "name": "lw_20194",
+  "statement": "(d : ℤ) (a : ℕ → ℤ) (a0 : a 1 = -1 ∧ a 2 = 1) (a_rec : ∀ n, a (n + 2) = a (n + 1) + a n) : ∃ infinitely_many n : ℕ, d ∣ a n",
+  "closed": "∀ (d : ℤ) (a : ℕ → ℤ) (a0 : a 1 = -1 ∧ a 2 = 1) (a_rec : ∀ n, a (n + 2) = a (n + 1) + a n), ∃ infinitely_many n : ℕ, d ∣ a n",
+  "informal": "Given the sequence $a_{n+2}=a_{n+1}+a_n$ with initial conditions $a_1=-1, a_2=1$, and $d$ is an integer. Prove that there exist infinitely many positive integers $n$ such that $d$ divides $a_n$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_20194",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1200829185",
+  "type": "∀ (d : ℤ) (a : ℕ → ℤ), a 1 = -1 ∧ a 2 = 1 → (∀ (n : ℕ), a (n + 2) = a (n + 1) + a n) → ∃ infinitely_many n, d ∣ a n",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "open"
+}

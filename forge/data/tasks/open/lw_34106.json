@@ -1,0 +1,15 @@
+{
+  "name": "lw_34106",
+  "statement": "(a b c : ℝ) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : a + b ≠ 0) (hbc : b + c ≠ 0) (hca : c + a ≠ 0) (habc : a + b + c ≠ 0) : (a / (a + b))^2 + (b / (b + c))^2 + (c / (c + a))^2 + (4 * a * b * c) / ((a + b) * (b + c) * (c + a)) ≥ a / (a + b) + b / (b + c) + c / (c + a) - 1 / 4",
+  "closed": "∀ (a b c : ℝ) (ha : a ≠ 0) (hb : b ≠ 0) (hc : c ≠ 0) (hab : a + b ≠ 0) (hbc : b + c ≠ 0) (hca : c + a ≠ 0) (habc : a + b + c ≠ 0), (a / (a + b))^2 + (b / (b + c))^2 + (c / (c + a))^2 + (4 * a * b * c) / ((a + b) * (b + c) * (c + a)) ≥ a / (a + b) + b / (b + c) + c / (c + a) - 1 / 4",
+  "informal": "Prove that: \\n${\\left( {\\frac{a}{{a + b}}} \\right)^2} + {\\left( {\\frac{b}{{b + c}}} \\right)^2} + {\\left( {\\frac{c}{{c + a}}} \\right)^2} + \\frac{{4abc}}{{\\left( {a + b} \\right)\\left( {b + c} \\right)\\left( {c + a} \\right)}} \\ge \\frac{a}{{a + b}} + \\frac{b}{{b + c}} + \\frac{c}{{c + a}} - \\frac{1}{4}$\\nGiven: $\\left( {a + b} \\right)\\left( {b + c} \\right)\\left( {c + a} \\right) \\ne 0$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_34106",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3489835770",
+  "type": "∀ (a b c : ℝ), a ≠ 0 → b ≠ 0 → c ≠ 0 → a + b ≠ 0 → b + c ≠ 0 → c + a ≠ 0 → a + b + c ≠ 0 → (a / (a + b)) ^ 2 + (b / (b + c)) ^ 2 + (c / (c + a)) ^ 2 + 4 * a * b * c / ((a + b) * (b + c) * (c + a)) ≥ a / (a + b) + b / (b + c) + c / (c + a) - 1 / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

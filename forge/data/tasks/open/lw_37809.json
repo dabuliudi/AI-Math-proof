@@ -1,0 +1,15 @@
+{
+  "name": "lw_37809",
+  "statement": "(a b c d e : ℝ) (ha : a >= b) (hb : b >= c) (hc : c >= d) (hd : d >= e) (he : e > 0) : (a - b + c - d + e) * (1 / a - 1 / b + 1 / c - 1 / d + 1 / e) >= 1",
+  "closed": "∀ (a b c d e : ℝ) (ha : a >= b) (hb : b >= c) (hc : c >= d) (hd : d >= e) (he : e > 0), (a - b + c - d + e) * (1 / a - 1 / b + 1 / c - 1 / d + 1 / e) >= 1",
+  "informal": "Let $a\\ge b\\ge c\\ge d\\ge e>0$ . $(a-b+c-d+e)(\\frac{1}{a}-\\frac{1}{b}+\\frac{1}{c}-\\frac{1}{d}+\\frac{1}{e})\\ge 1.$ Let $x_1\\geq x_2\\geq...\\geq x_{2n-1}>0$ for all $n\\in\\mathbb N$ . Prove that: $$\\left(x_1-x_2+...+x_{2n-1}\\right)\\left(\\frac{1}{x_1}-\\frac{1}{x_2}+...+\\frac{1}{x_{2n-1}}\\right)\\geq1$$ Kazakhstan 2017: ",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_37809",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2061351899",
+  "type": "∀ (a b c d e : ℝ), a ≥ b → b ≥ c → c ≥ d → d ≥ e → e > 0 → (a - b + c - d + e) * (1 / a - 1 / b + 1 / c - 1 / d + 1 / e) ≥ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

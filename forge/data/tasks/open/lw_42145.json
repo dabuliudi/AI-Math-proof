@@ -1,0 +1,16 @@
+{
+  "name": "lw_42145",
+  "statement": "{n : ℕ} (hn : ¬ 3 ∣ n) : ¬ n ∣ 3 ^ n - 1",
+  "closed": "∀ {n : ℕ} (hn : ¬ 3 ∣ n), ¬ n ∣ 3 ^ n - 1",
+  "informal": "If $ 3\\not|n$ , then $ \\gcd(3,n) = 1$ , and so by Fermat's Little Theorem, $ 3^n\\equiv 3\\pmod n$ , so $ n\\not|3^n - 1$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_42145",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2151599927",
+  "type": "∀ {n : ℕ}, ¬3 ∣ n → ¬n ∣ 3 ^ n - 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "counterexample": "===================\nFound a counter-example!\nn := 1\nguard: ¬⋯\nissue: ¬⋯ does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "lw_48244",
+  "statement": "(a b c : ℝ) (ha : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0) : 1 + a^2 + b^2 + c^2 + 4 * a * b * c ≥ a + b + c + a * b + b * c + c * a",
+  "closed": "∀ (a b c : ℝ) (ha : a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0), 1 + a^2 + b^2 + c^2 + 4 * a * b * c ≥ a + b + c + a * b + b * c + c * a",
+  "informal": "Prove that: $1+a^2+b^2+c^2+4abc\\ge a+b+c+ab+bc+ca$ given $a,b,c\\ge 0$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_48244",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2231363285",
+  "type": "∀ (a b c : ℝ), a ≥ 0 ∧ b ≥ 0 ∧ c ≥ 0 → 1 + a ^ 2 + b ^ 2 + c ^ 2 + 4 * a * b * c ≥ a + b + c + a * b + b * c + c * a",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "open"
+}

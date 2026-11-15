@@ -1,0 +1,15 @@
+{
+  "name": "lw_21945",
+  "statement": "(n : ℕ) (a : Fin n → ℝ) : (n / ∑ i, 1 / a i) ^ 2 * ∏ i, a i + (∑ i, a i) ^ 2 / n ≥ 2 * n / (∑ i, 1 / a i) + ∏ i, a i ^ (1 / n)",
+  "closed": "∀ (n : ℕ) (a : Fin n → ℝ), (n / ∑ i, 1 / a i) ^ 2 * ∏ i, a i + (∑ i, a i) ^ 2 / n ≥ 2 * n / (∑ i, 1 / a i) + ∏ i, a i ^ (1 / n)",
+  "informal": "Prove that for each positive integer $n$ :\\n\\n$$\\frac{(\\sqrt[n]{a_1a_2\\cdots a_n})^2}{\\frac{a_1+a_2+\\cdots +a_n}{n}}+\\frac{\\left(\\frac{n}{\\frac{1}{a_1}+\\frac{1}{a_2}+\\cdots+\\frac{1}{a_n}}\\right)^2}{\\sqrt[n]{a_1a_2\\cdots a_n}}+\\frac{a_1+a_2+\\cdots +a_n}{n}\\geq \\frac{2n}{\\frac{1}{a_1}+\\frac{1}{a_2}+\\cdots+\\frac{1}{a_n}}+\\sqrt[n]{a_1a_2\\cdots a_n} .$$\\n\\nProposed by Kunihiko Chikaya",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_21945",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "638349477",
+  "type": "∀ (n : ℕ) (a : Fin n → ℝ), (↑n / ∑ i, 1 / a i) ^ 2 * ∏ i, a i + (∑ i, a i) ^ 2 / ↑n ≥ 2 * ↑n / ∑ i, 1 / a i + ∏ i, a i ^ (1 / n)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

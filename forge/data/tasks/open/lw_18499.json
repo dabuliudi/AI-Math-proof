@@ -1,0 +1,15 @@
+{
+  "name": "lw_18499",
+  "statement": "(f g h : ℝ → ℝ):(∀ x y z : ℝ, f (h (g x) + y) + g (z + f y) = h y + g (y + f z) + x) ↔ ∃ c:ℝ, ∀ x:ℝ, f x = c * x ∧ ∃ d:ℝ, ∀ y:ℝ, g y = d * y ∧ ∃ e:ℝ, ∀ z:ℝ, h z = e * z ∧ c + d + e = 1",
+  "closed": "∀ (f g h : ℝ → ℝ), (∀ x y z : ℝ, f (h (g x) + y) + g (z + f y) = h y + g (y + f z) + x) ↔ ∃ c:ℝ, ∀ x:ℝ, f x = c * x ∧ ∃ d:ℝ, ∀ y:ℝ, g y = d * y ∧ ∃ e:ℝ, ∀ z:ℝ, h z = e * z ∧ c + d + e = 1",
+  "informal": "Find all triples of functions $f,g,h:\\\\mathbb{R}\\\\rightarrow\\\\mathbb{R}$ such that $f(h(g(x))+y)+g(z+f(y))=h(y)+g(y+f(z))+x$ for all $x,y,z\\\\in\\\\mathbb{R}$ .",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_18499",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1300235885",
+  "type": "∀ (f g h : ℝ → ℝ), (∀ (x y z : ℝ), f (h (g x) + y) + g (z + f y) = h y + g (y + f z) + x) ↔ ∃ c, ∀ (x : ℝ), f x = c * x ∧ ∃ d, ∀ (y : ℝ), g y = d * y ∧ ∃ e, ∀ (z : ℝ), h z = e * z ∧ c + d + e = 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:12+0800",
+  "status": "open"
+}

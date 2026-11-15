@@ -1,0 +1,15 @@
+{
+  "name": "lw_41789",
+  "statement": "(t : ℝ) (ht : t ≥ (11 + Real.sqrt 105)/4) : 13 * t - t^2 - 1 ≤ t + 1",
+  "closed": "∀ (t : ℝ) (ht : t ≥ (11 + Real.sqrt 105)/4), 13 * t - t^2 - 1 ≤ t + 1",
+  "informal": "Note that $t+1-s=(x-1)(y-1) \\ge 0 \\implies t+1 \\ge s=\\frac{13t-t^2-1}{t+1} \\implies t \\ge \\frac{11+\\sqrt{105}}4=t_0$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_41789",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "164791708",
+  "type": "∀ t ≥ (11 + √105) / 4, 13 * t - t ^ 2 - 1 ≤ t + 1",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

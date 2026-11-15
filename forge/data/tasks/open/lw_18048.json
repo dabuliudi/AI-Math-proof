@@ -1,0 +1,16 @@
+{
+  "name": "lw_18048",
+  "statement": "(x y z : ℝ) : x ^ 4 + y ^ 4 + z ^ 3 ≥ x ^ 3 * y + y ^ 3 * z + z ^ 3 * x",
+  "closed": "∀ (x y z : ℝ), x ^ 4 + y ^ 4 + z ^ 3 ≥ x ^ 3 * y + y ^ 3 * z + z ^ 3 * x",
+  "informal": "Prove that $x^4+y^4+z^3\\ge{x^3y+y^3z+z^3x}$ for real numbers $x$, $y$, and $z$.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_18048",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2874197784",
+  "type": "∀ (x y z : ℝ), x ^ 4 + y ^ 4 + z ^ 3 ≥ x ^ 3 * y + y ^ 3 * z + z ^ 3 * x",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\nx := 0\ny := (-2 : Rat)/3\nz := -1\nissue: (8 : Rat)/27 ≤ (-65 : Rat)/81 does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

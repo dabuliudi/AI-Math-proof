@@ -1,0 +1,15 @@
+{
+  "name": "lw_5698",
+  "statement": "(a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) : (a^3 / (a + b) * (a + c) + b^3 / (b + c) * (b + a) + c^3 / (c + a) * (c + b)) ≥ (a + b + c) / 4",
+  "closed": "∀ (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c), (a^3 / (a + b) * (a + c) + b^3 / (b + c) * (b + a) + c^3 / (c + a) * (c + b)) ≥ (a + b + c) / 4",
+  "informal": "Prove that for a, b, c > 0:\\n\\n\\( \\frac{a^{3}}{(a+b)(a+c)} + \\frac{b^{3}}{(b+c)(b+a)} + \\frac{c^{3}}{(c+a)(c+b)} \\ge \\frac{a+b+c}{4} \\)",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_5698",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "103160030",
+  "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a ^ 3 / (a + b) * (a + c) + b ^ 3 / (b + c) * (b + a) + c ^ 3 / (c + a) * (c + b) ≥ (a + b + c) / 4",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "lw_28848",
+  "statement": "{a b c d e : ℤ} (h : 25 ∣ a^5 + b^5 + c^5 + d^5 + e^5) : 25 ∣ a * b * c * d * e",
+  "closed": "∀ {a b c d e : ℤ} (h : 25 ∣ a^5 + b^5 + c^5 + d^5 + e^5), 25 ∣ a * b * c * d * e",
+  "informal": "If $25|a^5+b^5+c^5+d^5+e^5$ then $25|abcde$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_28848",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1643013810",
+  "type": "∀ {a b c d e : ℤ}, 25 ∣ a ^ 5 + b ^ 5 + c ^ 5 + d ^ 5 + e ^ 5 → 25 ∣ a * b * c * d * e",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "counterexample": "===================\nFound a counter-example!\na := -1\nb := 4\nc := -4\nd := 6\ne := 5\nguard: ⋯\nissue: ⋯ does not hold\n(1 shrinks)\n-------------------",
+  "status": "open"
+}

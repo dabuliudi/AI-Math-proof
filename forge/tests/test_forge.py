@@ -375,11 +375,15 @@ class HardeningTests(unittest.TestCase):
         from forge import verify
         ran = {}
 
-        def fake_ladder(decl, labelled, timeout):
+        def fake_ladder(decl, labelled, timeout, named=False):
             labels = {label for label, _, _ in labelled}
             ran.setdefault('labels', set()).update(labels)
-            passed = {l for l in labels if l in ('vac:omega', 'lib:1:simp_all [Mathlib2.b]')}
-            return passed, {}, False
+            passed = {l for l in labels if l in ('vac:omega', 'lib:0:grind [Mathlib2.a]', 'lib:1:simp_all [Mathlib2.b]')}
+            if not named:
+                return passed, {}, False
+            # a 的探针虽然成功，但证明里没有引用 a；b 的探针确实引用了 b
+            deps = {'lib:0:grind [Mathlib2.a]': {'Nat.add_comm'}, 'lib:1:simp_all [Mathlib2.b]': {'Mathlib2.b'}}
+            return passed, {}, False, deps
 
         fake = mock.MagicMock()
         fake.tagged.return_value = [dict(type='T', hash='h')]

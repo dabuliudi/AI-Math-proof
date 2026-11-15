@@ -1,0 +1,16 @@
+{
+  "name": "lw_8987",
+  "statement": ": ∀ a b c : ℝ, 3 * b ^ 2 * c ^ 3 + 6 * c * a ^ 4 + 2 * b ^ 2 * a ^ 3 + 6 * c ^ 2 * a ^ 3 + 3 * c ^ 3 * a ^ 2 + 20 * a * b ^ 4 + 10 * b * a ^ 4 + 16 * b * c * a ^ 3 + 17 * a ^ 2 * b ^ 2 * c + b * c ^ 2 * a ^ 2 - a * b ^ 2 * c ^ 2 + 4 * b * c ^ 3 * a + 48 * b ^ 3 * a ^ 2 > 0",
+  "closed": "∀ a b c : ℝ, 3 * b ^ 2 * c ^ 3 + 6 * c * a ^ 4 + 2 * b ^ 2 * a ^ 3 + 6 * c ^ 2 * a ^ 3 + 3 * c ^ 3 * a ^ 2 + 20 * a * b ^ 4 + 10 * b * a ^ 4 + 16 * b * c * a ^ 3 + 17 * a ^ 2 * b ^ 2 * c + b * c ^ 2 * a ^ 2 - a * b ^ 2 * c ^ 2 + 4 * b * c ^ 3 * a + 48 * b ^ 3 * a ^ 2 > 0",
+  "informal": "Prove that $3b^2c^3+6ca^4+2b^2a^3+6c^2a^3+3c^3a^2+20ab^4+10ba^4+16bca^3+17a^2b^2c+bc^2a^2-ab^2c^2+4bc^3a+48b^3a^2>0$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_8987",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1036480052",
+  "type": "∀ (a b c : ℝ), 3 * b ^ 2 * c ^ 3 + 6 * c * a ^ 4 + 2 * b ^ 2 * a ^ 3 + 6 * c ^ 2 * a ^ 3 + 3 * c ^ 3 * a ^ 2 + 20 * a * b ^ 4 + 10 * b * a ^ 4 + 16 * b * c * a ^ 3 + 17 * a ^ 2 * b ^ 2 * c + b * c ^ 2 * a ^ 2 - a * b ^ 2 * c ^ 2 + 4 * b * c ^ 3 * a + 48 * b ^ 3 * a ^ 2 > 0",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:13+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\na := 0\nb := 0\nc := 0\nissue: 0 < 0 does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

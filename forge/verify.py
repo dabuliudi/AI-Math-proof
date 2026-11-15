@@ -76,22 +76,32 @@ def check_submission(task, body, disproof=False, timeout=300):
 EVALUATING = {'decide', 'rfl', 'plausible', 'plausible_rat'}  # 会真的去算值，遇到天文数字可能跑不完
 
 
-def _ladder_run(decl, labelled, timeout):
-    """跑一组互相独立的 `example … := by tactic`，返回 (哪些没报错, 各块消息, 是否超时)。"""
+def _ladder_run(decl, labelled, timeout, named=False):
+    """跑一组互相独立的 `example … := by tactic`，返回 (哪些没报错, 各块消息, 是否超时)。
+
+    named=True 时每块写成有名字的定理，并额外返回 {标签: 证明项直接引用的常量}，用来确认某条引理是否真的被用到。"""
     lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeTriage', 'open Mathlib2', 'set_option maxHeartbeats 100000',
                                                  'set_option pp.deepTerms true', 'set_option pp.maxSteps 100000']
     blocks = []
-    for label, text, tactic in labelled:
+    nonce = uuid.uuid4().hex
+    for index, (label, text, tactic) in enumerate(labelled):
         start = len(lines) + 1
-        lines.extend(f'example {text} := by\n  {tactic}'.split('\n'))
+        head = f'theorem probe{index}' if named else 'example'
+        lines.extend(f'{head} {text} := by\n  {tactic}'.split('\n'))
         blocks.append((label, start, len(lines)))
     lines.append('end ForgeTriage')
-    result = run_source('\n'.join(lines) + '\n', timeout=timeout)
+    if named:
+        lines += [f'#forge_info "{nonce}" ForgeTriage.probe{index}' for index in range(len(labelled))]
+    result = run_source('\n'.join(lines) + '\n', timeout=timeout, nonce=nonce)
     per_block = {label: [m for m in result.messages if start <= m['line'] <= end] for label, start, end in blocks}
     if result.timed_out:
-        return set(), per_block, True
+        return (set(), per_block, True, {}) if named else (set(), per_block, True)
     passed = {label for label, messages in per_block.items() if not any(m['severity'] == 'error' for m in messages)}
-    return passed, per_block, False
+    if not named:
+        return passed, per_block, False
+    infos = {i['name']: set(i.get('deps', [])) for i in result.tagged('FORGE_INFO')}
+    deps = {label: infos.get(f'ForgeTriage.probe{index}', set()) for index, (label, _, _) in enumerate(labelled)}
+    return passed, per_block, False, deps
 
 
 # 空真检查：只看签名里的假设（冒号前的绑定）。结论里的蕴含不拆，以免把 `¬P`、`∀ x < n, …` 这类正常结论误判为空真。
@@ -142,11 +152,11 @@ def triage(name, statement, timeout=240):
         core_future = pool.submit(run_source, core, 120, nonce)
         symbolic_future = pool.submit(_ladder_run, decl, symbolic, timeout)
         evaluating_future = pool.submit(_ladder_run, decl, evaluating, 60)
-        relations_future = pool.submit(_ladder_run, decl, relations, 120) if relations else None
+        relations_future = pool.submit(_ladder_run, decl, relations, 120, named=True) if relations else None
         result = core_future.result()
         passed_symbolic, messages_symbolic, slow_symbolic = symbolic_future.result()
         passed_evaluating, messages_evaluating, slow_evaluating = evaluating_future.result()
-        passed_relations, _, slow_relations = relations_future.result() if relations_future else (set(), {}, False)
+        passed_relations, _, slow_relations, relation_deps = relations_future.result() if relations_future else (set(), {}, False, {})
     info = result.tagged('FORGE_INFO')
     # 命题一旦报错，Lean 仍会留下一个类型里带 sorry 的常量，这样的“命题”谁也证不了，必须在这里拦住。
     out = dict(valid=bool(info) and not result.errors(), elapsed=round(result.elapsed, 1), timed_out=result.timed_out)
@@ -166,7 +176,11 @@ def triage(name, statement, timeout=240):
     unaided = bool(passed_symbolic | (passed_evaluating - {'plausible', 'plausible_rat'}) - {'exact?'})
     for label, _, tactic in relations:
         if not unaided and label.startswith('lib:') and label in passed_relations:
-            out['follows_from'] = dict(lemma=related[int(label.split(':')[1])], tactic=tactic)
+            lemma = related[int(label.split(':')[1])]
+            # 证明项里必须真的引用了这条引理：多塞一条引理有时只是改变了 grind 等的搜索过程，碰巧证出
+            if lemma not in relation_deps.get(label, set()):
+                continue
+            out['follows_from'] = dict(lemma=lemma, tactic=tactic)
             break
     for label in ('plausible', 'plausible_rat'):
         for m in messages_evaluating.get(label, []):

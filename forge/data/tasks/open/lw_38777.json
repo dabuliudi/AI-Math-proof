@@ -1,0 +1,15 @@
+{
+  "name": "lw_38777",
+  "statement": "(x y z u v w : ℝ) (h₀ : 0 < v) (h₁ : 0 < w) (h₂ : x + y + z = 3 * u) (h₃ : x * y + x * z + y * z = 3 * v^2) (h₄ : x * y * z = w^3) : (v + x) / (y + z) + (v + y) / (z + x) + (v + z) / (x + y) ≥ 3",
+  "closed": "∀ (x y z u v w : ℝ) (h₀ : 0 < v) (h₁ : 0 < w) (h₂ : x + y + z = 3 * u) (h₃ : x * y + x * z + y * z = 3 * v^2) (h₄ : x * y * z = w^3), (v + x) / (y + z) + (v + y) / (z + x) + (v + z) / (x + y) ≥ 3",
+  "informal": "Let $x+y+z=3u$ , $xy+xz+yz=3v^2$ , where $v>0$ and $xyz=w^3$ .\\n\\nHence, we need to prove that $\\sum_{cyc}\\frac{v+x}{y+z}\\geq3$ , which is linear inequality of $w^3$ .\\n\\nHence, by $uvw$ it remains to check two cases only.\\n\\n1. $z\\rightarrow0^+$ ;\\n2. $y=z$ ,\\n\\nwhich gives that your inequality is indeed true.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_38777",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1990814434",
+  "type": "∀ (x y z u v w : ℝ), 0 < v → 0 < w → x + y + z = 3 * u → x * y + x * z + y * z = 3 * v ^ 2 → x * y * z = w ^ 3 → (v + x) / (y + z) + (v + y) / (z + x) + (v + z) / (x + y) ≥ 3",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "status": "open"
+}

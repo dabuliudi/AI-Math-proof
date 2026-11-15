@@ -1,0 +1,15 @@
+{
+  "name": "lw_39",
+  "statement": "(x : ℝ) (h₀ : Real.sin x + Real.sin (5 * x) + Real.sin (3 * x) = 0) : Real.sin (3 * x) = 0 ∨ 2 * Real.cos x + 1 = 0",
+  "closed": "∀ (x : ℝ) (h₀ : Real.sin x + Real.sin (5 * x) + Real.sin (3 * x) = 0), Real.sin (3 * x) = 0 ∨ 2 * Real.cos x + 1 = 0",
+  "informal": "(\\sin x+\\sin5x)+\\sin3x =(2 \\sin3x \\cos x)+\\sin3x = \\sin3x(2 \\cos x+1) = 0\\nThis means $\\sin3x = 0$ or $2\\cos x+1=0$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_39",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "4162989907",
+  "type": "∀ (x : ℝ), Real.sin x + Real.sin (5 * x) + Real.sin (3 * x) = 0 → Real.sin (3 * x) = 0 ∨ 2 * Real.cos x + 1 = 0",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

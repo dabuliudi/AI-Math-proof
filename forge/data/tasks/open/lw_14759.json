@@ -1,0 +1,15 @@
+{
+  "name": "lw_14759",
+  "statement": "(x y z : ℝ) : Real.sqrt (x ^ 2 + y ^ 2 + z ^ 2) * (x * y + y * z + z * x) ≥ 3 * Real.sqrt 3 * x * y * z",
+  "closed": "∀ (x y z : ℝ), Real.sqrt (x ^ 2 + y ^ 2 + z ^ 2) * (x * y + y * z + z * x) ≥ 3 * Real.sqrt 3 * x * y * z",
+  "informal": "By AM-GM, $\\sqrt{x^2+y^2+z^2}(xy+yz+zx) \\ge \\sqrt{3}\\sqrt[3]{xyz}\\cdot 3\\sqrt[3]{x^2y^2z^2}=3\\sqrt{3}xyz$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_14759",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2440827913",
+  "type": "∀ (x y z : ℝ), √(x ^ 2 + y ^ 2 + z ^ 2) * (x * y + y * z + z * x) ≥ 3 * √3 * x * y * z",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "open"
+}

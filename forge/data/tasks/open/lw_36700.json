@@ -1,0 +1,16 @@
+{
+  "name": "lw_36700",
+  "statement": "(a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c) : (a^2/(b^2 - b*c + c^2) + b^2/(c^2 - c*a + a^2) + c^2/(a^2 - a*b + b^2) ≥ 2)",
+  "closed": "∀ (a b c : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b) (hc : 0 ≤ c), (a^2/(b^2 - b*c + c^2) + b^2/(c^2 - c*a + a^2) + c^2/(a^2 - a*b + b^2) ≥ 2)",
+  "informal": "Prove that for non-negative real numbers $a, b, c$,\\n1) $\\frac{a^2}{b^2-bc+c^2} + \\frac{b^2}{c^2-ca+a^2} + \\frac{c^2}{a^2-ab+b^2} \\geq 2$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_36700",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "924345151",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a ^ 2 / (b ^ 2 - b * c + c ^ 2) + b ^ 2 / (c ^ 2 - c * a + a ^ 2) + c ^ 2 / (a ^ 2 - a * b + b ^ 2) ≥ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\na := 0\nb := 0\nc := 0\nguard: 0 ≤ 0\nguard: 0 ≤ 0\nguard: 0 ≤ 0\nissue: 2 ≤ 0 does not hold\n(0 shrinks)\n-------------------",
+  "status": "open"
+}

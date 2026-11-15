@@ -1,0 +1,15 @@
+{
+  "name": "lw_7607",
+  "statement": "(a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b = a^2 + b^2) : 1 + 2 * Real.sqrt (a + b) + (a - b) ≤ 4 / (a + b) + (4 + 2 * (b - a)) / Real.sqrt (a + b)",
+  "closed": "∀ (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b = a^2 + b^2), 1 + 2 * Real.sqrt (a + b) + (a - b) ≤ 4 / (a + b) + (4 + 2 * (b - a)) / Real.sqrt (a + b)",
+  "informal": "Let $a,b>0$ and $a+b=a^2+b^2$ . Prove that, \\n\\n $$1+2\\sqrt{a+b}+(a-b)\\leq \\frac{4}{a+b}+\\frac{4+2(b-a)}{\\sqrt{a+b}}$$\\n\\nEquality holds when $a=\\frac{\\sqrt[3]{2(3\\sqrt{78}-4)}}{3}-\\frac{7\\sqrt[3]{4}}{3\\sqrt[3]{3\\sqrt{78}-4}}+\\frac{4}{3}, b=\\frac{\\sqrt[3]{27-3\\sqrt{78}}}{3}+\\frac{\\sqrt[3]{9+\\sqrt{78}}}{\\sqrt[3]{4}}-1$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_7607",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3777206207",
+  "type": "∀ (a b : ℝ), 0 < a → 0 < b → a + b = a ^ 2 + b ^ 2 → 1 + 2 * √(a + b) + (a - b) ≤ 4 / (a + b) + (4 + 2 * (b - a)) / √(a + b)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

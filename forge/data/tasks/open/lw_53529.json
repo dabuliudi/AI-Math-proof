@@ -1,0 +1,15 @@
+{
+  "name": "lw_53529",
+  "statement": ": ∀ a b : ℝ, a ∈ Set.Icc 0 1 ∧ b ∈ Set.Icc 0 1 → (2 / Real.sqrt 3 - 1 / 3) ≤ (2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b)) ∧ (2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b)) ≤ 2 ∧ (Real.sqrt 3 - 3 / 4) ≤ (3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b)) ∧ (3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b)) ≤ 3",
+  "closed": "∀ a b : ℝ, a ∈ Set.Icc 0 1 ∧ b ∈ Set.Icc 0 1 → (2 / Real.sqrt 3 - 1 / 3) ≤ (2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b)) ∧ (2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b)) ≤ 2 ∧ (Real.sqrt 3 - 3 / 4) ≤ (3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b)) ∧ (3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b)) ≤ 3",
+  "informal": "Let $ a,b \\in [0,1] .$ Prove that\\n$$\\frac{2}{\\sqrt{3}}-\\frac{1}{3} \\leq \\frac{2a}{b+1}+\\frac{b}{3a+1}+(1-a)(1-b) \\leq 2$$\\n$$\\sqrt{3}-\\frac{3}{4}\\leq\\frac{3a}{b+1}+\\frac{b}{2a+1}+(1-a)(1-b) \\leq 3$$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_53529",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "3035592526",
+  "type": "∀ (a b : ℝ), a ∈ Set.Icc 0 1 ∧ b ∈ Set.Icc 0 1 → 2 / √3 - 1 / 3 ≤ 2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b) ∧ 2 * a / (b + 1) + b / (3 * a + 1) + (1 - a) * (1 - b) ≤ 2 ∧ √3 - 3 / 4 ≤ 3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b) ∧ 3 * a / (b + 1) + b / (2 * a + 1) + (1 - a) * (1 - b) ≤ 3",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:15+0800",
+  "status": "open"
+}

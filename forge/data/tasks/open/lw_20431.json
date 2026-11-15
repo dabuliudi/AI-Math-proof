@@ -1,0 +1,15 @@
+{
+  "name": "lw_20431",
+  "statement": "{f : ℕ → ℕ} (hf1 : ∀ m n, Nat.Coprime m n → f (m * n) = f m * f n) (hf2 : f 2 = 2) (hf3 : StrictMono f) : ∀ n, f n = n",
+  "closed": "∀ {f : ℕ → ℕ} (hf1 : ∀ m n, Nat.Coprime m n → f (m * n) = f m * f n) (hf2 : f 2 = 2) (hf3 : StrictMono f), ∀ n, f n = n",
+  "informal": "Solve the functional equation\\n\\n- $ f : N$ ----> $ N$ \\n- $ f(2) = 2$ \\n- $ f(mn) = f(m).f(n)$ for all m and n relatively prime \\nf is increasing\\n\\nClaim: $ \\forall n: f(n)=n$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_20431",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1843485998",
+  "type": "∀ {f : ℕ → ℕ}, (∀ (m n : ℕ), m.Coprime n → f (m * n) = f m * f n) → f 2 = 2 → StrictMono f → ∀ (n : ℕ), f n = n",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

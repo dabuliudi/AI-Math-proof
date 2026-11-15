@@ -1,0 +1,15 @@
+{
+  "name": "lw_28812",
+  "statement": "(a b c : ℝ) : (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2) + 3 ≥ (a + b) ^ 2 / (a ^ 2 + b ^ 2) + (b + c) ^ 2 / (b ^ 2 + c ^ 2) + (c + a) ^ 2 / (c ^ 2 + a ^ 2)",
+  "closed": "∀ (a b c : ℝ), (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2) + 3 ≥ (a + b) ^ 2 / (a ^ 2 + b ^ 2) + (b + c) ^ 2 / (b ^ 2 + c ^ 2) + (c + a) ^ 2 / (c ^ 2 + a ^ 2)",
+  "informal": "Prove or disprove that \\(\\frac{(a + b + c)^2}{a^2 + b^2 + c^2} + 3 \\geq \\frac{(a + b)^2}{a^2 + b^2} + \\frac{(b + c)^2}{b^2 + c^2} + \\frac{(c + a)^2}{c^2 + a^2}\\) for \\(a, b, c\\) real numbers.",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_28812",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "2561102507",
+  "type": "∀ (a b c : ℝ), (a + b + c) ^ 2 / (a ^ 2 + b ^ 2 + c ^ 2) + 3 ≥ (a + b) ^ 2 / (a ^ 2 + b ^ 2) + (b + c) ^ 2 / (b ^ 2 + c ^ 2) + (c + a) ^ 2 / (c ^ 2 + a ^ 2)",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:16+0800",
+  "status": "open"
+}

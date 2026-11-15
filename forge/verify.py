@@ -90,11 +90,38 @@ def _ladder_run(decl, labelled, timeout):
     return passed, per_block, False
 
 
-def triage(name, statement, timeout=240):
-    """分诊：命题是否合法、结构哈希、库里是否已有、能否被自动化关掉、随机测试有没有反例。
+# 空真检查：只看签名里的假设（冒号前的绑定）。结论里的蕴含不拆，以免把 `¬P`、`∀ x < n, …` 这类正常结论误判为空真。
+VACUITY = ['simp_all', 'omega', 'linarith', 'nlinarith', 'tauto', 'contradiction', 'aesop']
+# “一步推论”检查：拿词法检索最相近的几条库内定理，看能否只用一条就直接推出新命题。
+RELATED = 5
 
-    三次独立的 Lean 运行并行进行：命题本身（决定是否合法）、符号类自动化、会实际求值的检查。
-    后两者超时只意味着“没得到结论”，不会把一个合法命题误判成无效。
+
+# 同一个量的常见不同写法（子类型的 card、Finset.filter 的 card、Set.toFinset、Nat.card），先统一再套用。
+NORMALIZE = 'Fintype.card_subtype, Fintype.card_coe, Finset.card_univ, Set.toFinset_card, Nat.card_eq_fintype_card'
+
+
+def _corollary_tactics(lemma):
+    normalized = f'have h := @{lemma}; (try simp only [{NORMALIZE}] at h ⊢); '
+    return [f'simp_all [{lemma}]', normalized + 'first | exact h | apply h <;> assumption', normalized + 'simp_all',
+            f'solve_by_elim [{lemma}]', f'grind [{lemma}]']
+
+
+def _relations(binders, decl, statement):
+    """空真与一步推论的探针块：(标签, 声明, 策略)。标签前缀 vac: / lib:<序号>:。"""
+    from .insight import search  # 延迟导入：insight → library → verify 会成环
+    blocks = [(f'vac:{t}', f'{binders} : False', t) for t in VACUITY] if binders.strip() else []
+    related = [hit['name'] for hit in search(statement, limit=RELATED)]
+    for i, lemma in enumerate(related):
+        blocks += [(f'lib:{i}:{t}', decl, t) for t in _corollary_tactics(lemma)]
+    return blocks, related
+
+
+def triage(name, statement, timeout=240):
+    """分诊：命题是否合法、结构哈希、库里是否已有、能否被自动化关掉、随机测试有没有反例，
+    假设是否自相矛盾（空真），以及能否由库里某一条定理一步推出（换了写法的重复）。
+
+    四次独立的 Lean 运行并行进行：命题本身（决定是否合法）、符号类自动化、会实际求值的检查、空真与一步推论探针。
+    后三者超时只意味着“没得到结论”，不会把一个合法命题误判成无效。
     """
     from concurrent.futures import ThreadPoolExecutor
     binders, conclusion = split_signature(statement)
@@ -106,13 +133,16 @@ def triage(name, statement, timeout=240):
     if 'ℝ' in decl:
         # plausible 不会对实数取样；把 ℝ 换成 ℚ 再测一次，只作为“可能为假”的提示，不算证伪。
         evaluating.append(('plausible_rat', decl.replace('ℝ', 'ℚ'), 'plausible'))
-    with ThreadPoolExecutor(max_workers=3) as pool:
+    relations, related = _relations(binders, decl, statement)
+    with ThreadPoolExecutor(max_workers=4) as pool:
         core_future = pool.submit(run_source, core, 120, nonce)
         symbolic_future = pool.submit(_ladder_run, decl, symbolic, timeout)
         evaluating_future = pool.submit(_ladder_run, decl, evaluating, 60)
+        relations_future = pool.submit(_ladder_run, decl, relations, 120) if relations else None
         result = core_future.result()
         passed_symbolic, messages_symbolic, slow_symbolic = symbolic_future.result()
         passed_evaluating, messages_evaluating, slow_evaluating = evaluating_future.result()
+        passed_relations, _, slow_relations = relations_future.result() if relations_future else (set(), {}, False)
     info = result.tagged('FORGE_INFO')
     # 命题一旦报错，Lean 仍会留下一个类型里带 sorry 的常量，这样的“命题”谁也证不了，必须在这里拦住。
     out = dict(valid=bool(info) and not result.errors(), elapsed=round(result.elapsed, 1), timed_out=result.timed_out)
@@ -122,7 +152,15 @@ def triage(name, statement, timeout=240):
             out['errors'] = [dict(line=0, column=0, message='命题本身的类型检查超时（120 秒）')]
         return out
     out.update(type=info[0]['type'], hash=info[0]['hash'], inconclusive=[
-        label for label, slow in (('symbolic', slow_symbolic), ('evaluating', slow_evaluating)) if slow])
+        label for label, slow in (('symbolic', slow_symbolic), ('evaluating', slow_evaluating),
+                                  ('relations', slow_relations)) if slow])
+    vacuous = [label[4:] for label, _, _ in relations if label.startswith('vac:') and label in passed_relations]
+    if vacuous:
+        out['vacuous'] = vacuous[0]
+    for label, _, tactic in relations:
+        if label.startswith('lib:') and label in passed_relations:
+            out['follows_from'] = dict(lemma=related[int(label.split(':')[1])], tactic=tactic)
+            break
     for label in ('plausible', 'plausible_rat'):
         for m in messages_evaluating.get(label, []):
             if m['severity'] == 'error' and 'Found a counter-example' in m['data'] and 'counterexample' not in out:
@@ -269,6 +307,27 @@ def validate_statements(statements, timeout=180):
     for start, end in spans:
         errors = [m['data'].strip()[:600] for m in result.errors() if start <= m['line'] <= end]
         out.append(errors[0] if errors else None)
+    return out
+
+
+def statement_hashes(statements, timeout=600):
+    """一次 Lean 运行里求若干命题（`<绑定> : <结论>` 形式）的结构哈希，与分诊用的是同一个哈希。无效的为 None。"""
+    nonce = uuid.uuid4().hex
+    lines = HEADER.rstrip('\n').split('\n') + ['namespace ForgeBench', 'open Mathlib2']
+    spans = []
+    for index, statement in enumerate(statements):
+        binders, conclusion = split_signature(statement)
+        start = len(lines) + 1
+        lines.extend(f'theorem b{index} {binders} : {conclusion} := by\n  sorry'.split('\n'))
+        spans.append((start, len(lines)))
+    lines.append('end ForgeBench')
+    lines += [f'#forge_info "{nonce}" ForgeBench.b{index}' for index in range(len(statements))]
+    result = run_source('\n'.join(lines) + '\n', timeout=timeout, nonce=nonce)
+    infos = {i['name']: i['hash'] for i in result.tagged('FORGE_INFO')}
+    out = []
+    for index, (start, end) in enumerate(spans):
+        broken = any(start <= m['line'] <= end for m in result.errors())
+        out.append(None if broken else infos.get(f'ForgeBench.b{index}'))
     return out
 
 

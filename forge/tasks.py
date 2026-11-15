@@ -7,7 +7,7 @@ import json
 import os
 import time
 
-from . import library
+from . import bench, library
 from .leanrun import DATA
 from .statement import StatementError, check_name, check_statement_text, closed_form
 from .verify import HOLE, check_definition, check_sketch, check_submission, triage, validate_statements
@@ -79,9 +79,16 @@ def propose(name, statement, informal='', origin='conjecture', source='', propos
         return dict(name=name, status='busy', reason='类型检查超时（机器繁忙），请稍后用同一名称重新提交')
     if not report['valid']:
         return dict(name=name, status='invalid', reason='命题无法通过 Lean 的类型检查', errors=report.get('errors', []))
+    held_out = bench.reserved().get(report['hash'])
+    if held_out:
+        return dict(name=name, status='reserved', of=held_out, reason='与评测集里的题目命题相同；评测题不能进库，否则成绩失真')
     duplicate = _known_hashes().get(report['hash'])
     if duplicate:
         return dict(name=name, status='duplicate', of=duplicate, reason='与已有任务或库中定理的命题结构相同')
+    if report.get('vacuous'):
+        # 假设互相矛盾时命题空真成立，证出来也毫无数学内容；不占名称，改好假设后可原名重提。
+        return dict(name=name, status='vacuous', tactic=report['vacuous'],
+                    reason=f'签名里的假设互相矛盾（`{report["vacuous"]}` 能从假设推出 False），命题是空真的，不入库')
     task = dict(name=name, statement=statement, closed=closed_form(statement), informal=informal, origin=origin,
                 source=source, original=original[:6000], proposed_by=proposed_by, hash=report['hash'], type=report['type'], attempts=[],
                 created_at=_now())
@@ -90,6 +97,12 @@ def propose(name, statement, informal='', origin='conjecture', source='', propos
         save('done', task)
         return dict(name=name, status='known', known_as=task['known_as'],
                     reason='Mathlib 或 Mathlib2 里已有，`exact?` 一步即得，不入库')
+    if report.get('follows_from'):
+        found = report['follows_from']
+        task.update(status='known', known_as=f'{found["lemma"]}（{found["tactic"]}）')
+        save('done', task)
+        return dict(name=name, status='known', known_as=task['known_as'],
+                    reason=f'可由库里已有的 `{found["lemma"]}` 一步推出（`{found["tactic"]}`），是换了写法的已有结论，不入库')
     if report.get('counterexample'):
         task['counterexample'] = report['counterexample']
     for tactic in report.get('auto', []):
@@ -202,11 +215,19 @@ def submit(name, body, agent, disproof=False):
     if blocked:
         return blocked
     try:
-        with library.locked():
-            check = check_submission(task, body, disproof)
+        # 校验不持锁、可以并行；入库由组提交合并构建。锁外校验失败时在锁内再校验一次，
+        # 排除恰好撞上别的进程正在重建库（读到半新的 .olean）造成的误报。
+        check = check_submission(task, body, disproof)
+        if not check['ok']:
+            with library.locked():
+                check = check_submission(task, body, disproof)
             if not check['ok']:
                 return check
-            result = library.admit(task, body, check, proved_by=agent)
+        held = bench.reserved()
+        leaked = [held[h] for h in [check['hash']] + [i['hash'] for i in check.get('helper_info', {}).values()] if h in held]
+        if leaked:
+            return dict(ok=False, reason=f'提交里有与评测题相同的命题（{", ".join(leaked)}），评测题不能进库')
+        result = library.commit(task, body, check, proved_by=agent)
     except StatementError as exc:
         return dict(ok=False, reason=str(exc))
     if not result['ok']:

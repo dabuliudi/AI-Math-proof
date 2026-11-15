@@ -34,3 +34,4 @@ phase2/library.local.json
 # forge 运行时文件
 forge/data/staging/
 forge/data/library.lock
+forge/data/pending/

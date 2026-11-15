@@ -1,0 +1,78 @@
+"""固定评测集：衡量“系统有没有真的变强”，而不是只看库里条目数涨没涨。
+
+* 评测题存在 forge/data/bench/<集合>.jsonl，每行 {name, statement, hash}；hash 与分诊用的结构哈希相同。
+* 评测题受保护：任何新命题、任何提交里的主定理或辅助引理，只要命题与评测题结构相同，一律拒收，
+  防止把测试题当成训练题写进库里（那样分数会虚高）。
+* 评测提交只判对错、不入库；每次尝试记在 forge/data/bench/runs/<集合>.<轮次>.jsonl，按轮次出成绩。
+"""
+import json
+import time
+
+from .leanrun import DATA
+from .verify import check_submission, statement_hashes
+
+BENCH = DATA / 'bench'
+RUNS = BENCH / 'runs'
+
+
+def _path(name):
+    if not name.replace('_', '').replace('-', '').isalnum():
+        raise ValueError('评测集名称只能含字母、数字、- 和 _')
+    return BENCH / f'{name}.jsonl'
+
+
+def load(name):
+    path = _path(name)
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+
+
+def import_set(name, source):
+    """从 JSONL（每行 {name, statement}）导入一个评测集；求出每题的结构哈希，类型检查不过的题丢弃并报告。"""
+    items = [json.loads(line) for line in source.read_text(encoding='utf-8').splitlines() if line.strip()]
+    hashes = statement_hashes([item['statement'] for item in items])
+    kept, dropped = [], []
+    for item, digest in zip(items, hashes):
+        (kept if digest else dropped).append(dict(name=item['name'], statement=item['statement'], hash=digest))
+    BENCH.mkdir(parents=True, exist_ok=True)
+    _path(name).write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in kept), encoding='utf-8')
+    return dict(set=name, imported=len(kept), dropped=[d['name'] for d in dropped])
+
+
+def reserved():
+    """所有评测题的结构哈希 -> “集合/题名”。"""
+    out = {}
+    if BENCH.exists():
+        for path in BENCH.glob('*.jsonl'):
+            for item in load(path.stem):
+                out[item['hash']] = f'{path.stem}/{item["name"]}'
+    return out
+
+
+def check(name, problem, body, run, agent):
+    """对一道评测题校验一份证明：只判对错，不入库，结果记入该轮次。"""
+    item = next((i for i in load(name) if i['name'] == problem), None)
+    if item is None:
+        return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
+    task = dict(name=problem, statement=item['statement'])
+    result = check_submission(task, body)
+    solved = bool(result['ok']) and result['kind'] == 'proved'
+    RUNS.mkdir(parents=True, exist_ok=True)
+    record = dict(problem=problem, run=run, agent=agent, solved=solved, reason=result.get('reason', ''),
+                  at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
+    with open(RUNS / f'{name}.{run}.jsonl', 'a', encoding='utf-8') as handle:
+        handle.write(json.dumps(record, ensure_ascii=False) + '\n')
+    return dict(result, solved=solved)
+
+
+def score(name):
+    """每个轮次的成绩：解出的题数 / 总题数，以及尝试次数。轮次按名字排序，便于看趋势。"""
+    total = len(load(name))
+    rows = []
+    for path in sorted(RUNS.glob(f'{name}.*.jsonl')) if RUNS.exists() else []:
+        records = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+        solved = sorted({r['problem'] for r in records if r['solved']})
+        rows.append(dict(run=path.name[len(name) + 1:-len('.jsonl')], solved=len(solved), total=total,
+                         rate=round(len(solved) / total, 4) if total else None, attempts=len(records)))
+    return dict(set=name, problems=total, runs=rows)

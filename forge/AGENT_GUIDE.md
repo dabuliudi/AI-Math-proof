@@ -10,7 +10,8 @@
 | `./forge.sh next --agent <你的名字>` | 领取一个任务（别人领不到同一个）；`--name <任务名>` 指定任务，`--prefix r3_` 只领某一批 |
 | `./forge.sh queue --brief` | 列出未完成的任务，每个一行（状态、名称、领取者）；不加 `--brief` 给 JSON（命题截到 160 字符；完整命题和证明思路用 `show <任务名>` 看，不必先领取） |
 | `./forge.sh check <任务名> <文件>` | 只校验，不入库；失败时返回前几条 Lean 错误和行号 |
-| `./forge.sh submit <任务名> <文件> --agent <名字>` | 校验并入库（证伪加 `--disproof`） |
+| `./forge.sh submit <任务名> <文件> --agent <名字>` | 校验并入库（证伪加 `--disproof`）。校验可与别人并行；入库按组合并构建，一次约半分钟到一分钟，shell 超时设长一点或放后台 |
+| `./forge.sh bench-check <评测集> <题名> <文件> --run <轮次> --agent <名字>` | 评测：只判对错、不入库，成绩记到该轮次；`bench-score <评测集>` 看各轮成绩 |
 | `./forge.sh sketch <任务名> <文件> --agent <名字>` | 提交带 `sorry` 空洞的证明骨架；每个空洞自动成为子任务 |
 | `./forge.sh assemble <任务名> --agent <名字>` | 子任务都证完后拼回父命题 |
 | `./forge.sh release <任务名> --agent <名字> --note "…"` | 做不出来就归还，写明试过什么、卡在哪 |
@@ -123,4 +124,9 @@ theorem foo (n : ℕ) (hn : 0 < n) : P n := by
   `auto_proved`（被自动化直接证掉，价值低）、`open`（进入队列，这才是好猜想）。
   `open` 且带 `refutable: true` 表示随机测试已找到反例，等待形式化证伪。
   `busy` 表示机器繁忙导致类型检查超时，与命题对错无关，稍后用同一名称重提。
+  `vacuous`：签名里的假设互相矛盾（自动化能从假设推出 False），命题空真、没有内容；改好假设后可用原名重提。
+  `known` 且 `known_as` 写着某条 `Mathlib2.…`：新命题可由库里那条定理一步推出（直接套用，或把 `Fintype.card` 子类型、
+  `Finset.filter` 的 card 等写法统一后套用），属于换了写法的已有结论。
+  `reserved`：与固定评测集里的题目命题相同；评测题不许进库，换一个命题。
+- 证明里的辅助引理同样不能与评测题相同，否则 `submit` 拒收。
 - 目标是 `open`：命题要真、自然、Mathlib 里没有现成的、常用自动化一步关不掉。

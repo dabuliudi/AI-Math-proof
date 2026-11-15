@@ -103,6 +103,16 @@ def run_source(source, timeout=180, nonce=None, keep=False):
                   time.perf_counter() - start, timed_out, nonce)
 
 
+def replay(timeout=3600):
+    """独立内核重放（lean/scripts/ForgeReplay.lean）：只信内核，不信构建产物。约 1–2 分钟，内存峰值约 14 GB。"""
+    proc = subprocess.run([find_lake(), 'env', 'lean', '--run', 'scripts/ForgeReplay.lean'], cwd=PROJECT, env=_env(),
+                          capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=timeout)
+    for line in proc.stdout.splitlines():
+        if line.startswith('FORGE_REPLAY '):
+            return json.loads(line[len('FORGE_REPLAY '):])
+    return dict(ok=False, kernel_error='重放没有给出结果', output_tail=(proc.stdout + proc.stderr)[-1500:])
+
+
 def lake_build(target='Mathlib2', timeout=1800):
     proc = subprocess.run([find_lake(), 'build', target], cwd=PROJECT, env=_env(), capture_output=True,
                           text=True, encoding='utf-8', errors='replace', timeout=timeout)

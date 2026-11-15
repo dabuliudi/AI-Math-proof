@@ -4,6 +4,7 @@ import fcntl
 import json
 import re
 import time
+import uuid
 
 from .leanrun import DATA, PROJECT, lake_build
 from .verify import HEARTBEATS
@@ -54,18 +55,18 @@ def _write_root():
     ROOT_FILE.write_text(header + ''.join(f'import Mathlib2.Shard.{s}\n' for s in shards), encoding='utf-8')
 
 
-def admit(task, body, check, proved_by):
-    """把已通过校验的提交追加进库并重建；构建失败则原样回滚。调用方须持有 locked()。"""
+def _append(task, body, check, snapshots):
+    """把一条提交追加到当前分片末尾；首次改动某个分片前记下原文，供回滚。"""
     index, count = _current_shard()
     path = _shard_path(index)
-    before_shard = path.read_text(encoding='utf-8') if path.exists() else None
-    before_root = ROOT_FILE.read_text(encoding='utf-8')
-    if before_shard is None:
+    if path not in snapshots:
+        snapshots[path] = path.read_text(encoding='utf-8') if path.exists() else None
+    if path.exists():
+        text = path.read_text(encoding='utf-8')
+    else:
         previous = f'import Mathlib2.Shard.S{index - 1:04d}\n' if index > 1 else ''
         text = (f'/- Mathlib2 分片 {index}（forge 自动维护，追加式）。 -/\nimport Mathlib\n{previous}'
                 f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\n\nend Mathlib2\n')
-    else:
-        text = before_shard
     doc = (task.get('informal') or '').replace('-/', '- /').strip()
     block = f'-- forge:entry {task["name"]} kind={check["kind"]} origin={task.get("origin", "")}\nsection\n'
     if doc:
@@ -74,26 +75,80 @@ def admit(task, body, check, proved_by):
     marker = 'end Mathlib2\n'
     position = text.rindex(marker)
     path.write_text(text[:position] + block + text[position:], encoding='utf-8')
+    return path
+
+
+def _ledger_entry(task, body, check, proved_by, path):
+    return dict(name=task['name'] + ('_disproof' if check['kind'] == 'disproved' else ''), task=task['name'],
+                kind=check['kind'], statement=task['statement'], type=check['type'], hash=task.get('hash'),
+                informal=task.get('informal', ''), origin=task.get('origin', ''), source=task.get('source', ''),
+                tier=task.get('tier', 'agent'), proved_by=proved_by, attempts=len(task.get('attempts', [])) + 1,
+                axioms=check['axioms'], library_deps=check['library_deps'], external_deps=check['external_deps'],
+                helpers=check['names'][:-1], shard=path.stem, lines=body.count('\n') + 1,
+                admitted_at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
+
+
+def admit_batch(items):
+    """把一批已通过校验的提交 [(task, body, check, proved_by)] 一起追加、只构建一次。
+
+    构建失败则整批原样回滚；多于一条时再逐条入库，找出是哪一条有问题，其余照常入库。调用方须持有 locked()。
+    """
+    snapshots = {}
+    before_root = ROOT_FILE.read_text(encoding='utf-8')
+    paths = [_append(task, body, check, snapshots) for task, body, check, _ in items]
     _write_root()
     code, output = lake_build('Mathlib2')
-    if code != 0 or "declaration uses 'sorry'" in output:
-        if before_shard is None:
-            path.unlink()
+    if code == 0 and "declaration uses 'sorry'" not in output:
+        results = []
+        with open(LEDGER, 'a', encoding='utf-8') as handle:
+            for (task, body, check, proved_by), path in zip(items, paths):
+                entry = _ledger_entry(task, body, check, proved_by, path)
+                handle.write(json.dumps(entry, ensure_ascii=False) + '\n')
+                results.append(dict(ok=True, entry=entry, batch=len(items)))
+        return results
+    for path, text in snapshots.items():
+        if text is None:
+            path.unlink(missing_ok=True)
         else:
-            path.write_text(before_shard, encoding='utf-8')
-        ROOT_FILE.write_text(before_root, encoding='utf-8')
-        lake_build('Mathlib2')
-        return dict(ok=False, reason='入库构建失败，已回滚', build_tail=output[-1500:])
-    entry = dict(name=task['name'] + ('_disproof' if check['kind'] == 'disproved' else ''), task=task['name'],
-                 kind=check['kind'], statement=task['statement'], type=check['type'], hash=task.get('hash'),
-                 informal=task.get('informal', ''), origin=task.get('origin', ''), source=task.get('source', ''),
-                 tier=task.get('tier', 'agent'), proved_by=proved_by, attempts=len(task.get('attempts', [])) + 1,
-                 axioms=check['axioms'], library_deps=check['library_deps'], external_deps=check['external_deps'],
-                 helpers=check['names'][:-1], shard=path.stem, lines=body.count('\n') + 1,
-                 admitted_at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
-    with open(LEDGER, 'a', encoding='utf-8') as handle:
-        handle.write(json.dumps(entry, ensure_ascii=False) + '\n')
-    return dict(ok=True, entry=entry)
+            path.write_text(text, encoding='utf-8')
+    ROOT_FILE.write_text(before_root, encoding='utf-8')
+    lake_build('Mathlib2')
+    if len(items) == 1:
+        return [dict(ok=False, reason='入库构建失败，已回滚', build_tail=output[-1500:])]
+    return [admit_batch([item])[0] for item in items]
+
+
+def admit(task, body, check, proved_by):
+    """把一条已通过校验的提交追加进库并重建；构建失败则原样回滚。调用方须持有 locked()。"""
+    return admit_batch([(task, body, check, proved_by)])[0]
+
+
+PENDING = DATA / 'pending'
+
+
+def commit(task, body, check, proved_by):
+    """组提交：先把提交放进待入库区，再抢锁；抢到锁的进程把当时排队的所有提交合并成一次构建。
+
+    并行证明时，一次 `lake build` 的时间（约半分钟到一分钟）原本要乘以提交数，现在由同一时段的提交分摊。
+    """
+    PENDING.mkdir(parents=True, exist_ok=True)
+    ticket = f'{time.time():.6f}-{uuid.uuid4().hex[:8]}'
+    staged = PENDING / f'{ticket}.tmp'
+    staged.write_text(json.dumps(dict(task=task, body=body, check=check, proved_by=proved_by), ensure_ascii=False),
+                      encoding='utf-8')
+    staged.rename(PENDING / f'{ticket}.json')  # 原子改名：别的进程不会读到写了一半的提交
+    done = PENDING / f'{ticket}.done'
+    with locked():
+        if not done.exists():
+            waiting = sorted(PENDING.glob('*.json'))
+            items = [json.loads(p.read_text(encoding='utf-8')) for p in waiting]
+            results = admit_batch([(i['task'], i['body'], i['check'], i['proved_by']) for i in items])
+            for path, result in zip(waiting, results):
+                path.with_suffix('.done').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
+                path.unlink()
+        result = json.loads(done.read_text(encoding='utf-8'))
+        done.unlink()
+    return result
 
 
 def source(name):

@@ -72,7 +72,14 @@ def main(argv=None):
     p = sub.add_parser('pattern', help='按类型模式检索 Mathlib（Loogle），例如 "_ ∣ _ ^ 2 + _ ^ 2"'); p.add_argument('pattern')
     p = sub.add_parser('site', help='生成给数学家用的挑选页面（单文件 HTML）'); p.add_argument('--out', type=Path, default=Path('forge/data/picker.html'))
     sub.add_parser('reindex', help='重建辅助引理索引（按命题内容），供检索与查重')
-    sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
+    p = sub.add_parser('bench-import', help='导入固定评测集（JSONL，每行 {name, statement}）；评测题从此不能进库')
+    p.add_argument('set'); p.add_argument('file', type=Path)
+    p = sub.add_parser('bench-check', help='对一道评测题校验证明：只判对错，不入库，记入某个轮次')
+    p.add_argument('set'); p.add_argument('problem'); p.add_argument('file', type=Path)
+    p.add_argument('--run', required=True, help='轮次名，例如 2026-11-16-a'); p.add_argument('--agent', default='anonymous')
+    p = sub.add_parser('bench-score', help='评测集各轮次的成绩'); p.add_argument('set')
+    p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
+    p.add_argument('--replay', action='store_true', help='另外把整个库放进只含 Mathlib 的环境让内核重放一遍（约 14 GB 内存）')
     sub.add_parser('status', help='队列与库的概况')
     p = sub.add_parser('dag', help='内核依赖图'); p.add_argument('name', nargs='?')
     p = sub.add_parser('report', help='供数学家挑选的排序清单'); p.add_argument('--limit', type=int, default=30)
@@ -183,6 +190,16 @@ def main(argv=None):
             for owner in sorted(set(wanted.values())):
                 library.record_helpers(owner, {h: infos[h] for h, o in wanted.items() if o == owner and h in infos})
         emit(dict(ok=True, helpers=len(wanted), indexed=len(infos)))
+    elif args.command == 'bench-import':
+        from . import bench
+        emit(bench.import_set(args.set, args.file))
+    elif args.command == 'bench-check':
+        from . import bench
+        result = bench.check(args.set, args.problem, args.file.read_text(encoding='utf-8'), args.run, args.agent)
+        emit(result); return 0 if result.get('solved') else 1
+    elif args.command == 'bench-score':
+        from . import bench
+        emit(bench.score(args.set))
     elif args.command == 'audit':
         from .leanrun import lake_build
         from .verify import audit
@@ -190,6 +207,10 @@ def main(argv=None):
         if code != 0 or "declaration uses 'sorry'" in output:
             emit(dict(ok=False, reason='库构建失败或含 sorry', build_tail=output[-1500:])); return 1
         result = audit(library.entries())
+        if args.replay:
+            from .leanrun import replay
+            result['replay'] = replay()
+            result['ok'] = result['ok'] and result['replay']['ok']
         emit(result); return 0 if result['ok'] else 1
     elif args.command == 'search':
         emit(insight.search(args.query, args.limit))

@@ -252,6 +252,143 @@ class KernelTests(unittest.TestCase):
         self.assertEqual(len(result['holes']), 2)
         self.assertEqual(result['holes'][0]['args'], ['n'])
 
+    def test_triage_flags_vacuous_hypotheses_but_not_negations(self):
+        from forge.verify import triage
+        vacuous = triage('itest_vac', '(n : ℕ) (h1 : n < 3) (h2 : 5 < n) : Nat.Prime n')
+        self.assertTrue(vacuous.get('vacuous'))
+        # 结论是否定（¬P 即 P → False）时不能被当成空真
+        negation = triage('itest_neg', '(n : ℕ) (h : 2 ≤ n) : ¬ (n ^ 2 = 2)')
+        self.assertFalse(negation.get('vacuous'))
+
+    def test_statement_hashes_match_triage(self):
+        from forge.verify import statement_hashes, triage
+        statement = '(a b : ℕ) (h : a ∣ b) : a ∣ b * 7'
+        self.assertEqual(statement_hashes([statement, '(n : ℕ) : n +']), [triage('itest_hash', statement)['hash'], None])
+
+
+class HardeningTests(unittest.TestCase):
+    """组提交、评测集保护与成绩、分诊里空真/一步推论结论的解析：都不需要 Lean。"""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_batch_build_failure_falls_back_to_one_by_one(self):
+        from forge import library
+        calls = []
+
+        def fake_admit_batch(items, _real=library.admit_batch):
+            calls.append(len(items))
+            return _real(items)
+
+        # 合并构建失败、回滚后重建、t0 单独构建成功、t1 单独构建失败、回滚后重建
+        builds = iter([(1, 'error: duplicate'), (0, ''), (0, ''), (1, 'error'), (0, '')])
+        with mock.patch.object(library, 'SHARDS', self.root / 'Shard'), \
+                mock.patch.object(library, 'ROOT_FILE', self.root / 'Mathlib2.lean'), \
+                mock.patch.object(library, 'LEDGER', self.root / 'ledger.jsonl'), \
+                mock.patch.object(library, 'lake_build', side_effect=lambda target: next(builds)), \
+                mock.patch.object(library, 'admit_batch', side_effect=fake_admit_batch):
+            (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
+            check = dict(kind='proved', type='True', axioms=[], library_deps=[], external_deps=0, names=['x'])
+            items = [(dict(name=f't{i}', statement=': True'), f'theorem t{i} : True := trivial\n', dict(check, names=[f't{i}']), 'a')
+                     for i in range(2)]
+            results = library.admit_batch(items)
+        # 第一次合并构建失败 → 回滚 → 逐条：t0 构建成功；t1 构建失败再回滚
+        self.assertEqual([r['ok'] for r in results], [True, False])
+        self.assertEqual(calls, [2, 1, 1])  # 先整批，再逐条
+        ledger = (self.root / 'ledger.jsonl').read_text(encoding='utf-8')
+        self.assertIn('"t0"', ledger)
+        self.assertNotIn('"t1"', ledger)
+        shard = (self.root / 'Shard' / 'S0001.lean').read_text(encoding='utf-8')
+        self.assertIn('theorem t0', shard)
+        self.assertNotIn('theorem t1', shard)
+
+    def test_concurrent_commits_share_one_build(self):
+        from forge import library
+        builds = []
+        gate = threading.Event()
+
+        def slow_build(target):
+            builds.append(target)
+            gate.wait(2)  # 第一次构建期间其余提交排进待入库区
+            return 0, ''
+
+        with mock.patch.object(library, 'SHARDS', self.root / 'Shard'), \
+                mock.patch.object(library, 'ROOT_FILE', self.root / 'Mathlib2.lean'), \
+                mock.patch.object(library, 'LEDGER', self.root / 'ledger.jsonl'), \
+                mock.patch.object(library, 'LOCK', self.root / 'lock'), \
+                mock.patch.object(library, 'PENDING', self.root / 'pending'), \
+                mock.patch.object(library, 'lake_build', side_effect=slow_build):
+            (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
+            check = dict(kind='proved', type='True', axioms=[], library_deps=[], external_deps=0)
+            results = {}
+
+            def submit(i):
+                results[i] = library.commit(dict(name=f'c{i}', statement=': True'), f'theorem c{i} : True := trivial\n',
+                                            dict(check, names=[f'c{i}']), 'a')
+
+            first = threading.Thread(target=submit, args=(0,))
+            first.start()
+            while not builds:
+                pass
+            others = [threading.Thread(target=submit, args=(i,)) for i in range(1, 4)]
+            for t in others:
+                t.start()
+            import time as _time
+            _time.sleep(0.5)
+            gate.set()
+            for t in [first] + others:
+                t.join()
+        self.assertTrue(all(r['ok'] for r in results.values()))
+        self.assertEqual(len(builds), 2)  # 第一条单独一次，后面三条合并成一次
+        self.assertEqual(sorted(r['batch'] for r in results.values()), [1, 3, 3, 3])
+        self.assertFalse(list((self.root / 'pending').iterdir()))
+
+    def test_bench_reserves_statements_and_scores_runs(self):
+        from forge import bench
+        with mock.patch.object(bench, 'BENCH', self.root / 'bench'), mock.patch.object(bench, 'RUNS', self.root / 'bench' / 'runs'), \
+                mock.patch.object(bench, 'statement_hashes', return_value=['h1', None]):
+            source = self.root / 'in.jsonl'
+            source.write_text('{"name": "p1", "statement": "(n : ℕ) : n = n"}\n{"name": "p2", "statement": "bad"}\n', encoding='utf-8')
+            self.assertEqual(bench.import_set('demo', source), dict(set='demo', imported=1, dropped=['p2']))
+            self.assertEqual(bench.reserved(), {'h1': 'demo/p1'})
+            verdicts = iter([dict(ok=False, kind='proved', reason='Lean 报错'), dict(ok=True, kind='proved', reason='通过')])
+            with mock.patch.object(bench, 'check_submission', side_effect=lambda *a, **k: next(verdicts)):
+                self.assertFalse(bench.check('demo', 'p1', 'x', 'r1', 'a')['solved'])
+                self.assertTrue(bench.check('demo', 'p1', 'y', 'r2', 'a')['solved'])
+            runs = {r['run']: r for r in bench.score('demo')['runs']}
+            self.assertEqual((runs['r1']['solved'], runs['r2']['solved'], runs['r2']['rate']), (0, 1, 1.0))
+            with self.assertRaises(ValueError):
+                bench.load('../escape')
+
+    def test_triage_reports_vacuity_and_one_step_corollaries(self):
+        from forge import verify
+        ran = {}
+
+        def fake_ladder(decl, labelled, timeout):
+            labels = {label for label, _, _ in labelled}
+            ran.setdefault('labels', set()).update(labels)
+            passed = {l for l in labels if l in ('vac:omega', 'lib:1:simp_all [Mathlib2.b]')}
+            return passed, {}, False
+
+        fake = mock.MagicMock()
+        fake.tagged.return_value = [dict(type='T', hash='h')]
+        fake.errors.return_value = []
+        fake.elapsed, fake.timed_out = 1.0, False
+        with mock.patch.object(verify, '_ladder_run', side_effect=fake_ladder), \
+                mock.patch.object(verify, 'run_source', return_value=fake), \
+                mock.patch('forge.insight.search', return_value=[dict(name='Mathlib2.a'), dict(name='Mathlib2.b')]):
+            out = verify.triage('t', '(n : ℕ) (h : n < 0) : n = 1')
+            self.assertEqual(out['vacuous'], 'omega')
+            self.assertEqual(out['follows_from'], dict(lemma='Mathlib2.b', tactic='simp_all [Mathlib2.b]'))
+            # 没有签名假设时不做空真检查
+            ran.clear()
+            verify.triage('t', ': 1 = 1')
+            self.assertFalse(any(l.startswith('vac:') for l in ran['labels']))
+
 
 if __name__ == '__main__':
     unittest.main()

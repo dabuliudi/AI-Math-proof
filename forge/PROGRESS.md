@@ -39,6 +39,13 @@ git status --short
   尚未证明、尚未独立复核，对这篇论文目前没有任何结论。
 - 任何能跑 shell 的 agent（不限于 Claude）读 `forge/AGENT_GUIDE.md` 后都能用 `./forge.sh` 领题和提交；正确性只由 Lean 内核判定。
 
+## 开跑前加固（2026-11-15 中午，已完成）
+
+- 分诊新增：空真检查（`vacuous`）、由库内某条定理一步推出的检查（`known`，写明出处）；评测题保护（`reserved`）。
+- 入库改为组提交（并行校验、合并构建、失败逐条回退）；`./forge.sh audit --replay` 做独立内核重放。
+- 固定评测：`bench-import` / `bench-check` / `bench-score`。评测题尚未导入（需要下载，等用户同意）。
+- 下一步：导入评测集 → 写调度器（外部 agent、预算、熔断）→ 改挑选台（面向非专业读者，shadcn）。
+
 ## 接下来按顺序做
 
 1. 处理 agent 的报告：修它们指出的工具问题，补测试。

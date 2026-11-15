@@ -209,8 +209,10 @@ class Scheduler:
             if proof.exists():  # 正式成绩只来自这里：调度器自己用内核校验 agent 留下的证明
                 verdict = bench.check(set_name, item['name'], proof.read_text(encoding='utf-8'), self.run, 'scheduler')
                 solved, reason = verdict['solved'], verdict.get('reason', '')
+            # 评测里做不出难题是正常的，不算“没有进展”；只有 agent 本身出错、或连证明文件都没交，才计入熔断。
+            attempted = code == 0 and proof.exists()
             self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
-                              progress=solved, seconds=round(time.time() - began), tokens=used, exit=code,
+                              progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
                               timed_out=slow, reason=reason[:300], message=message[-500:]))
 
     def _run_threads(self, target, args):

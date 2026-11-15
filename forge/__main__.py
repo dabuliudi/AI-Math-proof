@@ -83,6 +83,7 @@ def main(argv=None):
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
+    p.add_argument('--all', action='store_true', help='评测模式：所有题都重做（默认跳过以前已解出的），用于在同一设置下测基线')
     p.add_argument('--workers', type=int, default=2); p.add_argument('--max-tasks', type=int, default=10)
     p.add_argument('--budget-minutes', type=int, default=60); p.add_argument('--task-minutes', type=int, default=20)
     p.add_argument('--max-failures', type=int, default=4, help='连续这么多次没有进展就整体停下')
@@ -218,7 +219,7 @@ def main(argv=None):
         runner = Scheduler(args.run, workers=args.workers, max_tasks=args.max_tasks, budget_minutes=args.budget_minutes,
                            task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
                            model=args.model, effort=args.effort, dry_run=args.dry_run)
-        emit(runner.run_bench(args.bench, args.limit) if args.bench else runner.run_queue(args.prefix))
+        emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all) if args.bench else runner.run_queue(args.prefix))
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))

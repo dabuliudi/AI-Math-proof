@@ -17,7 +17,7 @@ FORGE_INTEGRATION=1 .venv/bin/python -m unittest discover -s forge/tests -t .   
 git status --short
 ```
 
-分支 `mac-runnable`，forge 的改动**尚未提交**（用户没有要求提交，不要擅自提交或推送）。
+开发直接在 `main` 分支上进行（主干开发）；推送也推到 `main`。提交前先跑 `./forge.sh consistency`，库的快照要在入库锁里提交。
 
 ## 已完成
 

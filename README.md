@@ -2,7 +2,7 @@
 
 让 AI 大规模地做数学：AI 提出命题、写出证明，Lean 计算机逐步检查，检查通过的进入定理库 **Mathlib2**，数学家从中挑选有价值的。
 
-> 早期开发中。接口、目录和数据格式随时可能变。
+> 早期开发中。接口、目录和数据格式随时可能变。所有开发直接在 `main` 分支上进行。
 
 ## 现在能做什么
 
@@ -28,7 +28,7 @@ curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf 
 
 ```bash
 # 2. 取代码
-git clone -b mac-runnable https://github.com/dabuliudi/AI-Math-proof.git && cd AI-Math-proof
+git clone https://github.com/dabuliudi/AI-Math-proof.git && cd AI-Math-proof
 ```
 
 ```bash

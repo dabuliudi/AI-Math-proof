@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "2805473229",
+  "hash": "940283988",
   "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → ¬IsCyclic G → ∀ (a : G), a ≠ 1 → orderOf a = p ∨ orderOf a = q",
   "attempts": [],
   "created_at": "2026-11-15T07:53:10+0800",

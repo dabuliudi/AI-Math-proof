@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_fib_odd_index_iff_five_sq_sub_four, Mathlib2.bld2_lucas_sq_sub_five_fib_sq",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "167832710",
+  "hash": "1458001658",
   "type": "∀ (x y : ℕ), x ^ 2 + 1 = 5 * y ^ 2 → ∃ n, 2 * y = Nat.fib (6 * n + 3) ∧ 2 * x = Mathlib2.p3_lucas (6 * n + 3)",
   "attempts": [],
   "created_at": "2026-11-15T03:12:38+0800",

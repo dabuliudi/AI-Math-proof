@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_sqrt_two_rec_viete_prod, Mathlib2.bld2_sqrt_two_rec_viete_prod_gt",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "1240314370",
+  "hash": "244038128",
   "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), ∏ i ∈ Finset.range n, a (i + 1) / 2 ≤ 2 / Real.pi + 2 * Real.pi / (3 * 4 ^ (n + 1))",
   "attempts": [],
   "created_at": "2026-11-15T03:12:53+0800",

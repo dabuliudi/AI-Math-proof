@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "4049901902",
+  "hash": "2109522122",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (a : ZMod p), a ≠ 0 → ∑ x, (quadraticChar (ZMod p)) (x ^ 2 + a) = -1",
   "attempts": [],
   "created_at": "2026-11-15T08:17:57+0800",

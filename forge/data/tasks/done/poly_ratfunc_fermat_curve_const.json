@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "538029813",
+  "hash": "2200829105",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (f g : RatFunc k), f ^ n + g ^ n = 1 → (∃ c, f = RatFunc.C c) ∧ ∃ d, g = RatFunc.C d",
   "attempts": [],
   "created_at": "2026-11-15T07:15:17+0800",

@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_center_card_of_card_prime_cube, Mathlib2.bld2_commutator_eq_center_of_card_prime_cube",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "2212824967",
+  "hash": "3966568648",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → ∀ (g : G), g ^ p ∈ Subgroup.center G",
   "attempts": [],
   "created_at": "2026-11-15T03:13:42+0800",

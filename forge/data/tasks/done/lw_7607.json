@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_7607",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "3777206207",
+  "hash": "1549379003",
   "type": "∀ (a b : ℝ), 0 < a → 0 < b → a + b = a ^ 2 + b ^ 2 → 1 + 2 * √(a + b) + (a - b) ≤ 4 / (a + b) + (4 + 2 * (b - a)) / √(a + b)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:16+0800",

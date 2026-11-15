@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "138902248",
+  "hash": "2973872449",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (m n : ℕ), 2 ≤ m → 2 ≤ n → ∀ (g h : Polynomial k), g ^ m + 1 = h ^ n → g.natDegree = 0 ∧ h.natDegree = 0",
   "attempts": [],
   "created_at": "2026-11-15T07:15:11+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_an2",
-  "hash": "213189003",
+  "hash": "2111373418",
   "type": "∀ (n : ℕ), n ^ n ≤ 3 ^ n * n.factorial",
   "attempts": [],
   "created_at": "2026-11-15T00:28:14+0800",

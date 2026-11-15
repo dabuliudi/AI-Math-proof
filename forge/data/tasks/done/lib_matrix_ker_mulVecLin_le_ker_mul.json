@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.bld3_rank_tripotent_defect_aux1",
   "original": "",
   "proposed_by": "curator_2",
-  "hash": "3217009831",
+  "hash": "2312235130",
   "type": "∀ (R : Type u_1) [inst : CommSemiring R] (m : Type u_2) (n : Type u_3) (p : Type u_4) [inst_1 : Fintype n] [inst_2 : Fintype p] (M : Matrix m n R) (N : Matrix n p R), LinearMap.ker N.mulVecLin ≤ LinearMap.ker (M * N).mulVecLin",
   "attempts": [],
   "created_at": "2026-11-15T06:53:25+0800",

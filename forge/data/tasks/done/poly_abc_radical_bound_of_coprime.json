@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "4257972590",
+  "hash": "166038358",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [CharZero k] (a b : Polynomial k), IsCoprime a b → 0 < a.natDegree → max a.natDegree b.natDegree + 1 ≤ (UniqueFactorizationMonoid.radical (a * b * (a + b))).natDegree",
   "attempts": [],
   "created_at": "2026-11-15T07:15:31+0800",

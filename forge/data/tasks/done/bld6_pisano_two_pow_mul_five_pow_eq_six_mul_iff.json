@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld4_pisano_mul_of_coprime, Mathlib2.bld5_pisano_two_pow, Mathlib2.bld5_pisano_five_pow",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "4170441301",
+  "hash": "1879909935",
   "type": "∀ (a b : ℕ), Mathlib2.p3_pisano (2 ^ (a + 1) * 5 ^ (b + 1)) = 6 * (2 ^ (a + 1) * 5 ^ (b + 1)) ↔ a = 0",
   "attempts": [],
   "created_at": "2026-11-15T08:19:40+0800",

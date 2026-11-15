@@ -6,7 +6,7 @@
   "origin": "conjecture",
   "source": "",
   "proposed_by": "conj_nt",
-  "hash": "925162395",
+  "hash": "1552042080",
   "type": "∀ (n : ℤ), 120 ∣ n ^ 5 - 5 * n ^ 3 + 4 * n",
   "attempts": [],
   "created_at": "2026-11-15T00:13:02+0800",

@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_25706",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "470818721",
+  "hash": "302228493",
   "type": "∀ (x y z : ℝ), (x ^ 2 + 2 * x * y) / (x ^ 2 + x * y + y ^ 2) + (y ^ 2 + 2 * y * z) / (y ^ 2 + y * z + z ^ 2) + (z ^ 2 + 2 * z * x) / (z ^ 2 + z * x + x ^ 2) ≤ 4",
   "attempts": [],
   "created_at": "2026-11-15T19:05:16+0800",

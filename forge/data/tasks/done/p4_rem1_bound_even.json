@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Remark 1",
   "original": "3x(n) ≥ 2^{2k+1}-2-3(2k+2)2^{k+1} = 2^{k+1}(2^k-6k-6)-2 ≥ 2^{k+1}-2 > 0 whenever k≥6.",
   "proposed_by": "paper_4",
-  "hash": "871514884",
+  "hash": "1505888143",
   "type": "∀ (k n : ℕ), 6 ≤ k → 2 ^ (2 * k) < n → n ≤ 2 ^ (2 * k + 1) → 2 ^ (k + 1) - 2 ≤ 3 * Mathlib2.p4_x n ∧ 0 < Mathlib2.p4_x n",
   "attempts": [],
   "created_at": "2026-11-15T02:54:03+0800",

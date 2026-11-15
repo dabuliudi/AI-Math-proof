@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Introduction, definition (c)",
   "original": "r(n) is the least non-negative integer with n ≤ 2^{r(n)}",
   "proposed_by": "paper_4",
-  "hash": "2045480038",
+  "hash": "2298830352",
   "type": "∀ (n : ℕ), n ≤ 2 ^ Mathlib2.p4_r n ∧ ∀ (k : ℕ), n ≤ 2 ^ k → Mathlib2.p4_r n ≤ k",
   "attempts": [],
   "created_at": "2026-11-15T02:52:03+0800",

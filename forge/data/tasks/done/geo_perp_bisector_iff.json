@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_geo",
-  "hash": "4290202975",
+  "hash": "1322941686",
   "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (a b p : V), ‖p - a‖ = ‖p - b‖ ↔ inner ℝ (p - (1 / 2) • (a + b)) (b - a) = 0",
   "attempts": [],
   "created_at": "2026-11-15T02:17:52+0800",

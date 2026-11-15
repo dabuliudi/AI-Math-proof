@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "2117635868",
+  "hash": "864265839",
   "type": "∀ (a n : ℕ), 1 < a → ∃ k, (a ^ n - 1).totient = n * k",
   "attempts": [],
   "created_at": "2026-11-15T00:40:40+0800",

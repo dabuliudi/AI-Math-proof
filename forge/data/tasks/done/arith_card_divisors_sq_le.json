@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "261923751",
+  "hash": "4204714034",
   "type": "∀ (n : ℕ), n.divisors.card ^ 2 ≤ 4 * n",
   "attempts": [],
   "created_at": "2026-11-15T07:42:25+0800",

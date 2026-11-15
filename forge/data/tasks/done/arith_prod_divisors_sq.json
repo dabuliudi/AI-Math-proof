@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "477003490",
+  "hash": "2535305627",
   "type": "∀ (m : ℕ), 0 < m → ∏ d ∈ (m ^ 2).divisors, d = m ^ (m ^ 2).divisors.card",
   "attempts": [],
   "created_at": "2026-11-15T07:46:51+0800",

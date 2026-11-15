@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "3232903367",
+  "hash": "3593940167",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsAcyclic → G.edgeFinset.Nonempty → ∃ v, G.degree v = 1",
   "attempts": [],
   "created_at": "2026-11-15T08:45:22+0800",

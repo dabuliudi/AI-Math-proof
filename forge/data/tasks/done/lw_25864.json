@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_25864",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "2465779894",
+  "hash": "3631981361",
   "type": "¬∃ x y, x ^ 4 - x ^ 2 + 1 = 7 * y",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",

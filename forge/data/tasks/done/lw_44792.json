@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_44792",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "4658801",
+  "hash": "1606356016",
   "type": "∀ (x y z : ℝ), √((x + y + z) * (x * y * z) ^ (1 / 3) / 3) ≤ (x + y) * (y + z) * (z + x) / 8",
   "attempts": [],
   "created_at": "2026-11-15T19:05:16+0800",

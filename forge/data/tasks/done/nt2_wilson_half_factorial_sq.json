@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "1347786616",
+  "hash": "1862067949",
   "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 1 → p ∣ ((p - 1) / 2).factorial ^ 2 + 1",
   "attempts": [],
   "created_at": "2026-11-15T00:28:59+0800",

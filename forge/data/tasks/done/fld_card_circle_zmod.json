@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "1063711147",
+  "hash": "2642282595",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → {v | v.1 ^ 2 + v.2 ^ 2 = 1}.card = if p % 4 = 1 then p - 1 else p + 1",
   "attempts": [],
   "created_at": "2026-11-15T08:17:36+0800",

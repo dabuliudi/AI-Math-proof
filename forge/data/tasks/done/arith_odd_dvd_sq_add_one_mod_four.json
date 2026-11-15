@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "442893768",
+  "hash": "3640159263",
   "type": "∀ (n d : ℕ), d ∣ n ^ 2 + 1 → Odd d → d % 4 = 1",
   "attempts": [],
   "created_at": "2026-11-15T07:47:17+0800",

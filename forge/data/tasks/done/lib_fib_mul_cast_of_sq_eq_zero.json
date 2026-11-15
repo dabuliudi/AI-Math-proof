@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "2393560942",
+  "hash": "817608758",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (N : ℕ) (μ u v : R), μ ^ 2 = 0 → ↑(Nat.fib N) = μ * u → ↑(Nat.fib (N + 1)) = 1 + μ * v → ∀ (j : ℕ), ↑(Nat.fib (j * N)) = ↑j * μ * u ∧ ↑(Nat.fib (j * N + 1)) = 1 + ↑j * μ * v",
   "attempts": [],
   "created_at": "2026-11-15T07:48:37+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_comb",
-  "hash": "1505498331",
+  "hash": "1720193328",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], 2 ≤ Fintype.card V → ∃ u v, u ≠ v ∧ G.degree u = G.degree v",
   "attempts": [],
   "created_at": "2026-11-15T01:29:05+0800",

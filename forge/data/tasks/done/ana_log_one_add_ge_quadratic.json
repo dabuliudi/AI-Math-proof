@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_ana",
-  "hash": "1513642864",
+  "hash": "3197486232",
   "type": "∀ (x : ℝ), 0 ≤ x → x - x ^ 2 / 2 ≤ Real.log (1 + x)",
   "attempts": [],
   "created_at": "2026-11-15T01:28:18+0800",

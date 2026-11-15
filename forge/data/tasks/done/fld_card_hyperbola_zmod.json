@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "1067844832",
+  "hash": "3264785238",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (a : ZMod p), a ≠ 0 → {v | v.1 ^ 2 - v.2 ^ 2 = a}.card = p - 1",
   "attempts": [],
   "created_at": "2026-11-15T08:17:47+0800",

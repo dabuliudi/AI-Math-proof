@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.an2_amgm_range_pow, Mathlib2.ana_one_add_inv_pow_mono",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "4818735",
+  "hash": "3511315930",
   "type": "∀ (n : ℕ) (x : ℝ), 0 ≤ x → (1 + x / ↑n) ^ n ≤ (1 + x / (↑n + 1)) ^ (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T02:35:06+0800",

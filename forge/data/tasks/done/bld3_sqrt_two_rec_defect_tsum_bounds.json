@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_sqrt_two_rec_rate, Mathlib2.bld2_sqrt_two_rec_defect_summable",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "1835322771",
+  "hash": "2091953658",
   "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → 8 / 3 ≤ ∑' (n : ℕ), (2 - a n) ∧ ∑' (n : ℕ), (2 - a n) ≤ Real.pi ^ 2 / 3",
   "attempts": [],
   "created_at": "2026-11-15T03:12:45+0800",

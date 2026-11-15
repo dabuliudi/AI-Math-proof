@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_frobenius_rank_inequality, Mathlib2.bld2_tripotent_rank_split",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "514399594",
+  "hash": "1785697229",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), (A * A + A).rank + (A * A - A).rank = A.rank + (A * A * A - A).rank",
   "attempts": [],
   "created_at": "2026-11-15T03:10:39+0800",

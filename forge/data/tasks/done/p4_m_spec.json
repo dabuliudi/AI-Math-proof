@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Introduction, definition (b)",
   "original": "m(n) is the largest integer with m(n)^2 ≤ 2n",
   "proposed_by": "paper_4",
-  "hash": "2899078024",
+  "hash": "1491968208",
   "type": "∀ (n : ℕ), ↑(Mathlib2.p4_m n) ^ 2 ≤ 2 * ↑n ∧ ∀ (k : ℤ), k ^ 2 ≤ 2 * ↑n → k ≤ ↑(Mathlib2.p4_m n)",
   "attempts": [],
   "created_at": "2026-11-15T02:51:52+0800",

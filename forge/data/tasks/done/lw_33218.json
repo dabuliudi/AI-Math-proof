@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_33218",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "929733458",
+  "hash": "1221430797",
   "type": "∀ (n : ℤ), 9 ∣ n ^ 2 ↔ 3 ∣ n",
   "attempts": [],
   "created_at": "2026-11-15T19:05:13+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "3369519371",
+  "hash": "519499623",
   "type": "∀ (p : Polynomial ℝ), p ≠ 0 → (∀ (i : ℕ), 0 ≤ p.coeff i) → ∀ (x : ℝ), 0 < x → Polynomial.eval x p ≠ 0",
   "attempts": [],
   "created_at": "2026-11-15T07:17:14+0800",

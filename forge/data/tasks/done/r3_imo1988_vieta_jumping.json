@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "678112603",
+  "hash": "2658786876",
   "type": "∀ (a b : ℕ), a * b + 1 ∣ a ^ 2 + b ^ 2 → ∃ k, a ^ 2 + b ^ 2 = k ^ 2 * (a * b + 1)",
   "attempts": [],
   "created_at": "2026-11-15T01:01:03+0800",

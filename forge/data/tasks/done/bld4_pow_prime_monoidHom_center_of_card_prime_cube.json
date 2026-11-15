@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld3_pow_prime_mem_center_of_card_prime_cube, Mathlib2.bld3_mul_pow_prime_of_card_prime_cube",
   "original": "",
   "proposed_by": "conj_build4",
-  "hash": "899084762",
+  "hash": "2778631844",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → p ≠ 2 → ∃ φ, ∀ (g : G), ↑(φ g) = g ^ p",
   "attempts": [],
   "created_at": "2026-11-15T06:56:46+0800",

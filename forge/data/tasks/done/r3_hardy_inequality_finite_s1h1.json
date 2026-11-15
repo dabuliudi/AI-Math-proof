@@ -7,7 +7,7 @@
   "source": "r3_hardy_inequality_finite",
   "original": "",
   "proposed_by": "r3_prover_3",
-  "hash": "1337915709",
+  "hash": "239769095",
   "type": "∀ (a : ℕ → ℝ) (k : ℕ), ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 - 2 * ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) * a k ≤ (∑ i ∈ Finset.range k, a i) ^ 2 / ↑k - (∑ i ∈ Finset.range (k + 1), a i) ^ 2 / (↑k + 1)",
   "attempts": [],
   "created_at": "2026-11-15T01:12:02+0800",

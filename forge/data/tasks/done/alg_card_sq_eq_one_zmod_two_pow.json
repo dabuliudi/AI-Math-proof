@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_alg",
-  "hash": "2694626169",
+  "hash": "2224113384",
   "type": "∀ (k : ℕ), 3 ≤ k → Nat.card { x // x ^ 2 = 1 } = 4",
   "attempts": [],
   "created_at": "2026-11-15T01:30:03+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "660106960",
+  "hash": "714314901",
   "type": "∀ (n : ℕ), 0 < n → ∑ d ∈ n.divisors, (ArithmeticFunction.moebius d).natAbs = 2 ^ ArithmeticFunction.cardDistinctFactors n",
   "attempts": [],
   "created_at": "2026-11-15T07:43:14+0800",

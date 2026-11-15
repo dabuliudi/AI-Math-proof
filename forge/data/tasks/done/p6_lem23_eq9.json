@@ -7,7 +7,7 @@
   "source": "arXiv:2611.07141v1 Lemma 2.3 (9)",
   "original": "f_{n+1}^2 - k f_n f_{n+1} - f_n^2 = (-1)^n",
   "proposed_by": "paper_6",
-  "hash": "862760103",
+  "hash": "3427725303",
   "type": "∀ (k n : ℤ), Mathlib2.p6_kfib k (n + 1) ^ 2 - k * Mathlib2.p6_kfib k n * Mathlib2.p6_kfib k (n + 1) - Mathlib2.p6_kfib k n ^ 2 = ↑n.negOnePow",
   "attempts": [],
   "created_at": "2026-11-15T08:46:17+0800",

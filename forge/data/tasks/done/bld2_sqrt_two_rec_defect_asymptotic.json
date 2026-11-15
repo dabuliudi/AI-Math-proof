@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.ana_sqrt_two_rec_closed_form, Mathlib2.bld_sqrt_two_rec_rate",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "3829607461",
+  "hash": "1490375653",
   "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → Filter.Tendsto (fun n => 4 ^ n * (2 - a n)) Filter.atTop (nhds (Real.pi ^ 2 / 4))",
   "attempts": [],
   "created_at": "2026-11-15T02:50:16+0800",

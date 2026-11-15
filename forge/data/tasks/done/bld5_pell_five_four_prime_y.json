@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_pell_five_solutions_lucas",
   "original": "",
   "proposed_by": "conj_build5",
-  "hash": "4053011567",
+  "hash": "124380846",
   "type": "∀ (x y : ℕ), x ^ 2 = 5 * y ^ 2 + 4 → Nat.Prime y → y = 3 ∧ x = 7",
   "attempts": [],
   "created_at": "2026-11-15T07:22:54+0800",

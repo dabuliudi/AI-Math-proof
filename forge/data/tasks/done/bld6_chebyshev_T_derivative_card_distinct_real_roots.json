@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.poly_chebyshev_T_card_distinct_real_roots, Mathlib2.lib_chebyshev_T_natDegree_le",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "1286196602",
+  "hash": "1135013816",
   "type": "∀ (n : ℕ), (Polynomial.derivative (Polynomial.Chebyshev.T ℝ ↑n)).roots.toFinset.card = n - 1",
   "attempts": [],
   "created_at": "2026-11-15T08:21:11+0800",

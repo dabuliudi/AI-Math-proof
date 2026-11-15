@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.p3_aux_period_aux1",
   "original": "",
   "proposed_by": "curator_2",
-  "hash": "875209209",
+  "hash": "2943274219",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (n : ℕ), ↑(Nat.fib (n + 2)) * ↑(Nat.fib n) - ↑(Nat.fib (n + 1)) ^ 2 = (-1) ^ (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T06:55:24+0800",

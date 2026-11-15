@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld5_prime_dvd_fib_succ_of_not_isSquare_five, Mathlib2.lib_pisano_dvd_iff_period, Mathlib2.lib_fib_period_iff",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "735005647",
+  "hash": "2452899265",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ¬IsSquare 5 → ¬Mathlib2.p3_pisano p ∣ p + 1",
   "attempts": [],
   "created_at": "2026-11-15T08:19:55+0800",

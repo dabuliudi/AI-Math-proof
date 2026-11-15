@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Remark 2",
   "original": "547 is the least positive integer n such that x(m)>0 for all m ≥ n",
   "proposed_by": "paper_4",
-  "hash": "3912634788",
+  "hash": "1289654214",
   "type": "IsLeast {N | 0 < N ∧ ∀ (m : ℕ), N ≤ m → 0 < Mathlib2.p4_x m} 547",
   "attempts": [],
   "created_at": "2026-11-15T02:55:48+0800",

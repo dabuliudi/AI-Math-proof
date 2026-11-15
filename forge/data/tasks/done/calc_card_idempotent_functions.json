@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "3187883763",
+  "hash": "3183867009",
   "type": "∀ (n : ℕ), {f | ∀ (i : Fin n), f (f i) = f i}.card = ∑ k ∈ Finset.range (n + 1), n.choose k * k ^ (n - k)",
   "attempts": [],
   "created_at": "2026-11-15T07:46:30+0800",

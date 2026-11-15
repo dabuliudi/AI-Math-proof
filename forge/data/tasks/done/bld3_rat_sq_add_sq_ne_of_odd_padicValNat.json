@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_rat_sq_add_sq_ne_prime_mul_coprime",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "4135108763",
+  "hash": "1981593571",
   "type": "∀ (p n : ℕ), Nat.Prime p → p % 4 = 3 → Odd (padicValNat p n) → ∀ (x y : ℚ), x ^ 2 + y ^ 2 ≠ ↑n",
   "attempts": [],
   "created_at": "2026-11-15T03:14:44+0800",

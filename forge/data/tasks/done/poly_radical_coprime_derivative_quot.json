@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "3012487872",
+  "hash": "1054663162",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [CharZero k] (f : Polynomial k), f ≠ 0 → IsCoprime (UniqueFactorizationMonoid.radical f) (Polynomial.derivative f / (f / UniqueFactorizationMonoid.radical f))",
   "attempts": [],
   "created_at": "2026-11-15T07:15:55+0800",

@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_31976",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "310963192",
+  "hash": "4272861697",
   "type": "∀ (x y z : ℝ), x ∈ Set.Icc 0 (3 / 4) → y ∈ Set.Icc 0 (3 / 4) → z ∈ Set.Icc 0 (3 / 4) → x ^ 2 + y ^ 2 + z ^ 2 ≥ 1 / 2 * (y + x) * (y + z) * (z + x)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:12+0800",

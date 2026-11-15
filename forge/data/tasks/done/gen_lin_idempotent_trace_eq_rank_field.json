@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.lin_idempotent_trace_eq_rank",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "675530456",
+  "hash": "165810674",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A = A → A.trace = ↑A.rank",
   "attempts": [],
   "created_at": "2026-11-15T02:05:39+0800",

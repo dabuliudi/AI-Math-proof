@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "3037428508",
+  "hash": "3008429017",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → a ^ n + b ^ n = c ^ n → ∃ d α β γ, a = Polynomial.C α * d ∧ b = Polynomial.C β * d ∧ c = Polynomial.C γ * d",
   "attempts": [],
   "created_at": "2026-11-15T07:16:04+0800",

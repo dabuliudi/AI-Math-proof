@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_54536",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "3300358619",
+  "hash": "744625332",
   "type": "∀ (n : ℕ), 0 < n → (1 + 1 / n) ^ n + 1 / 4 ≥ (1 + 1 / (n + 1)) ^ (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:15+0800",

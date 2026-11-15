@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "r3_prover_2",
-  "hash": "2447799506",
+  "hash": "1818763343",
   "type": "∀ (V : Type) [inst : Fintype V], 6 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ∃ v x y z, x ≠ y ∧ x ≠ z ∧ y ≠ z ∧ (G.Adj v x ∧ G.Adj v y ∧ G.Adj v z ∨ Gᶜ.Adj v x ∧ Gᶜ.Adj v y ∧ Gᶜ.Adj v z)",
   "attempts": [],
   "created_at": "2026-11-15T01:09:04+0800",

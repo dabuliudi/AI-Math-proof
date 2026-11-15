@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.lib_matrix_rank_pow_succ_lt_of_isNilpotent_of_ne_zero",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "1803490955",
+  "hash": "704592737",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ (k + 1)).rank ≤ A.rank - k",
   "attempts": [],
   "created_at": "2026-11-15T08:21:52+0800",

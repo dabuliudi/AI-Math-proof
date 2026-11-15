@@ -6,7 +6,7 @@
   "origin": "conjecture",
   "source": "",
   "proposed_by": "conj_nt",
-  "hash": "3894388948",
+  "hash": "3129812187",
   "type": "∀ (a b c : ℤ), 9 ∣ a ^ 3 + b ^ 3 + c ^ 3 → 3 ∣ a * b * c",
   "attempts": [],
   "created_at": "2026-11-15T00:11:40+0800",

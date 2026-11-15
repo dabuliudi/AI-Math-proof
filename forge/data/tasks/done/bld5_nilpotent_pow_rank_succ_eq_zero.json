@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_rank_pow_convex, Mathlib2.gen_lin_nilpotent_pow_card_reduced, Mathlib2.bld4_rank_pow_eq_of_card_le, Mathlib2.lib_matrix_rank_eq_zero_iff",
   "original": "",
   "proposed_by": "conj_build5",
-  "hash": "233454168",
+  "hash": "3360930950",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → A ^ (A.rank + 1) = 0",
   "attempts": [],
   "created_at": "2026-11-15T07:23:26+0800",

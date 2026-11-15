@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_idempotent_sum_rank, Mathlib2.bld2_commuting_idempotents_rank_join",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "320423540",
+  "hash": "206538474",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = A → B * B = B → A * B = B * A → (A - B).rank + 2 * (A * B).rank = A.rank + B.rank",
   "attempts": [],
   "created_at": "2026-11-15T03:10:27+0800",

@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 proof of Theorem 1(v) (corrected)",
   "original": "if B is an arbitrary positive integer and k is such that 2^{k+2}>3B+1, then x(2^{2k+2})>B",
   "proposed_by": "paper_4",
-  "hash": "2937669442",
+  "hash": "389114505",
   "type": "∀ (B k : ℕ), 4 ≤ k → 3 * B + 1 < 2 ^ (k + 2) → ↑B < Mathlib2.p4_x (2 ^ (2 * k + 2))",
   "attempts": [],
   "created_at": "2026-11-15T02:55:29+0800",

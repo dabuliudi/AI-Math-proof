@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "1833989173",
+  "hash": "4210268538",
   "type": "∀ (n p : ℕ), Nat.Prime p → (∃ k, p * k = 2 ^ 2 ^ n + 1) → ∃ m, p = m * 2 ^ (n + 1) + 1",
   "attempts": [],
   "created_at": "2026-11-15T00:40:47+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "2682695942",
+  "hash": "651808593",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (A B E : Polynomial k), E ≠ 0 → A ^ n + B ^ n = E ^ n → ∃ c, (algebraMap (Polynomial k) (RatFunc k)) A / (algebraMap (Polynomial k) (RatFunc k)) E = RatFunc.C c",
   "attempts": [],
   "created_at": "2026-11-15T07:47:23+0800",

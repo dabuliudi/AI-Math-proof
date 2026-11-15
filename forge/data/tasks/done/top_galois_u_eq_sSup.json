@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_top",
-  "hash": "3688348961",
+  "hash": "3068813769",
   "type": "∀ {α : Type u_1} {β : Type u_2} [inst : CompleteLattice α] [inst_1 : CompleteLattice β] (l : α → β) (u : β → α), GaloisConnection l u → ∀ (b : β), u b = sSup {a | l a ≤ b}",
   "attempts": [],
   "created_at": "2026-11-15T02:21:00+0800",

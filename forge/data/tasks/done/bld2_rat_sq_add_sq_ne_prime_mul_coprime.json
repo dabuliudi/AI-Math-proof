@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.nt2_prime_three_mod_four_dvd_sq_add_sq, Mathlib2.bld_rat_sq_add_sq_ne_prime_three_mod_four",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "1947470063",
+  "hash": "2428979679",
   "type": "∀ (p m : ℕ), Nat.Prime p → p % 4 = 3 → ¬p ∣ m → ∀ (x y : ℚ), x ^ 2 + y ^ 2 ≠ ↑p * ↑m",
   "attempts": [],
   "created_at": "2026-11-15T02:51:09+0800",

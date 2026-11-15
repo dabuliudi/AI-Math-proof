@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_comb",
-  "hash": "1704699176",
+  "hash": "2737734529",
   "type": "∀ (n : ℕ), ∑ k ∈ Finset.range (n + 1), k * n.choose k ^ 2 = n * (2 * n - 1).choose (n - 1)",
   "attempts": [],
   "created_at": "2026-11-15T01:32:31+0800",

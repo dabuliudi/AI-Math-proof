@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld4_fitting_range_inter_ker_pow_card",
   "original": "",
   "proposed_by": "conj_build5",
-  "hash": "2462340302",
+  "hash": "1480016086",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsCompl (LinearMap.range (A ^ Fintype.card ι).mulVecLin) (LinearMap.ker (A ^ Fintype.card ι).mulVecLin)",
   "attempts": [],
   "created_at": "2026-11-15T07:23:34+0800",

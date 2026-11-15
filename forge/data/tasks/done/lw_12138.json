@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_12138",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "3379337898",
+  "hash": "2128627329",
   "type": "∀ (x y : ℝ), x ≠ 0 → y ≠ 0 → x ≠ y → ((x - y) / (x ^ (2 / 3) * y ^ (1 / 3) - x ^ (1 / 3) * y ^ (2 / 3)) = 7 / 2 ∧ x ^ (1 / 3) - y ^ (1 / 3) = 3 ↔ x = 216 ∧ y = 27)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:12+0800",

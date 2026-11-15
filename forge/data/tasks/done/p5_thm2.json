@@ -7,7 +7,7 @@
   "source": "arXiv:2404.19332v1 Theorem 2",
   "original": "\\varphi^4(n)+\\psi^4(n)+\\sigma^4(n)\\ge 3n^4+4n^3+18n^2+4n+3 for n>=2",
   "proposed_by": "paper_5",
-  "hash": "1231325549",
+  "hash": "3109672923",
   "type": "∀ (n : ℕ), 2 ≤ n → 3 * n ^ 4 + 4 * n ^ 3 + 18 * n ^ 2 + 4 * n + 3 ≤ n.totient ^ 4 + Mathlib2.p5_dedekind_psi n ^ 4 + (ArithmeticFunction.sigma 1) n ^ 4",
   "attempts": [],
   "created_at": "2026-11-15T06:54:03+0800",

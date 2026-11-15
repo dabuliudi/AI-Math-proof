@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_43620",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "1417462842",
+  "hash": "812789019",
   "type": "∀ (x y : ℕ), 1 ≤ x ∧ 1 ≤ y → x + y = 3 → 9 * (x - 1) * (y - 1) + (y ^ 2 + y + 1) * (x + 1) + (x ^ 2 - x + 1) * (y - 1) ≥ 9",
   "attempts": [],
   "created_at": "2026-11-15T19:08:11+0800",

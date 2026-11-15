@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "1142644918",
+  "hash": "1068704595",
   "type": "∀ (a : ℕ → ℝ) (n : ℕ), ∑ k ∈ Finset.range n, ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 ≤ 4 * ∑ k ∈ Finset.range n, a k ^ 2",
   "attempts": [],
   "created_at": "2026-11-15T01:02:10+0800",

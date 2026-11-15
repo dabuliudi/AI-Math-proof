@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "292981862",
+  "hash": "1358331731",
   "type": "∀ (n : ℕ), ∀ S ⊆ Finset.Icc 1 (2 * n), n < S.card → ∃ a ∈ S, ∃ b ∈ S, a ≠ b ∧ a ∣ b",
   "attempts": [],
   "created_at": "2026-11-15T01:01:47+0800",

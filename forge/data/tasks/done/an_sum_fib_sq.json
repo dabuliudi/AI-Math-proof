@@ -6,7 +6,7 @@
   "origin": "conjecture",
   "source": "",
   "proposed_by": "conj_an",
-  "hash": "514485412",
+  "hash": "4042717719",
   "type": "∀ (n : ℕ), ∑ i ∈ Finset.range (n + 1), Nat.fib i ^ 2 = Nat.fib n * Nat.fib (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T00:11:38+0800",

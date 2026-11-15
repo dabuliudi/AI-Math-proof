@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "3653449411",
+  "hash": "1546442658",
   "type": "∀ {M : Type u_1} [inst : CancelCommMonoidWithZero M] [inst_1 : NormalizationMonoid M] [inst_2 : UniqueFactorizationMonoid M] (n : ℕ) (g : M), (∀ (p : M), Irreducible p → p ∣ g → p ^ n ∣ g) → UniqueFactorizationMonoid.radical g ^ n ∣ g",
   "attempts": [],
   "created_at": "2026-11-15T07:46:41+0800",

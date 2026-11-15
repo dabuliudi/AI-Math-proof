@@ -7,7 +7,7 @@
   "source": "arXiv:2504.09938 Corollary 2 (= Conjecture 1)",
   "original": "There are infinitely many odd integers $k$ such that $k$ divides the sum of the first $k$ Fibonacci numbers. [Conjecture 1: There are infinitely many odd integers $n$ that divide the sum of the first $n$ nonzero Fibonacci numbers.]",
   "proposed_by": "paper_3",
-  "hash": "3794893161",
+  "hash": "3547343478",
   "type": "{k | Odd k ∧ k ∣ Mathlib2.p3_fibsum k}.Infinite",
   "attempts": [],
   "created_at": "2026-11-15T02:22:40+0800",

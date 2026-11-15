@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.calc_exp_lt_one_add_inv_pow_succ",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "2740050403",
+  "hash": "3302173682",
   "type": "∀ (n : ℕ), 2 ≤ n → ↑n.factorial < Real.exp 1 * ↑n * (↑n / Real.exp 1) ^ n",
   "attempts": [],
   "created_at": "2026-11-15T08:18:09+0800",

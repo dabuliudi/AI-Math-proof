@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_lin_idempotent_rank_complement_field, Mathlib2.gen_lin_sylvester_rank_rect",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "3642470344",
+  "hash": "3596835320",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), A * A = A ↔ A.rank + (1 - A).rank = Fintype.card ι",
   "attempts": [],
   "created_at": "2026-11-15T02:48:48+0800",

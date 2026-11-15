@@ -7,7 +7,7 @@
   "source": "arXiv:2408.15180v2 Lemma 1, p.4",
   "original": "Lemma 1. For a nonzero polynomial a ∈ k[t], a/rad(a) divides a′.",
   "proposed_by": "paper_1",
-  "hash": "1999191841",
+  "hash": "686844673",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (a : Polynomial k), a ≠ 0 → a / UniqueFactorizationMonoid.radical a ∣ Polynomial.derivative a",
   "attempts": [],
   "created_at": "2026-11-15T00:17:42+0800",

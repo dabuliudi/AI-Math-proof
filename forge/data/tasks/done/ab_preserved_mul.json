@@ -7,7 +7,7 @@
   "source": "s40753-021-00140-1 p.28 Appendix 2 Task 4(b)",
   "original": "Let f,g : R → R be functions and a ⊂ R. Suppose x × y ∈ A for all x,y ∈ A. Prove that if f and g are preserved in A then f × g is preserved in A. (Here f × g = f(x) × g(x).)",
   "proposed_by": "paper_2",
-  "hash": "1274648385",
+  "hash": "1311648336",
   "type": "∀ (f g : ℝ → ℝ) (A : Set ℝ), (∀ x ∈ A, ∀ y ∈ A, x * y ∈ A) → f '' A ⊆ A → g '' A ⊆ A → (fun x => f x * g x) '' A ⊆ A",
   "attempts": [],
   "created_at": "2026-11-15T01:02:13+0800",

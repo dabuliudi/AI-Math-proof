@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_alg",
-  "hash": "583879636",
+  "hash": "1171719892",
   "type": "∀ (p q : ℕ), Nat.Prime p → Nat.Prime q → p < q → ¬p ∣ q - 1 → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p * q → IsCyclic G",
   "attempts": [],
   "created_at": "2026-11-15T01:31:27+0800",

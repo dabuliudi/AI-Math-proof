@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "1457777469",
+  "hash": "1054313194",
   "type": "∀ (n : ℕ), n.centralBinom ∣ (Finset.Icc 1 (2 * n)).lcm id",
   "attempts": [],
   "created_at": "2026-11-15T07:48:00+0800",

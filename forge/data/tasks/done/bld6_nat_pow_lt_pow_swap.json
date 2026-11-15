@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.calc_rpow_lt_rpow_swap_of_exp_le",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "434207916",
+  "hash": "2256942601",
   "type": "∀ (m n : ℕ), 3 ≤ m → m < n → n ^ m < m ^ n",
   "attempts": [],
   "created_at": "2026-11-15T08:18:31+0800",

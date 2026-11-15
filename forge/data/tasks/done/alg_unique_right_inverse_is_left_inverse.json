@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_alg",
-  "hash": "1924362306",
+  "hash": "748913471",
   "type": "∀ (R : Type u_1) [inst : Ring R] (a b : R), a * b = 1 → (∀ (c : R), a * c = 1 → c = b) → b * a = 1",
   "attempts": [],
   "created_at": "2026-11-15T01:27:35+0800",

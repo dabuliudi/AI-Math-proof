@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.an2_nesbitt_general",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "1797814972",
+  "hash": "1315790185",
   "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (ι : Type u_2) (s : Finset ι) (a : ι → K), (∀ i ∈ s, 0 < a i) → 2 ≤ s.card → ↑s.card / (↑s.card - 1) ≤ ∑ i ∈ s, a i / (∑ j ∈ s, a j - a i)",
   "attempts": [],
   "created_at": "2026-11-15T02:07:23+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "3373371632",
+  "hash": "2384496419",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (C : G.Coloring Bool), 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ∀ (x y : V), C x ≠ C y → G.Adj x y",
   "attempts": [],
   "created_at": "2026-11-15T08:44:20+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "924620067",
+  "hash": "3871087626",
   "type": "∀ (K : Type) [inst : Field K] [inst_1 : Fintype K] (k : ℕ), 0 < k → ((Function.Bijective fun x => x ^ k) ↔ k.Coprime (Fintype.card K - 1))",
   "attempts": [],
   "created_at": "2026-11-15T08:17:25+0800",

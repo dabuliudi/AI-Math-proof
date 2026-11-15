@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_lin_sylvester_rank_rect",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "3246394385",
+  "hash": "1048006805",
   "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) (q : Type u_5) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] [inst_4 : Fintype q] (A : Matrix m n K) (B : Matrix n p K) (C : Matrix p q K), (A * B).rank + (B * C).rank ≤ B.rank + (A * B * C).rank",
   "attempts": [],
   "created_at": "2026-11-15T02:33:17+0800",

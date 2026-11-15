@@ -7,7 +7,7 @@
   "source": "r3_exists_dvd_pair_of_card_gt",
   "original": "",
   "proposed_by": "r3_prover_3",
-  "hash": "3993018869",
+  "hash": "1612569788",
   "type": "∀ (a b : ℕ), 0 < a → 0 < b → a / 2 ^ a.factorization 2 = b / 2 ^ b.factorization 2 → a ∣ b ∨ b ∣ a",
   "attempts": [],
   "created_at": "2026-11-15T01:09:58+0800",

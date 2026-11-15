@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.an2_chebyshev_index_weighted",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "2240869115",
+  "hash": "3054007441",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R), Monotone a → ∀ (n : ℕ), (↑n - 1) * ∑ i ∈ Finset.range n, a i ≤ 2 * ∑ i ∈ Finset.range n, ↑i * a i",
   "attempts": [],
   "created_at": "2026-11-15T02:07:40+0800",

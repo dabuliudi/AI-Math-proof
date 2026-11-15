@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Remark 1",
   "original": "For 2^s<n≤2^{s+1}: r(n)=s+1 and x(n) ≥ z(2^s)-(s+2)m(2^{s+1}).",
   "proposed_by": "paper_4",
-  "hash": "2729131631",
+  "hash": "2797102320",
   "type": "∀ (s n : ℕ), 2 ^ s < n → n ≤ 2 ^ (s + 1) → Mathlib2.p4_r n = s + 1 ∧ Mathlib2.p4_z (2 ^ s) - (↑s + 2) * ↑(Mathlib2.p4_m (2 ^ (s + 1))) ≤ Mathlib2.p4_x n",
   "attempts": [],
   "created_at": "2026-11-15T02:53:55+0800",

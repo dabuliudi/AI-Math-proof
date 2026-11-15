@@ -7,7 +7,7 @@
   "source": "arXiv:2404.19332v1 Section 2 (cited, Dimitrov 2023)",
   "original": "\\varphi\\psi+\\varphi\\sigma+\\sigma\\psi\\ge 3n^2+2n-1 for n>=2",
   "proposed_by": "paper_5",
-  "hash": "3336945445",
+  "hash": "2061676050",
   "type": "∀ (n : ℕ), 2 ≤ n → 3 * n ^ 2 + 2 * n ≤ n.totient * Mathlib2.p5_dedekind_psi n + n.totient * (ArithmeticFunction.sigma 1) n + (ArithmeticFunction.sigma 1) n * Mathlib2.p5_dedekind_psi n + 1",
   "attempts": [],
   "created_at": "2026-11-15T06:55:33+0800",

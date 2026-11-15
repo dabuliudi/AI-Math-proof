@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_lin_nilpotent_det_one_add_reduced",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "2933546938",
+  "hash": "1604573116",
   "type": "∀ (n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ), IsNilpotent A → A * B = B * A → (B + A).det = B.det",
   "attempts": [],
   "created_at": "2026-11-15T02:33:57+0800",

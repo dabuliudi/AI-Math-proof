@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_top",
-  "hash": "3879184578",
+  "hash": "4250210509",
   "type": "∀ {α : Type u_1} [inst : CompleteLattice α] (f : α →o α), OrderHom.lfp (f.comp f) = OrderHom.lfp f",
   "attempts": [],
   "created_at": "2026-11-15T02:19:30+0800",

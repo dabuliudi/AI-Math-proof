@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "3332097286",
+  "hash": "514246187",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (a b : ℕ), ↑(Nat.fib (a + b)) = ↑(Nat.fib a) * ↑(Nat.fib (b + 1)) + ↑(Nat.fib (a + 1)) * ↑(Nat.fib b) - ↑(Nat.fib a) * ↑(Nat.fib b)",
   "attempts": [],
   "created_at": "2026-11-15T07:48:23+0800",

@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld_involution_trace_rank",
   "original": "",
   "proposed_by": "conj_build4",
-  "hash": "4092475439",
+  "hash": "1879932026",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (σ : Equiv.Perm ι), σ * σ = 1 → 2 * (1 + Equiv.Perm.permMatrix K σ).rank = Fintype.card ι + {i | σ i = i}.card",
   "attempts": [],
   "created_at": "2026-11-15T06:57:13+0800",

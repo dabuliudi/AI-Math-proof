@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_comb",
-  "hash": "1088770511",
+  "hash": "1706050321",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] [Nonempty V] (G : SimpleGraph V) [inst_3 : DecidableRel G.Adj], (∀ (v : V), 2 ≤ G.degree v) → ¬G.IsAcyclic",
   "attempts": [],
   "created_at": "2026-11-15T01:37:30+0800",

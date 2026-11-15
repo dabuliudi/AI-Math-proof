@@ -110,6 +110,7 @@ def main(argv=None):
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
     sub.add_parser('upgrade-migrate-records', help='把经过审核的陈述迁移同步到台账、任务与辅助引理索引')
+    sub.add_parser('upgrade-rehash', help='升级后重算评测集、台账、任务的结构哈希（评测题保护与查重依赖它）')
     p = sub.add_parser('upgrade-repair', help='升级 Mathlib 后按分片顺序修复 Mathlib2：agent 只改证明，调度器核对陈述不变')
     p.add_argument('--run', required=True); p.add_argument('--target', required=True, help='新的 Mathlib 版本，例如 v4.33.1')
     p.add_argument('--attempts', type=int, default=3); p.add_argument('--minutes', type=int, default=25)
@@ -278,6 +279,9 @@ def main(argv=None):
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))
+    elif args.command == 'upgrade-rehash':
+        from .upgrade import rehash
+        emit(rehash())
     elif args.command == 'upgrade-migrate-records':
         from .upgrade import migrate_records
         emit(dict(changed=migrate_records()))

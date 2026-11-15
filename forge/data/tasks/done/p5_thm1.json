@@ -7,7 +7,7 @@
   "source": "arXiv:2404.19332v1 Theorem 1",
   "original": "\\varphi^3(n)+\\psi^3(n)+\\sigma^3(n)\\ge 3n^3+3n^2+9n+1 for every natural n>=2",
   "proposed_by": "paper_5",
-  "hash": "3852728190",
+  "hash": "1498058678",
   "type": "∀ (n : ℕ), 2 ≤ n → 3 * n ^ 3 + 3 * n ^ 2 + 9 * n + 1 ≤ n.totient ^ 3 + Mathlib2.p5_dedekind_psi n ^ 3 + (ArithmeticFunction.sigma 1) n ^ 3",
   "attempts": [],
   "created_at": "2026-11-15T06:53:48+0800",

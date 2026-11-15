@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.lin_skew_odd_det_zero",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "3642227862",
+  "hash": "2783929545",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι R), Odd (Fintype.card ι) → A.transpose = -A → 2 * A.det = 0",
   "attempts": [],
   "created_at": "2026-11-15T02:06:43+0800",

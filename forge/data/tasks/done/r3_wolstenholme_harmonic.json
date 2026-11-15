@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "2576172964",
+  "hash": "1751766502",
   "type": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → p ^ 2 ∣ ∑ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k",
   "attempts": [],
   "created_at": "2026-11-15T01:02:36+0800",

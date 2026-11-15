@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_top",
-  "hash": "1682018532",
+  "hash": "1903597843",
   "type": "∀ {X : Type u_1} [inst : MetricSpace X] (K C : Set X), IsCompact K → IsClosed C → Disjoint K C → ∃ δ, 0 < δ ∧ ∀ x ∈ K, ∀ y ∈ C, δ ≤ dist x y",
   "attempts": [],
   "created_at": "2026-11-15T02:19:56+0800",

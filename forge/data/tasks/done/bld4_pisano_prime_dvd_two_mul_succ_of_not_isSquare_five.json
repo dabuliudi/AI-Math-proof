@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.p3_aux_fib_prime, Mathlib2.lib_fib_period_iff, Mathlib2.bld3_pisano_dvd_of_period",
   "original": "",
   "proposed_by": "conj_build4",
-  "hash": "1826883425",
+  "hash": "3213116766",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], ¬IsSquare 5 → Mathlib2.p3_pisano p ∣ 2 * (p + 1)",
   "attempts": [],
   "created_at": "2026-11-15T06:54:14+0800",

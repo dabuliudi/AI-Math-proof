@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "1795474361",
+  "hash": "1413722197",
   "type": "∀ (n : ℕ), n ^ 2 ∣ 2 ^ n + 1 → n = 1 ∨ n = 3",
   "attempts": [],
   "created_at": "2026-11-15T01:01:13+0800",

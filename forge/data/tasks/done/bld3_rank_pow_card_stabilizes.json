@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_rank_pow_convex",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "2410672269",
+  "hash": "205141329",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), (A ^ (Fintype.card ι + 1)).rank = (A ^ Fintype.card ι).rank",
   "attempts": [],
   "created_at": "2026-11-15T03:09:46+0800",

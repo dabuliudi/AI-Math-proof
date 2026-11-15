@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_an_amgm_finset_ordered_ring",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "1528476892",
+  "hash": "2692900359",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (ι : Type u_2) (s : Finset ι) (a : ι → R), (∀ i ∈ s, 0 ≤ a i) → ∏ i ∈ s, a i = 1 → ↑s.card ≤ ∑ i ∈ s, a i",
   "attempts": [],
   "created_at": "2026-11-15T02:51:55+0800",

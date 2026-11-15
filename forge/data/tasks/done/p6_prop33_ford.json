@@ -7,7 +7,7 @@
   "source": "arXiv:2611.07141v1 Proposition 3.3, first sentence",
   "original": "translation (x,y)→(x+j,y) and reflection (x,y)→(-x,y) preserve the family of Ford circles and map tangency points to tangency points",
   "proposed_by": "paper_6",
-  "hash": "335943120",
+  "hash": "2941140059",
   "type": "∀ (p q r s j : ℤ), q ^ 2 + s ^ 2 ≠ 0 → (p + j * q) * s - q * (r + j * s) = p * s - q * r ∧ -p * s - q * -r = -(p * s - q * r) ∧ ↑((p + j * q) * q + (r + j * s) * s) / ↑(q ^ 2 + s ^ 2) = ↑(p * q + r * s) / ↑(q ^ 2 + s ^ 2) + ↑j ∧ ↑(-p * q + -r * s) / ↑(q ^ 2 + s ^ 2) = -(↑(p * q + r * s) / ↑(q ^ 2 + s ^ 2))",
   "attempts": [],
   "created_at": "2026-11-15T08:48:54+0800",

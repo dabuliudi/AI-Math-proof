@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_geo",
-  "hash": "2141176797",
+  "hash": "4220246288",
   "type": "∀ {V : Type u_1} [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (a b c : V) (t : ℝ), ‖a - ((1 - t) • b + t • c)‖ ^ 2 = (1 - t) * ‖a - b‖ ^ 2 + t * ‖a - c‖ ^ 2 - t * (1 - t) * ‖b - c‖ ^ 2",
   "attempts": [],
   "created_at": "2026-11-15T02:18:07+0800",

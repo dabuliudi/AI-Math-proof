@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_rank_pow_convex, Mathlib2.bld_nilpotent_rank_bound",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "2312597371",
+  "hash": "285056263",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ k).rank ≤ Fintype.card ι - k",
   "attempts": [],
   "created_at": "2026-11-15T03:10:00+0800",

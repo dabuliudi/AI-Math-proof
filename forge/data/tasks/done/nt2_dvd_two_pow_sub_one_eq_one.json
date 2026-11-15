@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "3623421902",
+  "hash": "3723366963",
   "type": "∀ (n : ℕ), 0 < n → n ∣ 2 ^ n - 1 → n = 1",
   "attempts": [],
   "created_at": "2026-11-15T00:28:18+0800",

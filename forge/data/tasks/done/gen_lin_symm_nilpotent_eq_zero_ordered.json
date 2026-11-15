@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.lin_symm_nilpotent_eq_zero",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "1106718372",
+  "hash": "105541901",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (ι : Type u_2) [inst_3 : Fintype ι] [inst_4 : DecidableEq ι] (A : Matrix ι ι R), A.IsSymm → IsNilpotent A → A = 0",
   "attempts": [],
   "created_at": "2026-11-15T02:06:20+0800",

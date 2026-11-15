@@ -6,7 +6,7 @@
   "origin": "conjecture",
   "source": "",
   "proposed_by": "conj_nt",
-  "hash": "3955270365",
+  "hash": "1535662021",
   "type": "∀ (a b : ℤ), 7 ∣ a ^ 2 + b ^ 2 → 7 ∣ a ∧ 7 ∣ b",
   "attempts": [],
   "created_at": "2026-11-15T00:11:31+0800",

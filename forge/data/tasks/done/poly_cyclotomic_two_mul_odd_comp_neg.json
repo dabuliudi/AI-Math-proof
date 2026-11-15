@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "3391316542",
+  "hash": "2271601823",
   "type": "∀ (n : ℕ), Odd n → 1 < n → Polynomial.cyclotomic (2 * n) ℤ = (Polynomial.cyclotomic n ℤ).comp (-Polynomial.X)",
   "attempts": [],
   "created_at": "2026-11-15T07:18:00+0800",

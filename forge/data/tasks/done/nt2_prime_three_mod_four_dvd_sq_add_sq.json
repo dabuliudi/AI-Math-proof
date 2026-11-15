@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "2165156581",
+  "hash": "332641484",
   "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (a b : ℤ), ↑p ∣ a ^ 2 + b ^ 2 → ↑p ∣ a ∧ ↑p ∣ b",
   "attempts": [],
   "created_at": "2026-11-15T00:28:25+0800",

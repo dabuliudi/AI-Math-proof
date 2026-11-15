@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "31955539",
+  "hash": "3937294797",
   "type": "∀ (V : Type) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → Fintype.card V ^ 2 ≤ 4 * Gᶜ.edgeFinset.card + 2 * Fintype.card V",
   "attempts": [],
   "created_at": "2026-11-15T08:44:37+0800",

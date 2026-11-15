@@ -7,7 +7,7 @@
   "source": "arXiv:2503.03469v1 Remark 1",
   "original": "If s=2k: 2^k ≤ m(2^s) < 2^{k+1}; there is p with 2^{2k+1}=3p+2 and z(2^s)=p.",
   "proposed_by": "paper_4",
-  "hash": "2248031235",
+  "hash": "1703444142",
   "type": "∀ (k : ℕ), 2 ^ k ≤ Mathlib2.p4_m (2 ^ (2 * k)) ∧ Mathlib2.p4_m (2 ^ (2 * k)) < 2 ^ (k + 1) ∧ 2 ^ (2 * k + 1) = 3 * Mathlib2.p4_z (2 ^ (2 * k)) + 2",
   "attempts": [],
   "created_at": "2026-11-15T02:53:38+0800",

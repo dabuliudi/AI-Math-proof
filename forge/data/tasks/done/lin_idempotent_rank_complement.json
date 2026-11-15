@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_lin",
-  "hash": "752344789",
+  "hash": "3369322507",
   "type": "∀ (n : ℕ) (A : Matrix (Fin n) (Fin n) ℝ), A * A = A → A.rank + (1 - A).rank = n",
   "attempts": [],
   "created_at": "2026-11-15T01:32:03+0800",

@@ -7,7 +7,7 @@
   "source": "r3_wolstenholme_harmonic",
   "original": "",
   "proposed_by": "r3_prover_5",
-  "hash": "3931092114",
+  "hash": "1168286062",
   "type": "∀ (p : ℕ), Nat.Prime p → 5 ≤ p → ∀ k ∈ Finset.Icc 1 (p - 1), (p - 1).factorial / k + (p - 1).factorial / (p - k) = p * ((p - 1).factorial / (k * (p - k)))",
   "attempts": [],
   "created_at": "2026-11-15T01:28:43+0800",

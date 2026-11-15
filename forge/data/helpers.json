@@ -2,7 +2,7 @@
  "alg_card_sq_eq_one_zmod_two_pow_aux1": {
   "owner": "alg_card_sq_eq_one_zmod_two_pow",
   "type": "∀ (n : ℕ) (a : ℤ), 2 ^ (n + 2) ∣ a ^ 2 - 1 → ∃ c, a = 2 ^ (n + 1) * c + 1 ∨ a = 2 ^ (n + 1) * c - 1",
-  "hash": "2401676422"
+  "hash": "3317847117"
  },
  "alg_isCyclic_of_card_eq_prime_mul_prime_aux1": {
   "owner": "alg_isCyclic_of_card_eq_prime_mul_prime",
@@ -12,17 +12,17 @@
  "alg_three_consecutive_pow_mul_comm_aux1": {
   "owner": "alg_three_consecutive_pow_mul_comm",
   "type": "∀ (G : Type u_1) [inst : Group G] (n : ℕ), (∀ (a b : G), (a * b) ^ n = a ^ n * b ^ n) → (∀ (a b : G), (a * b) ^ (n + 1) = a ^ (n + 1) * b ^ (n + 1)) → ∀ (a b : G), b ^ n * a = a * b ^ n",
-  "hash": "2383253212"
+  "hash": "4139888109"
  },
  "alg_x_pow_four_add_one_not_irreducible_zmod_aux1": {
   "owner": "alg_x_pow_four_add_one_not_irreducible_zmod",
   "type": "∀ (F : Type) [inst : Field F] (a b c d : F), ¬Irreducible ((Polynomial.X ^ 2 + Polynomial.C a * Polynomial.X + Polynomial.C b) * (Polynomial.X ^ 2 + Polynomial.C c * Polynomial.X + Polynomial.C d))",
-  "hash": "1976160218"
+  "hash": "191970482"
  },
  "an2_card_no_consecutive_fib_v3_aux1": {
   "owner": "an2_card_no_consecutive_fib_v3",
   "type": "∀ (n : ℕ), {s ∈ (Finset.range (n + 2)).powerset | ∀ i ∈ s, i + 1 ∉ s}.card = {s ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ s, i + 1 ∉ s}.card + {s ∈ (Finset.range n).powerset | ∀ i ∈ s, i + 1 ∉ s}.card",
-  "hash": "2644315723"
+  "hash": "2540274579"
  },
  "an2_chebyshev_index_weighted_aux1": {
   "owner": "an2_chebyshev_index_weighted",
@@ -57,32 +57,32 @@
  "ana_convex_bddAbove_const_aux1": {
   "owner": "ana_convex_bddAbove_const",
   "type": "∀ (f : ℝ → ℝ), ConvexOn ℝ Set.univ f → ∀ (M : ℝ), (∀ (x : ℝ), f x ≤ M) → ∀ (x y : ℝ), f y ≤ f x",
-  "hash": "2272043196"
+  "hash": "3705377317"
  },
  "ana_tsum_inv_cube_le_aux1": {
   "owner": "ana_tsum_inv_cube_le",
   "type": "∀ (x : ℝ), 0 ≤ x → 1 / (x + 2) ^ 3 ≤ 1 / (2 * (x + 1) * (x + 2)) - 1 / (2 * (x + 2) * (x + 3))",
-  "hash": "677177839"
+  "hash": "3559785493"
  },
  "ana_tsum_inv_cube_le_aux2": {
   "owner": "ana_tsum_inv_cube_le",
   "type": "∀ (N : ℕ), ∑ n ∈ Finset.range (N + 1), 1 / (↑n + 1) ^ 3 ≤ 5 / 4 - 1 / (2 * (↑N + 1) * (↑N + 2))",
-  "hash": "3185709632"
+  "hash": "2909064656"
  },
  "bld2_card_conjClasses_of_card_prime_cube_aux1": {
   "owner": "bld2_card_conjClasses_of_card_prime_cube",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → ∀ (a : G) [inst_1 : Decidable (a ∈ Subgroup.center G)], Nat.card { b // Commute a b } = if a ∈ Subgroup.center G then p ^ 3 else p ^ 2",
-  "hash": "3474099441"
+  "hash": "2745081546"
  },
  "bld2_involution_iff_rank_add_rank_aux1": {
   "owner": "bld2_involution_iff_rank_add_rank",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (c : K), c ≠ 0 → ∀ (M : Matrix ι ι K), (c • M).rank = M.rank",
-  "hash": "2749793321"
+  "hash": "1123033713"
  },
  "bld2_mantel_equality_regular_aux1": {
   "owner": "bld2_mantel_equality_regular",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card",
-  "hash": "1026381994"
+  "hash": "2399663434"
  },
  "bld2_pisano_fib_dvd_four_mul_aux1": {
   "owner": "bld2_pisano_fib_dvd_four_mul",
@@ -102,62 +102,62 @@
  "bld2_rat_sq_add_sq_ne_prime_mul_coprime_aux1": {
   "owner": "bld2_rat_sq_add_sq_ne_prime_mul_coprime",
   "type": "∀ (p m : ℕ), Nat.Prime p → p % 4 = 3 → ¬p ∣ m → ∀ (d : ℕ) (a b : ℤ), a ^ 2 + b ^ 2 = ↑p * ↑m * ↑d ^ 2 → d = 0",
-  "hash": "2117743498"
+  "hash": "580503389"
  },
  "bld2_tripotent_rank_split_aux1": {
   "owner": "bld2_tripotent_rank_split",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (M : Matrix ι ι K) (c : K), c ≠ 0 → (c • M).rank = M.rank",
-  "hash": "3706260657"
+  "hash": "354835263"
  },
  "bld2_tripotent_rank_split_aux2": {
   "owner": "bld2_tripotent_rank_split",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [DecidableEq ι] (A B : Matrix ι ι K), A * A = B → B * A = A → A * B = A → B * B = B → B.rank = (B + A).rank + (B - A).rank",
-  "hash": "2969320899"
+  "hash": "709228720"
  },
  "bld_fib_consecutive_of_quadratic_form_aux1": {
   "owner": "bld_fib_consecutive_of_quadratic_form",
   "type": "∀ (u v Y : ℤ), u ^ 2 = 5 * Y ^ 2 + 4 → v ^ 2 + 4 = 5 * Y ^ 2 → Y ^ 2 = 1",
-  "hash": "1901952012"
+  "hash": "1619721125"
  },
  "bld_fib_consecutive_of_quadratic_form_aux2": {
   "owner": "bld_fib_consecutive_of_quadratic_form",
   "type": "∀ (x y : ℕ), ↑y ^ 2 = 1 → (↑x ^ 2 - ↑x * ↑y - ↑y ^ 2) ^ 2 = 1 → 0 < x → ∃ n, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
-  "hash": "1249582984"
+  "hash": "3542470310"
  },
  "bld_fib_even_index_iff_five_sq_add_four_aux1": {
   "owner": "bld_fib_even_index_iff_five_sq_add_four",
   "type": "∀ (n : ℕ), ∃ x, x ^ 2 = 5 * Nat.fib (2 * n) ^ 2 + 4",
-  "hash": "1425854608"
+  "hash": "1002883155"
  },
  "bld_frobenius_rank_inequality_aux1": {
   "owner": "bld_frobenius_rank_inequality",
   "type": "∀ (K : Type u_1) [inst : Field K] (n : Type u_2) (p : Type u_3) [Fintype n] [inst_2 : Fintype p] (B : Matrix n p K), ∃ M N, B = M * N",
-  "hash": "2845141906"
+  "hash": "2583902912"
  },
  "bld_involution_trace_rank_aux1": {
   "owner": "bld_involution_trace_rank",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (M : Matrix ι ι K) (c : K), c ≠ 0 → (c • M).rank = M.rank",
-  "hash": "3706260657"
+  "hash": "354835263"
  },
  "bld_involution_trace_rank_aux2": {
   "owner": "bld_involution_trace_rank",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A * A = 1 → 2⁻¹ • (1 + A) * 2⁻¹ • (1 + A) = 2⁻¹ • (1 + A)",
-  "hash": "426892472"
+  "hash": "2968565698"
  },
  "bld_nilpotent_commute_det_add_aux1": {
   "owner": "bld_nilpotent_commute_det_add",
   "type": "∀ (n : ℕ) (A B : Matrix (Fin n) (Fin n) ℝ), IsNilpotent A → A * B = B * A → IsUnit B.det → (B + A).det = B.det",
-  "hash": "949475752"
+  "hash": "1363063821"
  },
  "bld_nilpotent_rank_bound_aux1": {
   "owner": "bld_nilpotent_rank_bound",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (j : ℕ), (j + 1) * A.rank ≤ j * Fintype.card ι + (A ^ (j + 1)).rank",
-  "hash": "1112129884"
+  "hash": "1775987882"
  },
  "bld_zmod_diag_quadratic_form_surjective_aux1": {
   "owner": "bld_zmod_diag_quadratic_form_surjective",
   "type": "∀ (a b c : ZMod 2), a ≠ 0 → b ≠ 0 → ∃ x y, a * x ^ 2 + b * y ^ 2 = c",
-  "hash": "4091327524"
+  "hash": "3323004705"
  },
  "comb_card_involutions_rec_aux1": {
   "owner": "comb_card_involutions_rec",
@@ -177,12 +177,12 @@
  "comb_compl_connected_of_not_connected_aux1": {
   "owner": "comb_compl_connected_of_not_connected",
   "type": "∀ (V : Type) (G : SimpleGraph V) (x y : V), ¬G.Reachable x y → Gᶜ.Adj x y",
-  "hash": "1241345764"
+  "hash": "2025932973"
  },
  "comb_exists_cut_half_edges_aux1": {
   "owner": "comb_exists_cut_half_edges",
   "type": "∀ (V : Type) [inst : DecidableEq V] (f : V → V → ℕ), (∀ (u v : V), f u v = f v u) → (∀ (u : V), f u u = 0) → ∀ (S : Finset V), ∃ s ⊆ S, ∑ u ∈ S, ∑ v ∈ S, f u v ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
-  "hash": "184427284"
+  "hash": "2322173173"
  },
  "comb_tournament_hamiltonian_path_aux1": {
   "owner": "comb_tournament_hamiltonian_path",
@@ -197,42 +197,42 @@
  "gen_an_amgm_finset_ordered_ring_aux1": {
   "owner": "gen_an_amgm_finset_ordered_ring",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b : R), 0 ≤ a → 0 ≤ b → ∀ (m : ℕ), a ^ (m + 1) + (↑m + 1) * a ^ m * (b - a) ≤ b ^ (m + 1)",
-  "hash": "4190575393"
+  "hash": "3993962539"
  },
  "gen_an_chebyshev_index_weighted_ordered_ring_aux1": {
   "owner": "gen_an_chebyshev_index_weighted_ordered_ring",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R), Monotone a → ∀ (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ ↑n * a n",
-  "hash": "2333006941"
+  "hash": "2800187614"
  },
  "gen_an_hardy_finite_ordered_field_aux1": {
   "owner": "gen_an_hardy_finite_ordered_field",
   "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a : ℕ → K) (k : ℕ), ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 - 2 * ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) * a k ≤ (∑ i ∈ Finset.range k, a i) ^ 2 / ↑k - (∑ i ∈ Finset.range (k + 1), a i) ^ 2 / (↑k + 1)",
-  "hash": "3341960544"
+  "hash": "1531550801"
  },
  "gen_an_hardy_finite_ordered_field_aux2": {
   "owner": "gen_an_hardy_finite_ordered_field",
   "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a : ℕ → K) (n : ℕ), ∑ k ∈ Finset.range n, ((∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1)) ^ 2 ≤ 2 * ∑ k ∈ Finset.range n, (∑ i ∈ Finset.range (k + 1), a i) / (↑k + 1) * a k",
-  "hash": "3100646496"
+  "hash": "3214114912"
  },
  "gen_an_hardy_finite_ordered_field_aux3": {
   "owner": "gen_an_hardy_finite_ordered_field",
   "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (T B Q : K), 0 ≤ T → 0 ≤ B → T ≤ 2 * Q → Q ^ 2 ≤ T * B → T ≤ 4 * B",
-  "hash": "908238259"
+  "hash": "2273666674"
  },
  "gen_an_schur_nat_pow_ordered_ring_aux1": {
   "owner": "gen_an_schur_nat_pow_ordered_ring",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a b c : R), 0 ≤ c → b ≤ a → c ≤ b → ∀ (t : ℕ), 0 ≤ a ^ t * (a - b) * (a - c) + b ^ t * (b - a) * (b - c) + c ^ t * (c - a) * (c - b)",
-  "hash": "1335020659"
+  "hash": "1999081024"
  },
  "gen_lin_symm_nilpotent_eq_zero_ordered_aux1": {
   "owner": "gen_lin_symm_nilpotent_eq_zero_ordered",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (ι : Type u_2) [inst_3 : Fintype ι] [DecidableEq ι] (B : Matrix ι ι R), B.transpose * B = 0 → B = 0",
-  "hash": "1226542035"
+  "hash": "3127395899"
  },
  "gen_nt_sq_add_sq_eq_prime_mul_sq_aux1": {
   "owner": "gen_nt_sq_add_sq_eq_prime_mul_sq",
   "type": "∀ (p : ℕ), Nat.Prime p → p % 4 = 3 → ∀ (n : ℕ) (x y z : ℤ), z.natAbs < n → x ^ 2 + y ^ 2 = ↑p * z ^ 2 → z = 0",
-  "hash": "2661698747"
+  "hash": "3891665011"
  },
  "geo_cos_sum_two_pi_div_seven_aux1": {
   "owner": "geo_cos_sum_two_pi_div_seven",
@@ -262,77 +262,77 @@
  "lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset_aux1": {
   "owner": "lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset",
   "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∀ (u v : V), G.Adj u v → G.degree u + G.degree v ≤ Fintype.card V",
-  "hash": "2356042451"
+  "hash": "1720558402"
  },
  "lin_idempotent_rank_complement_aux1": {
   "owner": "lin_idempotent_rank_complement",
   "type": "∀ (n : ℕ) (A : Matrix (Fin n) (Fin n) ℝ), A * A = A → A.trace = ↑A.rank",
-  "hash": "2832748490"
+  "hash": "4157417698"
  },
  "ms_no_param_y2_x3_1_aux1": {
   "owner": "ms_no_param_y2_x3_1",
   "type": "∀ {k : Type u_1} [inst : Field k], 2 ≠ 0 → 3 ≠ 0 → ∀ (a b c d : Polynomial k), c.Monic → d.Monic → IsCoprime a c → IsCoprime b d → b ^ 2 * c ^ 3 = (a ^ 3 + c ^ 3) * d ^ 2 → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0 ∧ d.natDegree = 0",
-  "hash": "3111334195"
+  "hash": "2578767890"
  },
  "nt2_sq_add_sq_eq_seven_mul_sq_aux1": {
   "owner": "nt2_sq_add_sq_eq_seven_mul_sq",
   "type": "∀ (n : ℕ) (x y z : ℤ), z.natAbs < n → x ^ 2 + y ^ 2 = 7 * z ^ 2 → z = 0",
-  "hash": "346037471"
+  "hash": "2481423805"
  },
  "nt2_sq_sum_eq_two_mul_prod_descent_aux1": {
   "owner": "nt2_sq_sum_eq_two_mul_prod_descent",
   "type": "∀ (m x y z : ℤ), x ^ 2 + y ^ 2 + z ^ 2 = 2 * m * x * y * z → ∃ a b c, x = 2 * a ∧ y = 2 * b ∧ z = 2 * c",
-  "hash": "1348403658"
+  "hash": "1805136003"
  },
  "nt2_sq_sum_eq_two_mul_prod_descent_aux2": {
   "owner": "nt2_sq_sum_eq_two_mul_prod_descent",
   "type": "∀ (n k : ℕ) (x y z : ℤ), 1 ≤ k → x ^ 2 + y ^ 2 + z ^ 2 = 2 ^ k * x * y * z → 2 ^ n ∣ x",
-  "hash": "3505865989"
+  "hash": "1806046686"
  },
  "nt_five_consec_prod_dvd_120_aux1": {
   "owner": "nt_five_consec_prod_dvd_120",
   "type": "∀ (m : ℕ), m = 8 ∨ m = 3 ∨ m = 5 → ∀ (n : ℤ), ↑m ∣ n ^ 5 - 5 * n ^ 3 + 4 * n",
-  "hash": "2084810474"
+  "hash": "1922404583"
  },
  "nt_nine_dvd_sum_cubes_three_dvd_prod_aux1": {
   "owner": "nt_nine_dvd_sum_cubes_three_dvd_prod",
   "type": "∀ (x y z : ZMod 9), x ^ 3 + y ^ 3 + z ^ 3 = 0 → 3 * (x * y * z) = 0",
-  "hash": "3727736125"
+  "hash": "1452501361"
  },
  "nt_odd_sq_add_odd_sq_not_square_aux1": {
   "owner": "nt_odd_sq_add_odd_sq_not_square",
   "type": "∀ (k m c : ZMod 4), (2 * k + 1) ^ 2 + (2 * m + 1) ^ 2 ≠ c * c",
-  "hash": "2429548475"
+  "hash": "1916010631"
  },
  "nt_pow5_sub_self_dvd_30_aux1": {
   "owner": "nt_pow5_sub_self_dvd_30",
   "type": "∀ (x : ZMod 30), x ^ 5 - x = 0",
-  "hash": "3296597514"
+  "hash": "627719030"
  },
  "nt_seven_dvd_sq_add_sq_aux1": {
   "owner": "nt_seven_dvd_sq_add_sq",
   "type": "∀ (x y : ZMod 7), x ^ 2 + y ^ 2 = 0 → x = 0 ∧ y = 0",
-  "hash": "3156004153"
+  "hash": "2855186778"
  },
  "p3_aux_fib_prime_aux1": {
   "owner": "p3_aux_fib_prime",
   "type": "∀ (n : ℕ), { re := 2, im := 0 } * { re := 1, im := 1 } ^ n = { re := 2, im := 0 } ^ n * { re := 2 * ↑(Nat.fib (n + 1)) - ↑(Nat.fib n), im := ↑(Nat.fib n) }",
-  "hash": "1467404763"
+  "hash": "1581855295"
  },
  "p3_aux_fib_prime_aux2": {
   "owner": "p3_aux_fib_prime",
   "type": "∀ (n : ℕ), { re := 2, im := 0 } ^ n = { re := 2 ^ n, im := 0 }",
-  "hash": "1651824925"
+  "hash": "3681513317"
  },
  "p3_aux_fib_prime_aux3": {
   "owner": "p3_aux_fib_prime",
   "type": "∀ (n : ℕ), { re := 0, im := 1 } ^ (2 * n + 1) = { re := 0, im := 5 ^ n }",
-  "hash": "894917483"
+  "hash": "3386989538"
  },
  "p3_aux_period_aux1": {
   "owner": "p3_aux_period",
   "type": "∀ (n : ℕ), ↑(Nat.fib (n + 1)) ^ 2 - ↑(Nat.fib n) * ↑(Nat.fib (n + 2)) = (-1) ^ n",
-  "hash": "3746905523"
+  "hash": "2899897586"
  },
  "p3_aux_period_aux2": {
   "owner": "p3_aux_period",
@@ -352,12 +352,12 @@
  "p3_cor1_aux1": {
   "owner": "p3_cor1",
   "type": "∀ (n : ℕ), ((↑(Nat.fib n) + ↑(Nat.fib (n + 1))) * ↑(Nat.fib n) - ↑(Nat.fib (n + 1)) ^ 2) ^ 2 = 1",
-  "hash": "1892300317"
+  "hash": "1647074098"
  },
  "p3_cor1_aux2": {
   "owner": "p3_cor1",
   "type": "∀ (n : ℕ), Nat.fib n ^ 4 ≡ 1 [MOD Nat.fib (n + 1)]",
-  "hash": "140953868"
+  "hash": "1368771427"
  },
  "p3_cor1_aux3": {
   "owner": "p3_cor1",
@@ -402,12 +402,12 @@
  "p3_thm1_corrected_aux0": {
   "owner": "p3_thm1_corrected",
   "type": "↑1 ≠ 0 ∧ ↑4 ≠ 0 ∧ IsSquare ↑1 ∧ IsSquare ↑4 ∧ ¬IsSquare ↑2 ∧ ¬IsSquare ↑3",
-  "hash": "3468910841"
+  "hash": "2842635607"
  },
  "p3_thm1_corrected_aux1": {
   "owner": "p3_thm1_corrected",
   "type": "∀ (p : ℕ), Nat.Prime p → p ≠ 2 → (p % 5 = 1 ∨ p % 5 = 4 → ↑(Nat.fib p) = 1 ∧ ↑(Nat.fib (p + 1)) = 1) ∧ (p % 5 = 2 ∨ p % 5 = 3 → ↑(Nat.fib p) = -1 ∧ ↑(Nat.fib (p + 1)) = 0)",
-  "hash": "1424009765"
+  "hash": "3513517299"
  },
  "p3_thm2_aux1": {
   "owner": "p3_thm2",
@@ -427,27 +427,27 @@
  "p4_lem2_chain_aux1": {
   "owner": "p4_lem2_chain",
   "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → ∀ (n : ℕ), a ≤ n → n ≤ min q (2 ^ Mathlib2.p4_r a) → Mathlib2.p4_r n = Mathlib2.p4_r a ∧ Mathlib2.p4_m n = Mathlib2.p4_m a",
-  "hash": "2832990830"
+  "hash": "4070565124"
  },
  "p4_lem2_greatest_aux1": {
   "owner": "p4_lem2_greatest",
   "type": "∀ (a q : ℕ), 0 < a → 2 * q < (Mathlib2.p4_m a + 1) ^ 2 → (∀ (c : ℕ), 2 * c < (Mathlib2.p4_m a + 1) ^ 2 → c ≤ q) → ∀ (n : ℕ), a ≤ n → n ≤ min q (2 ^ Mathlib2.p4_r a) → Mathlib2.p4_r n = Mathlib2.p4_r a ∧ Mathlib2.p4_m n = Mathlib2.p4_m a",
-  "hash": "2832990830"
+  "hash": "4070565124"
  },
  "p4_rem1_bound_even_aux1": {
   "owner": "p4_rem1_bound_even",
   "type": "∀ (k : ℕ), 6 ≤ k → 6 * ↑k + 7 ≤ 2 ^ k",
-  "hash": "2384999203"
+  "hash": "2479505087"
  },
  "p4_rem1_bound_odd_aux1": {
   "owner": "p4_rem1_bound_odd",
   "type": "∀ (k : ℕ), 6 ≤ k → 6 * ↑k + 10 ≤ 2 ^ k",
-  "hash": "623222829"
+  "hash": "1077685549"
  },
  "p4_small_classify_aux1": {
   "owner": "p4_small_classify",
   "type": "∀ (n s t p : ℕ) (c : ℤ), 2 ^ s = p → (↑s + 1) * ↑t = c → n ≤ p → p < 2 * n → t * t ≤ 2 * n → 2 * n < (t + 1) * (t + 1) → Mathlib2.p4_x n = (2 * ↑n - 1) / 3 - c",
-  "hash": "2281607781"
+  "hash": "2209378833"
  },
  "p4_small_classify_aux_b0": {
   "owner": "p4_small_classify",
@@ -952,17 +952,17 @@
  "p4_thm1_v_step_fixed_aux1": {
   "owner": "p4_thm1_v_step_fixed",
   "type": "∀ (k : ℕ), 4 ≤ k → 18 * ↑k + 31 ≤ 8 * 2 ^ k",
-  "hash": "4249366013"
+  "hash": "2509236964"
  },
  "r3_wolstenholme_harmonic_s1h1_aux1": {
   "owner": "r3_wolstenholme_harmonic_s1h1",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ k ∈ Finset.Icc 1 (p - 1), ∃ m c, p = k + m ∧ 0 < k ∧ 0 < m ∧ (p - 1).factorial = k * m * c",
-  "hash": "1210287561"
+  "hash": "245546544"
  },
  "r3_wolstenholme_harmonic_s1h3_aux1": {
   "owner": "r3_wolstenholme_harmonic_s1h3",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ k ∈ Finset.Icc 1 (p - 1), ∃ m c, p = k + m ∧ 0 < k ∧ 0 < m ∧ (p - 1).factorial = k * m * c",
-  "hash": "1210287561"
+  "hash": "245546544"
  },
  "top_expanding_compact_isometry_aux1": {
   "owner": "top_expanding_compact_isometry",
@@ -986,23 +986,23 @@
  },
  "bld3_rank_tripotent_defect_aux1": {
   "owner": "bld3_rank_tripotent_defect",
-  "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] [DecidableEq n] [DecidableEq p] (M : Matrix m n K) (N : Matrix n p K), LinearMap.range (M * N).mulVecLin ≤ LinearMap.range M.mulVecLin",
-  "hash": "2953650193"
+  "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] [DecidableEq n] [DecidableEq p] (M : Matrix m n K) (N : Matrix n p K), (M * N).mulVecLin.range ≤ M.mulVecLin.range",
+  "hash": "1833598319"
  },
  "bld3_pisano_fib_div_fib_tendsto_zero_aux1": {
   "owner": "bld3_pisano_fib_div_fib_tendsto_zero",
   "type": "∀ (n : ℕ), n ^ 2 ≤ 6 * Nat.fib n",
-  "hash": "2290833584"
+  "hash": "827122187"
  },
  "bld3_mul_pow_prime_of_card_prime_cube_aux1": {
   "owner": "bld3_mul_pow_prime_of_card_prime_cube",
   "type": "∀ {M : Type u_1} [inst : Monoid M] (a b c : M), Commute c a → Commute c b → b * a = c * a * b → ∀ (k : ℕ), b ^ k * a = c ^ k * a * b ^ k",
-  "hash": "182980324"
+  "hash": "2773457467"
  },
  "bld3_mul_pow_prime_of_card_prime_cube_aux2": {
   "owner": "bld3_mul_pow_prime_of_card_prime_cube",
   "type": "∀ {M : Type u_1} [inst : Monoid M] (a b c : M), Commute c a → Commute c b → b * a = c * a * b → ∀ (k : ℕ), (a * b) ^ k = a ^ k * b ^ k * c ^ k.choose 2",
-  "hash": "2880314318"
+  "hash": "1216199710"
  },
  "bld3_card_sylow_of_card_prime_mul_prime_aux1": {
   "owner": "bld3_card_sylow_of_card_prime_mul_prime",
@@ -1037,17 +1037,17 @@
  "p5_thm1_aux1": {
   "owner": "p5_thm1",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 3 + 3 * n ^ 2 + 9 * n + 1 ≤ x ^ 3 + y ^ 3 + z ^ 3",
-  "hash": "4265263448"
+  "hash": "4011078302"
  },
  "p5_thm2_aux1": {
   "owner": "p5_thm2",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 4 + 4 * n ^ 3 + 18 * n ^ 2 + 4 * n + 3 ≤ x ^ 4 + y ^ 4 + z ^ 4",
-  "hash": "1794735797"
+  "hash": "3456943631"
  },
  "p5_thm3_aux1": {
   "owner": "p5_thm3",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 4 + 4 * n ^ 3 + 2 * n ^ 2 + 4 * n + 3 ≤ x ^ 2 * y ^ 2 + x ^ 2 * z ^ 2 + z ^ 2 * y ^ 2",
-  "hash": "1868366692"
+  "hash": "3186896814"
  },
  "bld4_pisano_mul_of_coprime_aux1": {
   "owner": "bld4_pisano_mul_of_coprime",
@@ -1057,47 +1057,47 @@
  "p5_thm4_aux1": {
   "owner": "p5_thm4",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 6 * n ^ 3 + 6 * n ^ 2 + 2 * n + 2 ≤ x ^ 2 * (y + z) + y ^ 2 * (x + z) + z ^ 2 * (x + y)",
-  "hash": "811673412"
+  "hash": "873353925"
  },
  "p5_thm5_aux1": {
   "owner": "p5_thm5",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 6 * n ^ 4 + 8 * n ^ 3 + 12 * n ^ 2 + 8 * n ≤ x ^ 3 * (y + z) + y ^ 3 * (x + z) + z ^ 3 * (x + y) + 2",
-  "hash": "393111082"
+  "hash": "1857883225"
  },
  "p5_cited_squares_aux1": {
   "owner": "p5_cited_squares",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 2 + 2 * n + 3 ≤ x ^ 2 + y ^ 2 + z ^ 2",
-  "hash": "3072178769"
+  "hash": "955235427"
  },
  "p5_cited_products_aux1": {
   "owner": "p5_cited_products",
   "type": "∀ (n x y z : ℕ), 2 ≤ n → n + 1 ≤ y → n + 1 ≤ z → 2 * n ≤ x + y → 2 * n ≤ x + z → 3 * n ^ 2 + 2 * n ≤ x * y + x * z + z * y + 1",
-  "hash": "1175559848"
+  "hash": "3543919529"
  },
  "bld4_sqrt_two_rec_defect_tsum_lower_aux1": {
   "owner": "bld4_sqrt_two_rec_defect_tsum_lower",
   "type": "∀ (n : ℕ), Real.pi ^ 2 / 4 ^ (n + 1) - Real.pi ^ 4 / (192 * 16 ^ n) ≤ 2 - 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
-  "hash": "948720356"
+  "hash": "1949907535"
  },
  "bld4_fitting_range_inter_ker_pow_card_aux1": {
   "owner": "bld4_fitting_range_inter_ker_pow_card",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K) (m : ℕ), (A ^ (Fintype.card ι + m)).rank = (A ^ Fintype.card ι).rank",
-  "hash": "2508639213"
+  "hash": "4163236155"
  },
  "bld4_fitting_range_inter_ker_pow_card_aux2": {
   "owner": "bld4_fitting_range_inter_ker_pow_card",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (N : Matrix ι ι K), (N * N).rank = N.rank → ∀ (v : ι → K), N.mulVec (N.mulVec v) = 0 → N.mulVec v = 0",
-  "hash": "678660278"
+  "hash": "3951887123"
  },
  "bld4_pisano_lucas_dvd_four_mul_aux1": {
   "owner": "bld4_pisano_lucas_dvd_four_mul",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (m : ℕ), ↑(Nat.fib (2 * m)) = ↑(Nat.fib m) * (2 * ↑(Nat.fib (m + 1)) - ↑(Nat.fib m))",
-  "hash": "3062251844"
+  "hash": "1615191988"
  },
  "bld4_carleman_finite_three_aux1": {
   "owner": "bld4_carleman_finite_three",
   "type": "∀ (m : ℕ), ∏ i ∈ Finset.range m, (↑i + 2) ^ (i + 1) / (↑i + 1) ^ i = (↑m + 1) ^ m",
-  "hash": "913231211"
+  "hash": "4086401514"
  },
  "bld4_carleman_finite_three_aux2": {
   "owner": "bld4_carleman_finite_three",
@@ -1107,27 +1107,27 @@
  "bld4_carleman_finite_three_aux3": {
   "owner": "bld4_carleman_finite_three",
   "type": "∀ (a : ℕ → ℝ), (∀ (i : ℕ), 0 ≤ a i) → ∀ (k : ℕ), (∏ i ∈ Finset.range (k + 1), a i) ^ (1 / (↑k + 1)) ≤ (∑ i ∈ Finset.range (k + 1), a i * ((↑i + 2) ^ (i + 1) / (↑i + 1) ^ i)) / ((↑k + 1) * (↑k + 2))",
-  "hash": "657876103"
+  "hash": "3466400589"
  },
  "poly_ratfunc_fermat_curve_const_aux1": {
   "owner": "poly_ratfunc_fermat_curve_const",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (n : ℕ), 3 ≤ n → ∀ (A B E : Polynomial k), E ≠ 0 → A ^ n + B ^ n = E ^ n → ∃ c, (algebraMap (Polynomial k) (RatFunc k)) A / (algebraMap (Polynomial k) (RatFunc k)) E = RatFunc.C c",
-  "hash": "2682695942"
+  "hash": "651808593"
  },
  "poly_no_consecutive_powerful_aux1": {
   "owner": "poly_no_consecutive_powerful",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] (g : Polynomial k), (∀ (p : Polynomial k), Irreducible p → p ∣ g → p ^ 2 ∣ g) → UniqueFactorizationMonoid.radical g ^ 2 ∣ g",
-  "hash": "140383115"
+  "hash": "3365997894"
  },
  "poly_abc_distinct_roots_complex_aux1": {
   "owner": "poly_abc_distinct_roots_complex",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [IsAlgClosed k] (p : Polynomial k), p ≠ 0 → (UniqueFactorizationMonoid.radical p).natDegree ≤ p.roots.toFinset.card",
-  "hash": "1658577895"
+  "hash": "3427751883"
  },
  "bld5_prime_dvd_lucas_four_mul_mod_eight_aux1": {
   "owner": "bld5_prime_dvd_lucas_four_mul_mod_eight",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (m : ℕ), ↑(Mathlib2.p3_lucas (2 * m)) = ↑(Mathlib2.p3_lucas m) ^ 2 - 2 * (-1) ^ m",
-  "hash": "4230254072"
+  "hash": "442683571"
  },
  "bld5_isometry_compact_id_uniform_limit_aux1": {
   "owner": "bld5_isometry_compact_id_uniform_limit",
@@ -1142,7 +1142,7 @@
  "bld5_pisano_lucas_odd_eq_aux1": {
   "owner": "bld5_pisano_lucas_odd_eq",
   "type": "∀ (n : ℕ), ↑(Nat.fib (2 * n + 1)) = ↑(Nat.fib (n + 1)) * ↑(Mathlib2.p3_lucas n) - (-1) ^ n",
-  "hash": "392445053"
+  "hash": "4205855315"
  },
  "bld5_pisano_lucas_odd_eq_aux2": {
   "owner": "bld5_pisano_lucas_odd_eq",
@@ -1162,27 +1162,27 @@
  "bld5_nilpotent_pow_rank_succ_eq_zero_aux2": {
   "owner": "bld5_nilpotent_pow_rank_succ_eq_zero",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [inst_2 : DecidableEq ι] (A : Matrix ι ι K), IsNilpotent A → ∀ (k : ℕ), (A ^ k).rank ≠ 0 → (A ^ (k + 1)).rank < (A ^ k).rank",
-  "hash": "1798495877"
+  "hash": "203288507"
  },
  "bld5_pisano_mul_dvd_mul_aux1": {
   "owner": "bld5_pisano_mul_dvd_mul",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (a b : ℕ), ↑(Nat.fib (a + b)) = ↑(Nat.fib a) * ↑(Nat.fib (b + 1)) + ↑(Nat.fib (a + 1)) * ↑(Nat.fib b) - ↑(Nat.fib a) * ↑(Nat.fib b)",
-  "hash": "3332097286"
+  "hash": "514246187"
  },
  "bld5_pisano_mul_dvd_mul_aux2": {
   "owner": "bld5_pisano_mul_dvd_mul",
   "type": "∀ (R : Type u_1) [inst : CommRing R] (N : ℕ) (μ u v : R), μ ^ 2 = 0 → ↑(Nat.fib N) = μ * u → ↑(Nat.fib (N + 1)) = 1 + μ * v → ∀ (j : ℕ), ↑(Nat.fib (j * N)) = ↑j * μ * u ∧ ↑(Nat.fib (j * N + 1)) = 1 + ↑j * μ * v",
-  "hash": "2393560942"
+  "hash": "817608758"
  },
  "bld5_pisano_two_pow_aux1": {
   "owner": "bld5_pisano_two_pow",
   "type": "∀ (i : ℕ), ∃ u v, ↑(Nat.fib (3 * 2 ^ (i + 1))) = 2 ^ (i + 3) * (2 * u + 1) ∧ ↑(Nat.fib (3 * 2 ^ (i + 1) + 1)) = 1 + 2 ^ (i + 2) * (2 * v + 1)",
-  "hash": "1440983434"
+  "hash": "351290798"
  },
  "bld5_pisano_two_pow_aux2": {
   "owner": "bld5_pisano_two_pow",
   "type": "∀ (k : ℕ), Mathlib2.p3_pisano (2 ^ (k + 1)) ∣ 3 * 2 ^ k",
-  "hash": "2099810896"
+  "hash": "1826567624"
  },
  "bld5_pisano_five_pow_aux1": {
   "owner": "bld5_pisano_five_pow",
@@ -1192,42 +1192,42 @@
  "bld5_pisano_five_pow_aux2": {
   "owner": "bld5_pisano_five_pow",
   "type": "∀ (n : ℕ) (a b : ℤ), ↑(Nat.fib n) = a → ↑(Nat.fib (n + 1)) = b → ↑(Nat.fib (5 * n)) = 5 * a * (b ^ 4 + a * (-4 * b ^ 3 + 6 * a * b ^ 2 - 4 * a ^ 2 * b + a ^ 3 + 2 * (b - a) ^ 3 + 4 * a * (b - a) ^ 2 + 3 * a ^ 2 * (b - a) + a ^ 3))",
-  "hash": "1159331201"
+  "hash": "38838044"
  },
  "bld5_pisano_five_pow_aux3": {
   "owner": "bld5_pisano_five_pow",
   "type": "∀ (k : ℕ), ∃ t, ¬5 ∣ t ∧ ↑(Nat.fib (4 * 5 ^ (k + 1))) = 5 ^ (k + 1) * t",
-  "hash": "1699089317"
+  "hash": "3082957448"
  },
  "bld5_pisano_five_pow_aux4": {
   "owner": "bld5_pisano_five_pow",
   "type": "∀ (k : ℕ), Mathlib2.p3_pisano (5 ^ (k + 1)) ∣ 4 * 5 ^ (k + 1)",
-  "hash": "4223770827"
+  "hash": "3675630329"
  },
  "calc_card_no_adjacent_subsets_aux1": {
   "owner": "calc_card_no_adjacent_subsets",
   "type": "∀ (n : ℕ), {t ∈ (Finset.range (n + 2)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card + {t ∈ (Finset.range n).powerset | ∀ i ∈ t, i + 1 ∉ t}.card",
-  "hash": "2644315723"
+  "hash": "2540274579"
  },
  "calc_card_no_adjacent_subsets_aux2": {
   "owner": "calc_card_no_adjacent_subsets",
   "type": "∀ (n : ℕ), {t ∈ (Finset.range n).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = Nat.fib (n + 2) ∧ {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, i + 1 ∉ t}.card = Nat.fib (n + 3)",
-  "hash": "2644074161"
+  "hash": "4109927370"
  },
  "arith_sigma_mul_totient_lt_sq_aux1": {
   "owner": "arith_sigma_mul_totient_lt_sq",
   "type": "∀ (q k : ℕ), q * ∑ i ∈ Finset.range (k + 1), (q + 1) ^ i + 1 = (q + 1) ^ (k + 1)",
-  "hash": "323014450"
+  "hash": "4101867595"
  },
  "arith_totient_pow_add_sigma_pow_aux1": {
   "owner": "arith_totient_pow_add_sigma_pow",
   "type": "∀ (a b n k : ℕ), 2 * n ≤ a + b → 2 * n ^ k ≤ a ^ k + b ^ k",
-  "hash": "1168690003"
+  "hash": "3247654195"
  },
  "calc_sum_card_fixed_points_perm_aux1": {
   "owner": "calc_sum_card_fixed_points_perm",
   "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (S : Finset α), {σ | ∀ a ∈ S, σ a = a}.card = (Fintype.card α - S.card).factorial",
-  "hash": "4280235957"
+  "hash": "629774969"
  },
  "calc_tsum_inv_three_consecutive_aux1": {
   "owner": "calc_tsum_inv_three_consecutive",
@@ -1237,12 +1237,12 @@
  "calc_tsum_fib_div_two_pow_aux1": {
   "owner": "calc_tsum_fib_div_two_pow",
   "type": "∀ (n : ℕ), ↑(Nat.fib n) ≤ (7 / 4) ^ n ∧ ↑(Nat.fib (n + 1)) ≤ (7 / 4) ^ (n + 1)",
-  "hash": "331040332"
+  "hash": "3943277745"
  },
  "arith_sum_moebius_mul_totient_aux1": {
   "owner": "arith_sum_moebius_mul_totient",
   "type": "∀ (s : Finset ℕ), (∀ p ∈ s, Nat.Prime p) → ArithmeticFunction.moebius (∏ p ∈ s, p) * ↑(∏ p ∈ s, p).totient = ∏ p ∈ s, (1 - ↑p)",
-  "hash": "2748232568"
+  "hash": "1226727719"
  },
  "calc_card_perm_one_fixed_point_aux1": {
   "owner": "calc_card_perm_one_fixed_point",
@@ -1252,32 +1252,32 @@
  "arith_card_divisors_odd_iff_isSquare_aux1": {
   "owner": "arith_card_divisors_odd_iff_isSquare",
   "type": "∀ {ι : Type u_1} (s : Finset ι) (f : ι → ℕ), Odd (∏ i ∈ s, f i) ↔ ∀ i ∈ s, Odd (f i)",
-  "hash": "2922983826"
+  "hash": "724759288"
  },
  "calc_cos_le_quartic_aux1": {
   "owner": "calc_cos_le_quartic",
   "type": "∀ (x : ℝ), 0 ≤ x → Real.cos x ≤ 1 - x ^ 2 / 2 + x ^ 4 / 24",
-  "hash": "2608665684"
+  "hash": "808225289"
  },
  "arith_sigma_le_mul_log_aux1": {
   "owner": "arith_sigma_le_mul_log",
   "type": "∀ (n k : ℕ), ∑ e ∈ Finset.Ico 1 (2 ^ k), n / e ≤ n * k",
-  "hash": "2065931325"
+  "hash": "4260139616"
  },
  "calc_tsum_inv_odd_sq_aux1": {
   "owner": "calc_tsum_inv_odd_sq",
   "type": "HasSum (fun n => 1 / (2 * ↑n + 1) ^ 2) (Real.pi ^ 2 / 8)",
-  "hash": "1435038189"
+  "hash": "2354141426"
  },
  "arith_even_perfect_last_digit_aux1": {
   "owner": "arith_even_perfect_last_digit",
   "type": "∀ (n : ℕ), Even n → n.Perfect → ∃ k, 0 < k ∧ Nat.Prime (k + 1) ∧ Nat.Prime (2 ^ (k + 1) - 1) ∧ n = 2 ^ k * (2 ^ (k + 1) - 1)",
-  "hash": "70459639"
+  "hash": "2863688434"
  },
  "arith_sigma_odd_iff_aux1": {
   "owner": "arith_sigma_odd_iff",
   "type": "∀ (p : ℕ), Odd p → ∀ (j : ℕ), (∑ k ∈ Finset.range j, p ^ k) % 2 = j % 2",
-  "hash": "2753364956"
+  "hash": "321941854"
  },
  "arith_sigma_odd_iff_aux2": {
   "owner": "arith_sigma_odd_iff",
@@ -1287,7 +1287,7 @@
  "arith_sigma_odd_iff_aux3": {
   "owner": "arith_sigma_odd_iff",
   "type": "∀ (k m : ℕ), Odd m → (IsSquare m ↔ IsSquare (2 ^ k * m) ∨ ∃ x, 2 ^ k * m = 2 * x ^ 2)",
-  "hash": "4229169376"
+  "hash": "1242868802"
  },
  "arith_liouville_sum_card_divisors_cube_aux1": {
   "owner": "arith_liouville_sum_card_divisors_cube",
@@ -1297,7 +1297,7 @@
  "arith_liouville_sum_card_divisors_cube_aux2": {
   "owner": "arith_liouville_sum_card_divisors_cube",
   "type": "∀ (k : ℕ), ∑ j ∈ Finset.range (k + 1), (j + 1) ^ 3 = (∑ j ∈ Finset.range (k + 1), (j + 1)) ^ 2",
-  "hash": "207377188"
+  "hash": "3533610297"
  },
  "arith_card_odd_choose_aux1": {
   "owner": "arith_card_odd_choose",
@@ -1307,7 +1307,7 @@
  "arith_card_odd_choose_aux2": {
   "owner": "arith_card_odd_choose",
   "type": "∀ (n k : ℕ), k ∈ {k ∈ Finset.range (n + 1) | Odd (n.choose k)} ↔ Odd (n.choose k)",
-  "hash": "1739466561"
+  "hash": "2968417792"
  },
  "arith_card_odd_choose_aux3": {
   "owner": "arith_card_odd_choose",
@@ -1322,32 +1322,32 @@
  "calc_integral_beta_nat_aux1": {
   "owner": "calc_integral_beta_nat",
   "type": "∀ (m n : ℕ), ∫ (x : ℝ) in 0..1, x ^ m * (1 - x) ^ (n + 1) = (↑n + 1) / (↑m + 1) * ∫ (x : ℝ) in 0..1, x ^ (m + 1) * (1 - x) ^ n",
-  "hash": "3959171673"
+  "hash": "1696546873"
  },
  "arith_totient_dvd_self_iff_aux1": {
   "owner": "arith_totient_dvd_self_iff",
   "type": "∀ (m : ℕ), Odd m → m.totient ∣ 2 * m → ∃ b, m = 3 ^ b",
-  "hash": "1693229991"
+  "hash": "381844833"
  },
  "calc_tsum_millin_aux1": {
   "owner": "calc_tsum_millin",
   "type": "∀ (N : ℕ), ∃ n, n + 1 = 2 ^ (N + 1) ∧ 1 ≤ ↑(Nat.fib n) ∧ ↑N + 1 ≤ ↑(Nat.fib (n + 1)) ∧ ↑(Nat.fib n) ^ 2 + ↑(Nat.fib n) * ↑(Nat.fib (n + 1)) - ↑(Nat.fib (n + 1)) ^ 2 = 1 ∧ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) = 3 - ↑(Nat.fib n) / ↑(Nat.fib (n + 1))",
-  "hash": "468603361"
+  "hash": "3692515020"
  },
  "calc_tsum_millin_aux2": {
   "owner": "calc_tsum_millin",
   "type": "∀ (N : ℕ), (7 - √5) / 2 - 1 / (↑N + 1) ≤ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) ∧ ∑ i ∈ Finset.range (N + 2), 1 / ↑(Nat.fib (2 ^ i)) ≤ (7 - √5) / 2",
-  "hash": "572173217"
+  "hash": "1852444849"
  },
  "arith_odd_perfect_euler_form_aux1": {
   "owner": "arith_odd_perfect_euler_form",
   "type": "∀ (p : ℕ), p % 4 = 1 → ∀ (j : ℕ), (∑ k ∈ Finset.range j, p ^ k) % 4 = j % 4",
-  "hash": "2519019707"
+  "hash": "1279189411"
  },
  "arith_odd_perfect_euler_form_aux2": {
   "owner": "arith_odd_perfect_euler_form",
   "type": "∀ (p : ℕ), p % 4 = 3 → ∀ (j : ℕ), (∑ k ∈ Finset.range (2 * j), p ^ k) % 4 = 0",
-  "hash": "3930453623"
+  "hash": "2351596009"
  },
  "arith_sum_lcm_aux1": {
   "owner": "arith_sum_lcm",
@@ -1362,37 +1362,37 @@
  "fld_prime_one_mod_three_eq_sq_add_three_sq_aux1": {
   "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (x : ℤ), ∃ a b, (a ≠ 0 ∨ b ≠ 0) ∧ a ^ 2 < ↑p ∧ b ^ 2 < ↑p ∧ ↑p ∣ a - x * b",
-  "hash": "861720583"
+  "hash": "1413983910"
  },
  "fld_prime_one_mod_three_eq_sq_add_three_sq_aux2": {
   "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (d : ℕ), 0 < d → (∃ x, ↑p ∣ x ^ 2 + ↑d) → ∃ a b, 0 < a ^ 2 + ↑d * b ^ 2 ∧ a ^ 2 + ↑d * b ^ 2 < (1 + ↑d) * ↑p ∧ ↑p ∣ a ^ 2 + ↑d * b ^ 2",
-  "hash": "1178394233"
+  "hash": "1612334341"
  },
  "fld_prime_one_mod_three_eq_sq_add_three_sq_aux3": {
   "owner": "fld_prime_one_mod_three_eq_sq_add_three_sq",
   "type": "∀ (p : ℕ), Nat.Prime p → p % 3 = 1 → ∃ x, ↑p ∣ x ^ 2 + ↑3",
-  "hash": "1631140583"
+  "hash": "2428358737"
  },
  "fld_sum_quadraticChar_sq_add_aux1": {
   "owner": "fld_sum_quadraticChar_sq_add",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (c : ZMod p), ↑{y | y ^ 2 = c}.card = (quadraticChar (ZMod p)) c + 1",
-  "hash": "3394963925"
+  "hash": "2483494228"
  },
  "fld_sum_quadraticChar_sq_add_aux2": {
   "owner": "fld_sum_quadraticChar_sq_add",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], p ≠ 2 → ∀ (f : ZMod p → ZMod p), ↑{v | v.2 ^ 2 = f v.1}.card = ↑p + ∑ x, (quadraticChar (ZMod p)) (f x)",
-  "hash": "966348424"
+  "hash": "496902448"
  },
  "fld_isSquare_neg_three_zmod_iff_aux1": {
   "owner": "fld_isSquare_neg_three_zmod_iff",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], 3 < p → ∀ (w : ZMod p), w ^ 2 + w + 1 = 0 → p % 3 = 1",
-  "hash": "843797685"
+  "hash": "10454703"
  },
  "fld_irreducible_X_sq_add_X_add_one_zmod_iff_aux1": {
   "owner": "fld_irreducible_X_sq_add_X_add_one_zmod_iff",
   "type": "∀ (v : ZMod 2), v * v + v + 1 ≠ 0",
-  "hash": "345241557"
+  "hash": "693707267"
  },
  "bld6_tsum_inv_fib_mul_fib_add_two_aux1": {
   "owner": "bld6_tsum_inv_fib_mul_fib_add_two",
@@ -1402,62 +1402,62 @@
  "fld_sum_quadratic_residues_one_mod_four_aux1": {
   "owner": "fld_sum_quadratic_residues_one_mod_four",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (r : ℕ), r ∈ Finset.image (fun x => x ^ 2 % p) (Finset.Icc 1 (p - 1)) ↔ (1 ≤ r ∧ r < p) ∧ IsSquare ↑r",
-  "hash": "1088856530"
+  "hash": "1716371720"
  },
  "bld6_card_circular_no_adjacent_subsets_aux1": {
   "owner": "bld6_card_circular_no_adjacent_subsets",
   "type": "∀ (n : ℕ), 1 ≤ n → {t ∈ (Finset.range (n + 1)).powerset | ∀ i ∈ t, (i + 1) % (n + 1) ∉ t}.card = Nat.fib n + Nat.fib (n + 2)",
-  "hash": "3963425841"
+  "hash": "4048008524"
  },
  "bld6_rank_cube_sub_self_defect_aux1": {
   "owner": "bld6_rank_cube_sub_self_defect",
   "type": "∀ {K : Type u_1} [inst : Field K] {m : Type u_2} {n : Type u_3} [inst_1 : Fintype n] [DecidableEq n] (A : Matrix m n K), (-A).rank = A.rank",
-  "hash": "1435135910"
+  "hash": "28455219"
  },
  "gr_triangle_free_sum_choose_two_le_aux1": {
   "owner": "gr_triangle_free_sum_choose_two_le",
   "type": "∀ (n : ℕ), 2 * n.choose 2 + n = n ^ 2",
-  "hash": "3822626261"
+  "hash": "1428799373"
  },
  "gr_goodman_six_two_mono_triangles_aux1": {
   "owner": "gr_goodman_six_two_mono_triangles",
   "type": "∀ {V : Type u_1} [DecidableEq V] (G : SimpleGraph V) (s : Finset V), G.IsNClique 3 s → (∀ (t : Finset V), G.IsNClique 3 t → t = s) → Gᶜ.CliqueFree 3 → G.IsClique (↑s)ᶜ",
-  "hash": "3931328597"
+  "hash": "2570384269"
  },
  "gr_goodman_six_two_mono_triangles_aux2": {
   "owner": "gr_goodman_six_two_mono_triangles",
   "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], Fintype.card V = 6 → ¬G.CliqueFree 3 → (G.cliqueFinset 3).card + (Gᶜ.cliqueFinset 3).card ≤ 1 → False",
-  "hash": "3272112313"
+  "hash": "807782987"
  },
  "gr_triangle_count_lower_bound_aux1": {
   "owner": "gr_triangle_count_lower_bound",
   "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (u v : V), G.degree u + G.degree v ≤ Fintype.card V + (G.neighborFinset u ∩ G.neighborFinset v).card",
-  "hash": "1882056420"
+  "hash": "3057691995"
  },
  "gr_triangle_count_lower_bound_aux2": {
   "owner": "gr_triangle_count_lower_bound",
   "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], ∑ u, ∑ v ∈ G.neighborFinset u, (G.neighborFinset u ∩ G.neighborFinset v).card ≤ 6 * (G.cliqueFinset 3).card",
-  "hash": "2717897878"
+  "hash": "2921356512"
  },
  "gr_triangle_count_lower_bound_aux3": {
   "owner": "gr_triangle_count_lower_bound",
   "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card + 3 * (G.cliqueFinset 3).card",
-  "hash": "3363854970"
+  "hash": "4215768716"
  },
  "gr_five_no_mono_triangle_degree_two_aux1": {
   "owner": "gr_five_no_mono_triangle_degree_two",
   "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → Gᶜ.CliqueFree 3 → ∀ (v : V), G.degree v ≤ 2",
-  "hash": "4038433073"
+  "hash": "3832998466"
  },
  "p6_prop22_on_circles_aux1": {
   "owner": "p6_prop22_on_circles",
   "type": "∀ {K : Type u_1} [inst : Field K] [CharZero K] (p q r s : K), q ≠ 0 → q ^ 2 + s ^ 2 ≠ 0 → ((p * q + r * s) / (q ^ 2 + s ^ 2) - p / q) ^ 2 + (1 / (q ^ 2 + s ^ 2) - 1 / (2 * q ^ 2)) ^ 2 - (1 / (2 * q ^ 2)) ^ 2 = s ^ 2 * ((p * s - q * r) ^ 2 - 1) / (q ^ 2 * (q ^ 2 + s ^ 2) ^ 2)",
-  "hash": "1078733403"
+  "hash": "2582159131"
  },
  "p6_prop22_unique_aux1": {
   "owner": "p6_prop22_unique",
   "type": "∀ {K : Type u_1} [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a b c d u v x y : K), (x - a) ^ 2 + (y - b) ^ 2 = u ^ 2 → (x - c) ^ 2 + (y - d) ^ 2 = v ^ 2 → (a - c) ^ 2 + (b - d) ^ 2 = (u + v) ^ 2 → v * (x - a) + u * (x - c) = 0 ∧ v * (y - b) + u * (y - d) = 0",
-  "hash": "3969847444"
+  "hash": "1061936776"
  },
  "p6_cor32_step_aux1": {
   "owner": "p6_cor32_step",
@@ -1482,22 +1482,22 @@
  "gr_set_sum_card_inter_pairs_aux1": {
   "owner": "gr_set_sum_card_inter_pairs",
   "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (a : α), {t | a ∈ t}.card = 2 ^ (Fintype.card α - 1)",
-  "hash": "1940712919"
+  "hash": "2942017542"
  },
  "gr_set_sum_card_inter_pairs_aux2": {
   "owner": "gr_set_sum_card_inter_pairs",
   "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (s : Finset α), ∑ t, (s ∩ t).card = s.card * 2 ^ (Fintype.card α - 1)",
-  "hash": "3580937190"
+  "hash": "524808592"
  },
  "p6_lem35_aux1": {
   "owner": "p6_lem35",
   "type": "∀ {K : Type u_1} [inst : CommRing K] (p q r s a : K), (p * s - q * r) ^ 2 = 1 → ((p * q + r * s) * (s ^ 2 + (a * s + q) ^ 2) - (r * s + (a * r + p) * (a * s + q)) * (q ^ 2 + s ^ 2)) ^ 2 + (s ^ 2 + (a * s + q) ^ 2 - (q ^ 2 + s ^ 2)) ^ 2 = a ^ 2 * (q ^ 2 + s ^ 2) * (s ^ 2 + (a * s + q) ^ 2)",
-  "hash": "285051261"
+  "hash": "3332141772"
  },
  "p6_lem35_aux2": {
   "owner": "p6_lem35",
   "type": "∀ {K : Type u_1} [inst : Field K] (p q r s a : K), (p * s - q * r) ^ 2 = 1 → q ^ 2 + s ^ 2 ≠ 0 → s ^ 2 + (a * s + q) ^ 2 ≠ 0 → ((p * q + r * s) / (q ^ 2 + s ^ 2) - (r * s + (a * r + p) * (a * s + q)) / (s ^ 2 + (a * s + q) ^ 2)) ^ 2 + (1 / (q ^ 2 + s ^ 2) - 1 / (s ^ 2 + (a * s + q) ^ 2)) ^ 2 = a ^ 2 * (1 / (q ^ 2 + s ^ 2)) * (1 / (s ^ 2 + (a * s + q) ^ 2))",
-  "hash": "673285966"
+  "hash": "2114951433"
  },
  "p6_cor36_aux1": {
   "owner": "p6_cor36",
@@ -1507,22 +1507,22 @@
  "p6_cor36_aux2": {
   "owner": "p6_cor36",
   "type": "∀ (k : ℤ) (r t : ℝ), r ^ 2 + ↑k * r = 1 → Real.exp t = ↑k ^ 2 + 1 + ↑k * r → ∀ (n : ℤ), ↑(Mathlib2.p6_kfib k (2 * n + 1)) + r * ↑(Mathlib2.p6_kfib k (2 * n)) = Real.exp (↑n * t)",
-  "hash": "2045276695"
+  "hash": "2442788778"
  },
  "p6_cor36_aux3": {
   "owner": "p6_cor36",
   "type": "∀ (a b c d k s : ℝ), b ≠ 0 → d ≠ 0 → b ^ 2 - k * a * b - a ^ 2 = 1 → d ^ 2 - k * c * d - c ^ 2 = 1 → s ^ 2 - k * s = 1 → ((a / b - c / d) ^ 2 + (1 / b) ^ 2 + (1 / d) ^ 2) / (2 * (1 / b) * (1 / d)) = ((b + (s - k) * a) * (d - s * c) + (b - s * a) * (d + (s - k) * c)) / 2",
-  "hash": "3364675517"
+  "hash": "2579966373"
  },
  "lw_12997_aux1": {
   "owner": "lw_12997",
   "type": "∀ {K : Type u_1} [inst : CommRing K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a b c : K), 0 ≤ a → 0 ≤ b → 0 ≤ c → a ≤ b → a ≤ c → 0 ≤ a * (a - 2 * b + c) * (b * c + 1) * (c * a + 1) + b * (b - 2 * c + a) * (c * a + 1) * (a * b + 1) + c * (c - 2 * a + b) * (a * b + 1) * (b * c + 1)",
-  "hash": "2679215618"
+  "hash": "3491467236"
  },
  "lw_24088_aux1": {
   "owner": "lw_24088",
   "type": "∀ (p t : ℝ), 1 ≤ p → p + 1 ≤ t → (p + 1) * (t ^ 2 + p ^ 2 - 1 + 2 * p * t) ≤ 4 * p * t ^ 2",
-  "hash": "2001516161"
+  "hash": "714546709"
  },
  "lw_29257_aux1": {
   "owner": "lw_29257",
@@ -1532,42 +1532,42 @@
  "lw_29567_aux1": {
   "owner": "lw_29567",
   "type": "∀ {K : Type u_1} [inst : Field K] [CharZero K] (a b c d : K), b + d + 2 * c ≠ 0 → d + b + 2 * a ≠ 0 → (a ^ 2 - b * d) / (b + d + 2 * c) + (c ^ 2 - d * b) / (d + b + 2 * a) = (a + c - b - d) / 2 + (4 * (a + c) * (a - c) ^ 2 + (a + b + c + d) * (b - d) ^ 2) / (2 * (b + d + 2 * c) * (d + b + 2 * a))",
-  "hash": "4026625601"
+  "hash": "261698636"
  },
  "lw_32539_aux1": {
   "owner": "lw_32539",
   "type": "∀ (x : ℝ), 0 ≤ x → x / (x ^ 3 + 1) ≤ 3 / 5",
-  "hash": "1731698693"
+  "hash": "864213508"
  },
  "lw_32539_aux2": {
   "owner": "lw_32539",
   "type": "∀ (x : ℝ), 0 ≤ x → x ≤ 9 / 4 → x / (x ^ 3 + 1) ≤ (3 - x) / 4",
-  "hash": "797971832"
+  "hash": "438406371"
  },
  "lw_32539_aux3": {
   "owner": "lw_32539",
   "type": "∀ (x : ℝ), 9 / 4 ≤ x → x / (x ^ 3 + 1) ≤ 1 / 5",
-  "hash": "495798861"
+  "hash": "2737206269"
  },
  "lw_42735_aux1": {
   "owner": "lw_42735",
   "type": "∀ {K : Type u_1} [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a r : K), 0 < a → 0 < r → (3 * r ^ 2 - a ^ 2) / (2 * r ^ 3) ≤ 1 / a",
-  "hash": "4187346382"
+  "hash": "2196290718"
  },
  "lw_37015_aux1": {
   "owner": "lw_37015",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 3 * a * b * c ≤ a ^ 3 + b ^ 3 + c ^ 3",
-  "hash": "1200898994"
+  "hash": "2174512995"
  },
  "lw_37015_aux2": {
   "owner": "lw_37015",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 9 * (x * y * z) ^ 2 ≤ (x ^ 2 * y + y ^ 2 * z + z ^ 2 * x) * (x * y ^ 2 + y * z ^ 2 + z * x ^ 2)",
-  "hash": "567128603"
+  "hash": "2458024923"
  },
  "lw_37015_aux3": {
   "owner": "lw_37015",
   "type": "∀ (p s t : ℝ), 0 ≤ p → 3 * p ≤ s → t ^ 3 = p * (s ^ 2 - p ^ 2) → p + t ≤ s",
-  "hash": "1112549536"
+  "hash": "3822299655"
  },
  "lw_4668_aux1": {
   "owner": "lw_4668",
@@ -1582,27 +1582,27 @@
  "lw_43838_aux2": {
   "owner": "lw_43838",
   "type": "∀ (a b c : ℝ), 0 < a → a * b * c = 1 / 3 → 3 * a ^ 5 / (3 * a ^ 5 + 2 * b * c) = 9 * a ^ 6 / (9 * a ^ 6 + 2)",
-  "hash": "644804650"
+  "hash": "4095347145"
  },
  "lw_48192_aux1": {
   "owner": "lw_48192",
   "type": "∀ (a b c : ℝ), (a - b) ^ 2 * (b - c) ^ 2 * (c - a) ^ 2 = (a + b + c) ^ 2 * (a * b + b * c + c * a) ^ 2 - 4 * (a * b + b * c + c * a) ^ 3 - 4 * (a + b + c) ^ 3 * (a * b * c) - 27 * (a * b * c) ^ 2 + 18 * (a + b + c) * (a * b + b * c + c * a) * (a * b * c)",
-  "hash": "3105257385"
+  "hash": "3770490485"
  },
  "lw_47416_aux1": {
   "owner": "lw_47416",
   "type": "∀ (a b c : ℝ), 0 < a → 0 ≤ b → b ≤ a → 0 ≤ c → c ^ 2 = 2 * a ^ 2 - b ^ 2 → b ^ 2 / a + c ≥ a + b",
-  "hash": "2423044982"
+  "hash": "3989657100"
  },
  "lw_54674_aux1": {
   "owner": "lw_54674",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 9 * (a ^ 2 + b ^ 2 + c ^ 2) * (a * b * c) ≤ (a ^ 3 + b ^ 3 + c ^ 3 + 6 * (a * b * c)) * (a * b + b * c + c * a)",
-  "hash": "163772755"
+  "hash": "2830077458"
  },
  "lw_15028_aux1": {
   "owner": "lw_15028",
   "type": "∀ (x y z : ℝ), 0 ≤ y → 0 ≤ z → x ^ 3 = y * y * z → 3 * x ≤ 2 * y + z",
-  "hash": "2647983507"
+  "hash": "921217971"
  },
  "lw_55543_aux1": {
   "owner": "lw_55543",
@@ -1612,37 +1612,37 @@
  "lw_55543_aux2": {
   "owner": "lw_55543",
   "type": "∀ (s q : ℝ), 3 ≤ s → 3 ≤ q → 3 * s ≤ q ^ 2 → 0 ≤ 3 * q ^ 2 + s * q - q - 7 * s - 12",
-  "hash": "2081813415"
+  "hash": "445377707"
  },
  "lw_51373_aux1": {
   "owner": "lw_51373",
   "type": "∀ (u v w t : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → t ^ 3 ≤ u * v * w → 3 * t ≤ u + v + w",
-  "hash": "609685503"
+  "hash": "2799912328"
  },
  "lw_51373_aux2": {
   "owner": "lw_51373",
   "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 3 * ((x + y) * (y + z) * (z + x)) ≤ 4 * (x ^ 4 * z + y ^ 4 * x + z ^ 4 * y + x ^ 2 + y ^ 2 + z ^ 2)",
-  "hash": "2573243086"
+  "hash": "3341773564"
  },
  "lw_51373_aux3": {
   "owner": "lw_51373",
   "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → 3 / 4 ≤ x ^ 3 * z / ((y + z) * (z + x)) + y ^ 3 * x / ((z + x) * (x + y)) + z ^ 3 * y / ((x + y) * (y + z))",
-  "hash": "2714329809"
+  "hash": "2190293464"
  },
  "lw_56101_aux1": {
   "owner": "lw_56101",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * y * z) ≤ (x + y + z) ^ 3",
-  "hash": "3235548846"
+  "hash": "810529400"
  },
  "lw_56101_aux2": {
   "owner": "lw_56101",
   "type": "∀ (x y z u v w : ℝ), 0 < x → 0 < y → 0 < z → 0 ≤ u → 0 ≤ v → 0 ≤ w → u * v * w = 1 → 27 ≤ (x + y + z) ^ 2 * (u / x ^ 2 + v / y ^ 2 + w / z ^ 2)",
-  "hash": "118431458"
+  "hash": "4024165158"
  },
  "lw_909_aux1": {
   "owner": "lw_909",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → (a ^ 3 - 3 * a * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) * (b ^ 3 - 3 * b * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) * (c ^ 3 - 3 * c * (a + b + c) ^ 2 + 3 * (a + b + c) ^ 3) ≤ 9 * (a + b + c) ^ 9",
-  "hash": "1837400428"
+  "hash": "1059951539"
  },
  "lw_940_aux1": {
   "owner": "lw_940",
@@ -1652,27 +1652,27 @@
  "lw_20733_aux1": {
   "owner": "lw_20733",
   "type": "∀ (s t : ℝ), 0 < s → 0 ≤ t → √(s ^ 2 + t) ≤ s + t / (2 * s)",
-  "hash": "3349098225"
+  "hash": "3872850953"
  },
  "lw_20733_aux2": {
   "owner": "lw_20733",
   "type": "∀ (a b c : ℝ), 0 ≤ c → b ≤ a → c ≤ b → 0 ≤ 2 * (a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c - a * b * (a + b) - b * c * (b + c) - c * a * (c + a)) * (a + b) * (b + c) * (c + a) - (a * b * (a - b) ^ 2 * (b + c) * (c + a) + b * c * (b - c) ^ 2 * (c + a) * (a + b) + c * a * (c - a) ^ 2 * (a + b) * (b + c))",
-  "hash": "3217018820"
+  "hash": "3907585020"
  },
  "lw_20733_aux3": {
   "owner": "lw_20733",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ 2 * (a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c - a * b * (a + b) - b * c * (b + c) - c * a * (c + a)) * (a + b) * (b + c) * (c + a) - (a * b * (a - b) ^ 2 * (b + c) * (c + a) + b * c * (b - c) ^ 2 * (c + a) * (a + b) + c * a * (c - a) ^ 2 * (a + b) * (b + c))",
-  "hash": "1690881752"
+  "hash": "4203397440"
  },
  "lw_20733_aux4": {
   "owner": "lw_20733",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * (a + b + (a - b) ^ 2 / (2 * (a + b))) + b * c * (b + c + (b - c) ^ 2 / (2 * (b + c))) + c * a * (c + a + (c - a) ^ 2 / (2 * (c + a))) ≤ a ^ 3 + b ^ 3 + c ^ 3 + 3 * a * b * c",
-  "hash": "1048856068"
+  "hash": "3155308872"
  },
  "lw_11055_aux1": {
   "owner": "lw_11055",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → (x ^ 2 + y ^ 2 + z ^ 2 - x * y - y * z - z * x) ^ 2 ≤ (x ^ 2) ^ 2 + (y ^ 2) ^ 2 + (z ^ 2) ^ 2 - x ^ 2 * y ^ 2 - y ^ 2 * z ^ 2 - z ^ 2 * x ^ 2",
-  "hash": "4197721077"
+  "hash": "2574374257"
  },
  "lw_54762_aux1": {
   "owner": "lw_54762",
@@ -1712,12 +1712,12 @@
  "lw_11675_aux1": {
   "owner": "lw_11675",
   "type": "∀ (a b c : ℝ), 0 ≤ a → a ≤ b → a ≤ c → 0 ≤ (3 * (a + b + c) * a ^ 2 + (a + b + c) ^ 2 * b) * a * c * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2) + (3 * (a + b + c) * b ^ 2 + (a + b + c) ^ 2 * c) * a * b * (c ^ 2 + c * a + a ^ 2) * (a ^ 2 + a * b + b ^ 2) + (3 * (a + b + c) * c ^ 2 + (a + b + c) ^ 2 * a) * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) - 18 * (a * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2))",
-  "hash": "740623689"
+  "hash": "3973788044"
  },
  "lw_11675_aux2": {
   "owner": "lw_11675",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (3 * (a + b + c) * a ^ 2 + (a + b + c) ^ 2 * b) * a * c * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2) + (3 * (a + b + c) * b ^ 2 + (a + b + c) ^ 2 * c) * a * b * (c ^ 2 + c * a + a ^ 2) * (a ^ 2 + a * b + b ^ 2) + (3 * (a + b + c) * c ^ 2 + (a + b + c) ^ 2 * a) * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) - 18 * (a * b * c * (a ^ 2 + a * b + b ^ 2) * (b ^ 2 + b * c + c ^ 2) * (c ^ 2 + c * a + a ^ 2))",
-  "hash": "1207332919"
+  "hash": "602396075"
  },
  "lw_22697_aux1": {
   "owner": "lw_22697",
@@ -1727,52 +1727,52 @@
  "lw_22697_aux2": {
   "owner": "lw_22697",
   "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → x ^ 2 + y ^ 2 + z ^ 2 ≤ 2 * t ^ 2 → x + y + z ≤ 5 / 2 * t",
-  "hash": "1962773082"
+  "hash": "2588728819"
  },
  "lw_23175_aux1": {
   "owner": "lw_23175",
   "type": "∀ (q p : ℝ), 0 ≤ q → q ≤ 3 → 0 ≤ p → 9 * p ≤ q ^ 2 → 0 ≤ 39015 + 47304 * p + 50544 * p ^ 2 + 28764 * q - 133488 * q * p - 3006 * q ^ 2 - 1944 * q ^ 2 * p + 8460 * q ^ 3 - 81 * q ^ 4",
-  "hash": "4001033012"
+  "hash": "2055588118"
  },
  "lw_23175_aux2": {
   "owner": "lw_23175",
   "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → u ^ 2 + v ^ 2 + w ^ 2 ≤ 21 → ((36 - (u ^ 2 + v ^ 2 + w ^ 2)) ^ 2 - 4 * (u ^ 2 * v ^ 2 + v ^ 2 * w ^ 2 + w ^ 2 * u ^ 2)) ^ 2 ≤ 2304 * (u * v * w) ^ 2 → 6 ≤ u + v + w",
-  "hash": "734473187"
+  "hash": "2787601193"
  },
  "lw_148_aux1": {
   "owner": "lw_148",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (a + b + c) ^ 2 * (a * b + b * c + c * a) - 2 * (a * b + b * c + c * a) ^ 2 - 3 * (a + b + c) * a * b * c",
-  "hash": "2065508913"
+  "hash": "3968226316"
  },
  "lw_148_aux2": {
   "owner": "lw_148",
   "type": "∀ (a b c : ℝ), a + b ≠ 0 → b + c ≠ 0 → c + a ≠ 0 → a + b + c ≠ 0 → a * b + b * c + c * a ≠ 0 → a * (a - b) / (a + b) + b * (b - c) / (b + c) + c * (c - a) / (c + a) + 3 * a * b * c / (a * b + b * c + c * a) - (a ^ 2 + b ^ 2 + c ^ 2) / (a + b + c) = a * b * c * ((a + b + c) ^ 2 * (a * b + b * c + c * a) - 2 * (a * b + b * c + c * a) ^ 2 - 3 * (a + b + c) * a * b * c) / ((a + b + c) * (a * b + b * c + c * a) * (a + b) * (b + c) * (c + a))",
-  "hash": "1369331722"
+  "hash": "2992432826"
  },
  "lw_27428_aux1": {
   "owner": "lw_27428",
   "type": "∀ (x y s t k : ℝ), k ≠ 0 → s ^ 2 - x ^ 2 = 1 → t ^ 2 - y ^ 2 = k ^ 2 → (s + x) * (t + y) = k → k * x + y = 0",
-  "hash": "4127620629"
+  "hash": "147331961"
  },
  "lw_2629_aux1": {
   "owner": "lw_2629",
   "type": "∀ (a b t p : ℝ), 0 ≤ a → 0 ≤ b → 4 * p ≤ a ^ 2 → 4 * p ≤ t ^ 2 → t ^ 2 - 3 * p ≤ b ^ 2 → t ≤ a / 2 + b",
-  "hash": "3325317907"
+  "hash": "2424038955"
  },
  "lw_28724_aux1": {
   "owner": "lw_28724",
   "type": "∀ (x : ℝ), 0 < x → 3 * √3 - 3 * √3 * x ^ 2 ≤ 2 / x",
-  "hash": "4214026720"
+  "hash": "862888737"
  },
  "lw_28724_aux2": {
   "owner": "lw_28724",
   "type": "∀ (a x : ℝ), 0 ≤ a → 0 ≤ x → a + 3 * x ≤ √10 * √(a ^ 2 + x ^ 2)",
-  "hash": "1198452780"
+  "hash": "1361075428"
  },
  "lw_37157_aux1": {
   "owner": "lw_37157",
   "type": "∀ (x u t : ℝ), 0 ≤ x → 0 < u → 4 * x * (t - u) ≤ x / u * t ^ 2",
-  "hash": "2132872181"
+  "hash": "1545424866"
  },
  "lw_37157_aux2": {
   "owner": "lw_37157",
@@ -1782,7 +1782,7 @@
  "lw_41705_aux1": {
   "owner": "lw_41705",
   "type": "∀ (x y z : ℝ), 3 * (x * y + z * x + y * z) ≤ (x + y + z) ^ 2",
-  "hash": "1205986543"
+  "hash": "3075154119"
  },
  "lw_4151_aux1": {
   "owner": "lw_4151",
@@ -1802,27 +1802,27 @@
  "lw_4151_aux4": {
   "owner": "lw_4151",
   "type": "∀ (a : ℝ), 0 ≤ a → 4 * a ^ 3 - 1 ≤ 3 * a ^ 4",
-  "hash": "1951972352"
+  "hash": "3974869691"
  },
  "lw_40072_aux1": {
   "owner": "lw_40072",
   "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ (x ^ 2 - (x + y) * (x + y + z)) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + x ^ 2) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y) ^ 2) + ((x + y) ^ 2 - (x + y + z) * x) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y) ^ 2) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + (x + y + z) ^ 2) + ((x + y + z) ^ 2 - x * (x + y)) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + (x + y + z) ^ 2) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + x ^ 2)",
-  "hash": "837029167"
+  "hash": "3368074381"
  },
  "lw_40072_aux2": {
   "owner": "lw_40072",
   "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → 0 ≤ (x ^ 2 - (x + y + z) * (x + y)) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + x ^ 2) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y + z) ^ 2) + ((x + y + z) ^ 2 - (x + y) * x) * ((t + 1) * (x + y) ^ 2 + (t + 1) ^ 2 * x ^ 2 + (x + y + z) ^ 2) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + (x + y) ^ 2) + ((x + y) ^ 2 - x * (x + y + z)) * ((t + 1) * x ^ 2 + (t + 1) ^ 2 * (x + y + z) ^ 2 + (x + y) ^ 2) * ((t + 1) * (x + y + z) ^ 2 + (t + 1) ^ 2 * (x + y) ^ 2 + x ^ 2)",
-  "hash": "1255815952"
+  "hash": "599156273"
  },
  "lw_40072_aux3": {
   "owner": "lw_40072",
   "type": "∀ (a b c p : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 1 ≤ p → 0 ≤ (a ^ 2 - b * c) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) + (b ^ 2 - c * a) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) + (c ^ 2 - a * b) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2)",
-  "hash": "4068966262"
+  "hash": "4162942544"
  },
  "lw_40072_aux4": {
   "owner": "lw_40072",
   "type": "∀ (a b c p : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 < p → 0 ≤ (a ^ 2 - b * c) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) + (b ^ 2 - c * a) * (p * c ^ 2 + p ^ 2 * a ^ 2 + b ^ 2) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) + (c ^ 2 - a * b) * (p * a ^ 2 + p ^ 2 * b ^ 2 + c ^ 2) * (p * b ^ 2 + p ^ 2 * c ^ 2 + a ^ 2)",
-  "hash": "1120198931"
+  "hash": "1681114576"
  },
  "lw_43833_aux1": {
   "owner": "lw_43833",
@@ -1832,17 +1832,17 @@
  "lw_46837_aux1": {
   "owner": "lw_46837",
   "type": "∀ (x y : ℝ), (x + y) ^ 2 + 4 * x * y ≤ 16 → (2 + ((x + y) / 2) ^ 2) ^ 2 ≤ (2 + x ^ 2) * (2 + y ^ 2)",
-  "hash": "2360144081"
+  "hash": "2042653651"
  },
  "lw_46837_aux2": {
   "owner": "lw_46837",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a + b + c + d = 4 → a ≤ b → a ≤ c → b ≤ d → c ≤ d → 81 ≤ (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2)",
-  "hash": "2040351093"
+  "hash": "2275902018"
  },
  "lw_46837_aux3": {
   "owner": "lw_46837",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → a + b + c + d = 4 → a ≤ b → a ≤ c → a ≤ d → 81 ≤ (2 + a ^ 2) * (2 + b ^ 2) * (2 + c ^ 2) * (2 + d ^ 2)",
-  "hash": "2025841262"
+  "hash": "2465512641"
  },
  "lw_51853_aux1": {
   "owner": "lw_51853",
@@ -1857,72 +1857,72 @@
  "lw_5456_aux1": {
   "owner": "lw_5456_disproof",
   "type": "∀ (x : ℝ), 2 * ((x ^ 2) ^ 2 + x ^ 2 + 1) ≥ x * (x ^ 2 + x + 1) + x",
-  "hash": "90469892"
+  "hash": "1388303894"
  },
  "lw_5456_aux2": {
   "owner": "lw_5456_disproof",
   "type": "∀ (x : ℝ), 2 * (x ^ 2 / Real.log (x ^ 2)) = x * (x / Real.log x)",
-  "hash": "724686199"
+  "hash": "3449548679"
  },
  "lw_5456_aux3": {
   "owner": "lw_5456_disproof",
   "type": "∀ (c x : ℝ), 2 * ((x ^ 2) ^ 2 + x ^ 2 + 1 - c * (x ^ 2 / Real.log (x ^ 2))) ≥ x * (x ^ 2 + x + 1 - c * (x / Real.log x)) + x",
-  "hash": "218919633"
+  "hash": "1725772272"
  },
  "lw_55942_aux1": {
   "owner": "lw_55942",
   "type": "∀ (x y z : ℝ), 0 ≤ z → z ≤ y → y ≤ x → 2 * (x * y + y * z + z * x) * ((x + y) * (y + z) * (z + x)) ≤ (x ^ 2 + y ^ 2 + z ^ 2) * ((x + y) * (y + z) * (z + x)) + 8 * x * y * z * (x * y + y * z + z * x)",
-  "hash": "1544493144"
+  "hash": "3023718816"
  },
  "lw_55942_aux2": {
   "owner": "lw_55942",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 2 * (x * y + y * z + z * x) * ((x + y) * (y + z) * (z + x)) ≤ (x ^ 2 + y ^ 2 + z ^ 2) * ((x + y) * (y + z) * (z + x)) + 8 * x * y * z * (x * y + y * z + z * x)",
-  "hash": "1823102416"
+  "hash": "3883373540"
  },
  "lw_56957_aux1": {
   "owner": "lw_56957",
   "type": "∀ (x y : ℝ), -2 < x * y → x * y ≤ 2 → 1 / (x ^ 2 + 2) + 1 / (y ^ 2 + 2) ≤ 2 / (x * y + 2)",
-  "hash": "4105012905"
+  "hash": "1762689684"
  },
  "lw_56957_aux2": {
   "owner": "lw_56957",
   "type": "∀ x ≤ 2, 1 / (x ^ 2 + 2) + 2 / (4 - x) ≤ 1 + 1 / 6 * (x - 1) ^ 2",
-  "hash": "3878860939"
+  "hash": "2270447843"
  },
  "lw_11359_aux1": {
   "owner": "lw_11359",
   "type": "∀ (p q : ℝ), 3 ≤ p → 3 ≤ q → 8 * (p ^ 2 + q ^ 2 - 2 * p - 2 * q + 2) ≤ (p * q - 1) ^ 2",
-  "hash": "11609008"
+  "hash": "3726723097"
  },
  "lw_11359_aux2": {
   "owner": "lw_11359",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → 8 * ((a ^ 2 + 1) * (b ^ 2 + 1) * (c ^ 2 + 1)) ≤ ((a + b) * (b + c) * (c + a)) ^ 2",
-  "hash": "1932281042"
+  "hash": "181551232"
  },
  "lw_11359_aux3": {
   "owner": "lw_11359",
   "type": "∀ (x y z t : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ t → t ^ 3 ≤ x * y * z → 3 * t ≤ x + y + z",
-  "hash": "2622247805"
+  "hash": "1973045825"
  },
  "lw_11443_aux1": {
   "owner": "lw_11443",
   "type": "∀ (x y z : ℝ), 0 ≤ x → x ≤ y → x ≤ z → 0 ≤ (x * y + y * z + z * x) * (x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) - x * y * z * (x + y + z) * ((x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) + (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) + (z * x + 2 * y ^ 2) * (x * y + 2 * z ^ 2))",
-  "hash": "3187975370"
+  "hash": "3513013288"
  },
  "lw_11443_aux2": {
   "owner": "lw_11443",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x * y + y * z + z * x) * (x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) - x * y * z * (x + y + z) * ((x * y + 2 * z ^ 2) * (y * z + 2 * x ^ 2) + (y * z + 2 * x ^ 2) * (z * x + 2 * y ^ 2) + (z * x + 2 * y ^ 2) * (x * y + 2 * z ^ 2))",
-  "hash": "3431606977"
+  "hash": "1934673986"
  },
  "lw_10713_aux1": {
   "owner": "lw_10713",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 48 * (x ^ 2 + y ^ 2 + z ^ 2) * (x * y * z) ^ 2 ≤ ((x + 2 * y + z) * (x ^ 2 * z + 2 * x * y ^ 2 + y * z ^ 2)) ^ 2",
-  "hash": "2986981386"
+  "hash": "1920841401"
  },
  "lw_2456_aux1": {
   "owner": "lw_2456",
   "type": "∀ t ≤ 3, 1 / (t ^ 2 - t + 3) ≤ (4 - t) / 9",
-  "hash": "2530903839"
+  "hash": "1389178767"
  },
  "lw_17592_aux1": {
   "owner": "lw_17592",
@@ -1937,67 +1937,67 @@
  "lw_21888_aux2": {
   "owner": "lw_21888",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ≤ 1 → y ≤ 1 → z ≤ 1 → 3 * (x * y * z) ≤ 4 * (1 - (x + y + z) + (x * y + y * z + z * x)) * (x ^ 3 + y ^ 3 + z ^ 3)",
-  "hash": "1517506243"
+  "hash": "2217386467"
  },
  "lw_31420_aux1": {
   "owner": "lw_31420",
   "type": "∀ (x s t : ℝ), 0 ≤ x → 0 < s → 0 ≤ t → x / (s + t * x) ≤ (t * s + 9 * x) / (s * (t + 3) ^ 2)",
-  "hash": "1648794882"
+  "hash": "1575615482"
  },
  "lw_29729_aux1": {
   "owner": "lw_29729",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 3 * x * y * z ≤ x ^ 2 * z + x * y ^ 2 + y * z ^ 2",
-  "hash": "1971138875"
+  "hash": "1611765350"
  },
  "lw_45217_aux1": {
   "owner": "lw_45217",
   "type": "∀ (x y : ℝ), 0 < x → 0 < y → x / (y ^ 3 - y ^ 2 * x + x ^ 3) ≤ 1 / (x * y)",
-  "hash": "2490854205"
+  "hash": "2940344876"
  },
  "lw_4909_aux1": {
   "owner": "lw_4909",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → (x + y + z) ^ 3 ≤ 16 * (x ^ 3 + y ^ 3 + z ^ 3)",
-  "hash": "2692446911"
+  "hash": "794930570"
  },
  "lw_37717_aux1": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)) + (a + b) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)) + (a + b + c) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * (a ^ 2 + a * (a + b)) + (a + b + c + d) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a)) * (a * (a + b + c) + (a + b) * (a + b + c + d)) - (a + (a + b) + (a + b + c) + (a + b + c + d)) * (((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b)))",
-  "hash": "484466508"
+  "hash": "2998685084"
  },
  "lw_37717_aux2": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)) + (a + b) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)) + (a + b + c + d) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * (a ^ 2 + a * (a + b)) + (a + b + c) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a)) * (a * (a + b + c + d) + (a + b) * (a + b + c)) - (a + (a + b) + (a + b + c + d) + (a + b + c)) * (((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b)))",
-  "hash": "2513293907"
+  "hash": "3712512954"
  },
  "lw_37717_aux3": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)) + (a + b) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * (a ^ 2 + a * (a + b + c)) + (a + b + c + d) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a)) * (a * (a + b) + (a + b + c) * (a + b + c + d)) - (a + (a + b + c) + (a + b) + (a + b + c + d)) * (((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * a) * (a ^ 2 + a * (a + b + c)))",
-  "hash": "3115418999"
+  "hash": "178132286"
  },
  "lw_37717_aux4": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c + d) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a)) * (a * (a + b) + (a + b + c + d) * (a + b + c)) - (a + (a + b + c + d) + (a + b) + (a + b + c)) * (((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * a) * (a ^ 2 + a * (a + b + c + d)))",
-  "hash": "3664258383"
+  "hash": "3934330280"
  },
  "lw_37717_aux5": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)) + (a + b + c + d) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * (a ^ 2 + a * (a + b + c)) + (a + b) * ((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a)) * (a * (a + b + c + d) + (a + b + c) * (a + b)) - (a + (a + b + c) + (a + b + c + d) + (a + b)) * (((a + b + c) ^ 2 + (a + b + c) * (a + b + c + d)) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c)))",
-  "hash": "2964499979"
+  "hash": "2970963689"
  },
  "lw_37717_aux6": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c + d) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)) + (a + b + c) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * (a ^ 2 + a * (a + b + c + d)) + (a + b) * ((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a)) * (a * (a + b + c) + (a + b + c + d) * (a + b)) - (a + (a + b + c + d) + (a + b + c) + (a + b)) * (((a + b + c + d) ^ 2 + (a + b + c + d) * (a + b + c)) * ((a + b + c) ^ 2 + (a + b + c) * (a + b)) * ((a + b) ^ 2 + (a + b) * a) * (a ^ 2 + a * (a + b + c + d)))",
-  "hash": "1621483502"
+  "hash": "1136840455"
  },
  "lw_37717_aux7": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → a ≤ b → a ≤ c → a ≤ d → 0 ≤ (a * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + b * (b ^ 2 + b * c) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + c * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (a ^ 2 + a * b) + d * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a)) * (a * c + b * d) - (a + b + c + d) * ((b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b))",
-  "hash": "313035495"
+  "hash": "2015887640"
  },
  "lw_37717_aux8": {
   "owner": "lw_37717",
   "type": "∀ (a b c d : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ d → 0 ≤ (a * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + b * (b ^ 2 + b * c) * (d ^ 2 + d * a) * (a ^ 2 + a * b) + c * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (a ^ 2 + a * b) + d * (b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a)) * (a * c + b * d) - (a + b + c + d) * ((b ^ 2 + b * c) * (c ^ 2 + c * d) * (d ^ 2 + d * a) * (a ^ 2 + a * b))",
-  "hash": "286206777"
+  "hash": "88775518"
  },
  "lw_50334_aux1": {
   "owner": "lw_50334",
@@ -2007,32 +2007,32 @@
  "lw_50334_aux2": {
   "owner": "lw_50334",
   "type": "∀ (n : ℕ), ↑n * (1 / 2) ^ n < 1",
-  "hash": "408969440"
+  "hash": "292575235"
  },
  "lw_53416_aux1": {
   "owner": "lw_53416",
   "type": "∀ (a b : ℝ), (a + b) ^ 2 ≤ (a ^ 2 + 1) * (b ^ 2 + 1)",
-  "hash": "3361193187"
+  "hash": "950899485"
  },
  "lw_54636_aux1": {
   "owner": "lw_54636",
   "type": "∀ (a s : ℝ), 0 ≤ a → 3 ≤ s → 0 < a ^ 2 + s - a → a / (a ^ 2 + s - a) ≤ (6 * a + s) / (9 * s)",
-  "hash": "2399981770"
+  "hash": "2120433518"
  },
  "lw_56038_aux1": {
   "owner": "lw_56038",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2 = 3 → 3 * x * y * z ≤ x + y + z",
-  "hash": "3008231013"
+  "hash": "2312367530"
  },
  "lw_8882_aux1": {
   "owner": "lw_8882",
   "type": "∀ (q r : ℝ), 0 ≤ q → q ≤ 12 → 0 ≤ r → r ≤ 8 → 24 * q ≤ 216 + 9 * r → 0 ≤ 280 - 10 * q - 2 * q ^ 2 + 24 * r - r ^ 2",
-  "hash": "3490591395"
+  "hash": "1568047066"
  },
  "lw_9555_aux1": {
   "owner": "lw_9555",
   "type": "∀ (x : ℝ), 0 ≤ x → x / (1 + x ^ 2) ≤ (36 * x + 3) / 50",
-  "hash": "3284201524"
+  "hash": "4237829095"
  },
  "lw_9555_aux2": {
   "owner": "lw_9555",
@@ -2047,22 +2047,22 @@
  "lw_16565_aux1": {
   "owner": "lw_16565",
   "type": "∀ (x : ℝ), 0 < x → x ≤ 1 → (1 + x ^ 2) / 2 ≤ x ^ x",
-  "hash": "4235674922"
+  "hash": "474348401"
  },
  "lw_16565_aux2": {
   "owner": "lw_16565",
   "type": "∀ (x : ℝ), 1 ≤ x → x + (x - 1) ^ 2 ≤ x ^ x",
-  "hash": "1352732574"
+  "hash": "785700263"
  },
  "lw_19170_aux1": {
   "owner": "lw_19170",
   "type": "∀ (x r : ℝ), r ^ 2 = 2 → ((2 + r) * (x ^ 2 + 1) * (x + 1) - 2 * (x + 1) - x * (x ^ 2 + 1)) ^ 2 - 8 * x * (x ^ 2 + 1) * (x + 1) = (x + 1 - r) ^ 2 * ((3 + 2 * r) * x ^ 4 + (10 + 8 * r) * x ^ 3 + (11 + 8 * r) * x ^ 2 + (8 + 6 * r) * x + (6 + 4 * r))",
-  "hash": "3480340059"
+  "hash": "1534760197"
  },
  "lw_223_aux1": {
   "owner": "lw_223",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → (a + b + c) ^ 2 ≤ (a * b + b * c + a * c) * (a / b + b / c + c / a)",
-  "hash": "1207374288"
+  "hash": "3494110397"
  },
  "lw_28269_aux1": {
   "owner": "lw_28269_disproof",
@@ -2077,47 +2077,47 @@
  "lw_28269_aux3": {
   "owner": "lw_28269_disproof",
   "type": "∀ (x : ℝ), Real.cos (2 * Real.arctan x) = (1 - x ^ 2) / (1 + x ^ 2)",
-  "hash": "3028520411"
+  "hash": "1246008563"
  },
  "lw_28964_aux1": {
   "owner": "lw_28964",
   "type": "∀ (t : ℝ), 0 < t → (11 + 5 * √5) / 2 ≤ t ^ 2 + 4 * t + 5 + 2 / t",
-  "hash": "791575524"
+  "hash": "2112762732"
  },
  "lw_28964_aux2": {
   "owner": "lw_28964",
   "type": "∀ (a b : ℝ), 0 < a → 0 < b → a ≠ b → (11 + 5 * √5) / 2 ≤ (a ^ 2 + b ^ 2) * (1 / (a - b) ^ 2 + 1 / a ^ 2 + 1 / b ^ 2)",
-  "hash": "1118397594"
+  "hash": "1009125138"
  },
  "lw_28964_aux3": {
   "owner": "lw_28964",
   "type": "∀ (x y z : ℝ), 0 ≤ z → z < x → z < y → x ≠ y → (11 + 5 * √5) / 2 ≤ (x ^ 2 + y ^ 2 + z ^ 2) * (1 / (x - y) ^ 2 + 1 / (y - z) ^ 2 + 1 / (z - x) ^ 2)",
-  "hash": "1199799039"
+  "hash": "4170289150"
  },
  "lw_29803_aux1": {
   "owner": "lw_29803",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * (3 * x + 2 * y + z) + 3 * (x + y) ^ 2) * ((x + y) * (3 * x + 2 * y + z) + 3 * (x + y + z) ^ 2) * ((x + y + z) * (3 * x + 2 * y + z) + 3 * x ^ 2) ≤ 13 * (3 * x + 2 * y + z) ^ 6",
-  "hash": "2227241760"
+  "hash": "105571463"
  },
  "lw_29803_aux2": {
   "owner": "lw_29803",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 27 * (x * (3 * x + 2 * y + z) + 3 * (x + y + z) ^ 2) * ((x + y + z) * (3 * x + 2 * y + z) + 3 * (x + y) ^ 2) * ((x + y) * (3 * x + 2 * y + z) + 3 * x ^ 2) ≤ 13 * (3 * x + 2 * y + z) ^ 6",
-  "hash": "4137351732"
+  "hash": "320529991"
  },
  "lw_29803_aux3": {
   "owner": "lw_29803",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 27 * (a * (a + b + c) + 3 * b ^ 2) * (b * (a + b + c) + 3 * c ^ 2) * (c * (a + b + c) + 3 * a ^ 2) ≤ 13 * (a + b + c) ^ 6",
-  "hash": "2116300039"
+  "hash": "2765144955"
  },
  "lw_36675_aux1": {
   "owner": "lw_36675",
   "type": "∀ (a b : ℝ), 0 < a → 0 < b → (a + b) / 3 ≤ (a ^ 3 + b ^ 3) / (a ^ 2 + a * b + b ^ 2)",
-  "hash": "2752341992"
+  "hash": "3977902264"
  },
  "lw_36675_aux2": {
   "owner": "lw_36675",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 3 * (x * y * z) ≤ x ^ 3 + y ^ 3 + z ^ 3",
-  "hash": "1310142485"
+  "hash": "2999338722"
  },
  "lw_41804_aux1": {
   "owner": "lw_41804",
@@ -2127,27 +2127,27 @@
  "lw_41804_aux2": {
   "owner": "lw_41804",
   "type": "∀ (s q : ℝ), 3 ≤ s → 3 ≤ q → 4 * s * q ≤ s ^ 3 + 9 → 0 ≤ s ^ 2 * q + 3 * s * q - 4 * q ^ 2 - 5 * s - 3",
-  "hash": "196173594"
+  "hash": "1128390901"
  },
  "lw_41804_aux3": {
   "owner": "lw_41804",
   "type": "∀ (a b c : ℝ), a + b ≠ 0 → b + c ≠ 0 → a + c ≠ 0 → (a ^ 2 + b ^ 2) / (a + b) + (b ^ 2 + c ^ 2) / (b + c) + (a ^ 2 + c ^ 2) / (a + c) = 2 * (a + b + c) - 2 * ((a * b + b * c + a * c) ^ 2 + a * b * c * (a + b + c)) / ((a + b) * (b + c) * (a + c))",
-  "hash": "976339986"
+  "hash": "3586451360"
  },
  "lw_36281_aux1": {
   "owner": "lw_36281",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (z + x + y + (z + x) + z) * ((z + x + y) * (z + x) + (z + x) * z + z * (z + x + y)) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) - ((z + x + y + (z + x) + z) * ((z + x + y) * (z + x) + (z + x) * z + z * (z + x + y)) - 3 * (z + x + y) * (z + x) * z) * ((z + x + y) ^ 2 * (z + x) * z * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) + (z + x) ^ 2 * z * (z + x + y) * (z ^ 4 + (z + x + y) ^ 2 * (z + x) ^ 2) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) + z ^ 2 * (z + x + y) * (z + x) * ((z + x + y) ^ 4 + (z + x) ^ 2 * z ^ 2) * ((z + x) ^ 4 + z ^ 2 * (z + x + y) ^ 2))",
-  "hash": "2972409061"
+  "hash": "3662705397"
  },
  "lw_36281_aux2": {
   "owner": "lw_36281",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + y + z) * (x * y + y * z + z * x) * (x ^ 4 + y ^ 2 * z ^ 2) * (y ^ 4 + z ^ 2 * x ^ 2) * (z ^ 4 + x ^ 2 * y ^ 2) - ((x + y + z) * (x * y + y * z + z * x) - 3 * x * y * z) * (x ^ 2 * y * z * (y ^ 4 + z ^ 2 * x ^ 2) * (z ^ 4 + x ^ 2 * y ^ 2) + y ^ 2 * z * x * (z ^ 4 + x ^ 2 * y ^ 2) * (x ^ 4 + y ^ 2 * z ^ 2) + z ^ 2 * x * y * (x ^ 4 + y ^ 2 * z ^ 2) * (y ^ 4 + z ^ 2 * x ^ 2))",
-  "hash": "2488437863"
+  "hash": "284847575"
  },
  "lw_36281_aux3": {
   "owner": "lw_36281",
   "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → ((y ^ 2 + z ^ 2) / (y * z) + (z ^ 2 + x ^ 2) / (z * x) + (x ^ 2 + y ^ 2) / (x * y)) * (x ^ 2 * y * z / (x ^ 4 + y ^ 2 * z ^ 2) + y ^ 2 * z * x / (y ^ 4 + z ^ 2 * x ^ 2) + z ^ 2 * x * y / (z ^ 4 + x ^ 2 * y ^ 2)) ≤ (x + y + z) * (1 / x + 1 / y + 1 / z)",
-  "hash": "3903822965"
+  "hash": "1540674786"
  },
  "lw_36281_aux4": {
   "owner": "lw_36281",
@@ -2157,7 +2157,7 @@
  "lw_36281_aux5": {
   "owner": "lw_36281",
   "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → √((x ^ 2 * y ^ 2 + x ^ 2 * z ^ 2) / (x ^ 4 + y ^ 2 * z ^ 2)) + √((y ^ 2 * z ^ 2 + y ^ 2 * x ^ 2) / (y ^ 4 + z ^ 2 * x ^ 2)) + √((z ^ 2 * x ^ 2 + z ^ 2 * y ^ 2) / (z ^ 4 + x ^ 2 * y ^ 2)) ≤ √((x + y + z) * (1 / x + 1 / y + 1 / z))",
-  "hash": "1020275035"
+  "hash": "2555487490"
  },
  "lw_44804_aux1": {
   "owner": "lw_44804",
@@ -2297,27 +2297,27 @@
  "lw_48244_aux1": {
   "owner": "lw_48244",
   "type": "∀ (a b c : ℝ), 0 ≤ c → c ≤ 3 / 4 → 0 ≤ 1 + a ^ 2 + b ^ 2 + c ^ 2 + 4 * a * b * c - (a + b + c + a * b + b * c + c * a)",
-  "hash": "614922479"
+  "hash": "3944921702"
  },
  "lw_48244_aux2": {
   "owner": "lw_48244",
   "type": "∀ (a b c : ℝ), 1 / 2 ≤ a → 1 / 2 ≤ b → 1 / 2 ≤ c → 0 ≤ 1 + a ^ 2 + b ^ 2 + c ^ 2 + 4 * a * b * c - (a + b + c + a * b + b * c + c * a)",
-  "hash": "2898619237"
+  "hash": "3722397454"
  },
  "lw_50221_aux1": {
   "owner": "lw_50221",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + z) ^ 5 * (x + y + 2 * z) ^ 2 + (x + y + z) ^ 5 * (x + z) ^ 2 + (x + y + 2 * z) ^ 5 * (x + y + z) ^ 2 - (x + z) ^ 3 * (x + y + z) ^ 2 * (x + y + 2 * z) * (x + z + (x + y + z) - (x + y + 2 * z)) - (x + y + 2 * z) ^ 3 * (x + z) ^ 2 * (x + y + z) * (x + y + 2 * z + (x + z) - (x + y + z)) - (x + y + z) ^ 3 * (x + y + 2 * z) ^ 2 * (x + z) * (x + y + z + (x + y + 2 * z) - (x + z))",
-  "hash": "3653730383"
+  "hash": "742173869"
  },
  "lw_50221_aux2": {
   "owner": "lw_50221",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ (x + z) ^ 5 * (x + y + z) ^ 2 + (x + y + 2 * z) ^ 5 * (x + z) ^ 2 + (x + y + z) ^ 5 * (x + y + 2 * z) ^ 2 - (x + z) ^ 3 * (x + y + 2 * z) ^ 2 * (x + y + z) * (x + z + (x + y + 2 * z) - (x + y + z)) - (x + y + z) ^ 3 * (x + z) ^ 2 * (x + y + 2 * z) * (x + y + z + (x + z) - (x + y + 2 * z)) - (x + y + 2 * z) ^ 3 * (x + y + z) ^ 2 * (x + z) * (x + y + 2 * z + (x + y + z) - (x + z))",
-  "hash": "1172000193"
+  "hash": "1924259061"
  },
  "lw_50221_aux3": {
   "owner": "lw_50221",
   "type": "∀ (a b c : ℝ), 0 ≤ a + b - c → 0 ≤ b + c - a → 0 ≤ a + c - b → 0 ≤ a ^ 5 * c ^ 2 + b ^ 5 * a ^ 2 + c ^ 5 * b ^ 2 - a ^ 3 * b ^ 2 * c * (a + b - c) - c ^ 3 * a ^ 2 * b * (c + a - b) - b ^ 3 * c ^ 2 * a * (b + c - a)",
-  "hash": "3378473717"
+  "hash": "3781393111"
  },
  "lw_53529_aux1": {
   "owner": "lw_53529",
@@ -2337,22 +2337,22 @@
  "lw_965_aux1": {
   "owner": "lw_965",
   "type": "∀ (x : ℝ), 0 < x → 9 * x ≤ 4 * (x + 1 / (x + 1)) ^ 2",
-  "hash": "238392851"
+  "hash": "394785109"
  },
  "lw_6289_aux1": {
   "owner": "lw_6289",
   "type": "∀ (a b : ℝ), a * b / (a + b) ^ 2 ≤ 1 / 4",
-  "hash": "2156135890"
+  "hash": "2642940305"
  },
  "lw_6289_aux2": {
   "owner": "lw_6289",
   "type": "∀ (a b c : ℝ), a + b = 0 → a * b / (a + b) ^ 2 + b * c / (b + c) ^ 2 + c * a / (c + a) ^ 2 ≤ 1 / 4",
-  "hash": "3939367789"
+  "hash": "3826957580"
  },
  "lw_10479_aux1": {
   "owner": "lw_10479",
   "type": "∀ (a b : ℝ), 2 * a * b / (a ^ 2 + b ^ 2) ≤ 1",
-  "hash": "907973631"
+  "hash": "582946804"
  },
  "lw_12165_aux1": {
   "owner": "lw_12165",
@@ -2367,17 +2367,17 @@
  "lw_56592_aux1": {
   "owner": "lw_56592",
   "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → 3 * ((w + u + v) * (w + v) * w) ^ 4 * ((w + u + v) ^ 2 + (w + v) ^ 2 + w ^ 2) ^ 4 ≤ ((w + u + v) * (w + v) ^ 3 + (w + v) * w ^ 3 + w * (w + u + v) ^ 3) ^ 5",
-  "hash": "491489765"
+  "hash": "2295680568"
  },
  "lw_56592_aux2": {
   "owner": "lw_56592",
   "type": "∀ (u v w : ℝ), 0 ≤ u → 0 ≤ v → 0 ≤ w → 3 * ((w + v) * (w + u + v) * w) ^ 4 * ((w + v) ^ 2 + (w + u + v) ^ 2 + w ^ 2) ^ 4 ≤ ((w + v) * (w + u + v) ^ 3 + (w + u + v) * w ^ 3 + w * (w + v) ^ 3) ^ 5",
-  "hash": "2032905501"
+  "hash": "3894865052"
  },
  "lw_122_aux1": {
   "owner": "lw_122",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → 3 * (a + b + c) / 4 ≤ a ^ 2 / (a + b) + b ^ 2 / (b + c) + c ^ 2 / (c + a) + 2 * (a + b + c) * a * b * c / (a + b) / (a + c) / (b + c)",
-  "hash": "1799301242"
+  "hash": "1038079980"
  },
  "lw_16076_aux1": {
   "owner": "lw_16076",
@@ -2387,17 +2387,17 @@
  "lw_16076_aux2": {
   "owner": "lw_16076",
   "type": "∀ (x : ℝ), 0 ≤ x → 1 / (2 * (x + 1)) ≤ 1 / (1 + √x) ^ 2",
-  "hash": "451182307"
+  "hash": "2339873550"
  },
  "lw_18429_aux1": {
   "owner": "lw_18429",
   "type": "∀ (a b : ℝ), 0 < a → 0 < b → (8 * b ^ 2 - 2 * a ^ 2) / 3 ≤ (a ^ 4 + 5 * b ^ 4) / (a * (a + 2 * b))",
-  "hash": "428843356"
+  "hash": "4276864571"
  },
  "lw_25706_aux1": {
   "owner": "lw_25706",
   "type": "∀ (x y : ℝ), (x ^ 2 + 2 * x * y) / (x ^ 2 + x * y + y ^ 2) ≤ 4 / 3",
-  "hash": "2352646938"
+  "hash": "3193881783"
  },
  "lw_20431_aux1": {
   "owner": "lw_20431",
@@ -2407,17 +2407,17 @@
  "lw_20431_aux2": {
   "owner": "lw_20431",
   "type": "∀ {f : ℕ → ℕ}, (∀ (m n : ℕ), m.Coprime n → f (m * n) = f m * f n) → StrictMono f → ∀ {n : ℕ}, 2 ≤ n → ∀ (k : ℕ), ∃ m, n ∣ m ∧ m + 2 ≤ 2 * n ^ k ∧ f n ^ k ≤ f m + 1",
-  "hash": "2301704368"
+  "hash": "3065102915"
  },
  "lw_20431_aux3": {
   "owner": "lw_20431",
   "type": "∀ (n k : ℕ), n ^ (k + 1) + (k + 1) * n ^ k ≤ (n + 1) ^ (k + 1)",
-  "hash": "3580531659"
+  "hash": "2146293736"
  },
  "lw_28812_aux1": {
   "owner": "lw_28812",
   "type": "∀ (a b c : ℝ), (a + b) ^ 2 / (a ^ 2 + b ^ 2) ≤ ((a + b) ^ 2 + 2 * c ^ 2) / (a ^ 2 + b ^ 2 + c ^ 2)",
-  "hash": "1756841729"
+  "hash": "984428531"
  },
  "lw_26448_aux1": {
   "owner": "lw_26448",
@@ -2437,82 +2437,82 @@
  "lw_30393_aux1": {
   "owner": "lw_30393",
   "type": "∀ (x y z : ℝ), -1 ≤ z → 0 ≤ x * y → 0 ≤ x ^ 2 + y ^ 2 + z ^ 2 + x * y * z",
-  "hash": "24024218"
+  "hash": "3738419882"
  },
  "lw_30393_aux2": {
   "owner": "lw_30393",
   "type": "∀ (x y z : ℝ), -1 ≤ x → -1 ≤ y → -1 ≤ z → 0 ≤ x ^ 2 + y ^ 2 + z ^ 2 + x * y * z",
-  "hash": "3566800371"
+  "hash": "497172834"
  },
  "lw_34437_aux1": {
   "owner": "lw_34437",
   "type": "∀ (x : ℝ), 0 ≤ x → 0 ≤ 4 - x - x ^ 2 → (4 - x - x ^ 2) ^ 2 * (1 + 3 * x ^ 4) ≤ 16",
-  "hash": "169842980"
+  "hash": "2553364060"
  },
  "lw_34437_aux2": {
   "owner": "lw_34437",
   "type": "∀ (x : ℝ), 0 ≤ x → (4 - x - x ^ 2) / 4 ≤ 1 / √(1 + 3 * x ^ 4)",
-  "hash": "2526560839"
+  "hash": "34110242"
  },
  "lw_38140_aux1": {
   "owner": "lw_38140",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 9 * (x * y * z) ≤ (x + y + z) * (x ^ 2 + y ^ 2 + z ^ 2)",
-  "hash": "2644012946"
+  "hash": "1681342847"
  },
  "lw_38140_aux2": {
   "owner": "lw_38140",
   "type": "∀ (s p t r : ℝ), 0 ≤ s → 0 ≤ p → 0 < t → t ≤ r → r ^ 2 = 3 * s → 9 * p ≤ t * s → 4 * p * r ≤ s ^ 2 + p * t",
-  "hash": "1105056085"
+  "hash": "1914053839"
  },
  "lw_3832_aux1": {
   "owner": "lw_3832",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x + y ≤ 2 * z → 0 ≤ 63 * (x ^ 2 + y ^ 2 + z ^ 2) * (x + y + z) ^ 4 + 648 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) * (x + y + z) ^ 2 + 2916 * x ^ 2 * y ^ 2 * z ^ 2 - 49 * (x + y + z) ^ 6",
-  "hash": "3567227748"
+  "hash": "2250674769"
  },
  "lw_3832_aux2": {
   "owner": "lw_3832",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ 63 * (x ^ 2 + y ^ 2 + z ^ 2) * (x + y + z) ^ 4 + 648 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) * (x + y + z) ^ 2 + 2916 * x ^ 2 * y ^ 2 * z ^ 2 - 49 * (x + y + z) ^ 6",
-  "hash": "4041003727"
+  "hash": "586468128"
  },
  "lw_3832_aux3": {
   "owner": "lw_3832",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → x ^ 2 + y ^ 2 + z ^ 2 + 8 * (x ^ 2 * y ^ 2 + y ^ 2 * z ^ 2 + z ^ 2 * x ^ 2) + 28 * x ^ 2 * y ^ 2 * z ^ 2 = 1 → 7 * (x + y + z) ^ 2 ≤ 9",
-  "hash": "1034859956"
+  "hash": "4175259876"
  },
  "lw_41213_aux1": {
   "owner": "lw_41213",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ ((z + x + y) ^ 3 + (z + y) ^ 3 + z ^ 3 - ((z + x + y) ^ 2 * (z + y) + (z + y) ^ 2 * z + z ^ 2 * (z + x + y)) - ((z + x + y) * (z + y) ^ 2 + (z + y) * z ^ 2 + z * (z + x + y) ^ 2)) * ((z + x + y) * (z + y) ^ 2 + (z + y) * z ^ 2 + z * (z + x + y) ^ 2) + 3 * (z + x + y) * (z + y) * z * ((z + x + y) ^ 2 * (z + y) + (z + y) ^ 2 * z + z ^ 2 * (z + x + y))",
-  "hash": "3733230563"
+  "hash": "1200865224"
  },
  "lw_41213_aux2": {
   "owner": "lw_41213",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ ((z + y) ^ 3 + (z + x + y) ^ 3 + z ^ 3 - ((z + y) ^ 2 * (z + x + y) + (z + x + y) ^ 2 * z + z ^ 2 * (z + y)) - ((z + y) * (z + x + y) ^ 2 + (z + x + y) * z ^ 2 + z * (z + y) ^ 2)) * ((z + y) * (z + x + y) ^ 2 + (z + x + y) * z ^ 2 + z * (z + y) ^ 2) + 3 * (z + y) * (z + x + y) * z * ((z + y) ^ 2 * (z + x + y) + (z + x + y) ^ 2 * z + z ^ 2 * (z + y))",
-  "hash": "3305886686"
+  "hash": "2899704899"
  },
  "lw_41213_aux3": {
   "owner": "lw_41213",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (a ^ 3 + b ^ 3 + c ^ 3 - (a ^ 2 * b + b ^ 2 * c + c ^ 2 * a) - (a * b ^ 2 + b * c ^ 2 + c * a ^ 2)) * (a * b ^ 2 + b * c ^ 2 + c * a ^ 2) + 3 * a * b * c * (a ^ 2 * b + b ^ 2 * c + c ^ 2 * a)",
-  "hash": "1619737201"
+  "hash": "2207539755"
  },
  "lw_41875_aux1": {
   "owner": "lw_41875",
   "type": "∀ (s p : ℝ), 2 ≤ s → 0 ≤ p → s + p ≤ 3 → 0 ≤ s ^ 2 * (s + 1) + (44 - 28 * s) * p ∧ 0 ≤ s ^ 3 * (s + 1) - 3 * p * s * (s + 1) + (112 - 59 * s) * p ^ 2 ∧ 0 ≤ s ^ 4 * (s + 1) - 4 * s ^ 2 * (s + 1) * p + (192 - 96 * s) * p ^ 2",
-  "hash": "3339464545"
+  "hash": "515109770"
  },
  "lw_41875_aux2": {
   "owner": "lw_41875",
   "type": "∀ (a b : ℝ), 0 ≤ a → 0 ≤ b → a + b ≤ 2 → 0 ≤ (a + b) ^ 2 * (a + b + 1) + (44 - 28 * (a + b)) * (a * b) ∧ 0 ≤ (a + b) ^ 3 * (a + b + 1) - 3 * (a * b) * (a + b) * (a + b + 1) + (112 - 59 * (a + b)) * (a * b) ^ 2 ∧ 0 ≤ (a + b) ^ 4 * (a + b + 1) - 4 * (a + b) ^ 2 * (a + b + 1) * (a * b) + (192 - 96 * (a + b)) * (a * b) ^ 2",
-  "hash": "715241000"
+  "hash": "289916558"
  },
  "lw_43396_aux1": {
   "owner": "lw_43396",
   "type": "∀ (a b c d e f : ℝ), (a * b + c * d + e * f) ^ 2 = (a ^ 2 + c ^ 2 + e ^ 2) * (b ^ 2 + d ^ 2 + f ^ 2) ↔ a * d = c * b ∧ c * f = e * d ∧ a * f = e * b",
-  "hash": "1069970329"
+  "hash": "3861703479"
  },
  "lw_49724_aux1": {
   "owner": "lw_49724",
   "type": "∀ (a b c d : ℝ), √((a - c) ^ 2 + (b - d) ^ 2) ≤ √(a ^ 2 + b ^ 2) + √(c ^ 2 + d ^ 2)",
-  "hash": "2093540188"
+  "hash": "4287538126"
  },
  "lw_5275_aux1": {
   "owner": "lw_5275",
@@ -2522,42 +2522,42 @@
  "lw_5389_aux1": {
   "owner": "lw_5389",
   "type": "∀ (a b k : ℝ), k * (a - b) ^ 2 ≤ (a ^ 2 + k) * (b ^ 2 + k)",
-  "hash": "3378703634"
+  "hash": "1974554148"
  },
  "lw_5389_aux2": {
   "owner": "lw_5389",
   "type": "∀ (p x y : ℝ), x ^ 2 ≤ p → y ^ 2 ≤ p → x * y ≤ p",
-  "hash": "3552508348"
+  "hash": "556198556"
  },
  "lw_5389_aux3": {
   "owner": "lw_5389",
   "type": "∀ (a b c d k : ℝ), 0 ≤ k → k ^ 2 * (a - b) * (b - c) * (c - d) * (d - a) ≤ (a ^ 2 + k) * (b ^ 2 + k) * (c ^ 2 + k) * (d ^ 2 + k)",
-  "hash": "3211678928"
+  "hash": "1943841856"
  },
  "lw_19204_aux1": {
   "owner": "lw_19204",
   "type": "∀ (x : ℝ), 1 / 8 ≤ x → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ (48 * x - 4) / 125",
-  "hash": "2060490117"
+  "hash": "1108445562"
  },
  "lw_19204_aux2": {
   "owner": "lw_19204",
   "type": "∀ (x : ℝ), 0 ≤ x → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ (540 * x + 108) / 2197",
-  "hash": "4068637746"
+  "hash": "4282273222"
  },
  "lw_19204_aux3": {
   "owner": "lw_19204",
   "type": "∀ (x : ℝ), 0 ≤ x → x ≤ 1 / 8 → x ^ 2 / (x ^ 2 + 1) ^ 2 ≤ 540 * x / 2197",
-  "hash": "236651133"
+  "hash": "1305044203"
  },
  "lw_22467_aux1": {
   "owner": "lw_22467",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ (c + a + b) ^ 8 + (c + b) ^ 8 + c ^ 8 + (c + a + b) * (c + b) * c * ((c + a + b) ^ 5 + (c + b) ^ 5 + c ^ 5 - (c + a + b) ^ 4 * (c + b + c) - (c + b) ^ 4 * (c + a + b + c) - c ^ 4 * (c + a + b + (c + b))) + 2 * ((c + a + b) * (c + b) * c) ^ 2 * ((c + a + b) * (c + b) + (c + b) * c + c * (c + a + b)) - 2 * (((c + a + b) * (c + b)) ^ 4 + ((c + b) * c) ^ 4 + (c * (c + a + b)) ^ 4)",
-  "hash": "1586514839"
+  "hash": "2447901286"
  },
  "lw_22467_aux2": {
   "owner": "lw_22467",
   "type": "∀ (x y z : ℝ), 0 ≤ z → z ≤ y → y ≤ x → 0 ≤ x ^ 8 + y ^ 8 + z ^ 8 + x * y * z * (x ^ 5 + y ^ 5 + z ^ 5 - x ^ 4 * (y + z) - y ^ 4 * (x + z) - z ^ 4 * (x + y)) + 2 * (x * y * z) ^ 2 * (x * y + y * z + z * x) - 2 * ((x * y) ^ 4 + (y * z) ^ 4 + (z * x) ^ 4)",
-  "hash": "1366019851"
+  "hash": "4023370578"
  },
  "lw_29127_aux1": {
   "owner": "lw_29127",
@@ -2567,12 +2567,12 @@
  "lw_29127_aux2": {
   "owner": "lw_29127",
   "type": "∀ (x a : ℝ), (x + a) ^ 2 ≤ (1 + x ^ 2) * (1 + a ^ 2)",
-  "hash": "2652833095"
+  "hash": "2416760542"
  },
  "lw_31873_aux1": {
   "owner": "lw_31873",
   "type": "∀ (t : ℝ), 0 ≤ t → 13 * t - 3 ≤ 27 * (t ^ 3 + t ^ 4)",
-  "hash": "4203274380"
+  "hash": "360776096"
  },
  "lw_31873_aux2": {
   "owner": "lw_31873",
@@ -2582,32 +2582,32 @@
  "lw_31873_aux3": {
   "owner": "lw_31873",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a + b + c = 1 → 1 / 16 ≤ c ^ 3 / ((1 + a) * (1 + b)) + a ^ 3 / ((1 + b) * (1 + c)) + b ^ 3 / ((1 + c) * (1 + a))",
-  "hash": "3352063852"
+  "hash": "2886074689"
  },
  "lw_24500_aux1": {
   "owner": "lw_24500",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ x ^ 2 * (x + y + z) ^ 5 * (x ^ 4 + 2 * (x + y) ^ 4) * ((x + y + z) ^ 4 + 2 * x ^ 4) + (x + y) ^ 2 * x ^ 5 * ((x + y) ^ 4 + 2 * (x + y + z) ^ 4) * (x ^ 4 + 2 * (x + y) ^ 4) + (x + y + z) ^ 2 * (x + y) ^ 5 * ((x + y + z) ^ 4 + 2 * x ^ 4) * ((x + y) ^ 4 + 2 * (x + y + z) ^ 4) - x * (x + y) * (x + y + z) * (x ^ 4 + 2 * (x + y) ^ 4) * ((x + y) ^ 4 + 2 * (x + y + z) ^ 4) * ((x + y + z) ^ 4 + 2 * x ^ 4)",
-  "hash": "599203041"
+  "hash": "92808233"
  },
  "lw_24500_aux2": {
   "owner": "lw_24500",
   "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → 0 ≤ x ^ 2 * (x + y) ^ 5 * (x ^ 4 + 2 * (x + y + z) ^ 4) * ((x + y) ^ 4 + 2 * x ^ 4) + (x + y + z) ^ 2 * x ^ 5 * ((x + y + z) ^ 4 + 2 * (x + y) ^ 4) * (x ^ 4 + 2 * (x + y + z) ^ 4) + (x + y) ^ 2 * (x + y + z) ^ 5 * ((x + y) ^ 4 + 2 * x ^ 4) * ((x + y + z) ^ 4 + 2 * (x + y) ^ 4) - x * (x + y + z) * (x + y) * (x ^ 4 + 2 * (x + y + z) ^ 4) * ((x + y + z) ^ 4 + 2 * (x + y) ^ 4) * ((x + y) ^ 4 + 2 * x ^ 4)",
-  "hash": "899158406"
+  "hash": "1062681024"
  },
  "lw_24500_aux3": {
   "owner": "lw_24500",
   "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → 0 ≤ a ^ 2 * c ^ 5 * (a ^ 4 + 2 * b ^ 4) * (c ^ 4 + 2 * a ^ 4) + b ^ 2 * a ^ 5 * (b ^ 4 + 2 * c ^ 4) * (a ^ 4 + 2 * b ^ 4) + c ^ 2 * b ^ 5 * (c ^ 4 + 2 * a ^ 4) * (b ^ 4 + 2 * c ^ 4) - a * b * c * (a ^ 4 + 2 * b ^ 4) * (b ^ 4 + 2 * c ^ 4) * (c ^ 4 + 2 * a ^ 4)",
-  "hash": "2041612939"
+  "hash": "1489992781"
  },
  "lw_24500_aux4": {
   "owner": "lw_24500",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → 1 ≤ a / b / ((b / c) ^ 4 + 2) + b / c / ((c / a) ^ 4 + 2) + c / a / ((a / b) ^ 4 + 2)",
-  "hash": "1800912178"
+  "hash": "2927270472"
  },
  "lw_37351_aux1": {
   "owner": "lw_37351",
   "type": "∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → (x + y + z) / 2 ≤ x ^ 2 / (x + y) + y ^ 2 / (y + z) + z ^ 2 / (z + x)",
-  "hash": "3575692604"
+  "hash": "3757116177"
  },
  "lw_37351_aux2": {
   "owner": "lw_37351",

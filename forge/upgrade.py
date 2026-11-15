@@ -360,3 +360,50 @@ def parallel_repair(run, target, workers=4, attempts=3, minutes=25, start=None, 
     final = dict(built=code == 0, sorry="declaration uses 'sorry'" in output)
     note(dict(phase='final', **final))
     return dict(results=results, final=final)
+
+
+def rehash(data=DATA):
+    """升级后重算所有结构哈希。Mathlib 内部定义的写法一变，同一条命题的哈希就会变；不重算的话，
+    评测题保护（reserved）和查重（duplicate）会悄悄失效。重算：评测集、台账、任务文件；辅助引理索引另由 `forge reindex` 重建。"""
+    from . import bench
+    from .verify import statement_hashes
+    report = {}
+    for path in sorted(bench.BENCH.glob('*.jsonl')):
+        items = bench.load(path.stem)
+        hashes = statement_hashes([i['statement'] for i in items], opens=[i.get('opens', '') for i in items],
+                                  preambles=[i.get('preamble', '') for i in items], timeout=2400)
+        lost = [i['name'] for i, h in zip(items, hashes) if h is None]
+        for item, digest in zip(items, hashes):
+            if digest:
+                item['hash'] = digest
+        path.write_text(''.join(json.dumps(i, ensure_ascii=False) + '\n' for i in items), encoding='utf-8')
+        report[f'bench/{path.stem}'] = dict(items=len(items), unhashable=lost)
+    ledger = data / 'ledger.jsonl'
+    entries = [json.loads(line) for line in ledger.read_text(encoding='utf-8').splitlines() if line.strip()]
+    targets = [e for e in entries if e.get('kind') != 'definition' and e.get('statement')]
+    hashes = statement_hashes([e['statement'] for e in targets], timeout=2400)
+    for entry, digest in zip(targets, hashes):
+        if digest:
+            entry['hash'] = digest
+    ledger.write_text(''.join(json.dumps(e, ensure_ascii=False) + '\n' for e in entries), encoding='utf-8')
+    report['ledger'] = dict(entries=len(targets), unhashable=[e['name'] for e, h in zip(targets, hashes) if h is None])
+    task_files = sorted((data / 'tasks').glob('*/*.json'))
+    loaded = [(p, json.loads(p.read_text(encoding='utf-8'))) for p in task_files]
+    from .statement import StatementError, split_signature
+
+    def well_formed(statement):
+        try:
+            split_signature(statement)
+            return True
+        except StatementError:
+            return False
+    malformed = [t['name'] for p, t in loaded if t.get('statement') and not well_formed(t['statement'])]
+    loaded = [(p, t) for p, t in loaded if t.get('statement') and well_formed(t['statement'])]
+    hashes = statement_hashes([t['statement'] for _, t in loaded], timeout=2400)
+    from . import tasks as task_store
+    for (path, task), digest in zip(loaded, hashes):
+        if digest and task.get('hash') != digest:
+            task['hash'] = digest
+            task_store.save(path.parent.name, task)   # 用项目自己的保存格式，避免无意义的格式改动
+    report['tasks'] = dict(files=len(loaded), malformed_skipped=malformed, unhashable=[t['name'] for (_, t), h in zip(loaded, hashes) if h is None][:20])
+    return report

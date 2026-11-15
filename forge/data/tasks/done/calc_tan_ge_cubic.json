@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "1923185214",
+  "hash": "382566270",
   "type": "∀ (x : ℝ), 0 ≤ x → x < Real.pi / 2 → x + x ^ 3 / 3 ≤ Real.tan x",
   "attempts": [],
   "created_at": "2026-11-15T07:41:18+0800",

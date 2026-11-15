@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_alg",
-  "hash": "2278438884",
+  "hash": "3709207042",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], Irreducible (Polynomial.X ^ p - Polynomial.X - 1)",
   "attempts": [],
   "created_at": "2026-11-15T01:30:54+0800",

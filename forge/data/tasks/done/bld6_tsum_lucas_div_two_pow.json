@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.calc_tsum_fib_div_two_pow, Mathlib2.lib_p3_lucas_cast",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "1800156948",
+  "hash": "2971651923",
   "type": "∑' (n : ℕ), ↑(Mathlib2.p3_lucas n) / 2 ^ n = 6",
   "attempts": [],
   "created_at": "2026-11-15T08:19:17+0800",

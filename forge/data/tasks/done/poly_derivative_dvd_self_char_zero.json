@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "2078037947",
+  "hash": "3995769107",
   "type": "∀ {k : Type u_1} [inst : Field k] [CharZero k] (f : Polynomial k), 0 < f.natDegree → Polynomial.derivative f ∣ f → ∃ c a, f = Polynomial.C c * (Polynomial.X - Polynomial.C a) ^ f.natDegree",
   "attempts": [],
   "created_at": "2026-11-15T07:17:54+0800",

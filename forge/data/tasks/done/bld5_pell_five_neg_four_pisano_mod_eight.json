@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld3_pell_five_neg_four_solutions_lucas, Mathlib2.bld2_pisano_fib_odd_eq",
   "original": "",
   "proposed_by": "conj_build5",
-  "hash": "324937498",
+  "hash": "1384180164",
   "type": "∀ (x y : ℕ), x ^ 2 + 4 = 5 * y ^ 2 → 5 ≤ y → Mathlib2.p3_pisano y % 8 = 4",
   "attempts": [],
   "created_at": "2026-11-15T07:23:04+0800",

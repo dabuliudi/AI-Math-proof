@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.poly_cyclotomic_two_mul_odd_comp_neg",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "1369456973",
+  "hash": "2078460548",
   "type": "∀ (n k : ℕ), Odd n → 1 < n → (Polynomial.cyclotomic (2 * n) ℤ).coeff k = (-1) ^ k * (Polynomial.cyclotomic n ℤ).coeff k",
   "attempts": [],
   "created_at": "2026-11-15T08:20:39+0800",

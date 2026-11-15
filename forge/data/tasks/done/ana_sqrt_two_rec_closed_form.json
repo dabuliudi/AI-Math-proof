@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_ana",
-  "hash": "1560299074",
+  "hash": "1329346682",
   "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), a n = 2 * Real.cos (Real.pi / 2 ^ (n + 1))",
   "attempts": [],
   "created_at": "2026-11-15T01:29:31+0800",

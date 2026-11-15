@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "2750989633",
+  "hash": "449078595",
   "type": "∀ {k : Type u_1} [inst : Field k] [inst_1 : DecidableEq k] [IsAlgClosed k] (p : Polynomial k), p ≠ 0 → (UniqueFactorizationMonoid.radical p).natDegree = p.roots.toFinset.card",
   "attempts": [],
   "created_at": "2026-11-15T07:46:55+0800",

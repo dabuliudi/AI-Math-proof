@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "1795005074",
+  "hash": "1941448859",
   "type": "∀ (m n : ℕ), m ≠ 0 → n ≠ 0 → m.primeFactors ⊆ n.primeFactors → m * (ArithmeticFunction.sigma 1) n ≤ (ArithmeticFunction.sigma 1) (m * n)",
   "attempts": [],
   "created_at": "2026-11-15T07:47:48+0800",

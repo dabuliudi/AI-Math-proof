@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld3_rank_tripotent_defect, Mathlib2.bld2_rank_add_rank_one_sub",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "3524256399",
+  "hash": "344569410",
   "type": "∀ (K : Type u_1) [inst : Field K] [CharZero K] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι K), A.rank + (A - 1).rank + (A + 1).rank = 2 * Fintype.card ι + (A * A * A - A).rank",
   "attempts": [],
   "created_at": "2026-11-15T08:22:07+0800",

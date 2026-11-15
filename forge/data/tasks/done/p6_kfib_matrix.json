@@ -7,7 +7,7 @@
   "source": "arXiv:2611.07141v1 Eq. (3) (Sec 2.2)",
   "original": "M^n = [[f_{n+1}, f_n],[f_n, f_{n-1}]], n in Z",
   "proposed_by": "paper_6",
-  "hash": "971460149",
+  "hash": "2155393706",
   "type": "∀ (k n : ℤ), !![k, 1; 1, 0] ^ n = !![Mathlib2.p6_kfib k (n + 1), Mathlib2.p6_kfib k n; Mathlib2.p6_kfib k n, Mathlib2.p6_kfib k (n - 1)]",
   "attempts": [],
   "created_at": "2026-11-15T08:45:13+0800",

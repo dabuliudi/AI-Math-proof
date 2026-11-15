@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "902842708",
+  "hash": "4001932985",
   "type": "∀ (V : Type) [inst : Fintype V], 10 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 4",
   "attempts": [],
   "created_at": "2026-11-15T08:43:51+0800",

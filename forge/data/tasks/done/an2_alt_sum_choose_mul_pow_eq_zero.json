@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_an2",
-  "hash": "1722770738",
+  "hash": "1301392760",
   "type": "∀ (n m : ℕ), m < n → ∑ k ∈ Finset.range (n + 1), (-1) ^ k * ↑(n.choose k) * ↑k ^ m = 0",
   "attempts": [],
   "created_at": "2026-11-15T00:28:51+0800",

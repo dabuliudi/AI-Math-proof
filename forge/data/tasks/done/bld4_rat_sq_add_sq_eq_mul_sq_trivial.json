@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld3_rat_sq_add_sq_ne_of_odd_padicValNat",
   "original": "",
   "proposed_by": "conj_build4",
-  "hash": "905162626",
+  "hash": "2218911281",
   "type": "∀ (p n : ℕ), Nat.Prime p → p % 4 = 3 → Odd (padicValNat p n) → ∀ (x y z : ℚ), x ^ 2 + y ^ 2 = ↑n * z ^ 2 → x = 0 ∧ y = 0 ∧ z = 0",
   "attempts": [],
   "created_at": "2026-11-15T06:55:45+0800",

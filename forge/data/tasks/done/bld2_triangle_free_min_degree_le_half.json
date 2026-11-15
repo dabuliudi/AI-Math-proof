@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.comb_degree_add_degree_le_of_triangle_free",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "2719601079",
+  "hash": "422462979",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] [Nonempty V], G.CliqueFree 3 → ∀ (d : ℕ), (∀ (v : V), d ≤ G.degree v) → 2 * d ≤ Fintype.card V",
   "attempts": [],
   "created_at": "2026-11-15T02:51:43+0800",

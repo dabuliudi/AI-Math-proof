@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.poly_real_nonneg_eq_sum_two_squares",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "2859095799",
+  "hash": "2817656026",
   "type": "∀ (p : Polynomial ℝ), (∀ (x : ℝ), 0 ≤ Polynomial.eval x p) → ∀ (a : ℝ), Polynomial.eval a p = 0 → (Polynomial.X - Polynomial.C a) ^ 2 ∣ p",
   "attempts": [],
   "created_at": "2026-11-15T08:21:22+0800",

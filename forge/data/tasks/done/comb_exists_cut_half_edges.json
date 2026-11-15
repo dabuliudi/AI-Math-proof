@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_comb",
-  "hash": "2100540842",
+  "hash": "3015242913",
   "type": "∀ (V : Type) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], ∃ s, G.edgeFinset.card ≤ 2 * {p ∈ s ×ˢ sᶜ | G.Adj p.1 p.2}.card",
   "attempts": [],
   "created_at": "2026-11-15T01:37:39+0800",

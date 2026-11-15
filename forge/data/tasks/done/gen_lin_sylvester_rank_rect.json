@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.lin_sylvester_rank",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "2206279148",
+  "hash": "4182386927",
   "type": "∀ (K : Type u_1) [inst : Field K] (m : Type u_2) (n : Type u_3) (p : Type u_4) [Fintype m] [inst_2 : Fintype n] [inst_3 : Fintype p] (A : Matrix m n K) (B : Matrix n p K), A.rank + B.rank ≤ Fintype.card n + (A * B).rank",
   "attempts": [],
   "created_at": "2026-11-15T02:05:56+0800",

@@ -7,7 +7,7 @@
   "source": "r3_imo1988_vieta_jumping",
   "original": "",
   "proposed_by": "r3_prover_1",
-  "hash": "1499369944",
+  "hash": "4111195000",
   "type": "∀ (q a b : ℕ), 0 < b → a ^ 2 + b ^ 2 = q * (a * b + 1) → a ≤ q * b",
   "attempts": [],
   "created_at": "2026-11-15T01:06:49+0800",

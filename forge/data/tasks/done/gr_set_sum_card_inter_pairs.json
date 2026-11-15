@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "3625243636",
+  "hash": "704558211",
   "type": "∀ (n : ℕ), ∑ p, (p.1 ∩ p.2).card = n * 4 ^ (n - 1)",
   "attempts": [],
   "created_at": "2026-11-15T08:49:37+0800",

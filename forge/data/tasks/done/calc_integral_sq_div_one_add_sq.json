@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "3528395337",
+  "hash": "352117698",
   "type": "∫ (x : ℝ) in 0..1, x ^ 2 / (1 + x ^ 2) = 1 - Real.pi / 4",
   "attempts": [],
   "created_at": "2026-11-15T07:39:02+0800",

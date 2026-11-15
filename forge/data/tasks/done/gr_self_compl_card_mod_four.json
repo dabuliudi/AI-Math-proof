@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "3719830289",
+  "hash": "738281006",
   "type": "∀ (V : Type) [inst : Fintype V] (G : SimpleGraph V), Nonempty (G ≃g Gᶜ) → Fintype.card V % 4 = 0 ∨ Fintype.card V % 4 = 1",
   "attempts": [],
   "created_at": "2026-11-15T08:47:45+0800",

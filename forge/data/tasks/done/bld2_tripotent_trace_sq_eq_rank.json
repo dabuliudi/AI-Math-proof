@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_lin_idempotent_trace_eq_rank_field",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "2602828252",
+  "hash": "2109183636",
   "type": "∀ (K : Type u_1) [inst : Field K] (ι : Type u_2) [inst_1 : Fintype ι] [DecidableEq ι] (A : Matrix ι ι K), A * A * A = A → (A * A).trace = ↑A.rank",
   "attempts": [],
   "created_at": "2026-11-15T02:49:04+0800",

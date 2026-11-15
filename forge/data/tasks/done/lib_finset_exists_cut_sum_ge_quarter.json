@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.comb_exists_cut_half_edges_aux1",
   "original": "",
   "proposed_by": "curator_1",
-  "hash": "184427284",
+  "hash": "2322173173",
   "type": "∀ (V : Type) [inst : DecidableEq V] (f : V → V → ℕ), (∀ (u v : V), f u v = f v u) → (∀ (u : V), f u u = 0) → ∀ (S : Finset V), ∃ s ⊆ S, ∑ u ∈ S, ∑ v ∈ S, f u v ≤ 4 * ∑ u ∈ s, ∑ v ∈ S \\ s, f u v",
   "attempts": [],
   "created_at": "2026-11-15T03:06:08+0800",

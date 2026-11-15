@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "1081255045",
+  "hash": "3300235020",
   "type": "∀ {k : Type u_1} [inst : Field k] [DecidableEq k] [CharZero k] (a b c : Polynomial k), a ≠ 0 → b ≠ 0 → c ≠ 0 → IsCoprime a b → IsCoprime b c → IsCoprime c a → a ^ 4 + b ^ 4 = c ^ 2 → a.natDegree = 0 ∧ b.natDegree = 0 ∧ c.natDegree = 0",
   "attempts": [],
   "created_at": "2026-11-15T07:15:05+0800",

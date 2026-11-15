@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_nt2",
-  "hash": "1018160449",
+  "hash": "16014228",
   "type": "∀ (n : ℕ), (∏ d ∈ n.divisors, d) ^ 2 = n ^ n.divisors.card",
   "attempts": [],
   "created_at": "2026-11-15T00:35:48+0800",

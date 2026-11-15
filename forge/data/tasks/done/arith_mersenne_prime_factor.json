@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "645679790",
+  "hash": "1920118142",
   "type": "∀ (p q : ℕ), Nat.Prime p → p ≠ 2 → Nat.Prime q → q ∣ 2 ^ p - 1 → q % (2 * p) = 1 ∧ (q % 8 = 1 ∨ q % 8 = 7)",
   "attempts": [],
   "created_at": "2026-11-15T07:46:04+0800",

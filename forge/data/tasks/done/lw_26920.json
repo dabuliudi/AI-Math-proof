@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_26920",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "2694570983",
+  "hash": "3970810079",
   "type": "∀ (a b : ℝ), 1 ≤ a → 1 ≤ b → 1 / (1 + a ^ 2) + 1 / (1 + b ^ 2) ≥ 2 / (1 + a * b)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",

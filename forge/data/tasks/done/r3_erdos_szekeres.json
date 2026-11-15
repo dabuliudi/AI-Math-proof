@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_r3",
-  "hash": "1591935643",
+  "hash": "1811488054",
   "type": "∀ (r s : ℕ) (f : Fin (r * s + 1) → ℝ), Function.Injective f → (∃ t, r < t.card ∧ StrictMonoOn f ↑t) ∨ ∃ t, s < t.card ∧ StrictAntiOn f ↑t",
   "attempts": [],
   "created_at": "2026-11-15T01:02:28+0800",

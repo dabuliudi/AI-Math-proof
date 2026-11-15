@@ -7,7 +7,7 @@
   "source": "r3_imo2000_q2",
   "original": "",
   "proposed_by": "r3_prover_2",
-  "hash": "718286551",
+  "hash": "2284811996",
   "type": "∀ (a b c : ℝ), 0 < a → 0 < b → 0 < c → a * b * c = 1 → ∀ (x y z : ℝ), 0 < x → 0 < y → 0 < z → x * y * z = 1 → (x - 1 + 1 / y) * (y - 1 + 1 / z) ≤ x ^ 2 * y",
   "attempts": [],
   "created_at": "2026-11-15T01:10:55+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_ana",
-  "hash": "1036274811",
+  "hash": "3986907519",
   "type": "∀ (x : ℝ), 1 + x + x ^ 2 / 2 + x ^ 3 / 6 ≤ Real.exp x",
   "attempts": [],
   "created_at": "2026-11-15T01:28:02+0800",

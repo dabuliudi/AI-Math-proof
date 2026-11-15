@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "2855441030",
+  "hash": "484989633",
   "type": "∀ (a : ℤ), ¬Irreducible (Polynomial.X ^ 4 + Polynomial.C (4 * a ^ 4))",
   "attempts": [],
   "created_at": "2026-11-15T07:17:40+0800",

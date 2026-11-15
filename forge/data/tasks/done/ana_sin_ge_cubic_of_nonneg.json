@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_ana",
-  "hash": "3655764317",
+  "hash": "3045623862",
   "type": "∀ (x : ℝ), 0 ≤ x → x - x ^ 3 / 6 ≤ Real.sin x",
   "attempts": [],
   "created_at": "2026-11-15T01:28:35+0800",

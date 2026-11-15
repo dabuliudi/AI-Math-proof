@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_an2",
-  "hash": "1489846484",
+  "hash": "3359944419",
   "type": "∀ (n : ℕ) (a : ℕ → ℝ), (∀ (i : ℕ), 0 ≤ a i) → ∏ i ∈ Finset.range (n + 1), a i ≤ ((∑ i ∈ Finset.range (n + 1), a i) / (↑n + 1)) ^ (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T00:28:00+0800",

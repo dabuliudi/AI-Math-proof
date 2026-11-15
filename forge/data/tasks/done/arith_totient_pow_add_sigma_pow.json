@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "3144065434",
+  "hash": "1025854628",
   "type": "∀ (n k : ℕ), 2 ≤ n → 2 * n ^ k ≤ n.totient ^ k + (ArithmeticFunction.sigma 1) n ^ k",
   "attempts": [],
   "created_at": "2026-11-15T07:47:33+0800",

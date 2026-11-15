@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "618635196",
+  "hash": "4040030600",
   "type": "∀ (V : Type) [Nonempty V] (G : SimpleGraph V), Nonempty (G ≃g Gᶜ) → G.Connected",
   "attempts": [],
   "created_at": "2026-11-15T08:45:00+0800",

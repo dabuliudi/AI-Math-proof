@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_an_amgm_finset_ordered_ring, Mathlib2.bld2_card_le_sum_of_prod_eq_one",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "802141291",
+  "hash": "3786887455",
   "type": "∀ (K : Type u_1) [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (ι : Type u_2) (s : Finset ι) (a : ι → K), (∀ i ∈ s, 0 < a i) → ↑s.card ^ 2 ≤ (∑ i ∈ s, a i) * ∑ i ∈ s, (a i)⁻¹",
   "attempts": [],
   "created_at": "2026-11-15T03:14:58+0800",

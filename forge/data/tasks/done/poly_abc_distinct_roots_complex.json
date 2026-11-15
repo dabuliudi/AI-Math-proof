@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "2996424109",
+  "hash": "2397354742",
   "type": "∀ (a b : Polynomial ℂ), IsCoprime a b → 0 < a.natDegree → a.natDegree + 1 ≤ (a * b * (a + b)).roots.toFinset.card",
   "attempts": [],
   "created_at": "2026-11-15T07:15:39+0800",

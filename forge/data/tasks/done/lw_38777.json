@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_38777",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "1990814434",
+  "hash": "405250390",
   "type": "∀ (x y z u v w : ℝ), 0 < v → 0 < w → x + y + z = 3 * u → x * y + x * z + y * z = 3 * v ^ 2 → x * y * z = w ^ 3 → (v + x) / (y + z) + (v + y) / (z + x) + (v + z) / (x + y) ≥ 3",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",

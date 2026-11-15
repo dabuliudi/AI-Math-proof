@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "622081033",
+  "hash": "2550838068",
   "type": "∑' (n : ℕ), (-1) ^ n / (↑n + 1) ^ 2 = Real.pi ^ 2 / 12",
   "attempts": [],
   "created_at": "2026-11-15T07:40:40+0800",

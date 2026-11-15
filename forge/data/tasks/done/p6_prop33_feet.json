@@ -7,7 +7,7 @@
   "source": "arXiv:2611.07141v1 Proposition 3.3, feet",
   "original": "which meets the axis at (σ_k,0) and (-σ_k^{-1},0)",
   "proposed_by": "paper_6",
-  "hash": "1514864553",
+  "hash": "442857501",
   "type": "∀ (k : ℤ) (x : ℝ), (x - ↑k / 2) ^ 2 + 0 ^ 2 = (↑k ^ 2 + 4) / 4 ↔ x = (↑k + √(↑k ^ 2 + 4)) / 2 ∨ x = -((↑k + √(↑k ^ 2 + 4)) / 2)⁻¹",
   "attempts": [],
   "created_at": "2026-11-15T08:49:17+0800",

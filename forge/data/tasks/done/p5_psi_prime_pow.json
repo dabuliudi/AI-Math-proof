@@ -7,7 +7,7 @@
   "source": "arXiv:2404.19332v1 Section 1 (definition of psi)",
   "original": "psi(n) = prod p_i^{a_i-1}(p_i+1), psi(1)=1",
   "proposed_by": "paper_5",
-  "hash": "156841045",
+  "hash": "3099097954",
   "type": "∀ (p k : ℕ), Nat.Prime p → Mathlib2.p5_dedekind_psi (p ^ (k + 1)) = p ^ k * (p + 1)",
   "attempts": [],
   "created_at": "2026-11-15T06:52:14+0800",

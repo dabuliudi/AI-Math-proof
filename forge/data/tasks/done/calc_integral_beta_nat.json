@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "1684866401",
+  "hash": "545400703",
   "type": "∀ (m n : ℕ), ∫ (x : ℝ) in 0..1, x ^ m * (1 - x) ^ n = ↑m.factorial * ↑n.factorial / ↑(m + n + 1).factorial",
   "attempts": [],
   "created_at": "2026-11-15T07:39:31+0800",

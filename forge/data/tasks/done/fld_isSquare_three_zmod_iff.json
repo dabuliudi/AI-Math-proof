@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "2771706045",
+  "hash": "2576735753",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)], 3 < p → (IsSquare 3 ↔ p % 12 = 1 ∨ p % 12 = 11)",
   "attempts": [],
   "created_at": "2026-11-15T08:18:09+0800",

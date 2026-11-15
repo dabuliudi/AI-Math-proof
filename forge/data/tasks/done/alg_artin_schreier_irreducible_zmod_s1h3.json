@@ -7,7 +7,7 @@
   "source": "alg_artin_schreier_irreducible_zmod",
   "original": "",
   "proposed_by": "r4_prover_10",
-  "hash": "2697683874",
+  "hash": "20895815",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (g : Polynomial (ZMod p)), Irreducible g → CharP (AdjoinRoot g) p",
   "attempts": [],
   "created_at": "2026-11-15T02:12:30+0800",

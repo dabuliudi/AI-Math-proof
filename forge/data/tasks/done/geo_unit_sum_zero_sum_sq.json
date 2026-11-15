@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_geo",
-  "hash": "1597412207",
+  "hash": "544401599",
   "type": "∀ (a b c : ℂ), ‖a‖ = 1 → ‖b‖ = 1 → ‖c‖ = 1 → a + b + c = 0 → a ^ 2 + b ^ 2 + c ^ 2 = 0",
   "attempts": [],
   "created_at": "2026-11-15T02:19:07+0800",

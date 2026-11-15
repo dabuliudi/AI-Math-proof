@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.calc_sum_sq_card_fixed_points_perm, Mathlib2.calc_sum_card_fixed_points_perm",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "2366431640",
+  "hash": "3477883114",
   "type": "∀ (n : ℕ), 2 ≤ n → ∑ σ, (↑{i | σ i = i}.card - 1) ^ 2 = ↑n.factorial",
   "attempts": [],
   "created_at": "2026-11-15T08:24:21+0800",

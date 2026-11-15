@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.gen_an_chebyshev_index_weighted_ordered_ring_aux1",
   "original": "",
   "proposed_by": "curator_1",
-  "hash": "2333006941",
+  "hash": "2800187614",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [inst_1 : LinearOrder R] [IsStrictOrderedRing R] (a : ℕ → R), Monotone a → ∀ (n : ℕ), ∑ i ∈ Finset.range n, a i ≤ ↑n * a n",
   "attempts": [],
   "created_at": "2026-11-15T03:05:51+0800",

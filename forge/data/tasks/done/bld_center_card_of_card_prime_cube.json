@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.alg_center_index_not_prime",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "800907577",
+  "hash": "1165209905",
   "type": "∀ (p : ℕ), Nat.Prime p → ∀ (G : Type u_1) [inst : Group G], Nat.card G = p ^ 3 → (∃ a b, a * b ≠ b * a) → Nat.card ↥(Subgroup.center G) = p",
   "attempts": [],
   "created_at": "2026-11-15T02:34:22+0800",

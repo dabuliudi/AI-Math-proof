@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_arith",
-  "hash": "2441944212",
+  "hash": "3795148426",
   "type": "∀ (a n : ℕ), 1 < a → 0 < n → 2 * n ∣ (a ^ n + 1).totient",
   "attempts": [],
   "created_at": "2026-11-15T07:49:26+0800",

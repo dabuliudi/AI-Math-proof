@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.lin_nilpotent_pow_card",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "1271160619",
+  "hash": "1059445566",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [IsReduced R] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A : Matrix ι ι R), IsNilpotent A → A ^ Fintype.card ι = 0",
   "attempts": [],
   "created_at": "2026-11-15T02:06:04+0800",

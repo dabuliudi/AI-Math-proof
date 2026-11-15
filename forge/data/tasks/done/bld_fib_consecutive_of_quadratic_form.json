@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.r3_fib_iff_five_sq_pm_four_is_square, Mathlib2.an_cassini_int",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "1458089250",
+  "hash": "257741348",
   "type": "∀ (x y : ℕ), 0 < x → (↑x ^ 2 - ↑x * ↑y - ↑y ^ 2) ^ 2 = 1 → ∃ n, y = Nat.fib n ∧ x = Nat.fib (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T02:32:46+0800",

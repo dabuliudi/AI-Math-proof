@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_alg",
-  "hash": "368396796",
+  "hash": "3839746176",
   "type": "∀ (G : Type u_1) [inst : Group G] [Finite G], (∀ (g : G), g * g = 1) → ∃ k, Nat.card G = 2 ^ k",
   "attempts": [],
   "created_at": "2026-11-15T01:28:06+0800",

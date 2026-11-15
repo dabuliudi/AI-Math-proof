@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_50221",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "3233835725",
+  "hash": "4018565500",
   "type": "∀ (a b c : ℝ), a > 0 ∧ b > 0 ∧ c > 0 → a + b > c → b + c > a → a + c > b → a ^ 3 / b ^ 2 + b ^ 3 / c ^ 2 + c ^ 3 / a ^ 2 ≥ a / c * (a + b - c) + c / b * (c + a - b) + b / a * (b + c - a)",
   "attempts": [],
   "created_at": "2026-11-15T19:05:15+0800",

@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "1766232201",
+  "hash": "273020997",
   "type": "∀ (K : Type) [inst : Field K] [Fintype K] (a : K), ∃ x y, x ^ 2 + y ^ 2 = a",
   "attempts": [],
   "created_at": "2026-11-15T08:17:14+0800",

@@ -7,7 +7,7 @@
   "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_46331",
   "original": "",
   "proposed_by": "import-leanworkbook",
-  "hash": "573454106",
+  "hash": "3470772",
   "type": "∀ (x y z : ℝ), x ≥ 0 → y ≥ 0 → z ≥ 0 → x * y + y * z + z * x = 1 → y ^ 5 * z + z ^ 5 * x + x ^ 5 * y ≥ 1 / 27 * (x + y + z) ^ 5 * x * y * z",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",

@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.bld2_pell_five_solutions_lucas",
   "original": "",
   "proposed_by": "conj_build3",
-  "hash": "563913448",
+  "hash": "746624635",
   "type": "∀ (x y : ℕ), x ^ 2 = 5 * y ^ 2 + 1 → ∃ n, 2 * y = Nat.fib (6 * n) ∧ 2 * x = Mathlib2.p3_lucas (6 * n)",
   "attempts": [],
   "created_at": "2026-11-15T03:12:30+0800",

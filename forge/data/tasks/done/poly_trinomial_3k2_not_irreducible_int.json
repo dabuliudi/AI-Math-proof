@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_poly",
-  "hash": "2822264656",
+  "hash": "82417761",
   "type": "∀ (k : ℕ), 1 ≤ k → ¬Irreducible (Polynomial.X ^ (3 * k + 2) + Polynomial.X + 1)",
   "attempts": [],
   "created_at": "2026-11-15T07:17:28+0800",

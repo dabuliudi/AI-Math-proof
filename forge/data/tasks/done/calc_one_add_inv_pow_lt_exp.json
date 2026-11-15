@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_calc",
-  "hash": "3282897993",
+  "hash": "450719063",
   "type": "∀ (n : ℕ), 0 < n → (1 + 1 / ↑n) ^ n < Real.exp 1",
   "attempts": [],
   "created_at": "2026-11-15T07:41:58+0800",

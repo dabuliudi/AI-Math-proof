@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_comb",
-  "hash": "3787003373",
+  "hash": "2245885433",
   "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → ∀ (u v : V), G.Adj u v → G.degree u + G.degree v ≤ Fintype.card V",
   "attempts": [],
   "created_at": "2026-11-15T01:36:15+0800",

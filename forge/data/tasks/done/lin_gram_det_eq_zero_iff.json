@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_lin",
-  "hash": "313470329",
+  "hash": "2335954882",
   "type": "∀ (V : Type) [inst : NormedAddCommGroup V] [inst_1 : InnerProductSpace ℝ V] (x y : V), !![inner ℝ x x, inner ℝ x y; inner ℝ y x, inner ℝ y y].det = 0 ↔ ¬LinearIndependent ℝ ![x, y]",
   "attempts": [],
   "created_at": "2026-11-15T01:30:47+0800",

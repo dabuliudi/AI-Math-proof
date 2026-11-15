@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.alg_card_range_sq_zmod_prime",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "1177821177",
+  "hash": "1848712781",
   "type": "∀ (p : ℕ) [inst : Fact (Nat.Prime p)] (a b c : ZMod p), a ≠ 0 → b ≠ 0 → ∃ x y, a * x ^ 2 + b * y ^ 2 = c",
   "attempts": [],
   "created_at": "2026-11-15T02:34:39+0800",

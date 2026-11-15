@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_ana",
-  "hash": "2886938857",
+  "hash": "1597094169",
   "type": "∀ (f : ℝ → ℝ), ConvexOn ℝ Set.univ f → ∀ (M : ℝ), (∀ (x : ℝ), f x ≤ M) → ∀ (x y : ℝ), f x = f y",
   "attempts": [],
   "created_at": "2026-11-15T01:32:02+0800",

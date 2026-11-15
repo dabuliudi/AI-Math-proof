@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.p3_remark3_aux1",
   "original": "",
   "proposed_by": "curator_2",
-  "hash": "2974094687",
+  "hash": "3277016109",
   "type": "∀ (R : Type u_1) [inst : Ring R] (n : ℕ), ↑(Mathlib2.p3_lucas n) = 2 * ↑(Nat.fib (n + 1)) - ↑(Nat.fib n)",
   "attempts": [],
   "created_at": "2026-11-15T06:54:56+0800",

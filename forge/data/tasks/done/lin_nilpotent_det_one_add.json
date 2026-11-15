@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_lin",
-  "hash": "3370255214",
+  "hash": "3438373065",
   "type": "∀ (n k : ℕ) (A : Matrix (Fin n) (Fin n) ℝ), A ^ k = 0 → (1 + A).det = 1",
   "attempts": [],
   "created_at": "2026-11-15T01:31:47+0800",

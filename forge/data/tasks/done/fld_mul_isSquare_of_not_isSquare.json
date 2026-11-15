@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "140368842",
+  "hash": "860522435",
   "type": "∀ (K : Type) [inst : Field K] [Fintype K] (a b : K), ¬IsSquare a → ¬IsSquare b → IsSquare (a * b)",
   "attempts": [],
   "created_at": "2026-11-15T08:24:06+0800",

@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.ana_sqrt_two_rec_closed_form",
   "original": "",
   "proposed_by": "conj_build",
-  "hash": "2564550442",
+  "hash": "3690333948",
   "type": "∀ (a : ℕ → ℝ), a 0 = 0 → (∀ (n : ℕ), a (n + 1) = √(2 + a n)) → ∀ (n : ℕ), 2 - a n ≤ Real.pi ^ 2 / 4 ^ (n + 1)",
   "attempts": [],
   "created_at": "2026-11-15T02:32:53+0800",

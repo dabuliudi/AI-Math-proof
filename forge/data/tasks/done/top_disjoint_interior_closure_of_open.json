@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_top",
-  "hash": "2245156251",
+  "hash": "4188912748",
   "type": "∀ {X : Type u_1} [inst : TopologicalSpace X] (U V : Set X), IsOpen U → IsOpen V → Disjoint U V → Disjoint (interior (closure U)) (interior (closure V))",
   "attempts": [],
   "created_at": "2026-11-15T02:18:40+0800",

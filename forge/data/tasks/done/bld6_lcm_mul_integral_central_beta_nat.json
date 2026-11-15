@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.calc_integral_beta_nat, Mathlib2.arith_centralBinom_dvd_lcm",
   "original": "",
   "proposed_by": "conj_build6",
-  "hash": "1939730838",
+  "hash": "980295896",
   "type": "∀ (n : ℕ), ∃ q, 0 < q ∧ ↑((Finset.Icc 1 (2 * n)).lcm id) * (2 * ↑n + 1) * ∫ (x : ℝ) in 0..1, (x * (1 - x)) ^ n = ↑q",
   "attempts": [],
   "created_at": "2026-11-15T08:17:58+0800",

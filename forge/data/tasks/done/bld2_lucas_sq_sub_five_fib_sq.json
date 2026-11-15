@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.an_cassini_int, Mathlib2.p3_lucas",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "428656928",
+  "hash": "1207600518",
   "type": "∀ (n : ℕ), ↑(Mathlib2.p3_lucas n) ^ 2 - 5 * ↑(Nat.fib n) ^ 2 = 4 * (-1) ^ n",
   "attempts": [],
   "created_at": "2026-11-15T02:50:23+0800",

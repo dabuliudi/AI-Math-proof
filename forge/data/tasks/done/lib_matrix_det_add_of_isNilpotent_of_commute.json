@@ -7,7 +7,7 @@
   "source": "curation of Mathlib2.bld_nilpotent_commute_det_add_aux1",
   "original": "",
   "proposed_by": "curator_2",
-  "hash": "1164234512",
+  "hash": "1354855140",
   "type": "∀ (R : Type u_1) [inst : CommRing R] [IsReduced R] (ι : Type u_2) [inst_2 : Fintype ι] [inst_3 : DecidableEq ι] (A B : Matrix ι ι R), IsNilpotent A → Commute A B → IsUnit B.det → (B + A).det = B.det",
   "attempts": [],
   "created_at": "2026-11-15T06:54:30+0800",

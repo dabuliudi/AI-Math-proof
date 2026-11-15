@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_field",
-  "hash": "923710071",
+  "hash": "1460375483",
   "type": "∀ (K : Type) [inst : Field K] (p : ℕ) [Fact (Nat.Prime p)] [CharP K p] (x : K), x ^ p = x ↔ ∃ n, x = ↑n",
   "attempts": [],
   "created_at": "2026-11-15T08:23:19+0800",

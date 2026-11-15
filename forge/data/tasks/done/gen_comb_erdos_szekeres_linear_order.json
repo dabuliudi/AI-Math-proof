@@ -7,7 +7,7 @@
   "source": "generalization of Mathlib2.r3_erdos_szekeres",
   "original": "",
   "proposed_by": "generalizer_1",
-  "hash": "968235846",
+  "hash": "2391241982",
   "type": "∀ (α : Type u_1) [inst : LinearOrder α] (ι : Type u_2) [inst_1 : LinearOrder ι] [inst_2 : Fintype ι] (r s : ℕ), r * s < Fintype.card ι → ∀ (f : ι → α), Function.Injective f → (∃ t, r < t.card ∧ StrictMonoOn f ↑t) ∨ ∃ t, s < t.card ∧ StrictAntiOn f ↑t",
   "attempts": [],
   "created_at": "2026-11-15T02:07:47+0800",

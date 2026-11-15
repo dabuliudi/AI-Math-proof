@@ -7,7 +7,7 @@
   "source": "builds on Mathlib2.gen_an_amgm_finset_ordered_ring",
   "original": "",
   "proposed_by": "conj_build2",
-  "hash": "4220045",
+  "hash": "1498565573",
   "type": "∀ (n : ℕ), 2 ^ n * n.factorial ≤ (n + 1) ^ n",
   "attempts": [],
   "created_at": "2026-11-15T02:52:06+0800",

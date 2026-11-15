@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "curator_3",
-  "hash": "3975405853",
+  "hash": "425329790",
   "type": "∀ (R : Type u_1) [inst : Ring R] (a b : ℕ), ↑(Nat.fib (a + b)) = ↑(Nat.fib a) * ↑(Nat.fib (b + 1)) + ↑(Nat.fib (a + 1)) * ↑(Nat.fib b) - ↑(Nat.fib a) * ↑(Nat.fib b)",
   "attempts": [],
   "created_at": "2026-11-15T07:54:41+0800",

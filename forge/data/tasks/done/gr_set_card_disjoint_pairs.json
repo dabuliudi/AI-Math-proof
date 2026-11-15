@@ -7,7 +7,7 @@
   "source": "",
   "original": "",
   "proposed_by": "conj_graph",
-  "hash": "100219281",
+  "hash": "1836616652",
   "type": "∀ (n : ℕ), {p | Disjoint p.1 p.2}.card = 3 ^ n",
   "attempts": [],
   "created_at": "2026-11-15T08:48:57+0800",

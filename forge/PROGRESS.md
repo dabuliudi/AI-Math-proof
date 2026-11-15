@@ -46,7 +46,7 @@ git status --short
 - 固定评测：`bench-import` / `bench-check` / `bench-score`；已导入 miniF2F test 243 题（来源见 `forge/data/bench/SOURCES.md`）。
 - 调度器 `./forge.sh run`：默认调用本机 Codex（`/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex`），
   首次实跑队列 2/2、评测 3/3。展示页已改为面向非专业读者（`forge/data/showcase.json` 存大白话）。
-- miniF2F 基线已跑完（`mf2f-baseline-1`）：224/243（92.2%），8 题写错（Codex 给出反证），扣除后 95.3%。
+- miniF2F 基线（`mf2f-baseline-1`，已更正）：230/243（94.7%），8 题写错（Codex 给出反证），扣除后 97.9%；只剩 5 题超时。
 - 下一步：清队列里的 57 道题；Windows 本按 `forge/WINDOWS.md` 装好后，两台分工跑评测。之后每轮先跑评测、再跑队列，看成绩是否上升。
 
 ## 接下来按顺序做

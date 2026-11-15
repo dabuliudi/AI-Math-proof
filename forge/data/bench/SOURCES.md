@@ -7,8 +7,9 @@
 - Lean 4 版本取自 DeepSeek-Prover-V1.5 仓库的 `datasets/minif2f.jsonl`（MIT 许可，Copyright (c) 2023 DeepSeek），
   https://github.com/deepseek-ai/DeepSeek-Prover-V1.5 ，于 2026-11-15 下载。
 - 题目依赖 `open BigOperators Real Nat Topology Rat`，已记录在每行的 `opens` 字段，校验时自动加上。
-- 为适配本库的 Mathlib（v4.24）做了一处纯语法转换：31 题里的旧写法 `∑ x in s, f` / `∏ x in s, f` 改为 `∑ x ∈ s, f`；
-  带类型标注的 `∑ k : T in s, f` 改为 `∑ k ∈ (s : Finset T), f`。含义不变。
+- 为适配本库的 Mathlib（v4.24）做了一处语法转换：31 题里的旧写法 `∑ x in s, f` / `∏ x in s, f` 改为 `∑ x ∈ s, (f)`；
+  带类型标注的 `∑ k : T in s, f` 改为 `∑ k ∈ (s : Finset T), (f)`。主体必须加括号：新写法优先级更高，
+  不加括号时有 6 题的题意被改变（2026-11-15 发现并修正，受影响的运行记录移到 `runs/archive/`）。
 - 未收录 1 题：`amc12a_2020_p15`，用到了 v4.24 里已移除的 `Complex.abs`。
 - 只收 test 部分，作为保留评测：这些命题不能进入 Mathlib2（`propose` 会判为 `reserved`，提交里的辅助引理也不行）。
   valid 部分没有导入，可以作为开发时的练习题。

@@ -5,7 +5,7 @@ import uuid
 from .leanrun import ALLOWED_AXIOMS, run_source
 from .statement import analyse_definition, analyse_submission, closed_form, is_disproof, split_signature
 
-HEADER = 'import Mathlib\nimport Mathlib2\nimport Forge\n'
+HEADER = 'import Mathlib\nimport Mathlib2\nimport Forge\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n'
 HEARTBEATS = 400000
 
 # 分诊阶梯：先问库里是否已有（exact?），再试一遍常用自动化。能被自动化关掉的命题不值得花 agent 的预算。

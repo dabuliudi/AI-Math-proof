@@ -1,0 +1,6 @@
+{"problem": "mathd_numbertheory_343", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T13:59:50+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "induction_pord1p1on2powklt5on2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:00:11+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "induction_prod1p1onk3le3m1onn", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:01:32+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "amc12a_2021_p9", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:08:35+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "mathd_algebra_342", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:19:40+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}
+{"problem": "mathd_algebra_158", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:30:20+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这些记录对应旧题目，作废"}

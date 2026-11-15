@@ -260,6 +260,12 @@ class KernelTests(unittest.TestCase):
         negation = triage('itest_neg', '(n : ℕ) (h : 2 ≤ n) : ¬ (n ^ 2 = 2)')
         self.assertFalse(negation.get('vacuous'))
 
+    def test_unbound_names_are_errors_not_new_variables(self):
+        # 自动隐式变量会把写错的名字悄悄变成任意变量，从而改变题意；所有检查都必须把它当错误
+        from forge.verify import statement_hashes, triage
+        self.assertFalse(triage('itest_unbound', '(n : ℕ) : n + k = k + n')['valid'])
+        self.assertEqual(statement_hashes(['(n : ℕ) : (∏ k ∈ Finset.range n, 1) + k = 1 + k'])[0], None)
+
     def test_statement_hashes_match_triage(self):
         from forge.verify import statement_hashes, triage
         statement = '(a b : ℕ) (h : a ∣ b) : a ∣ b * 7'

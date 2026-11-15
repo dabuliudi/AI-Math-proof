@@ -88,15 +88,12 @@
 {"problem": "amc12a_2013_p4", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T13:57:20+0800"}
 {"problem": "algebra_abpbcpcageq3_sumaonsqrtapbgeq3onsqrt2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T13:58:39+0800"}
 {"problem": "mathd_algebra_756", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T13:59:06+0800"}
-{"problem": "mathd_numbertheory_343", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T13:59:50+0800"}
 {"problem": "mathd_algebra_80", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T13:59:57+0800"}
 {"problem": "amc12b_2002_p7", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:00:02+0800"}
-{"problem": "induction_pord1p1on2powklt5on2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:00:11+0800"}
 {"problem": "mathd_numbertheory_457", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:00:40+0800"}
 {"problem": "mathd_numbertheory_135", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:01:11+0800"}
 {"problem": "amc12_2000_p12", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:01:13+0800"}
 {"problem": "mathd_algebra_388", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:01:23+0800"}
-{"problem": "induction_prod1p1onk3le3m1onn", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T14:01:32+0800"}
 {"problem": "mathd_algebra_275", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:01:56+0800"}
 {"problem": "mathd_algebra_263", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:02:13+0800"}
 {"problem": "mathd_numbertheory_34", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T14:02:17+0800"}
@@ -149,7 +146,6 @@
 {"problem": "amc12a_2003_p23", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:07:47+0800"}
 {"problem": "mathd_algebra_113", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:07:56+0800"}
 {"problem": "amc12b_2020_p22", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:08:01+0800"}
-{"problem": "amc12a_2021_p9", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:08:35+0800"}
 {"problem": "algebra_amgm_sumasqdivbgeqsuma", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:09:15+0800"}
 {"problem": "mathd_numbertheory_212", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:09:15+0800"}
 {"problem": "amc12a_2021_p19", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:09:42+0800"}
@@ -189,7 +185,6 @@
 {"problem": "amc12a_2009_p7", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:18:34+0800"}
 {"problem": "mathd_numbertheory_521", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:19:28+0800"}
 {"problem": "mathd_algebra_362", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:19:33+0800"}
-{"problem": "mathd_algebra_342", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:19:40+0800"}
 {"problem": "amc12a_2002_p13", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:20:11+0800"}
 {"problem": "amc12a_2021_p3", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:20:32+0800"}
 {"problem": "imo_1964_p2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:20:32+0800"}
@@ -224,7 +219,6 @@
 {"problem": "aime_1983_p2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:30:09+0800"}
 {"problem": "amc12_2000_p20", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:30:11+0800"}
 {"problem": "mathd_algebra_139", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:30:19+0800"}
-{"problem": "mathd_algebra_158", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "at": "2026-11-15T16:30:20+0800"}
 {"problem": "mathd_numbertheory_150", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:30:49+0800"}
 {"problem": "aime_1989_p8", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:31:02+0800"}
 {"problem": "mathd_numbertheory_296", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:31:18+0800"}
@@ -238,3 +232,9 @@
 {"problem": "mathd_algebra_338", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:34:25+0800"}
 {"problem": "amc12a_2020_p25", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:35:16+0800"}
 {"problem": "numbertheory_exk2powkeqapb2mulbpa2_aeq1", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "at": "2026-11-15T16:35:34+0800"}
+{"problem": "induction_prod1p1onk3le3m1onn", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:37:43+0800"}
+{"problem": "induction_pord1p1on2powklt5on2", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:38:43+0800"}
+{"problem": "mathd_numbertheory_343", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:38:45+0800"}
+{"problem": "amc12a_2021_p9", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:39:36+0800"}
+{"problem": "mathd_algebra_342", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:39:36+0800"}
+{"problem": "mathd_algebra_158", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:40:32+0800"}

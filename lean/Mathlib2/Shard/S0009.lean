@@ -17,13 +17,13 @@ theorem ana_sin_le_parabola (x : ℝ) (h0 : 0 ≤ x) (h1 : x ≤ Real.pi) : Real
     intro t
     have := ((hasDerivAt_const t (1:ℝ)).sub ((hasDerivAt_pow 2 t).const_mul (a / 2))).sub
       (Real.hasDerivAt_cos t)
-    convert this using 1
+    convert! this using 1
     norm_num
     ring
   have hg : ∀ t : ℝ, HasDerivAt (fun t : ℝ => Real.sin t - a * t) (Real.cos t - a) t := by
     intro t
     have := (Real.hasDerivAt_sin t).sub ((hasDerivAt_id' t).const_mul a)
-    convert this using 1
+    convert! this using 1
     ring
   have hfd : Differentiable ℝ (fun t : ℝ => 1 - a / 2 * t ^ 2 - Real.cos t) :=
     fun t => (hf t).differentiableAt
@@ -140,7 +140,7 @@ section
 theorem r3_sylvester_nonrepresentable_count_v2_s1h3 : ∀ (a b : ℕ), 0 < a → 0 < b → a.Coprime b → ∀ (M : ℕ) (P : ℕ → Prop) [inst : DecidablePred fun (n : ℕ) => ¬P n], (∀ n < M, P n ↔ ¬P (M - 1 - n)) → 2 * {n ∈ Finset.range M | ¬P n}.card = M := by
   intro a b _ _ _ M P inst h
   classical
-  have h1 := @Finset.filter_card_add_filter_neg_card_eq_card ℕ (Finset.range M) P _ inst
+  have h1 := (Finset.range M).card_filter_add_card_filter_not P
   have h2 : ((Finset.range M).filter (fun n => ¬ P n)).card = ((Finset.range M).filter P).card := by
     refine Finset.card_nbij' (fun n => M - 1 - n) (fun n => M - 1 - n) ?_ ?_ ?_ ?_
     · intro n hn
@@ -263,7 +263,7 @@ theorem r3_sylvester_nonrepresentable_count_v2_s1h2 : ∀ (a b : ℕ), 0 < a →
     simp only [Nat.add_sub_cancel]; ring
   generalize (a - 1) * (b - 1) = M at hM ⊢
   intro n hn hrep
-  obtain ⟨m, hm⟩ := Nat.exists_mul_emod_eq_one_of_coprime hab hb2
+  obtain ⟨m, -, hm⟩ := Nat.exists_mul_mod_eq_one_of_coprime hab hb2
   have hx : m * n % b < b := Nat.mod_lt _ hb
   have h4 : a * (m * n % b) ≡ n [MOD b] := by
     have h1 : a * (m * n % b) ≡ a * (m * n) [MOD b] := Nat.ModEq.mul_left a (Nat.mod_modEq _ _)
@@ -364,7 +364,7 @@ theorem comb_sum_mul_choose_sq (n : ℕ) : ∑ k ∈ Finset.range (n + 1), k * (
     simp only [Nat.zero_mul, Nat.add_zero]
     refine Finset.sum_congr rfl fun k hk => ?_
     have hk' : k ≤ m := Nat.lt_succ_iff.1 (Finset.mem_range.1 hk)
-    have h1 : (m + 1) * m.choose k = (m + 1).choose (k + 1) * (k + 1) := Nat.succ_mul_choose_eq m k
+    have h1 : (m + 1) * m.choose k = (m + 1).choose (k + 1) * (k + 1) := Nat.add_one_mul_choose_eq m k
     have h2 : (m + 1).choose (m - k) = (m + 1).choose (k + 1) := by
       rw [← Nat.choose_symm (by omega : k + 1 ≤ m + 1)]
       congr 1
@@ -695,9 +695,8 @@ theorem alg_card_range_sq_zmod_prime (p : ℕ) [Fact p.Prime] (hp : p ≠ 2) : N
       rw [hq] at hc
       simp only [Set.toFinset_setOf] at hc
       rw [if_neg hb0]
-      have : ((Finset.univ.filter (fun a : ZMod p => a ^ 2 = b)).card : ℤ) = 2 := by
-        rw [← one_add_one_eq_two]; convert hc
-      exact_mod_cast this
+      norm_num at hc ⊢
+      exact_mod_cast hc
   have hsum : (Finset.univ : Finset (ZMod p)).card
       = ∑ b ∈ S, (Finset.univ.filter (fun a : ZMod p => a ^ 2 = b)).card :=
     Finset.card_eq_sum_card_fiberwise (f := fun x : ZMod p => x ^ 2)

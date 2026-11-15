@@ -117,13 +117,24 @@ def repair(run, target, attempts=3, minutes=25, start=None, effort='xhigh'):
                                           shown=min(len(errors), 12), count=len(errors), errors='\n\n'.join(errors[:12]),
                                           minutes=minutes)
             began = time.time()
-            exit_code, message, tokens, slow = agent._invoke(prompt, 'repair')
+            for retry in range(4):
+                exit_code, message, tokens, slow = agent._invoke(prompt, 'repair')
+                if exit_code == 0 or slow or path.read_text(encoding='utf-8') != original:
+                    break
+                # agent 自身出错（退出码非 0、没动文件）：不算一次修复尝试，等一会儿、确认 agent 能正常回应后再试
+                with open(log, 'a', encoding='utf-8') as handle:
+                    handle.write(json.dumps(dict(shard=shard, attempt=attempt, agent_error=exit_code, retry=retry,
+                                                 raw=agent.last_raw.get('repair', '')[-1500:],
+                                                 at=time.strftime('%Y-%m-%dT%H:%M:%S%z')), ensure_ascii=False) + '\n')
+                time.sleep(60 * (retry + 1))
+                agent._probe()
             after = path.read_text(encoding='utf-8')
             problems = check_repair(original, after)
             code, output = lake_build(f'Mathlib2.Shard.{shard}')
             built = code == 0 and "declaration uses 'sorry'" not in output
             row = dict(shard=shard, attempt=attempt, built=built, problems=problems, seconds=round(time.time() - began),
                        tokens=tokens, exit=exit_code, errors_before=len(errors), message=message[-300:],
+                       raw=agent.last_raw.get('repair', '')[-1500:] if exit_code != 0 else '',
                        at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
             with open(log, 'a', encoding='utf-8') as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + '\n')

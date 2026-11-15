@@ -127,7 +127,7 @@ theorem bld2_card_conjClasses_of_card_prime_cube (p : ℕ) (hp : p.Prime) (G : T
   have hcA : (Finset.univ.filter (fun a : G => a ∈ Subgroup.center G)).card = p := by
     rw [← Fintype.card_subtype, ← Nat.card_eq_fintype_card]
     exact hZ
-  have hcB := Finset.filter_card_add_filter_neg_card_eq_card (s := (Finset.univ : Finset G)) (fun a : G => a ∈ Subgroup.center G)
+  have hcB := Finset.card_filter_add_card_filter_not (s := (Finset.univ : Finset G)) (fun a : G => a ∈ Subgroup.center G)
   rw [hcA, Finset.card_univ, ← Nat.card_eq_fintype_card, hG] at hcB
   rw [hcA] at h1
   set K := Nat.card (ConjClasses G)

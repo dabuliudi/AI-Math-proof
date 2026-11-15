@@ -68,7 +68,7 @@ theorem comb_exists_two_vertices_same_degree (V : Type) [Fintype V] [DecidableEq
       simp only [SimpleGraph.mem_neighborFinset] at hw
       simp only [Finset.mem_erase, Finset.mem_univ, and_true]
       rintro rfl
-      exact G.loopless _ hw
+      exact G.irrefl hw
     · rw [Finset.card_erase_of_mem (Finset.mem_univ _), Finset.card_univ, G.card_neighborFinset_eq_degree, hv1]
   have hmem : u ∈ G.neighborFinset v := by
     rw [hsub]
@@ -88,11 +88,11 @@ theorem ana_exp_ge_cubic_taylor (x : ℝ) : 1 + x + x ^ 2 / 2 + x ^ 3 / 6 ≤ Re
     have h1 : HasDerivAt (fun y : ℝ => 1 + y + y ^ 2 / 2 + y ^ 3 / 6) (1 + y + y ^ 2 / 2) y := by
       have := (((hasDerivAt_id' y).const_add 1).add ((hasDerivAt_pow 2 y).div_const 2)).add
         ((hasDerivAt_pow 3 y).div_const 6)
-      convert this using 1
+      convert! this using 1
       norm_num
       ring
     have h2 : HasDerivAt (fun y : ℝ => Real.exp (-y)) (Real.exp (-y) * -1) y := (hasDerivAt_neg y).exp
-    convert h2.mul h1 using 1
+    convert! h2.mul h1 using 1
     ring
   have hd : Differentiable ℝ (fun y : ℝ => Real.exp (-y) * (1 + y + y ^ 2 / 2 + y ^ 3 / 6)) :=
     fun y => (hk y).differentiableAt
@@ -161,10 +161,10 @@ theorem comb_connected_of_min_degree_half (V : Type) [Fintype V] [DecidableEq V]
       · rintro rfl
         exact hadj hw
       · rintro rfl
-        exact G.loopless _ hw
+        exact G.irrefl hw
     · refine ⟨?_, ?_⟩
       · rintro rfl
-        exact G.loopless _ hw
+        exact G.irrefl hw
       · rintro rfl
         exact hadj hw.symm
   have hcard := Finset.card_le_card hsub
@@ -188,7 +188,7 @@ theorem ana_log_one_add_ge_quadratic (x : ℝ) (hx : 0 ≤ x) : x - x ^ 2 / 2 �
     have hne : (1 + y) ≠ 0 := by positivity
     have := ((((hasDerivAt_id' y).const_add 1).log hne).sub (hasDerivAt_id' y)).add
       ((hasDerivAt_pow 2 y).div_const 2)
-    convert this using 1
+    convert! this using 1
     field_simp
     ring
   have hmono : MonotoneOn (fun y : ℝ => Real.log (1 + y) - y + y ^ 2 / 2) (Set.Ici 0) := by
@@ -231,7 +231,7 @@ theorem alg_odd_card_order_two_of_even_card (G : Type*) [Group G] [Finite G] (h 
     rw [hset]
     have h1 : (1 : G) ∉ {g : G | orderOf g = 2} := by simp
     have := Set.ncard_insert_of_notMem h1 (Set.toFinite _)
-    rw [← Set.Nat.card_coe_set_eq, ← Set.Nat.card_coe_set_eq] at this
+    rw [← Nat.card_coe_set_eq, ← Nat.card_coe_set_eq] at this
     exact this
   rw [← Nat.card_eq_fintype_card, ← Nat.card_eq_fintype_card, hcard] at hmod
   have h2 : Nat.card G % 2 = 0 := Nat.even_iff.mp h
@@ -259,7 +259,7 @@ theorem comb_card_even_card_powerset (n : ℕ) : ((Finset.range (n + 1)).powerse
   have hsum : ∑ m ∈ (Finset.range (n + 1)).powerset, (-1 : ℤ) ^ m.card = 0 := by
     rw [Finset.sum_powerset_neg_one_pow_card]
     simp
-  have htot := Finset.filter_card_add_filter_neg_card_eq_card (s := (Finset.range (n + 1)).powerset) (fun s => Even s.card)
+  have htot := Finset.card_filter_add_card_filter_not (s := (Finset.range (n + 1)).powerset) (fun s => Even s.card)
   rw [Finset.card_powerset, Finset.card_range] at htot
   rw [← Finset.sum_filter_add_sum_filter_not _ (fun s => Even s.card)] at hsum
   have h1 : ∑ m ∈ (Finset.range (n + 1)).powerset.filter (fun s => Even s.card), (-1 : ℤ) ^ m.card
@@ -284,7 +284,7 @@ theorem ana_sin_ge_cubic_of_nonneg (x : ℝ) (hx : 0 ≤ x) : x - x ^ 3 / 6 ≤ 
     intro y
     have := ((Real.hasDerivAt_sin y).sub (hasDerivAt_id' y)).add
       ((hasDerivAt_pow 3 y).div_const 6)
-    convert this using 1
+    convert! this using 1
     norm_num
     ring
   have hmono : Monotone (fun y : ℝ => Real.sin y - y + y ^ 3 / 6) := by
@@ -350,7 +350,7 @@ theorem alg_card_eq_two_of_two_conj_classes (G : Type*) [Group G] [Finite G] (h 
     rw [Nat.card_eq_fintype_card, Nat.card_eq_fintype_card] at this
     exact this
   have hn : Fintype.card (ConjClasses.mk g).carrier + 1 = Nat.card G := by
-    rw [← Nat.card_eq_fintype_card, Set.Nat.card_coe_set_eq, hcar]
+    rw [← Nat.card_eq_fintype_card, Nat.card_coe_set_eq, hcar]
     have := Set.ncard_add_ncard_compl ({1} : Set G)
     rw [Set.ncard_singleton] at this
     omega
@@ -382,7 +382,7 @@ section
 /- A nilpotent real matrix of positive size has determinant 0 — det(A)^k = det(A^k) = det 0 = 0 (size positive), and ℝ has no nilpotents. -/
 theorem lin_nilpotent_det_zero (n k : ℕ) (A : Matrix (Fin (n + 1)) (Fin (n + 1)) ℝ) (h : A ^ k = 0) : Matrix.det A = 0 := by
   have h1 : Matrix.det A ^ k = 0 := by
-    rw [← Matrix.det_pow, h, Matrix.det_zero ⟨0⟩]
+    rw [← Matrix.det_pow, h, Matrix.det_zero]
   exact pow_eq_zero_iff (M₀ := ℝ) (by rintro rfl; simp at h1) |>.mp h1
 end
 

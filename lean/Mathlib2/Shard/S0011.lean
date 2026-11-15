@@ -285,7 +285,7 @@ theorem comb_colorable_of_degree_le (V : Type) [Fintype V] [DecidableEq V] (G : 
       rw [Finset.mem_insert] at hu hv
       by_cases hua : u = a
       · subst hua
-        have hvu : v ≠ u := fun e => G.loopless u (e ▸ huv)
+        have hvu : v ≠ u := fun e => G.loopless.irrefl u (e ▸ huv)
         rw [Function.update_self, Function.update_of_ne hvu]
         exact hk' v huv
       · by_cases hva : v = a
@@ -422,11 +422,11 @@ theorem comb_tournament_hamiltonian_path_aux1 {α : Type} (r : α → α → Pro
   | nil => exact ⟨[a], List.Perm.refl _, List.isChain_singleton a, by simp⟩
   | cons b t ih =>
     by_cases hab : r a b
-    · exact ⟨a :: b :: t, List.Perm.refl _, List.chain'_cons.2 ⟨hab, hc⟩, by simp⟩
+    · exact ⟨a :: b :: t, List.Perm.refl _, List.isChain_cons_cons.2 ⟨hab, hc⟩, by simp⟩
     · have hba : r b a := (hl b List.mem_cons_self).resolve_left hab
-      have hc2 := List.chain'_cons'.1 hc
+      have hc2 := List.isChain_cons.1 hc
       obtain ⟨t', hp, hc', hh⟩ := ih (fun x hx => hl x (List.mem_cons_of_mem _ hx)) hc2.2
-      refine ⟨b :: t', (hp.cons b).trans (List.Perm.swap a b t), List.chain'_cons'.2 ⟨?_, hc'⟩, by simp⟩
+      refine ⟨b :: t', (hp.cons b).trans (List.Perm.swap a b t), List.isChain_cons.2 ⟨?_, hc'⟩, by simp⟩
       intro y hy
       rcases hh y hy with h1 | h1
       · rw [h1]; exact hba

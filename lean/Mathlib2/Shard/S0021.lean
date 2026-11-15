@@ -43,7 +43,6 @@ theorem bld3_sq_card_le_sum_mul_sum_inv (K : Type*) [Field K] [LinearOrder K] [I
   have hsa : 0 ≤ ∑ i ∈ s, a i := Finset.sum_nonneg (fun i hi => (ha i hi).le)
   have hsb : 0 ≤ ∑ i ∈ s, (a i)⁻¹ := Finset.sum_nonneg (fun i hi => (inv_pos.mpr (ha i hi)).le)
   have hmul := mul_le_mul hA hB (by positivity) (by positivity)
-  simp only at hmul
   have e : ((s.card : K) ^ s.card * ∏ i ∈ s, a i) * ((s.card : K) ^ s.card * ∏ i ∈ s, (a i)⁻¹)
       = ((s.card : K) ^ 2) ^ s.card := by
     rw [mul_mul_mul_comm, hprod, mul_one, ← pow_add, ← two_mul, pow_mul]
@@ -162,8 +161,8 @@ theorem bld3_pisano_pos_and_period (m : ℕ) (hm : 0 < m) : 0 < p3_pisano m ∧ 
   have h1 := key (orderOf σ)
   rw [pow_orderOf_eq_one, Equiv.Perm.one_apply, Prod.mk.injEq] at h1
   refine bld2_pisano_fib_odd_eq_aux1 m (orderOf σ) hN ((lib_fib_period_iff m (orderOf σ)).mpr ⟨?_, ?_⟩)
-  · rw [← ZMod.eq_iff_modEq_nat]; exact_mod_cast h1.1.symm
-  · rw [← ZMod.eq_iff_modEq_nat]; exact_mod_cast h1.2.symm
+  · rw [← ZMod.natCast_eq_natCast_iff]; exact_mod_cast h1.1.symm
+  · rw [← ZMod.natCast_eq_natCast_iff]; exact_mod_cast h1.2.symm
 end
 
 -- forge:entry bld3_rank_involution_defect kind=proved origin=conjecture
@@ -447,6 +446,7 @@ theorem bld3_mul_pow_prime_of_card_prime_cube_aux2 {M : Type*} [Monoid M] (a b c
         rw [mul_assoc, ← pow_add, hch]
 
 theorem bld3_mul_pow_prime_of_card_prime_cube (p : ℕ) (hp : p.Prime) (G : Type*) [Group G] (hG : Nat.card G = p ^ 3) (hna : ∃ a b : G, a * b ≠ b * a) (hp2 : p ≠ 2) (a b : G) : (a * b) ^ p = a ^ p * b ^ p := by
+  letI : Bracket G G := commutatorElement
   have hZ := Mathlib2.bld_center_card_of_card_prime_cube p hp G hG hna
   have hC := Mathlib2.bld2_commutator_eq_center_of_card_prime_cube p hp G hG hna
   have hc : ⁅b, a⁆ ∈ Subgroup.center G := by
@@ -521,7 +521,7 @@ theorem bld3_card_sylow_of_card_prime_mul_prime (p q : ℕ) [Fact p.Prime] (hq :
     intro g hg
     rw [Subgroup.mem_centralizer_iff]
     intro h hh
-    have := (IsCyclic.commutative (α := (P : Subgroup G))).comm ⟨h, hh⟩ ⟨g, hg⟩
+    have := (IsCyclic.isMulCommutative (α := (P : Subgroup G))).is_comm.comm ⟨h, hh⟩ ⟨g, hg⟩
     exact congrArg Subtype.val this
   have hQC : (Q : Subgroup G) ≤ Subgroup.centralizer ((P : Subgroup G) : Set G) := by
     intro g hg
@@ -596,7 +596,7 @@ theorem bld3_card_conjClasses_of_card_prime_mul_prime (p q : ℕ) (hp : p.Prime)
     by_contra hnd
     haveI := Mathlib2.alg_isCyclic_of_card_eq_prime_mul_prime p q hp hq hpq hnd G hG
     obtain ⟨a, b, hab⟩ := hna
-    exact hab ((IsCyclic.commutative (α := G)).comm a b)
+    exact hab ((IsCyclic.isMulCommutative (α := G)).is_comm.comm a b)
   obtain ⟨m, hm⟩ := hdiv
   -- the normal Sylow q-subgroup containing all elements of order q
   obtain ⟨P, -, hPq, hPmem⟩ := Mathlib2.alg_isCyclic_of_card_eq_prime_mul_prime_aux1 q p hq hp hpq.ne'

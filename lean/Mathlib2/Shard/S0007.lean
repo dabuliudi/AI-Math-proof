@@ -576,7 +576,7 @@ theorem ana_integral_x_mul_exp : (∫ x in (0 : ℝ)..1, x * Real.exp x) = 1 := 
   have hd : ∀ x ∈ Set.uIcc (0:ℝ) 1, HasDerivAt (fun x : ℝ => (x - 1) * Real.exp x) (x * Real.exp x) x := by
     intro x _
     have h := ((hasDerivAt_id x).sub_const 1).mul (Real.hasDerivAt_exp x)
-    convert h using 1
+    convert! h using 1
     simp only [id]
     ring
   rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hd
@@ -594,7 +594,7 @@ theorem alg_rat_pow_ne_two (n : ℕ) (hn : 2 ≤ n) (q : ℚ) : q ^ n ≠ 2 := b
     rintro rfl
     rw [zero_pow (by omega)] at h
     norm_num at h
-  have h1 : padicValRat 2 (q ^ n) = (n : ℤ) * padicValRat 2 q := padicValRat.pow hq
+  have h1 : padicValRat 2 (q ^ n) = (n : ℤ) * padicValRat 2 q := padicValRat.pow q
   have h2 : padicValRat 2 ((2 : ℕ) : ℚ) = 1 := padicValRat.self (by norm_num)
   rw [h] at h1
   norm_num at h2
@@ -611,7 +611,7 @@ theorem ana_integral_x_mul_sin : (∫ x in (0 : ℝ)..Real.pi, x * Real.sin x) =
   have hd : ∀ x ∈ Set.uIcc (0:ℝ) Real.pi, HasDerivAt (fun x : ℝ => Real.sin x - x * Real.cos x) (x * Real.sin x) x := by
     intro x _
     have h := (Real.hasDerivAt_sin x).sub ((hasDerivAt_id x).mul (Real.hasDerivAt_cos x))
-    convert h using 1
+    convert! h using 1
     simp only [id]
     ring
   rw [intervalIntegral.integral_eq_sub_of_hasDerivAt hd

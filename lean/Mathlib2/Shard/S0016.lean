@@ -40,11 +40,13 @@ theorem bld_exists_bipartite_subgraph_half_edges (V : Type) [Fintype V] [Decidab
   let H : SimpleGraph V :=
     { Adj := fun u v => G.Adj u v ∧ (u ∈ s ↔ v ∉ s)
       symm := by
+        constructor
         intro u v ⟨h1, h2⟩
         exact ⟨h1.symm, by tauto⟩
       loopless := by
+        constructor
         intro u ⟨h1, _⟩
-        exact G.loopless u h1 }
+        exact G.loopless.irrefl u h1 }
   refine ⟨H, fun u v h => h.1, ?_, ?_⟩
   · refine ⟨SimpleGraph.Coloring.mk (fun v => if v ∈ s then (0 : Fin 2) else 1) ?_⟩
     intro u v ⟨_, h2⟩
@@ -120,12 +122,11 @@ theorem bld_one_add_div_pow_mono (n : ℕ) (x : ℝ) (hx : 0 ≤ x) : (1 + x / (
   · simpa using hx
   have hn' : (0:ℝ) < n := by exact_mod_cast hn
   have key := Mathlib2.an2_amgm_range_pow n (fun i => if i < n then 1 + x / (n : ℝ) else 1)
-    (fun i => by dsimp only; split_ifs <;> positivity)
+    (fun i => by split_ifs <;> positivity)
   have hp : ∏ i ∈ Finset.range n, (if i < n then 1 + x / (n : ℝ) else 1) = (1 + x / (n : ℝ)) ^ n := by
     rw [Finset.prod_congr rfl (fun i hi => if_pos (Finset.mem_range.1 hi))]; simp
   have hs : ∑ i ∈ Finset.range n, (if i < n then 1 + x / (n : ℝ) else 1) = n * (1 + x / (n : ℝ)) := by
     rw [Finset.sum_congr rfl (fun i hi => if_pos (Finset.mem_range.1 hi))]; simp; ring
-  simp only [] at key
   rw [Finset.prod_range_succ, Finset.sum_range_succ, hp, hs] at key
   simp only [lt_irrefl, if_false, mul_one] at key
   have e : ((n : ℝ) * (1 + x / (n : ℝ)) + 1) / ((n : ℝ) + 1) = 1 + x / ((n : ℝ) + 1) := by
@@ -141,7 +142,6 @@ theorem bld_hardy_cross_term (a : ℕ → ℝ) (n : ℕ) : ∑ k ∈ Finset.rang
   have hCS := Finset.sum_mul_sq_le_sq_mul_sq (Finset.range n)
     (fun k => (∑ i ∈ Finset.range (k + 1), a i) / ((k : ℝ) + 1)) a
   have hA : 0 ≤ ∑ k ∈ Finset.range n, a k ^ 2 := Finset.sum_nonneg (fun k _ => sq_nonneg _)
-  simp only [] at hCS
   refine (abs_le_of_sq_le_sq' ?_ (by linarith)).2
   calc _ ≤ _ := hCS
     _ ≤ (4 * ∑ k ∈ Finset.range n, a k ^ 2) * ∑ k ∈ Finset.range n, a k ^ 2 :=
@@ -453,7 +453,7 @@ theorem bld_fib_consecutive_of_quadratic_form_aux1 (u v Y : ℤ) (hu : u ^ 2 = 5
 theorem bld_fib_consecutive_of_quadratic_form_aux2 (x y : ℕ) (hy : (y : ℤ) ^ 2 = 1) (h : ((x : ℤ) ^ 2 - (x : ℤ) * (y : ℤ) - (y : ℤ) ^ 2) ^ 2 = 1) (hx : 0 < x) : ∃ n : ℕ, y = Nat.fib n ∧ x = Nat.fib (n + 1) := by
   have hy1 : y = 1 := by
     have : y ^ 2 = 1 := by exact_mod_cast hy
-    exact (pow_eq_one_iff (by norm_num)).1 this
+    exact (pow_eq_one_iff_of_nonneg (Nat.zero_le y) (by norm_num)).1 this
   subst hy1
   have hx2 : (x : ℤ) ≤ 2 := by
     have hx0 : (1 : ℤ) ≤ x := by exact_mod_cast hx

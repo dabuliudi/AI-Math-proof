@@ -455,7 +455,6 @@ section
 /- The square of the product of the divisors of n equals n^{d(n)}. -/
 theorem nt2_prod_divisors_sq (n : ℕ) : (∏ d ∈ Nat.divisors n, d) ^ 2 = n ^ (Nat.divisors n).card := by
   have h := Nat.prod_div_divisors n (fun d => d)
-  simp only at h
   rw [sq]
   nth_rewrite 2 [← h]
   rw [← Finset.prod_mul_distrib, ← Finset.prod_const]

@@ -70,7 +70,8 @@ theorem bld2_idempotent_iff_rank_add_rank (K : Type*) [Field K] (ι : Type*) [Fi
   have hz : A - A * A = 0 := by
     ext i j
     have := congrFun (LinearMap.congr_fun hr (Pi.single j 1)) i
-    simpa using this
+    simpa only [Matrix.mulVecLin_apply, Matrix.mulVec_single_one, Matrix.col_apply,
+      LinearMap.zero_apply, Pi.zero_apply, Matrix.zero_apply] using this
   exact (sub_eq_zero.mp hz).symm
 end
 

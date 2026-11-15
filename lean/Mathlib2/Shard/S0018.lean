@@ -1218,7 +1218,7 @@ theorem bld2_commutator_eq_center_of_card_prime_cube (p : ℕ) (hp : p.Prime) (G
     exact (Nat.eq_of_mul_eq_mul_right hp0 this).symm
   have hle : commutator G ≤ Subgroup.center G := by
     rw [← Subgroup.Normal.quotient_commutative_iff_commutator_le]
-    exact ⟨IsPGroup.commutative_of_card_eq_prime_sq hq⟩
+    exact IsPGroup.isMulCommutative_of_card_eq_prime_sq hq
   have hdvd : Nat.card (commutator G) ∣ p := hZ ▸ Subgroup.card_dvd_of_le hle
   rcases (Nat.dvd_prime hp).mp hdvd with h1 | h1
   · exfalso
@@ -1226,7 +1226,7 @@ theorem bld2_commutator_eq_center_of_card_prime_cube (p : ℕ) (hp : p.Prime) (G
     apply hab
     rw [← commutatorElement_eq_one_iff_mul_comm]
     have hbot : commutator G = ⊥ := Subgroup.card_eq_one.mp h1
-    have hm : ⁅a, b⁆ ∈ commutator G := by
+    have hm : a * b * a⁻¹ * b⁻¹ ∈ commutator G := by
       rw [commutator_def]
       exact Subgroup.commutator_mem_commutator (Subgroup.mem_top a) (Subgroup.mem_top b)
     rw [hbot] at hm

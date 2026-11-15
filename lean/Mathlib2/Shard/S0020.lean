@@ -165,11 +165,11 @@ theorem lib_list_exists_perm_isChain_of_pairwise_or_aux1 {α : Type*} (r : α �
   | nil => exact ⟨[a], List.Perm.refl _, List.isChain_singleton a, by simp⟩
   | cons b t ih =>
     by_cases hab : r a b
-    · exact ⟨a :: b :: t, List.Perm.refl _, List.chain'_cons.2 ⟨hab, hc⟩, by simp⟩
+    · exact ⟨a :: b :: t, List.Perm.refl _, List.isChain_cons_cons.2 ⟨hab, hc⟩, by simp⟩
     · have hba : r b a := (hl b List.mem_cons_self).resolve_left hab
-      have hc2 := List.chain'_cons'.1 hc
+      have hc2 := List.isChain_cons.1 hc
       obtain ⟨t', hp, hc', hh⟩ := ih (fun x hx => hl x (List.mem_cons_of_mem _ hx)) hc2.2
-      refine ⟨b :: t', (hp.cons b).trans (List.Perm.swap a b t), List.chain'_cons'.2 ⟨?_, hc'⟩, by simp⟩
+      refine ⟨b :: t', (hp.cons b).trans (List.Perm.swap a b t), List.isChain_cons.2 ⟨?_, hc'⟩, by simp⟩
       intro y hy
       rcases hh y hy with h1 | h1
       · rw [h1]; exact hba
@@ -349,9 +349,9 @@ theorem bld3_sqrt_two_rec_viete_prod_le (a : ℕ → ℝ) (h0 : a 0 = 0) (h : �
   have hx1 : x ≤ 1 := by
     rw [hx, div_le_one (by positivity), pow_succ]
     nlinarith
-  have hs := Real.sin_gt_sub_cube hx0 hx1
+  have hs := Real.sin_gt_sub_cube hx0
   have hspos : 0 < Real.sin x := by
-    have : 0 ≤ x - x ^ 3 / 4 := by nlinarith [mul_pos hx0 hx0, pow_le_one₀ hx0.le hx1 (n := 2)]
+    have : 0 ≤ x - x ^ 3 / 6 := by nlinarith [mul_pos hx0 hx0, pow_le_one₀ hx0.le hx1 (n := 2)]
     linarith
   have hS_pos : 0 < 2 ^ n * Real.sin x := mul_pos h2n hspos
   have e1 : (2 : ℝ) ^ n = Real.pi / (2 * x) := by

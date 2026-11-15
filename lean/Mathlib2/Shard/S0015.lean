@@ -260,8 +260,8 @@ end
 section
 /- infinitely many odd k divide F_1+...+F_k (also Conjecture 1 of the paper) -/
 theorem p3_cor2 : {k : ℕ | Odd k ∧ k ∣ p3_fibsum k}.Infinite := by
-  have hu : IsUnit (2 : ZMod 15) := isUnit_of_mul_eq_one 2 8 (by decide)
-  have hinf := (Nat.setOf_prime_and_eq_mod_infinite hu).diff (Set.finite_singleton 2)
+  have hu : IsUnit (2 : ZMod 15) := IsUnit.of_mul_eq_one 8 (by decide)
+  have hinf := (Nat.infinite_setOfPred_prime_and_eq_mod hu).diff (Set.finite_singleton 2)
   have hinj : Set.InjOn (fun p : ℕ => Nat.fib (2 * p)) ({p : ℕ | Nat.Prime p ∧ (p : ZMod 15) = 2} \ {2}) := by
     rintro p ⟨⟨hp, -⟩, -⟩ q ⟨⟨hq, -⟩, -⟩ h
     have h' : Nat.fib ((2 * p - 2) + 2) = Nat.fib ((2 * q - 2) + 2) := by

@@ -117,9 +117,7 @@ theorem an_sum_mul_choose (n : ℕ) : ∑ k ∈ Finset.range (n + 2), k * Nat.ch
   simp only [Nat.zero_mul, add_zero]
   apply Finset.sum_congr rfl
   intro k _
-  have := Nat.succ_mul_choose_eq n k
-  simp only [Nat.succ_eq_add_one] at this
-  linarith
+  simpa only [Nat.mul_comm] using (Nat.add_one_mul_choose_eq n k).symm
 end
 
 -- forge:entry nt_prime_sq_sub_one_dvd_24 kind=proved origin=conjecture
@@ -255,7 +253,6 @@ theorem nt_odd_sq_add_odd_sq_not_square (a b : ℤ) (ha : Odd a) (hb : Odd b) : 
   obtain ⟨k, rfl⟩ := ha
   obtain ⟨m, rfl⟩ := hb
   have h := congrArg (fun x : ℤ => (x : ZMod 4)) hc
-  simp only at h
   push_cast at h
   exact nt_odd_sq_add_odd_sq_not_square_aux1 _ _ _ h
 end

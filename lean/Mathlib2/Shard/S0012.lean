@@ -158,7 +158,7 @@ theorem gen_lin_eigenvalue_root_of_aeval_eq_zero (R : Type*) [CommRing R] (V : T
   obtain ⟨v, hv⟩ := hμ.exists_hasEigenvector
   have h1 := Module.End.aeval_apply_of_hasEigenvector (p := p) hv
   rw [hp, LinearMap.zero_apply] at h1
-  rcases smul_eq_zero.mp h1.symm with h | h
+  rcases eq_zero_or_eq_zero_of_smul_eq_zero h1.symm with h | h
   · exact h
   · exact absurd h hv.2
 end
@@ -377,7 +377,7 @@ theorem alg_artin_schreier_irreducible_zmod_s1h1 (p : ℕ) [Fact (Nat.Prime p)] 
   | zero => simp
   | succ k ih =>
     have hk : ((k : K)) ^ p = k := by
-      have h2 : (frobenius K p) (k : K) = (k : K) := frobenius_natCast K p k
+      have h2 : (frobenius K p) (k : K) = (k : K) := map_natCast (frobenius K p) k
       rw [frobenius_def] at h2
       exact h2
     rw [pow_succ, pow_mul, ih, add_pow_char, h, hk]

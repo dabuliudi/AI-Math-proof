@@ -109,6 +109,8 @@ def main(argv=None):
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
+    p = sub.add_parser('regress', help='事故回归集：把出过的问题当用例重跑'); p.add_argument('--jobs', type=int, default=3)
+    sub.add_parser('consistency', help='台账与分片是否一致（提交前检查）')
     p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
     p.add_argument('runs', nargs='+'); p.add_argument('--problems-from', help='以这个轮次做过的题为准（默认取交集）')
@@ -270,6 +272,14 @@ def main(argv=None):
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))
+    elif args.command == 'regress':
+        from .regressions import run
+        result = run(args.jobs)
+        emit(result); return 0 if result['ok'] else 1
+    elif args.command == 'consistency':
+        from .regressions import consistency
+        result = consistency()
+        emit(result); return 0 if not any(result.values()) else 1
     elif args.command == 'review-summary':
         from .paper import review_consensus
         paper = json.loads(args.paper.read_text(encoding='utf-8'))

@@ -266,6 +266,12 @@ class KernelTests(unittest.TestCase):
         negation = triage('itest_neg', '(n : ℕ) (h : 2 ≤ n) : ¬ (n ^ 2 = 2)')
         self.assertFalse(negation.get('vacuous'))
 
+    def test_incident_regressions_all_pass(self):
+        # 事故回归集：每次出过的问题都是一条用例（forge/data/regressions.jsonl）
+        from forge.regressions import run
+        result = run(jobs=3)
+        self.assertTrue(result['ok'], [r for r in result['results'] if not r['ok']])
+
     def test_unbound_names_are_errors_not_new_variables(self):
         # 自动隐式变量会把写错的名字悄悄变成任意变量，从而改变题意；所有检查都必须把它当错误
         from forge.verify import statement_hashes, triage

@@ -198,3 +198,165 @@ def migrate_records(data=DATA):
             path.write_text(new, encoding='utf-8')
             changed.append(str(path.relative_to(data)))
     return changed
+
+
+# ---------------------------------------------------------------------------
+# 并行修复：先打桩让所有分片都能编译，再让多个 agent 同时修不同的分片。
+#
+# 分片是线性依赖的，前一个编不过，后一个连检查都没法做，所以逐片修只能串行。打桩把编不过的证明临时换成
+# `sorry`（陈述不动），下游分片就能编译了；这时每个分片可以用 `lake env lean <文件>` 单独检查
+# （不写编译产物，多个检查同时跑互不干扰），于是可以并行修。最后核对：陈述不变、一个 sorry 都不剩。
+# ---------------------------------------------------------------------------
+from concurrent.futures import ThreadPoolExecutor
+from .leanrun import run_source  # noqa: F401  (保留给以后按文件检查的扩展)
+import subprocess
+
+BOUNDARY = re.compile(r'^(?:-- forge:entry |end\s*$|(?:@\[[^\]]*\]\s*)?(?:private\s+|protected\s+|noncomputable\s+)*'
+                      r'(?:theorem|lemma|def|abbrev)\s)', re.M)
+
+
+def _error_lines(output, shard):
+    return sorted({int(m.group(1)) for m in re.finditer(rf'^error: Mathlib2/Shard/{shard}\.lean:(\d+):', output, re.M)})
+
+
+def stub_declarations(text, error_lines):
+    """把包含报错行的声明的证明换成 `sorry`；报错落在陈述里（`:=` 之前）的不动。返回 (新文本, 打了桩的声明名)。"""
+    offsets = [0]
+    for line in text.split('\n'):
+        offsets.append(offsets[-1] + len(line) + 1)
+    decls = []
+    for match in DECL.finditer(text):
+        nxt = BOUNDARY.search(text, match.end())
+        end = nxt.start() if nxt else len(text)
+        depth, i = 0, match.end()
+        while i < end - 1:
+            ch = text[i]
+            if ch in '([{⟨':
+                depth += 1
+            elif ch in ')]}⟩':
+                depth -= 1
+            elif text.startswith(':=', i) and depth == 0:
+                break
+            i += 1
+        decls.append((match.group(2), match.start(), i, end))
+    targets = {}
+    for line in error_lines:
+        pos = offsets[min(line - 1, len(offsets) - 1)]
+        for name, start, assign, end in decls:
+            if start <= pos < end and pos >= assign:   # 报错在证明部分
+                targets[name] = (assign, end)
+    out, stubbed = text, []
+    for name, (assign, end) in sorted(targets.items(), key=lambda kv: -kv[1][0]):  # 从后往前替换，前面的位置不变
+        out = out[:assign] + ':= by\n  sorry\n\n' + out[end:]
+        stubbed.append(name)
+    return out, sorted(stubbed)
+
+
+def _check_file(path):
+    """单独检查一个分片文件（依赖已编译好的上游分片），不写编译产物。返回 (错误列表, 是否还有 sorry)。"""
+    from .leanrun import _env, find_lake
+    proc = subprocess.run([find_lake(), 'env', 'lean', str(path.relative_to(PROJECT))], cwd=PROJECT, env=_env(),
+                          capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=1800)
+    out = proc.stdout + proc.stderr
+    shard = path.stem
+    errors = [b for b in _errors(out.replace(f'{path.relative_to(PROJECT)}', f'Mathlib2/Shard/{shard}.lean'), shard)]
+    errors = errors or [l for l in out.splitlines() if ': error' in l or l.startswith('error')]
+    return errors, "declaration uses 'sorry'" in out
+
+
+def stub_pass(start=None):
+    """按顺序打桩，直到所有分片都能编译。返回 {分片: (原始文本, 打了桩的声明)}；陈述本身编不过时报告 blocked。"""
+    stubs, blocked = {}, []
+    for shard in sorted(p.stem for p in SHARDS.glob('S*.lean')):
+        if start and shard < start:
+            continue
+        path = SHARDS / f'{shard}.lean'
+        original, _ = migrate(path.read_text(encoding='utf-8'))
+        path.write_text(original, encoding='utf-8')
+        code, output = lake_build(f'Mathlib2.Shard.{shard}')
+        names = []
+        for _ in range(6):  # 打桩后可能暴露出新的报错，最多几轮
+            if code == 0:
+                break
+            new, stubbed = stub_declarations(path.read_text(encoding='utf-8'), _error_lines(output, shard))
+            if not stubbed:
+                break
+            names += stubbed
+            path.write_text(new, encoding='utf-8')
+            code, output = lake_build(f'Mathlib2.Shard.{shard}')
+        if code != 0:
+            path.write_text(original, encoding='utf-8')
+            blocked.append(dict(shard=shard, errors=_errors(output, shard)[:5]))
+            break
+        if names:
+            stubs[shard] = (original, sorted(set(names)))
+    return stubs, blocked
+
+
+PARALLEL_PROMPT = '''You are repairing a Lean 4 library after a Mathlib upgrade (Mathlib v4.24 -> {target}). Working directory: {root}.
+In {path}, the proofs of these declarations no longer compiled and were temporarily replaced by `sorry`:
+{names}
+The original (old-Mathlib) file is saved at {original} for reference: reuse its proof ideas, adapting renamed lemmas,
+changed simp sets and changed tactic behaviour.
+
+Your job: replace every one of those `sorry`s with a proof that compiles. Rules (checked automatically; violations are reverted):
+- Edit only {path}. Do not change any declaration's statement (text up to its `:=`), names, or `-- forge:entry` lines.
+- No sorry, admit, axiom, native_decide, set_option or new imports may remain.
+- Find renamed lemmas with `{forge} lookup "<name fragments>"` or `grep -rn "<name>" lean/.lake/packages/mathlib/Mathlib`.
+Check the file on its own with: cd lean && lake env lean {relpath}
+(it must print no errors and no "declaration uses 'sorry'" warning). Do NOT run `lake build`.
+You have about {minutes} minutes. End with one line: RESULT: fixed | stuck.
+'''
+
+
+def parallel_repair(run, target, workers=4, attempts=3, minutes=25, start=None, effort='xhigh'):
+    """打桩 → 并行修 → 验收。返回各分片结果；最后按顺序完整编译一次。"""
+    LOG.mkdir(parents=True, exist_ok=True)
+    log = LOG / f'{run}.jsonl'
+    stubs, blocked = stub_pass(start)
+
+    def note(row):
+        row['at'] = time.strftime('%Y-%m-%dT%H:%M:%S%z')
+        with open(log, 'a', encoding='utf-8') as handle:
+            handle.write(json.dumps(row, ensure_ascii=False) + '\n')
+
+    note(dict(phase='stub', stubbed={s: names for s, (_, names) in stubs.items()}, blocked=blocked))
+    if blocked:
+        return dict(blocked=blocked, results=[])
+    saved = Scheduler(run, workers=1).scratch / 'originals'
+    saved.mkdir(parents=True, exist_ok=True)
+
+    def fix(shard):
+        original, names = stubs[shard]
+        path = SHARDS / f'{shard}.lean'
+        (saved / f'{shard}.lean').write_text(original, encoding='utf-8')
+        agent = Scheduler(f'{run}-{shard}', workers=1, max_tasks=10 ** 6, budget_minutes=10 ** 5, task_minutes=minutes, effort=effort)
+        for attempt in range(1, attempts + 1):
+            began = time.time()
+            prompt = PARALLEL_PROMPT.format(target=target, root=ROOT, path=path.relative_to(ROOT), names='\n'.join(f'- {n}' for n in names),
+                                            original=saved / f'{shard}.lean', forge=FORGE, relpath=path.relative_to(PROJECT),
+                                            minutes=minutes)
+            before = path.read_text(encoding='utf-8')
+            code, message, tokens, slow = agent._invoke(prompt, 'repair')
+            after = path.read_text(encoding='utf-8')
+            problems = check_repair(original, after)
+            errors, has_sorry = _check_file(path)
+            ok = not problems and not errors and not has_sorry
+            note(dict(phase='parallel', shard=shard, attempt=attempt, ok=ok, problems=problems, errors=len(errors),
+                      sorry=has_sorry, exit=code, tokens=tokens, seconds=round(time.time() - began),
+                      raw=agent.last_raw.get('repair', '')[-800:] if code != 0 else ''))
+            if ok:
+                return dict(shard=shard, status='repaired', attempts=attempt)
+            if problems:
+                path.write_text(before, encoding='utf-8')
+            if code != 0 and after == before:   # agent 自身出错（多半是网络）：等一会儿再试，不算一次尝试
+                time.sleep(90)
+                agent._probe()
+        return dict(shard=shard, status='stuck')
+
+    with ThreadPoolExecutor(max_workers=workers) as pool:
+        results = list(pool.map(fix, sorted(stubs)))
+    code, output = lake_build('Mathlib2')   # 验收：按顺序完整编译，确认整个库没有 sorry
+    final = dict(built=code == 0, sorry="declaration uses 'sorry'" in output)
+    note(dict(phase='final', **final))
+    return dict(results=results, final=final)

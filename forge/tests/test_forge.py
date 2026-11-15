@@ -466,6 +466,21 @@ class UpgradeRepairTests(unittest.TestCase):
         after = self.BEFORE.replace('  simp\n', '  exact Nat.add_zero n\n')
         self.assertEqual(check_repair(self.BEFORE, after), [])
 
+    def test_stub_replaces_only_the_broken_proof(self):
+        from forge.upgrade import stub_declarations, signatures
+        text = ('-- forge:entry foo kind=proved origin=x\nsection\n'
+                'lemma foo_aux1 (n : ℕ) : n + 0 = n := by\n  simp\n'          # 第 3–4 行
+                'theorem foo (a b : ℕ) (h : a ≤ b) : a ≤ b + 1 := by\n  old_tactic\n  omega\nend\n')  # 第 5–7 行
+        stubbed, names = stub_declarations(text, [6])
+        self.assertEqual(names, ['foo'])
+        self.assertIn('lemma foo_aux1 (n : ℕ) : n + 0 = n := by\n  simp\n', stubbed)   # 没报错的证明不动
+        self.assertIn(':= by\n  sorry', stubbed)
+        self.assertNotIn('old_tactic', stubbed)
+        self.assertEqual(signatures(stubbed), signatures(text))                      # 陈述完全不变
+        self.assertTrue(stubbed.rstrip().endswith('end'))
+        # 报错在陈述里（`:=` 之前）：打桩救不了，原样返回
+        self.assertEqual(stub_declarations(text, [5]), (text, []))
+
     def test_reviewed_migration_is_applied_to_statements(self):
         from forge.upgrade import migrate
         new, used = migrate('theorem t {M : Type*} [CancelCommMonoidWithZero M] (x : M) : x = x := rfl')

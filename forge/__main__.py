@@ -114,6 +114,7 @@ def main(argv=None):
     p.add_argument('--run', required=True); p.add_argument('--target', required=True, help='新的 Mathlib 版本，例如 v4.33.1')
     p.add_argument('--attempts', type=int, default=3); p.add_argument('--minutes', type=int, default=25)
     p.add_argument('--start', help='从这个分片开始，例如 S0005'); p.add_argument('--effort', default='xhigh')
+    p.add_argument('--parallel', type=int, default=0, help='>0 时先打桩再并行修（这么多个 agent 同时修不同的分片）')
     p = sub.add_parser('regress', help='事故回归集：把出过的问题当用例重跑'); p.add_argument('--jobs', type=int, default=3)
     sub.add_parser('consistency', help='台账与分片是否一致（提交前检查）')
     p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
@@ -282,6 +283,9 @@ def main(argv=None):
         emit(dict(changed=migrate_records()))
     elif args.command == 'upgrade-repair':
         from .upgrade import repair
+        if args.parallel:
+            from .upgrade import parallel_repair
+            emit(parallel_repair(args.run, args.target, args.parallel, args.attempts, args.minutes, args.start, args.effort)); return 0
         results = repair(args.run, args.target, args.attempts, args.minutes, args.start, args.effort)
         emit(dict(results=results, stuck=[r['shard'] for r in results if r['status'] == 'stuck'])); return 0
     elif args.command == 'regress':

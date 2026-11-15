@@ -146,6 +146,37 @@ You have about {minutes} minutes. End with one line: RESULT: solved | disproved 
 
 
 BENCH_PROMPTS = {'v1': BENCH_PROMPT_V1, 'v2': BENCH_PROMPT_V2}
+PROMPT_DIR = DATA / 'improve' / 'prompts'
+# 评测提示词里必须出现的占位符：缺了就没法告诉 agent 做哪道题、证明写到哪里
+REQUIRED_FIELDS = ('{name}', '{statement}', '{proof}', '{forge}', '{set}', '{practice}')
+KNOWN_FIELDS = {'forge', 'root', 'agent', 'name', 'statement', 'opens', 'proof', 'set', 'practice', 'scratch', 'minutes'}
+
+
+def bench_prompt(name):
+    """评测提示词：内置的 v1/v2，或者改进循环产生、存成文件的版本（forge/data/improve/prompts/<名字>.txt）。"""
+    if name in BENCH_PROMPTS:
+        return BENCH_PROMPTS[name]
+    path = PROMPT_DIR / f'{name}.txt'
+    if not path.exists():
+        raise ValueError(f'没有提示词版本 {name}')
+    return path.read_text(encoding='utf-8')
+
+
+def check_prompt(text):
+    """提示词能不能用：必需的占位符都在，没有不认识的占位符，能正常填充。返回问题列表。"""
+    import string
+    problems = [f'缺少占位符 {f}' for f in REQUIRED_FIELDS if f not in text]
+    try:
+        fields = {f for _, f, _, _ in string.Formatter().parse(text) if f}
+    except ValueError as exc:
+        return problems + [f'格式错误：{exc}']
+    problems += [f'不认识的占位符 {{{f}}}' for f in sorted(fields - KNOWN_FIELDS)]
+    if not problems:
+        try:  # 例如 {} 或 {0} 这类位置占位符，或 Lean 代码里没转义的花括号
+            text.format(**{f: 'x' for f in KNOWN_FIELDS})
+        except (IndexError, KeyError, ValueError) as exc:
+            problems.append(f'填充失败：{exc!r}')
+    return problems
 
 PREAMBLE_NOTE = '''
 These definitions are fixed and are placed before your proof by the checker (do not repeat or change them;
@@ -208,8 +239,7 @@ class Scheduler:
         self.model, self.effort, self.dry_run, self.sandbox = model, effort, dry_run, sandbox
         # 分级尝试：[(推理强度, 分钟), ...]；先用便宜的档位，做不出再升档并把上一次的草稿和报错交给下一次
         self.ladder = ladder
-        if prompt not in ('v1', 'v2'):
-            raise ValueError('提示词版本只有 v1、v2')
+        bench_prompt(prompt)  # 不存在就报错
         self.prompt = prompt
         self.parity = parity
         self.lock = threading.Lock()
@@ -347,7 +377,7 @@ class Scheduler:
             informal = (task.get('informal') or '')[:1500] or 'none'
             if task.get('warnings'):  # 形式化可疑提醒：提示 agent 先想清楚这条 Lean 写法到底说了什么
                 informal += '\nWARNING about the Lean statement: ' + ' '.join(task['warnings'])
-            prompt = QUEUE_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
+            prompt = QUEUE_PROMPTS.get(self.prompt, QUEUE_PROMPT_V2).format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
                                          informal=informal, attempts=attempts,
                                          scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
@@ -384,7 +414,7 @@ class Scheduler:
             steps = self.ladder or [(None, None)]
             previous = None
             for attempt, (effort, minutes) in enumerate(steps):
-                prompt = BENCH_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
+                prompt = bench_prompt(self.prompt).format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
                                              opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
                                              practice=f'{self.run}-practice', scratch=scratch,
                                              minutes=minutes or self.task_seconds // 60)

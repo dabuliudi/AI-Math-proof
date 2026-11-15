@@ -83,7 +83,7 @@ def main(argv=None):
     p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
-    p.add_argument('--prompt', default='v2', choices=['v1', 'v2'], help='提示词版本（评测与清队列都适用）：v2（默认）规则直接写在提示词里；v1 先读整份手册')
+    p.add_argument('--prompt', default='v2', help='提示词版本（评测与清队列都适用）：v2（默认）规则直接写在提示词里；v1 先读整份手册')
     p.add_argument('--only-even', action='store_true', help='清队列模式：只领名称哈希为偶数的任务（A/B 对比用）')
     p.add_argument('--only-odd', action='store_true', help='清队列模式：只领名称哈希为奇数的任务（A/B 对比用）')
     p.add_argument('--problems', help='评测模式：只做这些题，逗号分隔')
@@ -108,6 +108,13 @@ def main(argv=None):
     p.add_argument('--model', default='gpt-6.1-sol', help='Codex 模型，默认 gpt-6.1-sol')
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
+    p = sub.add_parser('improve', help='改进循环：提出 harness 改动（提示词、推理强度），开发集变好且保留集不变差才采纳')
+    p.add_argument('--bench', required=True); p.add_argument('--iterations', type=int, default=4)
+    p.add_argument('--dev-size', type=int, default=16); p.add_argument('--holdout-size', type=int, default=16)
+    p.add_argument('--seed', type=int, default=2026); p.add_argument('--workers', type=int, default=6)
+    p.add_argument('--task-minutes', type=int, default=20)
+    p.add_argument('--token-budget', type=int, default=6_000_000, help='整个循环最多花这么多 token（含基线）')
+    p.add_argument('--dry-run', action='store_true')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
     sub.add_parser('upgrade-migrate-records', help='把经过审核的陈述迁移同步到台账、任务与辅助引理索引')
     sub.add_parser('upgrade-rehash', help='升级后重算评测集、台账、任务的结构哈希（评测题保护与查重依赖它）')
@@ -276,6 +283,12 @@ def main(argv=None):
                              sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted,
                              problems=args.problems.split(',') if args.problems else None)
              if args.bench else runner.run_queue(args.prefix))
+    elif args.command == 'improve':
+        from . import improve
+        print(json.dumps(improve.run_loop(args.bench, iterations=args.iterations, dev_size=args.dev_size,
+                                          holdout_size=args.holdout_size, seed=args.seed, workers=args.workers,
+                                          minutes=args.task_minutes, token_budget=args.token_budget,
+                                          dry_run=args.dry_run), ensure_ascii=False, indent=2))
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))

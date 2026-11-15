@@ -761,3 +761,64 @@ class SchedulerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class ImproveTests(unittest.TestCase):
+    """改进循环的采纳规则：不调用真实 agent。"""
+
+    def setUp(self):
+        from forge import improve, scheduler
+        self.tmp = tempfile.TemporaryDirectory()
+        root = Path(self.tmp.name)
+        self.patches = [mock.patch.object(improve, 'STATE', root / 'state.json'),
+                        mock.patch.object(improve, 'HISTORY', root / 'history.jsonl'),
+                        mock.patch.object(improve, 'PROMPT_DIR', root / 'prompts'),
+                        mock.patch.object(scheduler, 'PROMPT_DIR', root / 'prompts')]
+        for p in self.patches:
+            p.start()
+        self.improve, self.root = improve, root
+
+    def tearDown(self):
+        for p in self.patches:
+            p.stop()
+        self.tmp.cleanup()
+
+    def test_better(self):
+        better = self.improve.better
+        self.assertTrue(better(dict(solved=5, tokens=900), dict(solved=4, tokens=100)))
+        self.assertFalse(better(dict(solved=3, tokens=1), dict(solved=4, tokens=100)))
+        self.assertTrue(better(dict(solved=4, tokens=80), dict(solved=4, tokens=100)))
+        self.assertFalse(better(dict(solved=4, tokens=95), dict(solved=4, tokens=100)))
+
+    def test_check_prompt_rejects_bad_templates(self):
+        from forge.scheduler import bench_prompt, check_prompt
+        self.assertEqual(check_prompt(bench_prompt('v2')), [])
+        self.assertTrue(check_prompt('{name} {statement}'))                       # 缺占位符
+        good = bench_prompt('v2')
+        self.assertTrue(check_prompt(good + ' {answer}'))                          # 不认识的占位符
+        self.assertTrue(check_prompt(good + ' {}'))                                # 位置占位符
+
+    def test_loop_adopts_only_with_holdout_confirmation(self):
+        scores = iter([(4, 100), (4, 100),      # 基线：开发集、保留集
+                       (5, 120), (3, 90),       # 第 1 轮：开发集更好，保留集变差 → 不采纳
+                       (4, 50), (4, 60)])       # 第 2 轮：解出一样多、token 少一半，保留集不变差 → 采纳
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            solved, tokens = next(scores)
+            return dict(run=run, solved=solved, problems=len(problems), tokens=tokens, per={})
+        with mock.patch.object(self.improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(self.improve, 'evaluate', side_effect=fake), \
+             mock.patch.object(self.improve, 'propose_prompt', return_value=('auto001', [])):
+            result = self.improve.run_loop('x', iterations=2)
+        rows = [json.loads(l) for l in (self.root / 'history.jsonl').read_text().splitlines()]
+        self.assertEqual([r.get('decision') for r in rows], [None, 'rejected_on_holdout', 'adopted'])
+        self.assertEqual(result['best']['effort'], 'low')
+        self.assertEqual(result['best']['prompt'], 'v2')
+        self.assertEqual(result['tokens_spent'], 100 + 100 + 120 + 90 + 50 + 60)
+
+    def test_loop_stops_at_token_budget(self):
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            return dict(run=run, solved=1, problems=1, tokens=1000, per={})
+        with mock.patch.object(self.improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(self.improve, 'evaluate', side_effect=fake):
+            result = self.improve.run_loop('x', iterations=5, token_budget=1500)
+        self.assertEqual(result['iterations'], 0)

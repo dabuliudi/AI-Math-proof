@@ -49,14 +49,16 @@ git status --short
 - miniF2F 基线（`mf2f-baseline-1`，两次更正后）：234/243（96.3%），8 题写错（Codex 给出反证），扣除后 99.6%；只剩 1 题超时，换提示词 v2 后也已解出。
 - 下一步：清队列里的 57 道题；Windows 本按 `forge/WINDOWS.md` 装好后，两台分工跑评测。之后每轮先跑评测、再跑队列，看成绩是否上升。
 
-## 接下来按顺序做
+## 接下来按顺序做（更新于 2026-11-15 晚）
 
-1. 处理 agent 的报告：修它们指出的工具问题，补测试。
-2. 队列里若还有 `open` 任务，再派证明 agent；领取超时未归还的任务会在一小时后自动回收。
-3. 库有更新后重新生成并发布挑选页面。
-4. 时间允许就再跑一轮猜想（更难，或换领域：线性代数、群论、组合、分析）。
-5. 收尾（最迟 10:30 开始）：`audit`、全部测试、`forge catalog`、更新 `forge/README.md` 的实跑记录和局限、
-   更新本文件，向用户如实汇报四个 idea 各自完成到哪、没完成的是什么。
+1. **Mathlib v4.33.1 升级**：分支 `mathlib-v4.33`，独立工作区 `.worktrees/mathlib-v4.33`。并行修复（`upgrade-v433-parallel-2`）
+   完成后依次跑 `upgrade-migrate-records`、`audit --replay`、`regress`，全部通过再合进 `main`。
+2. **下次升级 Mathlib 时，修复改用 `--effort low` 跑一遍做对比**（用户 2026-11-15 要求）：和这次的 xhigh
+   （`upgrade-v433-repair`、`upgrade-v433-parallel-2`）比一次修好的比例、每个分片的 token、用时；
+   如果 low 一样修得好，就把修复的默认推理强度改成 low。
+3. **Windows**（`D:\mathproof`）：编译和审计通过后切到 `main`；之后两台分工跑评测（`--shard`），只有 Mac 写库。
+4. 升级合并后接入研究级评测集（Formal Conjectures 等）作能力评测；miniF2F、PutnamBench 改作回归评测。
+5. Lean Workbook 队列里剩下的任务继续交给 Codex 清。
 
 ## 约定
 

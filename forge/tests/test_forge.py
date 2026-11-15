@@ -597,6 +597,15 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(sorted(seen[0] + seen[1]), sorted(i['name'] for i in items))
         self.assertFalse(set(seen[0]) & set(seen[1]))
 
+    def test_bench_prompt_shows_the_fixed_preamble(self):
+        s = self.scheduler.Scheduler('pre', workers=1, max_tasks=5, max_failures=5)
+        items = [dict(name='px', statement=': px_solution = 1', preamble='abbrev px_solution : ℕ := 1')]
+        prompts = []
+        with mock.patch.object(s, '_invoke', side_effect=lambda prompt, worker: (prompts.append(prompt), (0, '', 0, False))[1]), \
+                mock.patch('forge.bench.load', return_value=items):
+            s.run_bench('demo', only_unsolved=False)
+        self.assertIn('abbrev px_solution : ℕ := 1', prompts[0])
+
     def test_ladder_escalates_only_when_unsolved_and_passes_the_draft_on(self):
         s = self.scheduler.Scheduler('lad', workers=1, max_tasks=5, max_failures=5, ladder=[('low', 5), ('xhigh', 30)])
         items = [dict(name='easy', statement=': True'), dict(name='hard', statement=': True')]

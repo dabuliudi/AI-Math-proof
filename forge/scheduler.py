@@ -147,6 +147,12 @@ You have about {minutes} minutes. End with one line: RESULT: solved | disproved 
 
 BENCH_PROMPTS = {'v1': BENCH_PROMPT_V1, 'v2': BENCH_PROMPT_V2}
 
+PREAMBLE_NOTE = '''
+These definitions are fixed and are placed before your proof by the checker (do not repeat or change them;
+you may unfold them in the proof):
+{preamble}
+'''
+
 RETRY_NOTE = '''
 A previous attempt on this problem (reasoning effort {effort}) did not finish. Its last proof draft is at {draft};
 the checker said: {reason}
@@ -382,6 +388,9 @@ class Scheduler:
                                              opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
                                              practice=f'{self.run}-practice', scratch=scratch,
                                              minutes=minutes or self.task_seconds // 60)
+                if item.get('preamble'):
+                    # 评测题自带的前置定义（如 PutnamBench 的官方答案）：检查时放在证明前面，agent 必须知道它们
+                    prompt += PREAMBLE_NOTE.format(preamble=item['preamble'])
                 if previous:
                     prompt += RETRY_NOTE.format(**previous)
                 overrides = dict(effort=effort, seconds=minutes * 60) if effort else {}

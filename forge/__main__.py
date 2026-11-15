@@ -82,6 +82,7 @@ def main(argv=None):
     p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
+    p.add_argument('--prompt', default='v1', choices=['v1', 'v2'], help='评测提示词版本：v1 先读整份手册，v2 规则直接写在提示词里')
     p.add_argument('--problems', help='评测模式：只做这些题，逗号分隔')
     p.add_argument('--ladder', help='评测模式：分级尝试，例如 low:10,xhigh:40（推理强度:分钟）；做不出才升档')
     p.add_argument('--review-paper', help='复核模式：论文命题清单（forge/data/papers/<id>.json）')
@@ -102,6 +103,8 @@ def main(argv=None):
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
+    p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
+    p.add_argument('runs', nargs='+'); p.add_argument('--problems-from', help='以这个轮次做过的题为准（默认取交集）')
     p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
     p.add_argument('--replay', action='store_true', help='另外把整个库放进只含 Mathlib 的环境让内核重放一遍（约 14 GB 内存）')
     sub.add_parser('status', help='队列与库的概况')
@@ -229,7 +232,8 @@ def main(argv=None):
         runner = Scheduler(args.run, workers=args.workers, max_tasks=args.max_tasks, budget_minutes=args.budget_minutes,
                            task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
                            model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox,
-                           ladder=[(step.split(':')[0], int(step.split(':')[1])) for step in args.ladder.split(',')] if args.ladder else None)
+                           ladder=[(step.split(':')[0], int(step.split(':')[1])) for step in args.ladder.split(',')] if args.ladder else None,
+                           prompt=args.prompt)
         shard = None
         if args.shard:
             k, n = (int(x) for x in args.shard.split('/'))
@@ -244,6 +248,9 @@ def main(argv=None):
                              sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted,
                              problems=args.problems.split(',') if args.problems else None)
              if args.bench else runner.run_queue(args.prefix))
+    elif args.command == 'run-compare':
+        from .scheduler import compare
+        emit(compare(args.runs, args.problems_from))
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))

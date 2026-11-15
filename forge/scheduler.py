@@ -79,7 +79,8 @@ Rules:
 End with one line: RESULT: proved | disproved | sketched | released, plus a one-sentence summary.
 '''
 
-BENCH_PROMPT = '''You are a proving agent working in a Lean 4 project at {root}. Read forge/AGENT_GUIDE.md first
+# 评测提示词。v1：让 agent 先读完整的 AGENT_GUIDE.md；v2：把评测需要的规则直接写进提示词（上下文小得多）。
+BENCH_PROMPT_V1 = '''You are a proving agent working in a Lean 4 project at {root}. Read forge/AGENT_GUIDE.md first
 (the sections on writing submissions apply). Your agent name is `{agent}`.
 
 Prove this benchmark problem. Problem name: {name}
@@ -94,6 +95,28 @@ Rules: keep files only in {scratch}; never edit files under forge/data or lean/;
 You have about {minutes} minutes. End with one line: RESULT: solved | unsolved.
 '''
 
+BENCH_PROMPT_V2 = '''You are a proving agent working in a Lean 4 project at {root} (Lean 4 + Mathlib). Your agent name is `{agent}`.
+You do NOT need to read forge/AGENT_GUIDE.md; everything you need is here.
+
+Prove this benchmark problem. Problem name: {name}
+Statement (Lean signature `<binders> : <conclusion>`; the notation assumes `open {opens}`):
+{statement}
+
+Write the complete proof to {proof}. Format rules (the checker enforces them):
+- The file is checked inside `namespace Mathlib2` with all of Mathlib imported; `open ...` lines are allowed at top level.
+- Only top-level `theorem`/`lemma` declarations. Helper lemmas are named `{name}_aux1`, `{name}_aux2`, ... and come first;
+  the last declaration is `theorem {name} <same binders> : <same conclusion> := by ...`.
+- Not allowed: sorry, axiom, def, instance, notation, macro, set_option, native_decide, run_tac. Undefined names are errors.
+- If the statement is false, prove its negation instead: `theorem {name}_disproof : ¬ (∀ <binders>, <conclusion>) := by ...`.
+Check it with `{forge} bench-check {set} {name} {proof} --run {practice} --agent {agent}` (it only checks; nothing is added
+to the library) and iterate until it reports "solved": true (or, for a disproof, that the check passed).
+Useful: `{forge} lookup "<name fragments>"` finds exact Mathlib lemma names.
+Keep files only in {scratch}; never edit files under forge/data or lean/.
+You have about {minutes} minutes. End with one line: RESULT: solved | disproved | unsolved.
+'''
+
+
+BENCH_PROMPTS = {'v1': BENCH_PROMPT_V1, 'v2': BENCH_PROMPT_V2}
 
 RETRY_NOTE = '''
 A previous attempt on this problem (reasoning effort {effort}) did not finish. Its last proof draft is at {draft};
@@ -138,7 +161,7 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None):
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v1'):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -149,6 +172,9 @@ class Scheduler:
         self.model, self.effort, self.dry_run, self.sandbox = model, effort, dry_run, sandbox
         # 分级尝试：[(推理强度, 分钟), ...]；先用便宜的档位，做不出再升档并把上一次的草稿和报错交给下一次
         self.ladder = ladder
+        if prompt not in ('v1', 'v2'):
+            raise ValueError('提示词版本只有 v1、v2')
+        self.prompt = prompt
         self.lock = threading.Lock()
         self.started = self.failures_in_a_row = self.tokens = 0
         self.stop_reason = None
@@ -274,7 +300,7 @@ class Scheduler:
             steps = self.ladder or [(None, None)]
             previous = None
             for attempt, (effort, minutes) in enumerate(steps):
-                prompt = BENCH_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
+                prompt = BENCH_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
                                              opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
                                              practice=f'{self.run}-practice', scratch=scratch,
                                              minutes=minutes or self.task_seconds // 60)
@@ -292,7 +318,7 @@ class Scheduler:
                 self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
                                   progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
                                   timed_out=slow, reason=reason[:300], message=message[-500:], attempt=attempt + 1,
-                                  effort=effort or self.effort,
+                                  effort=effort or self.effort, prompt=self.prompt,
                                   raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
                 if solved or self.stop_reason:
                     break
@@ -423,3 +449,37 @@ def report(run):
     return dict(run=run, calls=len(rows), outcomes=outcomes, tokens=sum(r.get('tokens') or 0 for r in rows),
                 seconds=sum(r['seconds'] for r in rows), rows=[{k: r[k] for k in ('task', 'worker', 'outcome', 'seconds', 'tokens')}
                                                               for r in rows])
+
+
+def compare(runs, problems_from=None):
+    """在同一组题上比较几个轮次：解出数、token、用时。默认取各轮都做过的题的交集，
+    也可以指定以某个轮次做过的题为准（problems_from）。同一题在一个轮次里有多次尝试时，token 和用时累加。"""
+    import statistics
+    tables = {}
+    for run in runs:
+        path = RUNS / f'{run}.jsonl'
+        if not path.exists():
+            raise ValueError(f'没有轮次 {run}')
+        per = {}
+        for line in path.read_text(encoding='utf-8').splitlines():
+            row = json.loads(line)
+            item = per.setdefault(row['task'], dict(solved=False, tokens=0, seconds=0, attempts=0))
+            item['solved'] = item['solved'] or row['outcome'] in ('solved', 'proved', 'disproved')
+            item['tokens'] += row.get('tokens') or 0
+            item['seconds'] += row['seconds']
+            item['attempts'] += 1
+        tables[run] = per
+    if problems_from:
+        common = set(tables[problems_from])
+    else:
+        common = set.intersection(*(set(t) for t in tables.values()))
+    rows = []
+    for run in runs:
+        items = [tables[run][p] for p in common if p in tables[run]]
+        solved = [i for i in items if i['solved']]
+        tokens = sum(i['tokens'] for i in items)
+        rows.append(dict(run=run, problems=len(items), solved=len(solved), tokens=tokens,
+                         tokens_per_solved=round(tokens / len(solved)) if solved else None,
+                         median_seconds=statistics.median(i['seconds'] for i in items) if items else None,
+                         unsolved=sorted(p for p in common if p in tables[run] and not tables[run][p]['solved'])))
+    return dict(problems=len(common), runs=rows)

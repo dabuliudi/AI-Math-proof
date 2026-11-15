@@ -464,6 +464,41 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(checked, [('p1', 'scheduler')])
         self.assertEqual(summary['outcomes'], {'solved': 1, 'unsolved': 1})
 
+    def test_shards_split_the_benchmark_without_overlap(self):
+        items = [dict(name=f'p{i}', statement=': True') for i in range(7)]
+        seen = []
+        for k in (1, 2):
+            s = self.scheduler.Scheduler(f's{k}@m{k}', workers=1, max_tasks=99, max_failures=99)
+            prompts = []
+            with mock.patch.object(s, '_invoke', side_effect=lambda prompt, worker: (prompts.append(prompt), (0, '', 0, False))[1]), \
+                    mock.patch('forge.bench.load', return_value=items):
+                s.run_bench('demo', only_unsolved=False, shard=(k, 2))
+            names = [p.split('Problem name: ')[1].split('\n')[0] for p in prompts]
+            self.assertTrue(all(self.scheduler.FORGE in p for p in prompts))  # 提示词里是本平台的 forge 命令
+            seen.append(names)
+        self.assertEqual(sorted(seen[0] + seen[1]), sorted(i['name'] for i in items))
+        self.assertFalse(set(seen[0]) & set(seen[1]))
+
+    def test_codex_location_can_be_overridden(self):
+        with mock.patch.dict(os.environ, {'FORGE_CODEX': r'C:\tools\codex.exe'}):
+            self.assertEqual(self.scheduler.find_codex(), r'C:\tools\codex.exe')
+        with mock.patch.dict(os.environ, {}, clear=False), mock.patch.dict(os.environ, {'FORGE_CODEX': ''}), \
+                mock.patch('shutil.which', return_value=None), mock.patch('pathlib.Path.exists', return_value=False):
+            with self.assertRaises(RuntimeError):
+                self.scheduler.find_codex()
+
+    def test_scores_from_several_machines_are_merged(self):
+        from forge import bench
+        root = Path(self.tmp.name)
+        with mock.patch.object(bench, 'BENCH', root / 'bench'), mock.patch.object(bench, 'RUNS', root / 'bench' / 'runs'), \
+                mock.patch.object(bench, 'load', return_value=[dict(name=f'p{i}') for i in range(4)]):
+            (root / 'bench' / 'runs').mkdir(parents=True)
+            for machine, rows in (('mac', [('p0', True), ('p2', False)]), ('win', [('p1', True), ('p3', True)])):
+                (root / 'bench' / 'runs' / f'demo.r2@{machine}.jsonl').write_text(
+                    ''.join(json.dumps(dict(problem=p, solved=s)) + '\n' for p, s in rows), encoding='utf-8')
+            combined = bench.score('demo')['combined']
+        self.assertEqual(combined, [dict(run='r2', machines=['mac', 'win'], solved=3, total=4, rate=0.75, attempts=4)])
+
 
 if __name__ == '__main__':
     unittest.main()

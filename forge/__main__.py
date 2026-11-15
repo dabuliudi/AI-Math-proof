@@ -83,6 +83,8 @@ def main(argv=None):
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
+    p.add_argument('--shard', help='评测模式：多台机器分工，例如本机做第 1 份、共 2 份写 1/2')
+    p.add_argument('--sandbox', default='workspace-write', help='Codex 沙箱：read-only / workspace-write / danger-full-access')
     p.add_argument('--resume', action='store_true', help='评测模式：在同一轮次里接着跑，已认真做过的题跳过，agent 出错作废的重跑')
     p.add_argument('--all', action='store_true', help='评测模式：所有题都重做（默认跳过以前已解出的），用于在同一设置下测基线')
     p.add_argument('--workers', type=int, default=2); p.add_argument('--max-tasks', type=int, default=10)
@@ -219,8 +221,15 @@ def main(argv=None):
         from .scheduler import Scheduler
         runner = Scheduler(args.run, workers=args.workers, max_tasks=args.max_tasks, budget_minutes=args.budget_minutes,
                            task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
-                           model=args.model, effort=args.effort, dry_run=args.dry_run)
-        emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume) if args.bench else runner.run_queue(args.prefix))
+                           model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox)
+        shard = None
+        if args.shard:
+            k, n = (int(x) for x in args.shard.split('/'))
+            if not 1 <= k <= n:
+                emit(dict(ok=False, reason='--shard 的格式是 k/n，且 1 ≤ k ≤ n')); return 1
+            shard = (k, n)
+        emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard)
+             if args.bench else runner.run_queue(args.prefix))
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))

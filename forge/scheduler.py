@@ -16,6 +16,7 @@ import json
 import os
 import re
 import shlex
+import shutil
 import signal
 import subprocess
 import threading
@@ -26,7 +27,33 @@ from . import bench, tasks
 from .leanrun import DATA, ROOT
 
 RUNS = DATA / 'runs'
-CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
+MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
+# agent 在提示词里看到的 forge 命令：macOS/Linux 用 ./forge.sh，Windows 用 forge.cmd
+FORGE = 'forge.cmd' if os.name == 'nt' else './forge.sh'
+
+
+def find_codex():
+    """Codex 命令行的位置：环境变量 FORGE_CODEX 优先，其次 PATH 里的 codex，最后是 macOS 桌面版自带的那份。"""
+    explicit = os.environ.get('FORGE_CODEX')
+    if explicit:
+        return explicit
+    found = shutil.which('codex')
+    if found:
+        return found
+    if Path(MAC_CODEX).exists():
+        return MAC_CODEX
+    raise RuntimeError('找不到 Codex 命令行：请安装 codex，或用环境变量 FORGE_CODEX 指定它的完整路径')
+
+
+def _kill_tree(proc, hard=False):
+    """结束 agent 及其启动的所有子进程（包括 Lean）。"""
+    if os.name == 'nt':
+        subprocess.run(['taskkill', '/PID', str(proc.pid), '/T', '/F'], capture_output=True)
+        return
+    try:
+        os.killpg(proc.pid, signal.SIGKILL if hard else signal.SIGTERM)
+    except (ProcessLookupError, PermissionError):
+        pass
 
 QUEUE_PROMPT = '''You are a proving agent working in a Lean 4 "theorem forge" at {root}.
 First read forge/AGENT_GUIDE.md (it is short) and follow it exactly. Your agent name is `{agent}`.
@@ -37,18 +64,18 @@ The scheduler has already claimed this task for you:
 - informal / plan: {informal}
 - earlier failed attempts: {attempts}
 
-Goal: get this task into the library, either by proving it (`./forge.sh submit {name} <file> --agent {agent}`)
+Goal: get this task into the library, either by proving it (`{forge} submit {name} <file> --agent {agent}`)
 or, if the statement is false, by proving its negation (`<name>_disproof`, with `--disproof`). Check small cases before
-trusting or doubting the statement. Use `./forge.sh check {name} <file>` while iterating; `submit` only when `check` passes.
-Useful: `./forge.sh search "<words>"`, `./forge.sh lookup "<name fragments>"`, `./forge.sh show <name>`, `./forge.sh source <name>`.
-Long proofs may be split with `./forge.sh sketch` (see the guide).
+trusting or doubting the statement. Use `{forge} check {name} <file>` while iterating; `submit` only when `check` passes.
+Useful: `{forge} search "<words>"`, `{forge} lookup "<name fragments>"`, `{forge} show <name>`, `{forge} source <name>`.
+Long proofs may be split with `{forge} sketch` (see the guide).
 
 Rules:
-- Keep drafts only in {scratch}. Change forge state only through ./forge.sh; never edit files under forge/data or lean/ directly.
+- Keep drafts only in {scratch}. Change forge state only through {forge}; never edit files under forge/data or lean/ directly.
 - Never alter the statement. Never use sorry/axiom/native_decide or other escape hatches (the checker rejects them anyway).
 - Lean checks take 5-60 s; submit takes up to ~2 min. Give shell commands a long enough timeout.
 - You have about {minutes} minutes. If you cannot finish, run
-  `./forge.sh release {name} --agent {agent} --note "<what you tried and where it got stuck>"` before stopping.
+  `{forge} release {name} --agent {agent} --note "<what you tried and where it got stuck>"` before stopping.
 End with one line: RESULT: proved | disproved | sketched | released, plus a one-sentence summary.
 '''
 
@@ -61,7 +88,7 @@ Statement (Lean signature `<binders> : <conclusion>`; the notation assumes `open
 
 Write the complete proof to {proof} as a single Lean declaration
 `theorem {name} <same binders> : <same conclusion> := by ...` (helper lemmas named `{name}_aux1`, ... may come first).
-Test it with `./forge.sh bench-check {set} {name} {proof} --run {practice} --agent {agent}` (only checks; it never adds
+Test it with `{forge} bench-check {set} {name} {proof} --run {practice} --agent {agent}` (only checks; it never adds
 anything to the library). Iterate until it reports "solved": true.
 Rules: keep files only in {scratch}; never edit files under forge/data or lean/; never use sorry/axiom/native_decide.
 You have about {minutes} minutes. End with one line: RESULT: solved | unsolved.
@@ -75,15 +102,15 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False):
-        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_-]{0,60}', run):
-            raise ValueError('轮次名只能含字母、数字、- 和 _')
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write'):
+        if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
+            raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
         self.deadline = time.time() + budget_minutes * 60
         self.task_seconds = task_minutes * 60
         self.max_failures = max_failures
         self.agent_cmd = shlex.split(agent_cmd) if agent_cmd else None
-        self.model, self.effort, self.dry_run = model, effort, dry_run
+        self.model, self.effort, self.dry_run, self.sandbox = model, effort, dry_run, sandbox
         self.lock = threading.Lock()
         self.started = self.failures_in_a_row = self.tokens = 0
         self.stop_reason = None
@@ -97,7 +124,7 @@ class Scheduler:
     def _command(self, last_message):
         if self.agent_cmd:
             return self.agent_cmd
-        cmd = [CODEX, 'exec', '-s', 'workspace-write', '--ephemeral', '--skip-git-repo-check', '-C', str(ROOT),
+        cmd = [find_codex(), 'exec', '-s', self.sandbox, '--ephemeral', '--skip-git-repo-check', '-C', str(ROOT),
                '-o', str(last_message)]
         if self.model:
             cmd += ['-m', self.model]
@@ -113,17 +140,18 @@ class Scheduler:
             return 0, 'RESULT: dry-run', 0, False
         timeout = max(60, min(self.task_seconds, self.deadline - time.time()))
         # 新进程组：超时时连同 agent 启动的 Lean 子进程一起结束，不留孤儿进程占内存。
+        extra = dict(creationflags=subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else dict(start_new_session=True)
         proc = subprocess.Popen(self._command(last), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                                cwd=ROOT, text=True, encoding='utf-8', errors='replace', start_new_session=True)
+                                cwd=ROOT, text=True, encoding='utf-8', errors='replace', **extra)
         try:
             output, _ = proc.communicate(prompt, timeout=timeout)
             code, slow = proc.returncode, False
         except subprocess.TimeoutExpired:
-            os.killpg(proc.pid, signal.SIGTERM)
+            _kill_tree(proc)
             try:
                 output, _ = proc.communicate(timeout=30)
             except subprocess.TimeoutExpired:
-                os.killpg(proc.pid, signal.SIGKILL)
+                _kill_tree(proc, hard=True)
                 output, _ = proc.communicate()
             code, slow = -1, True
         output = output or ''
@@ -169,7 +197,7 @@ class Scheduler:
                     self.stop_reason = self.stop_reason or '队列里没有可领的任务'
                 return
             attempts = '; '.join(a.get('note', '')[:300] for a in task.get('attempts', [])[-3:]) or 'none'
-            prompt = QUEUE_PROMPT.format(root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
+            prompt = QUEUE_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
                                          informal=(task.get('informal') or '')[:1500] or 'none', attempts=attempts,
                                          scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
@@ -203,7 +231,7 @@ class Scheduler:
             if not self._may_start():
                 return
             proof = scratch / f'{item["name"]}.lean'
-            prompt = BENCH_PROMPT.format(root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
+            prompt = BENCH_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
                                          opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
                                          practice=f'{self.run}-practice', scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
@@ -230,10 +258,14 @@ class Scheduler:
     def run_queue(self, prefix=None):
         return self._run_threads(self._queue_worker, (prefix,))
 
-    def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False):
+    def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False, shard=None):
         items = bench.load(set_name)
         if not items:
             raise ValueError(f'没有评测集 {set_name}')
+        if shard:
+            # 多台机器分工：按题目在评测集文件里的位置切分，各台机器拿到的子集互不重叠、合起来正好是全集。
+            k, n = shard
+            items = [item for index, item in enumerate(items) if index % n == k - 1]
         if only_unsolved:
             solved = set()
             for path in (bench.RUNS.glob(f'{set_name}.*.jsonl') if bench.RUNS.exists() else []):

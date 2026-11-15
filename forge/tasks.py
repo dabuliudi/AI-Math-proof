@@ -164,8 +164,8 @@ def claim(agent, name=None, prefix=None):
         target = _dir('claimed') / f'{task["name"]}.json'
         try:
             os.rename(source, target)
-        except FileNotFoundError:
-            continue  # 被别的 agent 抢先领走
+        except (FileNotFoundError, PermissionError):
+            continue  # 被别的 agent 抢先领走（Windows 上文件被占用时是 PermissionError）
         task.update(status='claimed', claimed_by=agent, claimed_at=_now())
         save('claimed', task)
         return task

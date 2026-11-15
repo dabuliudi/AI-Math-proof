@@ -1,7 +1,7 @@
 """Mathlib2 库与台账：追加式分片 + 构建门禁。库任何时刻都必须能 `lake build` 通过。"""
 import contextlib
-import fcntl
 import json
+import os
 import re
 import time
 import uuid
@@ -16,16 +16,41 @@ ROOT_FILE = PROJECT / 'Mathlib2.lean'
 SHARD_SIZE = 20  # 每次入库要重编当前分片，分片越小入库越快；分片之间线性依赖，后面的可以引用前面的
 
 
+if os.name == 'nt':
+    import msvcrt
+
+    def _lock(handle):
+        while True:  # msvcrt 的阻塞锁最多等 10 秒就报错，所以自己循环
+            try:
+                handle.seek(0)
+                msvcrt.locking(handle.fileno(), msvcrt.LK_LOCK, 1)
+                return
+            except OSError:
+                time.sleep(0.5)
+
+    def _unlock(handle):
+        handle.seek(0)
+        msvcrt.locking(handle.fileno(), msvcrt.LK_UNLCK, 1)
+else:
+    import fcntl
+
+    def _lock(handle):
+        fcntl.flock(handle, fcntl.LOCK_EX)
+
+    def _unlock(handle):
+        fcntl.flock(handle, fcntl.LOCK_UN)
+
+
 @contextlib.contextmanager
 def locked():
-    """入库串行化：多个 agent 并行证明，由这一把锁保证库的追加和构建一次只发生一个。"""
+    """入库串行化：多个 agent 并行证明，由这一把锁保证库的追加和构建一次只发生一个。macOS/Linux 与 Windows 都可用。"""
     DATA.mkdir(parents=True, exist_ok=True)
-    with open(LOCK, 'w') as handle:
-        fcntl.flock(handle, fcntl.LOCK_EX)
+    with open(LOCK, 'a+') as handle:
+        _lock(handle)
         try:
             yield
         finally:
-            fcntl.flock(handle, fcntl.LOCK_UN)
+            _unlock(handle)
 
 
 def entries():

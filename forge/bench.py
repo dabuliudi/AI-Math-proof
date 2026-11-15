@@ -81,4 +81,18 @@ def score(name):
         solved = sorted({r['problem'] for r in records if r['solved']})
         rows.append(dict(run=path.name[len(name) + 1:-len('.jsonl')], solved=len(solved), total=total,
                          rate=round(len(solved) / total, 4) if total else None, attempts=len(records)))
-    return dict(set=name, problems=total, runs=rows)
+    # 同一轮次分在几台机器上跑时，轮次名写成 “名字@机器”；这里把它们合并成一行总成绩。
+    combined = {}
+    for path in sorted(RUNS.glob(f'{name}.*@*.jsonl')) if RUNS.exists() else []:
+        base = path.name[len(name) + 1:-len('.jsonl')].split('@')[0]
+        if base.endswith('-practice'):
+            continue
+        records = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
+        entry = combined.setdefault(base, dict(solved=set(), attempts=0, machines=[]))
+        entry['solved'].update(r['problem'] for r in records if r['solved'])
+        entry['attempts'] += len(records)
+        entry['machines'].append(path.name.split('@')[1][:-len('.jsonl')])
+    merged = [dict(run=base, machines=sorted(e['machines']), solved=len(e['solved']), total=total,
+                   rate=round(len(e['solved']) / total, 4) if total else None, attempts=e['attempts'])
+              for base, e in sorted(combined.items())]
+    return dict(set=name, problems=total, runs=rows, combined=merged)

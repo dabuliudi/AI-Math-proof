@@ -20,3 +20,4 @@
 {"problem": "putnam_1978_a2", "run": "putnam-s40-xhigh", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:09+0800"}
 {"problem": "putnam_1979_b6", "run": "putnam-s40-xhigh", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:19+0800"}
 {"problem": "putnam_1992_a1", "run": "putnam-s40-xhigh", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:14:04+0800"}
+{"problem": "putnam_1988_b4", "run": "putnam-s40-xhigh", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:15:58+0800"}

@@ -37,3 +37,4 @@
 {"problem": "mathd_numbertheory_150", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:13:17+0800"}
 {"problem": "mathd_algebra_441", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:13:48+0800"}
 {"problem": "aime_1995_p7", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:15:31+0800"}
+{"problem": "imo_1974_p3", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:16:11+0800"}

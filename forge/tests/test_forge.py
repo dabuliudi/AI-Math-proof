@@ -486,6 +486,33 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(sorted(seen[0] + seen[1]), sorted(i['name'] for i in items))
         self.assertFalse(set(seen[0]) & set(seen[1]))
 
+    def test_ladder_escalates_only_when_unsolved_and_passes_the_draft_on(self):
+        s = self.scheduler.Scheduler('lad', workers=1, max_tasks=5, max_failures=5, ladder=[('low', 5), ('xhigh', 30)])
+        items = [dict(name='easy', statement=': True'), dict(name='hard', statement=': True')]
+        calls = []
+
+        def fake_invoke(prompt, worker, effort=None, seconds=None):
+            name = prompt.split('Problem name: ')[1].split('\n')[0]
+            calls.append((name, effort, seconds, 'previous attempt' in prompt))
+            (s.scratch / worker / f'{name}.lean').write_text(f'-- {name} by {effort}\n', encoding='utf-8')
+            return 0, f'RESULT from {effort}', 5, False
+
+        # easy 第一次就做出来；hard 第一档没做出、第二档做出
+        verdicts = {('easy', 1): True, ('hard', 1): False, ('hard', 2): True}
+        attempts = {}
+
+        def fake_check(set_name, problem, body, run, agent):
+            attempts[problem] = attempts.get(problem, 0) + 1
+            return dict(ok=True, kind='proved', solved=verdicts[(problem, attempts[problem])], reason='r')
+
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.bench.load', return_value=items), mock.patch('forge.bench.check', side_effect=fake_check):
+            summary = s.run_bench('demo', only_unsolved=False)
+        self.assertEqual(calls, [('easy', 'low', 300, False), ('hard', 'low', 300, False), ('hard', 'xhigh', 1800, True)])
+        self.assertEqual(summary['outcomes'], {'solved': 2, 'unsolved': 1})
+        draft = s.scratch / 'lad-w0' / 'hard.attempt1.lean'
+        self.assertEqual(draft.read_text(encoding='utf-8'), '-- hard by low\n')
+
     def test_review_mode_only_reviews_settled_unreviewed_items(self):
         root = Path(self.tmp.name)
         paper = dict(title='T', arxiv='0000.00000', statements=[

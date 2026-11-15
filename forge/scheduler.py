@@ -95,6 +95,13 @@ You have about {minutes} minutes. End with one line: RESULT: solved | unsolved.
 '''
 
 
+RETRY_NOTE = '''
+A previous attempt on this problem (reasoning effort {effort}) did not finish. Its last proof draft is at {draft};
+the checker said: {reason}
+Its final message was: {message}
+Build on it if it is useful, or take a different approach if it was a dead end.
+'''
+
 REVIEW_PROMPT = '''You are an independent reviewer in a Lean 4 project at {root}. You did not write the formalisation or the proof.
 Your agent name is `{agent}`. Your only job is to judge whether one Lean statement faithfully says what the paper says.
 
@@ -131,7 +138,7 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write'):
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -140,6 +147,8 @@ class Scheduler:
         self.max_failures = max_failures
         self.agent_cmd = shlex.split(agent_cmd) if agent_cmd else None
         self.model, self.effort, self.dry_run, self.sandbox = model, effort, dry_run, sandbox
+        # 分级尝试：[(推理强度, 分钟), ...]；先用便宜的档位，做不出再升档并把上一次的草稿和报错交给下一次
+        self.ladder = ladder
         self.lock = threading.Lock()
         self.started = self.failures_in_a_row = self.tokens = 0
         self.stop_reason = None
@@ -150,27 +159,29 @@ class Scheduler:
         self.log = RUNS / f'{run}.jsonl'
 
     # ---- 调 agent ----
-    def _command(self, last_message):
+    def _command(self, last_message, effort=None):
         if self.agent_cmd:
             return self.agent_cmd
+        effort = effort or self.effort
         cmd = [find_codex(), 'exec', '-s', self.sandbox, '--ephemeral', '--skip-git-repo-check', '-C', str(ROOT),
                '-o', str(last_message)]
         if self.model:
             cmd += ['-m', self.model]
-        if self.effort:
-            cmd += ['-c', f'model_reasoning_effort="{self.effort}"']
+        if effort:
+            cmd += ['-c', f'model_reasoning_effort="{effort}"']
         return cmd + ['-']
 
-    def _invoke(self, prompt, worker):
-        """运行一次 agent，返回 (退出码, 最后一条消息, token 数, 是否超时)。提示词经 stdin 传入。"""
+    def _invoke(self, prompt, worker, effort=None, seconds=None):
+        """运行一次 agent，返回 (退出码, 最后一条消息, token 数, 是否超时)。提示词经 stdin 传入。
+        effort / seconds 可以覆盖本轮的默认推理强度和单题时限（分级尝试时用）。"""
         last = self.scratch / f'{worker}.last.txt'
         last.unlink(missing_ok=True)
         if self.dry_run:
             return 0, 'RESULT: dry-run', 0, False
-        timeout = max(60, min(self.task_seconds, self.deadline - time.time()))
+        timeout = max(60, min(seconds or self.task_seconds, self.deadline - time.time()))
         # 新进程组：超时时连同 agent 启动的 Lean 子进程一起结束，不留孤儿进程占内存。
         extra = dict(creationflags=subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == 'nt' else dict(start_new_session=True)
-        proc = subprocess.Popen(self._command(last), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        proc = subprocess.Popen(self._command(last, effort), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                 cwd=ROOT, text=True, encoding='utf-8', errors='replace', **extra)
         try:
             output, _ = proc.communicate(prompt, timeout=timeout)
@@ -260,21 +271,36 @@ class Scheduler:
             if not self._may_start():
                 return
             proof = scratch / f'{item["name"]}.lean'
-            prompt = BENCH_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
-                                         opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
-                                         practice=f'{self.run}-practice', scratch=scratch, minutes=self.task_seconds // 60)
-            began = time.time()
-            code, message, used, slow = self._invoke(prompt, agent)
-            solved, reason = False, '没有交出证明文件'
-            if proof.exists():  # 正式成绩只来自这里：调度器自己用内核校验 agent 留下的证明
-                verdict = bench.check(set_name, item['name'], proof.read_text(encoding='utf-8'), self.run, 'scheduler')
-                solved, reason = verdict['solved'], verdict.get('reason', '')
-            # 评测里做不出难题是正常的，不算“没有进展”；只有 agent 本身出错、或连证明文件都没交，才计入熔断。
-            attempted = code == 0 and proof.exists()
-            self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
-                              progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
-                              timed_out=slow, reason=reason[:300], message=message[-500:],
-                              raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+            steps = self.ladder or [(None, None)]
+            previous = None
+            for attempt, (effort, minutes) in enumerate(steps):
+                prompt = BENCH_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=item['name'], statement=item['statement'],
+                                             opens=item.get('opens', '') or '(nothing)', proof=proof, set=set_name,
+                                             practice=f'{self.run}-practice', scratch=scratch,
+                                             minutes=minutes or self.task_seconds // 60)
+                if previous:
+                    prompt += RETRY_NOTE.format(**previous)
+                overrides = dict(effort=effort, seconds=minutes * 60) if effort else {}
+                began = time.time()
+                code, message, used, slow = self._invoke(prompt, agent, **overrides)
+                solved, reason = False, '没有交出证明文件'
+                if proof.exists():  # 正式成绩只来自这里：调度器自己用内核校验 agent 留下的证明
+                    verdict = bench.check(set_name, item['name'], proof.read_text(encoding='utf-8'), self.run, 'scheduler')
+                    solved, reason = verdict['solved'], verdict.get('reason', '')
+                # 评测里做不出难题是正常的，不算“没有进展”；只有 agent 本身出错、或连证明文件都没交，才计入熔断。
+                attempted = code == 0 and proof.exists()
+                self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
+                                  progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
+                                  timed_out=slow, reason=reason[:300], message=message[-500:], attempt=attempt + 1,
+                                  effort=effort or self.effort,
+                                  raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+                if solved or self.stop_reason:
+                    break
+                draft = scratch / f'{item["name"]}.attempt{attempt + 1}.lean'
+                if proof.exists():
+                    draft.write_text(proof.read_text(encoding='utf-8'), encoding='utf-8')
+                previous = dict(effort=effort or self.effort, draft=draft if draft.exists() else '(no proof file was left)',
+                                reason=reason[:600], message=message[-600:] or '(none)')
 
     # ---- 论文复核模式 ----
     def _review_worker(self, index, paper, items, paper_text):
@@ -333,10 +359,15 @@ class Scheduler:
         return self._run_threads(self._queue_worker, (prefix,))
 
     def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False, shard=None, sample=None, seed=0,
-                  skip_refuted=False):
+                  skip_refuted=False, problems=None):
         items = bench.load(set_name)
         if not items:
             raise ValueError(f'没有评测集 {set_name}')
+        if problems:
+            unknown = set(problems) - {i['name'] for i in items}
+            if unknown:
+                raise ValueError(f'评测集里没有这些题：{sorted(unknown)}')
+            items = [i for i in items if i['name'] in set(problems)]
         if skip_refuted:
             # 以前的轮次里已被内核反证的题（评测集写错了），对比不同设置时没有意义，去掉
             refuted = set()

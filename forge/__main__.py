@@ -82,6 +82,8 @@ def main(argv=None):
     p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
+    p.add_argument('--problems', help='评测模式：只做这些题，逗号分隔')
+    p.add_argument('--ladder', help='评测模式：分级尝试，例如 low:10,xhigh:40（推理强度:分钟）；做不出才升档')
     p.add_argument('--review-paper', help='复核模式：论文命题清单（forge/data/papers/<id>.json）')
     p.add_argument('--paper-text', help='复核模式：论文全文的本地文本文件，交给复核者对照阅读')
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
@@ -226,7 +228,8 @@ def main(argv=None):
         from .scheduler import Scheduler
         runner = Scheduler(args.run, workers=args.workers, max_tasks=args.max_tasks, budget_minutes=args.budget_minutes,
                            task_minutes=args.task_minutes, max_failures=args.max_failures, agent_cmd=args.agent_cmd,
-                           model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox)
+                           model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox,
+                           ladder=[(step.split(':')[0], int(step.split(':')[1])) for step in args.ladder.split(',')] if args.ladder else None)
         shard = None
         if args.shard:
             k, n = (int(x) for x in args.shard.split('/'))
@@ -238,7 +241,8 @@ def main(argv=None):
                 emit(dict(ok=False, reason='复核模式需要 --paper-text（论文全文）')); return 1
             emit(runner.run_review(args.review_paper, args.paper_text)); return 0
         emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard,
-                             sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted)
+                             sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted,
+                             problems=args.problems.split(',') if args.problems else None)
              if args.bench else runner.run_queue(args.prefix))
     elif args.command == 'run-report':
         from .scheduler import report

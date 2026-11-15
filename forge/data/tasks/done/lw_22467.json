@@ -11,7 +11,9 @@
   "type": "∀ (x y z : ℝ), 0 ≤ x ∧ 0 ≤ y ∧ 0 ≤ z → x * y * z = 1 → x ^ 8 + x ^ 6 * y * z + 2 * x ^ 3 * y ^ 3 * z ^ 2 - x ^ 5 * y ^ 2 * z - x ^ 5 * y * z ^ 2 - 2 * x ^ 4 * y ^ 4 + y ^ 8 + y ^ 6 * z * x + 2 * y ^ 3 * z ^ 3 * x ^ 2 - y ^ 5 * z ^ 2 * x - y ^ 5 * z * x ^ 2 - 2 * y ^ 4 * z ^ 4 + z ^ 8 + z ^ 6 * x * y + 2 * z ^ 3 * x ^ 3 * y ^ 2 - z ^ 5 * x ^ 2 * y - z ^ 5 * x * y ^ 2 - 2 * z ^ 4 * x ^ 4 ≥ 0",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "claimed",
+  "status": "proved",
   "claimed_by": "queue-lw-r2-w2",
-  "claimed_at": "2026-11-15T22:13:38+0800"
+  "claimed_at": "2026-11-15T22:13:38+0800",
+  "closed_by": "queue-lw-r2-w2",
+  "finished_at": "2026-11-15T22:16:19+0800"
 }

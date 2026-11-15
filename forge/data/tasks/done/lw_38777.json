@@ -11,5 +11,9 @@
   "type": "∀ (x y z u v w : ℝ), 0 < v → 0 < w → x + y + z = 3 * u → x * y + x * z + y * z = 3 * v ^ 2 → x * y * z = w ^ 3 → (v + x) / (y + z) + (v + y) / (z + x) + (v + z) / (x + y) ≥ 3",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "open"
+  "status": "disproved",
+  "claimed_by": "queue-lw-r2-w0",
+  "claimed_at": "2026-11-15T22:30:10+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T22:31:44+0800"
 }

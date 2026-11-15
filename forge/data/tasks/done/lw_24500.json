@@ -11,7 +11,9 @@
   "type": "∀ (x y z : ℝ), x > 0 ∧ y > 0 ∧ z > 0 ∧ x * y * z = 1 → x / (y ^ 4 + 2) + y / (z ^ 4 + 2) + z / (x ^ 4 + 2) ≥ 1",
   "attempts": [],
   "created_at": "2026-11-15T19:05:17+0800",
-  "status": "claimed",
+  "status": "proved",
   "claimed_by": "queue-lw-r2-w0",
-  "claimed_at": "2026-11-15T22:15:40+0800"
+  "claimed_at": "2026-11-15T22:15:40+0800",
+  "closed_by": "queue-lw-r2-w0",
+  "finished_at": "2026-11-15T22:29:04+0800"
 }

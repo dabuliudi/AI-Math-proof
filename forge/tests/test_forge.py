@@ -517,6 +517,14 @@ class SchedulerTests(unittest.TestCase):
             p.stop()
         self.tmp.cleanup()
 
+    def test_invoke_creates_its_scratch_directory(self):
+        # 事故：并行修复给每个分片建了新的调度器，临时目录不存在，Codex 写不了最后一条消息就直接退出
+        s = self.scheduler.Scheduler('fresh-dir', workers=1, agent_cmd='true')
+        self.assertFalse(s.scratch.exists())
+        code, _, _, _ = s._invoke('hello', 'worker')
+        self.assertEqual(code, 0)
+        self.assertTrue(s.scratch.is_dir())
+
     def test_token_count_is_read_from_agent_output(self):
         self.assertEqual(self.scheduler._tokens('...\ntokens used\n18,291\n684'), 18291)
         self.assertIsNone(self.scheduler._tokens('no usage here'))

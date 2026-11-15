@@ -235,6 +235,7 @@ class Scheduler:
         """运行一次 agent，返回 (退出码, 最后一条消息, token 数, 是否超时)。提示词经 stdin 传入。
         effort / seconds 可以覆盖本轮的默认推理强度和单题时限（分级尝试时用）。"""
         last = self.scratch / f'{worker}.last.txt'
+        last.parent.mkdir(parents=True, exist_ok=True)  # agent 要往这里写最后一条消息；目录不存在会直接报错退出
         last.unlink(missing_ok=True)
         if self.dry_run:
             return 0, 'RESULT: dry-run', 0, False

@@ -397,6 +397,28 @@ class HardeningTests(unittest.TestCase):
             self.assertFalse(any(l.startswith('vac:') for l in ran['labels']))
 
 
+class ImporterTests(unittest.TestCase):
+    def test_big_operator_bodies_keep_their_old_scope(self):
+        from forge.importers import convert_big_operators
+        cases = {
+            '(∏ k in Finset.Icc 1 n, 1 + (1 : ℝ) / 2 ^ k) < 5 / 2': '(∏ k ∈ Finset.Icc 1 n, (1 + (1 : ℝ) / 2 ^ k)) < 5 / 2',
+            '¬5 ∣ ∑ k in Finset.range (n + 1), f k * 2': '¬5 ∣ ∑ k ∈ Finset.range (n + 1), (f k * 2)',
+            '∑ k : ℤ in Finset.Icc 1 12, z ^ k = 0': '∑ k ∈ (Finset.Icc 1 12 : Finset ℤ), (z ^ k = 0)',
+            '(∑ i in s, ∑ j in t, a i j) = 0': '(∑ i ∈ s, (∑ j ∈ t, (a i j))) = 0',
+            '∑ x ∈ s, f x = 1': '∑ x ∈ s, f x = 1',  # 已经是新写法的不动
+        }
+        for old, new in cases.items():
+            self.assertEqual(convert_big_operators(old)[0], new, old)
+
+    def test_theorem_signature_extraction(self):
+        from forge.importers import theorem_signature
+        self.assertEqual(theorem_signature('theorem lw_1 (a b : ℝ) (h : 0 < a) :\n  a + b > b  :=  by sorry'),
+                         ('lw_1', '(a b : ℝ) (h : 0 < a) : a + b > b'))
+        self.assertEqual(theorem_signature('/-- doc -/\ntheorem t : 1 = 1 := sorry'), ('t', ': 1 = 1'))
+        self.assertIsNone(theorem_signature('def f := 1\ntheorem t : f = 1 := sorry'))
+        self.assertIsNone(theorem_signature('theorem t : 1 = 1 := rfl'))
+
+
 class SchedulerTests(unittest.TestCase):
     """调度器的控制逻辑：不调用真实 agent，也不碰真实队列。"""
 

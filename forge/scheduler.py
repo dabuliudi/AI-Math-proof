@@ -95,6 +95,35 @@ You have about {minutes} minutes. End with one line: RESULT: solved | unsolved.
 '''
 
 
+REVIEW_PROMPT = '''You are an independent reviewer in a Lean 4 project at {root}. You did not write the formalisation or the proof.
+Your agent name is `{agent}`. Your only job is to judge whether one Lean statement faithfully says what the paper says.
+
+Paper: {title} ({paper_id}). Its full text (LaTeX formulas inline) is in {paper_text} - read the relevant parts yourself;
+do not rely on the auditor's summary below.
+
+Item to review:
+- paper label: {label}
+- auditor's short paraphrase of the original: {original}
+- auditor's notes on interpretation: {notes}
+- Lean task name: {name}
+- Lean statement (signature `<binders> : <conclusion>`): {statement}
+- kernel verdict in the library: {verdict}
+Library definitions used by the statement can be inspected with `{forge} source <name>` or `{forge} lookup "<fragment>"`.
+
+Decide one of:
+- faithful: the Lean statement says exactly what the paper's claim says (harmless strengthening such as dropping an unused
+  hypothesis is fine, say so in the note);
+- unfaithful: it changes the meaning (missing/extra hypotheses that matter, wrong quantifier, off-by-one, wrong definition, ...);
+- unsure: the paper is ambiguous or you cannot tell.
+If the kernel verdict is "disproved", be especially careful: say whether the PAPER's claim is false as printed, or only the
+formalisation is wrong. Quote the paper sentence you relied on.
+
+Record your verdict with exactly one command:
+{forge} review {name} --agent {agent} --verdict <faithful|unfaithful|unsure> --note "<2-5 sentences, with the quoted sentence>"
+Do not edit any files. End with one line: RESULT: faithful | unfaithful | unsure.
+'''
+
+
 def _tokens(text):
     found = re.findall(r'tokens used\s*\n?\s*([\d,]+)', text)
     return int(found[-1].replace(',', '')) if found else None
@@ -246,6 +275,51 @@ class Scheduler:
                               progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
                               timed_out=slow, reason=reason[:300], message=message[-500:],
                               raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+
+    # ---- 论文复核模式 ----
+    def _review_worker(self, index, paper, items, paper_text):
+        agent = f'{self.run}-w{index}'
+        (self.scratch / agent).mkdir(parents=True, exist_ok=True)
+        from .paper import reviews
+        while True:
+            with self.lock:
+                if not items:
+                    self.stop_reason = self.stop_reason or '待复核的命题都已发出'
+                    return
+                item, verdict = items.pop(0)
+            if not self._may_start():
+                return
+            prompt = REVIEW_PROMPT.format(root=ROOT, agent=agent, forge=FORGE, title=paper.get('title', ''),
+                                          paper_id=paper.get('arxiv', ''), paper_text=paper_text, label=item.get('label', ''),
+                                          original=item.get('original', ''), notes=item.get('notes', ''), name=item['name'],
+                                          statement=item['lean'], verdict=verdict)
+            began = time.time()
+            code, message, used, slow = self._invoke(prompt, agent)
+            mine = [r for r in reviews().get(item['name'], []) if r['agent'] == agent]
+            outcome = mine[-1]['verdict'] if mine else 'no_review'
+            self._record(dict(mode='review', task=item['name'], worker=agent, outcome=outcome, progress=bool(mine),
+                              seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
+                              message=message[-500:], raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
+
+    def run_review(self, paper_file, paper_text):
+        """复核一篇论文里已有内核结论（证明或证伪）的全部命题；已经有独立复核记录的跳过。"""
+        from .paper import reviews
+        paper = json.loads(Path(paper_file).read_text(encoding='utf-8'))
+        if not Path(paper_text).exists():
+            raise ValueError(f'找不到论文原文 {paper_text}')
+        done_reviews = reviews()
+        items = []
+        for item in paper.get('statements', []):
+            if not item.get('name') or not item.get('lean'):
+                continue
+            state, task = tasks.load(item['name'])
+            if state != 'done' or task.get('status') not in ('proved', 'disproved', 'known'):
+                continue  # 还没有内核结论的不复核
+            prover = task.get('closed_by', '')
+            if any(r['agent'] != prover for r in done_reviews.get(item['name'], [])):
+                continue  # 已经有人独立复核过
+            items.append((item, task['status']))
+        return self._run_threads(self._review_worker, (paper, items, str(Path(paper_text).resolve())))
 
     def _run_threads(self, target, args):
         threads = [threading.Thread(target=target, args=(i,) + args, daemon=True) for i in range(self.workers)]

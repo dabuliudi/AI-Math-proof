@@ -82,6 +82,8 @@ def main(argv=None):
     p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
+    p.add_argument('--review-paper', help='复核模式：论文命题清单（forge/data/papers/<id>.json）')
+    p.add_argument('--paper-text', help='复核模式：论文全文的本地文本文件，交给复核者对照阅读')
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
     p.add_argument('--shard', help='评测模式：多台机器分工，例如本机做第 1 份、共 2 份写 1/2')
     p.add_argument('--sandbox', default='workspace-write', help='Codex 沙箱：read-only / workspace-write / danger-full-access')
@@ -231,6 +233,10 @@ def main(argv=None):
             if not 1 <= k <= n:
                 emit(dict(ok=False, reason='--shard 的格式是 k/n，且 1 ≤ k ≤ n')); return 1
             shard = (k, n)
+        if args.review_paper:
+            if not args.paper_text:
+                emit(dict(ok=False, reason='复核模式需要 --paper-text（论文全文）')); return 1
+            emit(runner.run_review(args.review_paper, args.paper_text)); return 0
         emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard,
                              sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted)
              if args.bench else runner.run_queue(args.prefix))

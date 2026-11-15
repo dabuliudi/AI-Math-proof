@@ -486,6 +486,38 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(sorted(seen[0] + seen[1]), sorted(i['name'] for i in items))
         self.assertFalse(set(seen[0]) & set(seen[1]))
 
+    def test_review_mode_only_reviews_settled_unreviewed_items(self):
+        root = Path(self.tmp.name)
+        paper = dict(title='T', arxiv='0000.00000', statements=[
+            dict(label='Thm 1', name='q_done', lean=': True', original='o'),
+            dict(label='Thm 2', name='q_open', lean=': True', original='o'),
+            dict(label='Thm 3', name='q_reviewed', lean=': True', original='o'),
+            dict(label='Thm 4', name='q_disproved', lean=': False', original='o')])
+        (root / 'paper.json').write_text(json.dumps(paper), encoding='utf-8')
+        (root / 'paper.txt').write_text('full text', encoding='utf-8')
+        states = {'q_done': ('done', dict(status='proved', closed_by='prover')), 'q_open': ('open', dict(status='open')),
+                  'q_reviewed': ('done', dict(status='proved', closed_by='prover')),
+                  'q_disproved': ('done', dict(status='disproved', closed_by='prover'))}
+        recorded = {'q_reviewed': [dict(agent='someone_else', verdict='faithful')]}
+        s = self.scheduler.Scheduler('rv', workers=1, max_tasks=10, max_failures=10)
+        prompts = []
+
+        def fake_invoke(prompt, worker):
+            prompts.append(prompt)
+            name = prompt.split('Lean task name: ')[1].split('\n')[0]
+            if name == 'q_done':  # 只有这一条复核者真的写下了结论
+                recorded.setdefault(name, []).append(dict(agent=worker, verdict='faithful'))
+            return 0, 'RESULT', 10, False
+
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.tasks.load', side_effect=lambda n: states[n]), \
+                mock.patch('forge.paper.reviews', side_effect=lambda: recorded):
+            summary = s.run_review(root / 'paper.json', root / 'paper.txt')
+        reviewed = [p.split('Lean task name: ')[1].split('\n')[0] for p in prompts]
+        self.assertEqual(reviewed, ['q_done', 'q_disproved'])
+        self.assertIn('kernel verdict in the library: disproved', prompts[1])
+        self.assertEqual(summary['outcomes'], {'faithful': 1, 'no_review': 1})
+
     def test_codex_location_can_be_overridden(self):
         with mock.patch.dict(os.environ, {'FORGE_CODEX': r'C:\tools\codex.exe'}):
             self.assertEqual(self.scheduler.find_codex(), r'C:\tools\codex.exe')

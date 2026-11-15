@@ -585,8 +585,9 @@ class SchedulerTests(unittest.TestCase):
         def fake_invoke(prompt, worker):
             prompts.append(prompt)
             name = prompt.split('Lean task name: ')[1].split('\n')[0]
+            reviewer = prompt.split('Your agent name is `')[1].split('`')[0]
             if name == 'q_done':  # 只有这一条复核者真的写下了结论
-                recorded.setdefault(name, []).append(dict(agent=worker, verdict='faithful'))
+                recorded.setdefault(name, []).append(dict(agent=reviewer, verdict='faithful'))
             return 0, 'RESULT', 10, False
 
         with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
@@ -638,6 +639,37 @@ class SchedulerTests(unittest.TestCase):
             summary = s.run_queue()
         self.assertIn('disk full', summary['stopped'])
         self.assertIn('工人', summary['stopped'])
+
+    def test_several_independent_reviews_per_statement(self):
+        root = Path(self.tmp.name)
+        paper = dict(title='T', arxiv='x', statements=[dict(label='Thm', name='q1', lean=': True', original='o')])
+        (root / 'paper.json').write_text(json.dumps(paper), encoding='utf-8')
+        (root / 'paper.txt').write_text('text', encoding='utf-8')
+        recorded = {'q1': [dict(agent='earlier', verdict='faithful')]}
+        s = self.scheduler.Scheduler('rv3', workers=1, max_tasks=10, max_failures=10)
+        names = []
+
+        def fake_invoke(prompt, worker):
+            reviewer = prompt.split('Your agent name is `')[1].split('`')[0]
+            names.append(reviewer)
+            recorded['q1'].append(dict(agent=reviewer, verdict='faithful'))
+            return 0, 'RESULT', 1, False
+
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.tasks.load', return_value=('done', dict(status='proved', closed_by='prover'))), \
+                mock.patch('forge.paper.reviews', side_effect=lambda: recorded):
+            s.run_review(root / 'paper.json', root / 'paper.txt', reviewers=3)
+        self.assertEqual(len(names), 2)  # 已有 1 份独立复核，再补 2 份凑满 3 份
+        self.assertEqual(len(set(names)), 2)  # 每份复核都是不同的复核者
+
+    def test_review_consensus_needs_agreement(self):
+        from forge import paper
+        cases = {('faithful', 'faithful', 'faithful'): 'faithful', ('unfaithful', 'unfaithful', 'faithful'): 'unfaithful',
+                 ('faithful', 'unfaithful'): 'disputed', ('faithful', 'unsure', 'faithful'): 'disputed', (): 'unreviewed'}
+        for votes, expected in cases.items():
+            records = {'t': [dict(agent=f'r{i}', verdict=v) for i, v in enumerate(votes)] + [dict(agent='prover', verdict='faithful')]}
+            with mock.patch.object(paper, 'reviews', return_value=records):
+                self.assertEqual(paper.review_consensus('t', prover='prover')['verdict'], expected, votes)
 
     def test_codex_location_can_be_overridden(self):
         with mock.patch.dict(os.environ, {'FORGE_CODEX': r'C:\tools\codex.exe'}):

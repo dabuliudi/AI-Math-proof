@@ -90,6 +90,7 @@ def main(argv=None):
     p.add_argument('--ladder', help='评测模式：分级尝试，例如 low:10,xhigh:40（推理强度:分钟）；做不出才升档')
     p.add_argument('--review-paper', help='复核模式：论文命题清单（forge/data/papers/<id>.json）')
     p.add_argument('--paper-text', help='复核模式：论文全文的本地文本文件，交给复核者对照阅读')
+    p.add_argument('--reviewers', type=int, default=1, help='复核模式：每条命题要几份独立复核（多数决）')
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
     p.add_argument('--shard', help='评测模式：多台机器分工，例如本机做第 1 份、共 2 份写 1/2')
     p.add_argument('--sandbox', default='workspace-write', help='Codex 沙箱：read-only / workspace-write / danger-full-access')
@@ -108,6 +109,7 @@ def main(argv=None):
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
+    p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
     p.add_argument('runs', nargs='+'); p.add_argument('--problems-from', help='以这个轮次做过的题为准（默认取交集）')
     p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
@@ -260,7 +262,7 @@ def main(argv=None):
         if args.review_paper:
             if not args.paper_text:
                 emit(dict(ok=False, reason='复核模式需要 --paper-text（论文全文）')); return 1
-            emit(runner.run_review(args.review_paper, args.paper_text)); return 0
+            emit(runner.run_review(args.review_paper, args.paper_text, args.reviewers)); return 0
         emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard,
                              sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted,
                              problems=args.problems.split(',') if args.problems else None)
@@ -268,6 +270,20 @@ def main(argv=None):
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))
+    elif args.command == 'review-summary':
+        from .paper import review_consensus
+        paper = json.loads(args.paper.read_text(encoding='utf-8'))
+        rows = []
+        for item in paper.get('statements', []):
+            if item.get('name'):
+                state, task = tasks.load(item['name'])
+                rows.append(dict(name=item['name'], label=item.get('label', ''), kernel=(task or {}).get('status', state),
+                                 **review_consensus(item['name'], (task or {}).get('closed_by', ''))))
+        summary = {}
+        for row in rows:
+            summary[row['verdict']] = summary.get(row['verdict'], 0) + 1
+        emit(dict(paper=paper.get('arxiv', ''), summary=summary,
+                  needs_human=[r for r in rows if r['verdict'] not in ('faithful',)], statements=len(rows)))
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))

@@ -822,3 +822,36 @@ class ImproveTests(unittest.TestCase):
              mock.patch.object(self.improve, 'evaluate', side_effect=fake):
             result = self.improve.run_loop('x', iterations=5, token_budget=1500)
         self.assertEqual(result['iterations'], 0)
+
+
+class AuditTests(unittest.TestCase):
+    """批量论文体检：工作项队列与辅助函数，不调用真实 agent。"""
+
+    def test_prefix_and_text(self):
+        from forge import audit
+        self.assertEqual(audit.prefix_for('2611.07141v1'), 'x2611_07141_')
+        text = audit.html_to_text('<html><script>x=1</script><p>Let <math alttext="n\\geq 2"><mi>n</mi></math> be prime.</p>'
+                                  '<nav>menu</nav><p>Theorem 1.</p></html>')
+        self.assertIn('$n\\geq 2$', text)
+        self.assertNotIn('x=1', text)
+        self.assertNotIn('menu', text)
+
+    def test_work_queue_runs_every_stage_once(self):
+        from forge import audit
+        tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        seen = []
+        with mock.patch.object(audit, 'DATA', root), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root):
+            runner = audit.PaperAudit('t-audit', workers=3, max_tasks=1000, dry_run=True)
+            def formalise(agent, paper):
+                seen.append(('formalise', paper)); runner._push(('twin', paper, 'a'), ('twin', paper, 'b'))
+            def twin(agent, paper, name):
+                seen.append(('twin', paper, name)); runner._push(('equiv', paper, name))
+            def equiv(agent, paper, name):
+                seen.append(('equiv', paper, name))
+            runner._formalise, runner._twin, runner._equiv = formalise, twin, equiv
+            runner.run_audit(['p1', 'p2'])
+        self.assertEqual(len(seen), 2 + 4 + 4)
+        self.assertEqual(len(set(seen)), len(seen))

@@ -115,6 +115,15 @@ def main(argv=None):
     p.add_argument('--task-minutes', type=int, default=20)
     p.add_argument('--token-budget', type=int, default=6_000_000, help='整个循环最多花这么多 token（含基线）')
     p.add_argument('--dry-run', action='store_true')
+    p = sub.add_parser('check-statement', help='只做类型检查：命题（`<绑定> : <结论>`）能否通过'); p.add_argument('statement')
+    p = sub.add_parser('equiv-check', help='论文体检：校验两版命题的等价证明或反例'); p.add_argument('name'); p.add_argument('file', type=Path)
+    p = sub.add_parser('audit-papers', help='批量论文体检：两个 agent 独立形式化，内核判定两版是否等价，一致的进队列')
+    p.add_argument('papers', help='arXiv 编号，逗号分隔；或一个每行一个编号的文件')
+    p.add_argument('--run', required=True); p.add_argument('--workers', type=int, default=4)
+    p.add_argument('--budget-minutes', type=int, default=600); p.add_argument('--task-minutes', type=int, default=40)
+    p.add_argument('--no-propose', action='store_true', help='只判定忠实度，不把一致的命题放进队列')
+    p.add_argument('--effort', default='xhigh'); p.add_argument('--dry-run', action='store_true')
+    p = sub.add_parser('audit-summary', help='一篇论文的体检结果'); p.add_argument('paper')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
     sub.add_parser('upgrade-migrate-records', help='把经过审核的陈述迁移同步到台账、任务与辅助引理索引')
     sub.add_parser('upgrade-rehash', help='升级后重算评测集、台账、任务的结构哈希（评测题保护与查重依赖它）')
@@ -283,6 +292,26 @@ def main(argv=None):
                              sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted,
                              problems=args.problems.split(',') if args.problems else None)
              if args.bench else runner.run_queue(args.prefix))
+    elif args.command == 'check-statement':
+        from .statement import closed_form
+        from .verify import validate_statements
+        error = validate_statements([closed_form(args.statement)])[0]
+        emit(dict(ok=error is None, error=error))
+    elif args.command == 'equiv-check':
+        from .audit import equiv_check
+        emit(equiv_check(args.name, args.file))
+    elif args.command == 'audit-papers':
+        from .audit import PaperAudit, fetch
+        ids = Path(args.papers).read_text().split() if Path(args.papers).exists() else args.papers.split(',')
+        ready = [p for p in ids if fetch(p)]
+        print(f'有 HTML 全文的论文 {len(ready)}/{len(ids)}：{",".join(ready)}', flush=True)
+        runner = PaperAudit(args.run, workers=args.workers, max_tasks=100000, budget_minutes=args.budget_minutes,
+                            task_minutes=args.task_minutes, max_failures=max(8, len(ready)), effort=args.effort,
+                            dry_run=args.dry_run)
+        emit(runner.run_audit(ready, propose=not args.no_propose))
+    elif args.command == 'audit-summary':
+        from .audit import summary
+        emit(summary(args.paper))
     elif args.command == 'improve':
         from . import improve
         print(json.dumps(improve.run_loop(args.bench, iterations=args.iterations, dev_size=args.dev_size,

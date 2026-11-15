@@ -92,7 +92,18 @@ def equiv_check(name, path):
     pair = _pairs().get(name)
     if not pair:
         return dict(ok=False, reason=f'没有等价检查任务 {name}')
-    return check_submission(equiv_task(name, pair['a'], pair['b']), Path(path).read_text(encoding='utf-8'))
+    return _checked(equiv_task(name, pair['a'], pair['b']), Path(path).read_text(encoding='utf-8'))
+
+
+def _checked(task, body):
+    """内核校验；没通过就持入库锁再校验一次，排除“别的进程正在重建库、.olean 暂时不在”造成的误判。"""
+    from .library import locked
+    from .verify import check_submission
+    result = check_submission(task, body)
+    if not result['ok'] and result.get('errors'):
+        with locked():
+            result = check_submission(task, body)
+    return result
 
 
 PAIRS = DATA / 'staging' / 'audit_pairs.json'
@@ -100,6 +111,22 @@ PAIRS = DATA / 'staging' / 'audit_pairs.json'
 
 def _pairs():
     return json.loads(PAIRS.read_text(encoding='utf-8')) if PAIRS.exists() else {}
+
+
+def _compare(original, twin):
+    """两版命题的结构哈希：相同 → same；都有效但不同 → pending（要判等价）；有一版算不出 → *_invalid。
+
+    别的进程正在重建库时 Mathlib2 的 .olean 会短暂消失，命题会被误判为无效；所以先不持锁算一次，
+    算不出再持入库锁重算一次（锁内库是完整的）。"""
+    from .library import locked
+    from .verify import statement_hashes
+    hashes = statement_hashes([original, twin])
+    if None in hashes:
+        with locked():
+            hashes = statement_hashes([original, twin])
+    if None in hashes:
+        return 'twin_invalid' if hashes[0] else 'original_invalid'
+    return 'same' if hashes[0] == hashes[1] else 'pending'
 
 
 class PaperAudit(Scheduler):
@@ -165,7 +192,15 @@ class PaperAudit(Scheduler):
         self._record(dict(mode='audit-formalise', task=paper, worker=agent, outcome=f'{len(statements)} statements',
                           progress=bool(statements), seconds=round(time.time() - began), tokens=used, exit=code,
                           timed_out=slow, message=message[-500:]))
-        self._push(*[('twin', paper, s['name']) for s in statements if not s.get('fidelity')])
+        # 重跑同一批论文时从断点继续：没有第二版的补第二版；哈希没算出来的重算；还没判等价的去判等价
+        for s in statements:
+            fidelity = s.get('fidelity') or {}
+            if not fidelity.get('twin'):
+                self._push(('twin', paper, s['name']))
+            elif fidelity.get('verdict') in ('original_invalid', 'twin_invalid'):
+                self._push(('rehash', paper, s['name']))
+            elif fidelity.get('verdict') == 'pending':
+                self._push(('equiv', paper, s['name']))
 
     def _statement(self, paper, name):
         data = json.loads((PAPERS / f'{paper}.json').read_text(encoding='utf-8'))
@@ -181,7 +216,6 @@ class PaperAudit(Scheduler):
             path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding='utf-8')
 
     def _twin(self, agent, paper, name):
-        from .verify import statement_hashes
         data, item = self._statement(paper, name)
         out = self.scratch / agent / f'{name}.twin.txt'
         out.unlink(missing_ok=True)
@@ -191,25 +225,25 @@ class PaperAudit(Scheduler):
         began = time.time()
         code, message, used, slow = self._invoke(prompt, agent, effort='high')
         twin = out.read_text(encoding='utf-8').strip() if out.exists() else ''
-        verdict = 'no_twin'
-        if twin:
-            hashes = statement_hashes([item['lean'], twin])
-            if None in hashes:
-                verdict = 'twin_invalid' if hashes[0] else 'original_invalid'
-            elif hashes[0] == hashes[1]:
-                verdict = 'same'
-            else:
-                verdict = 'pending'
+        verdict = _compare(item['lean'], twin) if twin else 'no_twin'
         self._update(paper, name, twin=twin, twin_by=agent, verdict=verdict)
         self._record(dict(mode='audit-twin', task=name, worker=agent, outcome=verdict, progress=bool(twin),
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow, message=message[-500:]))
+        self._after_compare(paper, name, verdict)
+
+    def _rehash(self, agent, paper, name):
+        _, item = self._statement(paper, name)
+        verdict = _compare(item['lean'], item['fidelity']['twin'])
+        self._update(paper, name, verdict=verdict)
+        self._after_compare(paper, name, verdict)
+
+    def _after_compare(self, paper, name, verdict):
         if verdict == 'same':
             self._accept(paper, name)
         elif verdict == 'pending':
             self._push(('equiv', paper, name))
 
     def _equiv(self, agent, paper, name):
-        from .verify import check_submission
         _, item = self._statement(paper, name)
         a, b = item['lean'], item['fidelity']['twin']
         eq = f'{name}_eqv'
@@ -227,7 +261,7 @@ class PaperAudit(Scheduler):
         code, message, used, slow = self._invoke(prompt, agent)
         verdict, reason = 'unknown', message[-300:]
         if proof.exists():
-            result = check_submission(task, proof.read_text(encoding='utf-8'))
+            result = _checked(task, proof.read_text(encoding='utf-8'))
             if result['ok']:
                 verdict = 'different' if result['kind'] == 'disproved' else 'equivalent'
             reason = result['reason']

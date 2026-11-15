@@ -1,0 +1,19 @@
+{
+  "name": "gr_bipartite_regular_parts_equal",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (hd : 0 < d) (h : G.IsRegularOfDegree d) (C : G.Coloring Bool) : (Finset.univ.filter (fun v => C v = true)).card = (Finset.univ.filter (fun v => C v = false)).card",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (hd : 0 < d) (h : G.IsRegularOfDegree d) (C : G.Coloring Bool), (Finset.univ.filter (fun v => C v = true)).card = (Finset.univ.filter (fun v => C v = false)).card",
+  "informal": "A regular bipartite graph of positive degree has colour classes of equal size — double count edges (darts from the true class): each edge has exactly one endpoint in each class, so d·|true class| = e = d·|false class|; cancel d.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "678451645",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (d : ℕ), 0 < d → G.IsRegularOfDegree d → ∀ (C : G.Coloring Bool), {v | C v = true}.card = {v | C v = false}.card",
+  "attempts": [],
+  "created_at": "2026-11-15T08:47:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w0",
+  "claimed_at": "2026-11-15T17:46:54+0800",
+  "closed_by": "queue-r1-w0",
+  "finished_at": "2026-11-15T17:48:47+0800"
+}

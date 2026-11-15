@@ -1,0 +1,19 @@
+{
+  "name": "gr_triangle_free_sum_choose_two_le",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3) : 2 * ∑ v, (G.degree v).choose 2 + 2 * G.edgeFinset.card ≤ Fintype.card V * G.edgeFinset.card",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3), 2 * ∑ v, (G.degree v).choose 2 + 2 * G.edgeFinset.card ≤ Fintype.card V * G.edgeFinset.card",
+  "informal": "In a triangle-free graph the number of 2-paths (cherries) is at most e(n−2)/2 — 2·C(d,2) + d = d², so the left side is ∑ deg² − 2e + 2e... precisely 2∑C(deg,2) + ∑deg = ∑deg²; with the handshake lemma ∑deg = 2e the claim is ∑deg² ≤ n·e, which is exactly: Uses Mathlib2.lib_simpleGraph_sum_degree_sq_le_card_mul_card_edgeFinset at the last step.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3490688424",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → 2 * ∑ v, (G.degree v).choose 2 + 2 * G.edgeFinset.card ≤ Fintype.card V * G.edgeFinset.card",
+  "attempts": [],
+  "created_at": "2026-11-15T08:44:28+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w0",
+  "claimed_at": "2026-11-15T17:28:49+0800",
+  "closed_by": "queue-r1-w0",
+  "finished_at": "2026-11-15T17:30:37+0800"
+}

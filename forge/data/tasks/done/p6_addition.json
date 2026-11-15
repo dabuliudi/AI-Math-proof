@@ -1,0 +1,19 @@
+{
+  "name": "p6_addition",
+  "statement": "(k m n : ℤ) : p6_kfib k (m + n) = p6_kfib k m * p6_kfib k (n + 1) + p6_kfib k (m - 1) * p6_kfib k n ∧ p6_kfib k (m + n + 1) = p6_kfib k (m + 1) * p6_kfib k (n + 1) + p6_kfib k m * p6_kfib k n",
+  "closed": "∀ (k m n : ℤ), p6_kfib k (m + n) = p6_kfib k m * p6_kfib k (n + 1) + p6_kfib k (m - 1) * p6_kfib k n ∧ p6_kfib k (m + n + 1) = p6_kfib k (m + 1) * p6_kfib k (n + 1) + p6_kfib k m * p6_kfib k n",
+  "informal": "Proof of Lemma 2.3 (unnumbered): f_{m+n} = f_m f_{n+1} + f_{m-1} f_n and companion f_{m+n+1} = f_{m+1} f_{n+1} + f_m f_n [All integers m, n.]",
+  "origin": "paper",
+  "source": "arXiv:2611.07141v1 Proof of Lemma 2.3 (unnumbered)",
+  "original": "f_{m+n} = f_m f_{n+1} + f_{m-1} f_n and companion f_{m+n+1} = f_{m+1} f_{n+1} + f_m f_n",
+  "proposed_by": "paper_6",
+  "hash": "2473763435",
+  "type": "∀ (k m n : ℤ), Mathlib2.p6_kfib k (m + n) = Mathlib2.p6_kfib k m * Mathlib2.p6_kfib k (n + 1) + Mathlib2.p6_kfib k (m - 1) * Mathlib2.p6_kfib k n ∧ Mathlib2.p6_kfib k (m + n + 1) = Mathlib2.p6_kfib k (m + 1) * Mathlib2.p6_kfib k (n + 1) + Mathlib2.p6_kfib k m * Mathlib2.p6_kfib k n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:34+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w2",
+  "claimed_at": "2026-11-15T17:35:11+0800",
+  "closed_by": "queue-r1-w2",
+  "finished_at": "2026-11-15T17:36:22+0800"
+}

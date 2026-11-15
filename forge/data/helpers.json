@@ -1413,5 +1413,105 @@
   "owner": "bld6_rank_cube_sub_self_defect",
   "type": "∀ {K : Type u_1} [inst : Field K] {m : Type u_2} {n : Type u_3} [inst_1 : Fintype n] [DecidableEq n] (A : Matrix m n K), (-A).rank = A.rank",
   "hash": "1435135910"
+ },
+ "gr_triangle_free_sum_choose_two_le_aux1": {
+  "owner": "gr_triangle_free_sum_choose_two_le",
+  "type": "∀ (n : ℕ), 2 * n.choose 2 + n = n ^ 2",
+  "hash": "3822626261"
+ },
+ "gr_goodman_six_two_mono_triangles_aux1": {
+  "owner": "gr_goodman_six_two_mono_triangles",
+  "type": "∀ {V : Type u_1} [DecidableEq V] (G : SimpleGraph V) (s : Finset V), G.IsNClique 3 s → (∀ (t : Finset V), G.IsNClique 3 t → t = s) → Gᶜ.CliqueFree 3 → G.IsClique (↑s)ᶜ",
+  "hash": "3931328597"
+ },
+ "gr_goodman_six_two_mono_triangles_aux2": {
+  "owner": "gr_goodman_six_two_mono_triangles",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], Fintype.card V = 6 → ¬G.CliqueFree 3 → (G.cliqueFinset 3).card + (Gᶜ.cliqueFinset 3).card ≤ 1 → False",
+  "hash": "3272112313"
+ },
+ "gr_triangle_count_lower_bound_aux1": {
+  "owner": "gr_triangle_count_lower_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (u v : V), G.degree u + G.degree v ≤ Fintype.card V + (G.neighborFinset u ∩ G.neighborFinset v).card",
+  "hash": "1882056420"
+ },
+ "gr_triangle_count_lower_bound_aux2": {
+  "owner": "gr_triangle_count_lower_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], ∑ u, ∑ v ∈ G.neighborFinset u, (G.neighborFinset u ∩ G.neighborFinset v).card ≤ 6 * (G.cliqueFinset 3).card",
+  "hash": "2717897878"
+ },
+ "gr_triangle_count_lower_bound_aux3": {
+  "owner": "gr_triangle_count_lower_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], ∑ v, G.degree v ^ 2 ≤ Fintype.card V * G.edgeFinset.card + 3 * (G.cliqueFinset 3).card",
+  "hash": "3363854970"
+ },
+ "gr_five_no_mono_triangle_degree_two_aux1": {
+  "owner": "gr_five_no_mono_triangle_degree_two",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.CliqueFree 3 → Gᶜ.CliqueFree 3 → ∀ (v : V), G.degree v ≤ 2",
+  "hash": "4038433073"
+ },
+ "p6_prop22_on_circles_aux1": {
+  "owner": "p6_prop22_on_circles",
+  "type": "∀ {K : Type u_1} [inst : Field K] [CharZero K] (p q r s : K), q ≠ 0 → q ^ 2 + s ^ 2 ≠ 0 → ((p * q + r * s) / (q ^ 2 + s ^ 2) - p / q) ^ 2 + (1 / (q ^ 2 + s ^ 2) - 1 / (2 * q ^ 2)) ^ 2 - (1 / (2 * q ^ 2)) ^ 2 = s ^ 2 * ((p * s - q * r) ^ 2 - 1) / (q ^ 2 * (q ^ 2 + s ^ 2) ^ 2)",
+  "hash": "1078733403"
+ },
+ "p6_prop22_unique_aux1": {
+  "owner": "p6_prop22_unique",
+  "type": "∀ {K : Type u_1} [inst : Field K] [inst_1 : LinearOrder K] [IsStrictOrderedRing K] (a b c d u v x y : K), (x - a) ^ 2 + (y - b) ^ 2 = u ^ 2 → (x - c) ^ 2 + (y - d) ^ 2 = v ^ 2 → (a - c) ^ 2 + (b - d) ^ 2 = (u + v) ^ 2 → v * (x - a) + u * (x - c) = 0 ∧ v * (y - b) + u * (y - d) = 0",
+  "hash": "3969847444"
+ },
+ "p6_cor32_step_aux1": {
+  "owner": "p6_cor32_step",
+  "type": "∀ (k n : ℤ), Mathlib2.p6_kfib k (2 * n + 1) ≠ 0",
+  "hash": "2145195466"
+ },
+ "p6_cor32_mono_aux1": {
+  "owner": "p6_cor32_mono",
+  "type": "∀ (k n : ℤ), 0 < Mathlib2.p6_kfib k (2 * n + 1)",
+  "hash": "1866069367"
+ },
+ "p6_cor32_lim_top_aux1": {
+  "owner": "p6_cor32_lim_top",
+  "type": "∀ (k : ℤ), 1 ≤ k → ∀ (m : ℕ), ↑m ≤ Mathlib2.p6_kfib k (2 * ↑m) ∧ ↑m + 1 ≤ Mathlib2.p6_kfib k (2 * ↑m + 1)",
+  "hash": "1615052301"
+ },
+ "p6_cor32_lim_top_aux2": {
+  "owner": "p6_cor32_lim_top",
+  "type": "∀ (k n : ℤ), 1 ≤ k → 0 ≤ n → 0 ≤ Mathlib2.p6_kfib k (2 * n) ∧ n ≤ Mathlib2.p6_kfib k (2 * n + 1)",
+  "hash": "3246744782"
+ },
+ "gr_set_sum_card_inter_pairs_aux1": {
+  "owner": "gr_set_sum_card_inter_pairs",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (a : α), {t | a ∈ t}.card = 2 ^ (Fintype.card α - 1)",
+  "hash": "1940712919"
+ },
+ "gr_set_sum_card_inter_pairs_aux2": {
+  "owner": "gr_set_sum_card_inter_pairs",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] [inst_1 : DecidableEq α] (s : Finset α), ∑ t, (s ∩ t).card = s.card * 2 ^ (Fintype.card α - 1)",
+  "hash": "3580937190"
+ },
+ "p6_lem35_aux1": {
+  "owner": "p6_lem35",
+  "type": "∀ {K : Type u_1} [inst : CommRing K] (p q r s a : K), (p * s - q * r) ^ 2 = 1 → ((p * q + r * s) * (s ^ 2 + (a * s + q) ^ 2) - (r * s + (a * r + p) * (a * s + q)) * (q ^ 2 + s ^ 2)) ^ 2 + (s ^ 2 + (a * s + q) ^ 2 - (q ^ 2 + s ^ 2)) ^ 2 = a ^ 2 * (q ^ 2 + s ^ 2) * (s ^ 2 + (a * s + q) ^ 2)",
+  "hash": "285051261"
+ },
+ "p6_lem35_aux2": {
+  "owner": "p6_lem35",
+  "type": "∀ {K : Type u_1} [inst : Field K] (p q r s a : K), (p * s - q * r) ^ 2 = 1 → q ^ 2 + s ^ 2 ≠ 0 → s ^ 2 + (a * s + q) ^ 2 ≠ 0 → ((p * q + r * s) / (q ^ 2 + s ^ 2) - (r * s + (a * r + p) * (a * s + q)) / (s ^ 2 + (a * s + q) ^ 2)) ^ 2 + (1 / (q ^ 2 + s ^ 2) - 1 / (s ^ 2 + (a * s + q) ^ 2)) ^ 2 = a ^ 2 * (1 / (q ^ 2 + s ^ 2)) * (1 / (s ^ 2 + (a * s + q) ^ 2))",
+  "hash": "673285966"
+ },
+ "p6_cor36_aux1": {
+  "owner": "p6_cor36",
+  "type": "∀ (f : ℤ → ℝ) (t : ℝ), f 0 = 1 → (∀ (n : ℤ), f (n + 1) = f n * Real.exp t) → ∀ (n : ℤ), f n = Real.exp (↑n * t)",
+  "hash": "3607092684"
+ },
+ "p6_cor36_aux2": {
+  "owner": "p6_cor36",
+  "type": "∀ (k : ℤ) (r t : ℝ), r ^ 2 + ↑k * r = 1 → Real.exp t = ↑k ^ 2 + 1 + ↑k * r → ∀ (n : ℤ), ↑(Mathlib2.p6_kfib k (2 * n + 1)) + r * ↑(Mathlib2.p6_kfib k (2 * n)) = Real.exp (↑n * t)",
+  "hash": "2045276695"
+ },
+ "p6_cor36_aux3": {
+  "owner": "p6_cor36",
+  "type": "∀ (a b c d k s : ℝ), b ≠ 0 → d ≠ 0 → b ^ 2 - k * a * b - a ^ 2 = 1 → d ^ 2 - k * c * d - c ^ 2 = 1 → s ^ 2 - k * s = 1 → ((a / b - c / d) ^ 2 + (1 / b) ^ 2 + (1 / d) ^ 2) / (2 * (1 / b) * (1 / d)) = ((b + (s - k) * a) * (d - s * c) + (b - s * a) * (d + (s - k) * c)) / 2",
+  "hash": "3364675517"
  }
 }

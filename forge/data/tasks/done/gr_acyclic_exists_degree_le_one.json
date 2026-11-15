@@ -1,0 +1,19 @@
+{
+  "name": "gr_acyclic_exists_degree_le_one",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.IsAcyclic) : ∃ v, G.degree v ≤ 1",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] [Nonempty V] (h : G.IsAcyclic), ∃ v, G.degree v ≤ 1",
+  "informal": "A nonempty finite forest has a vertex of degree at most 1 — contrapositive: if every vertex has degree ≥ 2 then Uses Mathlib2.comb_not_acyclic_of_two_le_degree at the only step.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "701198706",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] [Nonempty V], G.IsAcyclic → ∃ v, G.degree v ≤ 1",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:10+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w2",
+  "claimed_at": "2026-11-15T17:32:10+0800",
+  "closed_by": "queue-r1-w2",
+  "finished_at": "2026-11-15T17:33:19+0800"
+}

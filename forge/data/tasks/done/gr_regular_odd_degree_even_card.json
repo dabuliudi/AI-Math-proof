@@ -1,0 +1,19 @@
+{
+  "name": "gr_regular_odd_degree_even_card",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (h : G.IsRegularOfDegree d) (hd : Odd d) : Even (Fintype.card V)",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (h : G.IsRegularOfDegree d) (hd : Odd d), Even (Fintype.card V)",
+  "informal": "A regular graph of odd degree has an even number of vertices — handshake lemma: n·d = 2e is even and d is odd.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3433146835",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (d : ℕ), G.IsRegularOfDegree d → Odd d → Even (Fintype.card V)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:47:03+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w0",
+  "claimed_at": "2026-11-15T17:45:09+0800",
+  "closed_by": "queue-r1-w0",
+  "finished_at": "2026-11-15T17:46:45+0800"
+}

@@ -27,3 +27,13 @@
 {"problem": "mathd_algebra_304", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:09:23+0800"}
 {"problem": "amc12b_2002_p19", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:10:00+0800"}
 {"problem": "amc12b_2020_p22", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:10:11+0800"}
+{"problem": "amc12a_2020_p9", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:10:50+0800"}
+{"problem": "imo_1985_p6", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:11:35+0800"}
+{"problem": "algebra_amgm_sum1toneqn_prod1tonleq1", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:11:43+0800"}
+{"problem": "amc12a_2003_p23", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:11:54+0800"}
+{"problem": "mathd_numbertheory_222", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:24+0800"}
+{"problem": "mathd_numbertheory_127", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:28+0800"}
+{"problem": "amc12_2000_p6", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:12:47+0800"}
+{"problem": "mathd_numbertheory_150", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:13:17+0800"}
+{"problem": "mathd_algebra_441", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:13:48+0800"}
+{"problem": "aime_1995_p7", "run": "effort-high", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:15:31+0800"}

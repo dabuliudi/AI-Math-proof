@@ -1,0 +1,19 @@
+{
+  "name": "gr_ramsey_three_four_le_nine",
+  "statement": "(V : Type) [Fintype V] (h : 9 ≤ Fintype.card V) (G : SimpleGraph V) : ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 4",
+  "closed": "∀ (V : Type) [Fintype V] (h : 9 ≤ Fintype.card V) (G : SimpleGraph V), ¬ G.CliqueFree 3 ∨ ¬ Gᶜ.CliqueFree 4",
+  "informal": "R(3,4) ≤ 9 — reduce to card V = 9 (restrict to a 9-subset) and argue by contradiction: as in the 10-vertex bound every vertex has degree ≤ 3 (4 pairwise non-adjacent neighbours give an independent 4-set) and at most 5 non-neighbours (Uses Mathlib2.r3_ramsey_three_three at this step on 6 non-neighbours), so every degree is exactly 3; then ∑deg = 27 is odd, contradicting the handshake lemma.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "637656250",
+  "type": "∀ (V : Type) [inst : Fintype V], 9 ≤ Fintype.card V → ∀ (G : SimpleGraph V), ¬G.CliqueFree 3 ∨ ¬Gᶜ.CliqueFree 4",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:44+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w1",
+  "claimed_at": "2026-11-15T17:35:37+0800",
+  "closed_by": "queue-r1-w1",
+  "finished_at": "2026-11-15T17:37:24+0800"
+}

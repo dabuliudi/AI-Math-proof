@@ -1,0 +1,19 @@
+{
+  "name": "gr_set_intersecting_union_free_quarter",
+  "statement": "(n : ℕ) (𝒜 : Finset (Finset (Fin n))) (h1 : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, (A ∩ B).Nonempty) (h2 : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ) : 4 * 𝒜.card ≤ 2 ^ n",
+  "closed": "∀ (n : ℕ) (𝒜 : Finset (Finset (Fin n))) (h1 : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, (A ∩ B).Nonempty) (h2 : ∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ), 4 * 𝒜.card ≤ 2 ^ n",
+  "informal": "Daykin–Lovász/Seymour: a family that is both intersecting and co-intersecting has at most 2^(n−2) members — let 𝒰 be the up-closure and 𝒟 the down-closure of 𝒜; 𝒰 is intersecting so |𝒰| ≤ 2^(n−1), 𝒟 is union-free so |𝒟| ≤ 2^(n−1) (cf. gr_set_union_ne_univ_card_le), and by Harris–Kleitman (IsUpperSet.card_inter_le_finset) 2ⁿ·|𝒜| ≤ 2ⁿ·|𝒰 ∩ 𝒟| ≤ |𝒰|·|𝒟| ≤ 4^(n−1)·... giving |𝒜| ≤ 2^(n−2).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "2863601166",
+  "type": "∀ (n : ℕ) (𝒜 : Finset (Finset (Fin n))), (∀ A ∈ 𝒜, ∀ B ∈ 𝒜, (A ∩ B).Nonempty) → (∀ A ∈ 𝒜, ∀ B ∈ 𝒜, A ∪ B ≠ Finset.univ) → 4 * 𝒜.card ≤ 2 ^ n",
+  "attempts": [],
+  "created_at": "2026-11-15T08:49:49+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w2",
+  "claimed_at": "2026-11-15T18:03:31+0800",
+  "closed_by": "queue-r1-w2",
+  "finished_at": "2026-11-15T18:05:49+0800"
+}

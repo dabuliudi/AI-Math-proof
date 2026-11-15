@@ -1,0 +1,19 @@
+{
+  "name": "gr_card_le_colorable_mul_indep",
+  "statement": "(V : Type) [Fintype V] (G : SimpleGraph V) (k a : ℕ) (hk : G.Colorable k) (ha : ∀ s : Finset V, G.IsIndepSet (s : Set V) → s.card ≤ a) : Fintype.card V ≤ k * a",
+  "closed": "∀ (V : Type) [Fintype V] (G : SimpleGraph V) (k a : ℕ) (hk : G.Colorable k) (ha : ∀ s : Finset V, G.IsIndepSet (s : Set V) → s.card ≤ a), Fintype.card V ≤ k * a",
+  "informal": "n ≤ χ(G)·α(G) — the k colour classes are independent sets, each of size ≤ a, and they partition V (Finset.card_eq_sum_card_fiberwise).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3061981244",
+  "type": "∀ (V : Type) [inst : Fintype V] (G : SimpleGraph V) (k a : ℕ), G.Colorable k → (∀ (s : Finset V), G.IsIndepSet ↑s → s.card ≤ a) → Fintype.card V ≤ k * a",
+  "attempts": [],
+  "created_at": "2026-11-15T08:46:42+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w0",
+  "claimed_at": "2026-11-15T17:43:18+0800",
+  "closed_by": "queue-r1-w0",
+  "finished_at": "2026-11-15T17:45:02+0800"
+}

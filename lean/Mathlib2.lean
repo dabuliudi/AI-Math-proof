@@ -38,3 +38,6 @@ import Mathlib2.Shard.S0032
 import Mathlib2.Shard.S0033
 import Mathlib2.Shard.S0034
 import Mathlib2.Shard.S0035
+import Mathlib2.Shard.S0036
+import Mathlib2.Shard.S0037
+import Mathlib2.Shard.S0038

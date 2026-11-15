@@ -1,0 +1,19 @@
+{
+  "name": "p6_kfib_neg",
+  "statement": "(k : ℤ) (m : ℕ) : p6_kfib k (-(m : ℤ)) = (-1) ^ (m + 1) * p6_kfib k (m : ℤ)",
+  "closed": "∀ (k : ℤ) (m : ℕ), p6_kfib k (-(m : ℤ)) = (-1) ^ (m + 1) * p6_kfib k (m : ℤ)",
+  "informal": "Sec 2.2 (unnumbered): f_{-m} = (-1)^{m+1} f_m [m taken as a natural number (the paper says 'by induction').]",
+  "origin": "paper",
+  "source": "arXiv:2611.07141v1 Sec 2.2 (unnumbered)",
+  "original": "f_{-m} = (-1)^{m+1} f_m",
+  "proposed_by": "paper_6",
+  "hash": "1806082347",
+  "type": "∀ (k : ℤ) (m : ℕ), Mathlib2.p6_kfib k (-↑m) = (-1) ^ (m + 1) * Mathlib2.p6_kfib k ↑m",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:23+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w2",
+  "claimed_at": "2026-11-15T17:33:26+0800",
+  "closed_by": "queue-r1-w2",
+  "finished_at": "2026-11-15T17:35:05+0800"
+}

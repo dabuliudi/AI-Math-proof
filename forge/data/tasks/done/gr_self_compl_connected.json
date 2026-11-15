@@ -1,0 +1,19 @@
+{
+  "name": "gr_self_compl_connected",
+  "statement": "(V : Type) [Nonempty V] (G : SimpleGraph V) (h : Nonempty (SimpleGraph.Iso G Gᶜ)) : G.Connected",
+  "closed": "∀ (V : Type) [Nonempty V] (G : SimpleGraph V) (h : Nonempty (SimpleGraph.Iso G Gᶜ)), G.Connected",
+  "informal": "A self-complementary graph is connected — by contradiction: if G is not connected then Uses Mathlib2.comb_compl_connected_of_not_connected at step 1 to get Gᶜ connected, and transport connectedness back along the isomorphism (SimpleGraph.Iso.connected_iff), contradiction.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "618635196",
+  "type": "∀ (V : Type) [Nonempty V] (G : SimpleGraph V), Nonempty (G ≃g Gᶜ) → G.Connected",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:00+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w2",
+  "claimed_at": "2026-11-15T17:30:55+0800",
+  "closed_by": "queue-r1-w2",
+  "finished_at": "2026-11-15T17:32:01+0800"
+}

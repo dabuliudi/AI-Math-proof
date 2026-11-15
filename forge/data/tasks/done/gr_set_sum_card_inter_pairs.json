@@ -1,0 +1,19 @@
+{
+  "name": "gr_set_sum_card_inter_pairs",
+  "statement": "(n : ℕ) : ∑ p : Finset (Fin n) × Finset (Fin n), (p.1 ∩ p.2).card = n * 4 ^ (n - 1)",
+  "closed": "∀ (n : ℕ), ∑ p : Finset (Fin n) × Finset (Fin n), (p.1 ∩ p.2).card = n * 4 ^ (n - 1)",
+  "informal": "∑ over ordered pairs (A,B) of subsets of [n] of |A ∩ B| equals n·4^(n−1) — write |A ∩ B| = ∑_i 1[i ∈ A ∧ i ∈ B], swap sums; for fixed i the number of pairs with i in both is 2^(n−1)·2^(n−1).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3625243636",
+  "type": "∀ (n : ℕ), ∑ p, (p.1 ∩ p.2).card = n * 4 ^ (n - 1)",
+  "attempts": [],
+  "created_at": "2026-11-15T08:49:37+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w1",
+  "claimed_at": "2026-11-15T18:03:00+0800",
+  "closed_by": "queue-r1-w1",
+  "finished_at": "2026-11-15T18:05:17+0800"
+}

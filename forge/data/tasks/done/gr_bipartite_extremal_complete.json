@@ -1,0 +1,19 @@
+{
+  "name": "gr_bipartite_extremal_complete",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (C : G.Coloring Bool) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (x y : V) (hxy : C x ≠ C y) : G.Adj x y",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (C : G.Coloring Bool) (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (x y : V) (hxy : C x ≠ C y), G.Adj x y",
+  "informal": "A properly 2-coloured graph with n²/4 edges is complete between its colour classes — a Bool-coloured graph is triangle-free, so Uses Mathlib2.bld4_mantel_equality_complete_bipartite at step 2 to get G = complete bipartite on (s, sᶜ) with both sides nonempty; this graph is connected, so the colouring C must be constant on s and on sᶜ with different values, whence C x ≠ C y forces x,y on opposite sides (alternatively count: e ≤ a·b ≤ n²/4 with equality only if all cross pairs are edges, cf. Mathlib2.comb_card_edgeFinset_le_of_coloring_bool).",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "3373371632",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (C : G.Coloring Bool), 4 * G.edgeFinset.card = Fintype.card V ^ 2 → ∀ (x y : V), C x ≠ C y → G.Adj x y",
+  "attempts": [],
+  "created_at": "2026-11-15T08:44:20+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w1",
+  "claimed_at": "2026-11-15T17:27:06+0800",
+  "closed_by": "queue-r1-w1",
+  "finished_at": "2026-11-15T17:28:48+0800"
+}

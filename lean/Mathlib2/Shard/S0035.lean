@@ -569,4 +569,78 @@ theorem gr_ramsey_three_four_le_ten (V : Type) [Fintype V]
     exact a.property
 end
 
+-- forge:entry gr_triangle_free_regular_half_colorable_two kind=proved origin=conjecture
+section
+/- A triangle-free n/2-regular graph is bipartite — the handshake lemma gives 2e = n·d so 4e = n²; then Uses Mathlib2.bld3_mantel_equality_colorable_two at the final step. -/
+theorem gr_triangle_free_regular_half_colorable_two (V : Type) [Fintype V]
+    [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ)
+    (h : G.CliqueFree 3) (hr : G.IsRegularOfDegree d)
+    (hd : 2 * d = Fintype.card V) : G.Colorable 2 := by
+  apply bld3_mantel_equality_colorable_two V G h
+  have hs : Fintype.card V * d = 2 * G.edgeFinset.card := by
+    simpa only [hr.degree_eq, Finset.sum_const, Finset.card_univ, smul_eq_mul]
+      using G.sum_degrees_eq_twice_card_edges
+  rw [← hd] at hs ⊢
+  nlinarith
+end
+
+-- forge:entry gr_bipartite_extremal_complete kind=proved origin=conjecture
+section
+/- A properly 2-coloured graph with n²/4 edges is complete between its colour classes — a Bool-coloured graph is triangle-free, so Uses Mathlib2.bld4_mantel_equality_complete_bipartite at step 2 to get G = complete bipartite on (s, sᶜ) with both sides nonempty; this graph is connected, so the colouring C must be constant on s and on sᶜ with different values, whence C x ≠ C y forces x,y on opposite sides (alternatively count: e ≤ a·b ≤ n²/4 with equality only if all cross pairs are edges, cf. Mathlib2.comb_card_edgeFinset_le_of_coloring_bool). -/
+theorem gr_bipartite_extremal_complete (V : Type) [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (C : G.Coloring Bool)
+    (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2)
+    (x y : V) (hxy : C x ≠ C y) : G.Adj x y := by
+  have hc : G.Colorable 2 := by
+    simpa using C.colorable
+  have hG : G.CliqueFree 3 := hc.cliqueFree (by norm_num)
+  by_contra hnot
+  have hreg := bld2_mantel_equality_regular V G hG he x
+  have hn : 0 < Fintype.card V := Fintype.card_pos_iff.mpr ⟨x⟩
+  have hdeg : 0 < (G.neighborFinset x).card := by
+    rw [SimpleGraph.card_neighborFinset_eq_degree]
+    omega
+  obtain ⟨z, hz⟩ := Finset.card_pos.mp hdeg
+  have hxz : G.Adj x z := (SimpleGraph.mem_neighborFinset _ _ _).mp hz
+  have hyz : G.Adj y z :=
+    (bld3_mantel_equality_same_neighbors V G hG he x y hnot z).mp hxz
+  have hcxz := C.valid hxz
+  have hcyz := C.valid hyz
+  cases hcx : C x <;> cases hcy : C y <;> cases hcz : C z <;> simp_all
+end
+
+-- forge:entry gr_mantel_equality_dist_le_two kind=proved origin=conjecture
+section
+/- An extremal triangle-free graph has diameter at most 2 — Uses Mathlib2.bld4_mantel_equality_complete_bipartite at step 1 to get the balanced bipartition s; x,y on opposite sides are adjacent (dist ≤ 1); on the same side pick z on the other side (nonempty since 2|s| = n ≥ 1) and use the walk x-z-y with SimpleGraph.dist_le. -/
+theorem gr_mantel_equality_dist_le_two (V : Type) [Fintype V] [DecidableEq V]
+    (G : SimpleGraph V) [DecidableRel G.Adj] (h : G.CliqueFree 3)
+    (he : 4 * G.edgeFinset.card = Fintype.card V ^ 2) (x y : V) : G.dist x y ≤ 2 := by
+  obtain ⟨s, hs, hadj⟩ := bld4_mantel_equality_complete_bipartite V G h he
+  have hn : 0 < Fintype.card V := Fintype.card_pos_iff.mpr ⟨x⟩
+  have hspos : 0 < s.card := by omega
+  have hscpos : 0 < (sᶜ).card := by
+    rw [Finset.card_compl]
+    omega
+  obtain ⟨u, hu⟩ := Finset.card_pos.mp hspos
+  obtain ⟨v, hv⟩ := Finset.card_pos.mp hscpos
+  have hv' : v ∉ s := Finset.mem_compl.mp hv
+  by_cases hxy : G.Adj x y
+  · rw [SimpleGraph.dist_eq_one_iff_adj.mpr hxy]
+    decide
+  · have hsame : x ∈ s ↔ y ∈ s := by
+      have := hadj x y
+      tauto
+    by_cases hx : x ∈ s
+    · have hy : y ∈ s := hsame.mp hx
+      have hxv : G.Adj x v := (hadj x v).mpr (by tauto)
+      have hvy : G.Adj v y := (hadj v y).mpr (by tauto)
+      simpa using SimpleGraph.dist_le
+        (SimpleGraph.Walk.cons hxv (SimpleGraph.Walk.cons hvy SimpleGraph.Walk.nil))
+    · have hy : y ∉ s := by tauto
+      have hxu : G.Adj x u := (hadj x u).mpr (by tauto)
+      have huy : G.Adj u y := (hadj u y).mpr (by tauto)
+      simpa using SimpleGraph.dist_le
+        (SimpleGraph.Walk.cons hxu (SimpleGraph.Walk.cons huy SimpleGraph.Walk.nil))
+end
+
 end Mathlib2

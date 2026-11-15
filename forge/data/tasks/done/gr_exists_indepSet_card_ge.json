@@ -1,0 +1,19 @@
+{
+  "name": "gr_exists_indepSet_card_ge",
+  "statement": "(V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (h : ∀ v, G.degree v ≤ d) : ∃ s : Finset V, G.IsIndepSet (s : Set V) ∧ Fintype.card V ≤ (d + 1) * s.card",
+  "closed": "∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (d : ℕ) (h : ∀ v, G.degree v ≤ d), ∃ s : Finset V, G.IsIndepSet (s : Set V) ∧ Fintype.card V ≤ (d + 1) * s.card",
+  "informal": "A graph of maximum degree ≤ d has an independent set of size ≥ n/(d+1) — Uses Mathlib2.comb_colorable_of_degree_le at step 1 to get a colouring C : G.Coloring (Fin (d+1)); by pigeonhole (Finset.exists_lt_card_fiber_of... / sum of fibre sizes = n) some colour class has (d+1)·|class| ≥ n, and colour classes are independent.",
+  "origin": "conjecture",
+  "source": "",
+  "original": "",
+  "proposed_by": "conj_graph",
+  "hash": "39904004",
+  "type": "∀ (V : Type) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (d : ℕ), (∀ (v : V), G.degree v ≤ d) → ∃ s, G.IsIndepSet ↑s ∧ Fintype.card V ≤ (d + 1) * s.card",
+  "attempts": [],
+  "created_at": "2026-11-15T08:45:34+0800",
+  "status": "proved",
+  "claimed_by": "queue-r1-w0",
+  "claimed_at": "2026-11-15T17:34:06+0800",
+  "closed_by": "queue-r1-w0",
+  "finished_at": "2026-11-15T17:36:09+0800"
+}

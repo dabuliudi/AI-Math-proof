@@ -1,0 +1,1 @@
+{"mode": "bench", "task": "imo_1984_p6", "worker": "mf2f-hard5-xhigh45-w0", "outcome": "solved", "progress": true, "seconds": 270, "tokens": 47661, "exit": 0, "timed_out": false, "reason": "通过：命题匹配，公理合规", "message": "RESULT: solved", "attempt": 1, "effort": "xhigh", "prompt": "v2", "raw": "", "run": "mf2f-hard5-xhigh45", "at": "2026-11-15T18:15:03+0800"}

@@ -240,3 +240,4 @@
 {"problem": "imo_2001_p6", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:31:16+0800"}
 {"problem": "imo_1984_p6", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:33:18+0800"}
 {"problem": "mathd_numbertheory_321", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:33:28+0800"}
+{"problem": "mathd_algebra_17", "run": "mf2f-baseline-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:35:04+0800"}

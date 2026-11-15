@@ -165,7 +165,7 @@ theorem bld4_rat_sum_two_squares_iff_nat (n : ℕ) : (∃ x y : ℚ, x ^ 2 + y ^
     intro q hq hq4
     by_contra hodd
     rw [Nat.not_even_iff_odd] at hodd
-    exact bld3_rat_sq_add_sq_ne_of_odd_padicValNat q n hq hq4 hodd x y hxy
+    exact bld3_rat_sq_add_sq_ne_of_odd_padicValNat q n (Nat.prime_of_mem_primeFactors hq) hq4 hodd x y hxy
   · rintro ⟨a, b, hab⟩
     exact ⟨a, b, by rw [hab]; push_cast; ring⟩
 end
@@ -237,7 +237,6 @@ theorem bld4_prime_dvd_fib_pred_mul_fib_mul_fib_succ (p : ℕ) (hp : p.Prime) : 
   have e2 : p - 1 + 1 = p := by have := hp.two_le; omega
   rw [e1, e2, hodd.neg_one_pow] at hC
   have hC' := congrArg (fun x : ℤ => (x : ZMod p)) hC
-  simp only at hC'
   push_cast at hC'
   rw [hsq] at hC'
   rw [← ZMod.natCast_eq_zero_iff]
@@ -474,8 +473,7 @@ theorem bld4_hardy_harmonic_means_tsum_le : ∑' k : ℕ, ((∑ i ∈ Finset.ran
     have h := (hasSum_nat_add_iff' (f := fun n : ℕ => 1 / (n : ℝ) ^ 2) (g := Real.pi ^ 2 / 6) 1).mpr hasSum_zeta_two
     simp only [Finset.range_one, Finset.sum_singleton, Nat.cast_zero] at h
     norm_num at h
-    convert h using 2 with k
-    rw [one_div, inv_pow]
+    simpa only [Nat.cast_add, Nat.cast_one, one_div, inv_pow] using h
   have h := (bld2_hardy_inequality_tsum (fun k : ℕ => 1 / ((k : ℝ) + 1)) hs.summable).2
   rw [hs.tsum_eq] at h
   linarith

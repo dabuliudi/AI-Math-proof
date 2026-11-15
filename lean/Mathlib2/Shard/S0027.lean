@@ -670,9 +670,9 @@ theorem bld5_card_orderOf_eq_larger_prime_of_card_prime_mul_prime (p q : ℕ) [F
   have hc := congrArg Set.ncard hU
   rw [Set.ncard_univ, Set.ncard_union_eq hd2, Set.ncard_union_eq hd1, Set.ncard_singleton, hG] at hc
   have e1 : Nat.card {g : G // orderOf g = p} = Set.ncard {g : G | orderOf g = p} :=
-    Set.Nat.card_coe_set_eq _
+    Nat.card_coe_set_eq _
   have e2 : Nat.card {g : G // orderOf g = q} = Set.ncard {g : G | orderOf g = q} :=
-    Set.Nat.card_coe_set_eq _
+    Nat.card_coe_set_eq _
   rw [e2]
   rw [e1] at h4
   obtain ⟨p', rfl⟩ : ∃ p', p = p' + 1 := ⟨p - 1, by have := hp.pos; omega⟩

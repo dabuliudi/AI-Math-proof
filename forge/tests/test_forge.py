@@ -454,6 +454,13 @@ class UpgradeRepairTests(unittest.TestCase):
         after = self.BEFORE.replace('  simp\n', '  exact Nat.add_zero n\n')
         self.assertEqual(check_repair(self.BEFORE, after), [])
 
+    def test_reviewed_migration_is_applied_to_statements(self):
+        from forge.upgrade import migrate
+        new, used = migrate('theorem t {M : Type*} [CancelCommMonoidWithZero M] (x : M) : x = x := rfl')
+        self.assertIn('[CommMonoidWithZero M] [IsCancelMulZero M]', new)
+        self.assertEqual(len(used), 1)
+        self.assertEqual(migrate('theorem t : 1 = 1 := rfl'), ('theorem t : 1 = 1 := rfl', []))
+
     def test_statement_changes_and_cheats_are_rejected(self):
         from forge.upgrade import check_repair
         weakened = self.BEFORE.replace('a ≤ b + 1', 'a ≤ b + 2')

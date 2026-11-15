@@ -114,7 +114,7 @@ theorem poly_x4_sub_10x2_add_1_irreducible_int : Irreducible (Polynomial.X ^ 4 -
     norm_num at c0 c1 c2 c3
     have hca : c = -a := by linarith
     subst hca
-    rcases Int.isUnit_iff.mp (isUnit_of_mul_eq_one b d c0) with hb | hb <;> subst hb
+    rcases Int.isUnit_iff.mp (isUnit_of_dvd_one (show b ∣ 1 from ⟨d, c0.symm⟩)) with hb | hb <;> subst hb
     · have hd1 : d = 1 := by linarith
       subst hd1
       have h12 : a * a = 12 := by linarith
@@ -500,7 +500,7 @@ theorem bld5_prime_dvd_fib_succ_of_not_isSquare_five (p : ℕ) [Fact p.Prime] (h
       have h4 : Nat.gcd (p-1) (2*(p+1)) ∣ 4 := by
         have a : Nat.gcd (p-1) (2*(p+1)) ∣ 2*(p+1) := Nat.gcd_dvd_right _ _
         have b : Nat.gcd (p-1) (2*(p+1)) ∣ 2*(p-1) := Dvd.dvd.mul_left (Nat.gcd_dvd_left _ _) 2
-        have := Nat.dvd_sub' a b
+        have := Nat.dvd_sub a b
         have e : 2*(p+1) - 2*(p-1) = 4 := by have := hp.two_le; omega
         rwa [e] at this
       have h3 : p ∣ 3 := by

@@ -32,6 +32,24 @@ Current errors (first {shown} of {count}):
 You have about {minutes} minutes. Edit only {path}. End with one line: RESULT: fixed | stuck.
 '''
 
+# 经过审核的陈述迁移：只收 Mathlib 官方弃用说明给出的等价替换，每条注明出处。
+# 修复分片前先对陈述做这些替换；核对“陈述不变”时以替换后的文本为准；修完后台账与任务里的陈述同步替换。
+MIGRATIONS = [
+    (re.compile(r'\[CancelCommMonoidWithZero (\w+)\]'), r'[CommMonoidWithZero \1] [IsCancelMulZero \1]',
+     'Mathlib 2026-01-11 弃用 CancelCommMonoidWithZero：“Use `[CommMonoidWithZero M₀] [IsCancelMulZero M₀]`.”'),
+]
+
+
+def migrate(text):
+    """对文本做全部陈述迁移，返回 (新文本, 用到的迁移说明列表)。"""
+    used = []
+    for pattern, replacement, why in MIGRATIONS:
+        text, count = pattern.subn(replacement, text)
+        if count:
+            used.append(why)
+    return text, used
+
+
 DECL = re.compile(r'^(?:@\[[^\]]*\]\s*)?(?:private\s+|protected\s+|noncomputable\s+)*(theorem|lemma|def|abbrev)\s+(\S+)', re.M)
 
 
@@ -109,7 +127,16 @@ def repair(run, target, attempts=3, minutes=25, start=None, effort='xhigh'):
         if code == 0 and "declaration uses 'sorry'" not in output:
             results.append(dict(shard=shard, status='ok'))
             continue
-        original = path.read_text(encoding='utf-8')
+        original, migrations = migrate(path.read_text(encoding='utf-8'))
+        if migrations:  # 先做经过审核的陈述迁移，再判断还需不需要 agent 修
+            path.write_text(original, encoding='utf-8')
+            code, output = lake_build(f'Mathlib2.Shard.{shard}')
+            with open(log, 'a', encoding='utf-8') as handle:
+                handle.write(json.dumps(dict(shard=shard, migrated=migrations, built=code == 0,
+                                             at=time.strftime('%Y-%m-%dT%H:%M:%S%z')), ensure_ascii=False) + '\n')
+            if code == 0 and "declaration uses 'sorry'" not in output:
+                results.append(dict(shard=shard, status='migrated', migrations=migrations))
+                continue
         fixed = False
         for attempt in range(1, attempts + 1):
             errors = _errors(output, shard)
@@ -150,3 +177,18 @@ def repair(run, target, attempts=3, minutes=25, start=None, effort='xhigh'):
             results.append(dict(shard=shard, status='stuck'))
             break
     return results
+
+
+def migrate_records(data=DATA):
+    """把陈述迁移同步到台账、任务文件和辅助引理索引里记录的陈述文本，保证之后的审计与库内实际陈述一致。"""
+    changed = []
+    files = [data / 'ledger.jsonl', data / 'helpers.json'] + sorted((data / 'tasks').glob('*/*.json'))
+    for path in files:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding='utf-8')
+        new, used = migrate(text)
+        if used:
+            path.write_text(new, encoding='utf-8')
+            changed.append(str(path.relative_to(data)))
+    return changed

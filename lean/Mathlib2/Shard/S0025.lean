@@ -214,7 +214,7 @@ theorem poly_fermat_catalan_2_3_7 {k : Type*} [Field k] [DecidableEq k] [CharZer
   refine Mathlib2.ms_fermat_catalan (k := k) 2 3 7 (by norm_num) (by norm_num) (by norm_num)
     (by rw [h0]; norm_num) (by rw [h0]; norm_num) (by rw [h0]; norm_num) (by norm_num)
     1 1 (-1) one_ne_zero one_ne_zero (by simp) a b c ha hb hc hab hbc hca ?_
-  rw [← heq]; simp; ring
+  rw [← heq]; simp
 end
 
 -- forge:entry poly_fermat_quartic_4_4_2 kind=proved origin=conjecture
@@ -225,7 +225,7 @@ theorem poly_fermat_quartic_4_4_2 {k : Type*} [Field k] [DecidableEq k] [CharZer
   refine Mathlib2.ms_fermat_catalan (k := k) 4 4 2 (by norm_num) (by norm_num) (by norm_num)
     (by rw [h0]; norm_num) (by rw [h0]; norm_num) (by rw [h0]; norm_num) (by norm_num)
     1 1 (-1) one_ne_zero one_ne_zero (by simp) a b c ha hb hc hab hbc hca ?_
-  rw [← heq]; simp; ring
+  rw [← heq]; simp
 end
 
 -- forge:entry poly_x2_x_1_dvd_trinomial kind=proved origin=conjecture

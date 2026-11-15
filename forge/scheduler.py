@@ -258,10 +258,22 @@ class Scheduler:
     def run_queue(self, prefix=None):
         return self._run_threads(self._queue_worker, (prefix,))
 
-    def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False, shard=None):
+    def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False, shard=None, sample=None, seed=0,
+                  skip_refuted=False):
         items = bench.load(set_name)
         if not items:
             raise ValueError(f'没有评测集 {set_name}')
+        if skip_refuted:
+            # 以前的轮次里已被内核反证的题（评测集写错了），对比不同设置时没有意义，去掉
+            refuted = set()
+            for row in bench.score(set_name)['runs']:
+                refuted.update(row.get('refuted', []))
+            items = [i for i in items if i['name'] not in refuted]
+        if sample:
+            # 固定种子抽样：不同档位、不同轮次拿到的是同一组题，结果才能直接比较
+            import random
+            chosen = set(random.Random(seed).sample([i['name'] for i in items], min(sample, len(items))))
+            items = [i for i in items if i['name'] in chosen]
         if shard:
             # 多台机器分工：按题目在评测集文件里的位置切分，各台机器拿到的子集互不重叠、合起来正好是全集。
             k, n = shard

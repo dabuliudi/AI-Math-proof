@@ -85,6 +85,9 @@ def main(argv=None):
     p.add_argument('--bench', help='评测模式：评测集名称'); p.add_argument('--limit', type=int, help='评测模式：最多做几题')
     p.add_argument('--shard', help='评测模式：多台机器分工，例如本机做第 1 份、共 2 份写 1/2')
     p.add_argument('--sandbox', default='workspace-write', help='Codex 沙箱：read-only / workspace-write / danger-full-access')
+    p.add_argument('--sample', type=int, help='评测模式：按固定种子抽这么多题（各轮次抽到的是同一组）')
+    p.add_argument('--seed', type=int, default=0, help='抽样种子，默认 0')
+    p.add_argument('--skip-refuted', action='store_true', help='评测模式：去掉以前已被反证（评测集写错）的题')
     p.add_argument('--resume', action='store_true', help='评测模式：在同一轮次里接着跑，已认真做过的题跳过，agent 出错作废的重跑')
     p.add_argument('--all', action='store_true', help='评测模式：所有题都重做（默认跳过以前已解出的），用于在同一设置下测基线')
     p.add_argument('--workers', type=int, default=2); p.add_argument('--max-tasks', type=int, default=10)
@@ -228,7 +231,8 @@ def main(argv=None):
             if not 1 <= k <= n:
                 emit(dict(ok=False, reason='--shard 的格式是 k/n，且 1 ≤ k ≤ n')); return 1
             shard = (k, n)
-        emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard)
+        emit(runner.run_bench(args.bench, args.limit, only_unsolved=not args.all, resume=args.resume, shard=shard,
+                             sample=args.sample, seed=args.seed, skip_refuted=args.skip_refuted)
              if args.bench else runner.run_queue(args.prefix))
     elif args.command == 'run-report':
         from .scheduler import report

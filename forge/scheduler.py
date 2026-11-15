@@ -88,6 +88,7 @@ class Scheduler:
         self.started = self.failures_in_a_row = self.tokens = 0
         self.stop_reason = None
         self.records = []
+        self.last_raw = {}
         self.scratch = DATA / 'staging' / 'agents' / run
         RUNS.mkdir(parents=True, exist_ok=True)
         self.log = RUNS / f'{run}.jsonl'
@@ -127,6 +128,7 @@ class Scheduler:
             code, slow = -1, True
         output = output or ''
         message = last.read_text(encoding='utf-8', errors='replace') if last.exists() else output[-2000:]
+        self.last_raw[worker] = output[-1500:]
         return code, message.strip(), _tokens(output), slow
 
     # ---- 记账与熔断 ----
@@ -184,7 +186,8 @@ class Scheduler:
                 outcome = 'released' if state == 'open' else f'unexpected:{state}'
             self._record(dict(mode='queue', task=task['name'], worker=agent, outcome=outcome,
                               progress=outcome in ('proved', 'disproved', 'sketched'), seconds=round(time.time() - began),
-                              tokens=used, exit=code, timed_out=slow, message=message[-800:]))
+                              tokens=used, exit=code, timed_out=slow, message=message[-800:],
+                              raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
 
     # ---- 评测模式 ----
     def _bench_worker(self, index, set_name, problems):
@@ -213,7 +216,8 @@ class Scheduler:
             attempted = code == 0 and proof.exists()
             self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
                               progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
-                              timed_out=slow, reason=reason[:300], message=message[-500:]))
+                              timed_out=slow, reason=reason[:300], message=message[-500:],
+                              raw=self.last_raw.get(agent, '')[-1200:] if code not in (0, -1) else ''))
 
     def _run_threads(self, target, args):
         threads = [threading.Thread(target=target, args=(i,) + args, daemon=True) for i in range(self.workers)]
@@ -226,7 +230,7 @@ class Scheduler:
     def run_queue(self, prefix=None):
         return self._run_threads(self._queue_worker, (prefix,))
 
-    def run_bench(self, set_name, limit=None, only_unsolved=True):
+    def run_bench(self, set_name, limit=None, only_unsolved=True, resume=False):
         items = bench.load(set_name)
         if not items:
             raise ValueError(f'没有评测集 {set_name}')
@@ -240,6 +244,13 @@ class Scheduler:
                     if row['solved'] and row.get('agent') == 'scheduler':
                         solved.add(row['problem'])
             items = [i for i in items if i['name'] not in solved]
+        if resume and self.log.exists():
+            done = set()
+            for line in self.log.read_text(encoding='utf-8').splitlines():
+                row = json.loads(line)
+                if row['outcome'] == 'solved' or row['exit'] == 0 or row['timed_out']:
+                    done.add(row['task'])
+            items = [i for i in items if i['name'] not in done]
         problems = items[:limit] if limit else items
         return self._run_threads(self._bench_worker, (set_name, problems))
 

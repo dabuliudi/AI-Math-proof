@@ -1,7 +1,6 @@
 /- Mathlib2 分片 39（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0038
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_1820 kind=disproved origin=external
@@ -159,12 +158,13 @@ theorem lw_12997 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
     rcases le_total a b with hab | hba
     · rcases le_total a c with hac | hca
       · exact lw_12997_aux1 a b c ha.le hb.le hc.le hab hac
-      · convert lw_12997_aux1 c a b hc.le ha.le hb.le hca (hca.trans hab) using 1 <;>
-          ring
+      · simpa only [add_comm, add_left_comm, add_assoc] using
+          lw_12997_aux1 c a b hc.le ha.le hb.le hca (hca.trans hab)
     · rcases le_total b c with hbc | hcb
-      · convert lw_12997_aux1 b c a hb.le hc.le ha.le hbc hba using 1 <;> ring
-      · convert lw_12997_aux1 c a b hc.le ha.le hb.le (hcb.trans hba) hcb using 1 <;>
-          ring
+      · simpa only [add_comm, add_left_comm, add_assoc] using
+          lw_12997_aux1 b c a hb.le hc.le ha.le hbc hba
+      · simpa only [add_comm, add_left_comm, add_assoc] using
+          lw_12997_aux1 c a b hc.le ha.le hb.le (hcb.trans hba) hcb
   have hab : 0 < a * b + 1 := by positivity
   have hbc : 0 < b * c + 1 := by positivity
   have hca : 0 < c * a + 1 := by positivity
@@ -176,7 +176,6 @@ theorem lw_12997 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
         c * (c - 2 * a + b) * (a * b + 1) * (b * c + 1)) /
         ((a * b + 1) * (b * c + 1) * (c * a + 1)) := by
     field_simp [ne_of_gt hab, ne_of_gt hbc, ne_of_gt hca]
-    <;> ring
   rw [heq]
   exact div_nonneg hn (by positivity)
 end

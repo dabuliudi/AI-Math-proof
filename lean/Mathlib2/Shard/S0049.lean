@@ -1,7 +1,6 @@
 /- Mathlib2 分片 49（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0048
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_26448 kind=proved origin=external
@@ -245,7 +244,7 @@ lemma lw_38140_aux2 (s p t r : ℝ) (hs : 0 ≤ s) (hp : 0 ≤ p)
   have hm2 := mul_le_mul_of_nonneg_left hq hp
   have hh : t * (4 * p * r) ≤ t * (s ^ 2 + p * t) := by
     nlinarith [hm1, hm2]
-  exact (mul_le_mul_left ht).mp hh
+  exact (mul_le_mul_iff_right₀ ht).mp hh
 
 theorem lw_38140 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) :
     Real.sqrt (a * b * c) * (Real.sqrt a + Real.sqrt b + Real.sqrt c) +
@@ -609,14 +608,15 @@ theorem lw_41875 (a b : ℝ) (ha : 0 < a) (hb : 0 < b) (hab : a + b + a * b ≤ 
   constructor
   · apply sub_nonneg.mp
     convert div_nonneg hpoly.1 (show 0 ≤ a * b * (a + b + 1) by positivity) using 1 <;>
-      field_simp <;> ring
+      first | rfl | (field_simp [ha0, hb0, hs0]; ring)
   constructor
   · apply sub_nonneg.mp
     convert div_nonneg hpoly.2.1 (show 0 ≤ (a * b) ^ 2 * (a + b + 1) by positivity) using 1 <;>
-      field_simp <;> ring
+      first | rfl | (field_simp [ha0, hb0, hs0]; ring)
   · apply sub_nonneg.mp
     convert div_nonneg hpoly.2.2 (show 0 ≤ (a * b) ^ 2 * (a + b + 1) by positivity) using 1 <;>
-      field_simp <;> ring
+      first | rfl | (field_simp [ha0, hb0, hs0]; ring)
+
 end
 
 -- forge:entry lw_45132 kind=disproved origin=external
@@ -701,7 +701,6 @@ theorem lw_43396 (a b c d e f : ℝ) (ha : 0 < a) (hb : 0 < b)
   constructor
   · rintro ⟨_, h⟩
     have hs := congrArg (fun x : ℝ => x ^ 2) h
-    dsimp only at hs
     rw [Real.sq_sqrt hprod] at hs
     have hsq :
         (Real.sqrt a * Real.sqrt b + Real.sqrt c * Real.sqrt d +
@@ -747,6 +746,7 @@ theorem lw_43396 (a b c d e f : ℝ) (ha : 0 < a) (hb : 0 < b)
       nlinarith only [hs, hsum, Real.sqrt_nonneg ((a + c + e) * (b + d + f)),
         Real.sq_sqrt hprod]
     exact ⟨le_of_eq heq, heq⟩
+
 end
 
 -- forge:entry lw_48624 kind=disproved origin=external

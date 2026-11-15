@@ -1,7 +1,6 @@
 /- Mathlib2 分片 44（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0043
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_11611 kind=proved origin=external
@@ -105,11 +104,11 @@ theorem lw_10713 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z)
   have he : (x + 2 * y + z) * (x ^ 2 * z + 2 * x * y ^ 2 + y * z ^ 2) =
       p * (x * y * z) := by
     dsimp [p]
-    field_simp
+    field_simp [ne_of_gt hx, ne_of_gt hy, ne_of_gt hz]
     <;> ring
   rw [he, h, mul_pow] at hs
   have hh : (144 : ℝ) ≤ p ^ 2 := by
-    apply (mul_le_mul_right ht).mp
+    apply (mul_le_mul_iff_left₀ ht).mp
     nlinarith [hs]
   change 12 ≤ p
   nlinarith
@@ -193,16 +192,16 @@ theorem lw_16415 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
       9 * x * y * z := by
     dsimp [x, y, z]
     rw [hab]
-    field_simp
+    field_simp [ne_of_gt ha1, ne_of_gt hb1, ne_of_gt hc1]
     nlinarith [hab]
   have hrhs : 2 * (a + b + c + 3) / (a + 1) / (b + 1) / (c + 1) =
       2 * (x * y + y * z + z * x) := by
     dsimp [x, y, z]
-    field_simp
+    field_simp [ne_of_gt ha1, ne_of_gt hb1, ne_of_gt hc1]
     ring
   have hmain : 2 * (x * y + y * z + z * x) ≤
       3 / (a * b + b * c + c * a + 1) + x ^ 2 + y ^ 2 + z ^ 2 := by
-    apply (mul_le_mul_left hp).mp
+    apply (mul_le_mul_iff_right₀ hp).mp
     nlinarith only [hs, hid]
   rw [hrhs]
   dsimp [x, y, z] at hmain
@@ -488,11 +487,11 @@ theorem lw_21888 (a b c : ℝ) (ha : a > 0) (hb : b > 0) (hc : c > 0) :
   have hid : 1 - (x + y + z) + (x * y + y * z + z * x) =
       (1 + a * b * c) * (x * y * z) := by
     dsimp [x, y, z]
-    field_simp
+    field_simp [ne_of_gt ha1, ne_of_gt hb1, ne_of_gt hc1]
     <;> ring
   have hr : 0 < x * y * z := by positivity
   have hbound : 3 ≤ 4 * (1 + a * b * c) * (x ^ 3 + y ^ 3 + z ^ 3) := by
-    apply (mul_le_mul_right hr).mp
+    apply (mul_le_mul_iff_left₀ hr).mp
     calc
       3 * (x * y * z) ≤
           4 * (1 - (x + y + z) + (x * y + y * z + z * x)) *

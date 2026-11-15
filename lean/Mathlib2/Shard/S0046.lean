@@ -1,7 +1,6 @@
 /- Mathlib2 分片 46（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0045
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_8882 kind=proved origin=external
@@ -321,7 +320,7 @@ lemma lw_16565_aux1 (x : ℝ) (hx : 0 < x) (hx1 : x ≤ 1) :
     dsimp [f]
     convert (((hasDerivAt_id t).mul (Real.hasDerivAt_log ht.ne')).exp).sub
       (((hasDerivAt_id t).pow 2).div_const 2) using 1 <;>
-      simp only [id_eq, Pi.mul_apply] <;> field_simp <;> ring
+      first | rfl | (simp only [id_eq, Pi.mul_apply]; field_simp; ring)
   have hf : AntitoneOn f (Set.Icc x 1) := by
     apply antitoneOn_of_deriv_nonpos (convex_Icc x 1)
     · intro t ht
@@ -410,8 +409,8 @@ theorem lw_19170 (x : ℝ) (hx : 0 < x) :
     nlinarith only [hpoly, mul_nonneg (sq_nonneg (x + 1 - Real.sqrt 2)) hq]
   have hfrac : 4 * (2 / (x ^ 2 + 1)) * (x / (x + 1)) ≤
       (2 + Real.sqrt 2 - 2 / (x ^ 2 + 1) - x / (x + 1)) ^ 2 := by
-    apply (mul_le_mul_right (show 0 < ((x ^ 2 + 1) * (x + 1)) ^ 2 by positivity)).1
-    convert hN using 1 <;> field_simp [ne_of_gt hd1, ne_of_gt hd2] <;> ring
+    apply (mul_le_mul_iff_right₀ (show 0 < ((x ^ 2 + 1) * (x + 1)) ^ 2 by positivity)).1
+    convert hN using 1 <;> first | rfl | (field_simp [ne_of_gt hd1, ne_of_gt hd2] <;> ring)
   have hsqa := Real.sq_sqrt ha
   have hsqb := Real.sq_sqrt hb
   have hsqc := Real.sq_sqrt (show 0 ≤ 2 + Real.sqrt 2 by positivity)

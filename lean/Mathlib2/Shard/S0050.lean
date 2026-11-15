@@ -141,10 +141,10 @@ lemma lw_5389_aux3 (a b c d k : ℝ) (hk : 0 ≤ k) :
     (mul_nonneg hk (sq_nonneg (d - a))) (mul_nonneg hb hc)
   have h₁' : (k * (a - b) * (c - d))^2 ≤
       (a^2 + k) * (b^2 + k) * (c^2 + k) * (d^2 + k) := by
-    convert h₁ using 1 <;> ring
+    convert! h₁ using 1 <;> ring
   have h₂' : (k * (b - c) * (d - a))^2 ≤
       (a^2 + k) * (b^2 + k) * (c^2 + k) * (d^2 + k) := by
-    convert h₂ using 1 <;> ring
+    convert! h₂ using 1 <;> ring
   have h := lw_5389_aux2
     ((a^2 + k) * (b^2 + k) * (c^2 + k) * (d^2 + k))
     (k * (a - b) * (c - d)) (k * (b - c) * (d - a)) h₁' h₂'

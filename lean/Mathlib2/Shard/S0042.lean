@@ -1,7 +1,6 @@
 /- Mathlib2 分片 42（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0041
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_23413 kind=disproved origin=external
@@ -379,7 +378,7 @@ theorem lw_28724 (a b c : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
       _ = Real.sqrt 100 * Real.sqrt 3 := Real.sqrt_mul (by norm_num) _
       _ = _ := by norm_num
   have hten : 0 < Real.sqrt (10 : ℝ) := Real.sqrt_pos.2 (by norm_num)
-  apply (mul_le_mul_left hten).mp
+  apply (mul_le_mul_iff_of_pos_left hten).mp
   nlinarith only [h₁, h₂, h₃, hs, ht, he]
 end
 
@@ -651,7 +650,7 @@ lemma lw_40072_aux4 (a b c p : ℝ) (ha : 0 ≤ a) (hb : 0 ≤ b)
   · have hq : 1 ≤ 1 / p := (le_div_iff₀ hp).2 (by linarith)
     have h := mul_nonneg (pow_nonneg (le_of_lt hp) 4)
       (lw_40072_aux3 a c b (1 / p) ha hc hb hq)
-    convert h using 1 <;> (try field_simp) <;> ring
+    convert h using 1 <;> first | rfl | (field_simp [ne_of_gt hp] <;> ring)
 
 theorem lw_40072 (a b c p : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
     (hp : 0 < p) :
@@ -664,7 +663,9 @@ theorem lw_40072 (a b c p : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
   have h := div_nonneg (lw_40072_aux4 a b c p (le_of_lt ha) (le_of_lt hb)
     (le_of_lt hc) hp) (le_of_lt (mul_pos (mul_pos hA hB) hC))
   change 0 ≤ _
-  convert h using 1 <;> field_simp [ne_of_gt hA, ne_of_gt hB, ne_of_gt hC] <;> ring
+  convert h using 1 <;> first
+  | rfl
+  | (field_simp [ne_of_gt hA, ne_of_gt hB, ne_of_gt hC] <;> ring)
 end
 
 -- forge:entry lw_44364 kind=proved origin=external

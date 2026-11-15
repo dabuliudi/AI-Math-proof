@@ -326,10 +326,10 @@ lemma lw_12165_aux1 (x y : ℝ) (hx : 0 < x) (hy : 0 < y) :
     nlinarith [sq_nonneg (Real.sqrt x - Real.sqrt y),
       Real.sq_sqrt (le_of_lt hx), Real.sq_sqrt (le_of_lt hy)]
   apply (div_le_iff₀ hspos).2
-  apply (mul_le_mul_right (mul_pos hx hy)).mp
+  apply (mul_le_mul_iff_left₀ (mul_pos hx hy)).mp
   have hid : ((1 / x + 1 / y) * Real.sqrt (x * y)) * (x * y) =
       (x + y) * Real.sqrt (x * y) := by
-    field_simp
+    field_simp [ne_of_gt hx, ne_of_gt hy]
     <;> ring
   rw [hid]
   nlinarith [mul_le_mul_of_nonneg_right hsum (le_of_lt hspos)]

@@ -1,7 +1,6 @@
 /- Mathlib2 分片 47（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0046
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_28964 kind=proved origin=external
@@ -544,8 +543,10 @@ lemma lw_36281_aux3 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) :
   have hd₂ : 0 < y ^ 4 + z ^ 2 * x ^ 2 := by positivity
   have hd₃ : 0 < z ^ 4 + x ^ 2 * y ^ 2 := by positivity
   apply sub_nonneg.mp
-  convert div_nonneg h (le_of_lt (mul_pos (mul_pos (mul_pos (mul_pos (mul_pos hx hy) hz) hd₁) hd₂) hd₃)) using 1 <;>
-    field_simp <;> ring
+  convert div_nonneg h (le_of_lt (mul_pos (mul_pos (mul_pos (mul_pos (mul_pos hx hy) hz) hd₁) hd₂) hd₃)) using 1
+  · rfl
+  · field_simp
+    ring
 
 lemma lw_36281_aux4 (p q r u v w : ℝ) (hp : 0 ≤ p) (hq : 0 ≤ q) (hr : 0 ≤ r)
     (hu : 0 ≤ u) (hv : 0 ≤ v) (hw : 0 ≤ w) :
@@ -1265,8 +1266,10 @@ theorem lw_43821 (a b c d e : ℝ) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c)
       (le_of_lt hd) (le_of_lt he))
     (le_of_lt (mul_pos (mul_pos (mul_pos (mul_pos hbc hcd) hde) hea) hab))
   change 0 ≤ _
-  convert h using 1 <;>
-    field_simp [ne_of_gt hbc, ne_of_gt hcd, ne_of_gt hde, ne_of_gt hea, ne_of_gt hab] <;> ring
+  convert h using 1
+  · rfl
+  · field_simp [ne_of_gt hbc, ne_of_gt hcd, ne_of_gt hde, ne_of_gt hea, ne_of_gt hab]
+
 end
 
 -- forge:entry lw_46297 kind=disproved origin=external

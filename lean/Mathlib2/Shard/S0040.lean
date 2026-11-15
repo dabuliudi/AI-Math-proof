@@ -1,7 +1,6 @@
 /- Mathlib2 分片 40（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0039
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_32539 kind=proved origin=external
@@ -164,13 +163,13 @@ theorem lw_37015 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) :
   have hbound : 9 * p ^ 2 ≤ D := lw_37015_aux2 x y z hx.le hy.le hz.le
   have hs : 3 * p ≤ s := by nlinarith
   have hxc : ((x ^ 3 + p) ^ ((1 : ℝ) / 3)) ^ 3 = x ^ 3 + p := by
-    simpa only [one_div] using
+    simpa only [one_div, Nat.cast_ofNat] using
       (Real.rpow_inv_natCast_pow (show 0 ≤ x ^ 3 + p by positivity) (by decide : (3 : ℕ) ≠ 0))
   have hyc : ((y ^ 3 + p) ^ ((1 : ℝ) / 3)) ^ 3 = y ^ 3 + p := by
-    simpa only [one_div] using
+    simpa only [one_div, Nat.cast_ofNat] using
       (Real.rpow_inv_natCast_pow (show 0 ≤ y ^ 3 + p by positivity) (by decide : (3 : ℕ) ≠ 0))
   have hzc : ((z ^ 3 + p) ^ ((1 : ℝ) / 3)) ^ 3 = z ^ 3 + p := by
-    simpa only [one_div] using
+    simpa only [one_div, Nat.cast_ofNat] using
       (Real.rpow_inv_natCast_pow (show 0 ≤ z ^ 3 + p by positivity) (by decide : (3 : ℕ) ≠ 0))
   have ht : t ^ 3 = p * (s ^ 2 - p ^ 2) := by
     dsimp [t]
@@ -178,6 +177,7 @@ theorem lw_37015 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) :
     dsimp [p, D]
     ring
   exact lw_37015_aux3 p s t hp hs ht
+
 end
 
 -- forge:entry lw_4668 kind=proved origin=external

@@ -1,7 +1,6 @@
 /- Mathlib2 分片 43（forge 自动维护，追加式）。 -/
 import Mathlib
 import Mathlib2.Shard.S0042
-set_option maxHeartbeats 400000
 namespace Mathlib2
 
 -- forge:entry lw_47899 kind=disproved origin=external
@@ -339,7 +338,9 @@ theorem lw_55942 (x y z : ℝ) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) :
   have hd : 0 < (x + y) * (y + z) * (z + x) := by positivity
   rw [div_add_div _ _ (ne_of_gt hq) (ne_of_gt hd)]
   apply (le_div_iff₀ (mul_pos hq hd)).2
-  convert lw_55942_aux2 x y z hx.le hy.le hz.le using 1 <;> ring
+  simpa only [mul_assoc, mul_left_comm, mul_comm] using
+    lw_55942_aux2 x y z hx.le hy.le hz.le
+
 end
 
 -- forge:entry lw_56957 kind=proved origin=external
@@ -392,8 +393,9 @@ theorem lw_56957 (a b c : ℝ) (ha : a + b * c = 2) (hb : 0 ≤ a)
   calc
     1 / (a ^ 2 + 2) + 1 / (b ^ 2 + 2) + 1 / (c ^ 2 + 2) =
         1 / (a ^ 2 + 2) + (1 / (b ^ 2 + 2) + 1 / (c ^ 2 + 2)) := by ring
-    _ ≤ 1 / (a ^ 2 + 2) + 2 / (4 - a) := add_le_add_left hbound _
+    _ ≤ 1 / (a ^ 2 + 2) + 2 / (4 - a) := add_le_add_right hbound _
     _ ≤ 1 + 1 / 6 * (a - 1) ^ 2 := lw_56957_aux2 a ha2
+
 end
 
 -- forge:entry lw_6411 kind=disproved origin=external

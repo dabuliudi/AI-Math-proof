@@ -65,7 +65,9 @@ def check(name, problem, body, run, agent):
     result = check_submission(task, body)
     solved = bool(result['ok']) and result['kind'] == 'proved'
     RUNS.mkdir(parents=True, exist_ok=True)
+    # 交的是反证且内核通过：说明评测集里这道题的 Lean 写法本身为假（写错的题），单独记下，不算没做出。
     record = dict(problem=problem, run=run, agent=agent, solved=solved, reason=result.get('reason', ''),
+                  refuted=bool(result['ok']) and result['kind'] == 'disproved',
                   at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
     with open(RUNS / f'{name}.{run}.jsonl', 'a', encoding='utf-8') as handle:
         handle.write(json.dumps(record, ensure_ascii=False) + '\n')
@@ -79,8 +81,13 @@ def score(name):
     for path in sorted(RUNS.glob(f'{name}.*.jsonl')) if RUNS.exists() else []:
         records = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
         solved = sorted({r['problem'] for r in records if r['solved']})
+        # 旧记录没有 refuted 字段：校验通过却不算解出，只可能是交了反证
+        refuted = sorted({r['problem'] for r in records if r.get('refuted', r.get('reason', '').startswith('通过') and not r['solved'])}
+                         - set(solved))
+        valid = total - len(refuted)
         rows.append(dict(run=path.name[len(name) + 1:-len('.jsonl')], solved=len(solved), total=total,
-                         rate=round(len(solved) / total, 4) if total else None, attempts=len(records)))
+                         rate=round(len(solved) / total, 4) if total else None, attempts=len(records),
+                         refuted=refuted, rate_on_true=round(len(solved) / valid, 4) if valid else None))
     # 同一轮次分在几台机器上跑时，轮次名写成 “名字@机器”；这里把它们合并成一行总成绩。
     combined = {}
     for path in sorted(RUNS.glob(f'{name}.*@*.jsonl')) if RUNS.exists() else []:

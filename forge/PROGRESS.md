@@ -51,8 +51,7 @@ git status --short
 
 ## 接下来按顺序做（更新于 2026-11-15 晚）
 
-1. **Mathlib v4.33.1 升级**：分支 `mathlib-v4.33`，独立工作区 `.worktrees/mathlib-v4.33`。并行修复（`upgrade-v433-parallel-2`）
-   完成后依次跑 `upgrade-migrate-records`、`audit --replay`、`regress`，全部通过再合进 `main`。
+1. ~~Mathlib v4.33.1 升级~~：已完成并合进 `main`（2026-11-15 23:40 左右）。Mac 上旧版编译产物备份在 `lean/.lake-v4.24-backup`，确认无误后可删。
 2. **下次升级 Mathlib 时，修复改用 `--effort low` 跑一遍做对比**（用户 2026-11-15 要求）：和这次的 xhigh
    （`upgrade-v433-repair`、`upgrade-v433-parallel-2`）比一次修好的比例、每个分片的 token、用时；
    如果 low 一样修得好，就把修复的默认推理强度改成 low。

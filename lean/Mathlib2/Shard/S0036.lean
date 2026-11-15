@@ -332,7 +332,7 @@ theorem gr_ramsey_three_four_le_nine (V : Type) [Fintype V]
         rw [SimpleGraph.card_neighborSet_eq_degree]
         omega
       rcases Mathlib2.r3_ramsey_three_three N hN H with htri | hind
-      · exact htri (hG.comap (SimpleGraph.Embedding.induce N))
+      · exact htri (hG.comap (SimpleGraph.Embedding.induce N).isContained)
       · obtain ⟨s, hs⟩ : ∃ s, Hᶜ.IsNClique 3 s := by
           simpa only [SimpleGraph.CliqueFree, not_forall, Classical.not_not] using hind
         let e : Hᶜ ↪g Gᶜ :=

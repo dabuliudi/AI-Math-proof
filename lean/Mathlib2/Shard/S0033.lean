@@ -509,7 +509,7 @@ theorem fld_gaussianInt_isUnit_iff (z : GaussianInt) : IsUnit z ↔ z = 1 ∨ z 
   have hu := Zsqrtd.norm_eq_one_iff' (d := -1) (by norm_num) z
   rw [← hu]
   obtain ⟨x, y⟩ := z
-  simp only [Zsqrtd.norm, Zsqrtd.ext_iff, Zsqrtd.one_re, Zsqrtd.one_im, Zsqrtd.neg_re, Zsqrtd.neg_im]
+  simp only [Zsqrtd.norm, Zsqrtd.ext_iff, Zsqrtd.re_one, Zsqrtd.im_one, Zsqrtd.re_neg, Zsqrtd.im_neg]
   constructor
   · intro h
     have hx : x ^ 2 ≤ 1 := by nlinarith [sq_nonneg y]
@@ -528,7 +528,7 @@ theorem fld_zsqrtd_neg_five_isUnit_iff (z : Zsqrtd (-5)) : IsUnit z ↔ z = 1 �
   have hu := Zsqrtd.norm_eq_one_iff' (d := -5) (by norm_num) z
   rw [← hu]
   obtain ⟨x, y⟩ := z
-  simp only [Zsqrtd.norm, Zsqrtd.ext_iff, Zsqrtd.one_re, Zsqrtd.one_im, Zsqrtd.neg_re, Zsqrtd.neg_im]
+  simp only [Zsqrtd.norm, Zsqrtd.ext_iff, Zsqrtd.re_one, Zsqrtd.im_one, Zsqrtd.re_neg, Zsqrtd.im_neg]
   constructor
   · intro h
     have hx : x ^ 2 ≤ 1 := by nlinarith [sq_nonneg y]

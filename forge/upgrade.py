@@ -138,6 +138,7 @@ def repair(run, target, attempts=3, minutes=25, start=None, effort='xhigh'):
                 results.append(dict(shard=shard, status='migrated', migrations=migrations))
                 continue
         fixed = False
+        best_text, best_errors = original, len(_errors(output, shard))
         for attempt in range(1, attempts + 1):
             errors = _errors(output, shard)
             prompt = REPAIR_PROMPT.format(target=target, root=ROOT, path=path.relative_to(ROOT), forge=FORGE, shard=shard,
@@ -169,12 +170,17 @@ def repair(run, target, attempts=3, minutes=25, start=None, effort='xhigh'):
                 fixed = True
                 results.append(dict(shard=shard, status='repaired', attempts=attempt))
                 break
-            if problems:  # 违规的修改一律撤销，从原文件重来
-                path.write_text(original, encoding='utf-8')
+            if problems:  # 违规的修改一律撤销，退回到目前最好的合规版本
+                path.write_text(best_text, encoding='utf-8')
                 code, output = lake_build(f'Mathlib2.Shard.{shard}')
+            else:
+                remaining = len(_errors(output, shard))
+                if remaining < best_errors:  # 合规但还没修完：报错更少就当作新的起点，下次接着修
+                    best_text, best_errors = after, remaining
         if not fixed:
-            path.write_text(original, encoding='utf-8')
-            results.append(dict(shard=shard, status='stuck'))
+            # 修不完时保留报错最少的合规版本（而不是退回原样），已经修好的部分不丢；下次从这里接着修
+            path.write_text(best_text, encoding='utf-8')
+            results.append(dict(shard=shard, status='stuck', remaining_errors=best_errors))
             break
     return results
 

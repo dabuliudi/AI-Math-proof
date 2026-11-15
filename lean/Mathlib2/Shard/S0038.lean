@@ -51,7 +51,7 @@ theorem p6_cor32_lim_top_aux1 (k : ℤ) (hk : 1 ≤ k) (m : ℕ) :
         nlinarith [ih.2]
       constructor
       · convert hb using 1 <;> push_cast <;> congr 1 <;> ring
-      · convert hc using 1 <;> push_cast <;> congr 1 <;> ring
+      · convert hc using 1 <;> push_cast <;> ring_nf
 
 theorem p6_cor32_lim_top_aux2 (k n : ℤ) (hk : 1 ≤ k) (hn : 0 ≤ n) :
     0 ≤ p6_kfib k (2 * n) ∧ n ≤ p6_kfib k (2 * n + 1) := by
@@ -71,7 +71,7 @@ theorem p6_cor32_lim_top (k : ℤ) (hk : 1 ≤ k) :
     exact_mod_cast (p6_cor32_lim_top_aux2 k n hk hn).2
   have hy : Tendsto (fun n : ℤ => 1 / (p6_kfib k (2 * n + 1) : ℝ))
       atTop (nhds 0) := by
-    simpa only [one_div] using tendsto_inv_atTop_zero.comp hden
+    simpa only [one_div, Function.comp_def] using tendsto_inv_atTop_zero.comp hden
   refine ⟨?_, hy⟩
   have hlim : Tendsto
       (fun n : ℤ => (Real.sqrt ((k : ℝ)^2 + 4 -

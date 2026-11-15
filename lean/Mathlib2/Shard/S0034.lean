@@ -208,6 +208,7 @@ theorem bld6_pi_dalzell_beta_bounds : 22 / 7 - 1 / 630 < Real.pi ∧ Real.pi < 2
     · intro x hx
       have hB : 0 ≤ x^4*(1-x)^4 := by positivity
       have hx2 : x^2 ≤ 1 := by nlinarith [hx.1, hx.2]
+      change x ^ 4 * (1 - x) ^ 4 ≤ 2 * (x ^ 4 * (1 - x) ^ 4 / (1 + x ^ 2))
       rw [← mul_div_assoc, le_div_iff₀ (by positivity)]
       nlinarith [mul_nonneg hB (sub_nonneg.2 hx2)]
     · exact ⟨1/2, half, by norm_num⟩
@@ -573,7 +574,7 @@ theorem fld_pow_char_eq_self_iff_natCast (K : Type) [Field K] (p : ℕ) [Fact p.
   have hp : p.Prime := Fact.out
   have hnat : ∀ n : ℕ, ((n : K)) ^ p = n := by
     intro n
-    have := frobenius_natCast K p n
+    have := map_natCast (frobenius K p) n
     rwa [frobenius_def] at this
   constructor
   · intro hx
@@ -684,7 +685,7 @@ theorem fld_pow_bijective_iff_coprime (K : Type) [Field K] [Fintype K] (k : ℕ)
         rintro rfl; rw [zero_pow hk.ne'] at hxy; exact hy ((pow_eq_zero_iff hk.ne').mp hxy.symm)
       have a1 : (x / y) ^ k = 1 := by rw [div_pow, hxy, div_self (pow_ne_zero _ hy)]
       have a2 : (x / y) ^ (Fintype.card K - 1) = 1 := FiniteField.pow_card_sub_one_eq_one _ (div_ne_zero hx hy)
-      have a3 := pow_gcd_eq_one _ a1 a2
+      have a3 := pow_gcd_eq_one.mpr ⟨a1, a2⟩
       rw [hc', pow_one] at a3
       exact (div_eq_one_iff_eq hy).mp a3
 end

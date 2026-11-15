@@ -97,14 +97,11 @@ theorem calc_integral_beta_nat_aux1 (m n : ℕ) : ∫ x in (0:ℝ)..1, x ^ m * (
   have hu : ∀ x ∈ Set.uIcc (0:ℝ) 1, HasDerivAt (fun x : ℝ => (1 - x) ^ (n + 1)) (-(((n : ℝ) + 1) * (1 - x) ^ n)) x := by
     intro x _
     have h := ((hasDerivAt_id x).const_sub 1).pow (n + 1)
-    convert h using 1
-    simp
+    convert h using 1 <;> first | rfl | simp
   have hv : ∀ x ∈ Set.uIcc (0:ℝ) 1, HasDerivAt (fun x : ℝ => x ^ (m + 1) / ((m : ℝ) + 1)) (x ^ m) x := by
     intro x _
     have h := ((hasDerivAt_id x).pow (m + 1)).div_const ((m : ℝ) + 1)
-    convert h using 1
-    simp
-    field_simp
+    convert h using 1 <;> first | rfl | (simp; field_simp)
   have hu' : Continuous (fun x : ℝ => -(((n : ℝ) + 1) * (1 - x) ^ n)) := by fun_prop
   have hv' : Continuous (fun x : ℝ => x ^ m) := by fun_prop
   have key := intervalIntegral.integral_mul_deriv_eq_deriv_mul hu hv (hu'.intervalIntegrable _ _) (hv'.intervalIntegrable _ _)
@@ -780,11 +777,13 @@ theorem fld_sum_pow_finite_field (K : Type) [Field K] [Fintype K] (k : ℕ) (hk 
   have : univ.map φ = univ \ {0} := by
     ext x
     simpa only [mem_map, mem_univ, Function.Embedding.coeFn_mk, true_and, mem_sdiff,
-      mem_singleton, φ] using isUnit_iff_ne_zero
+      mem_singleton, φ] using! isUnit_iff_ne_zero
   calc
     ∑ x : K, x ^ k = ∑ x ∈ univ \ {(0 : K)}, x ^ k := by
       rw [← sum_sdiff ({0} : Finset K).subset_univ, sum_singleton, zero_pow hk.ne', add_zero]
-    _ = ∑ x : Kˣ, (x ^ k : K) := by simp [← this, univ.sum_map φ, φ]
+    _ = ∑ x : Kˣ, (x ^ k : K) := by
+      rw [← this, univ.sum_map φ]
+      rfl
 end
 
 -- forge:entry bld6_nat_pow_lt_pow_swap kind=proved origin=conjecture

@@ -225,7 +225,7 @@ section
 theorem calc_tsum_inv_odd_sq_aux1 : HasSum (fun n : ℕ => 1 / (2 * (n : ℝ) + 1) ^ 2) (Real.pi ^ 2 / 8) := by
   have hz := hasSum_zeta_two
   have heven : HasSum (fun k : ℕ => 1 / ((2 * k : ℕ) : ℝ) ^ 2) (1 / 4 * (Real.pi ^ 2 / 6)) := by
-    convert hz.mul_left (1 / 4) using 1
+    convert! hz.mul_left (1 / 4) using 1
     funext k
     push_cast
     ring
@@ -496,7 +496,7 @@ theorem calc_tsum_alternating_inv_sq : ∑' n : ℕ, (-1 : ℝ) ^ n / ((n : ℝ)
     have := (hasSum_nat_add_iff' (f := fun n : ℕ => 1 / (n : ℝ) ^ 2) 1).mpr hz
     simpa using this
   have hodd : HasSum (fun k : ℕ => (-1 : ℝ) ^ (2 * k + 1) / (((2 * k + 1 : ℕ) : ℝ) + 1) ^ 2) (-1 / 4 * (Real.pi ^ 2 / 6)) := by
-    convert hshift.mul_left (-1 / 4) using 1
+    convert! hshift.mul_left (-1 / 4) using 1
     funext k
     have : (-1:ℝ) ^ (2 * k + 1) = -1 := by rw [pow_succ, pow_mul]; norm_num
     rw [this]

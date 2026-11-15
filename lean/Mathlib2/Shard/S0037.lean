@@ -278,10 +278,10 @@ theorem gr_connected_of_ore_condition (V : Type) [Fintype V] [DecidableEq V]
       · rintro rfl
         exact hadj hw
       · rintro rfl
-        exact G.loopless _ hw
+        exact G.loopless.irrefl _ hw
     · refine ⟨?_, ?_⟩
       · rintro rfl
-        exact G.loopless _ hw
+        exact G.loopless.irrefl _ hw
       · rintro rfl
         exact hadj hw.symm
   have hcard := Finset.card_le_card hsub
@@ -495,7 +495,7 @@ theorem gr_set_union_ne_univ_card_le (n : ℕ) (𝒜 : Finset (Finset (Fin n)))
   have hi : (𝒜' : Set (OrderDual (Finset (Fin n)))).Intersecting := by
     intro A hA B hB hd
     exact h A hA B hB (disjoint_iff.mp hd)
-  simpa [𝒜'] using hi.card_le
+  simpa [𝒜', OrderDual] using hi.card_le
 end
 
 -- forge:entry p6_thm31_feet kind=proved origin=paper

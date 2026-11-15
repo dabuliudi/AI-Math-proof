@@ -1,7 +1,7 @@
 {
   "name": "lib_radical_pow_dvd_of_irreducible_pow_dvd",
-  "statement": "{M : Type*} [CancelCommMonoidWithZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g) : (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
-  "closed": "∀ {M : Type*} [CancelCommMonoidWithZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g), (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
+  "statement": "{M : Type*} [CommMonoidWithZero M] [IsCancelMulZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g) : (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
+  "closed": "∀ {M : Type*} [CommMonoidWithZero M] [IsCancelMulZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g), (UniqueFactorizationMonoid.radical g) ^ n ∣ g",
   "informal": "promoted from Mathlib2.poly_no_consecutive_powerful_aux1 (generalised from k[X], n = 2 to any normalised UFM and any exponent): if every irreducible factor of g occurs to the n-th power then (radical g)^n divides g.",
   "origin": "conjecture",
   "source": "",

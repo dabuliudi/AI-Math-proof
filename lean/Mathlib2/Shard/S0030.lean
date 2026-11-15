@@ -396,12 +396,12 @@ end
 section
 /- ∑ n/n! = e — drop n = 0 term, n/n! = 1/(n−1)!, reindex and use Real.exp series (NormedSpace.exp / Real.exp_eq_tsum / hasSum_nat_add_iff). -/
 theorem calc_tsum_nat_div_factorial : ∑' n : ℕ, (n : ℝ) / (n.factorial : ℝ) = Real.exp 1 := by
-  have h := NormedSpace.expSeries_div_hasSum_exp ℝ (1:ℝ)
+  have h := NormedSpace.expSeries_div_hasSum_exp (1:ℝ)
   rw [← Real.exp_eq_exp_ℝ] at h
   have h' : HasSum (fun n : ℕ => 1 / (n.factorial : ℝ)) (Real.exp 1) := by simpa using h
   have h2 : HasSum (fun n : ℕ => (n : ℝ) / (n.factorial : ℝ)) (Real.exp 1) := by
     rw [← hasSum_nat_add_iff' 1]
-    convert h' using 1
+    convert! h' using 1
     · funext n
       rw [Nat.factorial_succ]
       push_cast
@@ -474,7 +474,7 @@ theorem calc_cos_le_quartic_aux1 (x : ℝ) (hx : 0 ≤ x) : Real.cos x ≤ 1 - x
     intro y
     have := (((hasDerivAt_const y (1:ℝ)).sub ((hasDerivAt_pow 2 y).div_const 2)).add
       ((hasDerivAt_pow 4 y).div_const 24)).sub (Real.hasDerivAt_cos y)
-    convert this using 1
+    convert! this using 1
     norm_num
     ring
   have hmono : MonotoneOn (fun y : ℝ => 1 - y ^ 2 / 2 + y ^ 4 / 24 - Real.cos y) (Set.Ici (0:ℝ)) := by
@@ -510,7 +510,7 @@ theorem calc_tan_ge_cubic (x : ℝ) (hx0 : 0 ≤ x) (hx : x < Real.pi / 2) : x +
     have hc : Real.cos y ≠ 0 := (Real.cos_pos_of_mem_Ioo ⟨by linarith [hy.1, Real.pi_pos], hy.2⟩).ne'
     have := ((Real.hasDerivAt_tan hc).sub (hasDerivAt_id' y)).sub
       ((hasDerivAt_pow 3 y).div_const 3)
-    convert this using 1
+    convert! this using 1
     rw [← Real.inv_one_add_tan_sq hc]
     norm_num
   have hmono : MonotoneOn (fun y : ℝ => Real.tan y - y - y ^ 3 / 3) (Set.Ico (0:ℝ) (Real.pi / 2)) := by

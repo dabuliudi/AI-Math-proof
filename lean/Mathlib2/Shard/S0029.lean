@@ -69,7 +69,7 @@ theorem calc_integral_arctan_zero_one : ∫ x in (0:ℝ)..1, Real.arctan x = Rea
     have h1 : HasDerivAt (fun x : ℝ => 1 + x ^ 2) (2 * x) x := by
       simpa using ((hasDerivAt_id x).pow 2).const_add 1
     have h := ((hasDerivAt_id x).mul (Real.hasDerivAt_arctan x)).sub ((h1.log hx0).div_const 2)
-    convert h using 1
+    convert h using 1 <;> try rfl
     simp only [id]
     field_simp
     ring
@@ -147,7 +147,7 @@ theorem calc_card_no_adjacent_subsets_aux1 (n : ℕ) :
     ((Finset.range (n + 2)).powerset.filter (fun t : Finset ℕ => ∀ i ∈ t, i + 1 ∉ t)).card
       = ((Finset.range (n + 1)).powerset.filter (fun t : Finset ℕ => ∀ i ∈ t, i + 1 ∉ t)).card
         + ((Finset.range n).powerset.filter (fun t : Finset ℕ => ∀ i ∈ t, i + 1 ∉ t)).card := by
-  have hr : Finset.range (n + 2) = insert (n + 1) (Finset.range (n + 1)) := Finset.range_succ
+  have hr : Finset.range (n + 2) = insert (n + 1) (Finset.range (n + 1)) := Finset.range_add_one
   rw [hr, Finset.powerset_insert, Finset.filter_union, Finset.card_union_of_disjoint]
   · congr 1
     have himg : ((Finset.range (n + 1)).powerset.image (insert (n + 1))).filter (fun t : Finset ℕ => ∀ i ∈ t, i + 1 ∉ t)
@@ -285,7 +285,7 @@ theorem calc_integral_dalzell : ∫ x in (0:ℝ)..1, x ^ 4 * (1 - x) ^ 4 / (1 + 
     have hx0 : (1 + x ^ 2) ≠ 0 := by positivity
     have hid := hasDerivAt_id x
     have h := (((((hid.pow 7).div_const 7).sub (((hid.pow 6).const_mul 2).div_const 3)).add (hid.pow 5)).sub (((hid.pow 3).const_mul 4).div_const 3)).add (hid.const_mul 4) |>.sub ((Real.hasDerivAt_arctan x).const_mul 4)
-    convert h using 1
+    convert h using 1 <;> try rfl
     simp only [id]
     field_simp
     ring
@@ -327,7 +327,7 @@ theorem calc_integral_x_mul_sin_sq : ∫ x in (0:ℝ)..Real.pi, x * Real.sin x ^
     have hs : HasDerivAt (fun x : ℝ => Real.sin (2 * x)) (Real.cos (2 * x) * 2) x := h2.sin
     have hcs : HasDerivAt (fun x : ℝ => Real.cos (2 * x)) (-Real.sin (2 * x) * 2) x := h2.cos
     have h := (((hid.pow 2).div_const 4).sub ((hid.mul hs).div_const 4)).sub (hcs.div_const 8)
-    convert h using 1
+    convert h using 1 <;> try rfl
     simp only [id]
     rw [Real.cos_two_mul]
     linear_combination x * (Real.sin_sq_add_cos_sq x)
@@ -388,7 +388,7 @@ theorem calc_integral_log_sq_one_e : ∫ x in (1:ℝ)..Real.exp 1, Real.log x ^ 
     have hid := hasDerivAt_id x
     have hl := Real.hasDerivAt_log hx0
     have h := ((hid.mul (hl.pow 2)).sub ((hid.const_mul 2).mul hl)).add (hid.const_mul 2)
-    convert h using 1
+    convert h using 1 <;> try rfl
     simp only [id, Pi.pow_apply]
     field_simp
     ring

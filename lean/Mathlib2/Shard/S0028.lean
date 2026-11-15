@@ -125,7 +125,7 @@ end
 -- forge:entry lib_radical_pow_dvd_of_irreducible_pow_dvd kind=proved origin=conjecture
 section
 /- promoted from Mathlib2.poly_no_consecutive_powerful_aux1 (generalised from k[X], n = 2 to any normalised UFM and any exponent): if every irreducible factor of g occurs to the n-th power then (radical g)^n divides g. -/
-theorem lib_radical_pow_dvd_of_irreducible_pow_dvd {M : Type*} [CancelCommMonoidWithZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g) : (UniqueFactorizationMonoid.radical g) ^ n ∣ g := by
+theorem lib_radical_pow_dvd_of_irreducible_pow_dvd {M : Type*} [CommMonoidWithZero M] [IsCancelMulZero M] [NormalizationMonoid M] [UniqueFactorizationMonoid M] (n : ℕ) (g : M) (hg : ∀ p : M, Irreducible p → p ∣ g → p ^ n ∣ g) : (UniqueFactorizationMonoid.radical g) ^ n ∣ g := by
   classical
   unfold UniqueFactorizationMonoid.radical
   rw [← Finset.prod_pow]
@@ -257,7 +257,7 @@ theorem arith_card_divisors_sq_le (n : ℕ) : n.divisors.card ^ 2 ≤ 4 * n := b
             have hq : 0 < n / d2 := Nat.div_pos (Nat.le_of_dvd hn hd2.1.1) (Nat.pos_of_dvd_of_pos hd2.1.1 hn)
             exact Nat.eq_of_mul_eq_mul_left hq (e1.trans e2.symm)
       _ = n.sqrt := by simp
-  have h3 := Finset.filter_card_add_filter_neg_card_eq_card (s := n.divisors) (fun d => d ≤ n.sqrt)
+  have h3 := Finset.card_filter_add_card_filter_not (s := n.divisors) (fun d => d ≤ n.sqrt)
   have h4 : n.divisors.card ≤ 2 * n.sqrt := by omega
   nlinarith
 end
@@ -382,7 +382,7 @@ theorem calc_sum_mul_choose_sq (n : ℕ) : ∑ k ∈ Finset.range (n + 2), k * (
   apply Finset.sum_congr rfl
   intro k hk
   have hk' : k ≤ n := Nat.lt_succ_iff.mp (Finset.mem_range.mp hk)
-  have h1 : (n + 1) * n.choose k = (n + 1).choose (k + 1) * (k + 1) := Nat.succ_mul_choose_eq n k
+  have h1 : (n + 1) * n.choose k = (n + 1).choose (k + 1) * (k + 1) := Nat.add_one_mul_choose_eq n k
   have h2 : (n + 1).choose (n - k) = (n + 1).choose (k + 1) := by
     have := Nat.choose_symm (n := n + 1) (k := k + 1) (by omega)
     rw [← this]
@@ -431,8 +431,8 @@ theorem calc_integral_log_one_add : ∫ x in (0:ℝ)..1, Real.log (1 + x) = 2 * 
     have hx0 : (1 + x) ≠ 0 := by linarith [hx.1]
     have h1 : HasDerivAt (fun x : ℝ => 1 + x) 1 x := by simpa using (hasDerivAt_id x).const_add 1
     have h := (h1.mul (h1.log hx0)).sub (hasDerivAt_id x)
-    convert h using 1
-    field_simp
+    apply h.congr_deriv
+    field_simp [hx0]
     ring
   have hc : ContinuousOn (fun x : ℝ => Real.log (1 + x)) (Set.uIcc 0 1) := by
     rw [Set.uIcc_of_le (by norm_num)]
@@ -459,7 +459,7 @@ theorem calc_card_even_card_subsets (n : ℕ) : ((Finset.univ : Finset (Finset (
     rw [Finset.sum_congr rfl (g := fun _ => (-1:ℤ)) (fun s hs => Odd.neg_one_pow (Nat.not_even_iff_odd.mp (Finset.mem_filter.mp hs).2))]
     simp
     ring
-  have h3 := Finset.filter_card_add_filter_neg_card_eq_card (s := (Finset.univ : Finset (Finset (Fin (n+1))))) (fun s => Even s.card)
+  have h3 := Finset.card_filter_add_card_filter_not (s := (Finset.univ : Finset (Finset (Fin (n+1))))) (fun s => Even s.card)
   rw [Finset.card_univ, Fintype.card_finset, Fintype.card_fin, pow_succ] at h3
   omega
 end
@@ -472,7 +472,7 @@ theorem calc_integral_sq_div_one_add_sq : ∫ x in (0:ℝ)..1, x ^ 2 / (1 + x ^ 
     intro x _
     have hx0 : (1 + x ^ 2) ≠ 0 := by positivity
     have h := (hasDerivAt_id x).sub (Real.hasDerivAt_arctan x)
-    convert h using 1
+    apply h.congr_deriv
     field_simp
     ring
   have hc : Continuous (fun x : ℝ => x ^ 2 / (1 + x ^ 2)) := by

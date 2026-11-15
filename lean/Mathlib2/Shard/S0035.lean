@@ -139,7 +139,7 @@ section
 lemma bld6_card_circular_no_adjacent_subsets_aux1 (n : ℕ) (hn : 1 ≤ n) :
     ((Finset.range (n + 1)).powerset.filter
       (fun t : Finset ℕ => ∀ i ∈ t, (i + 1) % (n + 1) ∉ t)).card = Nat.fib n + Nat.fib (n + 2) := by
-  have hr : Finset.range (n + 1) = insert n (Finset.range n) := Finset.range_succ
+  have hr : Finset.range (n + 1) = insert n (Finset.range n) := Finset.range_add_one
   rw [hr, Finset.powerset_insert, Finset.filter_union, Finset.card_union_of_disjoint]
   · have h1 : (Finset.range n).powerset.filter (fun t : Finset ℕ => ∀ i ∈ t, (i + 1) % (n + 1) ∉ t)
         = (Finset.range n).powerset.filter (fun t : Finset ℕ => ∀ i ∈ t, i + 1 ∉ t) := by
@@ -551,7 +551,7 @@ theorem gr_ramsey_three_four_le_ten (V : Type) [Fintype V]
     rw [SimpleGraph.card_neighborSet_eq_degree, G.degree_compl]
     omega
   rcases Mathlib2.r3_ramsey_three_three N hN H with htri | hind
-  · exact htri (hG.comap (SimpleGraph.Embedding.induce N))
+  · exact htri (hG.comap (SimpleGraph.Embedding.induce N).isContained)
   · obtain ⟨s, hs⟩ : ∃ s, Hᶜ.IsNClique 3 s := by
       simpa only [SimpleGraph.CliqueFree, not_forall, Classical.not_not] using hind
     let e : Hᶜ ↪g Gᶜ :=

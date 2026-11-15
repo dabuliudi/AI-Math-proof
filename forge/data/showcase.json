@@ -152,11 +152,11 @@
       "id": "arXiv:2611.07141",
       "url": "https://arxiv.org/abs/2611.07141",
       "topic": "Ford 圆与 k-斐波那契数（Metallic Circles）",
-      "status": "pending",
-      "verdict": "进行中",
-      "finding": "28 条命题已写成计算机能检查的形式，还没有证明，也没有复核，目前不下任何结论。",
-      "statements": 28,
-      "short": "已翻译成计算机能检查的形式，还没有证明。"
+      "status": "ok",
+      "verdict": "全部成立",
+      "finding": "论文的全部命题都已证明，没有一条被证伪；由 Codex 证明、另一个 Codex 会话对照原文独立复核。复核指出最初有 4 条形式化漏掉了论文约定的“无穷远 Ford 圆”情形（是我们覆盖不全，不是论文的问题），补上 3 条后全部判为忠实。",
+      "statements": 31,
+      "short": "全部核对完毕，没有发现问题。"
     }
   ],
   "front": 6

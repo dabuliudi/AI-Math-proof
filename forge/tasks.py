@@ -150,7 +150,7 @@ def waiting_on(task):
     return pending
 
 
-def claim(agent, name=None, prefix=None):
+def claim(agent, name=None, prefix=None, parity=None):
     """领取一个任务（原子操作）。优先尝试次数少的；超时未归还的领取会被回收。"""
     now = time.time()
     for path in _dir('claimed').glob('*.json'):
@@ -171,6 +171,9 @@ def claim(agent, name=None, prefix=None):
         candidates = [t for t in candidates if not waiting_on(t)]  # 等子任务的父任务先不发出去
     if prefix:
         candidates = [t for t in candidates if t['name'].startswith(prefix)]
+    if parity is not None:  # A/B 对比：按名称的 crc32 奇偶把任务确定地分成两组
+        import zlib
+        candidates = [t for t in candidates if zlib.crc32(t['name'].encode()) % 2 == parity]
     for task in candidates:
         source = _dir('open') / f'{task["name"]}.json'
         target = _dir('claimed') / f'{task["name"]}.json'

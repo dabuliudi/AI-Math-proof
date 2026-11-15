@@ -79,6 +79,35 @@ Rules:
 End with one line: RESULT: proved | disproved | sketched | released, plus a one-sentence summary.
 '''
 
+QUEUE_PROMPT_V2 = '''You are a proving agent working in a Lean 4 "theorem forge" at {root} (Lean 4 + Mathlib + the Mathlib2 library).
+Your agent name is `{agent}`. Everything you normally need is below; read forge/AGENT_GUIDE.md only if you want to split
+the proof with `{forge} sketch` (section "拆解（sketch）怎么用").
+
+The scheduler has already claimed this task for you:
+- name: {name}
+- statement (Lean signature `<binders> : <conclusion>`): {statement}
+- informal / plan: {informal}
+- earlier failed attempts: {attempts}
+
+Goal: prove it, or, if it is false, prove its negation. Submission file rules (the checker enforces them):
+- Checked inside `namespace Mathlib2` with Mathlib and Mathlib2 imported; top-level `open ...` lines are allowed.
+- Only top-level `theorem`/`lemma`. Helpers are named `{name}_aux1`, `{name}_aux2`, ... and come first (state them
+  generally, they become reusable library lemmas); the last declaration is `theorem {name} <same signature> := by ...`.
+- Disproof: `theorem {name}_disproof : ¬ (∀ <binders>, <conclusion>) := by ...` (detected automatically).
+- Not allowed: sorry, axiom, def, instance, notation, macro, set_option, native_decide, run_tac. Undefined names are errors.
+Commands: iterate with `{forge} check {name} <file>`; when it passes, `{forge} submit {name} <file> --agent {agent}`
+(about 1-2 minutes; use a long shell timeout). Find lemmas with `{forge} search "<words>"` (library, by content) and
+`{forge} lookup "<name fragments>"` (exact Mathlib/Mathlib2 names); `{forge} source <name>` prints a library proof.
+Check small cases before trusting or doubting the statement. Never alter the statement.
+
+Keep drafts only in {scratch}; change forge state only through {forge}; never edit files under forge/data or lean/.
+You have about {minutes} minutes. If you cannot finish, run
+`{forge} release {name} --agent {agent} --note "<what you tried and where it got stuck>"` before stopping.
+End with one line: RESULT: proved | disproved | sketched | released, plus a one-sentence summary.
+'''
+
+QUEUE_PROMPTS = {'v1': QUEUE_PROMPT, 'v2': QUEUE_PROMPT_V2}
+
 # 评测提示词。v1：让 agent 先读完整的 AGENT_GUIDE.md；v2：把评测需要的规则直接写进提示词（上下文小得多）。
 BENCH_PROMPT_V1 = '''You are a proving agent working in a Lean 4 project at {root}. Read forge/AGENT_GUIDE.md first
 (the sections on writing submissions apply). Your agent name is `{agent}`.
@@ -161,7 +190,7 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2'):
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2', parity=None):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -175,6 +204,7 @@ class Scheduler:
         if prompt not in ('v1', 'v2'):
             raise ValueError('提示词版本只有 v1、v2')
         self.prompt = prompt
+        self.parity = parity
         self.lock = threading.Lock()
         self.started = self.failures_in_a_row = self.tokens = 0
         self.stop_reason = None
@@ -256,14 +286,14 @@ class Scheduler:
         scratch = self.scratch / agent
         scratch.mkdir(parents=True, exist_ok=True)
         while self._may_start():
-            task = tasks.claim(agent, prefix=prefix)
+            task = tasks.claim(agent, prefix=prefix, parity=self.parity)
             if task is None:
                 with self.lock:
                     self.started -= 1
                     self.stop_reason = self.stop_reason or '队列里没有可领的任务'
                 return
             attempts = '; '.join(a.get('note', '')[:300] for a in task.get('attempts', [])[-3:]) or 'none'
-            prompt = QUEUE_PROMPT.format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
+            prompt = QUEUE_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
                                          informal=(task.get('informal') or '')[:1500] or 'none', attempts=attempts,
                                          scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
@@ -279,7 +309,7 @@ class Scheduler:
             else:
                 outcome = 'released' if state == 'open' else f'unexpected:{state}'
             self._record(dict(mode='queue', task=task['name'], worker=agent, outcome=outcome,
-                              progress=outcome in ('proved', 'disproved', 'sketched'), seconds=round(time.time() - began),
+                              progress=outcome in ('proved', 'disproved', 'sketched'), seconds=round(time.time() - began), prompt=self.prompt,
                               tokens=used, exit=code, timed_out=slow, message=message[-800:],
                               raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
 
@@ -373,8 +403,16 @@ class Scheduler:
             items.append((item, task['status']))
         return self._run_threads(self._review_worker, (paper, items, str(Path(paper_text).resolve())))
 
+    def _guarded(self, target, index, *args):
+        """工人线程里的异常不能悄悄吞掉：记进停止原因，让其他工人也停下，结果里看得见。"""
+        try:
+            target(index, *args)
+        except Exception as exc:  # noqa: BLE001 - 任何异常都要报告出来
+            with self.lock:
+                self.stop_reason = self.stop_reason or f'工人 {index} 出错停止：{type(exc).__name__}: {exc}'
+
     def _run_threads(self, target, args):
-        threads = [threading.Thread(target=target, args=(i,) + args, daemon=True) for i in range(self.workers)]
+        threads = [threading.Thread(target=self._guarded, args=(target, i) + args, daemon=True) for i in range(self.workers)]
         for t in threads:
             t.start()
         for t in threads:

@@ -446,7 +446,7 @@ class SchedulerTests(unittest.TestCase):
         claimed = {}
         released = []
 
-        def claim(agent, prefix=None):
+        def claim(agent, prefix=None, parity=None):
             if not queue:
                 return None
             task = queue.pop(0)
@@ -467,7 +467,7 @@ class SchedulerTests(unittest.TestCase):
         s = self.scheduler.Scheduler('t2', workers=1, max_tasks=2, max_failures=1)
         queue = [dict(name='g0', statement=': True', attempts=[]), dict(name='g1', statement=': True', attempts=[])]
         with mock.patch.object(s, '_invoke', return_value=(0, 'RESULT: proved', None, False)), \
-                mock.patch('forge.tasks.claim', side_effect=lambda agent, prefix=None: queue.pop(0) if queue else None), \
+                mock.patch('forge.tasks.claim', side_effect=lambda agent, prefix=None, parity=None: queue.pop(0) if queue else None), \
                 mock.patch('forge.tasks.load', side_effect=lambda n: ('done', dict(name=n, status='proved', closed_by='t2-w0'))):
             summary = s.run_queue()
         self.assertEqual(summary['outcomes'], {'proved': 2})
@@ -566,6 +566,13 @@ class SchedulerTests(unittest.TestCase):
         self.assertEqual(reviewed, ['q_done', 'q_disproved'])
         self.assertIn('kernel verdict in the library: disproved', prompts[1])
         self.assertEqual(summary['outcomes'], {'faithful': 1, 'no_review': 1})
+
+    def test_a_crashing_worker_stops_the_run_visibly(self):
+        s = self.scheduler.Scheduler('crash', workers=1, max_tasks=3, max_failures=3)
+        with mock.patch('forge.tasks.claim', side_effect=RuntimeError('disk full')):
+            summary = s.run_queue()
+        self.assertIn('disk full', summary['stopped'])
+        self.assertIn('工人', summary['stopped'])
 
     def test_codex_location_can_be_overridden(self):
         with mock.patch.dict(os.environ, {'FORGE_CODEX': r'C:\tools\codex.exe'}):

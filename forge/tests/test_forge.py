@@ -55,6 +55,12 @@ class StatementTests(unittest.TestCase):
         with self.assertRaises(StatementError):  # 顶格只能是声明或 open
             analyse_submission('theorem foo : True := by\ntrivial\n', 'foo')
 
+    def test_numeral_fraction_exponent_is_flagged(self):
+        from forge.statement import lint_statement
+        self.assertEqual(len(lint_statement('(x y : ℝ) : x ^ (2 / 3) * y ^ (1/3) ≥ 0')), 1)
+        self.assertEqual(lint_statement('(x : ℝ) : x ^ ((1 : ℝ) / 3) ≥ 0'), [])
+        self.assertEqual(lint_statement('(n : ℕ) : n ^ 2 / 3 ≤ n ^ 2'), [])
+
     def test_disproof_is_inferred_from_the_declared_name(self):
         from forge.statement import is_disproof
         self.assertTrue(is_disproof('theorem foo_disproof : ¬ False := id\n', 'foo'))

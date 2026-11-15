@@ -337,8 +337,11 @@ class Scheduler:
                     self.stop_reason = self.stop_reason or '队列里没有可领的任务'
                 return
             attempts = '; '.join(a.get('note', '')[:300] for a in task.get('attempts', [])[-3:]) or 'none'
+            informal = (task.get('informal') or '')[:1500] or 'none'
+            if task.get('warnings'):  # 形式化可疑提醒：提示 agent 先想清楚这条 Lean 写法到底说了什么
+                informal += '\nWARNING about the Lean statement: ' + ' '.join(task['warnings'])
             prompt = QUEUE_PROMPTS[self.prompt].format(forge=FORGE, root=ROOT, agent=agent, name=task['name'], statement=task['statement'],
-                                         informal=(task.get('informal') or '')[:1500] or 'none', attempts=attempts,
+                                         informal=informal, attempts=attempts,
                                          scratch=scratch, minutes=self.task_seconds // 60)
             began = time.time()
             code, message, used, slow = self._invoke(prompt, agent)

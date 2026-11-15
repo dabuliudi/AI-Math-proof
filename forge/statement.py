@@ -155,3 +155,16 @@ def analyse_definition(body, name):
         raise StatementError(f'必须恰好包含一条名为 `{name}` 的 def')
     if len(re.findall(r"(?<![\w.'])def(?![\w'])", clean)) != 1:
         raise StatementError('只能出现一个 def')
+
+
+# 外部数据集里常见的形式化错误：从文本就能识别，提醒证明者和复核者“这条 Lean 写法可能不是原题的意思”。
+LINTS = [
+    (re.compile(r'\^\s*\(\s*\d+\s*/\s*\d+\s*\)'),
+     '指数写成了 `^ (m / n)`：在 Lean 里 `m / n` 默认按自然数除法计算（例如 1 / 3 = 0），于是 `x ^ (1 / 3)` 就是 `x ^ 0 = 1`，'
+     '不是立方根。若原题是分数次幂，应写成 `x ^ ((1 : ℝ) / 3)`。'),
+]
+
+
+def lint_statement(statement):
+    """返回命题里疑似形式化错误的提醒（只看文本，不改变任何判断）。"""
+    return [message for pattern, message in LINTS if pattern.search(statement)]

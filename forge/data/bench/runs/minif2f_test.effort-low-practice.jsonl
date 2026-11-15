@@ -31,8 +31,6 @@
 {"problem": "amc12a_2021_p14", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:34:26+0800"}
 {"problem": "amc12b_2020_p6", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:34:27+0800"}
 {"problem": "amc12a_2021_p14", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:34:43+0800"}
-{"problem": "amc12a_2021_p9", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:34:47+0800"}
-{"problem": "amc12a_2021_p9", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:34:59+0800"}
 {"problem": "mathd_numbertheory_551", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:35:12+0800"}
 {"problem": "mathd_algebra_304", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:35:40+0800"}
 {"problem": "amc12b_2002_p19", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:35:57+0800"}
@@ -55,3 +53,10 @@
 {"problem": "mathd_numbertheory_150", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:40:21+0800"}
 {"problem": "imo_1985_p6", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:40:35+0800"}
 {"problem": "mathd_algebra_441", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:41:10+0800"}
+{"problem": "imo_1974_p3", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:41:42+0800"}
+{"problem": "imo_1974_p3", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:42:04+0800"}
+{"problem": "aime_1995_p7", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:42:08+0800"}
+{"problem": "imo_1974_p3", "run": "effort-low-practice", "agent": "effort-low-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:42:24+0800"}
+{"problem": "aime_1995_p7", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T17:42:31+0800"}
+{"problem": "aime_1995_p7", "run": "effort-low-practice", "agent": "effort-low-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:42:56+0800"}
+{"problem": "amc12a_2021_p9", "run": "effort-low-practice", "agent": "effort-low-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T17:44:43+0800"}

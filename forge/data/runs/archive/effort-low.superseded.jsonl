@@ -1,0 +1,1 @@
+{"mode": "bench", "task": "amc12a_2021_p9", "worker": "effort-low-w2", "outcome": "unsolved", "progress": true, "seconds": 59, "tokens": 23283, "exit": 0, "timed_out": false, "reason": "Lean 报错", "message": "RESULT: unsolved", "raw": "", "run": "effort-low", "at": "2026-11-15T17:35:27+0800", "superseded": "题目在 2026-11-15 修正了求和主体的括号（旧转换改变了题意），这条记录对应旧题目，作废"}

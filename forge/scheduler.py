@@ -161,7 +161,7 @@ def _tokens(text):
 
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
-                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v1'):
+                 agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2'):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks

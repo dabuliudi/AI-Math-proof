@@ -83,7 +83,7 @@ def main(argv=None):
     p = sub.add_parser('run', help='调度外部 agent（默认本机 Codex）无人值守地清队列或跑评测')
     p.add_argument('--run', required=True, help='轮次名，日志写到 forge/data/runs/<轮次>.jsonl')
     p.add_argument('--prefix', help='队列模式：只领名称以此开头的任务')
-    p.add_argument('--prompt', default='v1', choices=['v1', 'v2'], help='评测提示词版本：v1 先读整份手册，v2 规则直接写在提示词里')
+    p.add_argument('--prompt', default='v2', choices=['v1', 'v2'], help='评测提示词版本：v2（默认）规则直接写在提示词里；v1 先读整份手册')
     p.add_argument('--problems', help='评测模式：只做这些题，逗号分隔')
     p.add_argument('--ladder', help='评测模式：分级尝试，例如 low:10,xhigh:40（推理强度:分钟）；做不出才升档')
     p.add_argument('--review-paper', help='复核模式：论文命题清单（forge/data/papers/<id>.json）')

@@ -1,0 +1,35 @@
+{"problem": "mathd_algebra_33", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:00:02+0800"}
+{"problem": "amc12b_2021_p3", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:00:21+0800"}
+{"problem": "amc12b_2020_p2", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:00:33+0800"}
+{"problem": "algebra_sqineq_unitcircatbpabsamblt1", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:00:58+0800"}
+{"problem": "mathd_algebra_419", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:01:03+0800"}
+{"problem": "imo_1983_p6", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:01:11+0800"}
+{"problem": "mathd_algebra_398", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:01:35+0800"}
+{"problem": "imo_1960_p2", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:01:57+0800"}
+{"problem": "imo_1960_p2", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:02:09+0800"}
+{"problem": "mathd_numbertheory_430", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:02:22+0800"}
+{"problem": "imo_1963_p5", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:02:46+0800"}
+{"problem": "mathd_numbertheory_559", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:02:56+0800"}
+{"problem": "imo_1963_p5", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:03:05+0800"}
+{"problem": "mathd_algebra_176", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:03:13+0800"}
+{"problem": "numbertheory_notequiv2i2jasqbsqdiv8", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:03:28+0800"}
+{"problem": "induction_sumkexp3eqsumksq", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:04:15+0800"}
+{"problem": "aime_1987_p5", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:04:37+0800"}
+{"problem": "aime_1987_p5", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:05:03+0800"}
+{"problem": "imo_1992_p1", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:05:13+0800"}
+{"problem": "mathd_algebra_184", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:05:23+0800"}
+{"problem": "amc12a_2003_p5", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:05:49+0800"}
+{"problem": "numbertheory_2pownm1prime_nprime", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:06:10+0800"}
+{"problem": "amc12_2000_p12", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:06:37+0800"}
+{"problem": "amc12b_2021_p4", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:06:52+0800"}
+{"problem": "imo_1992_p1", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:07:05+0800"}
+{"problem": "mathd_algebra_276", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:07:40+0800"}
+{"problem": "mathd_algebra_276", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:07:57+0800"}
+{"problem": "amc12b_2020_p6", "run": "effort-high-practice", "agent": "effort-high-w0", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:08:05+0800"}
+{"problem": "amc12a_2021_p14", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-15T18:08:19+0800"}
+{"problem": "amc12a_2021_p9", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:08:26+0800"}
+{"problem": "amc12a_2021_p14", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:08:39+0800"}
+{"problem": "mathd_numbertheory_551", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:08:55+0800"}
+{"problem": "mathd_algebra_304", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:09:13+0800"}
+{"problem": "amc12b_2002_p19", "run": "effort-high-practice", "agent": "effort-high-w2", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:09:46+0800"}
+{"problem": "amc12b_2020_p22", "run": "effort-high-practice", "agent": "effort-high-w1", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-15T18:10:00+0800"}

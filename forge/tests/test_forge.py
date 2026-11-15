@@ -444,6 +444,28 @@ class PutnamImportTests(unittest.TestCase):
         self.assertIsNone(putnam_problem('import Mathlib\nabbrev putnam_z_solution : ℕ := sorry\ntheorem putnam_z : putnam_z_solution = 1 := sorry\n'))
 
 
+class UpgradeRepairTests(unittest.TestCase):
+    BEFORE = ('-- forge:entry foo kind=proved origin=x\nsection\n'
+              'lemma foo_aux1 (n : ℕ) : n + 0 = n := by\n  simp\n'
+              'theorem foo (a b : ℕ) (h : a ≤ b) : a ≤ b + 1 := by\n  omega\nend\n')
+
+    def test_proof_only_changes_are_accepted(self):
+        from forge.upgrade import check_repair
+        after = self.BEFORE.replace('  simp\n', '  exact Nat.add_zero n\n')
+        self.assertEqual(check_repair(self.BEFORE, after), [])
+
+    def test_statement_changes_and_cheats_are_rejected(self):
+        from forge.upgrade import check_repair
+        weakened = self.BEFORE.replace('a ≤ b + 1', 'a ≤ b + 2')
+        self.assertIn('`foo` 的陈述被改动', check_repair(self.BEFORE, weakened))
+        cheat = self.BEFORE.replace('  omega\n', '  sorry\n')
+        self.assertTrue(any('sorry' in p for p in check_repair(self.BEFORE, cheat)))
+        extra = self.BEFORE + 'theorem foo_aux2 : True := trivial\n'
+        self.assertTrue(any('声明集合' in p for p in check_repair(self.BEFORE, extra)))
+        renamed_marker = self.BEFORE.replace('kind=proved', 'kind=disproved')
+        self.assertIn('条目标记被改动', check_repair(self.BEFORE, renamed_marker))
+
+
 class SchedulerTests(unittest.TestCase):
     """调度器的控制逻辑：不调用真实 agent，也不碰真实队列。"""
 

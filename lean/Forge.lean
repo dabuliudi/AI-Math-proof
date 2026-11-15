@@ -154,7 +154,7 @@ syntax (name := forgeFind) "#forge_find " str str : command
   for n in top do
     let some ci := env.find? n | continue
     let ty ← liftTermElabM do return (← ppExpr ci.type).pretty 1000000
-    let shown := if ty.length > 2000 then ty.take 2000 ++ " …（截断）" else ty
+    let shown := if ty.length > 2000 then toString (ty.take 2000) ++ " …（截断）" else ty
     rows := rows.push (Json.mkObj [("name", toString n), ("type", shown)])
   emit "FORGE_FIND" [("nonce", nonce), ("total", hits.size), ("results", Json.arr rows)]
 

@@ -108,6 +108,10 @@ def main(argv=None):
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
     p.add_argument('--dry-run', action='store_true', help='不真的调用 agent，只走一遍流程')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
+    p = sub.add_parser('upgrade-repair', help='升级 Mathlib 后按分片顺序修复 Mathlib2：agent 只改证明，调度器核对陈述不变')
+    p.add_argument('--run', required=True); p.add_argument('--target', required=True, help='新的 Mathlib 版本，例如 v4.33.1')
+    p.add_argument('--attempts', type=int, default=3); p.add_argument('--minutes', type=int, default=25)
+    p.add_argument('--start', help='从这个分片开始，例如 S0005'); p.add_argument('--effort', default='xhigh')
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
     p.add_argument('runs', nargs='+'); p.add_argument('--problems-from', help='以这个轮次做过的题为准（默认取交集）')
     p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
@@ -268,6 +272,10 @@ def main(argv=None):
     elif args.command == 'run-compare':
         from .scheduler import compare
         emit(compare(args.runs, args.problems_from))
+    elif args.command == 'upgrade-repair':
+        from .upgrade import repair
+        results = repair(args.run, args.target, args.attempts, args.minutes, args.start, args.effort)
+        emit(dict(results=results, stuck=[r['shard'] for r in results if r['status'] == 'stuck'])); return 0
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))

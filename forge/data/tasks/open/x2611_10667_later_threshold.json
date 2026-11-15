@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10667_later_threshold",
+  "statement": "(q r : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (hv : 2 + ((r : ℚ) - 1) / 2 < (padicValRat r (t - 1) : ℚ)) (k : ℤ) (hk : k = ((r : ℤ) - 1) * padicValRat r (t - 1)) : (r : ℤ) - k < -(r : ℤ)",
+  "closed": "∀ (q r : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (hv : 2 + ((r : ℚ) - 1) / 2 < (padicValRat r (t - 1) : ℚ)) (k : ℤ) (hk : k = ((r : ℤ) - 1) * padicValRat r (t - 1)), (r : ℤ) - k < -(r : ℤ)",
+  "informal": "Theorem 3.1 proof (later printed valuation threshold)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10667",
+  "original": "The hypothesis $v_{r}(t-1)>2+\\frac{r-1}{2}$ implies that $-r>r-k$",
+  "proposed_by": "audit-b1",
+  "hash": "4177118554",
+  "type": "∀ (q r : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + (↑r - 1) / 2 < ↑(padicValRat r (t - 1)) → ∀ (k : ℤ), k = (↑r - 1) * padicValRat r (t - 1) → ↑r - k < -↑r",
+  "attempts": [],
+  "created_at": "2026-11-16T02:59:24+0800",
+  "status": "open"
+}

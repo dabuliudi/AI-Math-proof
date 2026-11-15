@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16899_thm1_eq2_s1h2",
+  "statement": ": ∀ (K : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)), x2611_16899_key_family 14 K → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin 14 → ℕ) → Fin 14 →₀ ℕ) fun (i : Fin 14) => 1 + 15 * (↑i : ℕ)) (K x2611_16899_alpha * ∏ ij : Fin 14 × Fin 14, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range 15, (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin 14) (RatFunc ℚ)) (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (14 - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) x2611_16899_counterexample_polynomial",
+  "closed": "∀ (K : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)), x2611_16899_key_family 14 K → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin 14 → ℕ) → Fin 14 →₀ ℕ) fun (i : Fin 14) => 1 + 15 * (↑i : ℕ)) (K x2611_16899_alpha * ∏ ij : Fin 14 × Fin 14, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range 15, (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin 14) (RatFunc ℚ)) (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (14 - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) x2611_16899_counterexample_polynomial",
+  "informal": "x2611_16899_thm1_eq2 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16899_thm1_eq2",
+  "original": "",
+  "proposed_by": "queue-r5-w0",
+  "hash": "538299042",
+  "type": "∀ (K : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)), Mathlib2.x2611_16899_key_family 14 K → MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun i => 1 + 15 * ↑i) (K Mathlib2.x2611_16899_alpha * ∏ ij, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range 15, MvPolynomial.C (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (14 - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ)) Mathlib2.x2611_16899_counterexample_polynomial",
+  "attempts": [],
+  "created_at": "2026-11-16T03:04:34+0800",
+  "status": "open"
+}

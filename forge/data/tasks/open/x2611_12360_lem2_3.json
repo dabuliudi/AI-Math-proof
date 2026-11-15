@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_lem2_3",
+  "statement": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u v : ℝ) :\n  x2611_12360_G p M (u + (p : ℝ) / 2) = x2611_12360_G p M u ∧\n  |x2611_12360_G p M u - x2611_12360_G p M v| ≤\n    ((⌊((M : ℝ) - 1) ^ 2 / 4⌋ : ℤ) : ℝ) * |u - v|",
+  "closed": "∀ (p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u v : ℝ), x2611_12360_G p M (u + (p : ℝ) / 2) = x2611_12360_G p M u ∧\n  |x2611_12360_G p M u - x2611_12360_G p M v| ≤\n    ((⌊((M : ℝ) - 1) ^ 2 / 4⌋ : ℤ) : ℝ) * |u - v|",
+  "informal": "Lemma 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "Let $p,M\\geq 2$ be integers. For all real numbers $u,v$ ,\n\n(9)\n\n $G_{p,M}(u+p/2)=G_{p,M}(u)$ \n\nand\n\n(10)\n\n $|G_{p,M}(u)-G_{p,M}(v)|\\leq\\left\\lfloor\\frac{(M-1)^{2}}{4}\\right\\rfloor|u-v|.$",
+  "proposed_by": "audit-b1",
+  "hash": "3434450263",
+  "type": "∀ (p M : ℕ), 2 ≤ p → 2 ≤ M → ∀ (u v : ℝ), Mathlib2.x2611_12360_G p M (u + ↑p / 2) = Mathlib2.x2611_12360_G p M u ∧ |Mathlib2.x2611_12360_G p M u - Mathlib2.x2611_12360_G p M v| ≤ ↑⌊(↑M - 1) ^ 2 / 4⌋ * |u - v|",
+  "attempts": [],
+  "created_at": "2026-11-16T03:01:06+0800",
+  "status": "open"
+}

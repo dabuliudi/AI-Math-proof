@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16899_flagged_llt",
+  "statement": "noncomputable def x2611_16899_flagged_llt (n : ℕ) : MvPolynomial (Fin n) (RatFunc ℚ) :=\n  Finset.univ.sum (fun w : Fin n → Fin n =>\n    if ∀ j : Fin n, (w j).val < n - j.val then\n      MvPolynomial.C (RatFunc.X ^\n        ((Finset.univ : Finset (Fin n × Fin n)).filter\n          (fun ij => ij.1 < ij.2 ∧ w ij.2 < w ij.1)).card) *\n      Finset.univ.prod (fun j : Fin n => MvPolynomial.X (w j)) else 0)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:13:41+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w7",
+  "finished_at": "2026-11-16T02:13:48+0800",
+  "type": "(n : ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)"
+}

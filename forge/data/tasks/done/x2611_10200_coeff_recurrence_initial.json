@@ -1,0 +1,19 @@
+{
+  "name": "x2611_10200_coeff_recurrence_initial",
+  "statement": "(g : ℕ) (hg : 1 ≤ g) : (∀ m : ℤ, 0 ≤ m → x2611_10200_a g m - 2 * x2611_10200_a g (m - 1) + x2611_10200_a g (m - (g : ℤ) - 1) = 1) ∧ ∀ r : ℕ, r ≤ g → x2611_10200_a g (r : ℤ) = (2 : ℤ) ^ (r + 1) - 1",
+  "closed": "∀ (g : ℕ) (hg : 1 ≤ g), (∀ m : ℤ, 0 ≤ m → x2611_10200_a g m - 2 * x2611_10200_a g (m - 1) + x2611_10200_a g (m - (g : ℤ) - 1) = 1) ∧ ∀ r : ℕ, r ≤ g → x2611_10200_a g (r : ℤ) = (2 : ℤ) ^ (r + 1) - 1",
+  "informal": "Equations (2.1)–(2.2)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "$a_{m}-2a_{m-1}+a_{m-g-1}=1\\qquad(m\\geq 0),$ \n\nand hence\n\n(2.2)\n\n $a_{r}=2^{r+1}-1\\qquad(0\\leq r\\leq g).$",
+  "proposed_by": "audit-b1",
+  "hash": "3095030009",
+  "type": "∀ (g : ℕ), 1 ≤ g → (∀ (m : ℤ), 0 ≤ m → Mathlib2.x2611_10200_a g m - 2 * Mathlib2.x2611_10200_a g (m - 1) + Mathlib2.x2611_10200_a g (m - ↑g - 1) = 1) ∧ ∀ r ≤ g, Mathlib2.x2611_10200_a g ↑r = 2 ^ (r + 1) - 1",
+  "attempts": [],
+  "created_at": "2026-11-16T02:39:17+0800",
+  "status": "proved",
+  "claimed_by": "queue-r5-w1",
+  "claimed_at": "2026-11-16T02:40:39+0800",
+  "closed_by": "queue-r5-w1",
+  "finished_at": "2026-11-16T02:43:16+0800"
+}

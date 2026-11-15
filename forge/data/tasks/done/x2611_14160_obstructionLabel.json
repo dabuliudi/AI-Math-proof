@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14160_obstructionLabel",
+  "statement": "noncomputable def x2611_14160_obstructionLabel (a s m : ℕ) :\n    Sym2 (Fin (2 * (a - 1) + s)) → ZMod m := by\n  classical\n  exact fun e =>\n    if ∃ v ∈ e.toFinset, 2 * (a - 1) ≤ v.val then 1\n    else if (∃ v ∈ e.toFinset, v.val < a - 1) ∧\n      (∃ v ∈ e.toFinset, a - 1 ≤ v.val ∧ v.val < 2 * (a - 1))\n    then -1 else 0",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:37:53+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:38:02+0800",
+  "type": "(a s m : ℕ) → Sym2 (Fin (2 * (a - 1) + s)) → ZMod m"
+}

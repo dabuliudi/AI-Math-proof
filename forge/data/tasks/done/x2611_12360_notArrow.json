@@ -1,0 +1,16 @@
+{
+  "name": "x2611_12360_notArrow",
+  "statement": "def x2611_12360_notArrow (n r M : ℕ) (a : ℝ) : Prop :=\n  ∃ red : EuclideanSpace ℝ (Fin n) → Prop,\n    x2611_12360_noMono n r 1 red ∧\n    x2611_12360_noMono n M a (fun x => ¬ red x)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:30:38+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:30:50+0800",
+  "type": "ℕ → ℕ → ℕ → ℝ → Prop"
+}

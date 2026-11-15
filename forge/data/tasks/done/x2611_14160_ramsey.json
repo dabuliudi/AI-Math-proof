@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14160_ramsey",
+  "statement": "noncomputable def x2611_14160_ramsey {V : Type*} [Fintype V]\n    (G : SimpleGraph V) (r : ℕ) : ℕ :=\n  sInf {N : ℕ | ∀ w : Sym2 (Fin N) → Fin r,\n    ∃ (f : V ↪ Fin N) (c : Fin r),\n      ∀ e ∈ G.edgeSet, w (Sym2.map f e) = c}",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:36:18+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:36:31+0800",
+  "type": "{V : Type u_1} → [Fintype V] → SimpleGraph V → ℕ → ℕ"
+}

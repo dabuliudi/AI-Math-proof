@@ -1,0 +1,15 @@
+{
+  "name": "x2611_11972_cor2_3",
+  "statement": "(d : ℕ) (hd : 4 ≤ d) (he : Even d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈ Algebra.adjoin ℚ (Set.range (fun n : ℕ => (riemannZeta ((n + 2 : ℕ) : ℂ)).re))",
+  "closed": "∀ (d : ℕ) (hd : 4 ≤ d) (he : Even d), x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈ Algebra.adjoin ℚ (Set.range (fun n : ℕ => (riemannZeta ((n + 2 : ℕ) : ℂ)).re))",
+  "informal": "Corollary 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11972",
+  "original": "For any even integer $d\\geq 4$ , the $\\zeta^{\\sharp}(2,\\{1\\}^{d-3},\\overline{2})$ can be expressed as a combination of products of Riemann zeta values.",
+  "proposed_by": "audit-b1",
+  "hash": "830001399",
+  "type": "∀ (d : ℕ), 4 ≤ d → Even d → Mathlib2.x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈ Algebra.adjoin ℚ (Set.range fun n => (riemannZeta ↑(n + 2)).re)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:54:54+0800",
+  "status": "open"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_12360_modMem",
+  "statement": "def x2611_12360_modMem (T : ℝ) (I : Set ℝ) (a : ℝ) : Prop :=\n  ∃ x ∈ I, ∃ m : ℤ, a = x + (m : ℝ) * T",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:31:46+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:31:53+0800",
+  "type": "ℝ → Set ℝ → ℝ → Prop"
+}

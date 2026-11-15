@@ -1,0 +1,15 @@
+{
+  "name": "x2611_11287_thm1_4",
+  "statement": "(n : ℕ) (hn : 3 ≤ n) :\nAsymptotics.IsBigO Filter.atTop (fun H : ℕ => (H : ℝ) ^ (n + 1) * Real.log (H : ℝ)) (fun H : ℕ => (x2611_11287_exceptional_count n (H : ℤ) : ℝ)) ∧\nAsymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_exceptional_count 3 (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (4) * Real.log (H : ℝ))",
+  "closed": "∀ (n : ℕ) (hn : 3 ≤ n), Asymptotics.IsBigO Filter.atTop (fun H : ℕ => (H : ℝ) ^ (n + 1) * Real.log (H : ℝ)) (fun H : ℕ => (x2611_11287_exceptional_count n (H : ℤ) : ℝ)) ∧\nAsymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_exceptional_count 3 (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (4) * Real.log (H : ℝ))",
+  "informal": "Theorem 1.4",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11287",
+  "original": "For $n\\geq 3$ , we have $C_{n}(H)\\gg H^{n+1}\\log H$ . Furthermore, we have $C_{3}(H)\\asymp H^{4}\\log H$ .",
+  "proposed_by": "audit-b1",
+  "hash": "1744815703",
+  "type": "∀ (n : ℕ), 3 ≤ n → ((fun H => ↑H ^ (n + 1) * Real.log ↑H) =O[Filter.atTop] fun H => ↑(Mathlib2.x2611_11287_exceptional_count n ↑H)) ∧ (fun H => ↑(Mathlib2.x2611_11287_exceptional_count 3 ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ 4 * Real.log ↑H",
+  "attempts": [],
+  "created_at": "2026-11-16T03:05:45+0800",
+  "status": "open"
+}

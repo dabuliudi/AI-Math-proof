@@ -1,0 +1,16 @@
+{
+  "name": "x2611_16458_numerator",
+  "statement": "noncomputable def x2611_16458_numerator (n : ℕ) (p : Polynomial ℤ) : Polynomial ℤ :=\n  Finset.sum (Finset.range (n + 2)) (fun i =>\n    Polynomial.C (Finset.sum (Finset.range i) (fun j =>\n      (-1 : ℤ) ^ j * ((n + 1).choose j : ℤ) *\n        p.eval ((i - j - 1 : ℕ) : ℤ))) * Polynomial.X ^ i)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:12:02+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w3",
+  "finished_at": "2026-11-16T02:12:10+0800",
+  "type": "ℕ → Polynomial ℤ → Polynomial ℤ"
+}

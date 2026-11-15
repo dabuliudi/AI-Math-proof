@@ -1,0 +1,19 @@
+{
+  "name": "x2611_11972_sharp_example",
+  "statement": ": x2611_11972_sharp [2, -3] = 4 * x2611_11972_euler [2, -3] + 2 * x2611_11972_euler [-5]",
+  "closed": "x2611_11972_sharp [2, -3] = 4 * x2611_11972_euler [2, -3] + 2 * x2611_11972_euler [-5]",
+  "informal": "Example following (1.2)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11972",
+  "original": "$\\zeta^{\\sharp}(2,\\overline{3})=4\\zeta(2,\\overline{3})+2\\zeta(\\overline{5}).$",
+  "proposed_by": "audit-b1",
+  "hash": "145640677",
+  "type": "Mathlib2.x2611_11972_sharp [2, -3] = 4 * Mathlib2.x2611_11972_euler [2, -3] + 2 * Mathlib2.x2611_11972_euler [-5]",
+  "attempts": [],
+  "created_at": "2026-11-16T02:30:02+0800",
+  "status": "proved",
+  "claimed_by": "queue-lw-r4-w1",
+  "claimed_at": "2026-11-16T02:31:48+0800",
+  "closed_by": "queue-lw-r4-w1",
+  "finished_at": "2026-11-16T02:40:05+0800"
+}

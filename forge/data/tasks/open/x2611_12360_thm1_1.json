@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_thm1_1",
+  "statement": "(α : ℝ) (hα : 0 < α) (n : ℕ) (hn : 0 < n) :\n  x2611_12360_notArrow n 3 22 α",
+  "closed": "∀ (α : ℝ) (hα : 0 < α) (n : ℕ) (hn : 0 < n), x2611_12360_notArrow n 3 22 α",
+  "informal": "Theorem 1.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "For every $\\alpha>0$ and positive integer $n$ ,\n\n $\\mathbb{E}^{n}\\not\\to(\\ell_{3},\\alpha\\ell_{22}).$",
+  "proposed_by": "audit-b1",
+  "hash": "2128658896",
+  "type": "∀ (α : ℝ), 0 < α → ∀ (n : ℕ), 0 < n → Mathlib2.x2611_12360_notArrow n 3 22 α",
+  "attempts": [],
+  "created_at": "2026-11-16T02:59:41+0800",
+  "status": "open"
+}

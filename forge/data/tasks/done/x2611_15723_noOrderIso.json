@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15723_noOrderIso",
+  "statement": "def x2611_15723_noOrderIso {k l : ℕ}\n    (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) : Prop :=\n  ∀ (a : Fin k) (b : Fin l),\n    ¬ ∃ e : {x : Fin k // σ.SameCycle a x} ≃o\n        {y : Fin l // τ.SameCycle b y},\n      ∀ x y : {z : Fin k // σ.SameCycle a z},\n        σ x.val = y.val → τ (e x).val = (e y).val",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:18:55+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w4",
+  "finished_at": "2026-11-16T02:19:03+0800",
+  "type": "{k l : ℕ} → Equiv.Perm (Fin k) → Equiv.Perm (Fin l) → Prop"
+}

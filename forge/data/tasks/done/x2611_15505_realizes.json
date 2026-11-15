@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15505_realizes",
+  "statement": "def x2611_15505_realizes (n : ℕ) (p : Polynomial ℝ) (w : List ℕ) : Prop :=\n  p ≠ 0 ∧ p.natDegree = n ∧ x2611_15505_word_multiplicities n w ∧\n  ∃ x : Fin w.length → ℝ, StrictMono x ∧\n    ∀ j : ℕ, j < n →\n      ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[j] p).roots =\n        (Finset.univ.filter (fun i : Fin w.length => w.get i = j)).val.map x",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:20:00+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:20:12+0800",
+  "type": "ℕ → Polynomial ℝ → List ℕ → Prop"
+}

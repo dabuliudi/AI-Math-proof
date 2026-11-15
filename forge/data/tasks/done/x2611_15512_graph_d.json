@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15512_graph_d",
+  "statement": "noncomputable def x2611_15512_graph_d {α L R : Type*} [Fintype L] [Fintype R]\n    (E : Finset α) (l : α → L) (r : α → R) : MvPolynomial α ℝ := by\n  classical\n  exact x2611_15512_graph_star E l * x2611_15512_graph_star E r +\n    ((∏ a ∈ E, (1 + MvPolynomial.X a)) - 1) *\n      ((∑ A ∈ (E.powersetCard 2).filter\n          (fun A => (A.image l).card = 2 ∧ (A.image r).card = 2),\n        ∏ a ∈ A, MvPolynomial.X a) - ∑ a ∈ E, MvPolynomial.X a)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:22:40+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:22:47+0800",
+  "type": "{α : Type u_1} → {L : Type u_2} → {R : Type u_3} → [Fintype L] → [Fintype R] → Finset α → (α → L) → (α → R) → MvPolynomial α ℝ"
+}

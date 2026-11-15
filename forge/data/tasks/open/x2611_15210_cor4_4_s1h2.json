@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15210_cor4_4_s1h2",
+  "statement": ": ∀ (m : ℕ), 2 ≤ m → ∀ (t : ℕ), ∃ (p : (Fin t → Fin 7) → Fin (5 * t) → ZMod m), (∀ (a : Fin t → Fin 7) (j : Fin (5 * t)), p a j = 0 ∨ p a j = 1) ∧ Nat.card { v : Fin (2 * m) → Fin t → Fin 7 // ∑ i : Fin (2 * m), p (v i) = 0 } = (7 + 21 * (2 * m).choose m) ^ t",
+  "closed": "∀ (m : ℕ), 2 ≤ m → ∀ (t : ℕ), ∃ (p : (Fin t → Fin 7) → Fin (5 * t) → ZMod m), (∀ (a : Fin t → Fin 7) (j : Fin (5 * t)), p a j = 0 ∨ p a j = 1) ∧ Nat.card { v : Fin (2 * m) → Fin t → Fin 7 // ∑ i : Fin (2 * m), p (v i) = 0 } = (7 + 21 * (2 * m).choose m) ^ t",
+  "informal": "x2611_15210_cor4_4 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_cor4_4",
+  "original": "",
+  "proposed_by": "queue-r5-w2",
+  "hash": "2818931640",
+  "type": "∀ (m : ℕ), 2 ≤ m → ∀ (t : ℕ), ∃ p, (∀ (a : Fin t → Fin 7) (j : Fin (5 * t)), p a j = 0 ∨ p a j = 1) ∧ Nat.card { v // ∑ i, p (v i) = 0 } = (7 + 21 * (2 * m).choose m) ^ t",
+  "attempts": [],
+  "created_at": "2026-11-16T03:04:41+0800",
+  "status": "open"
+}

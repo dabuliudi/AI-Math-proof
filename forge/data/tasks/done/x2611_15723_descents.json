@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15723_descents",
+  "statement": "def x2611_15723_descents {n : ℕ} (π : Equiv.Perm (Fin n)) : Finset ℕ :=\n  (Finset.univ.filter (fun i : Fin n =>\n    ∃ j : Fin n, j.val = i.val + 1 ∧ π j < π i)).image (fun i => i.val + 1)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:13:01+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w4",
+  "finished_at": "2026-11-16T02:13:08+0800",
+  "type": "{n : ℕ} → Equiv.Perm (Fin n) → Finset ℕ"
+}

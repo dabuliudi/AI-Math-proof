@@ -1,0 +1,19 @@
+{
+  "name": "x2611_10200_lem3_1_s1h3",
+  "statement": ": ∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → (∀ (m : ℤ), 0 ≤ m → m < (↑k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ ∀ r ≤ g, x2611_10200_f g k N (↑(k + r) : ℤ) = x2611_10200_a g (↑(k + r) : ℤ) + 1 - (↑N : ℤ) * 2 ^ r",
+  "closed": "∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → (∀ (m : ℤ), 0 ≤ m → m < (↑k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ ∀ r ≤ g, x2611_10200_f g k N (↑(k + r) : ℤ) = x2611_10200_a g (↑(k + r) : ℤ) + 1 - (↑N : ℤ) * 2 ^ r",
+  "informal": "x2611_10200_lem3_1 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_10200_lem3_1",
+  "original": "",
+  "proposed_by": "queue-r5-w0",
+  "hash": "805195911",
+  "type": "∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → (∀ (m : ℤ), 0 ≤ m → m < ↑k → Mathlib2.x2611_10200_f g k N m = Mathlib2.x2611_10200_a g m) ∧ ∀ r ≤ g, Mathlib2.x2611_10200_f g k N ↑(k + r) = Mathlib2.x2611_10200_a g ↑(k + r) + 1 - ↑N * 2 ^ r",
+  "attempts": [],
+  "created_at": "2026-11-16T02:50:08+0800",
+  "status": "proved",
+  "claimed_by": "queue-r5-w0",
+  "claimed_at": "2026-11-16T02:50:15+0800",
+  "closed_by": "queue-r5-w0",
+  "finished_at": "2026-11-16T02:52:57+0800"
+}

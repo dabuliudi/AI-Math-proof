@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15505_lem4_1",
+  "statement": "(m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ)\n  (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ)\n  (hcert : Matrix.vecMul y E = Matrix.vecMul z B)\n  (hz : ∀ i, 0 ≤ z i) (hz0 : z ≠ 0) :\n  ¬ ∃ g : Fin d → ℝ, E.mulVec g = 0 ∧ ∀ i, 0 < B.mulVec g i",
+  "closed": "∀ (m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ)\n  (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ)\n  (hcert : Matrix.vecMul y E = Matrix.vecMul z B)\n  (hz : ∀ i, 0 ≤ z i) (hz0 : z ≠ 0), ¬ ∃ g : Fin d → ℝ, E.mulVec g = 0 ∧ ∀ i, 0 < B.mulVec g i",
+  "informal": "Lemma 4.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "If $y^{T}E=z^{T}B$ with $z\\geq 0$ and $z\\neq 0$ , the strict system\n $Eg=0$ , $Bg>0$ has no solution.",
+  "proposed_by": "audit-b1",
+  "hash": "182241366",
+  "type": "∀ (m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ) (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ), Matrix.vecMul y E = Matrix.vecMul z B → (∀ (i : Fin k), 0 ≤ z i) → z ≠ 0 → ¬∃ g, E.mulVec g = 0 ∧ ∀ (i : Fin k), 0 < B.mulVec g i",
+  "attempts": [],
+  "created_at": "2026-11-16T02:53:35+0800",
+  "status": "open"
+}

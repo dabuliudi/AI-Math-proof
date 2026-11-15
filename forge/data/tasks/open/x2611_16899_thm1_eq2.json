@@ -1,0 +1,58 @@
+{
+  "name": "x2611_16899_thm1_eq2",
+  "statement": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial",
+  "closed": "∀ (K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c), c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial",
+  "informal": "Theorem 1, equation (2)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16899",
+  "original": "Set\n\n $\\alpha=(0,(0,1,2)^{4},2)=(0,0,1,2,0,1,2,0,1,2,0,1,2,2),\\qquad\\gamma=(1^{14}).$ \n\nThen $\\alpha^{+}=(2^{5},1^{4},0^{5})$ and\n\n(2)\n\n $\\begin{split}c_{\\alpha,\\gamma}(t)={}&t^{5}+t^{6}+2t^{7}-t^{10}+5t^{11}+10t^{12}+26t^{13}+42t^{14}\\\\\n&+58t^{15}+66t^{16}+59t^{17}+42t^{18}+22t^{19}+7t^{20}+t^{21}.\\end{split}$",
+  "proposed_by": "audit-b1",
+  "hash": "862758913",
+  "type": "∀ (K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ), Mathlib2.x2611_16899_key_family 14 K → Mathlib2.x2611_16899_atom_family 14 RatFunc.X A → Mathlib2.x2611_16899_expansion 14 14 (K Mathlib2.x2611_16899_alpha) A c → (c fun x => 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ)) Mathlib2.x2611_16899_counterexample_polynomial",
+  "attempts": [
+    {
+      "agent": "queue-r5-w0",
+      "note": "Target independently computed and matches exactly, including -t^10 and value 341. Checked generic linear-functional extraction lemma in eq2_helpers.lean. Prepared compiling two-hole skeleton eq2_sketch.lean: (1) general finite positive-root-kernel orthogonality for t-atoms; (2) explicit coeff_m(K_alpha*W) calculation. W=prod i<j (Xj-Xi)*sum k=0..n tau^k Xi^k Xj^(n-k), m_j=1+(n+1)j. Small orthogonality checks n<=4 at five tau values passed; sparse Python calculation gives K_alpha 369408 monomials and exactly target polynomial. Full Lean proof needs Hecke-eigenfunctional/orthogonality theory and a certified finite calculation, absent from library. All drafts, scripts, detailed notes under forge/data/staging/agents/queue-r5/queue-r5-w0/eq2_*; registering skeleton next.",
+      "at": "2026-11-16T03:03:04+0800"
+    }
+  ],
+  "created_at": "2026-11-16T02:44:23+0800",
+  "status": "open",
+  "claimed_by": "queue-r5-w0",
+  "claimed_at": "2026-11-16T02:54:05+0800",
+  "sketches": [
+    {
+      "agent": "queue-r5-w0",
+      "body": "open scoped BigOperators\n\nlemma x2611_16899_thm1_eq2_aux1\n    (n d : ℕ) (P : MvPolynomial (Fin n) (RatFunc ℚ))\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n    (c : (Fin n → ℕ) → RatFunc ℚ)\n    (β : Fin n → ℕ) (hβ : ∀ i, β i ≤ d) (hs : ∑ i, β i = d)\n    (L : MvPolynomial (Fin n) (RatFunc ℚ) →ₗ[RatFunc ℚ] RatFunc ℚ)\n    (hL : ∀ b : Fin n → ℕ, (∑ i, b i) = d →\n      L (A b) = if b = β then 1 else 0)\n    (hc : x2611_16899_expansion n d P A c) :\n    L P = c β := by\n  classical\n  let γ₀ : Fin n → Fin (d + 1) := fun i => ⟨β i, Nat.lt_succ_of_le (hβ i)⟩\n  have hval : (fun i => (γ₀ i).val) = β := rfl\n  calc\n    L P = ∑ γ : Fin n → Fin (d + 1),\n        if (∑ i, (γ i).val) = d then\n          c (fun i => (γ i).val) * L (A (fun i => (γ i).val)) else 0 := by\n      rw [hc, map_sum]\n      apply Finset.sum_congr rfl\n      intro γ _\n      split_ifs <;> simp [MvPolynomial.C_mul', map_smul]\n    _ = c β := by\n      rw [Finset.sum_eq_single γ₀]\n      · rw [hval, if_pos hs, hL β hs, if_pos rfl, mul_one]\n      · intro γ _ hne\n        split_ifs with hsum\n        · rw [hL _ hsum, if_neg, mul_zero]\n          intro he\n          apply hne\n          funext i\n          exact Fin.ext (congrFun he i)\n        · rfl\n      · simp\n\nlemma x2611_16899_thm1_eq2_aux2\n    (n : ℕ) (τ : RatFunc ℚ)\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n    (hA : x2611_16899_atom_family n τ A) :\n    let W : MvPolynomial (Fin n) (RatFunc ℚ) := ∏ ij : Fin n × Fin n,\n        if ij.1 < ij.2 then\n          (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) *\n            ∑ k ∈ Finset.range (n + 1),\n              MvPolynomial.C (τ ^ k) * MvPolynomial.X ij.1 ^ k *\n                MvPolynomial.X ij.2 ^ (n - k)\n        else 1\n    let m : Fin n →₀ ℕ := Finsupp.equivFunOnFinite.symm\n      (fun i => 1 + (n + 1) * i.val)\n    ∀ b : Fin n → ℕ, (∑ i, b i) = n →\n      MvPolynomial.coeff m (A b * W) = if b = (fun _ => 1) then 1 else 0 := by\n  classical\n  dsimp only\n  sorry\n\nlemma x2611_16899_thm1_eq2_aux3\n    (K : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ))\n    (hK : x2611_16899_key_family 14 K) :\n    let W : MvPolynomial (Fin 14) (RatFunc ℚ) := ∏ ij : Fin 14 × Fin 14,\n        if ij.1 < ij.2 then\n          (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) *\n            ∑ k ∈ Finset.range 15,\n              MvPolynomial.C (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k *\n                MvPolynomial.X ij.2 ^ (14 - k)\n        else 1\n    let m : Fin 14 →₀ ℕ := Finsupp.equivFunOnFinite.symm\n      (fun i => 1 + 15 * i.val)\n    MvPolynomial.coeff m (K x2611_16899_alpha * W) =\n      algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial := by\n  classical\n  dsimp only\n  sorry\n\ntheorem x2611_16899_thm1_eq2\n    (K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ))\n    (c : (Fin 14 → ℕ) → RatFunc ℚ)\n    (hK : x2611_16899_key_family 14 K)\n    (hA : x2611_16899_atom_family 14 RatFunc.X A)\n    (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) :\n    c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ)\n      x2611_16899_counterexample_polynomial := by\n  classical\n  let W : MvPolynomial (Fin 14) (RatFunc ℚ) := ∏ ij : Fin 14 × Fin 14,\n        if ij.1 < ij.2 then\n          (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) *\n            ∑ k ∈ Finset.range 15,\n              MvPolynomial.C (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k *\n                MvPolynomial.X ij.2 ^ (14 - k)\n        else 1\n  let m : Fin 14 →₀ ℕ := Finsupp.equivFunOnFinite.symm\n    (fun i => 1 + 15 * i.val)\n  let L : MvPolynomial (Fin 14) (RatFunc ℚ) →ₗ[RatFunc ℚ] RatFunc ℚ :=\n    (MvPolynomial.lcoeff (RatFunc ℚ) m).comp (LinearMap.mulRight (RatFunc ℚ) W)\n  have hdual : ∀ b : Fin 14 → ℕ, (∑ i, b i) = 14 →\n      L (A b) = if b = (fun _ => 1) then 1 else 0 :=\n    x2611_16899_thm1_eq2_aux2 14 RatFunc.X A hA\n  have hext := x2611_16899_thm1_eq2_aux1 14 14 (K x2611_16899_alpha) A c\n    (fun _ => 1) (by intro i; omega) (by simp) L hdual hc\n  have hcalc : L (K x2611_16899_alpha) =\n      algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial :=\n    x2611_16899_thm1_eq2_aux3 K hK\n  exact hext.symm.trans hcalc\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16899_thm1_eq2_s1h1",
+          "status": "open",
+          "statement": "∀ (n : ℕ) (τ : RatFunc ℚ) (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)), x2611_16899_atom_family n τ A → ∀ (b : Fin n → ℕ), ∑ i : Fin n, b i = n → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (A b * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = if b = fun (x : Fin n) => 1 then 1 else 0",
+          "args": [
+            "n",
+            "τ",
+            "A",
+            "hA"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16899_thm1_eq2_s1h2",
+          "status": "open",
+          "statement": "∀ (K : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)), x2611_16899_key_family 14 K → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin 14 → ℕ) → Fin 14 →₀ ℕ) fun (i : Fin 14) => 1 + 15 * (↑i : ℕ)) (K x2611_16899_alpha * ∏ ij : Fin 14 × Fin 14, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range 15, (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin 14) (RatFunc ℚ)) (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (14 - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) x2611_16899_counterexample_polynomial",
+          "args": [
+            "K",
+            "hK"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T03:04:34+0800"
+    }
+  ]
+}

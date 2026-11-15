@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15505_word_multiplicities",
+  "statement": "def x2611_15505_word_multiplicities (n : ℕ) (w : List ℕ) : Prop :=\n  w.length = n * (n + 1) / 2 ∧ (∀ j ∈ w, j < n) ∧\n  ∀ j : ℕ, j < n → w.count j = n - j",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:16:01+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:16:10+0800",
+  "type": "ℕ → List ℕ → Prop"
+}

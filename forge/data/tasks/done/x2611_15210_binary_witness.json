@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15210_binary_witness",
+  "statement": "def x2611_15210_binary_witness (m r L : ℕ) (B : ℝ) : Prop :=\n  ∃ (N : ℕ) (a : Fin N → Fin r → ZMod m),\n    B ≤ (N : ℝ) ∧ (∀ i j, a i j = 0 ∨ a i j = 1) ∧\n    ∀ I : Finset (Fin N), I.card = L → ∑ i ∈ I, a i ≠ 0",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:12:14+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:12:21+0800",
+  "type": "ℕ → ℕ → ℕ → ℝ → Prop"
+}

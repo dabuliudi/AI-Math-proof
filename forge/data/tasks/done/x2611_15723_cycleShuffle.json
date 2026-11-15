@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15723_cycleShuffle",
+  "statement": "noncomputable def x2611_15723_cycleShuffle {k l : ℕ}\n    (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) :\n    Finset (Equiv.Perm (Fin (k + l))) := by\n  classical\n  exact Finset.univ.filter (fun π =>\n    ∃ (e : Fin k ↪o Fin (k + l)) (f : Fin l ↪o Fin (k + l)),\n      Disjoint (Set.range e) (Set.range f) ∧\n      Set.range e ∪ Set.range f = Set.univ ∧\n      (∀ i, π (e i) = e (σ i)) ∧ (∀ j, π (f j) = f (τ j)))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:16:33+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w4",
+  "finished_at": "2026-11-16T02:16:40+0800",
+  "type": "{k l : ℕ} → Equiv.Perm (Fin k) → Equiv.Perm (Fin l) → Finset (Equiv.Perm (Fin (k + l)))"
+}

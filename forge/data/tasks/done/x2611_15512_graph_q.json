@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15512_graph_q",
+  "statement": "noncomputable def x2611_15512_graph_q {α L R : Type*}\n    (E : Finset α) (l : α → L) (r : α → R) : MvPolynomial α ℝ := by\n  classical\n  exact MvPolynomial.C (1 / 4 : ℝ) *\n    ∑ A ∈ E.powersetCard 5, ∑ z ∈ A,\n      if ((A.erase z).image l).card = 2 ∧ ((A.erase z).image r).card = 2 ∧\n          Xor (l z ∈ (A.erase z).image l) (r z ∈ (A.erase z).image r) then\n        MvPolynomial.X z *\n          ∑ B ∈ ((A.erase z).powersetCard 2).filter\n              (fun B => (B.image l).card = 2 ∧ (B.image r).card = 2),\n            ((∏ a ∈ B, MvPolynomial.X a) -\n              ∏ a ∈ A.erase z \\ B, MvPolynomial.X a) ^ 2\n      else 0",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:24:12+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:24:20+0800",
+  "type": "{α : Type u_1} → {L : Type u_2} → {R : Type u_3} → Finset α → (α → L) → (α → R) → MvPolynomial α ℝ"
+}

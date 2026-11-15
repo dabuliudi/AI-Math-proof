@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16923_lemma2_5",
+  "statement": "(N r : ℕ) (hN : 1 ≤ N) (k : Fin r → ℕ) (hk : ∀ i, 0 < k i) : x2611_16923_li r true N none (x2611_16923_entries k) = ∑ i ∈ Finset.range (r + 1), (-1 : MvPowerSeries (Fin r) ℚ) ^ i * x2611_16923_li r false 1 (some N) ((x2611_16923_entries k).take i).reverse * x2611_16923_li r true 1 none ((x2611_16923_entries k).drop i)",
+  "closed": "∀ (N r : ℕ) (hN : 1 ≤ N) (k : Fin r → ℕ) (hk : ∀ i, 0 < k i), x2611_16923_li r true N none (x2611_16923_entries k) = ∑ i ∈ Finset.range (r + 1), (-1 : MvPowerSeries (Fin r) ℚ) ^ i * x2611_16923_li r false 1 (some N) ((x2611_16923_entries k).take i).reverse * x2611_16923_li r true 1 none ((x2611_16923_entries k).drop i)",
+  "informal": "Lemma 2.5",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16923",
+  "original": "For every $N\\in{\\mathbb{Z}}_{\\geq 1}$ and every index,\n\n(2.4)\n\n $\\operatorname{Li}^{\\star,N\\leq}_{k_{1},\\ldots,k_{r}}(z_{1},\\ldots,z_{r})=\\sum_{i=0}^{r}(-1)^{i}\\operatorname{Li}^{<N}_{k_{i},\\ldots,k_{1}}(z_{i},\\ldots,z_{1})\\operatorname{Li}^{\\star}_{k_{i+1},\\ldots,k_{r}}(z_{i+1},\\ldots,z_{r})$ \n\nin ${\\mathbb{Q}}[[z_{1},\\ldots,z_{r}]]$ .",
+  "proposed_by": "audit-b1",
+  "hash": "4122343523",
+  "type": "∀ (N r : ℕ), 1 ≤ N → ∀ (k : Fin r → ℕ), (∀ (i : Fin r), 0 < k i) → Mathlib2.x2611_16923_li r true N none (Mathlib2.x2611_16923_entries k) = ∑ i ∈ Finset.range (r + 1), (-1) ^ i * Mathlib2.x2611_16923_li r false 1 (some N) (List.take i (Mathlib2.x2611_16923_entries k)).reverse * Mathlib2.x2611_16923_li r true 1 none (List.drop i (Mathlib2.x2611_16923_entries k))",
+  "attempts": [],
+  "created_at": "2026-11-16T02:59:52+0800",
+  "status": "open"
+}

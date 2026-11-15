@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_thm2_1",
+  "statement": "{α : Type*} [Fintype α] (M : Matroid α) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) :\n  0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+  "closed": "∀ {α : Type*} [Fintype α] (M : Matroid α) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a), 0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+  "informal": "Theorem 2.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "For every rank- $3$ matroid $M$ , every pair of distinct elements $e,f$ \nand every $x>0$ , $(\\Delta_{e,f}B_{M})(x)\\geq 0$ .",
+  "proposed_by": "audit-b1",
+  "hash": "3443511443",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) → 0 ≤ (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:49:30+0800",
+  "status": "open"
+}

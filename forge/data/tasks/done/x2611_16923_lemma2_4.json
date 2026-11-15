@@ -1,0 +1,19 @@
+{
+  "name": "x2611_16923_lemma2_4",
+  "statement": "(r : ℕ) (hr : 0 < r) (k : Fin r → ℕ) (hk : ∀ i, 0 < k i) : x2611_16923_li r true 1 none (x2611_16923_entries k) = ∑ c : Composition r, x2611_16923_li r false 1 none (x2611_16923_blocks k c)",
+  "closed": "∀ (r : ℕ) (hr : 0 < r) (k : Fin r → ℕ) (hk : ∀ i, 0 < k i), x2611_16923_li r true 1 none (x2611_16923_entries k) = ∑ c : Composition r, x2611_16923_li r false 1 none (x2611_16923_blocks k c)",
+  "informal": "Lemma 2.4",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16923",
+  "original": "For every nonempty index $\\bm{k}=(k_{1},\\ldots,k_{r})$ ,\n\n(2.3)\n\n $\\operatorname{Li}^{\\star}_{k_{1},\\ldots,k_{r}}(z_{1},\\ldots,z_{r})=\\sum_{\\begin{subarray}{c}1\\leq q\\leq r\\\\\n0=i_{0}<i_{1}<\\cdots<i_{q}=r\\end{subarray}}\\operatorname{Li}_{K_{1},\\ldots,K_{q}}(Z_{1},\\ldots,Z_{q}),$ \n\nwhere\n\n $K_{h}=\\sum_{\\nu=i_{h-1}+1}^{i_{h}}k_{\\nu},\\qquad Z_{h}=\\prod_{\\nu=i_{h-1}+1}^{i_{h}}z_{\\nu}\\qquad(1\\leq h\\leq q).$",
+  "proposed_by": "audit-b1",
+  "hash": "2522611766",
+  "type": "∀ (r : ℕ), 0 < r → ∀ (k : Fin r → ℕ), (∀ (i : Fin r), 0 < k i) → Mathlib2.x2611_16923_li r true 1 none (Mathlib2.x2611_16923_entries k) = ∑ c, Mathlib2.x2611_16923_li r false 1 none (Mathlib2.x2611_16923_blocks k c)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:35:46+0800",
+  "status": "proved",
+  "claimed_by": "queue-r5-w2",
+  "claimed_at": "2026-11-16T02:40:39+0800",
+  "closed_by": "queue-r5-w2",
+  "finished_at": "2026-11-16T02:51:33+0800"
+}

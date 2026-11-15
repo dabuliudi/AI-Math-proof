@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10200_lem2_1",
+  "statement": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) : (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * 2 ^ r) ∧ ((N : ℝ) ≤ x2611_10200_M g k → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (∀ H : ℕ → ℤ, x2611_10200_standard g k N H → x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)",
+  "closed": "∀ (g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N), (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * 2 ^ r) ∧ ((N : ℝ) ≤ x2611_10200_M g k → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (∀ H : ℕ → ℤ, x2611_10200_standard g k N H → x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)",
+  "informal": "Lemma 2.1 (Initial block)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "For $0\\leq m<k$ , one has $f_{m}=a_{m}$ . For $0\\leq r\\leq g$ ,\n\n(2.8)\n\n $f_{k+r}=a_{k+r}+1-N2^{r}.$ \n\nThus $N\\leq M_{g,k}$ implies $f_{m}\\geq 0$ for $m<L$ . Conversely, completeness implies $N\\leq M_{g,k}$ .",
+  "proposed_by": "audit-b1",
+  "hash": "1228249419",
+  "type": "∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → (∀ (m : ℤ), 0 ≤ m → m < ↑k → Mathlib2.x2611_10200_f g k N m = Mathlib2.x2611_10200_a g m) ∧ (∀ r ≤ g, Mathlib2.x2611_10200_f g k N ↑(k + r) = Mathlib2.x2611_10200_a g ↑(k + r) + 1 - ↑N * 2 ^ r) ∧ (↑N ≤ Mathlib2.x2611_10200_M g k → ∀ m < ↑(g + k + 1), 0 ≤ Mathlib2.x2611_10200_f g k N m) ∧ ∀ (H : ℕ → ℤ), Mathlib2.x2611_10200_standard g k N H → Mathlib2.x2611_10200_complete H → ↑N ≤ Mathlib2.x2611_10200_M g k",
+  "attempts": [],
+  "created_at": "2026-11-16T03:07:48+0800",
+  "status": "open"
+}

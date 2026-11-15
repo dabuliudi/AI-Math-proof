@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14198_minimal",
+  "statement": "def x2611_14198_minimal (d p r : ℕ) [Fact p.Prime] : Prop :=\n  (x2611_14198_point_count d p r : ℝ) =\n    (p : ℝ) ^ r + 1 - 2 * (((d - 1) / 2 : ℕ) : ℝ) * Real.sqrt ((p : ℝ) ^ r)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:33:07+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:33:16+0800",
+  "type": "ℕ → (p : ℕ) → ℕ → [Fact (Nat.Prime p)] → Prop"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15723_fundamental",
+  "statement": "def x2611_15723_fundamental (m n : ℕ) (J : Finset ℕ)\n    (x : Fin m → ℚ) : ℚ :=\n  ∑ w : Fin n → Fin m,\n    if Monotone w ∧\n        (∀ i j : Fin n, j.val = i.val + 1 → i.val + 1 ∈ J → w i < w j)\n    then ∏ i : Fin n, x (w i) else 0",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:23:36+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w4",
+  "finished_at": "2026-11-16T02:23:43+0800",
+  "type": "(m : ℕ) → ℕ → Finset ℕ → (Fin m → ℚ) → ℚ"
+}

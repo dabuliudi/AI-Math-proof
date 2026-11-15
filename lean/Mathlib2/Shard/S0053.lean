@@ -124,4 +124,86 @@ noncomputable def x2611_16899_counterexample_polynomial : Polynomial ℚ :=
   22*Polynomial.X^19 + 7*Polynomial.X^20 + Polynomial.X^21
 end
 
+-- forge:entry x2611_16458_numerator kind=definition origin=definition
+section
+noncomputable def x2611_16458_numerator (n : ℕ) (p : Polynomial ℤ) : Polynomial ℤ :=
+  Finset.sum (Finset.range (n + 2)) (fun i =>
+    Polynomial.C (Finset.sum (Finset.range i) (fun j =>
+      (-1 : ℤ) ^ j * ((n + 1).choose j : ℤ) *
+        p.eval ((i - j - 1 : ℕ) : ℤ))) * Polynomial.X ^ i)
+end
+
+-- forge:entry x2611_15210_binary_witness kind=definition origin=definition
+section
+def x2611_15210_binary_witness (m r L : ℕ) (B : ℝ) : Prop :=
+  ∃ (N : ℕ) (a : Fin N → Fin r → ZMod m),
+    B ≤ (N : ℝ) ∧ (∀ i j, a i j = 0 ∨ a i j = 1) ∧
+    ∀ I : Finset (Fin N), I.card = L → ∑ i ∈ I, a i ≠ 0
+end
+
+-- forge:entry lw_46560 kind=disproved origin=external
+section
+/- Solve the inequality: \\(\\frac{a+b+c+d}{4} \\ge \\sqrt{\\sqrt{abcd}}\\) -/
+theorem lw_46560_disproof :
+    ¬ (∀ (a b c d : ℝ),
+      (a + b + c + d) / 4 ≥ Real.sqrt (Real.sqrt (a * b * c * d))) := by
+  intro h
+  have hcounter := h (-4) 0 0 0
+  norm_num at hcounter
+end
+
+-- forge:entry lw_47241 kind=proved origin=external
+section
+/- And for this, we have $2a^2+2b^2+c^2 \ge \frac{\sqrt{10}}{5}(2a+4b)c.$ -/
+theorem lw_47241 (a b c : ℝ) :
+    2 * a ^ 2 + 2 * b ^ 2 + c ^ 2 ≥
+      (Real.sqrt 10 / 5) * (2 * a + 4 * b) * c := by
+  have hs : (Real.sqrt (10 : ℝ)) ^ 2 = 10 := Real.sq_sqrt (by norm_num)
+  have h₁ := sq_nonneg (Real.sqrt 10 * a - c)
+  have h₂ := sq_nonneg (Real.sqrt 10 * b - 2 * c)
+  ring_nf at h₁ h₂
+  rw [hs] at h₁ h₂
+  nlinarith
+end
+
+-- forge:entry lw_49560 kind=proved origin=external
+section
+/- Let $x;y;z>0$ and $x+y+z=3$ . Prove that: $\sum \frac{4+\sqrt{x}}{4-x}\geq 5$ -/
+lemma lw_49560_aux1 (s : ℝ) (hs : 0 ≤ s) (h : s ^ 2 < 4) :
+    (13 * s ^ 2 + 17) / 18 ≤ (4 + s) / (4 - s ^ 2) := by
+  apply (div_le_div_iff₀ (by norm_num : (0 : ℝ) < 18) (by linarith)).2
+  have hp : 0 ≤ (s - 1) ^ 2 * (13 * s ^ 2 + 26 * s + 4) :=
+    mul_nonneg (sq_nonneg _) (by positivity)
+  nlinarith [hp]
+
+theorem lw_49560 (x y z : ℝ) (hx : 0 < x ∧ 0 < y ∧ 0 < z)
+    (h : x + y + z = 3) :
+    (4 + Real.sqrt x) / (4 - x) + (4 + Real.sqrt y) / (4 - y) +
+      (4 + Real.sqrt z) / (4 - z) ≥ 5 := by
+  obtain ⟨hx, hy, hz⟩ := hx
+  have hsx : (Real.sqrt x) ^ 2 = x := Real.sq_sqrt (le_of_lt hx)
+  have hsy : (Real.sqrt y) ^ 2 = y := Real.sq_sqrt (le_of_lt hy)
+  have hsz : (Real.sqrt z) ^ 2 = z := Real.sq_sqrt (le_of_lt hz)
+  have hbx := lw_49560_aux1 (Real.sqrt x) (Real.sqrt_nonneg x) (by rw [hsx]; linarith)
+  have hby := lw_49560_aux1 (Real.sqrt y) (Real.sqrt_nonneg y) (by rw [hsy]; linarith)
+  have hbz := lw_49560_aux1 (Real.sqrt z) (Real.sqrt_nonneg z) (by rw [hsz]; linarith)
+  rw [hsx] at hbx
+  rw [hsy] at hby
+  rw [hsz] at hbz
+  linarith
+end
+
+-- forge:entry x2611_16899_prefix_height kind=definition origin=definition
+section
+def x2611_16899_prefix_height {n : ℕ} (b : Fin n → ℕ) (k : ℕ) : ℤ :=
+  (k : ℤ) - Finset.univ.sum (fun i : Fin n => if i.val < k then (b i : ℤ) else 0)
+end
+
+-- forge:entry x2611_16338_edgeClass kind=definition origin=definition
+section
+def x2611_16338_edgeClass {V : Type*} (G : SimpleGraph V)
+    (φ : V → ℕ) (r : ℕ) : Set (Sym2 V) :=
+  {e | e ∈ G.edgeSet ∧ x2611_16338_vertexSum φ e = r}
+end
+
 end Mathlib2

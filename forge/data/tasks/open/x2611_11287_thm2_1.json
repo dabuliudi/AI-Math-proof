@@ -1,0 +1,15 @@
+{
+  "name": "x2611_11287_thm2_1",
+  "statement": "(n k : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ))\n(hdim : Module.finrank ℤ S = k) :\nAsymptotics.IsTheta Filter.atTop\n (fun H : ℕ => (x2611_11287_lattice_count S (H : ℤ) : ℝ))\n (fun H : ℕ => (H : ℝ) ^ k)",
+  "closed": "∀ (n k : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ))\n(hdim : Module.finrank ℤ S = k), Asymptotics.IsTheta Filter.atTop\n (fun H : ℕ => (x2611_11287_lattice_count S (H : ℤ) : ℝ))\n (fun H : ℕ => (H : ℝ) ^ k)",
+  "informal": "Theorem 2.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11287",
+  "original": "Let $S$ be a submodule of ${\\mathcal{M}}_{n}({\\mathbb{Z}})$ with $\\dim S=k$ (considered over ${\\mathbb{Z}}$ ). Then, we have\n\n $\\#(S\\cap{\\mathcal{M}}_{n}({\\mathbb{Z}};H))\\asymp_{S}H^{k}.$",
+  "proposed_by": "audit-b1",
+  "hash": "647554210",
+  "type": "∀ (n k : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)), Module.finrank ℤ ↥S = k → (fun H => ↑(Mathlib2.x2611_11287_lattice_count S ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ k",
+  "attempts": [],
+  "created_at": "2026-11-16T03:05:28+0800",
+  "status": "open"
+}

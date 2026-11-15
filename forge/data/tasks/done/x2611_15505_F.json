@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15505_F",
+  "statement": "noncomputable def x2611_15505_F (u r : ℝ) : Polynomial ℝ :=\n  Polynomial.C (1 / 30 : ℝ) * Polynomial.X ^ 6 -\n  Polynomial.C ((1 + r) / 10) * Polynomial.X ^ 5 -\n  Polynomial.C ((u ^ 2 + u + 2 * u * r - 2 * r - 1) / 12) * Polynomial.X ^ 4 +\n  Polynomial.C (u * (1 + u + 2 * r) / 6) * Polynomial.X ^ 3",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:25:04+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:25:19+0800",
+  "type": "ℝ → ℝ → Polynomial ℝ"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14160_forestRatios",
+  "statement": "def x2611_14160_forestRatios (m : ℕ) : Set ℝ :=\n  {r | ∃ (n : ℕ) (F : SimpleGraph (Fin n)), F.IsAcyclic ∧\n    Nat.card F.edgeSet = m ∧\n    r = (x2611_14160_zeroSumRamsey F m : ℝ) / (x2611_14160_ramsey F 2 : ℝ)}",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:38:06+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:38:15+0800",
+  "type": "ℕ → Set ℝ"
+}

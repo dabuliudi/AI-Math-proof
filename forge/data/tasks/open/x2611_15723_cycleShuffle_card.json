@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15723_cycleShuffle_card",
+  "statement": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) :\n  (x2611_15723_cycleShuffle σ τ).card = Nat.choose (k + l) k",
+  "closed": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ), (x2611_15723_cycleShuffle σ τ).card = Nat.choose (k + l) k",
+  "informal": "Section 1.1, cardinality with no order-isomorphic cycles",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15723",
+  "original": "We first investigate the case when no cycle of $\\sigma$ is order-isomorphic to a cycle of $\\tau$ ; we say that $\\sigma$ and $\\tau$ have no order-isomorphic cycles. In this case, we have $|\\sigma\\shuffle_{c}\\tau|=\\binom{n}{k}$ , since $\\pi\\in\\sigma\\shuffle_{c}\\tau$ is uniquely determined by the partition $[n]=K\\sqcup L$ .",
+  "proposed_by": "audit-b1",
+  "hash": "465282007",
+  "type": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), Mathlib2.x2611_15723_noOrderIso σ τ → (Mathlib2.x2611_15723_cycleShuffle σ τ).card = (k + l).choose k",
+  "attempts": [],
+  "created_at": "2026-11-16T02:54:34+0800",
+  "status": "open"
+}

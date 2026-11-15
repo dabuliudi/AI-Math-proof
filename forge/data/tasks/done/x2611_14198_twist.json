@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14198_twist",
+  "statement": "noncomputable def x2611_14198_twist (d : ℕ) (χ : DirichletCharacter ℂ d) : DirichletCharacter ℂ (4 * d) :=\n  DirichletCharacter.changeLevel (Nat.dvd_mul_left d 4) χ *\n    DirichletCharacter.changeLevel (Nat.dvd_mul_right 4 d)\n      (ZMod.χ₄.ringHomComp (Int.castRingHom ℂ))",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:34:42+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:34:57+0800",
+  "type": "(d : ℕ) → DirichletCharacter ℂ d → DirichletCharacter ℂ (4 * d)"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14754_nonattacking",
+  "statement": "def x2611_14754_nonattacking {n d : ℕ} (S : Finset (Fin d → ZMod n)) : Prop :=\n  ∀ x ∈ S, ∀ y ∈ S, x ≠ y →\n    ¬ ∃ v : Fin d → ℤ, x2611_14754_direction d v ∧\n      ∃ c : ZMod n, x - y = fun i => c * (v i : ZMod n)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:22:28+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w7",
+  "finished_at": "2026-11-16T02:22:35+0800",
+  "type": "{n d : ℕ} → Finset (Fin d → ZMod n) → Prop"
+}

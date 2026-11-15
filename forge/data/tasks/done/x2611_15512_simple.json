@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15512_simple",
+  "statement": "def x2611_15512_simple {α : Type*} (M : Matroid α) : Prop :=\n  ∀ (A : Set α), A ⊆ M.E → A.encard ≤ 2 → M.Indep A",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:17:51+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:17:59+0800",
+  "type": "{α : Type u_1} → Matroid α → Prop"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "x2611_10200_gap_recurrence",
+  "statement": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (m : ℤ) (hm : (k : ℤ) ≤ m) : x2611_10200_f g k N m = (Finset.Icc 1 g).sum (fun j => x2611_10200_f g k N (m - (j : ℤ))) + (N : ℤ) * x2611_10200_f g k N (m - ((g + k + 1 : ℕ) : ℤ)) + ((k : ℤ) + 2 - (N : ℤ))",
+  "closed": "∀ (g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (m : ℤ) (hm : (k : ℤ) ≤ m), x2611_10200_f g k N m = (Finset.Icc 1 g).sum (fun j => x2611_10200_f g k N (m - (j : ℤ))) + (N : ℤ) * x2611_10200_f g k N (m - ((g + k + 1 : ℕ) : ℤ)) + ((k : ℤ) + 2 - (N : ℤ))",
+  "informal": "Equation (2.9)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "$f_{m}=\\sum_{j=1}^{g}f_{m-j}+Nf_{m-L}+c,\\qquad c=k+2-N,\\qquad m\\geq k.$",
+  "proposed_by": "audit-b1",
+  "hash": "3836751285",
+  "type": "∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → ∀ (m : ℤ), ↑k ≤ m → Mathlib2.x2611_10200_f g k N m = ∑ j ∈ Finset.Icc 1 g, Mathlib2.x2611_10200_f g k N (m - ↑j) + ↑N * Mathlib2.x2611_10200_f g k N (m - ↑(g + k + 1)) + (↑k + 2 - ↑N)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:39:49+0800",
+  "status": "proved",
+  "claimed_by": "queue-r5-w1",
+  "claimed_at": "2026-11-16T02:48:01+0800",
+  "closed_by": "queue-r5-w1",
+  "finished_at": "2026-11-16T02:50:24+0800"
+}

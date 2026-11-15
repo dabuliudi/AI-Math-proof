@@ -1,0 +1,20 @@
+{
+  "name": "lw_50342",
+  "statement": "(x y z : ℝ) : (x^2 + y^2 + z^2)^3 / (x^3 + y^3 + z^3) ≥ 729/512 * (y + z)^3 * (z + x)^3 * (x + y)^3 / (x + y + z)^2 * (x*y + x*z + y*z)^2",
+  "closed": "∀ (x y z : ℝ), (x^2 + y^2 + z^2)^3 / (x^3 + y^3 + z^3) ≥ 729/512 * (y + z)^3 * (z + x)^3 * (x + y)^3 / (x + y + z)^2 * (x*y + x*z + y*z)^2",
+  "informal": "Let $x,y,z>0$ ,prove \\n${\\frac { \\left( {x}^{2}+{y}^{2}+{z}^{2} \\right) ^{3}}{{x}^{3}+{y}^{3}+{z}^{3}}}\\geq {\\frac {729}{512}}\\,{\\frac { \\left( y+z \\right) ^{3} \\left( z+x \\right) ^{3} \\left( x+y \\right) ^{3}}{ \\left( x+y+z \\right) ^{2} \\left( xy+xz+yz \\right) ^{2}}}$",
+  "origin": "external",
+  "source": "Lean Workbook (internlm/Lean-Workbook, Apache-2.0), lean_workbook_50342",
+  "original": "",
+  "proposed_by": "import-leanworkbook",
+  "hash": "1928543721",
+  "type": "∀ (x y z : ℝ), (x ^ 2 + y ^ 2 + z ^ 2) ^ 3 / (x ^ 3 + y ^ 3 + z ^ 3) ≥ 729 / 512 * (y + z) ^ 3 * (z + x) ^ 3 * (x + y) ^ 3 / (x + y + z) ^ 2 * (x * y + x * z + y * z) ^ 2",
+  "attempts": [],
+  "created_at": "2026-11-15T19:05:17+0800",
+  "counterexample": "（把 ℝ 换成 ℚ 后的随机测试，仅供参考）\n===================\nFound a counter-example!\nx := 0\ny := 0\nz := -1\nissue: 0 ≤ -1 does not hold\n(3 shrinks)\n-------------------",
+  "status": "disproved",
+  "claimed_by": "queue-lw-r4-w2",
+  "claimed_at": "2026-11-16T02:13:59+0800",
+  "closed_by": "queue-lw-r4-w2",
+  "finished_at": "2026-11-16T02:16:29+0800"
+}

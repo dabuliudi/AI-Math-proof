@@ -1,0 +1,17 @@
+{
+  "name": "x2611_15379_thmA",
+  "statement": "(k : ℕ) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_monotonicPeriod k 1 0 1)",
+  "closed": "∀ (k : ℕ), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_monotonicPeriod k 1 0 1)",
+  "informal": "Theorem A ([2], Theorem 3.2)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15379",
+  "original": "For every $k\\in\\mathbb{N}$ , the least positive period $P_{k}$ of $g_{k}$ is given by\n\n $P_{k}=\\prod\\limits_{\\begin{subarray}{c}p\\text{ prime }\\\\\np\\leq k\\end{subarray}}p^{\\delta_{p}(k)},$ \n\nwhere\n\n $\\delta_{p}(k)=\\begin{cases}0,&v_{p}(k+1)\\geq\\max\\limits_{1\\leq i\\leq k}v_{p}(i),\\\\\n\\max\\limits_{1\\leq i\\leq k}v_{p}(i),&\\text{ otherwise }.\\end{cases}$",
+  "proposed_by": "audit-b1",
+  "hash": "1765826839",
+  "type": "∀ (k : ℕ), IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k 1 0 1 (fun n => ↑n) (n + T) = Mathlib2.x2611_15379_G k 1 0 1 (fun n => ↑n) n} (Mathlib2.x2611_15379_monotonicPeriod k 1 0 1)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:47:09+0800",
+  "status": "claimed",
+  "claimed_by": "queue-r5-w2",
+  "claimed_at": "2026-11-16T03:04:58+0800"
+}

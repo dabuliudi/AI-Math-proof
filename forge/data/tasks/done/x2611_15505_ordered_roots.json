@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15505_ordered_roots",
+  "statement": "def x2611_15505_ordered_roots (p : Polynomial ℝ) (m : ℕ) (x : Fin m → ℝ) : Prop :=\n  p ≠ 0 ∧ p.natDegree = m ∧ StrictMono x ∧\n  p.roots = Finset.univ.val.map x",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:21:45+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w6",
+  "finished_at": "2026-11-16T02:21:54+0800",
+  "type": "Polynomial ℝ → (m : ℕ) → (Fin m → ℝ) → Prop"
+}

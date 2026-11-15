@@ -1,0 +1,16 @@
+{
+  "name": "x2611_12360_red",
+  "statement": "def x2611_12360_red (n p s : ℕ) (x : EuclideanSpace ℝ (Fin n)) : Prop :=\n  0 ≤ (⌊‖x‖ ^ 2⌋ : ℤ) % (p : ℤ) ∧\n    (⌊‖x‖ ^ 2⌋ : ℤ) % (p : ℤ) < (s : ℤ)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:32:41+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:32:52+0800",
+  "type": "(n : ℕ) → ℕ → ℕ → EuclideanSpace ℝ (Fin n) → Prop"
+}

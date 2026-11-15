@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14160_twoGroupD",
+  "statement": "def x2611_14160_twoGroupD {ι : Type*} [Fintype ι] (a : ι → ℕ) : ℕ :=\n  1 + ∑ i, (2 ^ a i - 1)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:37:23+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:37:33+0800",
+  "type": "{ι : Type u_1} → [Fintype ι] → (ι → ℕ) → ℕ"
+}

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15358_N",
+  "statement": "noncomputable def x2611_15358_N (G : SimpleGraph (Fin 14)) (k : ℕ) : ℕ :=\n  (Finset.univ.powersetCard 7).sum (fun U : Finset (Fin 14) =>\n    Nat.card {C : (G.induce (↑U : Set (Fin 14))).ConnectedComponent //\n      Nat.card C.supp = k})",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:18:02+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:18:10+0800",
+  "type": "SimpleGraph (Fin 14) → ℕ → ℕ"
+}

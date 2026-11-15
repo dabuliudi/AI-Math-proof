@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_cor2_5",
+  "statement": "(V : Type*) [Finite V] (P N : SimpleGraph V) (u : V)\n(hblock : x2611_16458_isBlock (P ⊔ N) Set.univ)\n(hunbal : ¬ x2611_16458_balanced P N)\n(hneg : ∀ v w, N.Adj v w → v = u ∨ w = u) :\n(x2611_16458_zeroFree P N).eval 1 =\n  (-1 : ℤ) ^ (Nat.card V + 1) * x2611_16458_beta (x2611_16458_split P N u) ∧\n1 ≤ x2611_16458_beta (x2611_16458_split P N u)",
+  "closed": "∀ (V : Type*) [Finite V] (P N : SimpleGraph V) (u : V)\n(hblock : x2611_16458_isBlock (P ⊔ N) Set.univ)\n(hunbal : ¬ x2611_16458_balanced P N)\n(hneg : ∀ v w, N.Adj v w → v = u ∨ w = u), (x2611_16458_zeroFree P N).eval 1 =\n  (-1 : ℤ) ^ (Nat.card V + 1) * x2611_16458_beta (x2611_16458_split P N u) ∧\n1 ≤ x2611_16458_beta (x2611_16458_split P N u)",
+  "informal": "Corollary 2.5",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16458",
+  "original": "Let $B$ be an unbalanced block with $m$ vertices whose negative edges are\nincident to a common vertex $u$ . Then\n\n $Z_{B}(1)=(-1)^{m+1}\\beta(H_{u}(B))\\quad\\text{and}\\quad\\beta(H_{u}(B))\\geq 1.$",
+  "proposed_by": "audit-b1",
+  "hash": "2940499402",
+  "type": "∀ (V : Type u_1) [inst : Finite V] (P N : SimpleGraph V) (u : V), Mathlib2.x2611_16458_isBlock (P ⊔ N) Set.univ → ¬Mathlib2.x2611_16458_balanced P N → (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → Polynomial.eval 1 (Mathlib2.x2611_16458_zeroFree P N) = (-1) ^ (Nat.card V + 1) * Mathlib2.x2611_16458_beta (Mathlib2.x2611_16458_split P N u) ∧ 1 ≤ Mathlib2.x2611_16458_beta (Mathlib2.x2611_16458_split P N u)",
+  "attempts": [],
+  "created_at": "2026-11-16T02:50:45+0800",
+  "status": "open"
+}

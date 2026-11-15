@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14198_character_sum",
+  "statement": "noncomputable def x2611_14198_character_sum (d : ℕ) (χ : DirichletCharacter ℂ d) : ℂ :=\n  ∑ a ∈ Finset.Icc 1 ((d - 1) / 2), (-1 : ℂ) ^ (a + 1) * χ (a : ZMod d)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:33:51+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:33:59+0800",
+  "type": "(d : ℕ) → DirichletCharacter ℂ d → ℂ"
+}

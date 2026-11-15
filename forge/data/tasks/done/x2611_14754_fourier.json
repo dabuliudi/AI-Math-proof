@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14754_fourier",
+  "statement": "noncomputable def x2611_14754_fourier (n d : ℕ) [NeZero n]\n    (f : (Fin d → ZMod n) → ℂ) (ξ : Fin d → ZMod n) : ℂ :=\n  ∑ x : Fin d → ZMod n, f x * ZMod.stdAddChar (dotProduct ξ x)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:23:57+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w7",
+  "finished_at": "2026-11-16T02:24:07+0800",
+  "type": "(n d : ℕ) → [NeZero n] → ((Fin d → ZMod n) → ℂ) → (Fin d → ZMod n) → ℂ"
+}

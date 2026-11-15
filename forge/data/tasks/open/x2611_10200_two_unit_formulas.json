@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10200_two_unit_formulas",
+  "statement": "(k : ℕ) (hk : 1 ≤ k) : (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) = (Nat.fib (m + 5) : ℤ) - (m : ℤ) - 4) ∧ Int.floor (x2611_10200_M 2 k) = Int.floor (((Nat.fib (k + 7) : ℝ) - (k : ℝ) - 5) / 4)",
+  "closed": "∀ (k : ℕ) (hk : 1 ≤ k), (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) = (Nat.fib (m + 5) : ℤ) - (m : ℤ) - 4) ∧ Int.floor (x2611_10200_M 2 k) = Int.floor (((Nat.fib (k + 7) : ℝ) - (k : ℝ) - 5) / 4)",
+  "informal": "Section 6, two leading units and Equation (6.1)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "For $g=2$ , define $F_{1}=1$ , $F_{2}=2$ and $F_{m+1}=F_{m}+F_{m-1}$ . Formal-series division yields $a_{m}^{(2)}=F_{m+4}-m-4$ and hence\n\n(6.1)\n\n $\\lfloor M_{2,k}\\rfloor=\\left\\lfloor\\frac{F_{k+6}-k-5}{4}\\right\\rfloor.$",
+  "proposed_by": "audit-b1",
+  "hash": "1917452802",
+  "type": "∀ (k : ℕ), 1 ≤ k → (∀ (m : ℕ), Mathlib2.x2611_10200_a 2 ↑m = ↑(Nat.fib (m + 5)) - ↑m - 4) ∧ ⌊Mathlib2.x2611_10200_M 2 k⌋ = ⌊(↑(Nat.fib (k + 7)) - ↑k - 5) / 4⌋",
+  "attempts": [],
+  "created_at": "2026-11-16T03:08:10+0800",
+  "status": "open"
+}

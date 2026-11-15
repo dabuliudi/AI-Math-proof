@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10667_figure5_counts",
+  "statement": "(q r B C : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (m n : ℤ) (hm : IsCoprime m ((q * r : ℕ) : ℤ)) (hn : IsCoprime n ((q * r : ℕ) : ℤ)) (hbezout : n * (q : ℤ) - m * (r : ℤ) = 1) (hB : Int.ModEq ((q * r : ℕ) : ℤ) (B : ℤ) (-m * (r : ℤ) - n * (q : ℤ))) (hC : Int.ModEq ((q * r : ℕ) : ℤ) (C : ℤ) (m * (r : ℤ) + n * (q : ℤ))) (hB0 : 0 < B) (hC0 : 0 < C) (hBlt : B < q * r) (hClt : C < q * r) (hBC : B + C = q * r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (ht : 2 + 2 / ((r : ℚ) - 1) < (padicValRat r (t - 1) : ℚ)) : Fintype.card (Fin q × (Fin r ⊕ Fin 2)) = q * r + 2 * q ∧ Fintype.card (Fin 2 ⊕ (Fin q × Fin 2)) = 2 * q + 2 ∧ ((Fintype.card (Fin q × (Fin r ⊕ Fin 2)) : ℤ) - (Fintype.card (Fin 2 ⊕ (Fin q × Fin 2)) : ℤ) + 1 = (q : ℤ) * (r : ℤ) - 1)",
+  "closed": "∀ (q r B C : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (m n : ℤ) (hm : IsCoprime m ((q * r : ℕ) : ℤ)) (hn : IsCoprime n ((q * r : ℕ) : ℤ)) (hbezout : n * (q : ℤ) - m * (r : ℤ) = 1) (hB : Int.ModEq ((q * r : ℕ) : ℤ) (B : ℤ) (-m * (r : ℤ) - n * (q : ℤ))) (hC : Int.ModEq ((q * r : ℕ) : ℤ) (C : ℤ) (m * (r : ℤ) + n * (q : ℤ))) (hB0 : 0 < B) (hC0 : 0 < C) (hBlt : B < q * r) (hClt : C < q * r) (hBC : B + C = q * r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (ht : 2 + 2 / ((r : ℚ) - 1) < (padicValRat r (t - 1) : ℚ)), Fintype.card (Fin q × (Fin r ⊕ Fin 2)) = q * r + 2 * q ∧ Fintype.card (Fin 2 ⊕ (Fin q × Fin 2)) = 2 * q + 2 ∧ ((Fintype.card (Fin q × (Fin r ⊕ Fin 2)) : ℤ) - (Fintype.card (Fin 2 ⊕ (Fin q × Fin 2)) : ℤ) + 1 = (q : ℤ) * (r : ℤ) - 1)",
+  "informal": "Figure 5 (edge/vertex counts and cycle-count arithmetic)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10667",
+  "original": "It\nreadily follows from Figure 5 that $\\#E=qr+2q$ ,\n $\\#V=2q+2$ and so the total of linearly independent cycles is\n\n $qr+2q-(2q+2)+1=qr-1,$ \n\nwhich matches the genus of the curve (see [1, Theorem 4.1]).",
+  "proposed_by": "audit-b1",
+  "hash": "2533976336",
+  "type": "∀ (q r B C : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (m n : ℤ), IsCoprime m ↑(q * r) → IsCoprime n ↑(q * r) → n * ↑q - m * ↑r = 1 → ↑B ≡ -m * ↑r - n * ↑q [ZMOD ↑(q * r)] → ↑C ≡ m * ↑r + n * ↑q [ZMOD ↑(q * r)] → 0 < B → 0 < C → B < q * r → C < q * r → B + C = q * r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + 2 / (↑r - 1) < ↑(padicValRat r (t - 1)) → Fintype.card (Fin q × (Fin r ⊕ Fin 2)) = q * r + 2 * q ∧ Fintype.card (Fin 2 ⊕ Fin q × Fin 2) = 2 * q + 2 ∧ ↑(Fintype.card (Fin q × (Fin r ⊕ Fin 2))) - ↑(Fintype.card (Fin 2 ⊕ Fin q × Fin 2)) + 1 = ↑q * ↑r - 1",
+  "attempts": [],
+  "created_at": "2026-11-16T03:00:06+0800",
+  "status": "open"
+}

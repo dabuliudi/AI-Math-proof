@@ -1,0 +1,16 @@
+{
+  "name": "x2611_14160_twoGroupCondition",
+  "statement": "def x2611_14160_twoGroupCondition (Γ : Type*) [AddCommGroup Γ] (q : ℕ) : Prop :=\n  ∃ (s : ℕ) (a : Fin s → ℕ), (∀ i, 1 ≤ a i) ∧\n    Nonempty (Γ ≃+ ((i : Fin s) → ZMod (2 ^ a i))) ∧\n    x2611_14160_twoGroupD a ≤ q",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:37:38+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w1",
+  "finished_at": "2026-11-16T02:37:48+0800",
+  "type": "(Γ : Type u_1) → [AddCommGroup Γ] → ℕ → Prop"
+}

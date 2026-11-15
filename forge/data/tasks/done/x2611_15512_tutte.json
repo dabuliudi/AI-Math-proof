@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15512_tutte",
+  "statement": "noncomputable def x2611_15512_tutte {α : Type*} [Fintype α]\n    (M : Matroid α) (q : ℝ) : MvPolynomial α ℝ := by\n  classical\n  exact ∑ A ∈ M.E.toFinset.powerset,\n    MvPolynomial.C ((q ^ (M.eRk (↑A : Set α)).toNat)⁻¹) *\n      ∏ a ∈ A, MvPolynomial.X a",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:15:31+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:15:39+0800",
+  "type": "{α : Type u_1} → [Fintype α] → Matroid α → ℝ → MvPolynomial α ℝ"
+}

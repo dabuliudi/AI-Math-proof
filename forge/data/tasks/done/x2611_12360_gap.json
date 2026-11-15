@@ -1,0 +1,16 @@
+{
+  "name": "x2611_12360_gap",
+  "statement": "noncomputable def x2611_12360_gap (p : ℕ)\n    (A : Set (AddCircle (p : ℝ))) : ℝ :=\n  sSup {l : ℝ | 0 ≤ l ∧ l ≤ (p : ℝ) ∧\n    ∃ a : ℝ, ∀ t : ℝ, a < t → t < a + l →\n      (t : AddCircle (p : ℝ)) ∉ A}",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:33:25+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w5",
+  "finished_at": "2026-11-16T02:33:35+0800",
+  "type": "(p : ℕ) → Set (AddCircle ↑p) → ℝ"
+}

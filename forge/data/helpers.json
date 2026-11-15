@@ -2623,5 +2623,190 @@
   "owner": "lw_37809",
   "type": "∀ (a b c : ℝ), b ≤ a → c ≤ b → 0 < c → 1 ≤ (a - b + c) * (1 / a - 1 / b + 1 / c)",
   "hash": "2990541696"
+ },
+ "lw_46331_aux1": {
+  "owner": "lw_46331",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → x ≤ y → y ≤ z → (x + y + z) ^ 5 * x * y * z ≤ 27 * (x * y + y * z + z * x) * (x ^ 5 * y + y ^ 5 * z + z ^ 5 * x)",
+  "hash": "2760565338"
+ },
+ "lw_46331_aux2": {
+  "owner": "lw_46331",
+  "type": "∀ (x y z : ℝ), 0 ≤ x → 0 ≤ y → 0 ≤ z → (x + y + z) ^ 5 * x * y * z ≤ 27 * (x * y + y * z + z * x) * (x ^ 5 * y + y ^ 5 * z + z ^ 5 * x)",
+  "hash": "3296162230"
+ },
+ "lw_49560_aux1": {
+  "owner": "lw_49560",
+  "type": "∀ (s : ℝ), 0 ≤ s → s ^ 2 < 4 → (13 * s ^ 2 + 17) / 18 ≤ (4 + s) / (4 - s ^ 2)",
+  "hash": "474388079"
+ },
+ "lw_49727_aux1": {
+  "owner": "lw_49727",
+  "type": "∀ (x y z : ℝ), 0 ≤ (x + y + z) ^ 2 * (x * y + y * z + z * x) ^ 2 - 4 * (x * y + y * z + z * x) ^ 3 - 4 * (x + y + z) ^ 3 * (x * y * z) + 18 * (x + y + z) * (x * y + y * z + z * x) * (x * y * z) - 27 * (x * y * z) ^ 2",
+  "hash": "3011592174"
+ },
+ "lw_49727_aux2": {
+  "owner": "lw_49727",
+  "type": "∀ (p q r a t : ℝ), 0 < r → 0 ≤ p → a * r = p ^ 3 → t * r = p * q → 0 ≤ p ^ 2 * q ^ 2 - 4 * q ^ 3 - 4 * p ^ 3 * r + 18 * p * q * r - 27 * r ^ 2 → 4 * a ^ 2 - (t ^ 2 + 18 * t - 27) * a + 4 * t ^ 3 ≤ 0",
+  "hash": "1025987759"
+ },
+ "lw_49727_aux3": {
+  "owner": "lw_49727",
+  "type": "∀ (a l u : ℝ), l ≤ u → (a - l) * (a - u) ≤ 0 → l ≤ a ∧ a ≤ u",
+  "hash": "4233941985"
+ },
+ "lw_52672_aux1": {
+  "owner": "lw_52672",
+  "type": "∀ (s p : ℝ), 0 ≤ s → 0 ≤ p → 4 * p ≤ s ^ 2 → s * (p - 1) ≤ p ^ 2 * (s ^ 2 - 2 * p - 2)",
+  "hash": "3752640521"
+ },
+ "lw_55838_aux1": {
+  "owner": "lw_55838",
+  "type": "∀ (a b c : ℝ), 0 ≤ a → 0 ≤ b → 0 ≤ c → a * b * c = 1 → 3 ≤ a + b + c",
+  "hash": "368524546"
+ },
+ "x2611_11972_sharp_example_aux1": {
+  "owner": "x2611_11972_sharp_example",
+  "type": "∀ {α : Type u_1} [inst : LinearOrder α] (f : (Fin 2 → α) → ℝ), Summable f → (∑' (n : Fin 2 → α), if Monotone n then 2 ^ (Finset.image n Finset.univ).card * f n else 0) = (4 * ∑' (n : Fin 2 → α), if StrictMono n then f n else 0) + 2 * ∑' (a : α), f fun x => a",
+  "hash": "784300331"
+ },
+ "x2611_11972_sharp_example_aux2": {
+  "owner": "x2611_11972_sharp_example",
+  "type": "∀ (p : ℕ), 1 < p → ∀ (c : ℕ → ℝ), (∀ (n : ℕ), |c n| ≤ 1) → Summable fun n => c n / ↑(n + 1) ^ p",
+  "hash": "626637151"
+ },
+ "x2611_10200_coeff_recurrence_initial_aux1": {
+  "owner": "x2611_10200_coeff_recurrence_initial",
+  "type": "∀ {R : Type u_1} [inst : CommRing R] (x : R) (n : ℕ), (1 - x) * (1 - ∑ j ∈ Finset.Icc 1 n, x ^ j) = 1 - 2 * x + x ^ (n + 1)",
+  "hash": "1824816788"
+ },
+ "x2611_10200_coeff_recurrence_initial_aux2": {
+  "owner": "x2611_10200_coeff_recurrence_initial",
+  "type": "∀ (F : PowerSeries ℤ), (1 - PowerSeries.X) * F = 1 → ∀ (n : ℕ), (PowerSeries.coeff n) F = 1",
+  "hash": "3862215728"
+ },
+ "x2611_10200_coeff_recurrence_initial_aux3": {
+  "owner": "x2611_10200_coeff_recurrence_initial",
+  "type": "∀ (F : PowerSeries ℤ) (m : ℤ), 0 ≤ m → ∀ (d : ℕ), (PowerSeries.coeff m.toNat) (PowerSeries.X ^ d * F) = if m - ↑d < 0 then 0 else (PowerSeries.coeff (m - ↑d).toNat) F",
+  "hash": "3316990764"
+ },
+ "x2611_10200_coeff_recurrence_initial_aux4": {
+  "owner": "x2611_10200_coeff_recurrence_initial",
+  "type": "∀ (g : ℕ) (m : ℤ), 0 ≤ m → Mathlib2.x2611_10200_a g m - 2 * Mathlib2.x2611_10200_a g (m - 1) + Mathlib2.x2611_10200_a g (m - ↑g - 1) = 1",
+  "hash": "3308219176"
+ },
+ "x2611_10200_brown_gap_coefficients_aux1": {
+  "owner": "x2611_10200_brown_gap_coefficients",
+  "type": "∀ (H : ℕ → ℤ) (g n : ℕ), (PowerSeries.coeff n) ((∑ j ∈ Finset.Icc 1 g, PowerSeries.X ^ j) * PowerSeries.mk fun r => H (r + 1)) = ∑ j ∈ Finset.Icc 1 (min g n), H (n + 1 - j)",
+  "hash": "3642284574"
+ },
+ "x2611_10200_brown_gap_coefficients_aux2": {
+  "owner": "x2611_10200_brown_gap_coefficients",
+  "type": "∀ (g k N : ℕ), 1 ≤ k → ∀ (H : ℕ → ℤ), Mathlib2.x2611_10200_standard g k N H → ((Mathlib2.x2611_10200_Q g - PowerSeries.C ↑N * PowerSeries.X ^ (g + k + 1)) * PowerSeries.mk fun r => H (r + 1)) = PowerSeries.mk fun r => if r < g + k + 1 then 1 else 0",
+  "hash": "4280366162"
+ },
+ "x2611_10200_brown_gap_coefficients_aux3": {
+  "owner": "x2611_10200_brown_gap_coefficients",
+  "type": "∀ (L : ℕ), 1 ≤ L → ((1 - PowerSeries.X) * PowerSeries.mk fun r => if r < L then 1 else 0) = 1 - PowerSeries.X ^ L",
+  "hash": "3329729423"
+ },
+ "x2611_10200_brown_gap_coefficients_aux4": {
+  "owner": "x2611_10200_brown_gap_coefficients",
+  "type": "∀ (H : ℕ → ℤ), ((1 - PowerSeries.X) * PowerSeries.mk fun n => Mathlib2.x2611_10200_B H (n + 1)) = 1 + (2 * PowerSeries.X - 1) * PowerSeries.mk fun n => H (n + 1)",
+  "hash": "3933497787"
+ },
+ "x2611_10200_brown_gap_coefficients_aux5": {
+  "owner": "x2611_10200_brown_gap_coefficients",
+  "type": "∀ (g k N : ℕ), 1 ≤ k → ∀ (H : ℕ → ℤ), Mathlib2.x2611_10200_standard g k N H → (PowerSeries.mk fun n => Mathlib2.x2611_10200_B H (n + 1)) = PowerSeries.X ^ (g + 1) * ((1 - PowerSeries.C (↑N - 1) * PowerSeries.X ^ k + PowerSeries.C (↑N - 2) * PowerSeries.X ^ (k + 1)) * ((1 - PowerSeries.X) ^ 2 * (Mathlib2.x2611_10200_Q g - PowerSeries.C ↑N * PowerSeries.X ^ (g + k + 1))).invOfUnit 1)",
+  "hash": "2280244251"
+ },
+ "x2611_10200_gap_recurrence_aux1": {
+  "owner": "x2611_10200_gap_recurrence",
+  "type": "∀ (F : PowerSeries ℤ), (1 - PowerSeries.X) ^ 2 * F = 1 → ∀ (n : ℕ), (PowerSeries.coeff n) F = ↑n + 1",
+  "hash": "470839947"
+ },
+ "x2611_10200_gap_recurrence_aux2": {
+  "owner": "x2611_10200_gap_recurrence",
+  "type": "∀ (F : PowerSeries ℤ), (1 - PowerSeries.X) ^ 2 * F = 1 → ∀ (m : ℤ), 0 ≤ m → ∀ (d : ℕ), ↑d ≤ m + 1 → (PowerSeries.coeff m.toNat) (PowerSeries.X ^ d * F) = m + 1 - ↑d",
+  "hash": "3490670528"
+ },
+ "x2611_16923_lemma2_4_aux1": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ (r m : ℕ) (weak : Bool) (lower : ℕ) (upper : Option ℕ) (a : Fin m → ℕ) (b : Fin m → Fin r →₀ ℕ) (e : Fin r →₀ ℕ), Mathlib2.x2611_16923_li r weak lower upper (List.ofFn fun i => (a i, b i)) e = ∑ n, if (∀ (i : Fin m), lower ≤ ↑(n i)) ∧ List.Pairwise (fun a b => if weak = true then a ≤ b else a < b) (List.ofFn fun i => ↑(n i)) ∧ (∀ M ∈ upper, ∀ (i : Fin m), ↑(n i) < M) ∧ ∑ i, ↑(n i) • b i = e then ∏ i, (↑↑(n i) ^ a i)⁻¹ else 0",
+  "hash": "1416143151"
+ },
+ "x2611_16923_lemma2_4_aux2": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (e : Fin r →₀ ℕ) (i : Fin r), e i < (e.sum fun x a => a) + 1",
+  "hash": "3401273413"
+ },
+ "x2611_16923_lemma2_4_aux3": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (c : Composition r) (n : Fin c.length → ℕ) (i : Fin r), (∑ h, n h • ∑ j, fun₀ | (c.embedding h) j => 1) i = n (c.index i)",
+  "hash": "4276197280"
+ },
+ "x2611_16923_lemma2_4_aux4": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (c : Composition r) (k : Fin r → ℕ) (n : Fin c.length → ℕ) (e : Fin r →₀ ℕ), (∀ (i : Fin r), n (c.index i) = e i) → ∏ h, (↑(n h) ^ ∑ j, k ((c.embedding h) j))⁻¹ = ∏ i, (↑(e i) ^ k i)⁻¹",
+  "hash": "3462004427"
+ },
+ "x2611_16923_lemma2_4_aux5": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (c : Composition r), Monotone c.index",
+  "hash": "3774434736"
+ },
+ "x2611_16923_lemma2_4_aux6": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (c : Composition r) (i : Fin r), i.castSucc ∈ c.boundaries ↔ c.sizeUpTo ↑(c.index i) = ↑i",
+  "hash": "844790233"
+ },
+ "x2611_16923_lemma2_4_aux7": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (c : Composition r) (j : ℕ) (hj : j + 1 < r), ⟨j + 1, ⋯⟩ ∈ c.boundaries ↔ c.index ⟨j, ⋯⟩ ≠ c.index ⟨j + 1, hj⟩",
+  "hash": "426163875"
+ },
+ "x2611_16923_lemma2_4_aux8": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (k : Fin r → ℕ) (c : Composition r) (e : Fin r →₀ ℕ), Mathlib2.x2611_16923_li r false 1 none (Mathlib2.x2611_16923_blocks k c) e = if ∃ n, (∀ (h : Fin c.length), 1 ≤ n h) ∧ StrictMono n ∧ ∀ (i : Fin r), n (c.index i) = e i then ∏ i, (↑(e i) ^ k i)⁻¹ else 0",
+  "hash": "2075518252"
+ },
+ "x2611_16923_lemma2_4_aux9": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (k : Fin r → ℕ) (e : Fin r →₀ ℕ), Mathlib2.x2611_16923_li r true 1 none (Mathlib2.x2611_16923_entries k) e = if (∀ (i : Fin r), 1 ≤ e i) ∧ Monotone ⇑e then ∏ i, (↑(e i) ^ k i)⁻¹ else 0",
+  "hash": "3186941343"
+ },
+ "x2611_16923_lemma2_4_aux10": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (f : Fin r → ℕ) (c d : Composition r) (n : Fin c.length → ℕ) (m : Fin d.length → ℕ), StrictMono n → StrictMono m → (∀ (i : Fin r), n (c.index i) = f i) → (∀ (i : Fin r), m (d.index i) = f i) → c = d",
+  "hash": "3787801910"
+ },
+ "x2611_16923_lemma2_4_aux11": {
+  "owner": "x2611_16923_lemma2_4",
+  "type": "∀ {r : ℕ} (f : Fin r → ℕ), Monotone f → ∃ c n, StrictMono n ∧ ∀ (i : Fin r), n (c.index i) = f i",
+  "hash": "3690956818"
+ },
+ "x2611_10200_lem3_1_s1h3_aux1": {
+  "owner": "x2611_10200_lem3_1_s1h3",
+  "type": "∀ {R : Type u_1} [inst : CommRing R] (D E T P : PowerSeries R) (L m : ℕ), PowerSeries.constantCoeff D = ↑1 → PowerSeries.constantCoeff E = ↑1 → D - E = PowerSeries.X ^ L * T → m < L → (PowerSeries.coeff m) (P * E.invOfUnit 1) = (PowerSeries.coeff m) (P * D.invOfUnit 1)",
+  "hash": "1997886900"
+ },
+ "x2611_10200_lem3_1_s1h3_aux2": {
+  "owner": "x2611_10200_lem3_1_s1h3",
+  "type": "∀ (g k N : ℕ) (m : ℤ), 0 ≤ m → m < ↑(g + k + 1) → Mathlib2.x2611_10200_f g k N m = Mathlib2.x2611_10200_a g m - (↑N - 1) * Mathlib2.x2611_10200_a g (m - ↑k) + (↑N - 2) * Mathlib2.x2611_10200_a g (m - ↑(k + 1))",
+  "hash": "3636870638"
+ },
+ "x2611_10200_lem3_1_aux1": {
+  "owner": "x2611_10200_lem3_1",
+  "type": "∀ (f : ℤ → ℤ) (g L : ℕ) (N c : ℤ), 2 ≤ g → 3 ≤ L → 0 < N → 0 < N + c → (∀ m < ↑L, 0 ≤ f m) → f 0 = 1 → (c < 0 → 3 ≤ f 1) → (c < 0 → 1 ≤ f 2) → (∀ (m : ℤ), ↑L ≤ m → f m = ∑ j ∈ Finset.Icc 1 g, f (m - ↑j) + N * f (m - ↑L) + c) → (∀ (m : ℤ), 0 ≤ f m) ∧ ∀ (m : ℤ), ↑L ≤ m → 0 < f m",
+  "hash": "2258017994"
+ },
+ "x2611_10200_lem3_1_aux2": {
+  "owner": "x2611_10200_lem3_1",
+  "type": "∀ (a : ℤ → ℤ) (g : ℕ), 1 ≤ g → (∀ m < 0, a m = 0) → (∀ (m : ℤ), 0 ≤ m → a m - 2 * a (m - 1) + a (m - ↑g - 1) = 1) → (∀ (m : ℤ), 0 ≤ a m) ∧ ∀ (m : ℤ), 0 ≤ m → 0 < a m",
+  "hash": "3906030894"
+ },
+ "x2611_10200_lem3_1_aux3": {
+  "owner": "x2611_10200_lem3_1",
+  "type": "∀ (a : ℤ → ℤ) (g k : ℕ) (N : ℤ), 1 ≤ g → 1 ≤ k → (∀ (m : ℤ), 0 ≤ a m) → 0 < a (↑k - 1) → (∀ (m : ℤ), 0 ≤ m → a m - 2 * a (m - 1) + a (m - ↑g - 1) = 1) → N * 2 ^ g ≤ a ↑(k + g) + 1 → (∀ r ≤ g, N * 2 ^ r ≤ a ↑(k + r) + 1) ∧ N < a ↑k + 1",
+  "hash": "2449250722"
  }
 }

@@ -1,0 +1,16 @@
+{
+  "name": "x2611_15512_z_rayleigh",
+  "statement": "def x2611_15512_z_rayleigh {α : Type*} [Fintype α]\n    (M : Matroid α) : Prop :=\n  ∀ (q : ℝ), 0 < q → q ≤ 1 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n        0 ≤ MvPolynomial.eval x\n          (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)",
+  "informal": "",
+  "origin": "definition",
+  "source": "",
+  "original": "",
+  "hash": null,
+  "tier": "definition",
+  "attempts": [],
+  "created_at": "2026-11-16T02:16:44+0800",
+  "status": "defined",
+  "closed_by": "audit-b1-w0",
+  "finished_at": "2026-11-16T02:16:52+0800",
+  "type": "{α : Type u_1} → [Fintype α] → Matroid α → Prop"
+}

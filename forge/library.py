@@ -74,11 +74,12 @@ def snapshot(message):
     from .leanrun import ROOT
     from .regressions import consistency
     paths = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean', 'forge/data/tasks', 'forge/data/helpers.jsonl']
+    paths = [p for p in paths if (ROOT / p).exists()]
     with locked():
         problems = consistency()
         if any(problems.values()):
             return dict(ok=False, reason='台账与分片不一致，没有提交', problems=problems)
-        subprocess.run(['git', 'add', '-A', '--'] + [p for p in paths if (ROOT / p).exists()], cwd=ROOT, check=True)
+        subprocess.run(['git', 'add', '-A', '--'] + paths, cwd=ROOT, check=True)
         staged = subprocess.run(['git', 'diff', '--cached', '--quiet', '--'] + paths, cwd=ROOT).returncode
         if not staged:
             return dict(ok=True, committed=False, reason='没有变化')

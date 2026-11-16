@@ -4,6 +4,7 @@ import os
 import tempfile
 import threading
 import unittest
+import uuid
 from pathlib import Path
 from unittest import mock
 
@@ -1009,3 +1010,155 @@ class PortfolioTests(unittest.TestCase):
             result = runner.run_portfolio('s', ['p'], k=3)
         self.assertEqual(result['solved'], 0)
         self.assertEqual({d['status'] for d in runner.state['problems']['p']['dags'].values()}, {'dead'})
+
+
+class SnapshotPublishTests(unittest.TestCase):
+    """forge snapshot 开数据 PR、forge sync 只 fast-forward：用真实 git 仓库和一个假的 gh。"""
+
+    def setUp(self):
+        import subprocess
+        self.tmp = tempfile.TemporaryDirectory()
+        base = Path(self.tmp.name)
+        self.origin, self.root, bin_dir = base / 'origin.git', base / 'work', base / 'bin'
+        self.log = base / 'gh.log'
+
+        def git(*args, cwd=None):
+            return subprocess.run(['git', *args], cwd=cwd or self.root, capture_output=True, text=True, check=True).stdout
+        self.git = git
+        git('init', '-q', '--bare', '-b', 'main', str(self.origin), cwd=base)
+        git('clone', '-q', str(self.origin), str(self.root), cwd=base)
+        git('config', 'user.email', 't@example.com'); git('config', 'user.name', 't')
+        git('checkout', '-q', '-b', 'main')
+        (self.root / 'forge' / 'data').mkdir(parents=True)
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\n')
+        (self.root / 'app.py').write_text('x = 1\n')
+        git('add', '-A'); git('commit', '-q', '-m', 'init'); git('push', '-q', 'origin', 'main')
+        bin_dir.mkdir()
+        gh = bin_dir / 'gh'
+        self.open_prs = base / 'open.json'
+        self.open_prs.write_text('[]')
+        gh.write_text(f'#!/bin/sh\necho "$@" >> {self.log}\n'
+                      f'if [ "$2" = list ]; then cat {self.open_prs}; else echo https://github.com/o/r/pull/7; fi\n')
+        gh.chmod(0o755)
+        from forge import leanrun, library
+        self.patches = [mock.patch.object(leanrun, 'ROOT', self.root), mock.patch.object(library, 'LOCK', base / 'lock'),
+                        mock.patch('forge.regressions.consistency', return_value=dict(missing_in_shards=[], missing_in_ledger=[])),
+                        mock.patch.dict(os.environ, PATH=f'{bin_dir}{os.pathsep}{os.environ["PATH"]}')]
+        for p in self.patches:
+            p.start()
+        self.library = library
+
+    def tearDown(self):
+        for p in reversed(self.patches):
+            p.stop()
+        self.tmp.cleanup()
+
+    def test_snapshot_pushes_a_data_branch_and_requests_auto_merge(self):
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        (self.root / 'app.py').write_text('x = 2\n')
+        result = self.library.snapshot('two entries')
+        self.assertTrue(result['ok'] and result['committed'] and result['published'] and result['auto_merge'], result)
+        self.assertIn('data/', self.git('ls-remote', '--heads', 'origin'))
+        self.assertEqual(self.git('rev-parse', 'origin/main').strip(), self.git('rev-parse', 'HEAD~1').strip())  # main 没被直接推
+        self.assertIn('M app.py', self.git('status', '--short'))  # 代码改动没被带进快照
+        calls = self.log.read_text()
+        self.assertIn('pr create --base main', calls)
+        self.assertIn('--auto --squash', calls)
+
+    def test_snapshot_refuses_when_local_main_has_unreviewed_code(self):
+        (self.root / 'app.py').write_text('x = 3\n')
+        self.git('commit', '-q', '-am', 'code on main')
+        result = self.library.snapshot('data')
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['paths'], ['app.py'])
+
+    def test_include_only_takes_result_paths(self):
+        for path in ['app.py', 'forge/data/../../app.py', 'lean/Mathlib2Evil.py']:
+            self.assertFalse(self.library.snapshot('x', include=[path])['ok'], path)
+
+    def test_snapshot_reuses_an_open_data_pr(self):
+        import json as _json
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        self.git('push', '-q', 'origin', 'main:refs/heads/data/old')
+        self.open_prs.write_text(_json.dumps([dict(headRefName='data/old', url='https://github.com/o/r/pull/5')]))
+        result = self.library.snapshot('more')
+        self.assertTrue(result['ok'] and result['updated_existing_pr'], result)
+        self.assertEqual(result['pr'], 'https://github.com/o/r/pull/5')
+        self.assertNotIn('pr create', self.log.read_text())
+        self.assertEqual(self.git('show', 'data/old:forge/data/ledger.jsonl', cwd=self.origin), 'a\nb\n')
+        self.assertEqual(self.git('rev-parse', 'data/old~1', cwd=self.origin).strip(), self.git('rev-parse', 'main', cwd=self.origin).strip())
+
+    def test_snapshot_off_main_commits_locally(self):
+        self.git('checkout', '-q', '-b', 'upgrade')
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        result = self.library.snapshot('upgrade data')
+        self.assertTrue(result['ok'] and result['committed'] and not result['published'], result)
+        self.assertFalse(self.log.exists())
+
+    def test_sync_after_a_squash_merge(self):
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        self.library.snapshot('local', publish=False)
+        other = Path(self.tmp.name) / 'squash'
+        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
+        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
+        (other / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        (other / 'app.py').write_text('x = 5\n')
+        self.git('commit', '-q', '-am', 'squashed data PR and a code PR', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+        (self.root / 'forge' / 'data' / 'papers.json').write_text('{}')
+        result = self.library.sync()
+        self.assertTrue(result['ok'], result)
+        self.assertEqual(self.git('rev-parse', 'HEAD').strip(), self.git('rev-parse', 'origin/main').strip())
+        self.assertEqual((self.root / 'app.py').read_text(), 'x = 5\n')
+        self.assertTrue((self.root / 'forge' / 'data' / 'papers.json').exists())
+
+    def test_sync_fast_forwards_and_keeps_uncommitted_data(self):
+        other = Path(self.tmp.name) / 'other'
+        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
+        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
+        (other / 'app.py').write_text('x = 9\n')
+        self.git('commit', '-q', '-am', 'merged code PR', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nunsaved\n')
+        result = self.library.sync()
+        self.assertTrue(result['ok'], result)
+        self.assertEqual((self.root / 'app.py').read_text(), 'x = 9\n')
+        self.assertEqual((self.root / 'forge' / 'data' / 'ledger.jsonl').read_text(), 'a\nunsaved\n')
+
+    def test_sync_waits_while_a_data_commit_is_unmerged(self):
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        self.library.snapshot('local only', publish=False)
+        self.assertFalse(self.library.sync()['ok'])
+
+    def _squash_merge(self, branch):
+        """模拟 GitHub 的 squash 合并：把数据分支的内容作为一个新提交放到 origin 的 main 上。"""
+        other = Path(self.tmp.name) / ('gh-' + uuid.uuid4().hex[:6])
+        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
+        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
+        self.git('merge', '-q', '--squash', f'origin/{branch}', cwd=other)
+        self.git('commit', '-q', '-m', 'squash', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+
+    def _data_branch(self):
+        return [line.split('refs/heads/')[1] for line in self.git('ls-remote', '--heads', 'origin').splitlines() if 'refs/heads/data/' in line][-1]
+
+    def test_new_data_after_a_squash_merge_publishes_cleanly(self):
+        ledger = self.root / 'forge' / 'data' / 'ledger.jsonl'
+        ledger.write_text('a\nb\n'); self.library.snapshot('d1')
+        ledger.write_text('a\nb\nc\n'); self.library.snapshot('d2', publish=False)
+        self._squash_merge(self._data_branch())
+        self.assertFalse(self.library.sync()['ok'])  # d2 还没进 origin/main
+        self.git('push', '-q', 'origin', '--delete', self._data_branch())
+        result = self.library.snapshot('d3')
+        self.assertTrue(result['ok'] and result['published'], result)
+        self._squash_merge(self._data_branch())  # 新分支建在 origin/main 上，不带旧的 d1，能干净合并
+        self.assertTrue(self.library.sync()['ok'])
+        self.assertEqual(self.git('show', 'HEAD:forge/data/ledger.jsonl'), 'a\nb\nc\n')
+
+    def test_deleted_include_and_emptied_directory_are_committed(self):
+        (self.root / 'reports').mkdir(); (self.root / 'reports' / 'r.txt').write_text('r')
+        tasks_dir = self.root / 'forge' / 'data' / 'tasks'; tasks_dir.mkdir(); (tasks_dir / 't.json').write_text('{}')
+        self.assertTrue(self.library.snapshot('add', include=['reports/r.txt'], publish=False)['committed'])
+        (self.root / 'reports' / 'r.txt').unlink(); (tasks_dir / 't.json').unlink()
+        result = self.library.snapshot('remove', include=['reports/r.txt'], publish=False)
+        self.assertTrue(result['ok'] and result['committed'], result)
+        self.assertEqual(self.git('status', '--short', '--', 'reports', 'forge/data'), '')
+        result = self.library.snapshot('nothing', include=['reports/r.txt'], publish=False)  # tasks 目录已空但还在
+        self.assertTrue(result['ok'] and not result['committed'], result)

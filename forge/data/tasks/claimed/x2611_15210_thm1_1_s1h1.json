@@ -11,5 +11,7 @@
   "type": "∀ (k r : ℕ), 2 ≤ k → Mathlib2.x2611_15210_s (2 * k) (Fin r → ZMod (2 * k)) + 1 ≤ 2 * Mathlib2.x2611_15210_s k (Fin r → ZMod k) + 2 ^ r",
   "attempts": [],
   "created_at": "2026-11-16T03:03:11+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-r7-w3",
+  "claimed_at": "2026-11-16T10:38:45+0800"
 }

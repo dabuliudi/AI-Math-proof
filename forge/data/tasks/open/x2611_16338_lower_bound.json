@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16338_lower_bound",
+  "statement": "(V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hE : G.edgeSet.Nonempty) : max ((G.edgeSet.ncard + 4) / 3) ((G.maxDegree + 2) / 2) ≤ x2611_16338_tes G",
+  "closed": "∀ (V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hE : G.edgeSet.Nonempty), max ((G.edgeSet.ncard + 4) / 3) ((G.maxDegree + 2) / 2) ≤ x2611_16338_tes G",
+  "informal": "Equation (1)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16338",
+  "original": "For every graph $G$ with a nonempty edge set, Bača et al. [5] established the bounds\n\n $\\operatorname{tes}(G)\\geq\\max\\left\\{\\left\\lceil\\frac{{|E(G)|}+2}{3}\\right\\rceil,\\left\\lceil\\frac{\\Delta(G)+1}{2}\\right\\rceil\\right\\},$ \n\n(1)",
+  "proposed_by": "audit-b1",
+  "hash": "1821215443",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.edgeSet.Nonempty → max ((G.edgeSet.ncard + 4) / 3) ((G.maxDegree + 2) / 2) ≤ Mathlib2.x2611_16338_tes G",
+  "attempts": [],
+  "created_at": "2026-11-16T03:19:46+0800",
+  "status": "open"
+}

@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "830001399",
   "type": "∀ (d : ℕ), 4 ≤ d → Even d → Mathlib2.x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈ Algebra.adjoin ℚ (Set.range fun n => (riemannZeta ↑(n + 2)).re)",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w2",
+      "note": "调度器代为归还（agent 未完成，超时）：",
+      "at": "2026-11-16T04:12:28+0800"
+    }
+  ],
   "created_at": "2026-11-16T02:54:54+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w2",
+  "claimed_at": "2026-11-16T03:42:28+0800"
 }

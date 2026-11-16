@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_lem2_4",
+  "statement": "{α L R : Type*} [Fintype L] [Fintype R]\n  (E : Finset α) (l : α → L) (r : α → R)\n  (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)) :\n  ∃ C : MvPolynomial α ℝ, (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_graph_d E l r =\n      MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n      x2611_15512_graph_q E l r + C",
+  "closed": "∀ {α L R : Type*} [Fintype L] [Fintype R]\n  (E : Finset α) (l : α → L) (r : α → R)\n  (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)), ∃ C : MvPolynomial α ℝ, (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_graph_d E l r =\n      MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n      x2611_15512_graph_q E l r + C",
+  "informal": "Lemma 2.4",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "For every simple bipartite graph $G$ , there is a polynomial $C_{G}\\succeq 0$ \nwith no terms of degree less than five such that\n\n $D_{G}=(D_{G})_{4}+Q_{G}+C_{G}.$",
+  "proposed_by": "audit-b1",
+  "hash": "1665994745",
+  "type": "∀ {α : Type u_1} {L : Type u_2} {R : Type u_3} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun a => (l a, r a)) ↑E → ∃ C, (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ (∀ (d : α →₀ ℕ), Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧ Mathlib2.x2611_15512_graph_d E l r = (MvPolynomial.homogeneousComponent 4) (Mathlib2.x2611_15512_graph_d E l r) + Mathlib2.x2611_15512_graph_q E l r + C",
+  "attempts": [],
+  "created_at": "2026-11-16T03:44:34+0800",
+  "status": "open"
+}

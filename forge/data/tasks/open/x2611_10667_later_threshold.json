@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "4177118554",
   "type": "∀ (q r : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + (↑r - 1) / 2 < ↑(padicValRat r (t - 1)) → ∀ (k : ℤ), k = (↑r - 1) * padicValRat r (t - 1) → ↑r - k < -↑r",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w1",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T04:18:33+0800"
+    }
+  ],
   "created_at": "2026-11-16T02:59:24+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w1",
+  "claimed_at": "2026-11-16T04:14:36+0800"
 }

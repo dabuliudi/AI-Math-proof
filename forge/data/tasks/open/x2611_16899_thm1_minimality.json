@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16899_thm1_minimality",
+  "statement": "(n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2) (hs : Finset.univ.sum b = n) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (hc : x2611_16899_expansion n n (K b) A c) : (c (fun _ => 1)).denom = 1 ∧ ∀ r : ℕ, 0 ≤ (c (fun _ => 1)).num.coeff r",
+  "closed": "∀ (n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2) (hs : Finset.univ.sum b = n) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (hc : x2611_16899_expansion n n (K b) A c), (c (fun _ => 1)).denom = 1 ∧ ∀ r : ℕ, 0 ≤ (c (fun _ => 1)).num.coeff r",
+  "informal": "Theorem 1 (minimality family)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16899",
+  "original": "Moreover, for every $n\\leq 13$ and every\n $b\\in\\{0,1,2\\}^{n}$ with $|b|=n$ , the coefficient\n $c_{b,(1^{n})}(t)$ has no negative terms. Thus degree fourteen is minimal\nwithin this family.",
+  "proposed_by": "audit-b1",
+  "hash": "2601937426",
+  "type": "∀ n ≤ 13, ∀ (b : Fin n → ℕ), (∀ (i : Fin n), b i ≤ 2) → Finset.univ.sum b = n → ∀ (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ), Mathlib2.x2611_16899_key_family n K → Mathlib2.x2611_16899_atom_family n RatFunc.X A → Mathlib2.x2611_16899_expansion n n (K b) A c → (c fun x => 1).denom = 1 ∧ ∀ (r : ℕ), 0 ≤ (c fun x => 1).num.coeff r",
+  "attempts": [],
+  "created_at": "2026-11-16T03:23:20+0800",
+  "status": "open"
+}

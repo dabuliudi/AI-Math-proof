@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15379_thmB",
+  "statement": "(k a b : ℕ) (ha : 0 < a) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_hongQianPeriod k (a / Nat.gcd a b))",
+  "closed": "∀ (k a b : ℕ) (ha : 0 < a), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_hongQianPeriod k (a / Nat.gcd a b))",
+  "informal": "Theorem B ([3], Theorem 1.2)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15379",
+  "original": "The function $g_{k,a,b}$ is periodic. If $\\operatorname{gcd}(a,b)=1$ , its least positive period is $Q_{k,a}$ , where\n\n $Q_{k,a}:=\\frac{L_{k}}{\\delta_{k,a}\\prod\\limits_{\\begin{subarray}{c}q\\text{ prime }\\\\\nq\\mid\\operatorname{gcd}\\left(a,L_{k}\\right)\\end{subarray}}q^{e_{q,k}}},$ \n\nand\n\n $\\delta_{k,a}:=\\begin{cases}p^{e_{p,k}},&\\text{ if }p\\nmid a\\text{ and }v_{p}(k+1)\\geq e_{p,k}\\text{ for some prime }p\\leq k,\\\\\n1,&\\text{ otherwise }.\\end{cases}$ \n\nIf $\\operatorname{gcd}(a,b)>1$ , its least positive period is $Q_{k,a^{\\prime}}$ , where\n $a^{\\prime}=\\frac{a}{\\operatorname{gcd}(a,b)}$ .",
+  "proposed_by": "audit-b1",
+  "hash": "177728046",
+  "type": "∀ (k a b : ℕ), 0 < a → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k a b 1 (fun n => ↑n) (n + T) = Mathlib2.x2611_15379_G k a b 1 (fun n => ↑n) n} (Mathlib2.x2611_15379_hongQianPeriod k (a / a.gcd b))",
+  "attempts": [],
+  "created_at": "2026-11-16T03:29:45+0800",
+  "status": "open"
+}

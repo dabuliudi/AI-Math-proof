@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thmA",
+  "statement": ": IsLeast {n : ℕ | ∃ (d : ℕ) (K : Geometry.SimplicialComplex ℝ (Fin d → ℝ)), K.vertices.Finite ∧ Nat.card K.vertices = n ∧ Nonempty (K.space ≃ₜ (Fin 3 → Circle))} 15",
+  "closed": "IsLeast {n : ℕ | ∃ (d : ℕ) (K : Geometry.SimplicialComplex ℝ (Fin d → ℝ)), K.vertices.Finite ∧ Nat.card K.vertices = n ∧ Nonempty (K.space ≃ₜ (Fin 3 → Circle))} 15",
+  "informal": "Theorem A",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "The minimal number of vertices in a triangulation of the $3$ -dimensional torus is $15$ .",
+  "proposed_by": "audit-b1",
+  "hash": "1340418950",
+  "type": "IsLeast {n | ∃ d K, K.vertices.Finite ∧ Nat.card ↑K.vertices = n ∧ Nonempty (↑K.space ≃ₜ (Fin 3 → Circle))} 15",
+  "attempts": [],
+  "created_at": "2026-11-16T03:42:37+0800",
+  "status": "open"
+}

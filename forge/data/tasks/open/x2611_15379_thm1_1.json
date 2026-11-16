@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15379_thm1_1",
+  "statement": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ArithmeticFunction ℂ) (hf : f.IsMultiplicative) (hnz : ∀ n : ℕ, 0 < n → f n ≠ 0) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c f) (n + T) = (x2611_15379_G k a b c f) n} (x2611_15379_periodFormula k a b c f)",
+  "closed": "∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ArithmeticFunction ℂ) (hf : f.IsMultiplicative) (hnz : ∀ n : ℕ, 0 < n → f n ≠ 0), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c f) (n + T) = (x2611_15379_G k a b c f) n} (x2611_15379_periodFormula k a b c f)",
+  "informal": "Theorem 1.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15379",
+  "original": "Let $G_{f}$ be defined by (1.1). For each prime $p\\mid cL$ with $p\\nmid A$ , put\n\n $e_{p}=\\begin{cases}v_{p}(c)+M_{p},&M_{p}>0,\\\\\n\\max\\left(\\left\\{j+1:0\\leq j<v_{p}(c),f\\left(p^{v_{p}(d)+j}\\right)^{k}\\neq K_{p}\\right\\}\\cup\\{0\\}\\right),&M_{p}=0.\\end{cases}$ \n\nThen the least positive period of $G_{f}$ is\n\n $P_{f}=\\prod\\limits_{\\begin{subarray}{c}p\\mid cL\\\\\np\\nmid A\\end{subarray}}p^{e_{p}}.$",
+  "proposed_by": "audit-b1",
+  "hash": "2919825756",
+  "type": "∀ (k a b c : ℕ), 0 < k → 0 < a → 0 < c → ∀ (f : ArithmeticFunction ℂ), f.IsMultiplicative → (∀ (n : ℕ), 0 < n → f n ≠ 0) → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k a b c (⇑f) (n + T) = Mathlib2.x2611_15379_G k a b c (⇑f) n} (Mathlib2.x2611_15379_periodFormula k a b c ⇑f)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:26:32+0800",
+  "status": "open"
+}

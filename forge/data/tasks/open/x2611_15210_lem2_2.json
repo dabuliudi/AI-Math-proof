@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15210_lem2_2",
+  "statement": "(n : ℕ) (hn : 2 ≤ n) (G H : Type*) [AddCommGroup G] [Fintype G] [AddCommGroup H] [Fintype H] (hG : AddMonoid.exponent G ∣ n) (hH : AddMonoid.exponent H ∣ n) (d : ℕ) : 2 ^ d * x2611_15210_A n G ≤ x2611_15210_A n (G × (Fin d → ZMod n)) ∧ x2611_15210_A n G ≤ x2611_15210_A n (G × H)",
+  "closed": "∀ (n : ℕ) (hn : 2 ≤ n) (G H : Type*) [AddCommGroup G] [Fintype G] [AddCommGroup H] [Fintype H] (hG : AddMonoid.exponent G ∣ n) (hH : AddMonoid.exponent H ∣ n) (d : ℕ), 2 ^ d * x2611_15210_A n G ≤ x2611_15210_A n (G × (Fin d → ZMod n)) ∧ x2611_15210_A n G ≤ x2611_15210_A n (G × H)",
+  "informal": "Lemma 2.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15210",
+  "original": "Let $n\\geq 2$ , let $G$ and $H$ be finite abelian groups whose exponents divide\n $n$ , and let $d\\geq 0$ . Then\n\n $A_{n}(G\\oplus C_{n}^{d})\\ \\geq\\ 2^{d}A_{n}(G)\\qquad\\text{and}\\qquad A_{n}(G\\oplus H)\\ \\geq\\ A_{n}(G).$",
+  "proposed_by": "audit-b1",
+  "hash": "756944969",
+  "type": "∀ (n : ℕ), 2 ≤ n → ∀ (G : Type u_1) (H : Type u_2) [inst : AddCommGroup G] [Fintype G] [inst_2 : AddCommGroup H] [Fintype H], AddMonoid.exponent G ∣ n → AddMonoid.exponent H ∣ n → ∀ (d : ℕ), 2 ^ d * Mathlib2.x2611_15210_A n G ≤ Mathlib2.x2611_15210_A n (G × (Fin d → ZMod n)) ∧ Mathlib2.x2611_15210_A n G ≤ Mathlib2.x2611_15210_A n (G × H)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:15:48+0800",
+  "status": "open"
+}

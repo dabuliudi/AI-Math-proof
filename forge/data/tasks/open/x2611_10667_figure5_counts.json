@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "2533976336",
   "type": "∀ (q r B C : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (m n : ℤ), IsCoprime m ↑(q * r) → IsCoprime n ↑(q * r) → n * ↑q - m * ↑r = 1 → ↑B ≡ -m * ↑r - n * ↑q [ZMOD ↑(q * r)] → ↑C ≡ m * ↑r + n * ↑q [ZMOD ↑(q * r)] → 0 < B → 0 < C → B < q * r → C < q * r → B + C = q * r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + 2 / (↑r - 1) < ↑(padicValRat r (t - 1)) → Fintype.card (Fin q × (Fin r ⊕ Fin 2)) = q * r + 2 * q ∧ Fintype.card (Fin 2 ⊕ Fin q × Fin 2) = 2 * q + 2 ∧ ↑(Fintype.card (Fin q × (Fin r ⊕ Fin 2))) - ↑(Fintype.card (Fin 2 ⊕ Fin q × Fin 2)) + 1 = ↑q * ↑r - 1",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w1",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T04:22:30+0800"
+    }
+  ],
   "created_at": "2026-11-16T03:00:06+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w1",
+  "claimed_at": "2026-11-16T04:18:33+0800"
 }

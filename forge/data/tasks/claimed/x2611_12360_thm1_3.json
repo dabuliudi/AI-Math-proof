@@ -11,5 +11,7 @@
   "type": "∀ (n : ℕ), 0 < n → ∀ (α : ℝ), 0 < α → α ^ 2 ∉ {1 / 4, 1 / 9, 2 / 15, 3 / 4} → Mathlib2.x2611_12360_notArrow n 3 21 α",
   "attempts": [],
   "created_at": "2026-11-16T03:00:36+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-r7-w0",
+  "claimed_at": "2026-11-16T10:38:45+0800"
 }

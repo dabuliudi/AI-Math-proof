@@ -11,7 +11,9 @@
   "type": "∀ (k : ℕ), IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k 1 0 1 (fun n => ↑n) (n + T) = Mathlib2.x2611_15379_G k 1 0 1 (fun n => ↑n) n} (Mathlib2.x2611_15379_monotonicPeriod k 1 0 1)",
   "attempts": [],
   "created_at": "2026-11-16T02:47:09+0800",
-  "status": "claimed",
+  "status": "proved",
   "claimed_by": "queue-r5-w2",
-  "claimed_at": "2026-11-16T03:04:58+0800"
+  "claimed_at": "2026-11-16T03:04:58+0800",
+  "closed_by": "queue-r5-w2",
+  "finished_at": "2026-11-16T03:17:23+0800"
 }

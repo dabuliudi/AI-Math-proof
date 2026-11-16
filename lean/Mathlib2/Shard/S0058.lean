@@ -1350,4 +1350,810 @@ theorem x2611_16899_singleton_coefficient
   · simp
 end
 
+-- forge:entry x2611_15379_thmA kind=proved origin=paper
+section
+/- Theorem A ([2], Theorem 3.2) -/
+open scoped BigOperators
+
+lemma x2611_15379_thmA_aux1 (q d n : ℕ) (hq : 0 < q) (hd : q ∣ d) :
+    (∏ i ∈ Finset.range d, Nat.gcd (n + 1 + i) q) =
+      ∏ i ∈ Finset.range d, Nat.gcd (n + i) q := by
+  cases d with
+  | zero => simp
+  | succ d =>
+    have h : Nat.gcd (n + (d + 1)) q = Nat.gcd n q := by
+      obtain ⟨a, ha⟩ := hd
+      rw [ha]
+      simpa [Nat.mul_comm] using Nat.gcd_add_mul_left_left q n a
+    have H := Finset.prod_range_succ' (fun i => Nat.gcd (n + i) q) d
+    simp only [Nat.add_zero] at H
+    have hn : Nat.gcd n q ≠ 0 := Nat.ne_of_gt (Nat.gcd_pos_of_pos_right n hq)
+    apply Nat.eq_of_mul_eq_mul_right (Nat.pos_of_ne_zero hn)
+    calc
+      _ = (∏ i ∈ Finset.range d, Nat.gcd (n + (i + 1)) q) *
+          Nat.gcd (n + (d + 1)) q * Nat.gcd n q := by
+            rw [Finset.prod_range_succ]
+            simp [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm]
+      _ = (∏ i ∈ Finset.range (d + 1), Nat.gcd (n + i) q) * Nat.gcd n q := by
+            rw [h, ← H]
+
+lemma x2611_15379_thmA_aux2 (q d n T : ℕ) (hq : 0 < q)
+    (h : q ∣ T ∨ q ∣ d) :
+    (∏ i ∈ Finset.range d, Nat.gcd (n + T + i) q) =
+      ∏ i ∈ Finset.range d, Nat.gcd (n + i) q := by
+  rcases h with hT | hd
+  · obtain ⟨a, rfl⟩ := hT
+    apply Finset.prod_congr rfl
+    intro i hi
+    simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm, Nat.mul_comm] using
+      Nat.gcd_add_mul_left_left q (n + i) a
+  · induction T with
+    | zero => simp
+    | succ T ih =>
+      simpa [Nat.add_assoc] using
+        (x2611_15379_thmA_aux1 q d (n + T) hq hd).trans ih
+
+lemma x2611_15379_thmA_aux3 (L d T : ℕ) (hL : 0 < L)
+    (h : ∀ p : ℕ, Nat.Prime p → p ^ L.factorization p ∣ T ∨
+      p ^ L.factorization p ∣ d) (n : ℕ) (hn : 0 < n) :
+    (∏ i ∈ Finset.range d, Nat.gcd (n + T + i) L) =
+      ∏ i ∈ Finset.range d, Nat.gcd (n + i) L := by
+  have hz (m : ℕ) : (∏ i ∈ Finset.range d, Nat.gcd (m + i) L) ≠ 0 := by
+    exact Finset.prod_ne_zero_iff.mpr (fun i hi =>
+      Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hL))
+  apply Nat.eq_of_factorization_eq (hz _) (hz _)
+  intro p
+  by_cases hp : Nat.Prime p
+  · let q := p ^ L.factorization p
+    have hq : 0 < q := pow_pos hp.pos _
+    have hlocal := x2611_15379_thmA_aux2 q d n T hq (h p hp)
+    have heq (m : ℕ) (hm : 0 < m) :
+        (∏ i ∈ Finset.range d, Nat.gcd (m + i) L).factorization p =
+        (∏ i ∈ Finset.range d, Nat.gcd (m + i) q).factorization p := by
+      rw [Nat.factorization_prod_apply (fun i hi =>
+          Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hL)),
+        Nat.factorization_prod_apply (fun i hi =>
+          Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hq))]
+      apply Finset.sum_congr rfl
+      intro i hi
+      rw [Nat.factorization_gcd (by omega) (Nat.ne_of_gt hL),
+        Nat.factorization_gcd (by omega) (Nat.ne_of_gt hq)]
+      simp [q, hp.factorization_pow, Finsupp.inf_apply]
+    rw [heq (n + T) (by omega), heq n hn, hlocal]
+  · simp [Nat.factorization_eq_zero_of_not_prime _ hp]
+
+lemma x2611_15379_thmA_aux4 (L d n : ℕ) :
+    (∏ i ∈ Finset.range d, Nat.gcd (n + 1 + i) L) * Nat.gcd n L =
+      (∏ i ∈ Finset.range d, Nat.gcd (n + i) L) * Nat.gcd (n + d) L := by
+  cases d with
+  | zero => simp
+  | succ d =>
+    rw [Finset.prod_range_succ, Finset.prod_range_succ' (fun i => Nat.gcd (n + i) L)]
+    simp only [Nat.add_zero]
+    have H : (∏ i ∈ Finset.range d, Nat.gcd (n + 1 + i) L) =
+        ∏ i ∈ Finset.range d, Nat.gcd (n + (i + 1)) L := by
+      apply Finset.prod_congr rfl
+      intro i hi
+      congr 1 <;> omega
+    rw [H]
+    ring_nf
+
+lemma x2611_15379_thmA_aux5 (L d T : ℕ) (hL : 0 < L)
+    (hT : ∀ n : ℕ, 0 < n →
+      (∏ i ∈ Finset.range d, Nat.gcd (n + T + i) L) =
+        ∏ i ∈ Finset.range d, Nat.gcd (n + i) L) :
+    Nat.gcd d L * Nat.gcd T L = Nat.gcd (T + d) L * L := by
+  let F : ℕ → ℕ := fun n => ∏ i ∈ Finset.range d, Nat.gcd (n + i) L
+  have h1 := x2611_15379_thmA_aux4 L d L
+  have h2 := x2611_15379_thmA_aux4 L d (L + T)
+  change F (L + 1) * Nat.gcd L L = F L * Nat.gcd (L + d) L at h1
+  change F (L + T + 1) * Nat.gcd (L + T) L =
+    F (L + T) * Nat.gcd (L + T + d) L at h2
+  have ht0 : F (L + T) = F L := hT L hL
+  have ht1 : F (L + T + 1) = F (L + 1) := by
+    simpa [F, Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using hT (L + 1) (by omega)
+  rw [ht0, ht1] at h2
+  simp only [Nat.gcd_self] at h1
+  have hpos : 0 < F L := Finset.prod_pos (fun i hi => Nat.gcd_pos_of_pos_right _ hL)
+  have H : Nat.gcd (L + d) L * Nat.gcd (L + T) L =
+      Nat.gcd (L + T + d) L * L := by
+    apply Nat.eq_of_mul_eq_mul_left hpos
+    calc
+      F L * (Nat.gcd (L + d) L * Nat.gcd (L + T) L) =
+          (F (L + 1) * L) * Nat.gcd (L + T) L := by rw [← Nat.mul_assoc, ← h1]
+      _ = (F (L + 1) * Nat.gcd (L + T) L) * L := by ring
+      _ = F L * (Nat.gcd (L + T + d) L * L) := by rw [h2]; ring
+  simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm] using H
+
+lemma x2611_15379_thmA_aux6 (L d T p : ℕ) (hL : 0 < L) (hd : 0 < d)
+    (hT : 0 < T) (hp : Nat.Prime p)
+    (he : d.factorization p < L.factorization p)
+    (h : Nat.gcd d L * Nat.gcd T L = Nat.gcd (T + d) L * L) :
+    p ^ L.factorization p ∣ T := by
+  have hA : Nat.gcd d L ≠ 0 := Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hL)
+  have hB : Nat.gcd T L ≠ 0 := Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hL)
+  have hC : Nat.gcd (T + d) L ≠ 0 := Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ hL)
+  have hfac := congrArg (fun a : ℕ => a.factorization p) h
+  rw [Nat.factorization_mul hA hB, Nat.factorization_mul hC (Nat.ne_of_gt hL)] at hfac
+  simp only [Finsupp.add_apply] at hfac
+  have hdiv : Nat.gcd (Nat.gcd d L) (Nat.gcd T L) ∣ Nat.gcd (T + d) L := by
+    apply Nat.dvd_gcd
+    · exact dvd_add ((Nat.gcd_dvd_right _ _).trans (Nat.gcd_dvd_left _ _))
+        ((Nat.gcd_dvd_left _ _).trans (Nat.gcd_dvd_left _ _))
+    · exact (Nat.gcd_dvd_left _ _).trans (Nat.gcd_dvd_right _ _)
+  have hle := ((Nat.factorization_le_iff_dvd
+    (Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ (Nat.pos_of_ne_zero hB))) hC).mpr hdiv) p
+  rw [Nat.factorization_gcd hA hB] at hle
+  rw [Nat.factorization_gcd (Nat.ne_of_gt hd) (Nat.ne_of_gt hL),
+      Nat.factorization_gcd (Nat.ne_of_gt hT) (Nat.ne_of_gt hL)] at hfac hle
+  simp only [Finsupp.inf_apply] at hfac hle
+  apply (hp.pow_dvd_iff_le_factorization (Nat.ne_of_gt hT)).mpr
+  omega
+
+lemma x2611_15379_thmA_aux7 (L d : ℕ) (hL : 0 < L) (hd : 0 < d) :
+    IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →
+      (∏ i ∈ Finset.range d, Nat.gcd (n + T + i) L) =
+        ∏ i ∈ Finset.range d, Nat.gcd (n + i) L}
+      (∏ p ∈ (L.primeFactors.filter (fun p => d.factorization p < L.factorization p)),
+        p ^ L.factorization p) := by
+  classical
+  let s := L.primeFactors.filter (fun p => d.factorization p < L.factorization p)
+  let P := ∏ p ∈ s, p ^ L.factorization p
+  have hP : 0 < P := Finset.prod_pos (fun p hp => pow_pos
+    (Nat.pos_of_mem_primeFactors (Finset.mem_filter.mp hp).1) _)
+  change IsLeast _ P
+  constructor
+  · refine ⟨hP, ?_⟩
+    apply x2611_15379_thmA_aux3 L d P hL
+    intro p hp
+    by_cases he : d.factorization p < L.factorization p
+    · left
+      by_cases hLp : p ∣ L
+      · exact Finset.dvd_prod_of_mem _ (Finset.mem_filter.mpr
+          ⟨hp.mem_primeFactors hLp (Nat.ne_of_gt hL), he⟩)
+      · simp [Nat.factorization_eq_zero_of_not_dvd hLp]
+    · right
+      exact (hp.pow_dvd_iff_le_factorization (Nat.ne_of_gt hd)).mpr (by omega)
+  · intro T hT
+    apply Nat.le_of_dvd hT.1
+    apply Finset.prod_dvd_of_isRelPrime
+    · intro p hp q hq hpq
+      exact Nat.coprime_iff_isRelPrime.mp (Nat.coprime_pow_primes _ _
+        (Nat.prime_of_mem_primeFactors (Finset.mem_filter.mp hp).1)
+        (Nat.prime_of_mem_primeFactors (Finset.mem_filter.mp hq).1) hpq)
+    · intro p hp
+      exact x2611_15379_thmA_aux6 L d T p hL hd hT.1
+        (Nat.prime_of_mem_primeFactors (Finset.mem_filter.mp hp).1)
+        (Finset.mem_filter.mp hp).2
+        (x2611_15379_thmA_aux5 L d T hL hT.2)
+
+lemma x2611_15379_thmA_aux8 {α : Type*} (s : Finset α) (a : α → ℕ)
+    (e : ℕ) (t : α) (ht : t ∈ s) (he : e ≤ a t)
+    (hother : ∀ i ∈ s, i ≠ t → a i ≤ e) :
+    (∑ i ∈ s, a i) + e = (∑ i ∈ s, min (a i) e) + a t := by
+  classical
+  have hsum : (∑ i ∈ s.erase t, min (a i) e) = ∑ i ∈ s.erase t, a i := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    exact min_eq_left (hother i (Finset.mem_erase.mp hi).2 (Finset.mem_erase.mp hi).1)
+  rw [← Finset.sum_erase_add s a ht,
+    ← Finset.sum_erase_add s (fun i => min (a i) e) ht, hsum, min_eq_right he]
+  omega
+
+lemma x2611_15379_thmA_aux9 {α : Type*} (s : Finset α) (hs : s.Nonempty)
+    (f : α → ℕ) (hf : ∀ i ∈ s, f i ≠ 0) (L : ℕ) (hL : L ≠ 0)
+    (hpair : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → Nat.gcd (f i) (f j) ∣ L)
+    (hdiv : L ∣ s.lcm f) :
+    (∏ i ∈ s, f i) * L = (∏ i ∈ s, Nat.gcd (f i) L) * s.lcm f := by
+  have hg : ∀ i ∈ s, Nat.gcd (f i) L ≠ 0 := fun i hi =>
+    Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ (Nat.pos_of_ne_zero hL))
+  have hlcm : s.lcm f ≠ 0 := Finset.lcm_ne_zero_iff.mpr hf
+  apply Nat.eq_of_factorization_eq
+    (mul_ne_zero (Finset.prod_ne_zero_iff.mpr hf) hL)
+    (mul_ne_zero (Finset.prod_ne_zero_iff.mpr hg) hlcm)
+  intro p
+  obtain ⟨t, ht, hmax⟩ := s.exists_max_image (fun i => (f i).factorization p) hs
+  have hsup : s.sup (fun i => (f i).factorization p) = (f t).factorization p :=
+    le_antisymm (Finset.sup_le hmax) (Finset.le_sup (f := fun i => (f i).factorization p) ht)
+  have he : L.factorization p ≤ (f t).factorization p := by
+    have H := ((Nat.factorization_le_iff_dvd hL hlcm).mpr hdiv) p
+    rwa [Finset.factorization_lcm hf, hsup] at H
+  have hother : ∀ i ∈ s, i ≠ t → (f i).factorization p ≤ L.factorization p := by
+    intro i hi hit
+    have H := ((Nat.factorization_le_iff_dvd
+      (Nat.ne_of_gt (Nat.gcd_pos_of_pos_right _ (Nat.pos_of_ne_zero (hf t ht))))
+      hL).mpr (hpair i hi t ht hit)) p
+    rw [Nat.factorization_gcd (hf i hi) (hf t ht)] at H
+    simp only [Finsupp.inf_apply] at H
+    have := hmax i hi
+    omega
+  have hsum : (∑ i ∈ s, (Nat.gcd (f i) L).factorization p) =
+      ∑ i ∈ s, min ((f i).factorization p) (L.factorization p) := by
+    apply Finset.sum_congr rfl
+    intro i hi
+    rw [Nat.factorization_gcd (hf i hi) hL]
+    rfl
+  rw [Nat.factorization_mul (Finset.prod_ne_zero_iff.mpr hf) hL,
+    Nat.factorization_mul (Finset.prod_ne_zero_iff.mpr hg) hlcm]
+  simp only [Finsupp.add_apply]
+  rw [Nat.factorization_prod_apply hf, Nat.factorization_prod_apply hg,
+    Finset.factorization_lcm hf, hsup, hsum]
+  exact x2611_15379_thmA_aux8 s (fun i => (f i).factorization p)
+    (L.factorization p) t ht he hother
+
+lemma x2611_15379_thmA_aux10 (d n : ℕ) (hd : 0 < d) :
+    ∃ i : ℕ, i < d ∧ d ∣ n + i := by
+  have hmod := Nat.mod_lt n hd
+  have hdecomp := Nat.mod_add_div n d
+  by_cases h : n % d = 0
+  · exact ⟨0, hd, by simpa using Nat.dvd_of_mod_eq_zero h⟩
+  · refine ⟨d - n % d, by omega, ?_⟩
+    refine ⟨n / d + 1, ?_⟩
+    rw [Nat.mul_add, Nat.mul_one]
+    omega
+
+lemma x2611_15379_thmA_aux11 (k n : ℕ) :
+    Nat.lcmUpto k ∣ (Finset.range (k + 1)).lcm (fun i => n + i) := by
+  unfold Nat.lcmUpto
+  apply Finset.lcm_dvd
+  intro d hd
+  obtain ⟨i, hi, hdi⟩ := x2611_15379_thmA_aux10 d n
+    (by have := (Finset.mem_Icc.mp hd).1; omega)
+  exact hdi.trans (Finset.dvd_lcm (Finset.mem_range.mpr
+    (by have := (Finset.mem_Icc.mp hd).2; omega)))
+
+lemma x2611_15379_thmA_aux12 (k n i j : ℕ) (hi : i ≤ k) (hj : j ≤ k)
+    (hne : i ≠ j) : Nat.gcd (n + i) (n + j) ∣ Nat.lcmUpto k := by
+  have H (a b : ℕ) (ha : a ≤ k) (hb : b ≤ k) (hab : a < b) :
+      Nat.gcd (n + a) (n + b) ∣ Nat.lcmUpto k := by
+    have hdiff : Nat.gcd (n + a) (n + b) ∣ b - a := by
+      simpa only [Nat.add_sub_add_left] using Nat.dvd_sub (Nat.gcd_dvd_right (n + a) (n + b))
+        (Nat.gcd_dvd_left (n + a) (n + b))
+    apply hdiff.trans
+    exact Finset.dvd_lcm (f := id) (Finset.mem_Icc.mpr ⟨by omega, by omega⟩)
+  rcases lt_or_gt_of_ne hne with hij | hji
+  · exact H i j hi hj hij
+  · rw [Nat.gcd_comm]
+    exact H j i hj hi hji
+
+lemma x2611_15379_thmA_aux13 (k n : ℕ) (hn : 0 < n) :
+    x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ)) n =
+      ((∏ i ∈ Finset.range (k + 1), Nat.gcd (n + i) (Nat.lcmUpto k) : ℕ) : ℂ) /
+        (Nat.lcmUpto k : ℂ) := by
+  have hf : ∀ i ∈ Finset.range (k + 1), n + i ≠ 0 := by
+    intro i hi
+    omega
+  have hlcm : (Finset.range (k + 1)).lcm (fun i => n + i) ≠ 0 :=
+    Finset.lcm_ne_zero_iff.mpr hf
+  have H := x2611_15379_thmA_aux9 (Finset.range (k + 1))
+    ⟨0, Finset.mem_range.mpr (by omega)⟩ (fun i => n + i) hf
+    (Nat.lcmUpto k) (Nat.lcmUpto_ne_zero k)
+    (by
+      intro i hi j hj hij
+      exact x2611_15379_thmA_aux12 k n i j
+        (by have := Finset.mem_range.mp hi; omega)
+        (by have := Finset.mem_range.mp hj; omega) hij)
+    (x2611_15379_thmA_aux11 k n)
+  simp only [x2611_15379_G, Nat.zero_add, Nat.one_mul, Nat.mul_one]
+  apply (div_eq_div_iff (by exact_mod_cast hlcm)
+    (by exact_mod_cast Nat.lcmUpto_ne_zero k)).mpr
+  exact_mod_cast H
+
+lemma x2611_15379_thmA_aux14 (k : ℕ) :
+    x2611_15379_monotonicPeriod k 1 0 1 =
+      ∏ p ∈ ((Nat.lcmUpto k).primeFactors.filter (fun p =>
+        (k + 1).factorization p < (Nat.lcmUpto k).factorization p)),
+        p ^ (Nat.lcmUpto k).factorization p := by
+  classical
+  simp only [x2611_15379_monotonicPeriod, Nat.primeFactors_one,
+    Finset.filter_empty, Finset.prod_empty, one_mul, Nat.gcd_zero_right, Nat.div_one]
+  apply Finset.prod_congr ?_ (fun _ _ => rfl)
+  ext p
+  simp only [Finset.mem_filter]
+  constructor
+  · rintro ⟨hp, _, he⟩
+    exact ⟨hp, he⟩
+  · rintro ⟨hp, he⟩
+    exact ⟨hp, (Nat.prime_of_mem_primeFactors hp).not_dvd_one, he⟩
+
+theorem x2611_15379_thmA (k : ℕ) :
+    IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →
+      (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) (n + T) =
+        (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) n}
+      (x2611_15379_monotonicPeriod k 1 0 1) := by
+  classical
+  rw [x2611_15379_thmA_aux14]
+  let L := Nat.lcmUpto k
+  let P := ∏ p ∈ (L.primeFactors.filter (fun p =>
+      (k + 1).factorization p < L.factorization p)), p ^ L.factorization p
+  have H := x2611_15379_thmA_aux7 L (k + 1) (Nat.lcmUpto_pos k) (by omega)
+  change IsLeast _ P
+  change IsLeast _ P at H
+  constructor
+  · refine ⟨H.1.1, ?_⟩
+    intro n hn
+    rw [x2611_15379_thmA_aux13 k (n + P) (by omega),
+      x2611_15379_thmA_aux13 k n hn]
+    congr 1
+    exact_mod_cast H.1.2 n hn
+  · intro T hT
+    apply H.2
+    refine ⟨hT.1, ?_⟩
+    intro n hn
+    have h := hT.2 n hn
+    rw [x2611_15379_thmA_aux13 k (n + T) (by omega),
+      x2611_15379_thmA_aux13 k n hn] at h
+    have hL : (Nat.lcmUpto k : ℂ) ≠ 0 := by exact_mod_cast Nat.lcmUpto_ne_zero k
+    have he := (div_left_inj' hL).mp h
+    exact_mod_cast he
+end
+
+-- forge:entry x2611_15505_lem4_1 kind=proved origin=paper
+section
+/- Lemma 4.1 -/
+theorem x2611_15505_lem4_1 (m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ)
+    (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ)
+    (hcert : Matrix.vecMul y E = Matrix.vecMul z B)
+    (hz : ∀ i, 0 ≤ z i) (hz0 : z ≠ 0) :
+    ¬ ∃ g : Fin d → ℝ, E.mulVec g = 0 ∧ ∀ i, 0 < B.mulVec g i := by
+  rintro ⟨g, hEg, hBg⟩
+  have hzero : dotProduct z (B.mulVec g) = 0 := by
+    rw [Matrix.dotProduct_mulVec, ← hcert, ← Matrix.dotProduct_mulVec, hEg]
+    simp only [dotProduct_zero]
+  have hex : ∃ i, z i ≠ 0 := by
+    by_contra! h
+    exact hz0 (funext h)
+  obtain ⟨i, hi⟩ := hex
+  have hpos : 0 < dotProduct z (B.mulVec g) := by
+    change 0 < ∑ j, z j * B.mulVec g j
+    apply Finset.sum_pos'
+    · intro j hj
+      exact mul_nonneg (hz j) (le_of_lt (hBg j))
+    · exact ⟨i, Finset.mem_univ i,
+        mul_pos (lt_of_le_of_ne (hz i) (Ne.symm hi)) (hBg i)⟩
+  exact (ne_of_gt hpos) hzero
+end
+
+-- forge:entry x2611_11972_lem2_1 kind=proved origin=paper
+section
+/- Lemma 2.1 -/
+open scoped Topology
+
+lemma x2611_11972_lem2_1_aux1 (f : ℂ → ℂ) (hf : AnalyticAt ℂ f 0) (n : ℕ) :
+    iteratedDeriv (n+1) (fun z => z * f z) 0 = (n+1 : ℂ) * iteratedDeriv n f 0 := by
+  have h := iteratedDeriv_mul (n := n+1) (x := (0 : ℂ))
+    (f := fun z : ℂ => z) (g := f) (by fun_prop) hf.contDiffAt
+  change iteratedDeriv (n+1) (fun z => z * f z) 0 = _ at h
+  rw [h]
+  rw [Finset.sum_eq_single 1]
+  · simp [iteratedDeriv_fun_id_zero]
+  · intro b hb hb1
+    simp [iteratedDeriv_fun_id_zero, hb1]
+  · simp
+
+lemma x2611_11972_lem2_1_aux2 (f : ℂ → ℂ) (hf : AnalyticAt ℂ f 0) (n : ℕ) :
+    iteratedDeriv n (fun z => (1-z)*deriv f z) 0 =
+      iteratedDeriv (n+1) f 0 - n * iteratedDeriv n f 0 := by
+  have heq : (fun z : ℂ => (1-z)*deriv f z) =
+      (fun z => deriv f z - z * deriv f z) := by funext z; ring
+  rw [heq, iteratedDeriv_fun_sub (f := deriv f) (g := fun z => z * deriv f z) hf.deriv.contDiffAt
+    ((analyticAt_id.mul hf.deriv).contDiffAt)]
+  rw [← iteratedDeriv_succ']
+  cases n with
+  | zero => simp
+  | succ n => rw [x2611_11972_lem2_1_aux1 _ hf.deriv, ← iteratedDeriv_succ']; simp
+
+lemma x2611_11972_lem2_1_aux3 (f g : ℂ → ℂ)
+    (hf : AnalyticAt ℂ f 0) (hg : AnalyticAt ℂ g 0)
+    (hG : ∀ᶠ z in 𝓝 0, (1-z)*deriv g z = g z / 2)
+    (hF : ∀ᶠ z in 𝓝 0, z * (2*(1-z)*deriv f z - f z) = 1 - (1-z)*g z)
+    (n : ℕ) :
+    iteratedDeriv (n+1) g 0 = (n + (1:ℂ)/2) * iteratedDeriv n g 0 ∧
+    2 * (n+1 : ℂ) * iteratedDeriv (n+1) f 0 -
+      (n+1 : ℂ)*(2*n+1) * iteratedDeriv n f 0 = iteratedDeriv n g 0 / 2 := by
+  have hG' := Filter.EventuallyEq.iteratedDeriv_eq n hG
+  rw [x2611_11972_lem2_1_aux2 _ hg,
+    iteratedDeriv_div_const] at hG'
+  have hGr : iteratedDeriv (n+1) g 0 =
+      (n + (1:ℂ)/2) * iteratedDeriv n g 0 := by linear_combination hG'
+  refine ⟨hGr, ?_⟩
+  have hF' := Filter.EventuallyEq.iteratedDeriv_eq (n+1) hF
+  have hA : AnalyticAt ℂ (fun z : ℂ => 2*(1-z)*deriv f z - f z) 0 := by
+    fun_prop
+  rw [x2611_11972_lem2_1_aux1 _ hA] at hF'
+  rw [iteratedDeriv_const_sub (by omega), iteratedDeriv_neg] at hF'
+  have heq : (fun z : ℂ => (1-z)*g z) = (fun z => g z - z*g z) := by funext z; ring
+  rw [heq, iteratedDeriv_fun_sub (f := g) (g := fun z => z*g z) hg.contDiffAt (analyticAt_id.mul hg).contDiffAt,
+    x2611_11972_lem2_1_aux1 _ hg] at hF'
+  have heq2 : (fun z : ℂ => 2*(1-z)*deriv f z - f z) =
+      (fun z => 2*((1-z)*deriv f z) - f z) := by funext z; ring
+  rw [heq2, iteratedDeriv_fun_sub (f := fun z => 2*((1-z)*deriv f z)) (g := f) (analyticAt_const.mul ((analyticAt_const.sub analyticAt_id).mul hf.deriv)).contDiffAt hf.contDiffAt,
+    iteratedDeriv_const_mul_field, x2611_11972_lem2_1_aux2 _ hf] at hF'
+  rw [hGr] at hF'
+  linear_combination hF'
+
+lemma x2611_11972_lem2_1_aux4 (n : ℕ) :
+    (((harmonic (2*(n+1)) - harmonic (n+1)) : ℚ) : ℂ) =
+      (((harmonic (2*n) - harmonic n) : ℚ) : ℂ) +
+      1 / (2 * (n+1 : ℂ) * (2*n+1)) := by
+  rw [show 2*(n+1) = (2*n+1)+1 by omega, harmonic_succ, harmonic_succ, harmonic_succ]
+  push_cast
+  have hn : (n+1 : ℂ) ≠ 0 := by exact_mod_cast (by omega : n+1 ≠ 0)
+  have hn' : (2*n+1 : ℂ) ≠ 0 := by exact_mod_cast (by omega : 2*n+1 ≠ 0)
+  have hn'' : (2*n+1+1 : ℂ) ≠ 0 := by exact_mod_cast (by omega : 2*n+1+1 ≠ 0)
+  field_simp
+  <;> ring
+
+lemma x2611_11972_lem2_1_aux5 (n : ℕ) :
+    (n+1 : ℂ) * ((n+1).centralBinom : ℂ) / 4^(n+1) =
+      (n + (1:ℂ)/2) * (n.centralBinom : ℂ) / 4^n := by
+  have h : (n+1 : ℂ) * ((n+1).centralBinom : ℂ) =
+      2*(2*n+1) * (n.centralBinom : ℂ) := by
+    exact_mod_cast Nat.succ_mul_centralBinom_succ n
+  rw [h, pow_succ]
+  field_simp
+  <;> ring
+
+lemma x2611_11972_lem2_1_aux6 (f g : ℂ → ℂ)
+    (hf : AnalyticAt ℂ f 0) (hg : AnalyticAt ℂ g 0) (hf0 : f 0 = 0) (hg0 : g 0 = 1)
+    (hG : ∀ᶠ z in 𝓝 0, (1-z)*deriv g z = g z / 2)
+    (hF : ∀ᶠ z in 𝓝 0, z * (2*(1-z)*deriv f z - f z) = 1 - (1-z)*g z)
+    (n : ℕ) :
+    iteratedDeriv n g 0 = n.factorial * (n.centralBinom : ℂ) / 4^n ∧
+    iteratedDeriv n f 0 = n.factorial * (n.centralBinom : ℂ) / 4^n *
+      (((harmonic (2*n) - harmonic n) : ℚ) : ℂ) := by
+  induction n with
+  | zero => simp [hf0, hg0]
+  | succ n ih =>
+    obtain ⟨hgn, hfn⟩ := x2611_11972_lem2_1_aux3 f g hf hg hG hF n
+    have hc := x2611_11972_lem2_1_aux5 n
+    have hh := x2611_11972_lem2_1_aux4 n
+    have hn : (n+1 : ℂ) ≠ 0 := by exact_mod_cast (by omega : n+1 ≠ 0)
+    have hn' : (2*n+1 : ℂ) ≠ 0 := by exact_mod_cast (by omega : 2*n+1 ≠ 0)
+    rw [ih.1] at hgn hfn
+    rw [ih.2] at hfn
+    constructor
+    · rw [hgn, Nat.factorial_succ]
+      push_cast
+      linear_combination -(n.factorial : ℂ) * hc
+    · rw [Nat.factorial_succ, hh]
+      push_cast
+      have hc' : ((n+1).centralBinom : ℂ) / 4^(n+1) =
+          ((n + (1:ℂ)/2) * (n.centralBinom : ℂ) / 4^n) / (n+1) := by
+        apply (eq_div_iff hn).mpr
+        linear_combination hc
+      rw [show ((n+1 : ℂ) * n.factorial * ((n+1).centralBinom : ℂ) / 4^(n+1)) =
+        (n+1 : ℂ) * n.factorial * (((n+1).centralBinom : ℂ) / 4^(n+1)) by ring, hc']
+      apply (mul_left_cancel₀ (show 2*(n+1 : ℂ) ≠ 0 from mul_ne_zero (by norm_num) hn))
+      push_cast at hfn
+      field_simp [hn, hn'] at hfn ⊢
+      linear_combination hfn
+
+lemma x2611_11972_lem2_1_aux7 (w : ℂ) (hw : w ≠ 0) :
+    w ^ ((1:ℂ)/2) ≠ 0 ∧ 1 + w ^ ((1:ℂ)/2) ≠ 0 ∧
+      2 / (1 + w ^ ((1:ℂ)/2)) ∈ Complex.slitPlane := by
+  have hs : 0 ≤ (w ^ ((1:ℂ)/2)).re := by
+    rw [one_div, Complex.cpow_inv_two_re]
+    positivity
+  have hp : 0 < (1 + w ^ ((1:ℂ)/2)).re := by
+    simp only [Complex.add_re, Complex.one_re]
+    linarith
+  have hne : 1 + w ^ ((1:ℂ)/2) ≠ 0 := by
+    intro h
+    have := congrArg Complex.re h
+    simp only [Complex.zero_re] at this
+    linarith
+  refine ⟨Complex.cpow_ne_zero_iff.mpr (Or.inl hw), hne, ?_⟩
+  apply Complex.mem_slitPlane_iff.mpr
+  left
+  rw [Complex.div_re]
+  norm_num only [Complex.re_ofNat, Complex.im_ofNat, zero_mul, zero_div, add_zero]
+  exact div_pos (mul_pos (by norm_num) hp) (Complex.normSq_pos.mpr hne)
+
+lemma x2611_11972_lem2_1_aux8 (z : ℂ) (hz : ‖z‖ < 1) :
+    AnalyticAt ℂ (fun x : ℂ => ((1-x)^((1:ℂ)/2))⁻¹ *
+      Complex.log (2 / (1+(1-x)^((1:ℂ)/2)))) z ∧
+    AnalyticAt ℂ (fun x : ℂ => ((1-x)^((1:ℂ)/2))⁻¹) z := by
+  have hbase : 1-z ∈ Complex.slitPlane := by
+    simpa only [sub_eq_add_neg] using
+      Complex.mem_slitPlane_of_norm_lt_one (z := -z) (by simpa using hz)
+  have hbranch := x2611_11972_lem2_1_aux7 (1-z) (Complex.slitPlane_ne_zero hbase)
+  have hs : AnalyticAt ℂ (fun x : ℂ => (1-x)^((1:ℂ)/2)) z :=
+    (analyticAt_const.sub analyticAt_id).cpow analyticAt_const hbase
+  exact ⟨(hs.inv hbranch.1).mul
+    ((analyticAt_const.div (analyticAt_const.add hs) hbranch.2.1).clog hbranch.2.2),
+    hs.inv hbranch.1⟩
+
+lemma x2611_11972_lem2_1_aux9 (s : ℂ → ℂ) (z : ℂ)
+    (hs : HasDerivAt s (-(s z)⁻¹ / 2) z) (hsq : s z ^ 2 = 1-z)
+    (hs0 : s z ≠ 0) (ha : 1+s z ≠ 0)
+    (hl : 2/(1+s z) ∈ Complex.slitPlane) :
+    (1-z) * deriv (fun x => (s x)⁻¹) z = (s z)⁻¹ / 2 ∧
+    z * (2*(1-z)*deriv (fun x => (s x)⁻¹ * Complex.log (2/(1+s x))) z -
+      (s z)⁻¹ * Complex.log (2/(1+s z))) = 1 - (1-z)*(s z)⁻¹ := by
+  have hg := hs.inv hs0
+  have hq := (hasDerivAt_const z (2:ℂ)).div (hs.const_add 1) ha
+  have hf := hg.mul (hq.clog hl)
+  have hg' := hg.deriv
+  have hf' := hf.deriv
+  change deriv (fun x => (s x)⁻¹) z = _ at hg'
+  change deriv (fun x => (s x)⁻¹ * Complex.log (2/(1+s x))) z = _ at hf'
+  dsimp only [Pi.inv_apply, Pi.div_apply] at hg' hf'
+  rw [hg', hf']
+  constructor
+  · rw [← hsq]
+    field_simp
+    <;> ring
+  · generalize s z = v at *
+    have hz : z = 1-v^2 := by linear_combination hsq
+    rw [hz]
+    field_simp
+    <;> ring
+
+lemma x2611_11972_lem2_1_aux10 (z : ℂ) (hz : ‖z‖ < 1) :
+    (1-z) * deriv (fun x : ℂ => ((1-x)^((1:ℂ)/2))⁻¹) z =
+      ((1-z)^((1:ℂ)/2))⁻¹ / 2 ∧
+    z * (2*(1-z)*deriv (fun x : ℂ => ((1-x)^((1:ℂ)/2))⁻¹ *
+      Complex.log (2/(1+(1-x)^((1:ℂ)/2)))) z -
+      ((1-z)^((1:ℂ)/2))⁻¹ * Complex.log (2/(1+(1-z)^((1:ℂ)/2)))) =
+      1 - (1-z)*((1-z)^((1:ℂ)/2))⁻¹ := by
+  have hb : 1-z ∈ Complex.slitPlane := by
+    simpa only [sub_eq_add_neg] using
+      Complex.mem_slitPlane_of_norm_lt_one (z := -z) (by simpa using hz)
+  have hbranch := x2611_11972_lem2_1_aux7 (1-z) (Complex.slitPlane_ne_zero hb)
+  apply x2611_11972_lem2_1_aux9 (s := fun x : ℂ => (1-x)^((1:ℂ)/2))
+  · have hd := ((hasDerivAt_id z).const_sub 1).cpow_const (c := (1:ℂ)/2) hb
+    convert hd using 1
+    · rfl
+    dsimp only [id_eq]
+    rw [show (1:ℂ)/2-1 = -((1:ℂ)/2) by ring, Complex.cpow_neg]
+    ring
+  · simpa only [one_div] using Complex.cpow_ofNat_inv_pow (1-z) 2
+  · exact hbranch.1
+  · exact hbranch.2.1
+  · exact hbranch.2.2
+
+theorem x2611_11972_lem2_1 (x : ℂ) (hx : ‖x‖ < 1) :
+    HasSum (fun n : ℕ => ((Nat.choose (2 * (n + 1)) (n + 1) : ℂ) / (4 : ℂ) ^ (n + 1)) *
+      (((harmonic (2 * (n + 1)) - harmonic (n + 1)) : ℚ) : ℂ) * x ^ (n + 1))
+      (((1 - x) ^ ((1 : ℂ) / 2))⁻¹ * Complex.log (2 / (1 + (1 - x) ^ ((1 : ℂ) / 2)))) := by
+  let f : ℂ → ℂ := fun z => ((1-z)^((1:ℂ)/2))⁻¹ *
+    Complex.log (2/(1+(1-z)^((1:ℂ)/2)))
+  let g : ℂ → ℂ := fun z => ((1-z)^((1:ℂ)/2))⁻¹
+  have hfg := x2611_11972_lem2_1_aux8 0 (by simp)
+  have hf : AnalyticAt ℂ f 0 := hfg.1
+  have hg : AnalyticAt ℂ g 0 := hfg.2
+  have hb : ∀ᶠ z : ℂ in 𝓝 0, ‖z‖ < 1 := by
+    filter_upwards [Metric.ball_mem_nhds (0:ℂ) (show 0 < (1:ℝ) by norm_num)] with z hz
+    simpa only [Metric.mem_ball, dist_zero_right] using hz
+  have hG : ∀ᶠ z in 𝓝 0, (1-z)*deriv g z = g z / 2 := by
+    filter_upwards [hb] with z hz
+    exact (x2611_11972_lem2_1_aux10 z hz).1
+  have hF : ∀ᶠ z in 𝓝 0, z*(2*(1-z)*deriv f z-f z) = 1-(1-z)*g z := by
+    filter_upwards [hb] with z hz
+    exact (x2611_11972_lem2_1_aux10 z hz).2
+  have hc := x2611_11972_lem2_1_aux6 f g hf hg (by norm_num [f]) (by simp [g]) hG hF
+  have hdiff : DifferentiableOn ℂ f (Metric.ball 0 1) := by
+    intro z hz
+    exact ((x2611_11972_lem2_1_aux8 z (by simpa only [Metric.mem_ball, dist_zero_right] using hz)).1.differentiableAt).differentiableWithinAt
+  have ht := Complex.hasSum_taylorSeries_on_ball hdiff (z := x) (by simpa only [Metric.mem_ball, dist_zero_right] using hx)
+  have hall : HasSum (fun n : ℕ => (n.centralBinom : ℂ) / 4^n *
+      (((harmonic (2*n)-harmonic n) : ℚ) : ℂ) * x^n) (f x) := by
+    apply ht.congr_fun
+    intro n
+    rw [(hc n).2]
+    simp only [sub_zero, smul_eq_mul]
+    have hn : (n.factorial : ℂ) ≠ 0 := by exact_mod_cast Nat.factorial_ne_zero n
+    field_simp
+    <;> ring
+  have ht' := (hasSum_nat_add_iff' (f := fun n : ℕ => (n.centralBinom : ℂ) / 4^n *
+      (((harmonic (2*n)-harmonic n) : ℚ) : ℂ) * x^n) 1).mpr hall
+  simpa [Nat.centralBinom_eq_two_mul_choose, f] using ht'
+end
+
+-- forge:entry x2611_15723_cycleShuffle_card kind=proved origin=paper
+section
+/- Section 1.1, cardinality with no order-isomorphic cycles -/
+lemma x2611_15723_cycleShuffle_card_aux1
+    {α β : Type*} (p : Equiv.Perm α) (q : Equiv.Perm β)
+    (e : α → β) (he : ∀ x, q (e x) = e (p x)) (n : ℕ) (x : α) :
+    (q ^ n) (e x) = e ((p ^ n) x) := by
+  induction n with
+  | zero => rfl
+  | succ n ih =>
+    simpa only [pow_succ', Equiv.Perm.mul_apply, ih] using he ((p ^ n) x)
+
+lemma x2611_15723_cycleShuffle_card_aux2
+    {α β : Type*} [LinearOrder α] [LinearOrder β] [Finite α] [Finite β]
+    (p : Equiv.Perm α) (q : Equiv.Perm β) (e : α ↪o β)
+    (he : ∀ x, q (e x) = e (p x)) (a : α) (c : β) (ha : e a = c) :
+    ∃ E : {x : α // p.SameCycle a x} ≃o {y : β // q.SameCycle c y},
+      ∀ x, (E x).val = e x.val := by
+  classical
+  have hm (x : α) (hx : p.SameCycle a x) : q.SameCycle c (e x) := by
+    obtain ⟨n, hn⟩ := hx.exists_nat_pow_eq
+    refine ⟨(n : ℤ), ?_⟩
+    rw [zpow_natCast, ← ha, x2611_15723_cycleShuffle_card_aux1 p q e he, hn]
+  let E : {x : α // p.SameCycle a x} ↪o {y : β // q.SameCycle c y} :=
+    { toFun := fun x => ⟨e x.val, hm x.val x.property⟩
+      inj' := fun x y hxy => Subtype.ext (e.injective (congrArg Subtype.val hxy))
+      map_rel_iff' := by intro x y; exact e.le_iff_le }
+  have hE : Function.Surjective E := by
+    intro y
+    obtain ⟨n, hn⟩ := y.property.exists_nat_pow_eq
+    refine ⟨⟨(p ^ n) a, (Equiv.Perm.SameCycle.refl p a).pow_right⟩, ?_⟩
+    apply Subtype.ext
+    change e ((p ^ n) a) = y.val
+    rw [← x2611_15723_cycleShuffle_card_aux1 p q e he, ha, hn]
+  exact ⟨OrderIso.ofSurjective E hE, fun _ => rfl⟩
+
+lemma x2611_15723_cycleShuffle_card_aux3
+    {k l n : ℕ} (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))
+    (h : x2611_15723_noOrderIso σ τ) (π : Equiv.Perm (Fin n))
+    (e : Fin k ↪o Fin n) (f : Fin l ↪o Fin n)
+    (he : ∀ i, π (e i) = e (σ i)) (hf : ∀ j, π (f j) = f (τ j)) :
+    Disjoint (Set.range e) (Set.range f) := by
+  classical
+  rw [Set.disjoint_left]
+  rintro c ⟨a, ha⟩ ⟨b, hb⟩
+  obtain ⟨E, hE⟩ := x2611_15723_cycleShuffle_card_aux2 σ π e he a c ha
+  obtain ⟨F, hF⟩ := x2611_15723_cycleShuffle_card_aux2 τ π f hf b c hb
+  apply h a b
+  refine ⟨E.trans F.symm, ?_⟩
+  intro x y hxy
+  apply f.injective
+  have hEF (z : {x : Fin k // σ.SameCycle a x}) :
+      f ((E.trans F.symm) z).val = e z.val := by
+    rw [← hF, OrderIso.trans_apply, F.apply_symm_apply, hE]
+  rw [← hf, hEF, he, hxy, hEF]
+
+lemma x2611_15723_cycleShuffle_card_aux4
+    {k l n : ℕ} (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))
+    (h : x2611_15723_noOrderIso σ τ) (π : Equiv.Perm (Fin n))
+    (e₁ e₂ : Fin k ↪o Fin n) (f₁ f₂ : Fin l ↪o Fin n)
+    (hc₁ : Set.range e₁ ∪ Set.range f₁ = Set.univ)
+    (hc₂ : Set.range e₂ ∪ Set.range f₂ = Set.univ)
+    (he₁ : ∀ i, π (e₁ i) = e₁ (σ i))
+    (he₂ : ∀ i, π (e₂ i) = e₂ (σ i))
+    (hf₁ : ∀ j, π (f₁ j) = f₁ (τ j))
+    (hf₂ : ∀ j, π (f₂ j) = f₂ (τ j)) :
+    e₁ = e₂ ∧ f₁ = f₂ := by
+  have hd₁ := x2611_15723_cycleShuffle_card_aux3 σ τ h π e₁ f₂ he₁ hf₂
+  have hd₂ := x2611_15723_cycleShuffle_card_aux3 σ τ h π e₂ f₁ he₂ hf₁
+  have heq : Set.range e₁ = Set.range e₂ := by
+    ext x
+    constructor
+    · intro hx
+      have hx' : x ∈ Set.range e₂ ∪ Set.range f₂ := hc₂.symm ▸ Set.mem_univ x
+      exact hx'.resolve_right (fun hf => Set.disjoint_left.mp hd₁ hx hf)
+    · intro hx
+      have hx' : x ∈ Set.range e₁ ∪ Set.range f₁ := hc₁.symm ▸ Set.mem_univ x
+      exact hx'.resolve_right (fun hf => Set.disjoint_left.mp hd₂ hx hf)
+  have hfq : Set.range f₁ = Set.range f₂ := by
+    ext x
+    constructor
+    · intro hx
+      have hx' : x ∈ Set.range e₂ ∪ Set.range f₂ := hc₂.symm ▸ Set.mem_univ x
+      exact hx'.resolve_left (fun he => Set.disjoint_left.mp hd₂ he hx)
+    · intro hx
+      have hx' : x ∈ Set.range e₁ ∪ Set.range f₁ := hc₁.symm ▸ Set.mem_univ x
+      exact hx'.resolve_left (fun he => Set.disjoint_left.mp hd₁ he hx)
+  exact ⟨OrderEmbedding.range_inj.mp heq, OrderEmbedding.range_inj.mp hfq⟩
+
+lemma x2611_15723_cycleShuffle_card_aux5
+    {α β γ : Type*} (σ : Equiv.Perm α) (τ : Equiv.Perm β)
+    (e : α ↪ γ) (f : β ↪ γ)
+    (hd : Disjoint (Set.range e) (Set.range f))
+    (hc : Set.range e ∪ Set.range f = Set.univ) :
+    ∃ π : Equiv.Perm γ, (∀ i, π (e i) = e (σ i)) ∧
+      (∀ j, π (f j) = f (τ j)) := by
+  classical
+  have hb : Function.Bijective (Sum.elim e f) := by
+    constructor
+    · intro x y hxy
+      cases x with
+      | inl a =>
+        cases y with
+        | inl b => exact congrArg Sum.inl (e.injective hxy)
+        | inr b => exact False.elim (Set.disjoint_left.mp hd ⟨a, rfl⟩ ⟨b, hxy.symm⟩)
+      | inr a =>
+        cases y with
+        | inl b => exact False.elim (Set.disjoint_left.mp hd ⟨b, hxy.symm⟩ ⟨a, rfl⟩)
+        | inr b => exact congrArg Sum.inr (f.injective hxy)
+    · intro c
+      have hc' : c ∈ Set.range e ∪ Set.range f := hc.symm ▸ Set.mem_univ c
+      rcases hc' with ⟨a, ha⟩ | ⟨b, hb⟩
+      · exact ⟨Sum.inl a, ha⟩
+      · exact ⟨Sum.inr b, hb⟩
+  let g := Equiv.ofBijective (Sum.elim e f) hb
+  refine ⟨g.symm.trans ((Equiv.sumCongr σ τ).trans g), ?_, ?_⟩
+  · intro i
+    change g ((Equiv.sumCongr σ τ) (g.symm (g (Sum.inl i)))) = g (Sum.inl (σ i))
+    rw [g.symm_apply_apply]
+    rfl
+  · intro j
+    change g ((Equiv.sumCongr σ τ) (g.symm (g (Sum.inr j)))) = g (Sum.inr (τ j))
+    rw [g.symm_apply_apply]
+    rfl
+
+lemma x2611_15723_cycleShuffle_card_aux6
+    {α β γ : Type*} (σ : Equiv.Perm α) (τ : Equiv.Perm β)
+    (e : α → γ) (f : β → γ)
+    (hc : Set.range e ∪ Set.range f = Set.univ)
+    (π ρ : Equiv.Perm γ)
+    (he : ∀ i, π (e i) = e (σ i)) (hf : ∀ j, π (f j) = f (τ j))
+    (he' : ∀ i, ρ (e i) = e (σ i)) (hf' : ∀ j, ρ (f j) = f (τ j)) :
+    π = ρ := by
+  ext c
+  have hc' : c ∈ Set.range e ∪ Set.range f := hc.symm ▸ Set.mem_univ c
+  rcases hc' with ⟨a, rfl⟩ | ⟨b, rfl⟩
+  · exact (he a).trans (he' a).symm
+  · exact (hf b).trans (hf' b).symm
+
+theorem x2611_15723_cycleShuffle_card (k l : ℕ) (σ : Equiv.Perm (Fin k))
+    (τ : Equiv.Perm (Fin l)) (h : x2611_15723_noOrderIso σ τ) :
+    (x2611_15723_cycleShuffle σ τ).card = Nat.choose (k + l) k := by
+  classical
+  let S := {s : Finset (Fin (k + l)) // s.card = k}
+  let E (s : S) : Fin k ↪o Fin (k + l) := s.val.orderEmbOfFin s.property
+  have hcard (s : S) : s.valᶜ.card = l := by
+    simp [Finset.card_compl, s.property]
+  let F (s : S) : Fin l ↪o Fin (k + l) := s.valᶜ.orderEmbOfFin (hcard s)
+  have hd (s : S) : Disjoint (Set.range (E s)) (Set.range (F s)) := by
+    simp only [E, F, Finset.range_orderEmbOfFin, Finset.coe_compl]
+    exact disjoint_compl_right
+  have hc (s : S) : Set.range (E s) ∪ Set.range (F s) = Set.univ := by
+    simp [E, F]
+  have hex (s : S) : ∃ π : Equiv.Perm (Fin (k + l)),
+      (∀ i, π (E s i) = E s (σ i)) ∧ (∀ j, π (F s j) = F s (τ j)) :=
+    x2611_15723_cycleShuffle_card_aux5 σ τ (E s).toEmbedding (F s).toEmbedding (hd s) (hc s)
+  choose g hgE hgF using hex
+  have hg (s : S) : g s ∈ x2611_15723_cycleShuffle σ τ := by
+    simp only [x2611_15723_cycleShuffle, Finset.mem_filter, Finset.mem_univ, true_and]
+    exact ⟨E s, F s, hd s, hc s, hgE s, hgF s⟩
+  let G : S → ↥(x2611_15723_cycleShuffle σ τ) := fun s => ⟨g s, hg s⟩
+  have hGi : Function.Injective G := by
+    intro s t hst
+    have hst' : g s = g t := congrArg Subtype.val hst
+    have heq : E s = E t :=
+      (x2611_15723_cycleShuffle_card_aux4 σ τ h (g s) (E s) (E t) (F s) (F t)
+        (hc s) (hc t) (hgE s) (by rw [hst']; exact hgE t)
+        (hgF s) (by rw [hst']; exact hgF t)).1
+    apply Subtype.ext
+    apply Finset.coe_injective
+    simpa [E] using congrArg (fun e : Fin k ↪o Fin (k + l) => Set.range e) heq
+  have hGs : Function.Surjective G := by
+    intro π
+    have hπ := π.property
+    simp only [x2611_15723_cycleShuffle, Finset.mem_filter, Finset.mem_univ, true_and] at hπ
+    obtain ⟨e, f, hdf, hcf, he, hf⟩ := hπ
+    let s : S := ⟨Finset.univ.image e, by simp [Finset.card_image_of_injective, e.injective]⟩
+    have hEs : E s = e := by
+      apply OrderEmbedding.range_inj.mp
+      simp [E, s]
+    have hrf : Set.range f = (Set.range e)ᶜ := by
+      ext x
+      constructor
+      · intro hx hx'
+        exact Set.disjoint_left.mp hdf hx' hx
+      · intro hx
+        have hx' : x ∈ Set.range e ∪ Set.range f := hcf.symm ▸ Set.mem_univ x
+        exact hx'.resolve_left hx
+    have hFs : F s = f := by
+      apply OrderEmbedding.range_inj.mp
+      rw [hrf, ← hEs]
+      simp [E, F]
+    refine ⟨s, Subtype.ext ?_⟩
+    change g s = π.val
+    apply x2611_15723_cycleShuffle_card_aux6 σ τ (E s) (F s) (hc s) (g s) π.val
+      (hgE s) (hgF s)
+    · simpa [hEs] using he
+    · simpa [hFs] using hf
+  calc
+    (x2611_15723_cycleShuffle σ τ).card =
+        Fintype.card ↥(x2611_15723_cycleShuffle σ τ) := (Fintype.card_coe _).symm
+    _ = Fintype.card S := (Fintype.card_congr (Equiv.ofBijective G ⟨hGi, hGs⟩)).symm
+    _ = Nat.choose (k + l) k := by simp [S]
+end
+
 end Mathlib2

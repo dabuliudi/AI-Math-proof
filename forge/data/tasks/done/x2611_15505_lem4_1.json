@@ -11,5 +11,9 @@
   "type": "∀ (m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ) (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ), Matrix.vecMul y E = Matrix.vecMul z B → (∀ (i : Fin k), 0 ≤ z i) → z ≠ 0 → ¬∃ g, E.mulVec g = 0 ∧ ∀ (i : Fin k), 0 < B.mulVec g i",
   "attempts": [],
   "created_at": "2026-11-16T02:53:35+0800",
-  "status": "open"
+  "status": "proved",
+  "claimed_by": "queue-r6-w0",
+  "claimed_at": "2026-11-16T03:31:55+0800",
+  "closed_by": "queue-r6-w0",
+  "finished_at": "2026-11-16T03:40:57+0800"
 }

@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "2192353592",
   "type": "∀ (d : ℕ), 3 ≤ d → Mathlib2.x2611_11972_sharp ([-2] ++ List.replicate (d - 3) 1 ++ [-2]) = ∑' (n : ℕ), ↑(harmonic (n + 1)) / ↑(n + 1) ^ d",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w1",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T04:14:36+0800"
+    }
+  ],
   "created_at": "2026-11-16T02:56:38+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w1",
+  "claimed_at": "2026-11-16T04:10:38+0800"
 }

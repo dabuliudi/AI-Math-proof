@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "669879390",
   "type": "∀ (n d : ℕ) [inst : NeZero n], 1 < n → 1 < d → ∀ (f : (Fin d → ZMod n) → ℤ) (C : ℤ), (∀ (x : Fin d → ZMod n) (v : Fin d → ℤ), Mathlib2.x2611_14754_direction d v → (∑ j, f fun i => x i + j * ↑(v i)) = C) → ∀ (ξ : Fin d → ZMod n), ξ ≠ 0 → (∃ v, Mathlib2.x2611_14754_direction d v ∧ (ξ ⬝ᵥ fun i => ↑(v i)) = 0) → Mathlib2.x2611_14754_fourier n d (fun x => ↑(f x)) ξ = 0",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w1",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T04:10:38+0800"
+    }
+  ],
   "created_at": "2026-11-16T02:56:31+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w1",
+  "claimed_at": "2026-11-16T04:06:40+0800"
 }

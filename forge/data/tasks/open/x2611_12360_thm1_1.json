@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "2128658896",
   "type": "∀ (α : ℝ), 0 < α → ∀ (n : ℕ), 0 < n → Mathlib2.x2611_12360_notArrow n 3 22 α",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r6-w0",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T04:19:01+0800"
+    }
+  ],
   "created_at": "2026-11-16T02:59:41+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r6-w0",
+  "claimed_at": "2026-11-16T04:15:03+0800"
 }

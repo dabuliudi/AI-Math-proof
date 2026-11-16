@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_thm2_2_s1h1",
+  "statement": ": ∀ {α : Type*} [inst : Fintype α] (M : Matroid α), M.eRank ≤ 3 → ∀ (e f : α) (m : α →₀ ℕ), 0 ≤ MvPolynomial.coeff m (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Indep) e f - x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+  "closed": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), M.eRank ≤ 3 → ∀ (e f : α) (m : α →₀ ℕ), 0 ≤ MvPolynomial.coeff m (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Indep) e f - x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+  "informal": "x2611_15512_thm2_2 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15512_thm2_2",
+  "original": "",
+  "proposed_by": "queue-r6-w2",
+  "hash": "1100976672",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), M.eRank ≤ 3 → ∀ (e f : α) (m : α →₀ ℕ), 0 ≤ MvPolynomial.coeff m (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Indep) e f - Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:26:15+0800",
+  "status": "open"
+}

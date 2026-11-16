@@ -11,5 +11,7 @@
   "type": "∀ (q r B C : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (m n : ℤ), IsCoprime m ↑(q * r) → IsCoprime n ↑(q * r) → n * ↑q - m * ↑r = 1 → ↑B ≡ -m * ↑r - n * ↑q [ZMOD ↑(q * r)] → ↑C ≡ m * ↑r + n * ↑q [ZMOD ↑(q * r)] → 0 < B → 0 < C → B < q * r → C < q * r → B + C = q * r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + 2 / (↑r - 1) < ↑(padicValRat r (t - 1)) → (↑r - 1) * padicValRat r 1 = 0 ∧ ((Mathlib2.x2611_10667_p B C t).coeff (q * r) ≠ 0 ∧ (↑r - 1) * padicValRat r ((Mathlib2.x2611_10667_p B C t).coeff (q * r)) = 0) ∧ ((Mathlib2.x2611_10667_p B C t).coeff (q * r + 1) ≠ 0 ∧ (↑r - 1) * padicValRat r ((Mathlib2.x2611_10667_p B C t).coeff (q * r + 1)) = 0) ∧ ((Mathlib2.x2611_10667_p B C t).coeff B ≠ 0 ∧ (↑r - 1) * padicValRat r ((Mathlib2.x2611_10667_p B C t).coeff B) = ↑C * ((↑r - 1) * padicValRat r (t - 1))) ∧ ((Mathlib2.x2611_10667_p B C t).coeff (q * r - 1) ≠ 0 ∧ (↑r - 1) * padicValRat r ((Mathlib2.x2611_10667_p B C t).coeff (q * r - 1)) = (↑r - 1) * padicValRat r (t - 1)) ∧ ∀ (i : ℕ), B ≤ i → i ≤ q * r - 2 → (Mathlib2.x2611_10667_p B C t).coeff i = 0 ∨ (↑(q * r) - ↑i) * ((↑r - 1) * padicValRat r (t - 1)) ≤ (↑r - 1) * padicValRat r ((Mathlib2.x2611_10667_p B C t).coeff i)",
   "attempts": [],
   "created_at": "2026-11-16T03:01:04+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-r7-w6",
+  "claimed_at": "2026-11-16T10:38:45+0800"
 }

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15379_cor1_2_sigma",
+  "statement": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (α : ℝ) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)",
+  "closed": "∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (α : ℝ), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)",
+  "informal": "Corollary 1.2 (divisor power sums)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15379",
+  "original": "For real $\\alpha$ , let $\\sigma_{\\alpha}(n)=\\sum\\limits_{d\\mid n}d^{\\alpha}$ . Then the least positive period of $G_{f}$ with $f=\\sigma_{\\alpha}$ is the period given in Corollary 1.1.",
+  "proposed_by": "audit-b1",
+  "hash": "2468799335",
+  "type": "∀ (k a b c : ℕ), 0 < k → 0 < a → 0 < c → ∀ (α : ℝ), IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k a b c (fun n => ↑(∑ d ∈ n.divisors, (↑d).rpow α)) (n + T) = Mathlib2.x2611_15379_G k a b c (fun n => ↑(∑ d ∈ n.divisors, (↑d).rpow α)) n} (Mathlib2.x2611_15379_monotonicPeriod k a b c)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:28:04+0800",
+  "status": "open"
+}

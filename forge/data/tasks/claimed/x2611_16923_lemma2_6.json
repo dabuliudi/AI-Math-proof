@@ -11,5 +11,7 @@
   "type": "∀ (N r : ℕ), 1 ≤ N → ∀ (k : Fin r → ℕ), (∀ (i : Fin r), 0 < k i) → Mathlib2.x2611_16923_li r false 1 (some N) (Mathlib2.x2611_16923_entries k) = ∑ j ∈ Finset.range (r + 1), (-1) ^ (r - j) * Mathlib2.x2611_16923_li r false 1 none (List.take j (Mathlib2.x2611_16923_entries k)) * Mathlib2.x2611_16923_li r true N none (List.drop j (Mathlib2.x2611_16923_entries k)).reverse",
   "attempts": [],
   "created_at": "2026-11-16T03:02:39+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-r7-w5",
+  "claimed_at": "2026-11-16T10:38:45+0800"
 }

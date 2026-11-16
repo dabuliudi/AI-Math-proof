@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15210_thm3_1",
+  "statement": "(m : ℕ) (hm : 3 ≤ m) (hodd : Odd m) : (∀ (H : Type*) [AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * x2611_15210_A (2 * m) (H × ZMod m) ≤ x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))) ∧ ∀ c β : ℝ, 0 < c → 1 < β → (∀ s : ℕ, c * β ^ s ≤ (x2611_15210_A (2 * m) (Fin (s) → ZMod (m)) : ℝ)) → ∃ α : ℝ, 0 < α ∧ α ^ 5 = 12 * α + 8 * β ∧ (∀ x : ℝ, 0 < x → x ^ 5 = 12 * x + 8 * β → x = α) ∧ 2 < α ∧ ∀ r : ℕ, 1 ≤ r → c * (2 / α) ^ 4 * α ^ r + 1 ≤ (x2611_15210_s (2 * m) (Fin (r) → ZMod (2 * m)) : ℝ)",
+  "closed": "∀ (m : ℕ) (hm : 3 ≤ m) (hodd : Odd m), (∀ (H : Type*) [AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * x2611_15210_A (2 * m) (H × ZMod m) ≤ x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))) ∧ ∀ c β : ℝ, 0 < c → 1 < β → (∀ s : ℕ, c * β ^ s ≤ (x2611_15210_A (2 * m) (Fin (s) → ZMod (m)) : ℝ)) → ∃ α : ℝ, 0 < α ∧ α ^ 5 = 12 * α + 8 * β ∧ (∀ x : ℝ, 0 < x → x ^ 5 = 12 * x + 8 * β → x = α) ∧ 2 < α ∧ ∀ r : ℕ, 1 ≤ r → c * (2 / α) ^ 4 * α ^ r + 1 ≤ (x2611_15210_s (2 * m) (Fin (r) → ZMod (2 * m)) : ℝ)",
+  "informal": "Theorem 3.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15210",
+  "original": "For every finite abelian group $H$ whose exponent divides $n$ ,\n\n(3.1)\n\n $A_{n}(H\\oplus C_{n}^{5})\\ \\geq\\ 12\\,A_{n}(H\\oplus C_{n})+8\\,A_{n}(H\\oplus C_{m}).$ \n\nSuppose moreover that $c>0$ and $\\beta>1$ satisfy $A_{n}(C_{m}^{s})\\geq c\\beta^{s}$ for\nall $s\\geq 0$ . Let $\\alpha$ be the unique positive root of\n\n(3.2)\n\n $\\alpha^{5}=12\\alpha+8\\beta.$ \n\nThen $\\alpha>2$ , and for every $r\\geq 1$ ,\n\n(3.3)\n\n $\\mathsf{s}(C_{n}^{r})\\ \\geq\\ c\\Bigl(\\frac{2}{\\alpha}\\Bigr)^{4}\\alpha^{r}+1.$",
+  "proposed_by": "audit-b1",
+  "hash": "250656387",
+  "type": "∀ (m : ℕ), 3 ≤ m → Odd m → (∀ (H : Type u_1) [inst : AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * Mathlib2.x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * Mathlib2.x2611_15210_A (2 * m) (H × ZMod m) ≤ Mathlib2.x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))) ∧ ∀ (c β : ℝ), 0 < c → 1 < β → (∀ (s : ℕ), c * β ^ s ≤ ↑(Mathlib2.x2611_15210_A (2 * m) (Fin s → ZMod m))) → ∃ α, 0 < α ∧ α ^ 5 = 12 * α + 8 * β ∧ (∀ (x : ℝ), 0 < x → x ^ 5 = 12 * x + 8 * β → x = α) ∧ 2 < α ∧ ∀ (r : ℕ), 1 ≤ r → c * (2 / α) ^ 4 * α ^ r + 1 ≤ ↑(Mathlib2.x2611_15210_s (2 * m) (Fin r → ZMod (2 * m)))",
+  "attempts": [],
+  "created_at": "2026-11-16T03:15:51+0800",
+  "status": "open"
+}

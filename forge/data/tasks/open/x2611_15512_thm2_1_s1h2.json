@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_thm2_1_s1h2",
+  "statement": ": ∀ {α : Type*} [inst : Fintype α] (N : Matroid α), N.eRank = 3 → ∀ (u v : α), u ∈ N.E → v ∈ N.E → u ≠ v → N.Indep {u, v} → ∀ (y : α → ℝ), (∀ a ∈ N.E, 0 < y a) → ¬(x2611_15512_simple N ∧ N.closure {u, v} = {u, v}) → ∃ (N' : Matroid α) (y' : α → ℝ), N'.eRank = 3 ∧ N'.E.ncard < N.E.ncard ∧ u ∈ N'.E ∧ v ∈ N'.E ∧ (∀ a ∈ N'.E, 0 < y' a) ∧ (MvPolynomial.eval y' : MvPolynomial α ℝ → ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial N'.IsBase) u v) ≤ (MvPolynomial.eval y : MvPolynomial α ℝ → ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial N.IsBase) u v)",
+  "closed": "∀ {α : Type*} [inst : Fintype α] (N : Matroid α), N.eRank = 3 → ∀ (u v : α), u ∈ N.E → v ∈ N.E → u ≠ v → N.Indep {u, v} → ∀ (y : α → ℝ), (∀ a ∈ N.E, 0 < y a) → ¬(x2611_15512_simple N ∧ N.closure {u, v} = {u, v}) → ∃ (N' : Matroid α) (y' : α → ℝ), N'.eRank = 3 ∧ N'.E.ncard < N.E.ncard ∧ u ∈ N'.E ∧ v ∈ N'.E ∧ (∀ a ∈ N'.E, 0 < y' a) ∧ (MvPolynomial.eval y' : MvPolynomial α ℝ → ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial N'.IsBase) u v) ≤ (MvPolynomial.eval y : MvPolynomial α ℝ → ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial N.IsBase) u v)",
+  "informal": "x2611_15512_thm2_1 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15512_thm2_1",
+  "original": "",
+  "proposed_by": "queue-r6-w1",
+  "hash": "2872162141",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (N : Matroid α), N.eRank = 3 → ∀ (u v : α), u ∈ N.E → v ∈ N.E → u ≠ v → N.Indep {u, v} → ∀ (y : α → ℝ), (∀ a ∈ N.E, 0 < y a) → ¬(Mathlib2.x2611_15512_simple N ∧ N.closure {u, v} = {u, v}) → ∃ N' y', N'.eRank = 3 ∧ N'.E.ncard < N.E.ncard ∧ u ∈ N'.E ∧ v ∈ N'.E ∧ (∀ a ∈ N'.E, 0 < y' a) ∧ (MvPolynomial.eval y') (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial N'.IsBase) u v) ≤ (MvPolynomial.eval y) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial N.IsBase) u v)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:28:32+0800",
+  "status": "open"
+}

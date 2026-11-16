@@ -11,5 +11,9 @@
   "type": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), Mathlib2.x2611_15723_noOrderIso σ τ → (Mathlib2.x2611_15723_cycleShuffle σ τ).card = (k + l).choose k",
   "attempts": [],
   "created_at": "2026-11-16T02:54:34+0800",
-  "status": "open"
+  "status": "proved",
+  "claimed_by": "queue-r6-w0",
+  "claimed_at": "2026-11-16T03:41:05+0800",
+  "closed_by": "queue-r6-w0",
+  "finished_at": "2026-11-16T03:45:47+0800"
 }

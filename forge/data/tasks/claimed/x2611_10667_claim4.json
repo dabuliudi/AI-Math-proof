@@ -11,5 +11,7 @@
   "type": "∀ (q r B C : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (m n : ℤ), IsCoprime m ↑(q * r) → IsCoprime n ↑(q * r) → n * ↑q - m * ↑r = 1 → ↑B ≡ -m * ↑r - n * ↑q [ZMOD ↑(q * r)] → ↑C ≡ m * ↑r + n * ↑q [ZMOD ↑(q * r)] → 0 < B → 0 < C → B < q * r → C < q * r → B + C = q * r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 2 + 2 / (↑r - 1) < ↑(padicValRat r (t - 1)) → ∀ (K : Type u_1) [inst : Field K] [Finite K] [CharP K r] (ζ : K), IsPrimitiveRoot ζ q → ∀ (j : ℕ), 1 ≤ j → j ≤ q → ∀ (u w : K), u ≠ 0 → w ≠ 0 → Mathlib2.x2611_10667_torus_regular (MvPolynomial.C (ζ ^ (-↑j) * ↑q * w) * MvPolynomial.X 0 ^ (q * r - 1) * MvPolynomial.X 1 + MvPolynomial.C (ζ ^ (-↑r * ↑j) * ↑q) * MvPolynomial.X 0 ^ (q * r - r) * MvPolynomial.X 1 ^ r + MvPolynomial.C u * MvPolynomial.X 0 ^ (q * r - 1)) ∧ Mathlib2.x2611_10667_torus_regular (MvPolynomial.C (ζ ^ (-↑j) * ↑q * w) * MvPolynomial.X 0 ^ (q * r - 1) * MvPolynomial.X 1 + MvPolynomial.C (ζ ^ (-↑r * ↑j) * ↑q) * MvPolynomial.X 0 ^ (q * r - r) * MvPolynomial.X 1 ^ r - MvPolynomial.X 0 ^ (q * r + 1)) ∧ (Polynomial.C (↑q * ζ ^ (-↑j)) * (Polynomial.C w + Polynomial.X ^ (r - 1) * Polynomial.C (ζ ^ ((1 - ↑r) * ↑j)))).Separable",
   "attempts": [],
   "created_at": "2026-11-16T03:02:36+0800",
-  "status": "open"
+  "status": "claimed",
+  "claimed_by": "queue-r7-w4",
+  "claimed_at": "2026-11-16T10:38:45+0800"
 }

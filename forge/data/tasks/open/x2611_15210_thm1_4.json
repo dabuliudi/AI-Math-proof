@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15210_thm1_4",
+  "statement": "(n K a m : ℕ) (hK : K = 2 ^ a) (ha : 1 ≤ a) (hm : 3 ≤ m) (hodd : Odd m) (hn : n = K * m) (p : ℝ) (hp : 0 < p) (hp1 : p < 1) (Z : ℝ) (hZ : Z = 14 + 2 * x2611_15210_Q n m K p ^ (-1 / ((n : ℝ) - 1))) : 16 < Z ∧ (∀ t d : ℕ, d ≤ 3 → 1 ≤ 4 * t + d → ((n : ℝ) / (4 * Real.exp 1)) * (2 : ℝ) ^ d * Z ^ t + 1 ≤ (x2611_15210_s (n) (Fin (4 * t + d) → ZMod (n)) : ℝ)) ∧ 2 < (Z ^ ((1 : ℝ) / 4)) ∧ ∀ r : ℕ, 1 ≤ r → ((n : ℝ) / (4 * Real.exp 1)) * (2 / (Z ^ ((1 : ℝ) / 4))) ^ 3 * (Z ^ ((1 : ℝ) / 4)) ^ r + 1 ≤ (x2611_15210_s (n) (Fin (r) → ZMod (n)) : ℝ)",
+  "closed": "∀ (n K a m : ℕ) (hK : K = 2 ^ a) (ha : 1 ≤ a) (hm : 3 ≤ m) (hodd : Odd m) (hn : n = K * m) (p : ℝ) (hp : 0 < p) (hp1 : p < 1) (Z : ℝ) (hZ : Z = 14 + 2 * x2611_15210_Q n m K p ^ (-1 / ((n : ℝ) - 1))), 16 < Z ∧ (∀ t d : ℕ, d ≤ 3 → 1 ≤ 4 * t + d → ((n : ℝ) / (4 * Real.exp 1)) * (2 : ℝ) ^ d * Z ^ t + 1 ≤ (x2611_15210_s (n) (Fin (4 * t + d) → ZMod (n)) : ℝ)) ∧ 2 < (Z ^ ((1 : ℝ) / 4)) ∧ ∀ r : ℕ, 1 ≤ r → ((n : ℝ) / (4 * Real.exp 1)) * (2 / (Z ^ ((1 : ℝ) / 4))) ^ 3 * (Z ^ ((1 : ℝ) / 4)) ^ r + 1 ≤ (x2611_15210_s (n) (Fin (r) → ZMod (n)) : ℝ)",
+  "informal": "Theorem 1.4",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15210",
+  "original": "Let $n=Km$ , where $K=2^{a}$ with $a\\geq 1$ and $m\\geq 3$ is odd, and let $0<p<1$ .\nThen $Z>16$ . If $r=4t+d\\geq 1$ with $t\\geq 0$ and $0\\leq d\\leq 3$ , then\n\n(1.4)\n\n $\\mathsf{s}(C_{n}^{r})\\ \\geq\\ \\frac{n}{4e}\\,2^{d}Z^{t}+1.$ \n\nIn particular, with $B_{n,p}=Z^{1/4}>2$ ,\n\n $\\mathsf{s}(C_{n}^{r})\\ \\geq\\ \\frac{n}{4e}\\Bigl(\\frac{2}{B_{n,p}}\\Bigr)^{3}B_{n,p}^{r}+1\\qquad\\text{for every }r\\geq 1.$",
+  "proposed_by": "audit-b1",
+  "hash": "4047786479",
+  "type": "∀ (n K a m : ℕ), K = 2 ^ a → 1 ≤ a → 3 ≤ m → Odd m → n = K * m → ∀ (p : ℝ), 0 < p → p < 1 → ∀ (Z : ℝ), Z = 14 + 2 * Mathlib2.x2611_15210_Q n m K p ^ (-1 / (↑n - 1)) → 16 < Z ∧ (∀ (t d : ℕ), d ≤ 3 → 1 ≤ 4 * t + d → ↑n / (4 * Real.exp 1) * 2 ^ d * Z ^ t + 1 ≤ ↑(Mathlib2.x2611_15210_s n (Fin (4 * t + d) → ZMod n))) ∧ 2 < Z ^ (1 / 4) ∧ ∀ (r : ℕ), 1 ≤ r → ↑n / (4 * Real.exp 1) * (2 / Z ^ (1 / 4)) ^ 3 * (Z ^ (1 / 4)) ^ r + 1 ≤ ↑(Mathlib2.x2611_15210_s n (Fin r → ZMod n))",
+  "attempts": [],
+  "created_at": "2026-11-16T03:11:38+0800",
+  "status": "open"
+}

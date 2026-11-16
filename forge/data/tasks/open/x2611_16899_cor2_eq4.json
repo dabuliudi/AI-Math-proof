@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16899_cor2_eq4",
+  "statement": "(A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ) (hA : x2611_16899_atom_family 14 0 A) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) : g (fun i : Fin 14 => x2611_16899_alpha i.rev) = algebraMap (Polynomial ℚ) (RatFunc ℚ) (Polynomial.reflect 91 x2611_16899_counterexample_polynomial)",
+  "closed": "∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ) (hA : x2611_16899_atom_family 14 0 A) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g), g (fun i : Fin 14 => x2611_16899_alpha i.rev) = algebraMap (Polynomial ℚ) (RatFunc ℚ) (Polynomial.reflect 91 x2611_16899_counterexample_polynomial)",
+  "informal": "Corollary 2, equation (4)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16899",
+  "original": "With $c(t)=c_{\\alpha,(1^{14})}(t)$ as in (2), we have\n\n(4)\n\n $\\displaystyle[\\mathcal{A}_{\\alpha^{\\mathrm{rev}}}(x)]G_{14}(x;t)$ \n $\\displaystyle=t^{91}c(t^{-1}),$",
+  "proposed_by": "audit-b1",
+  "hash": "1335818980",
+  "type": "∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ), Mathlib2.x2611_16899_atom_family 14 0 A → Mathlib2.x2611_16899_expansion 14 14 (Mathlib2.x2611_16899_flagged_llt 14) A g → (g fun i => Mathlib2.x2611_16899_alpha i.rev) = (algebraMap (Polynomial ℚ) (RatFunc ℚ)) (Polynomial.reflect 91 Mathlib2.x2611_16899_counterexample_polynomial)",
+  "attempts": [],
+  "created_at": "2026-11-16T03:28:49+0800",
+  "status": "open"
+}

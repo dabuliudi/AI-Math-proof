@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16338_relabel_one_counts",
+  "statement": "(V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.IsRegularOfDegree 3) (s : ℕ) (hs : s = Fintype.card V / 2 + 1) (hs3 : 3 ≤ s) (U : Finset V) (φ : V → ℕ) (hφ : ∀ v, φ v = if v ∈ U then 1 else s) (hU : U.card = Fintype.card V / 2) (ha : (x2611_16338_edgeClass G φ (2)).ncard = s - 2) (hb : (x2611_16338_edgeClass G φ (s + 1)).ncard = s + 1) (hc : (x2611_16338_edgeClass G φ (2 * s)).ncard = s - 2) (u : V) (hu : u ∈ U) (hdeg : ∃! v, G.Adj u v ∧ v ∈ U) : (x2611_16338_edgeClass G (Function.update φ u 2) (2)).ncard = s - 3 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (3)).ncard = 1 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (s + 1)).ncard = s - 1 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (s + 2)).ncard = 2 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (2 * s)).ncard = s - 2",
+  "closed": "∀ (V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.IsRegularOfDegree 3) (s : ℕ) (hs : s = Fintype.card V / 2 + 1) (hs3 : 3 ≤ s) (U : Finset V) (φ : V → ℕ) (hφ : ∀ v, φ v = if v ∈ U then 1 else s) (hU : U.card = Fintype.card V / 2) (ha : (x2611_16338_edgeClass G φ (2)).ncard = s - 2) (hb : (x2611_16338_edgeClass G φ (s + 1)).ncard = s + 1) (hc : (x2611_16338_edgeClass G φ (2 * s)).ncard = s - 2) (u : V) (hu : u ∈ U) (hdeg : ∃! v, G.Adj u v ∧ v ∈ U), (x2611_16338_edgeClass G (Function.update φ u 2) (2)).ncard = s - 3 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (3)).ncard = 1 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (s + 1)).ncard = s - 1 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (s + 2)).ncard = 2 ∧ (x2611_16338_edgeClass G (Function.update φ u 2) (2 * s)).ncard = s - 2",
+  "informal": "Section 3: relabeling a vertex with exactly one neighbor in U",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16338",
+  "original": "On the other hand, if $u$ has exactly one neighbor in $U$ , then we have\n\n $(|E_{2}|,|E_{3}|,|E_{s+1}|,|E_{s+2}|,|E_{2s}|)=(s-3,1,s-1,2,s-2),$",
+  "proposed_by": "audit-b1",
+  "hash": "2928382620",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∀ (s : ℕ), s = Fintype.card V / 2 + 1 → 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → U.card = Fintype.card V / 2 → (Mathlib2.x2611_16338_edgeClass G φ 2).ncard = s - 2 → (Mathlib2.x2611_16338_edgeClass G φ (s + 1)).ncard = s + 1 → (Mathlib2.x2611_16338_edgeClass G φ (2 * s)).ncard = s - 2 → ∀ u ∈ U, (∃! v, G.Adj u v ∧ v ∈ U) → (Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) 2).ncard = s - 3 ∧ (Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) 3).ncard = 1 ∧ (Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (s + 1)).ncard = s - 1 ∧ (Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (s + 2)).ncard = 2 ∧ (Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (2 * s)).ncard = s - 2",
+  "attempts": [],
+  "created_at": "2026-11-16T03:24:05+0800",
+  "status": "open"
+}

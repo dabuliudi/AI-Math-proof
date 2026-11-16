@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thm3_1",
+  "statement": "(d : ℕ) (K : Geometry.SimplicialComplex ℝ (Fin d → ℝ)) (hfin : K.vertices.Finite) (hT : Nonempty (K.space ≃ₜ (Fin 3 → Circle))) : Nat.card K.vertices ≠ 14",
+  "closed": "∀ (d : ℕ) (K : Geometry.SimplicialComplex ℝ (Fin d → ℝ)) (hfin : K.vertices.Finite) (hT : Nonempty (K.space ≃ₜ (Fin 3 → Circle))), Nat.card K.vertices ≠ 14",
+  "informal": "Theorem 3.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "There is no simplicial triangulation of $T^{3}$ on fourteen vertices.",
+  "proposed_by": "audit-b1",
+  "hash": "3565132577",
+  "type": "∀ (d : ℕ) (K : Geometry.SimplicialComplex ℝ (Fin d → ℝ)), K.vertices.Finite → Nonempty (↑K.space ≃ₜ (Fin 3 → Circle)) → Nat.card ↑K.vertices ≠ 14",
+  "attempts": [],
+  "created_at": "2026-11-16T03:30:06+0800",
+  "status": "open"
+}

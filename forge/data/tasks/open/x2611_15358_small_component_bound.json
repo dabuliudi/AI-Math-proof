@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_small_component_bound",
+  "statement": "(G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15) : x2611_15358_D G ≤ x2611_15358_N G 1 + x2611_15358_N G 2 + x2611_15358_N G 3",
+  "closed": "∀ (G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15), x2611_15358_D G ≤ x2611_15358_N G 1 + x2611_15358_N G 2 + x2611_15358_N G 3",
+  "informal": "Lemma 2.6, proof (small-component estimate)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "In a disconnected graph on seven vertices, every component other than a chosen largest component has at most three vertices.\nFor $k=1,2,3$ , let $N_{k}$ count all occurrences of a component of size $k$ in the graphs $G[U]$ , over all $U$ with $|U|=7$ .\nThus $D\\leq N_{1}+N_{2}+N_{3}$ .",
+  "proposed_by": "audit-b1",
+  "hash": "3550016282",
+  "type": "∀ (G : SimpleGraph (Fin 14)), (∀ (v : Fin 14), 4 ≤ Nat.card ↑(G.neighborSet v)) → Nat.card ↑Gᶜ.edgeSet ≤ 15 → Mathlib2.x2611_15358_D G ≤ Mathlib2.x2611_15358_N G 1 + Mathlib2.x2611_15358_N G 2 + Mathlib2.x2611_15358_N G 3",
+  "attempts": [],
+  "created_at": "2026-11-16T03:30:17+0800",
+  "status": "open"
+}

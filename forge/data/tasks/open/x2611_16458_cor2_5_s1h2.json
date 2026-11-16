@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_cor2_5_s1h2",
+  "statement": ": ∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V), x2611_16458_twoConnected G → 1 ≤ x2611_16458_beta G",
+  "closed": "∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V), x2611_16458_twoConnected G → 1 ≤ x2611_16458_beta G",
+  "informal": "x2611_16458_cor2_5 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_cor2_5",
+  "original": "",
+  "proposed_by": "queue-r6-w0",
+  "hash": "2696928029",
+  "type": "∀ {V : Type u_1} [inst : Finite V] (G : SimpleGraph V), Mathlib2.x2611_16458_twoConnected G → 1 ≤ Mathlib2.x2611_16458_beta G",
+  "attempts": [],
+  "created_at": "2026-11-16T03:30:49+0800",
+  "status": "open"
+}

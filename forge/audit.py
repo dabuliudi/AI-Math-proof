@@ -199,7 +199,8 @@ class PaperAudit(Scheduler):
                 self._push(('twin', paper, s['name']))
             elif fidelity.get('verdict') in ('original_invalid', 'twin_invalid'):
                 self._push(('rehash', paper, s['name']))
-            elif fidelity.get('verdict') == 'pending':
+            elif fidelity.get('verdict') == 'pending' or (fidelity.get('verdict') == 'unknown' and fidelity.get('equiv_attempts', 1) < 2):
+                # 判不出等价的再给一次机会（第一次可能赶上服务中断）；两次都判不出才留给人
                 self._push(('equiv', paper, s['name']))
 
     def _statement(self, paper, name):
@@ -265,7 +266,8 @@ class PaperAudit(Scheduler):
             if result['ok']:
                 verdict = 'different' if result['kind'] == 'disproved' else 'equivalent'
             reason = result['reason']
-        self._update(paper, name, verdict=verdict, equivalence_proof=proof.read_text(encoding='utf-8') if verdict != 'unknown' else '',
+        attempts = (item.get('fidelity') or {}).get('equiv_attempts', 1 if item.get('fidelity', {}).get('verdict') == 'unknown' else 0) + 1
+        self._update(paper, name, verdict=verdict, equiv_attempts=attempts, equivalence_proof=proof.read_text(encoding='utf-8') if verdict != 'unknown' else '',
                      note=reason[:500])
         self._record(dict(mode='audit-equiv', task=name, worker=agent, outcome=verdict, progress=verdict != 'unknown',
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow, message=message[-500:]))

@@ -7,7 +7,7 @@
 
 方向与路线图见 [ROADMAP.md](ROADMAP.md)。
 
-> 早期开发中。接口、目录和数据格式随时可能变。所有开发直接在 `main` 分支上进行。
+> 早期开发中。接口、目录和数据格式随时可能变。改动通过 PR 进入 `main`，流程见 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)。
 > 命令行和内部代码目前仍叫 `forge`（流水线的内部名），对外统一叫 RSI Math。
 
 ## 核心目的（项目创始人原话，不得改写）

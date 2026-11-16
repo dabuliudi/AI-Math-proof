@@ -3,7 +3,7 @@ import re
 import uuid
 
 from .leanrun import ALLOWED_AXIOMS, run_source
-from .statement import analyse_definition, analyse_submission, closed_form, is_disproof, split_signature
+from .statement import StatementError, analyse_definition, analyse_submission, closed_form, is_disproof, split_signature
 
 HEADER = 'import Mathlib\nimport Mathlib2\nimport Forge\nset_option autoImplicit false\nset_option relaxedAutoImplicit false\n'
 MODULE = re.compile(r'[A-Za-z_][A-Za-z0-9_]*(\.([A-Za-z_][A-Za-z0-9_]*|«[^«»\n]+»))*')
@@ -50,7 +50,12 @@ def check_submission(task, body, disproof=False, timeout=300, closed=None):
     不从任务文件里读：任务文件可以被 agent 改，读它会让一份证明按另一条命题被接受。"""
     name = task['name']
     disproof = disproof or is_disproof(body, name)
-    names = analyse_submission(body, name, disproof)
+    try:
+        names = analyse_submission(body, name, disproof)
+    except StatementError as exc:
+        # 提交本身格式不合规（主定理不在最后、根本没写主定理等）是一次失败的提交，不是检查出错，所以返回判定而不抛异常。
+        # 题目自身的命题有问题时 closed_form 仍然抛异常，让数据错误显出来。
+        return dict(ok=False, kind='disproved' if disproof else 'proved', reason=f'提交格式不合规：{exc}')
     nonce = uuid.uuid4().hex
     # 评测集的题目可能依赖记号设置（例如 miniF2F 的 `open Real Nat …`）；只影响解析，不影响内核里的命题。
     opens = task.get('opens', '')

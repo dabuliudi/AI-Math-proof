@@ -754,6 +754,37 @@ class BenchMidBuildTests(unittest.TestCase):
             self.assertEqual(checker.call_count, 2)
 
 
+class BenchStaticRejectionTests(unittest.TestCase):
+    def test_malformed_submission_is_an_unsolved_attempt(self):
+        from forge import bench
+        body = 'theorem p : True := trivial\ntheorem p_aux1 : True := trivial\n'   # 主定理不在最后
+        with tempfile.TemporaryDirectory() as tmp, \
+                mock.patch.object(bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+                mock.patch.object(bench, 'RUNS', Path(tmp)):
+            verdict = bench.check('demo', 'p', body, 'r', 'a')
+            self.assertFalse(verdict['solved'])
+            self.assertIn('最后一个声明必须是主定理', verdict['reason'])
+            record = json.loads((Path(tmp) / 'demo.r.jsonl').read_text(encoding='utf-8'))
+            self.assertFalse(record['solved'])
+
+    def test_check_submission_returns_a_verdict_for_malformed_files(self):
+        from forge.verify import check_submission
+        task = dict(name='p', statement=': True')
+        only_helper = check_submission(task, 'theorem p_aux1 : True := trivial\n')
+        self.assertFalse(only_helper['ok'])
+        self.assertIn('提交格式不合规', only_helper['reason'])
+        disproof = check_submission(task, 'theorem p_disproof : ¬ True := sorry\ntheorem p_aux1 : True := trivial\n')
+        self.assertEqual(disproof['kind'], 'disproved')
+
+    def test_malformed_bench_statement_still_raises(self):
+        from forge.statement import StatementError
+        from forge.verify import check_submission
+        with mock.patch('forge.verify.run_source') as lean:
+            with self.assertRaises(StatementError):
+                check_submission(dict(name='p', statement='True := trivial'), 'theorem p : True := trivial\n')
+            lean.assert_not_called()
+
+
 class UpgradeRepairTests(unittest.TestCase):
     BEFORE = ('-- forge:entry foo kind=proved origin=x\nsection\n'
               'lemma foo_aux1 (n : ℕ) : n + 0 = n := by\n  simp\n'

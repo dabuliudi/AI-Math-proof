@@ -290,7 +290,9 @@ class Portfolio(Scheduler):
                 self.queue = [w for w in self.queue if not self.state['problems'][w[1]]['solved_by']]
                 if self.queue:
                     self.busy += 1
-                    return self.queue.pop(0)
+                    # 先做离拼完一张题目图最近的活（同分时先来先做）：工人少时别把时间花在还差很多步的图上
+                    best = min(range(len(self.queue)), key=lambda i: (self._distance(self.queue[i]), i))
+                    return self.queue.pop(best)
                 if not self.busy:
                     self.stop_reason = '所有题目的拆解都已处理完'
                     return None
@@ -310,6 +312,35 @@ class Portfolio(Scheduler):
             if up['status'] != 'proved' and up.get('splits', {}).get(sdag, {}).get('status', 'open') == 'open' and self._live(up):
                 return True
         return False
+
+    def _missing(self, holes):
+        return len({h['lemma'] for h in holes if self.state['lemmas'][h['lemma']]['status'] != 'proved'})
+
+    def _need(self, info, seen=()):
+        """证出这条引理之后，离拼完某张还开着的题目图最少还差几条别的引理（没有活路时为无穷大）。"""
+        best = float('inf')
+        for d in info['dags']:
+            dag = self.state['problems'][info['problem']]['dags'][d]
+            if dag['status'] == 'open':
+                best = min(best, self._missing(dag['holes']) - 1)
+        for parent, sdag in info.get('parents', []):
+            up = self.state['lemmas'][parent]
+            split = up.get('splits', {}).get(sdag, {})
+            if parent in seen or up['status'] == 'proved' or split.get('status', 'open') != 'open':
+                continue
+            best = min(best, self._missing(split.get('holes', [])) - 1 + self._need(up, seen + (parent,)))
+        return best
+
+    def _distance(self, work):
+        """排队用的优先级：越小越先做。骨架（新的图）最先；拼装次之；引理和再拆按离拼完的距离。"""
+        kind = work[0]
+        if kind in ('sketch', 'assemble', 'assemble_lemma'):
+            return -1
+        info = self.state['lemmas'].get(work[2])
+        if not info:
+            return 0
+        need = self._need(info)
+        return need + (0.5 if kind in ('split', 'split_sketch') else 0)  # 同样距离时先直接证，再拆
 
     def _may_split(self, info):
         return (self.split and info['status'] == 'unsolved' and info.get('depth', 0) < self.depth

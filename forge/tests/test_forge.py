@@ -1820,3 +1820,20 @@ class PortfolioRetryTests(unittest.TestCase):
         self.assertEqual(runner.state['lemmas']['p_d1_h1']['status'], 'proved')
         self.assertEqual(runner.state['lemmas']['p_d1_h1']['splits']['d1']['status'], 'solved')
         self.assertEqual(result['solved'], 1)
+
+    def test_queue_prefers_the_lemma_closest_to_finishing_a_problem_dag(self):
+        from forge import portfolio
+        runner = portfolio.Portfolio('t-q', workers=1, max_tasks=1000, dry_run=True)
+        runner.state = dict(problems=dict(p=dict(solved_by=None, dags=dict(
+            d1=dict(status='open', holes=[dict(lemma='a'), dict(lemma='b'), dict(lemma='c')]),
+            d2=dict(status='open', holes=[dict(lemma='x'), dict(lemma='y')])))),
+            lemmas=dict(a=dict(problem='p', status='open', dags=['d1']), b=dict(problem='p', status='open', dags=['d1']),
+                        c=dict(problem='p', status='open', dags=['d1']), x=dict(problem='p', status='unsolved', dags=['d2'],
+                        splits=dict(d1=dict(status='open', holes=[dict(lemma='x_d1_h1')]))),
+                        y=dict(problem='p', status='proved', dags=['d2']),
+                        x_d1_h1=dict(problem='p', status='open', dags=[], parents=[['x', 'd1']])))
+        runner.queue = [('lemma', 'p', 'a'), ('split_sketch', 'p', 'x', 2), ('lemma', 'p', 'x_d1_h1'), ('sketch', 'p', 3)]
+        runner.busy, runner.stop_reason = 0, None
+        order = [runner._take() for _ in range(4)]
+        # 新骨架最先；x 的唯一子引理证出就能拼完 d2（距离 0）；再拆 x 次之；a 所在的 d1 还差两条
+        self.assertEqual(order, [('sketch', 'p', 3), ('lemma', 'p', 'x_d1_h1'), ('split_sketch', 'p', 'x', 2), ('lemma', 'p', 'a')])

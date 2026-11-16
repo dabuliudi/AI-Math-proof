@@ -249,12 +249,13 @@ def _write_root():
     ROOT_FILE.write_text(header + ''.join(f'import Mathlib2.Shard.{s}\n' for s in shards), encoding='utf-8')
 
 
-def _append(task, body, check, snapshots):
-    """把一条提交追加到当前分片末尾；首次改动某个分片前记下原文，供回滚。"""
+def _append(task, body, check, journal):
+    """把一条提交追加到当前分片末尾；首次改动某个分片前把原文记进回滚日志并落盘。"""
     index, count = _current_shard()
     path = _shard_path(index)
-    if path not in snapshots:
-        snapshots[path] = path.read_text(encoding='utf-8') if path.exists() else None
+    if str(path) not in journal['shards']:
+        journal['shards'][str(path)] = path.read_text(encoding='utf-8') if path.exists() else None
+        _save_journal(journal)
     if path.exists():
         text = path.read_text(encoding='utf-8')
     else:
@@ -282,30 +283,69 @@ def _ledger_entry(task, body, check, proved_by, path):
                 admitted_at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
 
 
+JOURNAL = DATA / 'admit-journal.json'
+
+
+def _save_journal(journal):
+    temporary = JOURNAL.with_name(f'{JOURNAL.name}.{os.getpid()}.tmp')
+    temporary.write_text(json.dumps(journal, ensure_ascii=False), encoding='utf-8')
+    os.replace(temporary, JOURNAL)
+
+
+def _restore(journal):
+    """把分片、根文件和台账恢复到入库前的样子，再删掉回滚日志。"""
+    for path, text in journal['shards'].items():
+        if text is None:
+            Path(path).unlink(missing_ok=True)
+        else:
+            Path(path).write_text(text, encoding='utf-8')
+    ROOT_FILE.write_text(journal['root'], encoding='utf-8')
+    if LEDGER.exists():
+        with open(LEDGER, 'r+b') as handle:
+            handle.truncate(journal['ledger_size'])
+    JOURNAL.unlink(missing_ok=True)
+
+
+def recover():
+    """上一次入库做到一半被杀掉（进程被结束、构建超时）时，分片里留着没登记台账的条目；持锁后先恢复。
+
+    （事故：提交进程在构建中途被结束，没有回滚，待入库的提交又被后来的进程重放了两次，
+    同一批 4 条定理在分片里出现了三份、都没进台账，库从此建不过。）调用方须持有 locked()。"""
+    if JOURNAL.exists():
+        _restore(json.loads(JOURNAL.read_text(encoding='utf-8')))
+        return True
+    return False
+
+
 def admit_batch(items):
     """把一批已通过校验的提交 [(task, body, check, proved_by)] 一起追加、只构建一次。
 
     构建失败则整批原样回滚；多于一条时再逐条入库，找出是哪一条有问题，其余照常入库。调用方须持有 locked()。
+    改动前先把原文写进回滚日志：进程中途死掉，下一个持锁入库的进程会先恢复。
     """
-    snapshots = {}
-    before_root = ROOT_FILE.read_text(encoding='utf-8')
-    paths = [_append(task, body, check, snapshots) for task, body, check, _ in items]
-    _write_root()
-    code, output = lake_build('Mathlib2')
-    if code == 0 and "declaration uses 'sorry'" not in output:
-        results = []
-        with open(LEDGER, 'a', encoding='utf-8') as handle:
+    recover()
+    journal = dict(root=ROOT_FILE.read_text(encoding='utf-8'),
+                   ledger_size=LEDGER.stat().st_size if LEDGER.exists() else 0, shards={})
+    _save_journal(journal)
+    try:
+        paths = [_append(task, body, check, journal) for task, body, check, _ in items]
+        _write_root()
+        code, output = lake_build('Mathlib2')
+        if code == 0 and "declaration uses 'sorry'" not in output:
+            results = []
+            lines = ''
             for (task, body, check, proved_by), path in zip(items, paths):
                 entry = _ledger_entry(task, body, check, proved_by, path)
-                handle.write(json.dumps(entry, ensure_ascii=False) + '\n')
+                lines += json.dumps(entry, ensure_ascii=False) + '\n'
                 results.append(dict(ok=True, entry=entry, batch=len(items)))
-        return results
-    for path, text in snapshots.items():
-        if text is None:
-            path.unlink(missing_ok=True)
-        else:
-            path.write_text(text, encoding='utf-8')
-    ROOT_FILE.write_text(before_root, encoding='utf-8')
+            with open(LEDGER, 'a', encoding='utf-8') as handle:
+                handle.write(lines)
+            JOURNAL.unlink()
+            return results
+    except BaseException:
+        _restore(journal)
+        raise
+    _restore(journal)
     lake_build('Mathlib2')
     if len(items) == 1:
         return [dict(ok=False, reason='入库构建失败，已回滚', build_tail=output[-1500:])]

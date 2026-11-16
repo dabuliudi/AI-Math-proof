@@ -90,6 +90,9 @@ jobs:
       - name: Fetch Mathlib build cache
         working-directory: lean
         run: lake exe cache get
+      - name: Build the admission checker
+        working-directory: lean
+        run: lake build Forge
       - name: Ledger and shards agree
         run: python -m forge consistency
       - name: Build the library and audit every theorem

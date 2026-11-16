@@ -60,7 +60,8 @@ Lemma `{lemma}` (a closed statement; it is one step in a decomposition of the pr
 Write to {file} either
 - `theorem {lemma} : <the statement above> := by ...`   (a proof), or
 - `theorem {lemma}_disproof : ¬ (<the statement above>) := by ...`   (if it is false - that tells us the plan is wrong).
-Helper lemmas are fine but their names must start with `{lemma}_aux`. No sorry, no axiom, no native_decide.
+Helper lemmas are fine but their names must start with `{lemma}_aux` and they must come BEFORE the main theorem:
+the main theorem (`{lemma}` or `{lemma}_disproof`) must be the LAST declaration in the file. No sorry, no axiom, no native_decide.
 Check with `{forge} portfolio-lemma-check {run} {lemma} {file}` until it says ok. You have up to {minutes} minutes:
 keep going; try several approaches before you stop. Do not edit other files.
 End with one line: RESULT: proved | disproved | unsolved.
@@ -140,9 +141,30 @@ def lemma_check(run, lemma, path):
         return dict(ok=False, reason=f'轮次 {run} 里没有引理 {lemma}')
     item = next(i for i in bench.load(info['set']) if i['name'] == info['problem'])
     try:
-        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), Path(path).read_text(encoding='utf-8'))
+        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']),
+                             main_last(Path(path).read_text(encoding='utf-8'), lemma))
     except Exception as exc:  # noqa: BLE001
         return dict(ok=False, reason=str(exc))
+
+
+def main_last(body, lemma):
+    """把主定理（`lemma` 或 `lemma_disproof`）那一段挪到文件最后：agent 常把辅助引理写在主定理后面，内容没错只是顺序不合规。"""
+    blocks, current = [], []
+    for line in body.splitlines():
+        if line and not line[0].isspace() and current and not line.startswith(('--', '/-', '@[')) \
+                and not (current[-1].startswith('@[') and not current[-1][0].isspace()):
+            blocks.append(current)
+            current = []
+        current.append(line)
+    if current:
+        blocks.append(current)
+    head = re.compile(r'(?:@\[[^\]]*\]\s*)?(?:theorem|lemma)\s+(' + re.escape(lemma) + r'(?:_disproof)?)(?![\w\'])')
+    mains = [i for i, b in enumerate(blocks) if head.match(b[0])]
+    if len(mains) != 1 or mains[0] == len(blocks) - 1:
+        return body
+    i = mains[0]
+    rest = blocks[:i] + blocks[i + 1:]
+    return '\n'.join('\n'.join(b) for b in rest + [blocks[i]]).rstrip('\n') + '\n'
 
 
 def aux_names(name, text):
@@ -311,11 +333,13 @@ class Portfolio(Scheduler):
         code, message, used, slow = self._invoke(prompt, agent, seconds=self.lemma_seconds)
         status, reason = 'unsolved', '没有交出证明'
         if path.exists():
-            body = path.read_text(encoding='utf-8')
+            body = main_last(path.read_text(encoding='utf-8'), lemma)
             try:
                 result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), body)
-            except Exception as exc:  # noqa: BLE001 - 静态检查拒收（例如空洞目标里带 let 的 `:=`）：这条引理没法检查
-                result = dict(ok=False, reason=str(exc), uncheckable=True)
+            except Exception as exc:  # noqa: BLE001
+                # 命题由内核给出（closed），不再被静态解析；静态拒收只能是提交文本本身的问题（命名、顺序、禁用词），
+                # 那是这次尝试失败，不是引理没法检查：记 unsolved，可以重试，不连坐整张图
+                result = dict(ok=False, reason=str(exc))
             reason = result.get('reason', '')
             if result.get('uncheckable'):
                 status = 'uncheckable'

@@ -981,8 +981,8 @@ class PortfolioTests(unittest.TestCase):
         body = assemble_body('p', 'theorem p : True ∧ True := by\n  exact ⟨by sorry, by sorry⟩',
                              ['theorem p_d1_h1 : True := trivial'], [('p_d1_h1', [])])
         self.assertNotIn('sorry', body)
-        self.assertTrue(body.startswith('theorem p_d1_h1'))
-        self.assertIn('exact p_d1_h1', body)
+        self.assertTrue(body.startswith('theorem p_aux_d1_h1'))  # 改名成检查器接受的 <题名>_aux…
+        self.assertIn('exact p_aux_d1_h1', body)
 
     def test_disproved_lemma_kills_every_dag_using_it(self):
         from forge import portfolio
@@ -1032,7 +1032,7 @@ class PortfolioResumeTests(unittest.TestCase):
 
 
 class PortfolioUncheckableTests(unittest.TestCase):
-    def test_lemma_the_checker_rejects_kills_its_dags_without_stopping_the_run(self):
+    def test_static_rejection_is_a_failed_attempt_not_a_dead_dag(self):
         from forge import portfolio
         from forge.statement import StatementError
         tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
@@ -1052,6 +1052,21 @@ class PortfolioUncheckableTests(unittest.TestCase):
             runner._invoke = fake_invoke
             result = runner.run_portfolio('s', ['p'], k=1)
         self.assertNotIn('出错', runner.stop_reason or '')  # 工人没有因异常停下
-        self.assertEqual(runner.state['lemmas']['l1']['status'], 'uncheckable')
-        self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'dead')
+        # 静态拒收是这份提交的问题（命名、顺序），不是引理的问题：记 unsolved、重试，图不作废
+        self.assertEqual(runner.state['lemmas']['l1']['status'], 'unsolved')
+        self.assertEqual(runner.state['lemmas']['l1']['attempts'], 2)
+        self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'open')
         self.assertEqual(result['solved'], 0)
+
+    def test_main_last_moves_the_main_theorem_after_its_helpers(self):
+        from forge.portfolio import main_last
+        from forge.statement import analyse_submission
+        body = ('open Nat\n\ntheorem p_d1_h1 : 1 = 1 := by\n  exact p_d1_h1_aux\n\n'
+                '-- helper\ntheorem p_d1_h1_aux : 1 = 1 := by\n  rfl\n')
+        fixed = main_last(body, 'p_d1_h1')
+        self.assertEqual(analyse_submission(fixed, 'p_d1_h1'), ['p_d1_h1_aux', 'p_d1_h1'])
+        self.assertTrue(fixed.startswith('open Nat'))
+        ok = 'theorem p_d1_h1_aux : 1 = 1 := rfl\ntheorem p_d1_h1 : 1 = 1 := p_d1_h1_aux\n'
+        self.assertEqual(main_last(ok, 'p_d1_h1'), ok)  # 已经合规的不动
+        dis = 'theorem p_d1_h1_disproof : ¬ (1 = 2) := by\n  decide\ntheorem p_d1_h1_aux : True := trivial\n'
+        self.assertEqual(analyse_submission(main_last(dis, 'p_d1_h1'), 'p_d1_h1', disproof=True)[-1], 'p_d1_h1_disproof')

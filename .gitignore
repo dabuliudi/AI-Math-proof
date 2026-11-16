@@ -35,5 +35,6 @@ phase2/library.local.json
 forge/data/staging/
 forge/data/library.lock
 forge/data/pending/
+forge/data/admit-journal*
 setup-windows-ssh.ps1
 .worktrees/

@@ -1,8 +1,11 @@
 """Mathlib2 库与台账：追加式分片 + 构建门禁。库任何时刻都必须能 `lake build` 通过。"""
 import contextlib
+import hashlib
 import json
 import os
 import re
+import signal
+import subprocess
 import time
 import uuid
 from pathlib import Path
@@ -284,12 +287,65 @@ def _ledger_entry(task, body, check, proved_by, path):
 
 
 JOURNAL = DATA / 'admit-journal.json'
+MARKER = 'end Mathlib2\n'
+
+
+def _write_durable(path, text):
+    temporary = path.with_name(f'{path.name}.{os.getpid()}.tmp')
+    with open(temporary, 'w', encoding='utf-8') as handle:
+        handle.write(text)
+        handle.flush()
+        os.fsync(handle.fileno())
+    os.replace(temporary, path)
 
 
 def _save_journal(journal):
-    temporary = JOURNAL.with_name(f'{JOURNAL.name}.{os.getpid()}.tmp')
-    temporary.write_text(json.dumps(journal, ensure_ascii=False), encoding='utf-8')
-    os.replace(temporary, JOURNAL)
+    _write_durable(JOURNAL, json.dumps(journal, ensure_ascii=False))
+
+
+def _ledger_bytes():
+    return LEDGER.read_bytes() if LEDGER.exists() else b''
+
+
+def _entry_names(text):
+    return re.findall(r'^-- forge:entry (\S+) ', text, re.M)
+
+
+def _journal_matches(journal):
+    """日志只在库没被别人改过时可信：台账前缀和记下的一样、其后只有这一批的条目，
+    每个分片只是在原文的 end Mathlib2 前插进了这一批的条目。"""
+    names = set(journal['names'])
+    ledger = _ledger_bytes()
+    size = journal['ledger_size']
+    if len(ledger) < size or hashlib.sha256(ledger[:size]).hexdigest() != journal['ledger_digest']:
+        return False
+    for line in ledger[size:].decode('utf-8', errors='replace').split('\n')[:-1]:
+        try:
+            if json.loads(line)['task'] not in names:
+                return False
+        except (ValueError, KeyError, TypeError):
+            return False
+    for path, original in journal['shards'].items():
+        path = Path(path)
+        if not path.exists():
+            if original is not None:
+                return False
+            continue
+        current = path.read_text(encoding='utf-8')
+        head, tail = ('', '') if original is None else (original[:original.rindex(MARKER)], original[original.rindex(MARKER):])
+        if not (current.startswith(head) and current.endswith(tail) and len(current) >= len(head) + len(tail)):
+            return False
+        if not set(_entry_names(current[len(head):len(current) - len(tail)])) <= names:
+            return False
+    return True
+
+
+def _library_consistent():
+    """台账与分片一一对应、分片里没有重复条目。"""
+    in_shards = []
+    for path in sorted(SHARDS.glob('S*.lean')):
+        in_shards += _entry_names(path.read_text(encoding='utf-8'))
+    return len(in_shards) == len(set(in_shards)) and set(in_shards) == {e['task'] for e in entries()}
 
 
 def _restore(journal):
@@ -306,50 +362,116 @@ def _restore(journal):
     JOURNAL.unlink(missing_ok=True)
 
 
+def _finish_tickets(tickets, results):
+    for path, result in zip(tickets, results):
+        if path.exists():
+            _write_durable(path.with_suffix('.done'), json.dumps(result, ensure_ascii=False))
+            path.unlink()
+
+
+def _kill_build(pgid):
+    """结束上一个入库进程留下的构建（它被杀掉时 lake 和 lean 不会跟着退出）。只结束确实是 lake/lean 的进程组。"""
+    if not pgid or os.name == 'nt':
+        return
+    listing = subprocess.run(['ps', '-A', '-o', 'pgid=,comm='], capture_output=True, text=True).stdout
+    commands = [line.split(None, 1)[1] for line in listing.splitlines()
+                if len(line.split(None, 1)) == 2 and line.split(None, 1)[0] == str(pgid)]
+    if any(Path(c.strip()).name in ('lake', 'lean') for c in commands):
+        try:
+            os.killpg(pgid, signal.SIGKILL)
+        except (ProcessLookupError, PermissionError):
+            pass
+
+
 def recover():
-    """上一次入库做到一半被杀掉（进程被结束、构建超时）时，分片里留着没登记台账的条目；持锁后先恢复。
+    """上一次入库做到一半被杀掉（进程被结束、构建超时）时，持锁后先收拾：
+    已写完台账的（日志标了 committed）把待入库票据补写完；没写完的把分片和台账恢复原样。
+    日志读不出来或与当前库对不上（之后有别人改过库）就不按它恢复，挪到一边；此时库本身一致才继续，否则报错停下等人处理。
 
     （事故：提交进程在构建中途被结束，没有回滚，待入库的提交又被后来的进程重放了两次，
     同一批 4 条定理在分片里出现了三份、都没进台账，库从此建不过。）调用方须持有 locked()。"""
-    if JOURNAL.exists():
-        _restore(json.loads(JOURNAL.read_text(encoding='utf-8')))
+    if not JOURNAL.exists():
+        return False
+    try:
+        journal = json.loads(JOURNAL.read_text(encoding='utf-8'))
+        journal['names'], journal['root'], journal['ledger_size'], journal['ledger_digest'], journal['shards']
+    except (ValueError, KeyError, TypeError):
+        journal = None
+    if journal is not None and 'committed' in journal:
+        _finish_tickets([Path(t) for t in journal['tickets']], journal['committed'])
+        JOURNAL.unlink(missing_ok=True)
         return True
-    return False
+    if journal is not None:
+        _kill_build(journal.get('build'))
+        if _journal_matches(journal):
+            _restore(journal)
+            return True
+    os.replace(JOURNAL, JOURNAL.with_name(f'admit-journal.rejected-{time.strftime("%Y%m%d-%H%M%S")}.json'))
+    if not _library_consistent():
+        raise RuntimeError(f'入库回滚日志不可信（已挪到 {JOURNAL.parent} 下的 admit-journal.rejected-*），'
+                           '而台账与分片不一致：需要人工修复后再入库')
+    return True
 
 
-def admit_batch(items):
+def admit_batch(items, tickets=None):
     """把一批已通过校验的提交 [(task, body, check, proved_by)] 一起追加、只构建一次。
 
-    构建失败则整批原样回滚；多于一条时再逐条入库，找出是哪一条有问题，其余照常入库。调用方须持有 locked()。
+    构建失败或出错（例如构建超时）则整批原样回滚；多于一条时再逐条入库，找出是哪一条有问题，其余照常入库。调用方须持有 locked()。
+    tickets 是与 items 对应的待入库票据：结果写进票据的 .done，与台账在同一个回滚日志里完成，进程中途死掉也不会重放已入库的票据。
     改动前先把原文写进回滚日志：进程中途死掉，下一个持锁入库的进程会先恢复。
     """
+    tickets = list(tickets) if tickets is not None else [None] * len(items)
     recover()
-    journal = dict(root=ROOT_FILE.read_text(encoding='utf-8'),
-                   ledger_size=LEDGER.stat().st_size if LEDGER.exists() else 0, shards={})
+    ledger = _ledger_bytes()
+    journal = dict(names=[task['name'] for task, _, _, _ in items], root=ROOT_FILE.read_text(encoding='utf-8'),
+                   ledger_size=len(ledger),
+                   ledger_digest=hashlib.sha256(ledger).hexdigest(), shards={}, build=None)
     _save_journal(journal)
+
+    def started(pid):
+        journal['build'] = pid
+        _save_journal(journal)
+
+    results, restored = None, False
     try:
         paths = [_append(task, body, check, journal) for task, body, check, _ in items]
         _write_root()
-        code, output = lake_build('Mathlib2')
+        code, output = lake_build('Mathlib2', on_start=started)
         if code == 0 and "declaration uses 'sorry'" not in output:
-            results = []
-            lines = ''
-            for (task, body, check, proved_by), path in zip(items, paths):
-                entry = _ledger_entry(task, body, check, proved_by, path)
-                lines += json.dumps(entry, ensure_ascii=False) + '\n'
-                results.append(dict(ok=True, entry=entry, batch=len(items)))
+            results = [dict(ok=True, entry=_ledger_entry(task, body, check, proved_by, path), batch=len(items))
+                       for (task, body, check, proved_by), path in zip(items, paths)]
             with open(LEDGER, 'a', encoding='utf-8') as handle:
-                handle.write(lines)
-            JOURNAL.unlink()
-            return results
-    except BaseException:
+                handle.write(''.join(json.dumps(r['entry'], ensure_ascii=False) + '\n' for r in results))
+                handle.flush()
+                os.fsync(handle.fileno())
+            # 从这里起这一批算入库了：日志改成 committed，之后死掉由下一个进程把票据补写完，而不是回滚
+            journal.update(committed=[r for r, t in zip(results, tickets) if t is not None],
+                           tickets=[str(t) for t in tickets if t is not None])
+            _save_journal(journal)
+        else:
+            failure = dict(ok=False, reason='入库构建失败，已回滚', build_tail=output[-1500:])
+    except Exception as exc:
+        if 'committed' in journal:
+            raise
         _restore(journal)
+        results, restored = None, True
+        failure = dict(ok=False, reason=f'入库时出错（{type(exc).__name__}: {str(exc)[:300]}），已回滚')
+    except BaseException:
+        if 'committed' not in journal:
+            _restore(journal)
         raise
-    _restore(journal)
-    lake_build('Mathlib2')
+    if results is not None:
+        _finish_tickets([Path(t) for t in journal['tickets']], journal['committed'])
+        JOURNAL.unlink()
+        return results
+    if not restored:  # 构建失败：恢复后重建一次，让 .olean 回到库的当前状态
+        _restore(journal)
+        lake_build('Mathlib2')
     if len(items) == 1:
-        return [dict(ok=False, reason='入库构建失败，已回滚', build_tail=output[-1500:])]
-    return [admit_batch([item])[0] for item in items]
+        if tickets[0] is not None:
+            _finish_tickets(tickets, [failure])
+        return [failure]
+    return [admit_batch([item], [ticket])[0] for item, ticket in zip(items, tickets)]
 
 
 def admit(task, body, check, proved_by):
@@ -373,15 +495,17 @@ def commit(task, body, check, proved_by):
     staged.rename(PENDING / f'{ticket}.json')  # 原子改名：别的进程不会读到写了一半的提交
     done = PENDING / f'{ticket}.done'
     with locked():
+        recover()
         if not done.exists():
             waiting = sorted(PENDING.glob('*.json'))
             items = [json.loads(p.read_text(encoding='utf-8')) for p in waiting]
-            results = admit_batch([(i['task'], i['body'], i['check'], i['proved_by']) for i in items])
-            for path, result in zip(waiting, results):
-                path.with_suffix('.done').write_text(json.dumps(result, ensure_ascii=False), encoding='utf-8')
-                path.unlink()
+            admit_batch([(i['task'], i['body'], i['check'], i['proved_by']) for i in items], tickets=waiting)
         result = json.loads(done.read_text(encoding='utf-8'))
         done.unlink()
+        stale = time.time() - 86400  # 提交者已经死掉、没人来取的结果
+        for path in PENDING.glob('*.done'):
+            if path.stat().st_mtime < stale:
+                path.unlink(missing_ok=True)
     return result
 
 

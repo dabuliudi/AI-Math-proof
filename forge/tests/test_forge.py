@@ -4,6 +4,7 @@ import os
 import tempfile
 import threading
 import unittest
+import uuid
 from pathlib import Path
 from unittest import mock
 
@@ -1062,7 +1063,7 @@ class SnapshotPublishTests(unittest.TestCase):
         self.assertIn('M app.py', self.git('status', '--short'))  # 代码改动没被带进快照
         calls = self.log.read_text()
         self.assertIn('pr create --base main', calls)
-        self.assertIn('--auto --merge', calls)
+        self.assertIn('--auto --squash', calls)
 
     def test_snapshot_refuses_when_local_main_has_unreviewed_code(self):
         (self.root / 'app.py').write_text('x = 3\n')
@@ -1084,7 +1085,8 @@ class SnapshotPublishTests(unittest.TestCase):
         self.assertTrue(result['ok'] and result['updated_existing_pr'], result)
         self.assertEqual(result['pr'], 'https://github.com/o/r/pull/5')
         self.assertNotIn('pr create', self.log.read_text())
-        self.assertEqual(self.git('rev-parse', 'origin/data/old').strip(), self.git('rev-parse', 'HEAD').strip())
+        self.assertEqual(self.git('show', 'data/old:forge/data/ledger.jsonl', cwd=self.origin), 'a\nb\n')
+        self.assertEqual(self.git('rev-parse', 'data/old~1', cwd=self.origin).strip(), self.git('rev-parse', 'main', cwd=self.origin).strip())
 
     def test_snapshot_off_main_commits_locally(self):
         self.git('checkout', '-q', '-b', 'upgrade')
@@ -1125,3 +1127,38 @@ class SnapshotPublishTests(unittest.TestCase):
         (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
         self.library.snapshot('local only', publish=False)
         self.assertFalse(self.library.sync()['ok'])
+
+    def _squash_merge(self, branch):
+        """模拟 GitHub 的 squash 合并：把数据分支的内容作为一个新提交放到 origin 的 main 上。"""
+        other = Path(self.tmp.name) / ('gh-' + uuid.uuid4().hex[:6])
+        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
+        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
+        self.git('merge', '-q', '--squash', f'origin/{branch}', cwd=other)
+        self.git('commit', '-q', '-m', 'squash', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+
+    def _data_branch(self):
+        return [line.split('refs/heads/')[1] for line in self.git('ls-remote', '--heads', 'origin').splitlines() if 'refs/heads/data/' in line][-1]
+
+    def test_new_data_after_a_squash_merge_publishes_cleanly(self):
+        ledger = self.root / 'forge' / 'data' / 'ledger.jsonl'
+        ledger.write_text('a\nb\n'); self.library.snapshot('d1')
+        ledger.write_text('a\nb\nc\n'); self.library.snapshot('d2', publish=False)
+        self._squash_merge(self._data_branch())
+        self.assertFalse(self.library.sync()['ok'])  # d2 还没进 origin/main
+        self.git('push', '-q', 'origin', '--delete', self._data_branch())
+        result = self.library.snapshot('d3')
+        self.assertTrue(result['ok'] and result['published'], result)
+        self._squash_merge(self._data_branch())  # 新分支建在 origin/main 上，不带旧的 d1，能干净合并
+        self.assertTrue(self.library.sync()['ok'])
+        self.assertEqual(self.git('show', 'HEAD:forge/data/ledger.jsonl'), 'a\nb\nc\n')
+
+    def test_deleted_include_and_emptied_directory_are_committed(self):
+        (self.root / 'reports').mkdir(); (self.root / 'reports' / 'r.txt').write_text('r')
+        tasks_dir = self.root / 'forge' / 'data' / 'tasks'; tasks_dir.mkdir(); (tasks_dir / 't.json').write_text('{}')
+        self.assertTrue(self.library.snapshot('add', include=['reports/r.txt'], publish=False)['committed'])
+        (self.root / 'reports' / 'r.txt').unlink(); (tasks_dir / 't.json').unlink()
+        result = self.library.snapshot('remove', include=['reports/r.txt'], publish=False)
+        self.assertTrue(result['ok'] and result['committed'], result)
+        self.assertEqual(self.git('status', '--short', '--', 'reports', 'forge/data'), '')
+        result = self.library.snapshot('nothing', include=['reports/r.txt'], publish=False)  # tasks 目录已空但还在
+        self.assertTrue(result['ok'] and not result['committed'], result)

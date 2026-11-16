@@ -5,6 +5,7 @@ import os
 import re
 import time
 import uuid
+from pathlib import Path
 
 from .leanrun import DATA, PROJECT, lake_build
 from .verify import HEARTBEATS
@@ -78,10 +79,47 @@ def is_data(path):
     return '..' not in norm.split('/') and (norm == 'lean/Mathlib2.lean' or norm.startswith(DATA_DIRS) or norm + '/' in DATA_DIRS)
 
 
-def _git(*args):
+def _git(*args, index=None):
     import subprocess
     from .leanrun import ROOT
-    return subprocess.run(['git', *args], cwd=ROOT, capture_output=True, text=True)
+    env = dict(os.environ, GIT_INDEX_FILE=str(index)) if index else None
+    return subprocess.run(['git', *args], cwd=ROOT, capture_output=True, text=True, env=env)
+
+
+def _blob(rev, path):
+    found = _git('rev-parse', '-q', '--verify', f'{rev}:{path}')
+    return found.stdout.strip() if found.returncode == 0 else None
+
+
+def _publish_commit(message):
+    """在 origin/main 上做一个提交，内容是 origin/main 加上本地 main 里还没进去的数据改动。
+
+    不直接推本地 main 的历史：数据 PR 若被 squash 或 rebase 合并，旧提交还留在本地历史里，再推就会和 main 冲突。
+    返回 (提交, 路径, 冲突路径)；没有要发布的改动时提交为 None。"""
+    import tempfile
+    base = _git('merge-base', 'origin/main', 'HEAD').stdout.strip()
+    local = [p for p in _git('diff', '--name-only', '-z', base, 'HEAD').stdout.split('\0') if p]
+    todo = [p for p in local if _blob('HEAD', p) != _blob('origin/main', p)]
+    if not todo:
+        return None, [], []
+    ours = _git('rev-list', f'{base}..HEAD').stdout.split()
+    conflicts = [p for p in todo if _blob('origin/main', p) != _blob(base, p)
+                 and _blob('origin/main', p) not in {_blob(c, p) for c in ours}]
+    if conflicts:
+        return None, todo, conflicts
+    with tempfile.TemporaryDirectory() as tmp:
+        index = Path(tmp) / 'index'
+        _git('read-tree', 'origin/main', index=index)
+        for path in todo:
+            blob = _blob('HEAD', path)
+            if blob:
+                mode = _git('ls-tree', 'HEAD', '--', path).stdout.split()[0]
+                _git('update-index', '--add', '--cacheinfo', f'{mode},{blob},{path}', index=index)
+            else:
+                _git('update-index', '--force-remove', '--', path, index=index)
+        tree = _git('write-tree', index=index).stdout.strip()
+    commit = _git('commit-tree', tree, '-p', 'origin/main', '-m', message).stdout.strip()
+    return commit or None, todo, []
 
 
 def _gh(*args):
@@ -99,14 +137,14 @@ def _unpublished_paths():
 def snapshot(message, include=(), publish=True):
     """持锁提交库的快照（台账、分片、任务、辅助引理索引，加上 include 里的实验结果），提交前核对台账与分片一致。
 
-    在主检出的 main 上且 publish 时，把未发布的提交推到数据分支并请求 CI 通过后自动合并：已有打开的数据 PR
-    就推到它的分支上，没有才开新 PR。主检出从不直接推 main。在其他分支上（例如升级分支）只在本地提交。"""
+    在主检出的 main 上且 publish 时，把还没进 origin/main 的数据改动做成 origin/main 上的一个提交，推到数据分支，
+    请求 CI 通过后自动 squash 合并：已有打开的数据 PR 就更新它的分支，没有才开新 PR。主检出从不直接推 main。在其他分支上（例如升级分支）只在本地提交。"""
     from .leanrun import ROOT
     from .regressions import consistency
     bad = [p for p in include if not is_data(p)]
     if bad:
         return dict(ok=False, reason='--include 只能是数据或实验结果路径', paths=bad, allowed=list(DATA_DIRS))
-    paths = [p for p in LIBRARY_PATHS + list(include) if (ROOT / p).exists()]
+    paths = [p for p in LIBRARY_PATHS + list(include) if (ROOT / p).exists() or _git('ls-files', '--', p).stdout]
     on_main = _git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() == 'main'
     publish = publish and on_main
     if publish:
@@ -125,20 +163,26 @@ def snapshot(message, include=(), publish=True):
         added = _git('add', '-A', '--', *paths)
         if added.returncode:
             return dict(ok=False, reason='git add 失败', error=added.stderr.strip()[-300:])
-        committed = _git('diff', '--cached', '--quiet', '--', *paths).returncode != 0
-        if committed and _git('commit', '-q', '-m', message, '--', *paths).returncode:
-            return dict(ok=False, reason='git commit 失败')
+        staged = [p for p in _git('diff', '--cached', '--name-only', '-z', '--', *paths).stdout.split('\0') if p]
+        if staged:
+            made = _git('commit', '-q', '-m', message, '--', *staged)
+            if made.returncode:
+                return dict(ok=False, reason='git commit 失败', error=made.stderr.strip()[-300:])
+        committed = bool(staged)
     result = dict(ok=True, committed=committed, commit=_git('rev-parse', '--short', 'HEAD').stdout.strip())
     if not publish:
         return dict(result, published=False, **({} if on_main else dict(reason='不在 main 上，只在本地提交')))
-    if _git('rev-list', '--count', 'origin/main..HEAD').stdout.strip() == '0':
-        return dict(result, published=False, reason='没有未发布的提交')
+    commit, todo, conflicts = _publish_commit(message)
+    if conflicts:
+        return dict(result, ok=False, published=False, reason='这些数据在 origin/main 上也被别处改过，先手动合并', paths=conflicts)
+    if not commit:
+        return dict(result, published=False, reason='没有未发布的数据改动')
     listed = _gh('pr', 'list', '--state', 'open', '--base', 'main', '--limit', '100', '--json', 'headRefName,url')
     if listed.returncode:
         return dict(result, ok=False, published=False, reason='查询打开的 PR 失败', error=listed.stderr.strip()[-300:])
     open_data = [pr for pr in json.loads(listed.stdout or '[]') if pr['headRefName'].startswith('data/')]
     branch = open_data[0]['headRefName'] if open_data else 'data/' + time.strftime('%Y%m%d-%H%M%S-') + uuid.uuid4().hex[:6]
-    pushed = _git('push', '-q', 'origin', f'HEAD:refs/heads/{branch}')
+    pushed = _git('push', '-q', '--force', 'origin', f'{commit}:refs/heads/{branch}')  # 数据分支每次从 origin/main 重建
     if pushed.returncode:
         return dict(result, ok=False, published=False, branch=branch, reason='推送数据分支失败', error=pushed.stderr.strip()[-500:])
     if open_data:
@@ -148,7 +192,7 @@ def snapshot(message, include=(), publish=True):
     if pr.returncode:
         return dict(result, ok=False, published=False, branch=branch, reason='开 PR 失败', error=pr.stderr.strip()[-500:])
     url = pr.stdout.strip().splitlines()[-1]
-    auto = _gh('pr', 'merge', url, '--auto', '--merge')
+    auto = _gh('pr', 'merge', url, '--auto', '--squash')
     result.update(published=True, pr=url, auto_merge=auto.returncode == 0)
     if auto.returncode:
         result['auto_merge_error'] = auto.stderr.strip()[-300:]
@@ -170,7 +214,7 @@ def sync():
         if changed is None:
             return dict(ok=False, reason='无法比较本地 main 与 origin/main')
         if changed and _git('diff', '--quiet', 'HEAD', 'origin/main', '--', *changed).returncode:
-            pending = _git('diff', '--name-only', 'HEAD', 'origin/main', '--', *changed).stdout.split()
+            pending = [p for p in _git('diff', '--name-only', '-z', 'HEAD', 'origin/main', '--', *changed).stdout.split('\0') if p]
             return dict(ok=False, reason='本地 main 上的数据提交还没进 origin/main，等数据 PR 合并后再同步', paths=pending[:20])
         moved = _git('reset', '-q', '--keep', 'origin/main')
         if moved.returncode:

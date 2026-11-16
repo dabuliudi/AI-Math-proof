@@ -1029,3 +1029,29 @@ class PortfolioResumeTests(unittest.TestCase):
             runner._lemma = lambda agent, p, name: seen.append(('lemma', name))
             runner.run_portfolio('s', ['p'], k=2)
         self.assertEqual(sorted(seen), [('lemma', 'l1'), ('sketch', 2)])
+
+
+class PortfolioUncheckableTests(unittest.TestCase):
+    def test_lemma_the_checker_rejects_kills_its_dags_without_stopping_the_run(self):
+        from forge import portfolio
+        from forge.statement import StatementError
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / 'pf').mkdir()
+        state = dict(run='t-u', problems=dict(p=dict(set='s', solved_by=None, dags=dict(
+            d1=dict(skeleton='', holes=[dict(lemma='l1', args=[])], status='open', planner='w')))),
+            lemmas=dict(l1=dict(set='s', problem='p', statement='let x := 1; x = 1', hash='h', status='open', dags=['d1'])))
+        (root / 'pf' / 't-u.json').write_text(json.dumps(state))
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+             mock.patch('forge.verify.check_submission', side_effect=StatementError('命题里不能带 `:=`')):
+            runner = portfolio.Portfolio('t-u', workers=1, max_tasks=1000, dry_run=True)
+            def fake_invoke(prompt, agent, **kw):
+                (runner.scratch / agent / 'l1.lean').write_text('theorem l1 : True := trivial')
+                return 0, '', 0, False
+            runner._invoke = fake_invoke
+            result = runner.run_portfolio('s', ['p'], k=1)
+        self.assertNotIn('出错', runner.stop_reason or '')  # 工人没有因异常停下
+        self.assertEqual(runner.state['lemmas']['l1']['status'], 'uncheckable')
+        self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'dead')
+        self.assertEqual(result['solved'], 0)

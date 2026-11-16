@@ -293,16 +293,21 @@ class Portfolio(Scheduler):
         status, reason = 'unsolved', '没有交出证明'
         if path.exists():
             body = path.read_text(encoding='utf-8')
-            result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), body)
+            try:
+                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), body)
+            except Exception as exc:  # noqa: BLE001 - 静态检查拒收（例如空洞目标里带 let 的 `:=`）：这条引理没法检查
+                result = dict(ok=False, reason=str(exc), uncheckable=True)
             reason = result.get('reason', '')
-            if result.get('ok'):
+            if result.get('uncheckable'):
+                status = 'uncheckable'
+            elif result.get('ok'):
                 status = 'disproved' if result['kind'] == 'disproved' else 'proved'
                 if status == 'proved':
                     info['body'] = body
         with self.file_lock:
             info['status'] = status
             info['attempts'] = info.get('attempts', 0) + 1
-            if status == 'disproved':  # 拆法不成立：用到它的图全部作废
+            if status in ('disproved', 'uncheckable'):  # 拆法不成立，或这条引理没法检查：用到它的图全部作废
                 for d in info['dags']:
                     self.state['problems'][problem]['dags'][d]['status'] = 'dead'
             self._save()

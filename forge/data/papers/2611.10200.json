@@ -1,0 +1,214 @@
+{
+  "arxiv": "2611.10200",
+  "title": "Brown-Gap Healing and Exact Completeness Thresholds for Leading-Unit Positive Linear Recurrences",
+  "url": "https://arxiv.org/abs/2611.10200",
+  "auditor": "audit-b1-w6",
+  "definitions": [
+    {
+      "name": "x2611_10200_Q",
+      "lean": "noncomputable def x2611_10200_Q (g : ℕ) : PowerSeries ℤ :=\n  1 - (Finset.Icc 1 g).sum (fun j => PowerSeries.X ^ j)",
+      "notes": "Q_g of (1.4), as a formal power series over ℤ. Finset.Icc 1 g contains the exponents 1 through g."
+    },
+    {
+      "name": "x2611_10200_a",
+      "lean": "noncomputable def x2611_10200_a (g : ℕ) (m : ℤ) : ℤ :=\n  if m < 0 then 0 else\n    PowerSeries.coeff m.toNat (PowerSeries.invOfUnit\n      (((1 - PowerSeries.X) ^ 2 : PowerSeries ℤ) * x2611_10200_Q g) 1)",
+      "notes": "Coefficient a_m^(g) of (1.4), extended by zero to negative integer indices as in Section 2. PowerSeries.invOfUnit with unit 1 is the formal reciprocal of the displayed denominator, whose constant coefficient is 1."
+    },
+    {
+      "name": "x2611_10200_M",
+      "lean": "noncomputable def x2611_10200_M (g k : ℕ) : ℝ :=\n  ((x2611_10200_a g ((g + k : ℕ) : ℤ) : ℝ) + 1) / (2 : ℝ) ^ g",
+      "notes": "The real unrounded threshold of (1.5). Both the integer coefficient and denominator are cast to ℝ before division."
+    },
+    {
+      "name": "x2611_10200_f",
+      "lean": "noncomputable def x2611_10200_f (g k N : ℕ) (m : ℤ) : ℤ :=\n  if m < 0 then 0 else\n    PowerSeries.coeff m.toNat\n      ((1 - PowerSeries.C ((N : ℤ) - 1) * PowerSeries.X ^ k +\n          PowerSeries.C ((N : ℤ) - 2) * PowerSeries.X ^ (k + 1)) *\n        PowerSeries.invOfUnit\n          (((1 - PowerSeries.X) ^ 2 : PowerSeries ℤ) *\n            (x2611_10200_Q g - PowerSeries.C (N : ℤ) *\n              PowerSeries.X ^ (g + k + 1))) 1)",
+      "notes": "The coefficients of F(z) in (2.6), extended by zero at negative integer indices. All subtractions involving N are in ℤ; invOfUnit uses the constant coefficient 1 for g,k ≥ 1."
+    },
+    {
+      "name": "x2611_10200_standard",
+      "lean": "def x2611_10200_standard (g k N : ℕ) (H : ℕ → ℤ) : Prop :=\n  H 1 = 1 ∧\n  (∀ n : ℕ, 2 ≤ n → n ≤ g + k + 1 →\n    H n = 1 + (Finset.Icc 1 (min g (n - 1))).sum (fun j => H (n - j))) ∧\n  (∀ n : ℕ, g + k + 2 ≤ n →\n    H n = (Finset.Icc 1 g).sum (fun j => H (n - j)) +\n      (N : ℤ) * H (n - (g + k + 1)))",
+      "notes": "The defining initial conditions (1.2) and recurrence (1.3), with L = g+k+1. H is indexed by ℕ, but only positive indices occur under g,k ≥ 1; H 0 is unconstrained and unused. Using this predicate in hypotheses avoids assuming a closed-form construction of H."
+    },
+    {
+      "name": "x2611_10200_complete",
+      "lean": "def x2611_10200_complete (H : ℕ → ℤ) : Prop :=\n  ∀ t : ℤ, 1 ≤ t → ∃ S : Finset ℕ,\n    (∀ i ∈ S, 1 ≤ i) ∧ t = S.sum H",
+      "notes": "Completeness exactly as Appendix A: every positive integer is the sum over a finite set of positive indices. Equal numerical values at different indices remain distinct terms."
+    },
+    {
+      "name": "x2611_10200_B",
+      "lean": "def x2611_10200_B (H : ℕ → ℤ) (n : ℕ) : ℤ :=\n  1 + (Finset.Icc 1 (n - 1)).sum H - H n",
+      "notes": "Brown gap (1.1), for positive index n. All values and subtractions are in ℤ; the empty sum for n=1 is zero."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1 (Exact threshold)",
+      "name": "x2611_10200_thm1_1",
+      "original": "For every $g,k,N\\geq 1$ , the sequence (1.2)–(1.3) is complete if and only if\n\n(1.6)\n\n $1\\leq N\\leq\\lfloor M_{g,k}\\rfloor=\\left\\lfloor\\frac{1+[z^{g+k}]((1-z)^{2}Q_{g}(z))^{-1}}{2^{g}}\\right\\rfloor.$ \n\nIf $M_{g,k}$ is an integer, equality $N=M_{g,k}$ is included.",
+      "lean": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : x2611_10200_complete H ↔ 1 ≤ N ∧ (N : ℤ) ≤ Int.floor (x2611_10200_M g k)",
+      "notes": "The sequence is any H satisfying exactly (1.2)–(1.3). Int.floor is the integer floor of the real M. The endpoint equality is retained by ≤, including when M is integral.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : x2611_10200_complete H ↔ 1 ≤ N ∧ (N : ℤ) ≤ ⌊x2611_10200_M g k⌋",
+        "twin_by": "audit-b1-w4",
+        "verdict": "original_invalid"
+      }
+    },
+    {
+      "label": "Theorem 1.2 (Leading-unit monotonicity)",
+      "name": "x2611_10200_thm1_2",
+      "original": "For all $g,k\\geq 1$ , one has $M_{g+1,k}>M_{g,k}$ . Consequently, if $[1^{g},0^{k},N]$ is complete, then $[1^{g+1},0^{k},N]$ is complete.",
+      "lean": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) : x2611_10200_M g k < x2611_10200_M (g + 1) k ∧ ∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), x2611_10200_standard g k N H → x2611_10200_standard (g + 1) k N H' → x2611_10200_complete H → x2611_10200_complete H'",
+      "notes": "Both the strict increase of the real threshold and the stated implication for completeness are included. The common standing positive-integer hypothesis on N is explicit.",
+      "fidelity": {
+        "twin": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) : x2611_10200_M (g + 1) k > x2611_10200_M g k ∧ (∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), x2611_10200_standard g k N H → x2611_10200_standard (g + 1) k N H' → x2611_10200_complete H → x2611_10200_complete H')",
+        "twin_by": "audit-b1-w6",
+        "verdict": "original_invalid"
+      }
+    },
+    {
+      "label": "Lemma 2.1 (Initial block)",
+      "name": "x2611_10200_lem2_1",
+      "original": "For $0\\leq m<k$ , one has $f_{m}=a_{m}$ . For $0\\leq r\\leq g$ ,\n\n(2.8)\n\n $f_{k+r}=a_{k+r}+1-N2^{r}.$ \n\nThus $N\\leq M_{g,k}$ implies $f_{m}\\geq 0$ for $m<L$ . Conversely, completeness implies $N\\leq M_{g,k}$ .",
+      "lean": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) : (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * 2 ^ r) ∧ ((N : ℝ) ≤ x2611_10200_M g k → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (∀ H : ℕ → ℤ, x2611_10200_standard g k N H → x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)",
+      "notes": "Includes the two coefficient identities and both concluding implications. The conclusion for every m<L also includes negative integer indices, at which f was explicitly defined to be zero.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * (2 : ℤ) ^ r) ∧ (((N : ℝ) ≤ x2611_10200_M g k) → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)",
+        "twin_by": "audit-b1-w5",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_10200_lem2_1_eqv : (∀ (g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N), (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * 2 ^ r) ∧ ((N : ℝ) ≤ x2611_10200_M g k → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (∀ H : ℕ → ℤ, x2611_10200_standard g k N H → x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)) ↔ (∀ (g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H), (∀ m : ℤ, 0 ≤ m → m < (k : ℤ) → x2611_10200_f g k N m = x2611_10200_a g m) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_f g k N ((k + r : ℕ) : ℤ) = x2611_10200_a g ((k + r : ℕ) : ℤ) + 1 - (N : ℤ) * (2 : ℤ) ^ r) ∧ (((N : ℝ) ≤ x2611_10200_M g k) → ∀ m : ℤ, m < ((g + k + 1 : ℕ) : ℤ) → 0 ≤ x2611_10200_f g k N m) ∧ (x2611_10200_complete H → (N : ℝ) ≤ x2611_10200_M g k)) := by\n  have hex (g k N : ℕ) : ∃ H : ℕ → ℤ, x2611_10200_standard g k N H := by\n    let F : (n : ℕ) → ((m : ℕ) → m < n → ℤ) → ℤ := fun n ih =>\n      if n = 1 then 1 else\n      if n ≤ g + k + 1 then\n        1 + (Finset.Icc 1 (min g (n - 1))).sum\n          (fun j => if h : n - j < n then ih (n - j) h else 0)\n      else\n        (Finset.Icc 1 g).sum\n          (fun j => if h : n - j < n then ih (n - j) h else 0) +\n        (N : ℤ) * (if h : n - (g + k + 1) < n then ih (n - (g + k + 1)) h else 0)\n    let H : ℕ → ℤ := Nat.strongRec F\n    have hrec (n : ℕ) : H n = F n (fun m _ => H m) := Nat.strongRec_eq F n\n    refine ⟨H, ?_, ?_, ?_⟩\n    · simpa only [F, if_pos rfl] using hrec 1\n    · intro n hn hnL\n      rw [hrec n]\n      dsimp only [F]\n      rw [if_neg (by omega), if_pos hnL]\n      congr 1\n      apply Finset.sum_congr rfl\n      intro j hj\n      have hj1 := (Finset.mem_Icc.mp hj).1\n      rw [dif_pos (by omega)]\n    · intro n hn\n      rw [hrec n]\n      dsimp only [F]\n      rw [if_neg (by omega), if_neg (by omega)]\n      congr 1\n      · apply Finset.sum_congr rfl\n        intro j hj\n        have hj1 := (Finset.mem_Icc.mp hj).1\n        rw [dif_pos (by omega)]\n      · rw [dif_pos (by omega)]\n  constructor\n  · intro h g k N hg hk hN H hH\n    obtain ⟨h₁, h₂, h₃, h₄⟩ := h g k N hg hk hN\n    exact ⟨h₁, h₂, h₃, h₄ H hH⟩\n  · intro h g k N hg hk hN\n    obtain ⟨H, hH⟩ := hex g k N\n    obtain ⟨h₁, h₂, h₃, _⟩ := h g k N hg hk hN H hH\n    refine ⟨h₁, h₂, h₃, ?_⟩\n    intro H' hH'\n    exact (h g k N hg hk hN H' hH').2.2.2\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 3.1",
+      "name": "x2611_10200_lem3_1",
+      "original": "Suppose $g\\geq 2$ , $k\\geq 1$ and $1\\leq N\\leq M_{g,k}$ . Then $f_{m}\\geq 0$ for all $m$ , and $f_{m}>0$ whenever $m\\geq L$ .",
+      "lean": "(g k N : ℕ) (hg : 2 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (hM : (N : ℝ) ≤ x2611_10200_M g k) : (∀ m : ℤ, 0 ≤ x2611_10200_f g k N m) ∧ ∀ m : ℤ, ((g + k + 1 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f g k N m",
+      "notes": "The hypothesis uses a non-strict threshold. Nonnegativity is stated for every integer index, as negative coefficients were explicitly set to zero; strict positivity starts at L.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : 2 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (hNM : (N : ℝ) ≤ x2611_10200_M g k) : (∀ m : ℤ, 0 ≤ x2611_10200_f g k N m) ∧ (∀ m : ℤ, ((g + k + 1 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f g k N m)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 4.1",
+      "name": "x2611_10200_lem4_1",
+      "original": "If $g=1$ , $k\\geq 1$ and $1\\leq N\\leq M_{1,k}$ , then $f_{m}\\geq 0$ for all $m$ , and $f_{m}>0$ for $m\\geq L$ . This includes integer equality $N=M_{1,k}$ .",
+      "lean": "(k N : ℕ) (hk : 1 ≤ k) (hN : 1 ≤ N) (hM : (N : ℝ) ≤ x2611_10200_M 1 k) : (∀ m : ℤ, 0 ≤ x2611_10200_f 1 k N m) ∧ ∀ m : ℤ, ((k + 2 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f 1 k N m",
+      "notes": "Substitutes g=1 and L=k+2 throughout. Equality N=M_(1,k) is admitted by the non-strict hypothesis.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : g = 1) (hk : 1 ≤ k) (hN : 1 ≤ N) (hNM : (N : ℝ) ≤ x2611_10200_M 1 k) : (∀ m : ℤ, 0 ≤ x2611_10200_f g k N m) ∧ (∀ m : ℤ, ((g + k + 1 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f g k N m)",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_10200_lem4_1_eqv :\n    (∀ (k N : ℕ) (hk : 1 ≤ k) (hN : 1 ≤ N)\n      (hM : (N : ℝ) ≤ x2611_10200_M 1 k),\n      (∀ m : ℤ, 0 ≤ x2611_10200_f 1 k N m) ∧\n        ∀ m : ℤ, ((k + 2 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f 1 k N m) ↔\n    (∀ (g k N : ℕ) (hg : g = 1) (hk : 1 ≤ k) (hN : 1 ≤ N)\n      (hNM : (N : ℝ) ≤ x2611_10200_M 1 k),\n      (∀ m : ℤ, 0 ≤ x2611_10200_f g k N m) ∧\n        (∀ m : ℤ, ((g + k + 1 : ℕ) : ℤ) ≤ m → 0 < x2611_10200_f g k N m)) := by\n  constructor\n  · intro h g k N hg hk hN hNM\n    subst g\n    have hcut : (1 + k + 1 : ℕ) = k + 2 := by omega\n    simpa only [hcut] using h k N hk hN hNM\n  · intro h k N hk hN hM\n    have hcut : (1 + k + 1 : ℕ) = k + 2 := by omega\n    simpa only [hcut] using h 1 k N rfl hk hN hM\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Equations (2.1)–(2.2)",
+      "name": "x2611_10200_coeff_recurrence_initial",
+      "original": "$a_{m}-2a_{m-1}+a_{m-g-1}=1\\qquad(m\\geq 0),$ \n\nand hence\n\n(2.2)\n\n $a_{r}=2^{r+1}-1\\qquad(0\\leq r\\leq g).$",
+      "lean": "(g : ℕ) (hg : 1 ≤ g) : (∀ m : ℤ, 0 ≤ m → x2611_10200_a g m - 2 * x2611_10200_a g (m - 1) + x2611_10200_a g (m - (g : ℤ) - 1) = 1) ∧ ∀ r : ℕ, r ≤ g → x2611_10200_a g (r : ℤ) = (2 : ℤ) ^ (r + 1) - 1",
+      "notes": "The indices m−1 and m−g−1 use integer subtraction and the paper's zero extension, avoiding truncated natural subtraction.",
+      "fidelity": {
+        "twin": "(g : ℕ) (hg : 1 ≤ g) : (∀ m : ℤ, 0 ≤ m → x2611_10200_a g m - 2 * x2611_10200_a g (m - 1) + x2611_10200_a g (m - (g : ℤ) - 1) = 1) ∧ (∀ r : ℕ, r ≤ g → x2611_10200_a g (r : ℤ) = (2 : ℤ) ^ (r + 1) - 1)",
+        "twin_by": "audit-b1-w4",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Equation (2.7)",
+      "name": "x2611_10200_brown_gap_coefficients",
+      "original": "$B_{n}=0\\quad(1\\leq n\\leq g+1),\\qquad B_{m+g+2}=f_{m}\\quad(m\\geq 0).$",
+      "lean": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : (∀ n : ℕ, 1 ≤ n → n ≤ g + 1 → x2611_10200_B H n = 0) ∧ ∀ m : ℕ, x2611_10200_B H (m + g + 2) = x2611_10200_f g k N (m : ℤ)",
+      "notes": "Links the recurrence-defined H and its Brown gaps to the generating-function coefficients f, including the exact shift by g+2.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : (∀ n : ℕ, 1 ≤ n → n ≤ g + 1 → x2611_10200_B H n = 0) ∧ (∀ m : ℕ, x2611_10200_B H (m + g + 2) = x2611_10200_f g k N (m : ℤ))",
+        "twin_by": "audit-b1-w2",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Equation (2.9)",
+      "name": "x2611_10200_gap_recurrence",
+      "original": "$f_{m}=\\sum_{j=1}^{g}f_{m-j}+Nf_{m-L}+c,\\qquad c=k+2-N,\\qquad m\\geq k.$",
+      "lean": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (m : ℤ) (hm : (k : ℤ) ≤ m) : x2611_10200_f g k N m = (Finset.Icc 1 g).sum (fun j => x2611_10200_f g k N (m - (j : ℤ))) + (N : ℤ) * x2611_10200_f g k N (m - ((g + k + 1 : ℕ) : ℤ)) + ((k : ℤ) + 2 - (N : ℤ))",
+      "notes": "All coefficient indices and the forcing term c=k+2−N are in ℤ. The range m≥k is exactly the printed one.",
+      "fidelity": {
+        "twin": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (m : ℤ) (hm : (k : ℤ) ≤ m) : x2611_10200_f g k N m = (∑ j ∈ Finset.Icc 1 g, x2611_10200_f g k N (m - (j : ℤ))) + (N : ℤ) * x2611_10200_f g k N (m - ((g + k + 1 : ℕ) : ℤ)) + ((k : ℤ) + 2 - (N : ℤ))",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Equation (4.1) and Section 6, one leading unit",
+      "name": "x2611_10200_one_unit_formulas",
+      "original": "$a_{m}=\\binom{m+2}{2},\\qquad M_{1,k}=\\frac{L(L+1)+2}{4}.$\n\nWhen $g=1$ , (4.1) gives the known threshold\n\n $\\lfloor M_{1,k}\\rfloor=\\left\\lceil\\frac{(k+2)(k+3)}{4}\\right\\rceil.$",
+      "lean": "(k : ℕ) (hk : 1 ≤ k) : (∀ m : ℕ, x2611_10200_a 1 (m : ℤ) = (Nat.choose (m + 2) 2 : ℤ)) ∧ x2611_10200_M 1 k = (((k : ℝ) + 2) * ((k : ℝ) + 3) + 2) / 4 ∧ Int.floor (x2611_10200_M 1 k) = Int.ceil ((((k : ℝ) + 2) * ((k : ℝ) + 3)) / 4)",
+      "notes": "L is expanded as k+2. Binomial coefficients use Nat.choose; floor and ceiling use ℤ-valued Int.floor and Int.ceil on ℝ.",
+      "fidelity": {
+        "twin": "(k : ℕ) (hk : 1 ≤ k) : (∀ m : ℕ, x2611_10200_a 1 (m : ℤ) = (Nat.choose (m + 2) 2 : ℤ)) ∧ x2611_10200_M 1 k = (((k : ℝ) + 2) * ((k : ℝ) + 3) + 2) / 4 ∧ ⌊x2611_10200_M 1 k⌋ = ⌈(((k : ℝ) + 2) * ((k : ℝ) + 3)) / 4⌉",
+        "twin_by": "audit-b1-w0",
+        "verdict": "same",
+        "queued": "invalid"
+      }
+    },
+    {
+      "label": "Section 6, two leading units and Equation (6.1)",
+      "name": "x2611_10200_two_unit_formulas",
+      "original": "For $g=2$ , define $F_{1}=1$ , $F_{2}=2$ and $F_{m+1}=F_{m}+F_{m-1}$ . Formal-series division yields $a_{m}^{(2)}=F_{m+4}-m-4$ and hence\n\n(6.1)\n\n $\\lfloor M_{2,k}\\rfloor=\\left\\lfloor\\frac{F_{k+6}-k-5}{4}\\right\\rfloor.$",
+      "lean": "(k : ℕ) (hk : 1 ≤ k) : (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) = (Nat.fib (m + 5) : ℤ) - (m : ℤ) - 4) ∧ Int.floor (x2611_10200_M 2 k) = Int.floor (((Nat.fib (k + 7) : ℝ) - (k : ℝ) - 5) / 4)",
+      "notes": "The paper's convention F₁=1,F₂=2 means F_j=Nat.fib(j+1), so the printed F_(m+4) and F_(k+6) are Nat.fib(m+5) and Nat.fib(k+7). Subtraction is in ℤ or ℝ, never truncated in ℕ.",
+      "fidelity": {
+        "twin": "(F : ℕ → ℤ) (hF₁ : F 1 = 1) (hF₂ : F 2 = 2) (hFrec : ∀ n : ℕ, 1 ≤ n → F (n + 2) = F (n + 1) + F n) (k : ℕ) (hk : 1 ≤ k) : (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) = F (m + 4) - (m : ℤ) - 4) ∧ ⌊x2611_10200_M 2 k⌋ = (⌊((F (k + 6) : ℝ) - (k : ℝ) - 5) / 4⌋ : ℤ)",
+        "twin_by": "audit-b1-w5",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_10200_two_unit_formulas_eqv :\n    (∀ (k : ℕ) (hk : 1 ≤ k),\n      (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) =\n        (Nat.fib (m + 5) : ℤ) - (m : ℤ) - 4) ∧\n      Int.floor (x2611_10200_M 2 k) =\n        Int.floor (((Nat.fib (k + 7) : ℝ) - (k : ℝ) - 5) / 4)) ↔\n    (∀ (F : ℕ → ℤ) (hF₁ : F 1 = 1) (hF₂ : F 2 = 2)\n      (hFrec : ∀ n : ℕ, 1 ≤ n → F (n + 2) = F (n + 1) + F n)\n      (k : ℕ) (hk : 1 ≤ k),\n      (∀ m : ℕ, x2611_10200_a 2 (m : ℤ) = F (m + 4) - (m : ℤ) - 4) ∧\n      ⌊x2611_10200_M 2 k⌋ =\n        (⌊((F (k + 6) : ℝ) - (k : ℝ) - 5) / 4⌋ : ℤ)) := by\n  constructor\n  · intro hA F hF₁ hF₂ hFrec k hk\n    -- The recurrence determines every positive index, without using F 0.\n    have hF (n : ℕ) : F (n + 1) = (Nat.fib (n + 2) : ℤ) := by\n      induction n using Nat.twoStepInduction with\n      | zero => simpa using hF₁\n      | one => simpa [Nat.fib_add_two] using hF₂\n      | more n ih₀ ih₁ =>\n        calc\n          F (n + 2 + 1) = F (n + 1 + 1) + F (n + 1) := by\n            simpa only [Nat.add_assoc] using hFrec (n + 1) (by omega)\n          _ = (Nat.fib (n + 1 + 2) : ℤ) + (Nat.fib (n + 2) : ℤ) := by\n            rw [ih₁, ih₀]\n          _ = (Nat.fib (n + 2 + 2) : ℤ) := by\n            rw [Nat.fib_add_two (n := n + 2), Nat.cast_add]\n            simp only [Nat.add_assoc, Nat.reduceAdd]\n            omega\n    obtain ⟨ha, hM⟩ := hA k hk\n    constructor\n    · intro m\n      rw [hF (m + 3)]\n      exact ha m\n    · rw [hF (k + 5)]\n      simpa only [Int.cast_natCast] using hM\n  · intro hB k hk\n    have hrec : ∀ n : ℕ, 1 ≤ n →\n        (Nat.fib (n + 2 + 1) : ℤ) =\n          (Nat.fib (n + 1 + 1) : ℤ) + (Nat.fib (n + 1) : ℤ) := by\n      intro n hn\n      rw [Nat.fib_add_two (n := n + 1), Nat.cast_add]\n      omega\n    have h := hB (fun n => (Nat.fib (n + 1) : ℤ))\n      (by norm_num) (by norm_num [Nat.fib_add_two]) hrec k hk\n    simpa only [Int.cast_natCast] using h\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Section 6, range 1 ≤ k ≤ g",
+      "name": "x2611_10200_short_zero_block_formulas",
+      "original": "For $1\\leq k\\leq g$ , iteration of (2.1) from (2.2) gives\n\n $a_{g+k}^{(g)}=2^{g+k+1}-(k-1)2^{k}-2,\\qquad\\lfloor M_{g,k}\\rfloor=2^{k+1}-\\left\\lceil\\frac{k}{2^{g-k}}\\right\\rceil,$ \n\nwhich agrees with the range already covered in [2, Theorem 1.17]. These are consistency checks on the general formula.",
+      "lean": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hkg : k ≤ g) : x2611_10200_a g ((g + k : ℕ) : ℤ) = (2 : ℤ) ^ (g + k + 1) - ((k : ℤ) - 1) * (2 : ℤ) ^ k - 2 ∧ Int.floor (x2611_10200_M g k) = (2 : ℤ) ^ (k + 1) - Int.ceil ((k : ℝ) / (2 : ℝ) ^ (g - k))",
+      "notes": "Includes both printed formulas with exactly 1≤k≤g. The exponent g−k is natural subtraction and is exact under k≤g. The ceiling is taken after real division.",
+      "fidelity": {
+        "twin": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hkg : k ≤ g) : x2611_10200_a g ((g + k : ℕ) : ℤ) = (2 : ℤ) ^ (g + k + 1) - ((k : ℤ) - 1) * (2 : ℤ) ^ k - 2 ∧ Int.floor (x2611_10200_M g k) = (2 : ℤ) ^ (k + 1) - Int.ceil ((k : ℝ) / (2 : ℝ) ^ (g - k))",
+        "twin_by": "audit-b1-w3",
+        "verdict": "same",
+        "queued": "invalid"
+      }
+    },
+    {
+      "label": "Example 6.1 (Vanishing critical gap)",
+      "name": "x2611_10200_example6_1",
+      "original": "Take $(g,k,N)=(2,4,20)$ , so $L=7$ and $M_{2,4}=20$ . The sequence begins\n\n $1,\\ 2,\\ 4,\\ 7,\\ 12,\\ 20,\\ 33,\\ 73,\\ 146,\\ 299,\\ 585,\\ 1124,\\ldots.$ \n\nAt the critical index, $B_{10}=0$ , but the next gaps are $B_{11}=13$ , $B_{12}=59$ , and $B_{13}=198$ . For $N=21$ with the same $g,k$ , the critical gap is $B_{10}=-4$ , so the corresponding sequence is incomplete. Thus equality in the threshold can be admissible even when the first decisive gap vanishes.",
+      "lean": "(H H' : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H) (hH' : x2611_10200_standard 2 4 21 H') : x2611_10200_M 2 4 = 20 ∧ (List.range 12).map (fun i => H (i + 1)) = ([1, 2, 4, 7, 12, 20, 33, 73, 146, 299, 585, 1124] : List ℤ) ∧ x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧ x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧ x2611_10200_complete H ∧ x2611_10200_B H' 10 = -4 ∧ ¬ x2611_10200_complete H'",
+      "notes": "The finite prefix is one-indexed and contains exactly the 12 printed terms. Includes the threshold, four Brown gaps for N=20, completeness at equality (stated explicitly in Figure 2 and the paragraph's conclusion), and the negative gap and incompleteness for N=21.",
+      "fidelity": {
+        "twin": "(H H21 : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H) (hH21 : x2611_10200_standard 2 4 21 H21) : (2 + 4 + 1 : ℕ) = 7 ∧ x2611_10200_M 2 4 = 20 ∧ H 1 = 1 ∧ H 2 = 2 ∧ H 3 = 4 ∧ H 4 = 7 ∧ H 5 = 12 ∧ H 6 = 20 ∧ H 7 = 33 ∧ H 8 = 73 ∧ H 9 = 146 ∧ H 10 = 299 ∧ H 11 = 585 ∧ H 12 = 1124 ∧ x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧ x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧ x2611_10200_complete H ∧ x2611_10200_B H21 10 = -4 ∧ ¬ x2611_10200_complete H21",
+        "twin_by": "audit-b1-w7",
+        "verdict": "original_invalid"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Lemma 5.1",
+      "reason": "Its full statement is already included as the first conjunct of Theorem 1.2; no duplicate task."
+    },
+    {
+      "label": "Brown's criterion (1.1), remaining formal-series identities, proof estimates, and Figure 1",
+      "reason": "Omitted to respect the 12-claim cap and prioritize the main numbered results and explicit special-case/example calculations. No main claim was skipped for requiring theory beyond Mathlib."
+    }
+  ]
+}

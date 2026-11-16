@@ -1,0 +1,104 @@
+{
+  "arxiv": "2611.14754",
+  "title": "Modular n-queens in higher dimensions",
+  "url": "https://arxiv.org/abs/2611.14754",
+  "auditor": "audit-b1-w7",
+  "definitions": [
+    {
+      "name": "x2611_14754_direction",
+      "lean": "def x2611_14754_direction (d : ℕ) (v : Fin d → ℤ) : Prop :=\n  v ≠ 0 ∧ ∀ i, v i = -1 ∨ v i = 0 ∨ v i = 1",
+      "notes": "The integer directions V_d = {-1,0,1}^d minus the zero vector. Directions are reduced coordinatewise modulo n only when used on the board."
+    },
+    {
+      "name": "x2611_14754_nonattacking",
+      "lean": "def x2611_14754_nonattacking {n d : ℕ} (S : Finset (Fin d → ZMod n)) : Prop :=\n  ∀ x ∈ S, ∀ y ∈ S, x ≠ y →\n    ¬ ∃ v : Fin d → ℤ, x2611_14754_direction d v ∧\n      ∃ c : ZMod n, x - y = fun i => c * (v i : ZMod n)",
+      "notes": "A finite set of positions in (ZMod n)^d. Distinct positions must not differ by any scalar multiple, in ZMod n, of an integer direction in V_d. The scalar need not be separately required nonzero because the two positions are distinct."
+    },
+    {
+      "name": "x2611_14754_fourier",
+      "lean": "noncomputable def x2611_14754_fourier (n d : ℕ) [NeZero n]\n    (f : (Fin d → ZMod n) → ℂ) (ξ : Fin d → ZMod n) : ℂ :=\n  ∑ x : Fin d → ZMod n, f x * ZMod.stdAddChar (dotProduct ξ x)",
+      "notes": "The paper's unnormalized Fourier transform with positive exponent. Mathlib's ZMod.stdAddChar is exp(2*pi*i*j/n); dotProduct is computed in ZMod n. The dual group is identified with (ZMod n)^d using this standard pairing."
+    },
+    {
+      "name": "x2611_14754_auxiliary",
+      "lean": "def x2611_14754_auxiliary (n d r : ℕ) [NeZero n]\n    (y : Fin r → Fin d → ℤ) (x : Fin d → ZMod n) : ℤ :=\n  if r ≤ n + 1 then\n    ∑ α ∈ Finset.Nat.antidiagonalTuple r (n + 1 - r),\n      if x = (fun i => ∑ j : Fin r, (α j : ZMod n) * (y j i : ZMod n))\n      then 1 else 0\n  else 0",
+      "notes": "The integer-valued sum of point masses in Lemma 3.3. Finset.Nat.antidiagonalTuple enumerates all nonnegative exponent tuples of weight n-r+1. The guard r <= n+1 implements the empty sum when the integer weight n-r+1 is negative; subtraction is not silently truncated to zero. Binary y is supplied as a hypothesis of the lemma."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1",
+      "name": "x2611_14754_thm1_1",
+      "original": "Let $d\\geq 2$ .\nOne can place $n^{d-1}$ non-attacking queens on $(\\mathbb{Z}/n\\mathbb{Z})^{d}$ if and only if all prime factors of $n$ exceed $2^{d}$ .",
+      "lean": "(n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 2 ≤ d) : (∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ ∀ p : ℕ, p.Prime → p ∣ n → 2 ^ d < p",
+      "notes": "The introduction fixes integers n,d>1; these standing hypotheses are retained. Finset cardinality expresses the number of queens. The strict printed condition that prime factors exceed 2^d is retained. The redundant NeZero n instance enables the finite ZMod API and is implied by hn.",
+      "fidelity": {
+        "twin": "(n d : ℕ) (hn : 1 < n) (hd : 2 ≤ d) : (∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ ∀ p : ℕ, Nat.Prime p → p ∣ n → 2 ^ d < p",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Lemma 3.1",
+      "name": "x2611_14754_lem3_1",
+      "original": "Let $f\\colon\\Gamma\\to\\mathbb{Z}$ .\nLet $C\\in\\mathbb{Z}$ .\nSuppose that, for every $x\\in\\Gamma$ and every $v\\in\\mathcal{V}_{d}$ , we have\n\n $\\sum_{j\\in\\mathbb{Z}/n\\mathbb{Z}}f(x+jv)=C.$ \n\nLet $\\xi\\in\\widehat{\\Gamma}\\setminus\\{0\\}$ .\nIf $\\langle\\xi,v\\rangle=0$ for some $v\\in\\mathcal{V}_{d}$ , then $\\widehat{f}(\\xi)=0$ .",
+      "lean": "(n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (f : (Fin d → ZMod n) → ℤ) (C : ℤ) (hline : ∀ (x : Fin d → ZMod n) (v : Fin d → ℤ), x2611_14754_direction d v → (∑ j : ZMod n, f (fun i => x i + j * (v i : ZMod n))) = C) (ξ : Fin d → ZMod n) (hξ : ξ ≠ 0) (horth : ∃ v : Fin d → ℤ, x2611_14754_direction d v ∧ dotProduct ξ (fun i => (v i : ZMod n)) = 0) : x2611_14754_fourier n d (fun x => (f x : ℂ)) ξ = 0",
+      "notes": "Gamma and its character group are identified with Fin d -> ZMod n by the standard positive-exponent pairing. All directions and every base point are quantified in the constant-line-sum hypothesis. Orthogonality means equality to zero in ZMod n; f is cast from integers to complex numbers for its Fourier transform. Standing n,d>1 assumptions are included.",
+      "fidelity": {
+        "twin": "(n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (f : (Fin d → ZMod n) → ℤ) (C : ℤ) (hline : ∀ (x : Fin d → ZMod n) (v : Fin d → ℤ), x2611_14754_direction d v → ∑ j : ZMod n, f (fun i => x i + j * (v i : ZMod n)) = C) (ξ : Fin d → ZMod n) (hξ : ξ ≠ 0) (horth : ∃ v : Fin d → ℤ, x2611_14754_direction d v ∧ dotProduct ξ (fun i => (v i : ZMod n)) = 0) : x2611_14754_fourier n d (fun x => (f x : ℂ)) ξ = 0",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 3.2",
+      "name": "x2611_14754_lem3_2",
+      "original": "For a positive integer $r\\geq 2$ , write\n\n $h_{n}(z_{1},\\ldots,z_{r}):=\\sum_{\\begin{subarray}{c}\\alpha\\in\\mathbb{Z}_{\\geq 0}^{r}\\\\\n\\wt\\alpha=n-r+1\\end{subarray}}z_{1}^{\\alpha_{1}}\\cdots z_{r}^{\\alpha_{r}}$ \n\nfor the $n$ th complete homogeneous symmetric polynomial in the variables $z_{1},\\ldots,z_{r}$ .\nIf $z_{1},\\ldots,z_{r}$ are distinct $n$ th roots of unity, then $h_{n}(z_{1},\\ldots,z_{r})=0$ .",
+      "lean": "(n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i, z i ^ n = 1) : (if r ≤ n + 1 then MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ (n + 1 - r)) else 0) = 0",
+      "notes": "The displayed definition, rather than the phrase \"n th complete homogeneous symmetric polynomial\", determines the degree: it is n-r+1. Mathlib.hsymm is therefore used at degree n+1-r, with an explicit zero branch when that integer degree would be negative. Distinctness is injectivity, and nth roots of unity satisfy z_i^n=1 in C. The paper's standing n>1 assumption is included; no unprinted bound r<=n is added.",
+      "fidelity": {
+        "twin": "(n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i : Fin r, z i ^ n = 1) : (if r ≤ n + 1 then ∑ α ∈ Finset.Nat.antidiagonalTuple r (n + 1 - r), ∏ i : Fin r, z i ^ α i else 0) = 0",
+        "twin_by": "audit-b1-w0",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 3.3",
+      "name": "x2611_14754_lem3_3",
+      "original": "Let $r\\leq 2^{d}$ , and let $y_{1},\\ldots,y_{r}$ be distinct elements of $\\{0,1\\}^{d}$ . Define a function $g\\colon\\Gamma\\to\\mathbb{Z}$ by\n\n $g=\\sum_{\\begin{subarray}{c}\\alpha\\in\\mathbb{Z}_{\\geq 0}^{r}\\\\\n\\wt\\alpha=n-r+1\\end{subarray}}\\delta_{\\alpha_{1}y_{1}+\\cdots+\\alpha_{r}y_{r}}.$ \n\nLet $\\xi\\in\\widehat{\\Gamma}\\setminus\\{0\\}$ .\nIf $\\langle\\xi,v\\rangle\\neq 0$ for every $v\\in\\mathcal{V}_{d}$ , then $\\widehat{g}(\\xi)=0$ .",
+      "lean": "(n d r : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (hr : r ≤ 2 ^ d) (y : Fin r → Fin d → ℤ) (hy : ∀ j i, y j i = 0 ∨ y j i = 1) (hdistinct : Function.Injective y) (ξ : Fin d → ZMod n) (hξ : ξ ≠ 0) (horth : ∀ v : Fin d → ℤ, x2611_14754_direction d v → dotProduct ξ (fun i => (v i : ZMod n)) ≠ 0) : x2611_14754_fourier n d (fun x => (x2611_14754_auxiliary n d r y x : ℂ)) ξ = 0",
+      "notes": "Formalized as printed: no r>=2 hypothesis is added. In particular r=1 is allowed, although Lemma 3.2 used by the proof requires r>=2. This appears false: for n=5,d=2,r=1,y_1=0 and xi=(1,2), no nonzero {-1,0,1} direction is orthogonal to xi, while g=delta_0 has Fourier transform 1. The omission is preserved for audit. Natural r also allows the empty list r=0. The guard in the auxiliary definition handles negative integer weights exactly. Standing n,d>1 assumptions are retained.",
+      "fidelity": {
+        "twin": "(n d r : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (hr : r ≤ 2 ^ d) (y : Fin r → Fin d → ℤ) (hy : ∀ j i, y j i = 0 ∨ y j i = 1) (hy_distinct : Function.Injective y) (ξ : Fin d → ZMod n) (hξ : ξ ≠ 0) (horth : ∀ v : Fin d → ℤ, x2611_14754_direction d v → dotProduct ξ (fun i => (v i : ZMod n)) ≠ 0) : x2611_14754_fourier n d (fun x => (x2611_14754_auxiliary n d r y x : ℂ)) ξ = 0",
+        "twin_by": "audit-b1-w7",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem 1.1’ (Appendix A)",
+      "name": "x2611_14754_thm1_1_prime",
+      "original": "Suppose that the prime factorization of $n$ contains a prime power $q$ which is less than $2^{d}$ .\nThen one cannot place $n^{d-1}$ non-attacking queens on $(\\mathbb{Z}/n\\mathbb{Z})^{d}$ .",
+      "lean": "(n d p k : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (hp : p.Prime) (hk : 0 < k) (hdiv : p ^ k ∣ n) (hmax : ¬ p ^ (k + 1) ∣ n) (hsmall : p ^ k < 2 ^ d) : ¬ ∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S",
+      "notes": "A prime power contained in the prime factorization means the full prime-power factor p^k, with k>0 and p^(k+1) not dividing n, rather than any smaller prime-power divisor. This interpretation is supported by the following proof's use of q^d not dividing n^(d-1), and by the subsequent statement that n=25 is not covered when d=3. The standing n,d>1 assumptions are retained.",
+      "fidelity": {
+        "twin": "(n d : ℕ) (hn : 1 < n) (hd : 1 < d) (hq : ∃ p : ℕ, p.Prime ∧ p ∣ n ∧ p ^ (n.factorization p) < 2 ^ d) : ¬ ∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S",
+        "twin_by": "audit-b1-w3",
+        "verdict": "pending"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Conjecture 4.1",
+      "reason": "Explicitly a conjecture, which the authors believe false, rather than an asserted theorem, proposition, lemma, corollary, or numeric example."
+    },
+    {
+      "label": "Section 4 open problems and asymptotic discussion",
+      "reason": "Questions, speculation, and references to results in other papers; no additional proved numbered claim is asserted here. All five numbered theorem/lemma claims of this paper are included; none was excluded for requiring theory beyond Mathlib."
+    }
+  ]
+}

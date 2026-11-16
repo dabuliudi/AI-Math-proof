@@ -1,0 +1,169 @@
+{
+  "arxiv": "2611.15379",
+  "title": "On least periods of a class of arithmetic functions",
+  "url": "https://arxiv.org/abs/2611.15379",
+  "auditor": "audit-b1-w1",
+  "definitions": [
+    {
+      "name": "x2611_15379_G",
+      "lean": "noncomputable def x2611_15379_G (k a b c : ℕ) (f : ℕ → ℂ) (n : ℕ) : ℂ :=\n  (∏ i ∈ Finset.range (k + 1), f (b + a * (n + i * c))) /\n    f ((Finset.range (k + 1)).lcm (fun i => b + a * (n + i * c)))",
+      "notes": "Equation (1.1). Statements restrict n to positive naturals. The arbitrary value at n=0 is never used. Finset.lcm takes the lcm of the indexed terms, including repetitions."
+    },
+    {
+      "name": "x2611_15379_periodFormula",
+      "lean": "noncomputable def x2611_15379_periodFormula (k a b c : ℕ) (f : ℕ → ℂ) : ℕ := by\n  classical\n  let d := Nat.gcd a b\n  let A := a / d\n  let L := Nat.lcmUpto k\n  let R : ℕ → ℕ → ℂ := fun p j =>\n    f (p ^ (d.factorization p + c.factorization p + j)) /\n      f (p ^ (d.factorization p + c.factorization p + j - 1))\n  let M : ℕ → ℕ := fun p =>\n    ((Finset.Icc 1 (L.factorization p)).filter\n      (fun j => (k + 1).factorization p < j ∧ R p j ≠ 1)).sup id\n  let K : ℕ → ℂ := fun p =>\n    f (p ^ (d.factorization p + c.factorization p)) ^ k *\n      ∏ j ∈ Finset.Icc 1 (min (L.factorization p) ((k + 1).factorization p)),\n        R p j ^ ((k + 1) / p ^ j - 1)\n  let e : ℕ → ℕ := fun p =>\n    if 0 < M p then c.factorization p + M p\n    else ((Finset.range (c.factorization p)).filter\n      (fun j => f (p ^ (d.factorization p + j)) ^ k ≠ K p)).sup (fun j => j + 1)\n  exact ∏ p ∈ ((c * L).primeFactors.filter (fun p => ¬ p ∣ A)), p ^ e p",
+      "notes": "Theorem 1.1, with local d,A,L,R,M,K,e exactly as printed. Nat.factorization p is v_p on the positive arguments used here. Finset.sup on naturals returns 0 for the empty set, implementing max(S ∪ {0}). The division and subtraction in the exponent of K are natural-number operations; the printed hypotheses guarantee these exponents are nonnegative integers. K is defined for all p but used only when M p=0. All formula inputs used in statements satisfy k,a,c>0."
+    },
+    {
+      "name": "x2611_15379_monotonicPeriod",
+      "lean": "def x2611_15379_monotonicPeriod (k a b c : ℕ) : ℕ :=\n  (∏ p ∈ (c.primeFactors.filter (fun p => ¬ p ∣ a / Nat.gcd a b)),\n    p ^ c.factorization p) *\n  ∏ p ∈ ((Nat.lcmUpto k).primeFactors.filter (fun p =>\n    ¬ p ∣ a / Nat.gcd a b ∧\n      (k + 1).factorization p < (Nat.lcmUpto k).factorization p)),\n    p ^ (Nat.lcmUpto k).factorization p",
+      "notes": "The product in Corollary 1.1. A=a/gcd(a,b) and L=Nat.lcmUpto k. Primes appearing in both products contribute both exponents, as printed. It also expresses Theorem A when a=c=1,b=0, including k=0 via empty products."
+    },
+    {
+      "name": "x2611_15379_N",
+      "lean": "noncomputable def x2611_15379_N (p j k : ℕ) (u z : ℤ) : ℕ :=\n  ((Finset.Icc (0 : ℤ) (k : ℤ)).filter\n    (fun i => (p : ℤ) ^ j ∣ z + u * i)).card",
+      "notes": "Lemma 2.2: N_j(z), with integer indices 0≤i≤k and integer divisibility, including negative z and negative coprime u."
+    },
+    {
+      "name": "x2611_15379_hongQianPeriod",
+      "lean": "def x2611_15379_hongQianPeriod (k a : ℕ) : ℕ :=\n  Nat.lcmUpto k /\n    (max 1 (((Finset.range (k + 1)).filter (fun p =>\n      Nat.Prime p ∧ ¬ p ∣ a ∧\n        (Nat.lcmUpto k).factorization p ≤ (k + 1).factorization p)).sup\n          (fun p => p ^ (Nat.lcmUpto k).factorization p)) *\n      ∏ q ∈ (Nat.gcd a (Nat.lcmUpto k)).primeFactors,\n        q ^ (Nat.lcmUpto k).factorization q)",
+      "notes": "Theorem B: Q_{k,a}. The max 1 of the finite sup gives δ_{k,a}=1 if the eligible prime set is empty, and p^{e_{p,k}} otherwise. The paper explicitly states that the eligible prime is unique. e_{p,k}=v_p(L_k) for k≥1; k=0 gives the printed empty product convention."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1",
+      "name": "x2611_15379_thm1_1",
+      "original": "Let $G_{f}$ be defined by (1.1). For each prime $p\\mid cL$ with $p\\nmid A$ , put\n\n $e_{p}=\\begin{cases}v_{p}(c)+M_{p},&M_{p}>0,\\\\\n\\max\\left(\\left\\{j+1:0\\leq j<v_{p}(c),f\\left(p^{v_{p}(d)+j}\\right)^{k}\\neq K_{p}\\right\\}\\cup\\{0\\}\\right),&M_{p}=0.\\end{cases}$ \n\nThen the least positive period of $G_{f}$ is\n\n $P_{f}=\\prod\\limits_{\\begin{subarray}{c}p\\mid cL\\\\\np\\nmid A\\end{subarray}}p^{e_{p}}.$",
+      "lean": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ArithmeticFunction ℂ) (hf : f.IsMultiplicative) (hnz : ∀ n : ℕ, 0 < n → f n ≠ 0) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c f) (n + T) = (x2611_15379_G k a b c f) n} (x2611_15379_periodFormula k a b c f)",
+      "notes": "All global hypotheses from (1.1) are included: k,a,c positive, b nonnegative, and f nonvanishing and multiplicative on positive integers. ArithmeticFunction supplies an irrelevant canonical value f 0=0. IsLeast specifies both the stated positive period and minimality among every positive period on n≥1. The auxiliary definition expands the printed R,M,K,e formula without alteration.",
+      "fidelity": {
+        "twin": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ℕ → ℂ) (hf_one : f 1 = 1) (hf_nonzero : ∀ n : ℕ, 0 < n → f n ≠ 0) (hf_mul : ∀ m n : ℕ, 0 < m → 0 < n → Nat.Coprime m n → f (m * n) = f m * f n) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n} (x2611_15379_periodFormula k a b c f)",
+        "twin_by": "audit-b1-w1",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_thm1_1_eqv_aux_G_congr\n    (k a b c : ℕ) (ha : 0 < a) (f g : ℕ → ℂ)\n    (hfg : ∀ n : ℕ, 0 < n → f n = g n) (n : ℕ) (hn : 0 < n) :\n    x2611_15379_G k a b c f n = x2611_15379_G k a b c g n := by\n  have hpos (i : ℕ) : 0 < b + a * (n + i * c) := by positivity\n  have hlcm : 0 < (Finset.range (k + 1)).lcm (fun i => b + a * (n + i * c)) := by\n    apply Nat.pos_of_ne_zero\n    exact Finset.lcm_ne_zero_iff.mpr (fun i _ => (hpos i).ne')\n  unfold x2611_15379_G\n  rw [hfg _ hlcm]\n  congr 1\n  exact Finset.prod_congr rfl (fun i _ => hfg _ (hpos i))\n\ntheorem x2611_15379_thm1_1_eqv_aux_formula_congr\n    (k a b c : ℕ) (f g : ℕ → ℂ)\n    (hfg : ∀ n : ℕ, 0 < n → f n = g n) :\n    x2611_15379_periodFormula k a b c f =\n      x2611_15379_periodFormula k a b c g := by\n  classical\n  unfold x2611_15379_periodFormula\n  dsimp only\n  apply Finset.prod_congr rfl\n  intro p hp\n  have hp0 : 0 < p := Nat.pos_of_mem_primeFactors (Finset.mem_filter.mp hp).1\n  have hpowers (e : ℕ) : f (p ^ e) = g (p ^ e) := hfg _ (pow_pos hp0 e)\n  simp only [hpowers]\n\ntheorem x2611_15379_thm1_1_eqv :\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c)\n      (f : ArithmeticFunction ℂ) (hf : f.IsMultiplicative)\n      (hnz : ∀ n : ℕ, 0 < n → f n ≠ 0),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (x2611_15379_G k a b c f) (n + T) = (x2611_15379_G k a b c f) n}\n        (x2611_15379_periodFormula k a b c f)) ↔\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c)\n      (f : ℕ → ℂ) (hf_one : f 1 = 1)\n      (hf_nonzero : ∀ n : ℕ, 0 < n → f n ≠ 0)\n      (hf_mul : ∀ m n : ℕ, 0 < m → 0 < n → Nat.Coprime m n →\n        f (m * n) = f m * f n),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n}\n        (x2611_15379_periodFormula k a b c f)) := by\n  constructor\n  · intro hA k a b c hk ha hc f hf_one hf_nonzero hf_mul\n    let g : ArithmeticFunction ℂ := ⟨fun n => if n = 0 then 0 else f n, by simp⟩\n    have hg (n : ℕ) (hn : 0 < n) : g n = f n := by\n      change (if n = 0 then 0 else f n) = f n\n      simp only [if_neg hn.ne']\n    have hgm : g.IsMultiplicative := by\n      constructor\n      · rw [hg 1 (by decide)]\n        exact hf_one\n      · intro m n hmn\n        by_cases hm : m = 0\n        · subst m\n          simp\n        by_cases hn : n = 0\n        · subst n\n          simp\n        rw [hg (m * n) (Nat.mul_pos (Nat.pos_of_ne_zero hm) (Nat.pos_of_ne_zero hn)),\n          hg m (Nat.pos_of_ne_zero hm), hg n (Nat.pos_of_ne_zero hn)]\n        exact hf_mul m n (Nat.pos_of_ne_zero hm) (Nat.pos_of_ne_zero hn) hmn\n    have hgnz (n : ℕ) (hn : 0 < n) : g n ≠ 0 := by\n      rw [hg n hn]\n      exact hf_nonzero n hn\n    have h := hA k a b c hk ha hc g hgm hgnz\n    have hG (n : ℕ) (hn : 0 < n) :\n        x2611_15379_G k a b c g n = x2611_15379_G k a b c f n :=\n      x2611_15379_thm1_1_eqv_aux_G_congr k a b c ha g f hg n hn\n    have hperiod (T : ℕ) :\n        (∀ n : ℕ, 0 < n → x2611_15379_G k a b c g (n + T) = x2611_15379_G k a b c g n) ↔\n        (∀ n : ℕ, 0 < n → x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n) := by\n      constructor <;> intro H n hn\n      · rw [← hG (n + T) (by omega), ← hG n hn]\n        exact H n hn\n      · rw [hG (n + T) (by omega), hG n hn]\n        exact H n hn\n    have hset :\n        {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c g (n + T) = x2611_15379_G k a b c g n} =\n        {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n} := by\n      ext T\n      exact and_congr Iff.rfl (hperiod T)\n    rw [hset, x2611_15379_thm1_1_eqv_aux_formula_congr k a b c g f hg] at h\n    exact h\n  · intro hB k a b c hk ha hc f hf hnz\n    exact hB k a b c hk ha hc f hf.map_one hnz\n      (fun m n _ _ hmn => hf.map_mul_of_coprime hmn)\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.1",
+      "name": "x2611_15379_cor1_1",
+      "original": "If $f$ is strictly prime-power monotonic, then the least positive period of $G_{f}$ is\n\n $\\prod\\limits_{\\begin{subarray}{c}p\\mid c\\\\\np\\nmid A\\end{subarray}}p^{v_{p}(c)}\\prod\\limits_{\\begin{subarray}{c}p\\mid L\\\\\np\\nmid A\\\\\nv_{p}(L)>v_{p}(k+1)\\end{subarray}}p^{v_{p}(L)}.$",
+      "lean": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ArithmeticFunction ℝ) (hf : f.IsMultiplicative) (hpos : ∀ n : ℕ, 0 < n → 0 < f n) (hmono : ∀ p : ℕ, Nat.Prime p → StrictMono (fun m : ℕ => f (p ^ m)) ∨ StrictAnti (fun m : ℕ => f (p ^ m))) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n => (f n : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n => (f n : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)",
+      "notes": "The inherited multiplicativity and parameter hypotheses are retained. Positive-valued f is real-valued and embedded in ℂ in G. Strict prime-power monotonicity means strictly increasing or strictly decreasing for each prime separately, including m=0; the direction may depend on p.",
+      "fidelity": {
+        "twin": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ℕ → ℂ) (hf_one : f 1 = 1) (hf_mul : ∀ m n : ℕ, 0 < m → 0 < n → Nat.Coprime m n → f (m * n) = f m * f n) (hf_pos : ∀ n : ℕ, 0 < n → (f n).im = 0 ∧ 0 < (f n).re) (hf_mono : ∀ p : ℕ, Nat.Prime p → StrictMono (fun m : ℕ => (f (p ^ m)).re) ∨ StrictAnti (fun m : ℕ => (f (p ^ m)).re)) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n} (x2611_15379_monotonicPeriod k a b c)",
+        "twin_by": "audit-b1-w2",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_cor1_1_eqv_aux_G_congr\n    (k a b c : ℕ) (ha : 0 < a) (f g : ℕ → ℂ)\n    (hfg : ∀ n : ℕ, 0 < n → f n = g n) (n : ℕ) (hn : 0 < n) :\n    x2611_15379_G k a b c f n = x2611_15379_G k a b c g n := by\n  have hpos (i : ℕ) : 0 < b + a * (n + i * c) := by positivity\n  have hlcm : 0 < (Finset.range (k + 1)).lcm (fun i => b + a * (n + i * c)) := by\n    apply Nat.pos_of_ne_zero\n    exact Finset.lcm_ne_zero_iff.mpr (fun i _ => (hpos i).ne')\n  unfold x2611_15379_G\n  rw [hfg _ hlcm]\n  congr 1\n  exact Finset.prod_congr rfl (fun i _ => hfg _ (hpos i))\n\ntheorem x2611_15379_cor1_1_eqv : (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ArithmeticFunction ℝ) (hf : f.IsMultiplicative) (hpos : ∀ n : ℕ, 0 < n → 0 < f n) (hmono : ∀ p : ℕ, Nat.Prime p → StrictMono (fun m : ℕ => f (p ^ m)) ∨ StrictAnti (fun m : ℕ => f (p ^ m))), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n => (f n : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n => (f n : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)) ↔ (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (f : ℕ → ℂ) (hf_one : f 1 = 1) (hf_mul : ∀ m n : ℕ, 0 < m → 0 < n → Nat.Coprime m n → f (m * n) = f m * f n) (hf_pos : ∀ n : ℕ, 0 < n → (f n).im = 0 ∧ 0 < (f n).re) (hf_mono : ∀ p : ℕ, Nat.Prime p → StrictMono (fun m : ℕ => (f (p ^ m)).re) ∨ StrictAnti (fun m : ℕ => (f (p ^ m)).re)), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n} (x2611_15379_monotonicPeriod k a b c)) := by\n  constructor\n  · intro hA k a b c hk ha hc f hf_one hf_mul hf_pos hf_mono\n    let g : ArithmeticFunction ℝ := ⟨fun n => if n = 0 then 0 else (f n).re, by simp⟩\n    have hg (n : ℕ) (hn : 0 < n) : g n = (f n).re := by\n      change (if n = 0 then 0 else (f n).re) = (f n).re\n      simp only [if_neg hn.ne']\n    have hgm : g.IsMultiplicative := by\n      constructor\n      · rw [hg 1 (by decide), hf_one]\n        rfl\n      · intro m n hmn\n        by_cases hm : m = 0\n        · subst m\n          simp\n        by_cases hn : n = 0\n        · subst n\n          simp\n        have hmpos := Nat.pos_of_ne_zero hm\n        have hnpos := Nat.pos_of_ne_zero hn\n        rw [hg (m * n) (Nat.mul_pos hmpos hnpos), hg m hmpos, hg n hnpos]\n        have he := congrArg Complex.re (hf_mul m n hmpos hnpos hmn)\n        simpa only [Complex.mul_re, (hf_pos m hmpos).1, zero_mul, sub_zero] using he\n    have hgpos (n : ℕ) (hn : 0 < n) : 0 < g n := by\n      rw [hg n hn]\n      exact (hf_pos n hn).2\n    have hgmono (p : ℕ) (hp : Nat.Prime p) :\n        StrictMono (fun m : ℕ => g (p ^ m)) ∨ StrictAnti (fun m : ℕ => g (p ^ m)) := by\n      have he : (fun m : ℕ => g (p ^ m)) = (fun m : ℕ => (f (p ^ m)).re) := by\n        funext m\n        exact hg _ (pow_pos hp.pos m)\n      rw [he]\n      exact hf_mono p hp\n    have hgf (n : ℕ) (hn : 0 < n) : (g n : ℂ) = f n := by\n      apply Complex.ext\n      · simpa only [Complex.ofReal_re] using hg n hn\n      · simp only [Complex.ofReal_im, (hf_pos n hn).1]\n    have h := hA k a b c hk ha hc g hgm hgpos hgmono\n    have hG (n : ℕ) (hn : 0 < n) :\n        x2611_15379_G k a b c (fun m => (g m : ℂ)) n =\n          x2611_15379_G k a b c f n :=\n      x2611_15379_cor1_1_eqv_aux_G_congr k a b c ha _ f hgf n hn\n    have hperiod (T : ℕ) :\n        (∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c (fun m => (g m : ℂ)) (n + T) =\n            x2611_15379_G k a b c (fun m => (g m : ℂ)) n) ↔\n        (∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n) := by\n      constructor <;> intro H n hn\n      · rw [← hG (n + T) (by omega), ← hG n hn]\n        exact H n hn\n      · rw [hG (n + T) (by omega), hG n hn]\n        exact H n hn\n    have hset :\n        {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c (fun m => (g m : ℂ)) (n + T) =\n            x2611_15379_G k a b c (fun m => (g m : ℂ)) n} =\n        {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n          x2611_15379_G k a b c f (n + T) = x2611_15379_G k a b c f n} := by\n      ext T\n      exact and_congr Iff.rfl (hperiod T)\n    rw [hset] at h\n    exact h\n  · intro hB k a b c hk ha hc f hf hpos hmono\n    apply hB k a b c hk ha hc (fun n => (f n : ℂ))\n    · simp only [hf.map_one, Complex.ofReal_one]\n    · intro m n _ _ hmn\n      rw [hf.map_mul_of_coprime hmn, Complex.ofReal_mul]\n    · intro n hn\n      exact ⟨by simp, by simpa only [Complex.ofReal_re] using hpos n hn⟩\n    · intro p hp\n      simpa only [Complex.ofReal_re] using hmono p hp\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.2 (divisor power sums)",
+      "name": "x2611_15379_cor1_2_sigma",
+      "original": "For real $\\alpha$ , let $\\sigma_{\\alpha}(n)=\\sum\\limits_{d\\mid n}d^{\\alpha}$ . Then the least positive period of $G_{f}$ with $f=\\sigma_{\\alpha}$ is the period given in Corollary 1.1.",
+      "lean": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (α : ℝ) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)",
+      "notes": "The divisor sum is over positive divisors of a positive n, using Real.rpow for the arbitrary real exponent, then embedded in ℂ. This is not restricted to natural exponents. All global parameter hypotheses are inherited from (1.1).",
+      "fidelity": {
+        "twin": "(α : ℝ) (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c (fun m => ∑ d ∈ m.divisors, (((d : ℝ) ^ α : ℝ) : ℂ)) (n + T) = x2611_15379_G k a b c (fun m => ∑ d ∈ m.divisors, (((d : ℝ) ^ α : ℝ) : ℂ)) n} (x2611_15379_monotonicPeriod k a b c)",
+        "twin_by": "audit-b1-w6",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_cor1_2_sigma_eqv :\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (α : ℝ),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (x2611_15379_G k a b c\n          (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) (n + T) =\n        (x2611_15379_G k a b c\n          (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) n}\n        (x2611_15379_monotonicPeriod k a b c)) ↔\n    (∀ (α : ℝ) (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        x2611_15379_G k a b c\n          (fun m => ∑ d ∈ m.divisors, (((d : ℝ) ^ α : ℝ) : ℂ)) (n + T) =\n        x2611_15379_G k a b c\n          (fun m => ∑ d ∈ m.divisors, (((d : ℝ) ^ α : ℝ) : ℂ)) n}\n        (x2611_15379_monotonicPeriod k a b c)) := by\n  constructor\n  · intro h α k a b c hk ha hc\n    simpa only [Complex.ofReal_sum, Real.rpow_eq_pow] using h k a b c hk ha hc α\n  · intro h k a b c hk ha hc α\n    simpa only [Complex.ofReal_sum, Real.rpow_eq_pow] using h α k a b c hk ha hc\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.2 (nonzero real powers)",
+      "name": "x2611_15379_cor1_2_power",
+      "original": "The same holds for $f(n)=n^{\\varepsilon}$ with any real $\\varepsilon\\neq 0$ .",
+      "lean": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (ε : ℝ) (hε : ε ≠ 0) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) ε) : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) ε) : ℂ))) n} (x2611_15379_monotonicPeriod k a b c)",
+      "notes": "The same period is the explicit product of Corollary 1.1. Real.rpow models the printed real exponent on positive naturals; negative ε is included.",
+      "fidelity": {
+        "twin": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (ε : ℝ) (hε : ε ≠ 0) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c (fun m : ℕ => (↑((m : ℝ) ^ ε) : ℂ)) (n + T) = x2611_15379_G k a b c (fun m : ℕ => (↑((m : ℝ) ^ ε) : ℂ)) n} (x2611_15379_monotonicPeriod k a b c)",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_cor1_2_power_eqv :\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c)\n      (ε : ℝ) (hε : ε ≠ 0),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) ε) : ℂ))) (n + T) =\n          (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) ε) : ℂ))) n}\n        (x2611_15379_monotonicPeriod k a b c)) ↔\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c)\n      (ε : ℝ) (hε : ε ≠ 0),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        x2611_15379_G k a b c (fun m : ℕ => (↑((m : ℝ) ^ ε) : ℂ)) (n + T) =\n          x2611_15379_G k a b c (fun m : ℕ => (↑((m : ℝ) ^ ε) : ℂ)) n}\n        (x2611_15379_monotonicPeriod k a b c)) := by\n  exact Iff.rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.2 (zero exponent)",
+      "name": "x2611_15379_cor1_2_zero",
+      "original": "For $\\varepsilon=0$ , the least positive period is 1.",
+      "lean": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) 0) : ℂ))) (n + T) = (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) 0) : ℂ))) n} (1)",
+      "notes": "The actual zero-power function is used. Parameter positivity remains as in (1.1); the positive domain avoids any convention at 0^0.",
+      "fidelity": {
+        "twin": "(k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c) (ε : ℝ) (hε : ε = 0) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b c (fun m : ℕ => (((m : ℝ) ^ ε : ℝ) : ℂ)) (n + T) = x2611_15379_G k a b c (fun m : ℕ => (((m : ℝ) ^ ε : ℝ) : ℂ)) n} 1",
+        "twin_by": "audit-b1-w4",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_cor1_2_zero_eqv :\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) 0) : ℂ))) (n + T) =\n        (x2611_15379_G k a b c (fun n : ℕ => ((Real.rpow (n : ℝ) 0) : ℂ))) n} (1)) ↔\n    (∀ (k a b c : ℕ) (hk : 0 < k) (ha : 0 < a) (hc : 0 < c)\n      (ε : ℝ) (hε : ε = 0),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        x2611_15379_G k a b c (fun m : ℕ => (((m : ℝ) ^ ε : ℝ) : ℂ)) (n + T) =\n        x2611_15379_G k a b c (fun m : ℕ => (((m : ℝ) ^ ε : ℝ) : ℂ)) n} 1) := by\n  constructor\n  · intro h k a b c hk ha hc ε hε\n    subst ε\n    exact h k a b c hk ha hc\n  · intro h k a b c hk ha hc\n    exact h k a b c hk ha hc 0 rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 2.1",
+      "name": "x2611_15379_lem2_1",
+      "original": "Let $q_{1},q_{2},\\ldots,q_{m}$ be pairwise coprime positive integers. For each $1\\leq i\\leq m$ , let $H_{i}:\\mathbb{Z}^{+}\\rightarrow\\mathbb{C}\\backslash\\{0\\}$ have least positive period $q_{i}$ . Then the function $H(n)=\\prod\\limits_{i=1}^{m}H_{i}(n)$ has least positive period $\\prod\\limits_{i=1}^{m}q_{i}$ .",
+      "lean": "(m : ℕ) (q : Fin m → ℕ) (H : Fin m → ℕ → ℂ) (hq : ∀ i, 0 < q i) (hcop : Pairwise (fun i j => Nat.Coprime (q i) (q j))) (hnz : ∀ i n, 0 < n → H i n ≠ 0) (hperiod : ∀ i, IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (H i) (n + T) = (H i) n} (q i)) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (fun n : ℕ => ∏ i : Fin m, H i n) (n + T) = (fun n : ℕ => ∏ i : Fin m, H i n) n} (∏ i : Fin m, q i)",
+      "notes": "Fin m reindexes 1,…,m. Every component is nonzero only on the printed domain n≥1. Pairwise refers to distinct indices. Both least-period hypotheses and the conclusion include positivity, periodicity, and minimality. The empty family is allowed by the finite-family wording and gives period 1.",
+      "fidelity": {
+        "twin": "(m : ℕ) (q : Fin m → ℕ) (H : Fin m → ℕ → ℂ) (hq : ∀ i, 0 < q i) (hcoprime : Pairwise (fun i j : Fin m => Nat.Coprime (q i) (q j))) (hne : ∀ i n, 0 < n → H i n ≠ 0) (hperiod : ∀ i, IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → H i (n + T) = H i n} (q i)) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (∏ i : Fin m, H i (n + T)) = ∏ i : Fin m, H i n} (∏ i : Fin m, q i)",
+        "twin_by": "audit-b1-w1",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_lem2_1_eqv :\n    (∀ (m : ℕ) (q : Fin m → ℕ) (H : Fin m → ℕ → ℂ)\n      (hq : ∀ i, 0 < q i)\n      (hcop : Pairwise (fun i j => Nat.Coprime (q i) (q j)))\n      (hnz : ∀ i n, 0 < n → H i n ≠ 0)\n      (hperiod : ∀ i, IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (H i) (n + T) = (H i) n} (q i)),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (fun n : ℕ => ∏ i : Fin m, H i n) (n + T) =\n          (fun n : ℕ => ∏ i : Fin m, H i n) n}\n        (∏ i : Fin m, q i)) ↔\n    (∀ (m : ℕ) (q : Fin m → ℕ) (H : Fin m → ℕ → ℂ)\n      (hq : ∀ i, 0 < q i)\n      (hcoprime : Pairwise (fun i j : Fin m => Nat.Coprime (q i) (q j)))\n      (hne : ∀ i n, 0 < n → H i n ≠ 0)\n      (hperiod : ∀ i, IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        H i (n + T) = H i n} (q i)),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (∏ i : Fin m, H i (n + T)) = ∏ i : Fin m, H i n}\n        (∏ i : Fin m, q i)) := by\n  exact Iff.rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 2.2",
+      "name": "x2611_15379_lem2_2",
+      "original": "Let $p$ be a prime, let $u$ be an integer with $\\operatorname{gcd}(u,p)=1$ , and let $k,j$ be positive integers such that $p^{j}\\leq k$ . For each integer $z$ , define\n\n $N_{j}(z)=\\#\\left\\{i\\in\\mathbb{Z}:0\\leq i\\leq k,p^{j}\\mid z+ui\\right\\}.$ \n\nIf $p^{j}\\mid k+1$ , then $N_{j}(z)=\\frac{k+1}{p^{j}}$ for every integer $z$ . Otherwise, $N_{j}(z)$ takes two consecutive integer values and has least positive period $p^{j}$ .",
+      "lean": "(p k j : ℕ) (hp : Nat.Prime p) (u : ℤ) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k) : (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ ℓ : ℕ, (∀ z : ℤ, x2611_15379_N p j k u z = ℓ ∨ x2611_15379_N p j k u z = ℓ + 1) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ + 1)) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))",
+      "notes": "Both printed cases are formalized. In the second case both consecutive count values must actually occur, and least period is taken on all integers z, not only positive z. The integer gcd hypothesis allows negative u.",
+      "fidelity": {
+        "twin": "(p : ℕ) (u : ℤ) (k j : ℕ) (hp : Nat.Prime p) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k) : (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ m : ℕ, Set.range (x2611_15379_N p j k u) = {m, m + 1}) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))",
+        "twin_by": "audit-b1-w0",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_lem2_2_eqv : (∀ (p k j : ℕ) (hp : Nat.Prime p) (u : ℤ) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k), (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ ℓ : ℕ, (∀ z : ℤ, x2611_15379_N p j k u z = ℓ ∨ x2611_15379_N p j k u z = ℓ + 1) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ + 1)) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))) ↔ (∀ (p : ℕ) (u : ℤ) (k j : ℕ) (hp : Nat.Prime p) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k), (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ m : ℕ, Set.range (x2611_15379_N p j k u) = {m, m + 1}) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))) := by\n  constructor\n  · intro h p u k j hp hu hk hj hpk\n    obtain ⟨hdiv, hndiv⟩ := h p k j hp u hu hk hj hpk\n    refine ⟨hdiv, ?_⟩\n    intro hn\n    obtain ⟨⟨m, hall, hm, hm1⟩, hperiod⟩ := hndiv hn\n    refine ⟨⟨m, ?_⟩, hperiod⟩\n    ext n\n    constructor\n    · rintro ⟨z, rfl⟩\n      simpa only [Set.mem_insert_iff, Set.mem_singleton_iff] using hall z\n    · intro hn\n      have hn' : n = m ∨ n = m + 1 := by\n        simpa only [Set.mem_insert_iff, Set.mem_singleton_iff] using hn\n      rcases hn' with rfl | rfl\n      · exact hm\n      · exact hm1\n  · intro h p k j hp u hu hk hj hpk\n    obtain ⟨hdiv, hndiv⟩ := h p u k j hp hu hk hj hpk\n    refine ⟨hdiv, ?_⟩\n    intro hn\n    obtain ⟨⟨m, hrange⟩, hperiod⟩ := hndiv hn\n    refine ⟨⟨m, ?_, ?_, ?_⟩, hperiod⟩\n    · intro z\n      have hz : x2611_15379_N p j k u z ∈ Set.range (x2611_15379_N p j k u) :=\n        ⟨z, rfl⟩\n      rw [hrange] at hz\n      simpa only [Set.mem_insert_iff, Set.mem_singleton_iff] using hz\n    · have hm : m ∈ Set.range (x2611_15379_N p j k u) := by\n        rw [hrange]\n        exact Set.mem_insert _ _\n      exact hm\n    · have hm1 : m + 1 ∈ Set.range (x2611_15379_N p j k u) := by\n        rw [hrange]\n        exact Set.mem_insert_of_mem _ rfl\n      exact hm1\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem A ([2], Theorem 3.2)",
+      "name": "x2611_15379_thmA",
+      "original": "For every $k\\in\\mathbb{N}$ , the least positive period $P_{k}$ of $g_{k}$ is given by\n\n $P_{k}=\\prod\\limits_{\\begin{subarray}{c}p\\text{ prime }\\\\\np\\leq k\\end{subarray}}p^{\\delta_{p}(k)},$ \n\nwhere\n\n $\\delta_{p}(k)=\\begin{cases}0,&v_{p}(k+1)\\geq\\max\\limits_{1\\leq i\\leq k}v_{p}(i),\\\\\n\\max\\limits_{1\\leq i\\leq k}v_{p}(i),&\\text{ otherwise }.\\end{cases}$",
+      "lean": "(k : ℕ) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k 1 0 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_monotonicPeriod k 1 0 1)",
+      "notes": "Cited background theorem. G with a=c=1,b=0 and f(n)=n is g_k, represented as a complex-valued quotient. The product in monotonicPeriod is exactly the printed product: e_{p,k}=v_p(L_k)=max_{1≤i≤k}v_p(i), retaining only primes with v_p(L_k)>v_p(k+1). It also handles the explicitly stated k=0 by the empty product 1.",
+      "fidelity": {
+        "twin": "(k : ℕ) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k 1 0 1 (fun m => (m : ℂ)) (n + T) = x2611_15379_G k 1 0 1 (fun m => (m : ℂ)) n} (x2611_15379_monotonicPeriod k 1 0 1)",
+        "twin_by": "audit-b1-w5",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem B ([3], Theorem 1.2)",
+      "name": "x2611_15379_thmB",
+      "original": "The function $g_{k,a,b}$ is periodic. If $\\operatorname{gcd}(a,b)=1$ , its least positive period is $Q_{k,a}$ , where\n\n $Q_{k,a}:=\\frac{L_{k}}{\\delta_{k,a}\\prod\\limits_{\\begin{subarray}{c}q\\text{ prime }\\\\\nq\\mid\\operatorname{gcd}\\left(a,L_{k}\\right)\\end{subarray}}q^{e_{q,k}}},$ \n\nand\n\n $\\delta_{k,a}:=\\begin{cases}p^{e_{p,k}},&\\text{ if }p\\nmid a\\text{ and }v_{p}(k+1)\\geq e_{p,k}\\text{ for some prime }p\\leq k,\\\\\n1,&\\text{ otherwise }.\\end{cases}$ \n\nIf $\\operatorname{gcd}(a,b)>1$ , its least positive period is $Q_{k,a^{\\prime}}$ , where\n $a^{\\prime}=\\frac{a}{\\operatorname{gcd}(a,b)}$ .",
+      "lean": "(k a b : ℕ) (ha : 0 < a) : IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_hongQianPeriod k (a / Nat.gcd a b))",
+      "notes": "Cited background theorem, retaining k≥0,a≥1,b≥0. The printed gcd=1 and gcd>1 cases are combined using a/gcd(a,b), which equals a in the first case and a′ in the second. The least-period assertion includes the initial claim of periodicity. The quotient g is embedded in ℂ; this does not change equality or periods.",
+      "fidelity": {
+        "twin": "(k a b : ℕ) (ha : 0 < a) : (fun periods : Set ℕ => periods.Nonempty ∧ (Nat.gcd a b = 1 → IsLeast periods (x2611_15379_hongQianPeriod k a)) ∧ (1 < Nat.gcd a b → IsLeast periods (x2611_15379_hongQianPeriod k (a / Nat.gcd a b)))) {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b 1 (fun m => (m : ℂ)) (n + T) = x2611_15379_G k a b 1 (fun m => (m : ℂ)) n}",
+        "twin_by": "audit-b1-w2",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15379_thmB_eqv : (∀ (k a b : ℕ) (ha : 0 < a), IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) (n + T) = (x2611_15379_G k a b 1 (fun n : ℕ => (n : ℂ))) n} (x2611_15379_hongQianPeriod k (a / Nat.gcd a b))) ↔ (∀ (k a b : ℕ) (ha : 0 < a), (fun periods : Set ℕ => periods.Nonempty ∧ (Nat.gcd a b = 1 → IsLeast periods (x2611_15379_hongQianPeriod k a)) ∧ (1 < Nat.gcd a b → IsLeast periods (x2611_15379_hongQianPeriod k (a / Nat.gcd a b)))) {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n → x2611_15379_G k a b 1 (fun m => (m : ℂ)) (n + T) = x2611_15379_G k a b 1 (fun m => (m : ℂ)) n}) := by\n  constructor\n  · intro h k a b ha\n    have hleast := h k a b ha\n    refine ⟨⟨_, hleast.1⟩, ?_, ?_⟩\n    · intro hg\n      simpa only [hg, Nat.div_one] using hleast\n    · intro _\n      exact hleast\n  · intro h k a b ha\n    have hcases := h k a b ha\n    by_cases hg : Nat.gcd a b = 1\n    · simpa only [hg, Nat.div_one] using hcases.2.1 hg\n    · have hpos : 0 < Nat.gcd a b := Nat.gcd_pos_of_pos_left b ha\n      exact hcases.2.2 (by omega)\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    }
+  ],
+  "skipped": []
+}

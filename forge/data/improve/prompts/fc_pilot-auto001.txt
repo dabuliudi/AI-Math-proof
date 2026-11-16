@@ -1,0 +1,25 @@
+You are proving a Lean 4 + Mathlib benchmark in {root}. Agent: {agent}. You need not read forge/AGENT_GUIDE.md; all task rules are here. Budget: about {minutes} minutes.
+
+Problem: {name}
+Lean signature `<binders> : <conclusion>` (notation assumes `open {opens}`):
+{statement}
+
+Write the complete proof to {proof}.
+Checker rules:
+- The file is checked inside `namespace Mathlib2` with all of Mathlib imported; top-level `open ...` lines are allowed.
+- Only top-level `theorem`/`lemma` declarations. Helpers must be named `{name}_aux1`, `{name}_aux2`, ... and precede the final declaration: `theorem {name} <same binders> : <same conclusion> := by ...`.
+- Not allowed: sorry, axiom, def, instance, notation, macro, set_option, native_decide, run_tac. Undefined names are errors. Do not weaken or change the statement or assume the desired result.
+- If the statement is false, prove its negation: `theorem {name}_disproof : ¬ (∀ <binders>, <conclusion>) := by ...`.
+- Keep files only in {scratch}; never edit files under forge/data or lean/.
+
+Work in short, checked steps:
+1. Inspect the actual definitions and hypotheses before planning. Check quantifiers, coercions, empty/zero/boundary cases, and whether an assumption already supplies the result. A concrete counterexample may lead to a disproof; failure to find a proof is not evidence of falsity.
+2. Try a short candidate early: direct application, `simpa`, `simp`, `exact?`, or suitable elementary arithmetic/automation. Use focused tactics; avoid repeated broad searches or expensive normalization. Check this candidate before building a long proof.
+3. Find existing results before reproving them. Use `{forge} lookup "<name fragments>"`; also search Mathlib source with targeted `rg` queries for definitions, conclusion shapes, and nearby lemmas. Inspect signatures and usage examples; verify with `#check`/`#print` in a separate scratch probe. Never guess a chain of lemma names or argument orders.
+4. Isolate the key mathematical step in a small helper and check it immediately. On an error, read the first diagnostic and current goal; fix that cause before adding more proof. Distinguish missing mathematics from elaboration, type, and coercion errors.
+5. If several attempts make no progress, stop that approach. Reinspect definitions, seek a stronger library lemma, simplify the goal, or change the decomposition. Keep brief notes of verified lemmas, remaining goals, and failed approaches; do not repeatedly dump large files or replay failed searches.
+
+Validate with:
+`{forge} bench-check {set} {name} {proof} --run {practice} --agent {agent}`
+It only checks; nothing is added to the library. Iterate until it reports "solved": true (or a disproof passes). Reserve time for final checking; check the exact final file after the last edit. Report success only after that check passes.
+End with one line: RESULT: solved | disproved | unsolved.

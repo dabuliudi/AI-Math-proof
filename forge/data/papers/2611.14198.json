@@ -1,0 +1,185 @@
+{
+  "arxiv": "2611.14198",
+  "title": "A Complete Classification of Maximal Hyperelliptic Curves Related to Chebyshev Polynomials",
+  "url": "https://arxiv.org/abs/2611.14198",
+  "auditor": "audit-b1-w0",
+  "definitions": [
+    {
+      "name": "x2611_14198_point_count",
+      "lean": "noncomputable def x2611_14198_point_count (d p r : ℕ) [Fact p.Prime] : ℕ :=\n  Nat.card {xy : GaloisField p r × GaloisField p r //\n    xy.2 ^ 2 = (Polynomial.Chebyshev.C (GaloisField p r) (d : ℤ)).eval xy.1} +\n    if d % 2 = 0 then 2 else 1",
+      "notes": "Number of points of the smooth projective model of y² = φ_d(x) over F_(p^r), used only for d ≥ 3, r ≥ 1 and p ∤ 2d. Mathlib Polynomial.Chebyshev.C has exactly the paper’s normalization φ_d = 2T_d(x/2). The affine solution count has one rational point at infinity for odd d and two for even d, since φ_d is monic and squarefree under these hypotheses. Nat.card avoids choosing a Fintype instance."
+    },
+    {
+      "name": "x2611_14198_maximal",
+      "lean": "def x2611_14198_maximal (d p r : ℕ) [Fact p.Prime] : Prop :=\n  (x2611_14198_point_count d p r : ℝ) =\n    (p : ℝ) ^ r + 1 + 2 * (((d - 1) / 2 : ℕ) : ℝ) * Real.sqrt ((p : ℝ) ^ r)",
+      "notes": "Equality with the upper Hasse–Weil bound. The genus is the printed floor((d−1)/2); real square root allows every positive extension degree, without assuming evenness as an extra hypothesis."
+    },
+    {
+      "name": "x2611_14198_minimal",
+      "lean": "def x2611_14198_minimal (d p r : ℕ) [Fact p.Prime] : Prop :=\n  (x2611_14198_point_count d p r : ℝ) =\n    (p : ℝ) ^ r + 1 - 2 * (((d - 1) / 2 : ℕ) : ℝ) * Real.sqrt ((p : ℝ) ^ r)",
+      "notes": "Equality with the lower Hasse–Weil bound, with subtraction in ℝ rather than truncated natural subtraction."
+    },
+    {
+      "name": "x2611_14198_character_sum",
+      "lean": "noncomputable def x2611_14198_character_sum (d : ℕ) (χ : DirichletCharacter ℂ d) : ℂ :=\n  ∑ a ∈ Finset.Icc 1 ((d - 1) / 2), (-1 : ℂ) ^ (a + 1) * χ (a : ZMod d)",
+      "notes": "The sum S_d(χ) from (23); Mathlib Dirichlet characters already vanish on nonunits."
+    },
+    {
+      "name": "x2611_14198_twist",
+      "lean": "noncomputable def x2611_14198_twist (d : ℕ) (χ : DirichletCharacter ℂ d) : DirichletCharacter ℂ (4 * d) :=\n  DirichletCharacter.changeLevel (Nat.dvd_mul_left d 4) χ *\n    DirichletCharacter.changeLevel (Nat.dvd_mul_right 4 d)\n      (ZMod.χ₄.ringHomComp (Int.castRingHom ℂ))",
+      "notes": "χχ₄ regarded as a character modulo 4d, as explicitly required in Lemma 4.2. Both factors are lifted to that modulus with Mathlib changeLevel. χ₄ is Mathlib’s existing nontrivial character modulo 4, composed with ℤ → ℂ."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1 (conditions (2) and (3))",
+      "name": "x2611_14198_thm1_1_maximal",
+      "original": "Let $d\\geq 3$ be odd and let $p\\nmid 2d$ be a prime with\n $p\\equiv 1\\pmod{4}$ . The following conditions are equivalent:\n\n(1) \n\n $\\operatorname{Jac}(\\mathcal{H}_{d})$ is supersingular;\n\n(2) \n\n $\\mathcal{H}_{d}$ is maximal over some finite extension of $\\mathbb{F}_{p}$ ;\n\n(3) \n\n $d=\\ell^{n}$ for a prime $\\ell\\equiv 1\\pmod{4}$ and an integer\n $n\\geq 1$ , and $p$ generates $(\\mathbb{Z}/\\ell^{n}\\mathbb{Z})^{\\times}$ .",
+      "lean": "(d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hodd : Odd d) (hcop : ¬ p ∣ 2 * d) (hp : p % 4 = 1) : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))",
+      "notes": "Selected the equivalence of printed conditions (2) and (3); the equivalence with condition (1), involving supersingular Jacobians, is listed in skipped. Primality is an instance hypothesis Fact p.Prime. IsPrimitiveRoot of order φ(ℓ^n) is exactly generation of the unit group. Maximality is expressed by the actual projective point count, including infinity, rather than an uninterpreted predicate.",
+      "fidelity": {
+        "twin": "(d p : ℕ) (hd : 3 ≤ d) (hodd : Odd d) [Fact p.Prime] (hpnd : ¬ p ∣ 2 * d) (hpmod : p % 4 = 1) : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ ∃ ℓ n : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))",
+        "twin_by": "audit-b1-w1",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.2 (maximal and minimal extension degrees)",
+      "name": "x2611_14198_thm1_2_fields",
+      "original": "Let $\\ell\\equiv 1\\pmod{4}$ and $p\\equiv 1\\pmod{4}$ be distinct primes, let\n $n\\geq 1$ , and suppose that $p$ generates $(\\mathbb{Z}/\\ell^{n}\\mathbb{Z})^{\\times}$ . Put\n\n $m_{j}=\\ell^{j-1}(\\ell-1)\\qquad(1\\leq j\\leq n).$ \n\nThen\n\n(2)\n\n $P_{\\mathcal{H}_{\\ell^{n}},p}(X)=\\prod_{j=1}^{n}\\left(X^{m_{j}}+p^{m_{j}/2}\\right).$ \n\nFor a positive integer $r$ , the curve $\\mathcal{H}_{\\ell^{n}}$ is maximal over\n $\\mathbb{F}_{p^{r}}$ if and only if $r=m_{n}b$ with $b$ positive and odd. It is\nminimal over $\\mathbb{F}_{p^{r}}$ if and only if $r=2m_{n}b$ with $b\\geq 1$ .",
+      "lean": "(ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (r : ℕ) (hr : 1 ≤ r) : (x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧ (x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
+      "notes": "Both printed extension-degree assertions are retained, with m_n expanded. The Frobenius polynomial identity (2) is separately skipped because its characteristic polynomial of a Jacobian requires theory beyond Mathlib. The minimal-field parameter b has no parity restriction, exactly as printed.",
+      "fidelity": {
+        "twin": "(ℓ p n r : ℕ) (hℓ : ℓ.Prime) [Fact p.Prime] (hℓmod : ℓ % 4 = 1) (hpmod : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : orderOf (p : ZMod (ℓ ^ n)) = Nat.totient (ℓ ^ n)) (hr : 1 ≤ r) : (x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧ (x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
+        "twin_by": "audit-b1-w2",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.3 (classification)",
+      "name": "x2611_14198_thm1_3",
+      "original": "Let $p\\equiv 1\\pmod{4}$ be prime, let $d\\geq 4$ be even, and assume\n $p\\nmid 2d$ . Then $\\mathcal{H}_{d}$ is maximal over some finite extension of\n $\\mathbb{F}_{p}$ if and only if one of the following holds:\n\n(1) \n\n $d=4$ and $p\\equiv 5\\pmod{8}$ ;\n\n(2) \n\n $d=2\\ell^{a}$ , where $\\ell\\equiv 1\\pmod{4}$ is prime, $a\\geq 1$ , and\n $p$ generates $(\\mathbb{Z}/\\ell^{a}\\mathbb{Z})^{\\times}$ .\n\nIn case (1), the maximal fields are precisely $\\mathbb{F}_{p^{2b}}$ with\n $b$ positive and odd. In case (2), if\n $M=\\ell^{a-1}(\\ell-1)$ , they are precisely $\\mathbb{F}_{p^{Mb}}$ with $b$ \npositive and odd.",
+      "lean": "(d p : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (heven : Even d) (hcop : ¬ p ∣ 2 * d) : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ ((d = 4 ∧ p % 8 = 5) ∨ (∃ (ℓ a : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a))))",
+      "notes": "The two printed alternatives are formalized literally. The two subsequent assertions identifying all maximal fields are separate worklist entries.",
+      "fidelity": {
+        "twin": "(p d : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) : ((∃ r : ℕ, 0 < r ∧ x2611_14198_maximal d p r) ↔ ((d = 4 ∧ p % 8 = 5) ∨ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ ∃ u : (ZMod (ℓ ^ a))ˣ, (u : ZMod (ℓ ^ a)) = (p : ZMod (ℓ ^ a)) ∧ Subgroup.zpowers u = ⊤)) ∧ ((d = 4 ∧ p % 8 = 5) → ∀ r : ℕ, 0 < r → (x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = 2 * b)) ∧ (∀ ℓ a : ℕ, ℓ.Prime → ℓ % 4 = 1 → 1 ≤ a → d = 2 * ℓ ^ a → (∃ u : (ZMod (ℓ ^ a))ˣ, (u : ZMod (ℓ ^ a)) = (p : ZMod (ℓ ^ a)) ∧ Subgroup.zpowers u = ⊤) → ∀ r : ℕ, 0 < r → (x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b))",
+        "twin_by": "audit-b1-w6",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.3 (case (1), maximal fields)",
+      "name": "x2611_14198_thm1_3_case1_fields",
+      "original": "Let $p\\equiv 1\\pmod{4}$ be prime, let $d\\geq 4$ be even, and assume\n $p\\nmid 2d$ . Then $\\mathcal{H}_{d}$ is maximal over some finite extension of\n $\\mathbb{F}_{p}$ if and only if one of the following holds:\n\n(1) \n\n $d=4$ and $p\\equiv 5\\pmod{8}$ ;\n\n(2) \n\n $d=2\\ell^{a}$ , where $\\ell\\equiv 1\\pmod{4}$ is prime, $a\\geq 1$ , and\n $p$ generates $(\\mathbb{Z}/\\ell^{a}\\mathbb{Z})^{\\times}$ .\n\nIn case (1), the maximal fields are precisely $\\mathbb{F}_{p^{2b}}$ with\n $b$ positive and odd. In case (2), if\n $M=\\ell^{a-1}(\\ell-1)$ , they are precisely $\\mathbb{F}_{p^{Mb}}$ with $b$ \npositive and odd.",
+      "lean": "(p r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hp8 : p % 8 = 5) (hcop : ¬ p ∣ 2 * 4) (hr : 1 ≤ r) : x2611_14198_maximal 4 p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b",
+      "notes": "Case (1) substitutes d = 4; its inherited prime, congruence, coprimality, and positive-extension hypotheses are retained, even where redundant.",
+      "fidelity": {
+        "twin": "(p d r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) (hd4 : d = 4) (hp5 : p % 8 = 5) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = 2 * b",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.3 (case (2), maximal fields)",
+      "name": "x2611_14198_thm1_3_case2_fields",
+      "original": "Let $p\\equiv 1\\pmod{4}$ be prime, let $d\\geq 4$ be even, and assume\n $p\\nmid 2d$ . Then $\\mathcal{H}_{d}$ is maximal over some finite extension of\n $\\mathbb{F}_{p}$ if and only if one of the following holds:\n\n(1) \n\n $d=4$ and $p\\equiv 5\\pmod{8}$ ;\n\n(2) \n\n $d=2\\ell^{a}$ , where $\\ell\\equiv 1\\pmod{4}$ is prime, $a\\geq 1$ , and\n $p$ generates $(\\mathbb{Z}/\\ell^{a}\\mathbb{Z})^{\\times}$ .\n\nIn case (1), the maximal fields are precisely $\\mathbb{F}_{p^{2b}}$ with\n $b$ positive and odd. In case (2), if\n $M=\\ell^{a-1}(\\ell-1)$ , they are precisely $\\mathbb{F}_{p^{Mb}}$ with $b$ \npositive and odd.",
+      "lean": "(ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (hd : 4 ≤ 2 * ℓ ^ n) (heven : Even (2 * ℓ ^ n)) (hcop : ¬ p ∣ 2 * (2 * ℓ ^ n)) (r : ℕ) (hr : 1 ≤ r) : x2611_14198_maximal (2 * ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b",
+      "notes": "The paper’s a is renamed n, d is substituted by 2ℓ^n, and M is expanded. The distinctness hypothesis ℓ ≠ p in common is already forced by the printed p ∤ 2d, so it does not restrict the claim.",
+      "fidelity": {
+        "twin": "(p d ℓ a r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) (hℓ : ℓ.Prime) (hℓ_mod : ℓ % 4 = 1) (ha : 1 ≤ a) (hd_eq : d = 2 * ℓ ^ a) (hgen : orderOf (p : ZMod (ℓ ^ a)) = (ℓ ^ a).totient) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b",
+        "twin_by": "audit-b1-w0",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 4.2 (formula (24))",
+      "name": "x2611_14198_lem4_2_identity",
+      "original": "Let $d>1$ be odd and $\\chi$ an even Dirichlet character modulo $d$ .\nThen\n\n(24)\n\n $S_{d}(\\chi)=-\\frac{\\chi_{4}(d)}{\\chi(2)}L(0,\\chi\\chi_{4}),$ \n\nwhere the product is regarded as a character modulo $4d$ .\nIf $\\chi$ is primitive and nontrivial, then $\\eta=\\chi\\chi_{4}$ is\nprimitive and odd, $L(0,\\eta)\\neq 0$ , and hence $S_{d}(\\chi)\\neq 0$ .",
+      "lean": "(d : ℕ) [NeZero d] (hd : 1 < d) (hodd : Odd d) (χ : DirichletCharacter ℂ d) (heven : χ.Even) : x2611_14198_character_sum d χ = -((ZMod.χ₄ (d : ZMod 4) : ℤ) : ℂ) / χ (2 : ZMod d) * DirichletCharacter.LFunction (x2611_14198_twist d χ) 0",
+      "notes": "Uses Mathlib’s analytically continued LFunction evaluated at the complex number zero, not the divergent defining Dirichlet series. The character product has precisely modulus 4d. The redundant NeZero d instance follows from d > 1 and only supplies Mathlib’s LFunction instance requirement.",
+      "fidelity": {
+        "twin": "(d : ℕ) (hd : 1 < d) (hd_odd : Odd d) (χ : DirichletCharacter ℂ d) (hχ : χ.Even) : x2611_14198_character_sum d χ = -((ZMod.χ₄ (d : ZMod 4) : ℂ) / χ (2 : ZMod d)) * @DirichletCharacter.LFunction (4 * d) ⟨by omega⟩ (x2611_14198_twist d χ) 0",
+        "twin_by": "audit-b1-w4",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 4.2 (primitive-character nonvanishing)",
+      "name": "x2611_14198_lem4_2_nonvanishing",
+      "original": "Let $d>1$ be odd and $\\chi$ an even Dirichlet character modulo $d$ .\nThen\n\n(24)\n\n $S_{d}(\\chi)=-\\frac{\\chi_{4}(d)}{\\chi(2)}L(0,\\chi\\chi_{4}),$ \n\nwhere the product is regarded as a character modulo $4d$ .\nIf $\\chi$ is primitive and nontrivial, then $\\eta=\\chi\\chi_{4}$ is\nprimitive and odd, $L(0,\\eta)\\neq 0$ , and hence $S_{d}(\\chi)\\neq 0$ .",
+      "lean": "(d : ℕ) [NeZero d] (hd : 1 < d) (hodd : Odd d) (χ : DirichletCharacter ℂ d) (heven : χ.Even) (hprim : χ.IsPrimitive) (hne : χ ≠ 1) : (x2611_14198_twist d χ).IsPrimitive ∧ (x2611_14198_twist d χ).Odd ∧ DirichletCharacter.LFunction (x2611_14198_twist d χ) 0 ≠ 0 ∧ x2611_14198_character_sum d χ ≠ 0",
+      "notes": "Retains every conclusion of the printed second sentence: the product is primitive and odd, its L-value is nonzero, and the finite alternating character sum is nonzero. Nontrivial means χ ≠ the principal character 1.",
+      "fidelity": {
+        "twin": "(d : ℕ) [NeZero d] (hd : 1 < d) (hodd : Odd d) (χ : DirichletCharacter ℂ d) (heven : χ.Even) : x2611_14198_character_sum d χ = -((ZMod.χ₄.ringHomComp (Int.castRingHom ℂ)) (d : ZMod 4)) / χ (2 : ZMod d) * DirichletCharacter.LFunction (x2611_14198_twist d χ) 0 ∧ (χ.IsPrimitive → χ ≠ 1 → (x2611_14198_twist d χ).IsPrimitive ∧ (x2611_14198_twist d χ).Odd ∧ DirichletCharacter.LFunction (x2611_14198_twist d χ) 0 ≠ 0 ∧ x2611_14198_character_sum d χ ≠ 0)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 4.3",
+      "name": "x2611_14198_lem4_3",
+      "original": "If $d=\\ell^{n}$ with $\\ell\\equiv 1\\pmod{4}$ prime, then $S_{d}(1)=0$ ,\nwhere $1$ denotes the principal character modulo $d$ . For every\nnonprincipal even character $\\chi$ modulo $d$ , one has $S_{d}(\\chi)\\neq 0$ .",
+      "lean": "(ℓ n : ℕ) [Fact ℓ.Prime] (hℓ : ℓ % 4 = 1) : x2611_14198_character_sum (ℓ ^ n) (1 : DirichletCharacter ℂ (ℓ ^ n)) = 0 ∧ ∀ χ : DirichletCharacter ℂ (ℓ ^ n), χ ≠ 1 → χ.Even → x2611_14198_character_sum (ℓ ^ n) χ ≠ 0",
+      "notes": "Prime-power level d = ℓ^n is substituted throughout. This lemma prints no explicit positive lower bound on n, so the natural exponent also permits n = 0; the sum is empty at that level. The principal character vanishes on nonunits in Mathlib.",
+      "fidelity": {
+        "twin": "(d ℓ n : ℕ) (hℓ : Nat.Prime ℓ) (hℓ_mod_four : ℓ % 4 = 1) (hn : 1 ≤ n) (hd : d = ℓ ^ n) : x2611_14198_character_sum d (1 : DirichletCharacter ℂ d) = 0 ∧ ∀ χ : DirichletCharacter ℂ d, χ ≠ 1 → χ.Even → x2611_14198_character_sum d χ ≠ 0",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Corollary 5.4 (point count)",
+      "name": "x2611_14198_cor5_4_points",
+      "original": "Under the hypotheses of Theorem 1.2, for every $r\\geq 1$ ,\n\n $\\#\\mathcal{H}_{\\ell^{n}}(\\mathbb{F}_{p^{r}})=p^{r}+1-\\sum_{\\begin{subarray}{c}1\\leq j\\leq n\\\\\nm_{j}\\mid r\\end{subarray}}m_{j}(-1)^{r/m_{j}}p^{r/2}.$ \n\nand $J_{\\ell^{n}}(\\mathbb{F}_{p})[2^{\\infty}]\\simeq(\\mathbb{Z}/2\\mathbb{Z})^{n}$ .",
+      "lean": "(ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (r : ℕ) (hr : 1 ≤ r) : (x2611_14198_point_count (ℓ ^ n) p r : ℤ) = (p : ℤ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r), ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) * (-1 : ℤ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (p : ℤ) ^ (r / 2)",
+      "notes": "Only the first assertion is selected; the Jacobian 2-primary torsion assertion is skipped. The equality is in ℤ to preserve ordinary subtraction. m_j is expanded. Natural r/2 is exact on every included summand, since m_j is divisible by 4; if r is odd the sum is empty, so no fractional exponent has been replaced incorrectly.",
+      "fidelity": {
+        "twin": "(ℓ p n : ℕ) (hℓ : Nat.Prime ℓ) [hp : Fact (Nat.Prime p)] (hℓ4 : ℓ % 4 = 1) (hp4 : p % 4 = 1) (hdistinct : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) : ∀ r : ℕ, 1 ≤ r → (x2611_14198_point_count (ℓ ^ n) p r : ℝ) = (p : ℝ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r), ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) * (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * Real.sqrt ((p : ℝ) ^ r)",
+        "twin_by": "audit-b1-w1",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Remark 5.5 (d = 25, p = 157)",
+      "name": "x2611_14198_remark5_5_157",
+      "original": "For $\\ell=5$ and $p=13$ , Theorem 1.2 gives\n $L_{\\mathcal{H}_{25},13}(T)=(1+13^{2}T^{4})(1+13^{10}T^{20})$ , where\n $L_{C,p}(T)=T^{2g}P_{C,p}(T^{-1})$ , and similarly for $\\mathcal{H}_{125}$ ; these\nrecover the computations in [17, Example 4.2.8].\n\nThe necessity direction is already visible at the next type of examples. For\n $d=25$ and $p=157$ , the prime $157$ is a primitive root modulo $5$ but not\nmodulo $25$ (its order modulo $25$ is $4$ ), so\nProposition 4.4 excludes supersingularity of the\nprimitive factor $B_{2}$ and hence excludes maximality of $\\mathcal{H}_{25}$ over every\nfinite extension of $\\mathbb{F}_{157}$ . Likewise, if $d$ has two distinct prime\nfactors, Proposition 4.5 excludes supersingularity of $J_{d}$ in\ncharacteristic $p\\equiv 1\\pmod{4}$ ; for example this applies to $d=65$ and\n $p=37$ .",
+      "lean": "[Fact (Nat.Prime 157)] : IsPrimitiveRoot (157 : ZMod 5) (Nat.totient 5) ∧ ¬ IsPrimitiveRoot (157 : ZMod 25) (Nat.totient 25) ∧ orderOf (157 : ZMod 25) = 4 ∧ ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r",
+      "notes": "Selected the explicit p = 157 example: primitive modulo 5, not primitive modulo 25, exact order 4 modulo 25, and no maximal extension for H_25. Supersingularity of B₂ is excluded from this entry and listed in skipped. The numerical prime fact is exposed as an instance hypothesis so the concrete GaloisField is elaborated without constructing a proof.",
+      "fidelity": {
+        "twin": "[Fact (Nat.Prime 157)] : ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r",
+        "twin_by": "audit-b1-w2",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Corollary 6.2 and Table 1 (all maximal fields)",
+      "name": "x2611_14198_cor6_2_fields",
+      "original": "Let $d\\geq 3$ and let $p\\nmid 2d$ be prime. Then $\\mathcal{H}_{d}$ is maximal over\nsome finite extension of $\\mathbb{F}_{p}$ if and only if one of the five cases in\nTable 1 occurs. The last column of the table gives all\nfinite extensions over which it is maximal.",
+      "lean": "(d p r : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hcop : ¬ p ∣ 2 * d) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k : ℕ, (p : ZMod (4 * d)) ^ k = -1 ∨ (p : ZMod (4 * d)) ^ k = ((1 + 2 * d : ℕ) : ZMod (4 * d))) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (4 * d)) * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ k : ℕ, (p : ZMod (2 * d)) ^ k = -1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (2 * d)) * b))",
+      "notes": "Expands the five table rows and the final column into one per-extension biconditional; this gives both existence and all maximal fields. In the last two rows orderOf is the printed 2k; p ∤ 2d guarantees that the residue is a unit, so its ring-monoid order is its unit-group order. Membership of −1 or 1+2d in the generated cyclic subgroup is expressed by existence of a nonnegative power, equivalent in this finite unit group. b is positive and odd in every row, exactly as stipulated before Table 1.",
+      "fidelity": {
+        "twin": "(d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hp : ¬ p ∣ 2 * d) (r : ℕ) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ (p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ j : ℕ, (p : ZMod (4 * d)) ^ j = -1 ∨ (p : ZMod (4 * d)) ^ j = (1 + 2 * d : ℕ)) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (4 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ j : ℕ, (p : ZMod (2 * d)) ^ j = -1) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (2 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b)",
+        "twin_by": "audit-b1-w6",
+        "verdict": "pending"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Theorem 1.1, condition (1); Propositions 4.4 and 4.5; Remark 5.5, supersingularity claims for B₂ and d = 65, p = 37; Remark 5.6",
+      "reason": "Supersingular Jacobians or primitive abelian-variety factors, reduction, Newton slopes, and ordinary quotients require substantial abelian-variety arithmetic not available as an established Mathlib theory. The maximal-field classifications and the concrete maximality exclusion for d = 25, p = 157 are retained using explicit finite-field point counts."
+    },
+    {
+      "label": "Theorem 1.2, Frobenius polynomial identity (2); Lemmas 5.1–5.3; Remark 5.5, L-polynomial computation",
+      "reason": "Characteristic polynomials of Frobenius on Jacobian/abelian-variety Tate modules and their compatibility with geometric 2-torsion require theory far beyond Mathlib. No free polynomial parameter or uninterpreted Frobenius object is substituted. The extension-degree assertions and Corollary 5.4’s explicit point-count formula remain formalized."
+    },
+    {
+      "label": "Lemmas 3.1–3.3; Proposition 3.4; Proposition 4.1; Proposition 6.1",
+      "reason": "Specialization of endomorphism algebras, regular differentials, Jacobian isogenies, Galois-equivariant CM types, CM reduction slopes, and their relation to the Fourier obstruction require substantial infrastructure beyond Mathlib. The purely Dirichlet-character statements of Lemmas 4.2 and 4.3 are retained."
+    },
+    {
+      "label": "Corollary 5.4, second assertion",
+      "reason": "The rational Jacobian’s 2-primary torsion subgroup and its geometric Frobenius-module interpretation are beyond existing Mathlib infrastructure. Only the point-count assertion is selected."
+    }
+  ]
+}

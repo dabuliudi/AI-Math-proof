@@ -1,0 +1,160 @@
+{
+  "arxiv": "2611.11972",
+  "title": "An Analytic Evaluation of Euler Sharp Sums",
+  "url": "https://arxiv.org/abs/2611.11972",
+  "auditor": "audit-b1-w3",
+  "definitions": [
+    {
+      "name": "x2611_11972_euler",
+      "lean": "noncomputable def x2611_11972_euler (k : List ℤ) : ℝ := by\n  classical\n  exact ∑' n : Fin k.length → ℕ, if StrictMono n then\n    ∏ j : Fin k.length,\n      (if k.get j < 0 then (-1 : ℝ) ^ (n j + 1) else 1) /\n        ((n j + 1 : ℕ) : ℝ) ^ (k.get j).natAbs\n    else 0",
+      "notes": "A signed integer represents a barred (negative) or unbarred (positive) index, with absolute value its weight. The tuple coordinate n_j represents the positive summation index n_j+1. StrictMono imposes the paper’s ascending convention. All uses in this worklist have terminal weight at least two, so the defining series is absolutely convergent."
+    },
+    {
+      "name": "x2611_11972_sharp",
+      "lean": "noncomputable def x2611_11972_sharp (k : List ℤ) : ℝ := by\n  classical\n  exact ∑' n : Fin k.length → ℕ, if Monotone n then\n    (2 : ℝ) ^ (Finset.univ.image n).card *\n      ∏ j : Fin k.length,\n        (if k.get j < 0 then (-1 : ℝ) ^ (n j + 1) else 1) /\n          ((n j + 1 : ℕ) : ℝ) ^ (k.get j).natAbs\n    else 0",
+      "notes": "Equivalent series form of definition (1.2): sum over weakly increasing positive tuples, multiplying each term by 2 to the number of distinct coordinates. An equality block merges adjacent signed indices by adding their weights and multiplying their signs; hence every coarsening of depth h occurs with coefficient 2^h. All selected nonempty indices end with weight at least two, ensuring absolute convergence."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1",
+      "name": "x2611_11972_thm1_1",
+      "original": "For any even integer $d\\geq 4$ , we have\n\n $\\displaystyle\\zeta^{\\sharp}(2,\\{1\\}^{d-3},\\overline{2})=\\displaystyle\\frac{1}{2}\\zeta(d+1)-2\\displaystyle\\sum_{\\begin{subarray}{c}m+n=d+1\\\\\n2\\mid n\\end{subarray}}\\zeta(m,n).$ \n\n(1.4)",
+      "lean": "(d : ℕ) (hd : 4 ≤ d) (he : Even d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) = (1 / 2 : ℝ) * (riemannZeta ((d + 1 : ℕ) : ℂ)).re - 2 * ∑ n ∈ (Finset.Icc 1 d).filter (fun n => Even n), x2611_11972_euler [((d + 1 - n : ℕ) : ℤ), (n : ℤ)]",
+      "notes": "Positive signed integers are unbarred; negative entries are barred. The increasing-index convention agrees with the paper. The finite sum runs over positive m,n with m+n=d+1 and even n by setting m=d+1-n and 1≤n≤d. Natural d with d≥4 is equivalent to the printed integer domain. Ordinary zeta values use the real part of Mathlib’s riemannZeta at the positive integer argument.",
+      "fidelity": {
+        "twin": "(d : ℕ) (hd : 4 ≤ d) (heven : Even d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) = (1 / 2 : ℝ) * x2611_11972_euler [((d + 1 : ℕ) : ℤ)] - 2 * ∑ n ∈ (Finset.Icc 2 d).filter (fun n => 2 ∣ n), x2611_11972_euler [((d + 1 - n : ℕ) : ℤ), (n : ℤ)]",
+        "twin_by": "audit-b1-w3",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "Lean 报错"
+      }
+    },
+    {
+      "label": "Lemma 2.1",
+      "name": "x2611_11972_lem2_1",
+      "original": "For $|x|<1$ , we have\n\n $\\displaystyle\\displaystyle\\frac{1}{\\sqrt{1-x}}\\log\\displaystyle\\frac{2}{1+\\sqrt{1-x}}=\\displaystyle\\sum_{n=1}^{\\infty}c_{n}\\bigl(H_{2n}-H_{n}\\bigr)x^{n},$ \n\n(2.6)\n\nwhere\n\n $c_{n}=\\displaystyle\\frac{1}{4^{n}}\\binom{2n}{n}.$",
+      "lean": "(x : ℂ) (hx : ‖x‖ < 1) : HasSum (fun n : ℕ => ((Nat.choose (2 * (n + 1)) (n + 1) : ℂ) / (4 : ℂ) ^ (n + 1)) * (((harmonic (2 * (n + 1)) - harmonic (n + 1)) : ℚ) : ℂ) * x ^ (n + 1)) (((1 - x) ^ ((1 : ℂ) / 2))⁻¹ * Complex.log (2 / (1 + (1 - x) ^ ((1 : ℂ) / 2))))",
+      "notes": "The proof explicitly extends both sides analytically to |x|<1 with branches normalized at x=0; x is therefore complex. Complex.cpow with exponent 1/2 supplies that square-root branch on this disk, and Complex.log the normalized principal logarithm. HasSum records both the asserted series value and convergence. The n≥1 series is reindexed by n+1. Mathlib harmonic is rational and is cast to ℂ.",
+      "fidelity": {
+        "twin": "(x : ℂ) (hx : ‖x‖ < 1) : HasSum (fun n : ℕ => (((Nat.choose (2 * (n + 1)) (n + 1) : ℕ) : ℂ) / (4 : ℂ) ^ (n + 1)) * ((harmonic (2 * (n + 1)) : ℂ) - (harmonic (n + 1) : ℂ)) * x ^ (n + 1)) ((1 / Complex.sqrt (1 - x)) * Complex.log (2 / (1 + Complex.sqrt (1 - x))))",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_11972_lem2_1_eqv : (∀ (x : ℂ) (hx : ‖x‖ < 1), HasSum (fun n : ℕ => ((Nat.choose (2 * (n + 1)) (n + 1) : ℂ) / (4 : ℂ) ^ (n + 1)) * (((harmonic (2 * (n + 1)) - harmonic (n + 1)) : ℚ) : ℂ) * x ^ (n + 1)) (((1 - x) ^ ((1 : ℂ) / 2))⁻¹ * Complex.log (2 / (1 + (1 - x) ^ ((1 : ℂ) / 2))))) ↔ (∀ (x : ℂ) (hx : ‖x‖ < 1), HasSum (fun n : ℕ => (((Nat.choose (2 * (n + 1)) (n + 1) : ℕ) : ℂ) / (4 : ℂ) ^ (n + 1)) * ((harmonic (2 * (n + 1)) : ℂ) - (harmonic (n + 1) : ℂ)) * x ^ (n + 1)) ((1 / Complex.sqrt (1 - x)) * Complex.log (2 / (1 + Complex.sqrt (1 - x))))) := by\n  simp only [Complex.sqrt, one_div, Rat.cast_sub]\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Proposition 2.2",
+      "name": "x2611_11972_prop2_2",
+      "original": "For any integer $d\\geq 3$ , we have\n\n $\\displaystyle\\zeta^{\\sharp}(2,\\{1\\}^{d-3},\\overline{2})=-2\\displaystyle\\sum_{n\\geq 1}\\displaystyle\\frac{H_{2n}-H_{n}}{n^{d}}.$ \n\n(2.7)",
+      "lean": "(d : ℕ) (hd : 3 ≤ d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) = -2 * ∑' n : ℕ, (((harmonic (2 * (n + 1)) - harmonic (n + 1)) : ℚ) : ℝ) / ((n + 1 : ℕ) : ℝ) ^ d",
+      "notes": "The printed integer d≥3 is represented by a natural number with the same lower bound. The positive-index series is reindexed n↦n+1. Its harmonic numbers use Mathlib harmonic, cast from ℚ to ℝ.",
+      "fidelity": {
+        "twin": "(d : ℤ) (hd : 3 ≤ d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3).toNat 1 ++ [-2]) = -2 * ∑' n : ℕ, (((harmonic (2 * (n + 1)) : ℚ) : ℝ) - ((harmonic (n + 1) : ℚ) : ℝ)) / ((n + 1 : ℕ) : ℝ) ^ d",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_11972_prop2_2_eqv :\n    (∀ (d : ℕ) (hd : 3 ≤ d),\n      x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) =\n        -2 * ∑' n : ℕ,\n          (((harmonic (2 * (n + 1)) - harmonic (n + 1)) : ℚ) : ℝ) /\n            ((n + 1 : ℕ) : ℝ) ^ d) ↔\n    (∀ (d : ℤ) (hd : 3 ≤ d),\n      x2611_11972_sharp ([2] ++ List.replicate (d - 3).toNat 1 ++ [-2]) =\n        -2 * ∑' n : ℕ,\n          (((harmonic (2 * (n + 1)) : ℚ) : ℝ) -\n            ((harmonic (n + 1) : ℚ) : ℝ)) /\n            ((n + 1 : ℕ) : ℝ) ^ d) := by\n  constructor\n  · intro h d hd\n    lift d to ℕ using (by omega : 0 ≤ d)\n    have hd' : 3 ≤ d := by exact_mod_cast hd\n    have hlen : ((d : ℤ) - 3).toNat = d - 3 := by omega\n    simpa only [hlen, Rat.cast_sub, zpow_natCast] using h d hd'\n  · intro h d hd\n    have hd' : (3 : ℤ) ≤ (d : ℤ) := by exact_mod_cast hd\n    have hlen : ((d : ℤ) - 3).toNat = d - 3 := by omega\n    simpa only [hlen, Rat.cast_sub, zpow_natCast] using h (d : ℤ) hd'\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 2.3",
+      "name": "x2611_11972_cor2_3",
+      "original": "For any even integer $d\\geq 4$ , the $\\zeta^{\\sharp}(2,\\{1\\}^{d-3},\\overline{2})$ can be expressed as a combination of products of Riemann zeta values.",
+      "lean": "(d : ℕ) (hd : 4 ≤ d) (he : Even d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈ Algebra.adjoin ℚ (Set.range (fun n : ℕ => (riemannZeta ((n + 2 : ℕ) : ℂ)).re))",
+      "notes": "“A combination of products of Riemann zeta values” is interpreted in the usual arithmetic sense as a finite rational linear combination of finite products of ζ(k), k≥2. Membership in the ℚ-subalgebra generated by these values states exactly this, allowing the empty product. The paper does not specify a weight-homogeneity constraint, so none is imposed.",
+      "fidelity": {
+        "twin": "(d : ℕ) (hd : 4 ≤ d) (heven : Even d) : x2611_11972_sharp ((2 : ℤ) :: (List.replicate (d - 3) 1 ++ [-2])) ∈ Algebra.adjoin ℚ (Set.range (fun n : ℕ => x2611_11972_euler [(n : ℤ) + 2]))",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_11972_cor2_3_eqv :\n    (∀ (d : ℕ) (hd : 4 ≤ d) (he : Even d),\n      x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) ∈\n        Algebra.adjoin ℚ (Set.range (fun n : ℕ =>\n          (riemannZeta ((n + 2 : ℕ) : ℂ)).re))) ↔\n    (∀ (d : ℕ) (hd : 4 ≤ d) (heven : Even d),\n      x2611_11972_sharp ((2 : ℤ) :: (List.replicate (d - 3) 1 ++ [-2])) ∈\n        Algebra.adjoin ℚ (Set.range (fun n : ℕ =>\n          x2611_11972_euler [(n : ℤ) + 2]))) := by\n  classical\n  have hsingle (k : ℕ) : x2611_11972_euler [(k : ℤ)] =\n      ∑' n : ℕ, (1 : ℝ) / ((n + 1 : ℕ) : ℝ) ^ k := by\n    unfold x2611_11972_euler\n    simp only [List.length_cons, List.length_nil]\n    rw [← (Equiv.funUnique (Fin 1) ℕ).symm.tsum_eq]\n    apply tsum_congr\n    intro n\n    have hk : ¬ (k : ℤ) < 0 := by omega\n    simp [Equiv.funUnique, Subsingleton.strictMono, hk]\n  have hzeta (k : ℕ) (hk : 1 < k) :\n      (riemannZeta (k : ℂ)).re = x2611_11972_euler [(k : ℤ)] := by\n    rw [hsingle]\n    have h : riemannZeta (k : ℂ) =\n        Complex.ofReal (∑' n : ℕ, (1 : ℝ) / ((n + 1 : ℕ) : ℝ) ^ k) := by\n      rw [zeta_eq_tsum_one_div_nat_add_one_cpow (by exact_mod_cast hk),\n        Complex.ofReal_tsum]\n      apply tsum_congr\n      intro n\n      simp [Complex.cpow_natCast]\n    rw [h, Complex.ofReal_re]\n  have hgenerators :\n      (fun n : ℕ => (riemannZeta ((n + 2 : ℕ) : ℂ)).re) =\n        (fun n : ℕ => x2611_11972_euler [(n : ℤ) + 2]) := by\n    funext n\n    simpa only [Nat.cast_add, Nat.cast_ofNat] using hzeta (n + 2) (by omega)\n  rw [hgenerators]\n  rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Example following (1.2)",
+      "name": "x2611_11972_sharp_example",
+      "original": "$\\zeta^{\\sharp}(2,\\overline{3})=4\\zeta(2,\\overline{3})+2\\zeta(\\overline{5}).$",
+      "lean": ": x2611_11972_sharp [2, -3] = 4 * x2611_11972_euler [2, -3] + 2 * x2611_11972_euler [-5]",
+      "notes": "The explicit example is encoded literally. Merging the positive 2 and barred 3 gives barred 5.",
+      "fidelity": {
+        "twin": ": x2611_11972_sharp [2, -3] = 4 * x2611_11972_euler [2, -3] + 2 * x2611_11972_euler [-5]",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Identity (1.3)",
+      "name": "x2611_11972_eq1_3",
+      "original": "$\\displaystyle\\zeta^{\\sharp}(\\overline{2},\\{1\\}^{d-3},\\overline{2})=\\zeta^{\\star}(1,d),\\qquad d\\geq 3,$ \n\n(1.3)",
+      "lean": "(d : ℕ) (hd : 3 ≤ d) : x2611_11972_sharp ([-2] ++ List.replicate (d - 3) 1 ++ [-2]) = ∑' n : ℕ, ((harmonic (n + 1) : ℚ) : ℝ) / ((n + 1 : ℕ) : ℝ) ^ d",
+      "notes": "A recalled identity attributed to Linebarger and Zhao. The star value ζ⋆(1,d)=∑_{1≤m≤N}1/(m N^d) is written as the single series ∑_{N≥1}H_N/N^d, without introducing an extra star-sum definition.",
+      "fidelity": {
+        "twin": "(d : ℕ) (hd : 3 ≤ d) : x2611_11972_sharp ([-2] ++ List.replicate (d - 3) 1 ++ [-2]) = ∑' n : ℕ × ℕ, if n.1 ≤ n.2 then (1 : ℝ) / (((n.1 + 1 : ℕ) : ℝ) * ((n.2 + 1 : ℕ) : ℝ) ^ d) else 0",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_11972_eq1_3_eqv_aux (d : ℕ) :\n    (∑' n : ℕ, ((harmonic (n + 1) : ℚ) : ℝ) / ((n + 1 : ℕ) : ℝ) ^ d) =\n      ∑' n : ℕ × ℕ, if n.1 ≤ n.2 then\n        (1 : ℝ) / (((n.1 + 1 : ℕ) : ℝ) * ((n.2 + 1 : ℕ) : ℝ) ^ d) else 0 := by\n  classical\n  let f : ℕ × ℕ → ℝ := fun p => if p.2 ≤ p.1 then\n    (1 : ℝ) / (((p.2 + 1 : ℕ) : ℝ) * ((p.1 + 1 : ℕ) : ℝ) ^ d) else 0\n  have hzero (n m : ℕ) (hm : m ∉ Finset.range (n + 1)) : f (n, m) = 0 := by\n    have hmn : ¬ m ≤ n := by simpa only [Finset.mem_range, Nat.lt_succ_iff] using hm\n    simp [f, hmn]\n  have hrows (n : ℕ) : Summable (fun m => f (n, m)) :=\n    summable_of_ne_finset_zero (hzero n)\n  have hrow (n : ℕ) : (∑' m : ℕ, f (n, m)) =\n      ((harmonic (n + 1) : ℚ) : ℝ) / ((n + 1 : ℕ) : ℝ) ^ d := by\n    rw [tsum_eq_sum (hzero n)]\n    simp only [harmonic, Rat.cast_sum, Rat.cast_inv, Rat.cast_natCast, Finset.sum_div]\n    apply Finset.sum_congr rfl\n    intro m hm\n    have hmn : m ≤ n := by simpa only [Finset.mem_range, Nat.lt_succ_iff] using hm\n    simp [f, hmn, div_eq_mul_inv, mul_inv, mul_comm]\n  have hnonneg : 0 ≤ f := by\n    intro p\n    dsimp [f]\n    split_ifs <;> positivity\n  have hprod : (∑' p : ℕ × ℕ, f p) = ∑' n : ℕ, ∑' m : ℕ, f (n, m) := by\n    by_cases hs : Summable f\n    · exact hs.tsum_prod\n    · have hi : ¬ Summable (fun n : ℕ => ∑' m : ℕ, f (n, m)) := by\n        intro hi\n        exact hs ((summable_prod_of_nonneg hnonneg).mpr ⟨hrows, hi⟩)\n      rw [tsum_eq_zero_of_not_summable hs, tsum_eq_zero_of_not_summable hi]\n  calc\n    _ = ∑' n : ℕ, ∑' m : ℕ, f (n, m) := (tsum_congr hrow).symm\n    _ = ∑' p : ℕ × ℕ, f p := hprod.symm\n    _ = ∑' p : ℕ × ℕ, f ((Equiv.prodComm ℕ ℕ) p) :=\n      ((Equiv.prodComm ℕ ℕ).tsum_eq f).symm\n    _ = _ := by\n      apply tsum_congr\n      rintro ⟨a, b⟩\n      rfl\n\ntheorem x2611_11972_eq1_3_eqv : (∀ (d : ℕ) (hd : 3 ≤ d), x2611_11972_sharp ([-2] ++ List.replicate (d - 3) 1 ++ [-2]) = ∑' n : ℕ, ((harmonic (n + 1) : ℚ) : ℝ) / ((n + 1 : ℕ) : ℝ) ^ d) ↔ (∀ (d : ℕ) (hd : 3 ≤ d), x2611_11972_sharp ([-2] ++ List.replicate (d - 3) 1 ++ [-2]) = ∑' n : ℕ × ℕ, if n.1 ≤ n.2 then (1 : ℝ) / (((n.1 + 1 : ℕ) : ℝ) * ((n.2 + 1 : ℕ) : ℝ) ^ d) else 0) := by\n  constructor\n  · intro h d hd\n    exact (h d hd).trans (x2611_11972_eq1_3_eqv_aux d)\n  · intro h d hd\n    exact (h d hd).trans (x2611_11972_eq1_3_eqv_aux d).symm\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Two-one identity in the introduction",
+      "name": "x2611_11972_two_one",
+      "original": "$\\zeta^{\\sharp}(\\{1\\}^{n-2},\\overline{2})=-\\zeta(n),\\qquad n\\geq 2.$",
+      "lean": "(n : ℕ) (hn : 2 ≤ n) : x2611_11972_sharp (List.replicate (n - 2) 1 ++ [-2]) = -(riemannZeta (n : ℂ)).re",
+      "notes": "The introductory identity is attributed to Zhao. The n=2 endpoint is included literally: its sharp index is the singleton [bar 2].",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 2 ≤ n) : x2611_11972_sharp (List.replicate (n - 2) (1 : ℤ) ++ [-2]) = -x2611_11972_euler [(n : ℤ)]",
+        "twin_by": "audit-b1-w6",
+        "verdict": "original_invalid"
+      }
+    },
+    {
+      "label": "Identity preceding Corollary 2.3",
+      "name": "x2611_11972_before_cor2_3",
+      "original": "$\\zeta^{\\sharp}(2,\\{1\\}^{d-3},\\overline{2})=(2-2^{d})\\zeta(1,d)-2^{d}\\zeta(1,\\bar{d})+\\zeta(d+1).$",
+      "lean": "(d : ℕ) (hd : 3 ≤ d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) = (2 - (2 : ℝ) ^ d) * x2611_11972_euler [1, (d : ℤ)] - (2 : ℝ) ^ d * x2611_11972_euler [1, -(d : ℤ)] + (riemannZeta ((d + 1 : ℕ) : ℂ)).re",
+      "notes": "The displayed formula is stated as a direct computation from Proposition 2.2, so its domain is the proposition’s integer d≥3; no evenness restriction is added. The bar on d means the final summation sign is (-1)^N. All coefficients and signs are retained as printed.",
+      "fidelity": {
+        "twin": "(d : ℕ) (hd : 3 ≤ d) : x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) = (2 - (2 : ℝ) ^ d) * x2611_11972_euler [1, (d : ℤ)] - (2 : ℝ) ^ d * x2611_11972_euler [1, -(d : ℤ)] + x2611_11972_euler [(d : ℤ) + 1]",
+        "twin_by": "audit-b1-w3",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_11972_before_cor2_3_eqv :\n    (∀ (d : ℕ) (hd : 3 ≤ d),\n      x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) =\n        (2 - (2 : ℝ) ^ d) * x2611_11972_euler [1, (d : ℤ)] -\n          (2 : ℝ) ^ d * x2611_11972_euler [1, -(d : ℤ)] +\n          (riemannZeta ((d + 1 : ℕ) : ℂ)).re) ↔\n    (∀ (d : ℕ) (hd : 3 ≤ d),\n      x2611_11972_sharp ([2] ++ List.replicate (d - 3) 1 ++ [-2]) =\n        (2 - (2 : ℝ) ^ d) * x2611_11972_euler [1, (d : ℤ)] -\n          (2 : ℝ) ^ d * x2611_11972_euler [1, -(d : ℤ)] +\n          x2611_11972_euler [(d : ℤ) + 1]) := by\n  classical\n  have hsingle (k : ℕ) : x2611_11972_euler [(k : ℤ)] =\n      ∑' n : ℕ, (1 : ℝ) / ((n + 1 : ℕ) : ℝ) ^ k := by\n    unfold x2611_11972_euler\n    simp only [List.length_cons, List.length_nil]\n    rw [← (Equiv.funUnique (Fin 1) ℕ).symm.tsum_eq]\n    apply tsum_congr\n    intro n\n    have hk : ¬ (k : ℤ) < 0 := by omega\n    simp [Equiv.funUnique, Subsingleton.strictMono, hk]\n  have hzeta (k : ℕ) (hk : 1 < k) :\n      (riemannZeta (k : ℂ)).re = x2611_11972_euler [(k : ℤ)] := by\n    rw [hsingle]\n    have h : riemannZeta (k : ℂ) =\n        Complex.ofReal (∑' n : ℕ, (1 : ℝ) / ((n + 1 : ℕ) : ℝ) ^ k) := by\n      rw [zeta_eq_tsum_one_div_nat_add_one_cpow (by exact_mod_cast hk),\n        Complex.ofReal_tsum]\n      apply tsum_congr\n      intro n\n      simp [Complex.cpow_natCast]\n    rw [h, Complex.ofReal_re]\n  have hfinal (d : ℕ) (hd : 3 ≤ d) :\n      (riemannZeta ((d + 1 : ℕ) : ℂ)).re =\n        x2611_11972_euler [(d : ℤ) + 1] := by\n    simpa only [Nat.cast_add, Nat.cast_one] using hzeta (d + 1) (by omega)\n  constructor\n  · intro h d hd\n    simpa only [hfinal d hd] using h d hd\n  · intro h d hd\n    simpa only [hfinal d hd] using h d hd\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Generating-function identity (2.9)",
+      "name": "x2611_11972_eq2_9",
+      "original": "For $|z|<1$ , we define the following generating function\n\n $\\displaystyle S(z)$ \n $\\displaystyle=\\displaystyle\\sum_{1\\leq k<\\ell}\\displaystyle\\frac{k}{(k^{2}-z^{2})(\\ell^{2}-z^{2})}.$ \n\nLet $\\ell=k+r$ . Then we have\n\n $\\displaystyle S(z)$ \n $\\displaystyle=\\displaystyle\\sum_{k,r\\geq 1}\\displaystyle\\frac{k}{(k^{2}-z^{2})((k+r)^{2}-z^{2})}$ \n\n $\\displaystyle=\\displaystyle\\sum_{k,r\\geq 1}\\displaystyle\\frac{k}{r(2k+r)}\\left(\\displaystyle\\frac{1}{k^{2}-z^{2}}-\\displaystyle\\frac{1}{(k+r)^{2}-z^{2}}\\right).$ \n\nSince\n\n $\\displaystyle\\displaystyle\\sum_{r=1}^{\\infty}\\displaystyle\\frac{k}{r(2k+r)}=\\displaystyle\\frac{1}{2}\\displaystyle\\sum_{r=1}^{\\infty}\\left(\\displaystyle\\frac{1}{r}-\\displaystyle\\frac{1}{r+2k}\\right)=\\displaystyle\\frac{1}{2}H_{2k},$ \n\nand\n\n $\\displaystyle\\displaystyle\\sum_{k=1}^{n-1}\\displaystyle\\frac{k}{(n-k)(n+k)}$ \n $\\displaystyle=\\displaystyle\\frac{1}{2}\\displaystyle\\sum_{k=1}^{n-1}\\left(\\displaystyle\\frac{1}{n-k}-\\displaystyle\\frac{1}{n+k}\\right)=H_{n}-\\displaystyle\\frac{1}{2}H_{2n}-\\displaystyle\\frac{1}{4n},$ \n\nwe obtain\n\n $\\displaystyle S(z)=C(z)-A(z)+\\displaystyle\\frac{1}{4}Z(z),$ \n\n(2.9)\n\nwhere\n\n $\\displaystyle A(z)=\\displaystyle\\sum_{n\\geq 1}\\displaystyle\\frac{H_{n}}{n^{2}-z^{2}},\\quad C(z)=\\displaystyle\\sum_{n\\geq 1}\\displaystyle\\frac{H_{2n}}{n^{2}-z^{2}},\\quad Z(z)=\\displaystyle\\sum_{n\\geq 1}\\displaystyle\\frac{1}{n(n^{2}-z^{2})}.$",
+      "lean": "(z : ℂ) (hz : ‖z‖ < 1) : (∑' l : ℕ, ∑ k ∈ Finset.range l, ((k + 1 : ℕ) : ℂ) / ((((k + 1 : ℕ) : ℂ) ^ 2 - z ^ 2) * (((l + 1 : ℕ) : ℂ) ^ 2 - z ^ 2))) = (∑' n : ℕ, ((harmonic (2 * (n + 1)) : ℚ) : ℂ) / (((n + 1 : ℕ) : ℂ) ^ 2 - z ^ 2)) - (∑' n : ℕ, ((harmonic (n + 1) : ℚ) : ℂ) / (((n + 1 : ℕ) : ℂ) ^ 2 - z ^ 2)) + (1 / 4 : ℂ) * (∑' n : ℕ, 1 / (((n + 1 : ℕ) : ℂ) * (((n + 1 : ℕ) : ℂ) ^ 2 - z ^ 2)))",
+      "notes": "The |z|<1 hypothesis is taken from the paragraph defining S. S is expanded as an outer sum over ℓ=l+1 and a finite inner sum over 1≤k+1<ℓ; A,C,Z are expanded from the definitions printed immediately after (2.9). All four series are interpreted over ℂ.",
+      "fidelity": {
+        "twin": "(z : ℂ) (hz : ‖z‖ < 1) : (∑' p : {p : ℕ × ℕ // 1 ≤ p.1 ∧ p.1 < p.2}, (p.1.1 : ℂ) / (((p.1.1 : ℂ) ^ 2 - z ^ 2) * ((p.1.2 : ℂ) ^ 2 - z ^ 2))) = (∑' n : ℕ, (harmonic (2 * (n + 1)) : ℂ) / (((n : ℂ) + 1) ^ 2 - z ^ 2)) - (∑' n : ℕ, (harmonic (n + 1) : ℂ) / (((n : ℂ) + 1) ^ 2 - z ^ 2)) + (1 / 4 : ℂ) * (∑' n : ℕ, (1 : ℂ) / (((n : ℂ) + 1) * (((n : ℂ) + 1) ^ 2 - z ^ 2)))",
+        "twin_by": "audit-b1-w4",
+        "verdict": "original_invalid"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Conjecture 1.2",
+      "reason": "Explicitly a conjecture, rather than an asserted theorem. Its general notion of unramified Euler sums and the associated motivic multiple mixed values are not developed in Mathlib or in this elementary series formalization."
+    },
+    {
+      "label": "General iterated-integral formulas (1.1) and (2.5)",
+      "reason": "Require general Chen iterated integrals, words in singular differential forms, and endpoint convergence conventions not supplied by Mathlib. The named analytic and series results are formalized instead."
+    },
+    {
+      "label": "General stuffle-product sentence in the introduction",
+      "reason": "The printed universal a,b domain omits convergence exclusions such as a=1 or b=1; it is background rather than a named result. It is not silently repaired or added as a worklist claim."
+    }
+  ]
+}

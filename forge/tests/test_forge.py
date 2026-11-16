@@ -952,3 +952,22 @@ class ImproveBaselineTests(unittest.TestCase):
             self.assertEqual((score['solved'], score['tokens']), (1, 30))
             with self.assertRaises(ValueError):
                 improve.from_run('r0', ['a', 'zz'])
+
+
+class ImproveAbortTests(unittest.TestCase):
+    def test_incomplete_evaluation_stops_the_loop(self):
+        from forge import improve
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        calls = iter([dict(solved=4, tokens=100, complete=True), dict(solved=4, tokens=100, complete=True),
+                      dict(solved=0, tokens=0, complete=False, stop_reason='agent 不可用')])
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            return dict(next(calls), run=run, problems=len(problems), per={})
+        with mock.patch.object(improve, 'STATE', root / 'state.json'), mock.patch.object(improve, 'HISTORY', root / 'h.jsonl'), \
+             mock.patch.object(improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(improve, 'evaluate', side_effect=fake), \
+             mock.patch.object(improve, 'propose_prompt', return_value=('p1', [])):
+            result = improve.run_loop('x', iterations=5)
+        rows = [json.loads(l) for l in (root / 'h.jsonl').read_text().splitlines()]
+        self.assertEqual([r['event'] for r in rows], ['baseline', 'aborted'])
+        self.assertEqual(result['iterations'], 0)

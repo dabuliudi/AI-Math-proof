@@ -1,0 +1,257 @@
+{
+  "arxiv": "2611.14160",
+  "title": "Zero-sum Ramsey numbers of forests and complete bipartite graphs",
+  "url": "https://arxiv.org/abs/2611.14160",
+  "auditor": "audit-b1-w1",
+  "definitions": [
+    {
+      "name": "x2611_14160_subdividedStar",
+      "lean": "def x2611_14160_subdividedStar (a b : ℕ) : SimpleGraph (Fin (1 + a + b)) :=\n  SimpleGraph.fromRel (fun u v =>\n    (u.val = 0 ∧ 1 ≤ v.val ∧ v.val ≤ a) ∨\n    (1 ≤ u.val ∧ u.val ≤ b ∧ v.val = a + u.val))",
+      "notes": "For a ≥ b: vertex 0 is the center, vertices 1,...,a are its neighbors, and a+i is the extra leaf on arm i for 1 ≤ i ≤ b. SimpleGraph.fromRel symmetrizes the displayed relations. This is the paper’s T_{a,b}."
+    },
+    {
+      "name": "x2611_14160_copyWeight",
+      "lean": "noncomputable def x2611_14160_copyWeight {V W Γ : Type*} [Fintype V]\n    [AddCommMonoid Γ] (G : SimpleGraph V) (w : Sym2 W → Γ) (f : V ↪ W) : Γ := by\n  classical\n  exact ∑ e ∈ G.edgeFinset, w (Sym2.map f e)",
+      "notes": "The sum of edge labels of a non-induced copy of G in a complete host, specified by an injective vertex map f. Labels are extended to all Sym2 W; their values on diagonal pairs are never used."
+    },
+    {
+      "name": "x2611_14160_zeroSumForces",
+      "lean": "def x2611_14160_zeroSumForces {V : Type*} [Fintype V]\n    (G : SimpleGraph V) (m N : ℕ) : Prop :=\n  ∀ w : Sym2 (Fin N) → ZMod m, ∃ f : V ↪ Fin N,\n    x2611_14160_copyWeight G w f = 0",
+      "notes": "Every ZMod m edge labeling of K_N contains a zero-sum (not necessarily induced) copy of G."
+    },
+    {
+      "name": "x2611_14160_zeroSumRamsey",
+      "lean": "noncomputable def x2611_14160_zeroSumRamsey {V : Type*} [Fintype V]\n    (G : SimpleGraph V) (m : ℕ) : ℕ :=\n  sInf {N : ℕ | x2611_14160_zeroSumForces G m N}",
+      "notes": "The least N with the paper’s zero-sum Ramsey property. The sInf of an empty subset of ℕ is 0; in the claims here the modulus divides the edge count and the usual finite Ramsey argument guarantees existence. The definition also implements the paper’s convention at modulus 1."
+    },
+    {
+      "name": "x2611_14160_ramsey",
+      "lean": "noncomputable def x2611_14160_ramsey {V : Type*} [Fintype V]\n    (G : SimpleGraph V) (r : ℕ) : ℕ :=\n  sInf {N : ℕ | ∀ w : Sym2 (Fin N) → Fin r,\n    ∃ (f : V ↪ Fin N) (c : Fin r),\n      ∀ e ∈ G.edgeSet, w (Sym2.map f e) = c}",
+      "notes": "Ordinary r-color edge Ramsey number of G with non-induced copies; only r=2 is used. This is not a proper vertex coloring."
+    },
+    {
+      "name": "x2611_14160_disjointCopies",
+      "lean": "def x2611_14160_disjointCopies {V : Type*} (t : ℕ) (G : SimpleGraph V) :\n    SimpleGraph (Fin t × V) :=\n  SimpleGraph.fromRel (fun u v => u.1 = v.1 ∧ G.Adj u.2 v.2)",
+      "notes": "The graph tG on pairs (copy index, vertex), with edges only inside a common copy. A zero-sum copy of this graph requires the total packing weight to be zero; its individual components need not each have weight zero."
+    },
+    {
+      "name": "x2611_14160_cutWeight",
+      "lean": "noncomputable def x2611_14160_cutWeight {V Γ : Type*} [Fintype V]\n    [AddCommMonoid Γ] (G : SimpleGraph V) (w : Sym2 V → Γ) (A : Finset V) : Γ := by\n  classical\n  exact ∑ u ∈ A, ∑ v ∈ Finset.univ \\ A,\n    if G.Adj u v then w (Sym2.mk u v) else 0",
+      "notes": "The weight of δ_G(A). Summing from A to its complement counts every crossing edge exactly once. All graphs considered are finite, as in the introduction."
+    },
+    {
+      "name": "x2611_14160_twoGroupD",
+      "lean": "def x2611_14160_twoGroupD {ι : Type*} [Fintype ι] (a : ι → ℕ) : ℕ :=\n  1 + ∑ i, (2 ^ a i - 1)",
+      "notes": "D(Γ) for a presentation Γ = ∏ i, ZMod (2^(a i)), with positive exponents. A finite direct product is the same as the paper’s finite direct sum. The empty index type gives the trivial group and D=1."
+    },
+    {
+      "name": "x2611_14160_twoGroupCondition",
+      "lean": "def x2611_14160_twoGroupCondition (Γ : Type*) [AddCommGroup Γ] (q : ℕ) : Prop :=\n  ∃ (s : ℕ) (a : Fin s → ℕ), (∀ i, 1 ≤ a i) ∧\n    Nonempty (Γ ≃+ ((i : Fin s) → ZMod (2 ^ a i))) ∧\n    x2611_14160_twoGroupD a ≤ q",
+      "notes": "The condition “Γ is a finite abelian 2-group with D(Γ) ≤ q”, expressed by existence of a cyclic decomposition. It includes the empty decomposition of the trivial group. This avoids choosing a decomposition or defining D for non-2-groups."
+    },
+    {
+      "name": "x2611_14160_obstructionLabel",
+      "lean": "noncomputable def x2611_14160_obstructionLabel (a s m : ℕ) :\n    Sym2 (Fin (2 * (a - 1) + s)) → ZMod m := by\n  classical\n  exact fun e =>\n    if ∃ v ∈ e.toFinset, 2 * (a - 1) ≤ v.val then 1\n    else if (∃ v ∈ e.toFinset, v.val < a - 1) ∧\n      (∃ v ∈ e.toFinset, a - 1 ≤ v.val ∧ v.val < 2 * (a - 1))\n    then -1 else 0",
+      "notes": "Figure 2 / Lemma 2.1 labeling: P consists of the first a−1 vertices, Q of the next a−1, X of the final s. Edges meeting X get +1, P–Q edges get −1, and all other edges get 0, in ZMod m."
+    },
+    {
+      "name": "x2611_14160_forestRatios",
+      "lean": "def x2611_14160_forestRatios (m : ℕ) : Set ℝ :=\n  {r | ∃ (n : ℕ) (F : SimpleGraph (Fin n)), F.IsAcyclic ∧\n    Nat.card F.edgeSet = m ∧\n    r = (x2611_14160_zeroSumRamsey F m : ℝ) / (x2611_14160_ramsey F 2 : ℝ)}",
+      "notes": "Ratios over all finite forests with m edges, allowing isolated vertices as printed. Theorem 1.3 represents the printed maximum by a function whose value is IsGreatest in this set, rather than silently replacing a maximum by a supremum."
+    },
+    {
+      "name": "x2611_14160_defect",
+      "lean": "noncomputable def x2611_14160_defect {V : Type*} [Fintype V]\n    (G : SimpleGraph V) (t : ℕ) : ℕ :=\n  sInf {d : ℕ | ∀ w : Sym2 (Fin (2 * Fintype.card V)) → ZMod t,\n    (∀ f : V ↪ Fin (2 * Fintype.card V),\n      ∃ g : V ↪ Fin (2 * Fintype.card V),\n        Disjoint (Set.range f) (Set.range g) ∧\n        x2611_14160_copyWeight G w f = x2611_14160_copyWeight G w g) ∨\n    (∃ S : Finset (Fin (2 * Fintype.card V)), S.card ≤ Fintype.card V + d ∧\n      ∃ f g : V ↪ Fin (2 * Fintype.card V),\n        Set.range f ⊆ (S : Set (Fin (2 * Fintype.card V))) ∧\n        Set.range g ⊆ (S : Set (Fin (2 * Fintype.card V))) ∧\n        x2611_14160_copyWeight G w f ≠ x2611_14160_copyWeight G w g)}",
+      "notes": "Definition 3.6 verbatim in content: the least nonnegative d such that each labeling of K_{2n} has either disjoint equal-weight partners for every copy, or two different-weight copies on a common set of at most n+d vertices. All copies are injective maps into the complete host."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.3",
+      "name": "x2611_14160_thm1_3",
+      "original": "For every positive integer $k$ , put $T_{k}=T_{276k,12k}$ . Then\n\n $e(T_{k})=288k,\\qquad R(T_{k},2)\\leq 553k,\\qquad R(T_{k},\\mathbb{Z}_{288k})\\geq 554k-1.$ \n\nConsequently\n\n $\\liminf_{k\\to\\infty}\\frac{R(T_{k},\\mathbb{Z}_{288k})}{R(T_{k},2)}\\geq\\frac{554}{553}>1.$ \n\nMoreover, for every integer $m\\geq 576$ there is a tree $T$ with $e(T)=m$ \nand $R(T,\\mathbb{Z}_{m})>R(T,2)$ , and\n\n $\\liminf_{m\\to\\infty}\\max_{\\begin{subarray}{c}F\\text{ a forest}\\\\\ne(F)=m\\end{subarray}}\\frac{R(F,\\mathbb{Z}_{m})}{R(F,2)}\\geq\\frac{554}{553}>1.$ \n\nIn particular, Conjecture 1.1 is false.",
+      "lean": ": (∀ k : ℕ, 1 ≤ k →\n    Nat.card (x2611_14160_subdividedStar (276*k) (12*k)).edgeSet = 288*k ∧\n    x2611_14160_ramsey (x2611_14160_subdividedStar (276*k) (12*k)) 2 ≤ 553*k ∧\n    554*k-1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276*k) (12*k)) (288*k)) ∧\n  (((554 : ℝ)/553) : EReal) ≤ Filter.liminf (fun k : ℕ =>\n    (((x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276*k) (12*k)) (288*k) : ℝ) /\n    (x2611_14160_ramsey (x2611_14160_subdividedStar (276*k) (12*k)) 2 : ℝ)) : EReal)) Filter.atTop ∧\n  1 < (554 : ℝ)/553 ∧\n  (∀ m : ℕ, 576 ≤ m → ∃ (n : ℕ) (T : SimpleGraph (Fin n)), T.IsTree ∧\n    Nat.card T.edgeSet = m ∧ x2611_14160_ramsey T 2 < x2611_14160_zeroSumRamsey T m) ∧\n  (∃ M : ℕ → ℝ, (∀ m : ℕ, 2 ≤ m → IsGreatest (x2611_14160_forestRatios m) (M m)) ∧\n    (((554 : ℝ)/553) : EReal) ≤ Filter.liminf (fun m => (M m : EReal)) Filter.atTop ∧\n    ¬ Filter.Tendsto M Filter.atTop (nhds 1))",
+      "notes": "All conclusions are retained. T_k is the explicitly defined subdivided star. Ratios are real-valued and liminf is taken in EReal, so a potentially infinite lower limit is not silently excluded; the k=0 term is irrelevant to atTop. The printed forest maximum is represented by an attained greatest value M(m) over all finite forests, including isolates. Its failure to tend to 1 records the final disproof sentence. The unused values M(0), M(1) are unrestricted.",
+      "fidelity": {
+        "twin": "(M : ℕ → ℝ) (hM : ∀ m : ℕ, 2 ≤ m → IsGreatest (x2611_14160_forestRatios m) (M m)) : (∀ k : ℕ, 0 < k → Nat.card (x2611_14160_subdividedStar (276 * k) (12 * k)).edgeSet = 288 * k ∧ x2611_14160_ramsey (x2611_14160_subdividedStar (276 * k) (12 * k)) 2 ≤ 553 * k ∧ 554 * k - 1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276 * k) (12 * k)) (288 * k)) ∧ (554 / 553 : ℝ) ≤ Filter.liminf (fun k : ℕ => (x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276 * k) (12 * k)) (288 * k) : ℝ) / (x2611_14160_ramsey (x2611_14160_subdividedStar (276 * k) (12 * k)) 2 : ℝ)) Filter.atTop ∧ (1 : ℝ) < 554 / 553 ∧ (∀ m : ℕ, 576 ≤ m → ∃ (n : ℕ) (G : SimpleGraph (Fin n)), G.IsTree ∧ Nat.card G.edgeSet = m ∧ x2611_14160_ramsey G 2 < x2611_14160_zeroSumRamsey G m) ∧ (554 / 553 : ℝ) ≤ Filter.liminf M Filter.atTop ∧ ¬ Filter.Tendsto M Filter.atTop (nhds (1 : ℝ))",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.4",
+      "name": "x2611_14160_thm1_4",
+      "original": "Let $q\\geq 2$ be a power of two and $s,k\\geq 1$ . Then\n\n $R(K_{s,kq},\\mathbb{Z}_{q})=s+kq\\quad\\Longleftrightarrow\\quad s\\geq q\\ \\text{ or }\\ q-s\\in\\{2^{j}:j\\geq 0\\}.$ \n\nFor $q\\geq 4$ , the least $s_{0}$ for which equality holds for every\n $k\\geq 1$ and every $s\\geq s_{0}$ is $q-2$ . For every $m\\geq 2$ ,\n\n $R(mK_{q,q},\\mathbb{Z}_{m})=2qm+\\frac{m}{\\gcd(m,q)}-1.$",
+      "lean": "(q : ℕ) (hq : 2 ≤ q) (hpow : ∃ a : ℕ, q = 2^a) :\n  (∀ s k : ℕ, 1 ≤ s → 1 ≤ k →\n    (x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin s) (Fin (k*q))) q = s+k*q ↔\n      q ≤ s ∨ ∃ j : ℕ, q-s = 2^j)) ∧\n  (4 ≤ q → IsLeast {s₀ : ℕ | 1 ≤ s₀ ∧ ∀ k s : ℕ, 1 ≤ k → s₀ ≤ s →\n    x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin s) (Fin (k*q))) q = s+k*q}\n    (q-2)) ∧\n  (∀ m : ℕ, 2 ≤ m → x2611_14160_zeroSumRamsey\n    (x2611_14160_disjointCopies m (completeBipartiteGraph (Fin q) (Fin q))) m =\n    2*q*m + m / Nat.gcd m q - 1)",
+      "notes": "The initial power-of-two hypothesis applies also to the final packing formula. Natural j includes j=0 (the difference 1). IsLeast states the least positive threshold s₀, as clarified by Lemma 3.3. The quotient m/gcd(m,q) is the integer quotient, and is exact.",
+      "fidelity": {
+        "twin": "(q s k : ℕ) (hq : 2 ≤ q) (hqpow : ∃ a : ℕ, q = 2 ^ a) (hs : 1 ≤ s) (hk : 1 ≤ k) : (x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin s) (Fin (k * q))) q = s + k * q ↔ q ≤ s ∨ ∃ j : ℕ, q - s = 2 ^ j) ∧ (4 ≤ q → IsLeast {s₀ : ℕ | 1 ≤ s₀ ∧ ∀ (k' : ℕ), 1 ≤ k' → ∀ (s' : ℕ), s₀ ≤ s' → x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin s') (Fin (k' * q))) q = s' + k' * q} (q - 2)) ∧ (∀ (m : ℕ), 2 ≤ m → x2611_14160_zeroSumRamsey (x2611_14160_disjointCopies m (completeBipartiteGraph (Fin q) (Fin q))) m = 2 * q * m + m / Nat.gcd m q - 1)",
+        "twin_by": "audit-b1-w3",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.1(i)",
+      "name": "x2611_14160_lem2_1_i",
+      "original": "Let $a>b\\geq 1$ and $s\\geq 1$ be integers.\n\n(i) \n\nIf $6s\\leq b+1$ , then\n\n $R(T_{a,b},\\mathbb{Z}_{a+b})\\geq 2a+s-1.$ \n\nMore generally, let $T$ be a tree with $m$ edges and bipartition sizes\n $t_{1}\\leq t_{2}$ , let $L,s\\geq 1$ , and suppose that for some vertex $c$ each\ncomponent of $T-c$ has at most $L$ vertices and that $T-c$ contains a\nmatching of size $s$ . If\n\n $\\deg_{T}(c)>m/2\\qquad\\text{and}\\qquad L(L+1)s\\leq t_{1},$ \n\nthen $R(T,\\mathbb{Z}_{m})\\geq 2t_{2}+s-1$ .",
+      "lean": ": (∀ a b s : ℕ, b < a → 1 ≤ b → 1 ≤ s → 6*s ≤ b+1 →\n    2*a+s-1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar a b) (a+b)) ∧\n  (∀ (V : Type) [Fintype V] (T : SimpleGraph V) (m t₁ t₂ L s : ℕ)\n    (B₁ B₂ : Finset V) (c : V),\n    T.IsTree → Nat.card T.edgeSet = m → t₁ ≤ t₂ →\n    T.IsBipartiteWith (B₁ : Set V) (B₂ : Set V) →\n    (B₁ : Set V) ∪ (B₂ : Set V) = Set.univ → B₁.card = t₁ → B₂.card = t₂ →\n    1 ≤ L → 1 ≤ s →\n    (∀ C : (T.induce {v : V | v ≠ c}).ConnectedComponent, Nat.card C.supp ≤ L) →\n    (∃ M : (T.induce {v : V | v ≠ c}).Subgraph, M.IsMatching ∧ Nat.card M.edgeSet = s) →\n    m < 2 * Nat.card (T.neighborSet c) → L*(L+1)*s ≤ t₁ →\n    2*t₂+s-1 ≤ x2611_14160_zeroSumRamsey T m)",
+      "notes": "Includes both the subdivided-star inequality and its printed generalization. The two finsets form the full bipartition, with t₁ ≤ t₂. T−c is the induced graph on vertices unequal to c. Component size counts vertices; matching size counts edges. The strict inequality m < 2 deg(c) is exactly deg(c)>m/2, without natural-number division ambiguity.",
+      "fidelity": {
+        "twin": "(a b s : ℕ) (hab : b < a) (hb : 1 ≤ b) (hs : 1 ≤ s) : (6 * s ≤ b + 1 → 2 * a + s - 1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar a b) (a + b)) ∧ (∀ (V : Type*) [Fintype V] [DecidableEq V] (T : SimpleGraph V) [DecidableRel T.Adj] (m t₁ t₂ L : ℕ) (A B : Set V) (c : V), T.IsTree → 2 ≤ m → T.edgeSet.ncard = m → T.IsBipartiteWith A B → A ∪ B = Set.univ → A.ncard = t₁ → B.ncard = t₂ → t₁ ≤ t₂ → 1 ≤ L → (∀ C : (T.induce {v : V | v ≠ c}).ConnectedComponent, C.supp.ncard ≤ L) → (∃ M : (T.induce {v : V | v ≠ c}).Subgraph, M.IsMatching ∧ M.edgeSet.ncard = s) → m < 2 * T.degree c → L * (L + 1) * s ≤ t₁ → 2 * t₂ + s - 1 ≤ x2611_14160_zeroSumRamsey T m)",
+        "twin_by": "audit-b1-w2",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.1(ii)",
+      "name": "x2611_14160_lem2_1_ii",
+      "original": "Conversely, let $a\\geq 4b$ and $a,b,s\\geq 1$ . For the labeling\nused in (i), with $|P|=|Q|=a-1$ and $|X|=s$ , there is no zero-sum copy\nof $T_{a,b}$ if and only if $6s\\leq b+1$ .",
+      "lean": "(a b s : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hs : 1 ≤ s) (hab : 4*b ≤ a) :\n  (¬ ∃ f : Fin (1+a+b) ↪ Fin (2*(a-1)+s),\n    x2611_14160_copyWeight (x2611_14160_subdividedStar a b)\n      (x2611_14160_obstructionLabel a s (a+b)) f = 0) ↔ 6*s ≤ b+1",
+      "notes": "The particular Figure 2 labeling is fixed by obstructionLabel. This is an iff about zero-sum copies in that labeling, not an exact Ramsey-number formula. The host has 2a+s−2 vertices and labels are modulo a+b, as in part (i).",
+      "fidelity": {
+        "twin": "(a b s : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hs : 1 ≤ s) (hab : b < a) (ha4b : 4 * b ≤ a) : (¬ ∃ f : Fin (1 + a + b) ↪ Fin (2 * (a - 1) + s), x2611_14160_copyWeight (x2611_14160_subdividedStar a b) (x2611_14160_obstructionLabel a s (a + b)) f = 0) ↔ 6 * s ≤ b + 1",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.3",
+      "name": "x2611_14160_lem2_3",
+      "original": "Let $a,b,q$ be positive integers such that $a\\geq 3b$ and\n $(q+2)(a+b-2)>2b(b-1)$ . Then\n\n $R(T_{a,b},2)\\leq 2a+q.$",
+      "lean": "(a b q : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hq : 1 ≤ q)\n  (hab : 3*b ≤ a) (hineq : 2*b*(b-1) < (q+2)*(a+b-2)) :\n  x2611_14160_ramsey (x2611_14160_subdividedStar a b) 2 ≤ 2*a+q",
+      "notes": "All three parameters are positive integers. The strict numerical hypothesis is preserved; the subtractions are natural subtractions, agreeing with integer subtraction under these hypotheses.",
+      "fidelity": {
+        "twin": "(a b q : ℕ) (ha : 0 < a) (hb : 0 < b) (hq : 0 < q) (hab : 3 * b ≤ a) (hineq : 2 * b * (b - 1) < (q + 2) * (a + b - 2)) : x2611_14160_ramsey (x2611_14160_subdividedStar a b) 2 ≤ 2 * a + q",
+        "twin_by": "audit-b1-w3",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.5",
+      "name": "x2611_14160_lem2_5",
+      "original": "For $m\\geq 288$ , write $m=288k+r$ , where $k\\geq 1$ and $0\\leq r<288$ ,\nand put $U_{m}=T_{276k+r,12k}$ . Then $e(U_{m})=m$ and\n\n $R(U_{m},2)\\leq 553k+2r,\\qquad R(U_{m},\\mathbb{Z}_{m})\\geq 554k+2r-1.$ \n\nIn particular $R(U_{m},\\mathbb{Z}_{m})>R(U_{m},2)$ for every $m\\geq 576$ , and\n\n $\\liminf_{m\\to\\infty}\\frac{R(U_{m},\\mathbb{Z}_{m})}{R(U_{m},2)}\\geq\\frac{554}{553}.$",
+      "lean": ": (∀ m k r : ℕ, 288 ≤ m → 1 ≤ k → r < 288 → m = 288*k+r →\n    Nat.card (x2611_14160_subdividedStar (276*k+r) (12*k)).edgeSet = m ∧\n    x2611_14160_ramsey (x2611_14160_subdividedStar (276*k+r) (12*k)) 2 ≤ 553*k+2*r ∧\n    554*k+2*r-1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276*k+r) (12*k)) m) ∧\n  (∀ m : ℕ, 576 ≤ m →\n    x2611_14160_ramsey (x2611_14160_subdividedStar (276*(m/288)+m%288) (12*(m/288))) 2 <\n    x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276*(m/288)+m%288) (12*(m/288))) m) ∧\n  (((554 : ℝ)/553) : EReal) ≤ Filter.liminf (fun m : ℕ =>\n    (((x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276*(m/288)+m%288) (12*(m/288))) m : ℝ) /\n    (x2611_14160_ramsey (x2611_14160_subdividedStar (276*(m/288)+m%288) (12*(m/288))) 2 : ℝ)) : EReal)) Filter.atTop",
+      "notes": "U_m is expanded explicitly. In the last two clauses, k=m/288 and r=m%288 are the unique Euclidean quotient and remainder. All m<288 terms in the ratio sequence are irrelevant to liminf, which is taken in EReal to allow infinite lower limits. The edge count, both bounds, strict separation for m≥576, and asymptotic ratio are retained.",
+      "fidelity": {
+        "twin": ": (∀ (m k r : ℕ), 288 ≤ m → 1 ≤ k → r < 288 → m = 288 * k + r → (x2611_14160_subdividedStar (276 * k + r) (12 * k)).edgeSet.ncard = m ∧ x2611_14160_ramsey (x2611_14160_subdividedStar (276 * k + r) (12 * k)) 2 ≤ 553 * k + 2 * r ∧ 554 * k + 2 * r - 1 ≤ x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276 * k + r) (12 * k)) m ∧ (576 ≤ m → x2611_14160_ramsey (x2611_14160_subdividedStar (276 * k + r) (12 * k)) 2 < x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276 * k + r) (12 * k)) m)) ∧ (554 : ℝ) / 553 ≤ Filter.liminf (fun m : ℕ => (x2611_14160_zeroSumRamsey (x2611_14160_subdividedStar (276 * (m / 288) + m % 288) (12 * (m / 288))) m : ℝ) / (x2611_14160_ramsey (x2611_14160_subdividedStar (276 * (m / 288) + m % 288) (12 * (m / 288))) 2 : ℝ)) Filter.atTop",
+        "twin_by": "audit-b1-w6",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 3.1",
+      "name": "x2611_14160_lem3_1",
+      "original": "Let $q\\geq 2$ be a power of two and $\\Gamma$ a finite abelian $2$ -group\nwith $D(\\Gamma)\\leq q$ . Let $t$ be a positive multiple of $q$ , and let\n $D(\\Gamma)\\leq h\\leq q$ . For any $\\Gamma$ -labeling $w$ of the edges of a graph\n $G$ and any $W\\subseteq V(G)$ of size $t+h-1$ , an odd number of\n $t$ -subsets $A$ of $W$ satisfy $w(\\delta_{G}(A))=0$ , and an even\nnumber give each other weight. The minimum size $t+D(\\Gamma)-1$ of $W$ \nin this assertion is sharp for guaranteeing a zero-weight cut with\nthe chosen $t$ -set contained in $W$ .",
+      "lean": "(ι : Type) [Fintype ι] (a : ι → ℕ) (ha : ∀ i, 1 ≤ a i)\n  (q t h : ℕ) (hq : 2 ≤ q) (hpow : ∃ b : ℕ, q = 2^b)\n  (hD : x2611_14160_twoGroupD a ≤ q) (ht : 0 < t) (hqt : q ∣ t)\n  (hDh : x2611_14160_twoGroupD a ≤ h) (hhq : h ≤ q)\n  (V : Type) [Fintype V] (G : SimpleGraph V)\n  (w : Sym2 V → ((i : ι) → ZMod (2^a i))) (W : Finset V)\n  (hW : W.card = t+h-1) :\n  (∀ g : (i : ι) → ZMod (2^a i),\n    (g = 0 → Odd (Nat.card {A : Finset V // A ⊆ W ∧ A.card = t ∧ x2611_14160_cutWeight G w A = g})) ∧\n    (g ≠ 0 → Even (Nat.card {A : Finset V // A ⊆ W ∧ A.card = t ∧ x2611_14160_cutWeight G w A = g}))) ∧\n  (∃ (G₀ : SimpleGraph (Fin (t+x2611_14160_twoGroupD a-1)))\n    (w₀ : Sym2 (Fin (t+x2611_14160_twoGroupD a-1)) → ((i : ι) → ZMod (2^a i)))\n    (W₀ : Finset (Fin (t+x2611_14160_twoGroupD a-1))),\n    W₀.card = t+x2611_14160_twoGroupD a-2 ∧\n    ∀ A : Finset (Fin (t+x2611_14160_twoGroupD a-1)),\n      A ⊆ W₀ → A.card = t → x2611_14160_cutWeight G₀ w₀ A ≠ 0)",
+      "notes": "A finite abelian 2-group is presented as the finite product of its cyclic summands, with positive exponents, including an empty product. This is invariant under additive isomorphism. The counts are of sides A, not cuts modulo complementation. Sharpness is formalized by an explicit existential obstruction with |W₀|=t+D−2 in a graph with one further vertex, also covering D=1 where no t-set can be chosen.",
+      "fidelity": {
+        "twin": "(Γ : Type*) [AddCommGroup Γ] [Fintype Γ] [DecidableEq Γ] (s : ℕ) (a : Fin s → ℕ) (ha : ∀ i, 1 ≤ a i) (hΓ : Nonempty (Γ ≃+ ((i : Fin s) → ZMod (2 ^ a i)))) (q t h : ℕ) (hq : 2 ≤ q) (hqpow : ∃ k : ℕ, q = 2 ^ k) (ht : 0 < t) (hqt : q ∣ t) (hDh : x2611_14160_twoGroupD a ≤ h) (hhq : h ≤ q) : (∀ (V : Type) [Fintype V] [DecidableEq V] (G : SimpleGraph V) (w : Sym2 V → Γ) (W : Finset V), W.card = t + h - 1 → Odd (((W.powersetCard t).filter (fun A => x2611_14160_cutWeight G w A = 0)).card) ∧ ∀ g : Γ, g ≠ 0 → Even (((W.powersetCard t).filter (fun A => x2611_14160_cutWeight G w A = g)).card)) ∧ (∃ (n : ℕ) (G : SimpleGraph (Fin n)) (w : Sym2 (Fin n) → Γ) (W : Finset (Fin n)), W.card = t + x2611_14160_twoGroupD a - 2 ∧ ∀ A ∈ W.powersetCard t, x2611_14160_cutWeight G w A ≠ 0)",
+        "twin_by": "audit-b1-w0",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 3.2",
+      "name": "x2611_14160_lem3_2",
+      "original": "Let $q\\geq 2$ be a power of two, and let $\\Gamma$ be a finite abelian group.\nEvery $\\Gamma$ -labeling of $E(K_{2q})$ contains a zero-sum $K_{q,q}$ if\nand only if $\\Gamma$ is a $2$ -group with $D(\\Gamma)\\leq q$ . Whenever this\ncondition holds, the number of unordered balanced cuts of weight\nzero is odd, and the number of each other weight is even.",
+      "lean": "(q : ℕ) (hq : 2 ≤ q) (hpow : ∃ a : ℕ, q = 2^a)\n  (Γ : Type) [AddCommGroup Γ] [Fintype Γ] :\n  ((∀ w : Sym2 (Fin (2*q)) → Γ, ∃ A : Finset (Fin (2*q)), A.card = q ∧\n    x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = 0) ↔\n    x2611_14160_twoGroupCondition Γ q) ∧\n  (x2611_14160_twoGroupCondition Γ q →\n    ∀ (w : Sym2 (Fin (2*q)) → Γ) (v : Fin (2*q)) (g : Γ),\n    (g = 0 → Odd (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})) ∧\n    (g ≠ 0 → Even (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})))",
+      "notes": "The iff ranges over all labelings of K_{2q}. twoGroupCondition is exactly the cyclic-decomposition condition “2-group and D≤q”. For the parity assertion, fixing any vertex v and taking the side avoiding v gives one representative of each unordered balanced cut; there is no extra factor of two.",
+      "fidelity": {
+        "twin": "(q : ℕ) (hq : 2 ≤ q) (hqpow : ∃ a : ℕ, q = 2 ^ a) (Γ : Type*) [AddCommGroup Γ] [Fintype Γ] : ((∀ w : Sym2 (Fin (2 * q)) → Γ, ∃ A : Finset (Fin (2 * q)), A.card = q ∧ x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2 * q))) w A = 0) ↔ x2611_14160_twoGroupCondition Γ q) ∧ (x2611_14160_twoGroupCondition Γ q → ∀ (w : Sym2 (Fin (2 * q)) → Γ) (v : Fin (2 * q)), Odd (Nat.card {A : Finset (Fin (2 * q)) // A.card = q ∧ v ∉ A ∧ x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2 * q))) w A = 0}) ∧ ∀ g : Γ, g ≠ 0 → Even (Nat.card {A : Finset (Fin (2 * q)) // A.card = q ∧ v ∉ A ∧ x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2 * q))) w A = g}))",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 3.3 (general group spanning assertions)",
+      "name": "x2611_14160_lem3_3",
+      "original": "Let $q\\geq 2$ be a power of two and let $\\Gamma$ be a finite abelian\n $2$ -group with $D(\\Gamma)\\leq q$ . If $k,s\\geq 1$ and $s\\geq D(\\Gamma)-1$ , then\nevery $\\Gamma$ -labeling of $K_{kq+s}$ contains a spanning zero-sum copy\nof $K_{kq,s}$ . The same conclusion holds when $1\\leq s<q$ and\n $q-s$ is a power of two, including $1$ .",
+      "lean": "(ι : Type) [Fintype ι] (a : ι → ℕ) (ha : ∀ i, 1 ≤ a i)\n  (q k s : ℕ) (hq : 2 ≤ q) (hpow : ∃ b : ℕ, q = 2^b)\n  (hD : x2611_14160_twoGroupD a ≤ q) (hk : 1 ≤ k) (hs : 1 ≤ s)\n  (hsize : x2611_14160_twoGroupD a - 1 ≤ s ∨\n    (s < q ∧ ∃ j : ℕ, q-s = 2^j)) :\n  ∀ w : Sym2 (Fin (k*q+s)) → ((i : ι) → ZMod (2^a i)),\n    ∃ A : Finset (Fin (k*q+s)), A.card = k*q ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (k*q+s))) w A = 0",
+      "notes": "Formalizes the first paragraph, including both sufficient conditions. The group is given by its cyclic presentation, as in Lemma 3.1. A kq-set in a host of kq+s vertices has complement of size s, so its zero cut is exactly a spanning zero-sum K_{kq,s}. The subsequent cyclic iff and least-threshold clauses are already retained in Theorem 1.4.",
+      "fidelity": {
+        "twin": "(q k s r : ℕ) (Γ : Type*) [AddCommGroup Γ] (a : Fin r → ℕ) (ha : ∀ i, 1 ≤ a i) (hΓ : Nonempty (Γ ≃+ ((i : Fin r) → ZMod (2 ^ a i)))) (hq : 2 ≤ q) (hqpow : ∃ j : ℕ, q = 2 ^ j) (hD : x2611_14160_twoGroupD a ≤ q) (hk : 1 ≤ k) (hs : 1 ≤ s) (hcases : x2611_14160_twoGroupD a - 1 ≤ s ∨ (s < q ∧ ∃ j : ℕ, q - s = 2 ^ j)) : ∀ w : Sym2 (Fin (k * q + s)) → Γ, ∃ f : (Fin (k * q) ⊕ Fin s) ≃ Fin (k * q + s), x2611_14160_copyWeight (completeBipartiteGraph (Fin (k * q)) (Fin s)) w f.toEmbedding = 0",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Remark 3.4 (Odd prime moduli)",
+      "name": "x2611_14160_remark3_4",
+      "original": "The hypothesis that $q$ is a power of two cannot be removed: for every\nodd prime $p$ one has $R(K_{p,p},\\mathbb{Z}_{p})\\geq 2p+1$ .",
+      "lean": "(p : ℕ) (hp : Nat.Prime p) (hodd : Odd p) :\n  2*p+1 ≤ x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin p) (Fin p)) p",
+      "notes": "The exact printed numerical inequality for each odd prime p. The accompanying construction is explanatory proof text and is not added as a separate claim.",
+      "fidelity": {
+        "twin": "(p : ℕ) (hp : Nat.Prime p) (hodd : Odd p) : 2 * p + 1 ≤ x2611_14160_zeroSumRamsey (completeBipartiteGraph (Fin p) (Fin p)) p",
+        "twin_by": "audit-b1-w3",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 3.7",
+      "name": "x2611_14160_lem3_7",
+      "original": "For every graph $G$ on $n\\geq 1$ vertices and every $t\\geq 2$ ,\n $\\operatorname{def}_{t}(G)\\leq 1$ .",
+      "lean": "(V : Type) [Fintype V] (G : SimpleGraph V) (hn : 1 ≤ Fintype.card V)\n  (t : ℕ) (ht : 2 ≤ t) : x2611_14160_defect G t ≤ 1",
+      "notes": "Uses Definition 3.6 exactly. n is Fintype.card V, with n≥1; no nonempty-edge or modulus-divides-edge-count hypothesis is added, since none is printed.",
+      "fidelity": {
+        "twin": "{V : Type*} [Fintype V] (G : SimpleGraph V) (hn : 1 ≤ Fintype.card V) (t : ℕ) (ht : 2 ≤ t) : x2611_14160_defect G t ≤ 1",
+        "twin_by": "audit-b1-w0",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Section 3.3 (counterexample family and q=4)",
+      "name": "x2611_14160_counterexamples",
+      "original": "In particular, for every power of two $q\\geq 2$ , taking $m=2q$ gives\n\n $R(2qK_{q,q},\\mathbb{Z}_{2q})=4q^{2}+1,\\qquad\\operatorname{def}_{2q}(K_{q,q})=1.$ \n\nThe conjectured value is $4q^{2}+2q-1$ , so the exact gap is $2q-2>0$ .\nAs explained in Remark 1.5, the failure of the\nconjecture for this family already follows from the earlier results\nof Caro and Caro–Provstgaard. For $q=4$ , the exact value\n $R(8K_{4,4},\\mathbb{Z}_{8})=65$ sharpens their upper bound $67$ ; the\nconjectured value is $71$ .",
+      "lean": "(q : ℕ) (hq : 2 ≤ q) (hpow : ∃ a : ℕ, q = 2^a) :\n  x2611_14160_zeroSumRamsey\n    (x2611_14160_disjointCopies (2*q) (completeBipartiteGraph (Fin q) (Fin q))) (2*q) = 4*q^2+1 ∧\n  x2611_14160_defect (completeBipartiteGraph (Fin q) (Fin q)) (2*q) = 1 ∧\n  2*q*(2*q+1)-1 = 4*q^2+2*q-1 ∧\n  (4*q^2+2*q-1) - (4*q^2+1) = 2*q-2 ∧ 0 < 2*q-2 ∧\n  x2611_14160_zeroSumRamsey\n    (x2611_14160_disjointCopies 8 (completeBipartiteGraph (Fin 4) (Fin 4))) 8 = 65 ∧\n  x2611_14160_zeroSumRamsey\n    (x2611_14160_disjointCopies 8 (completeBipartiteGraph (Fin 4) (Fin 4))) 8 ≤ 67 ∧\n  8*(8+1)-1 = 71",
+      "notes": "The power-of-two family records the actual packing value, defect 1, the conjectured t(n+d)−d value, and its positive gap. The q=4 instance preserves the explicit checkable values 65, the prior upper bound 67, and conjectured value 71. The introductory quantifier is retained here in the Lean binders; it is included in original below.",
+      "fidelity": {
+        "twin": "(q : ℕ) (hq : 2 ≤ q) (hqpow : ∃ k : ℕ, q = 2 ^ k) : x2611_14160_zeroSumRamsey (x2611_14160_disjointCopies (2 * q) (completeBipartiteGraph (Fin q) (Fin q))) (2 * q) = 4 * q ^ 2 + 1 ∧ x2611_14160_defect (completeBipartiteGraph (Fin q) (Fin q)) (2 * q) = 1 ∧ (2 * q) * (2 * q + x2611_14160_defect (completeBipartiteGraph (Fin q) (Fin q)) (2 * q)) - x2611_14160_defect (completeBipartiteGraph (Fin q) (Fin q)) (2 * q) = 4 * q ^ 2 + 2 * q - 1 ∧ (4 * q ^ 2 + 2 * q - 1) - x2611_14160_zeroSumRamsey (x2611_14160_disjointCopies (2 * q) (completeBipartiteGraph (Fin q) (Fin q))) (2 * q) = 2 * q - 2 ∧ 0 < 2 * q - 2 ∧ x2611_14160_zeroSumRamsey (x2611_14160_disjointCopies 8 (completeBipartiteGraph (Fin 4) (Fin 4))) 8 = 65 ∧ x2611_14160_zeroSumRamsey (x2611_14160_disjointCopies 8 (completeBipartiteGraph (Fin 4) (Fin 4))) 8 < 67 ∧ 8 * (8 + x2611_14160_defect (completeBipartiteGraph (Fin 4) (Fin 4)) 8) - x2611_14160_defect (completeBipartiteGraph (Fin 4) (Fin 4)) 8 = 71",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Conjectures 1.1 and 1.2",
+      "reason": "Conjectures under discussion, not assertions endorsed by the paper; their counterexamples are retained."
+    },
+    {
+      "label": "Lemma 2.2 (König’s theorem)",
+      "reason": "Standard quoted background; omitted within the 12-claim cap."
+    },
+    {
+      "label": "Lemma 2.4",
+      "reason": "Direct combination of selected Lemmas 2.1(i) and 2.3; omitted within the 12-claim cap."
+    },
+    {
+      "label": "Remark 2.6 and the proportional-parameter optimization after Lemma 2.5",
+      "reason": "Additional quantitative and asymptotic claims omitted within the 12-claim cap; priority was given to the two main theorems and their principal lemmas."
+    },
+    {
+      "label": "Lemma 3.3 (cyclic iff and least threshold)",
+      "reason": "Fully covered by the selected Theorem 1.4; the general-group first paragraph is retained separately."
+    },
+    {
+      "label": "Lemma 3.5",
+      "reason": "Its full packing formula is already included in Theorem 1.4."
+    },
+    {
+      "label": "Packing generalization immediately after Lemma 3.5",
+      "reason": "The broader n≥1, gcd(m,n) a power of two formula is omitted within the 12-claim cap."
+    },
+    {
+      "label": "General defect evaluation and exact overestimate preceding the counterexample family",
+      "reason": "The general m-dependent classification is omitted within the 12-claim cap; the counterexample family and numeric q=4 instance are retained."
+    }
+  ],
+  "validation": {
+    "definitions_registered": true,
+    "statements_typechecked": 12,
+    "command": "./forge.sh check-statement",
+    "original_excerpts_verified": true,
+    "direct_shared_library_import_typecheck": true,
+    "notes": "Only statements were typechecked. No claim was proved or proposed."
+  }
+}

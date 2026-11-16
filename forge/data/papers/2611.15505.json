@@ -1,0 +1,221 @@
+{
+  "arxiv": "2611.15505",
+  "title": "An exact certificate-based enumeration of Rolle words of degree six",
+  "url": "https://arxiv.org/abs/2611.15505",
+  "auditor": "audit-b1-w6",
+  "definitions": [
+    {
+      "name": "x2611_15505_word_multiplicities",
+      "lean": "def x2611_15505_word_multiplicities (n : ℕ) (w : List ℕ) : Prop :=\n  w.length = n * (n + 1) / 2 ∧ (∀ j ∈ w, j < n) ∧\n  ∀ j : ℕ, j < n → w.count j = n - j",
+      "notes": "Labels are derivative orders 0,...,n-1, occurring n,n-1,...,1 times; the total length is N=n(n+1)/2."
+    },
+    {
+      "name": "x2611_15505_formal_word",
+      "lean": "def x2611_15505_formal_word (n : ℕ) (w : List ℕ) : Prop :=\n  x2611_15505_word_multiplicities n w ∧\n  ∀ j : ℕ, j + 1 < n →\n    w.filter (fun k => k = j ∨ k = j + 1) =\n      (List.replicate (n - j - 1) [j, j + 1]).flatten ++ [j]",
+      "notes": "For each adjacent derivative order, the restricted word alternates j,j+1,...,j. This is precisely the linear extension condition (1), with the occurrence index identifying the root index."
+    },
+    {
+      "name": "x2611_15505_realizes",
+      "lean": "def x2611_15505_realizes (n : ℕ) (p : Polynomial ℝ) (w : List ℕ) : Prop :=\n  p ≠ 0 ∧ p.natDegree = n ∧ x2611_15505_word_multiplicities n w ∧\n  ∃ x : Fin w.length → ℝ, StrictMono x ∧\n    ∀ j : ℕ, j < n →\n      ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[j] p).roots =\n        (Finset.univ.filter (fun i : Fin w.length => w.get i = j)).val.map x",
+      "notes": "A strictly increasing list of all derivative roots is labeled by w. Equality of root multisets, together with the degree and multiplicities, enforces splitting and simplicity of every nonconstant derivative and excludes shared roots. Reversal is not quotiented out."
+    },
+    {
+      "name": "x2611_15505_ordered_roots",
+      "lean": "def x2611_15505_ordered_roots (p : Polynomial ℝ) (m : ℕ) (x : Fin m → ℝ) : Prop :=\n  p ≠ 0 ∧ p.natDegree = m ∧ StrictMono x ∧\n  p.roots = Finset.univ.val.map x",
+      "notes": "An increasing enumeration of every root of a degree-m real polynomial, counting multiplicities. For m>0 this is exactly strict hyperbolicity plus the chosen ordering."
+    },
+    {
+      "name": "x2611_15505_R",
+      "lean": "noncomputable def x2611_15505_R (u r : ℝ) : Polynomial ℝ :=\n  (Polynomial.X + Polynomial.C u) * Polynomial.X *\n    (Polynomial.X - Polynomial.C 1) *\n    (Polynomial.X - Polynomial.C (1 + u + 2 * r))",
+      "notes": "The normalized quartic R=P″ in (10), with T=1+u+2r."
+    },
+    {
+      "name": "x2611_15505_F",
+      "lean": "noncomputable def x2611_15505_F (u r : ℝ) : Polynomial ℝ :=\n  Polynomial.C (1 / 30 : ℝ) * Polynomial.X ^ 6 -\n  Polynomial.C ((1 + r) / 10) * Polynomial.X ^ 5 -\n  Polynomial.C ((u ^ 2 + u + 2 * u * r - 2 * r - 1) / 12) * Polynomial.X ^ 4 +\n  Polynomial.C (u * (1 + u + 2 * r) / 6) * Polynomial.X ^ 3",
+      "notes": "The normalized sextic primitive F from (12), with the printed definitions of H and T substituted. A normalized P is F-qX+C."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.2 (Computer-assisted enumeration)",
+      "name": "x2611_15505_thm1_2",
+      "original": "Under the definition above, $a_{6}=2706$ .",
+      "lean": ": {w : List ℕ | ∃ p : Polynomial ℝ, x2611_15505_realizes 6 p w}.ncard = 2706",
+      "notes": "a₆ is the cardinality of the set of words realized by degree-six real polynomials under Definition 1.1, including the general-position condition. Words are lists; no quotient by reversal is taken. This is the claimed mathematical count, with no certificate-validity assumptions added.",
+      "fidelity": {
+        "twin": ": Nat.card {w : List ℕ // ∃ p : Polynomial ℝ, x2611_15505_realizes 6 p w} = 2706",
+        "twin_by": "audit-b1-w3",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Lemma 2.1",
+      "name": "x2611_15505_lem2_1",
+      "original": "A word with multiplicities $n,n-1,\\ldots,1$ encodes a linear extension of\n(1) if and only if every prefix satisfies\n\n $0\\leq c_{j}-c_{j+1}\\leq 1\\qquad(0\\leq j<n-1).$ \n\n(2)",
+      "lean": "(n : ℕ) (w : List ℕ) (hw : x2611_15505_word_multiplicities n w) :\n  x2611_15505_formal_word n w ↔\n  ∀ k : ℕ, k ≤ w.length → ∀ j : ℕ, j + 1 < n →\n    0 ≤ ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ∧\n    ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ≤ 1",
+      "notes": "Every prefix is w.take k with 0≤k≤length. Integer subtraction preserves the printed lower bound; natural truncated subtraction would lose it. Formal words encode the linear extensions of (1) by alternating restrictions for adjacent labels.",
+      "fidelity": {
+        "twin": "(n : ℕ) (w : List ℕ) (hw : x2611_15505_word_multiplicities n w) : x2611_15505_formal_word n w ↔ ∀ p : List ℕ, p <+: w → ∀ j : ℕ, j + 1 < n → 0 ≤ (p.count j : ℤ) - (p.count (j + 1) : ℤ) ∧ (p.count j : ℤ) - (p.count (j + 1) : ℤ) ≤ 1",
+        "twin_by": "audit-b1-w1",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 2 table (formal words, degrees 1 through 6)",
+      "name": "x2611_15505_formal_counts",
+      "original": "Degree $n$ \n1\n2\n3\n4\n5\n6\n\nFormal words\n1\n1\n2\n12\n286\n33592",
+      "lean": ": {w : List ℕ | x2611_15505_formal_word 1 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 2 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 3 w}.ncard = 2 ∧\n  {w : List ℕ | x2611_15505_formal_word 4 w}.ncard = 12 ∧\n  {w : List ℕ | x2611_15505_formal_word 5 w}.ncard = 286 ∧\n  {w : List ℕ | x2611_15505_formal_word 6 w}.ncard = 33592",
+      "notes": "The six exact entries in the Formal words row, counting all linear extensions, without any realizability filter. The two table rows for degrees and counts are copied in the plain-text extraction order.",
+      "fidelity": {
+        "twin": ": Nat.card {w : List ℕ // x2611_15505_formal_word 1 w} = 1 ∧ Nat.card {w : List ℕ // x2611_15505_formal_word 2 w} = 1 ∧ Nat.card {w : List ℕ // x2611_15505_formal_word 3 w} = 2 ∧ Nat.card {w : List ℕ // x2611_15505_formal_word 4 w} = 12 ∧ Nat.card {w : List ℕ // x2611_15505_formal_word 5 w} = 286 ∧ Nat.card {w : List ℕ // x2611_15505_formal_word 6 w} = 33592",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 2.1, equation (4)",
+      "name": "x2611_15505_eq4",
+      "original": "For a degree- $m$ strictly hyperbolic polynomial $f$ , Theorem 1 of\n[2] implies\n\n $\\left(x^{(0)}_{j+1}<x^{(2)}_{j}\\text{ for }1\\leq j\\leq m-2\\right)\\ \\Longrightarrow\\ x^{(m-3)}_{2}<x^{(m-1)}_{1}.$ \n\n(4)",
+      "lean": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ)\n  (x z t s : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hz : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[2] f) (m - 2) (fun i => z i))\n  (ht : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[m - 3] f) 3 (fun i => t i))\n  (hs : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[m - 1] f) 1 (fun i => s i))\n  (hleft : ∀ j : ℕ, j < m - 2 → x (j + 1) < z j) : t 1 < s 0",
+      "notes": "Roots use zero-based indices: printed x^(0)_{j+1}<x^(2)_j becomes x(j+1)<z(j). The printed second root of derivative m−3 is t 1. The restriction m≥3 is the domain in which that derivative is defined. No reflection or stronger hypothesis is silently substituted for (4).",
+      "fidelity": {
+        "twin": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x : ℕ → ℕ → ℝ) (hx : ∀ k < m, x2611_15505_ordered_roots ((Polynomial.derivative^[k]) f) (m - k) (fun i => x k i.val)) (hgeneral : ∀ i j : ℕ, i < m → j < m → i ≠ j → Disjoint (((Polynomial.derivative^[i]) f).roots) (((Polynomial.derivative^[j]) f).roots)) : (∀ j : ℕ, 1 ≤ j → j ≤ m - 2 → x 0 j < x 2 (j - 1)) → x (m - 3) 1 < x (m - 1) 0",
+        "twin_by": "audit-b1-w5",
+        "verdict": "original_invalid"
+      }
+    },
+    {
+      "label": "Lemma 3.1",
+      "name": "x2611_15505_lem3_1",
+      "original": "If the assigned derivative has opposite nonzero signs at the two\nendpoints of every interval, then the witness realizes the asserted word.",
+      "lean": "(n : ℕ) (p : Polynomial ℤ) (hp : p ≠ 0) (hdeg : p.natDegree = n)\n  (w : List ℕ) (hw : x2611_15505_word_multiplicities n w)\n  (q : ℕ) (hq : 0 < q) (b : Fin (w.length + 1) → ℤ) (hb : StrictMono b)\n  (hsign : ∀ i : Fin w.length,\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.castSucc : ℝ) / (q : ℝ))) *\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.succ : ℝ) / (q : ℝ))) < 0) :\n  x2611_15505_realizes n (p.map (Int.castRingHom ℝ)) w",
+      "notes": "Includes the witness format from the preceding paragraph: a nonzero degree-n integer polynomial, positive integer q, strictly increasing integer endpoints, and the asserted word multiplicities. A negative endpoint-value product is exactly opposite nonzero signs. Polynomial coefficients or a list of distinct integer roots both yield an integer polynomial.",
+      "fidelity": {
+        "twin": "(n : ℕ) (P : Polynomial ℤ) (hP : P ≠ 0) (hdeg : P.natDegree = n) (w : List ℕ) (hw : x2611_15505_word_multiplicities n w) (q : ℤ) (hq : 0 < q) (b : Fin (w.length + 1) → ℤ) (hb : StrictMono b) (hsign : ∀ i : Fin w.length, (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (P.map (Int.castRingHom ℝ))).eval ((b i.castSucc : ℝ) / (q : ℝ))) * (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (P.map (Int.castRingHom ℝ))).eval ((b i.succ : ℝ) / (q : ℝ))) < 0) : x2611_15505_realizes n (P.map (Int.castRingHom ℝ)) w",
+        "twin_by": "audit-b1-w3",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Lemma 4.1",
+      "name": "x2611_15505_lem4_1",
+      "original": "If $y^{T}E=z^{T}B$ with $z\\geq 0$ and $z\\neq 0$ , the strict system\n $Eg=0$ , $Bg>0$ has no solution.",
+      "lean": "(m k d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ)\n  (B : Matrix (Fin k) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin k → ℝ)\n  (hcert : Matrix.vecMul y E = Matrix.vecMul z B)\n  (hz : ∀ i, 0 ≤ z i) (hz0 : z ≠ 0) :\n  ¬ ∃ g : Fin d → ℝ, E.mulVec g = 0 ∧ ∀ i, 0 < B.mulVec g i",
+      "notes": "yᵀE and zᵀB are row-vector matrix products. Bg>0 is componentwise strict positivity. No positivity assumption is added on g: the lemma as printed rules out the whole strict system, hence also the positive-gap system. Real coefficients give the stated algebraic lemma, including its integer certificate application.",
+      "fidelity": {
+        "twin": "(m n d : ℕ) (E : Matrix (Fin m) (Fin d) ℝ) (B : Matrix (Fin n) (Fin d) ℝ) (y : Fin m → ℝ) (z : Fin n → ℝ) (hEq : Matrix.vecMul y E = Matrix.vecMul z B) (hz : ∀ i, 0 ≤ z i) (hz_ne : z ≠ 0) : ¬ ∃ g : Fin d → ℝ, E.mulVec g = 0 ∧ ∀ i, 0 < B.mulVec g i",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Section 4.1, equation (5)",
+      "name": "x2611_15505_eq5",
+      "original": "For completeness, two root inequalities used in these systems are recorded\nhere. If $x_{1}<\\cdots<x_{m}$ are the roots of $f$ and\n $y_{1}<\\cdots<y_{m-1}$ those of $f^{\\prime}$ , then, for $m\\geq 3$ ,\n\n $\\frac{(m-k)x_{k}+x_{k+1}}{m-k+1}<y_{k}<\\frac{x_{k}+kx_{k+1}}{k+1}\\quad(1\\leq k<m).$ \n\n(5)",
+      "lean": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i))\n  (k : ℕ) (hk1 : 1 ≤ k) (hkm : k < m) :\n  (((m : ℝ) - (k : ℝ)) * x (k - 1) + x k) / ((m : ℝ) - (k : ℝ) + 1) < y (k - 1) ∧\n  y (k - 1) < (x (k - 1) + (k : ℝ) * x k) / ((k : ℝ) + 1)",
+      "notes": "The strict degree and ordered-root hypotheses are explicit. x i and y i denote the (i+1)-st roots, so the printed k-th roots are evaluated at k−1. Both bounds and the full range 1≤k<m are retained.",
+      "fidelity": {
+        "twin": "(f : Polynomial ℝ) (m : ℕ) (hm : 3 ≤ m) (x : Fin m → ℝ) (y : Fin (m - 1) → ℝ) (hx : x2611_15505_ordered_roots f m x) (hy : x2611_15505_ordered_roots f.derivative (m - 1) y) : ∀ (k : ℕ) (hk : 1 ≤ k) (hkm : k < m), (((m : ℝ) - (k : ℝ)) * x ⟨k - 1, by omega⟩ + x ⟨k, hkm⟩) / ((m : ℝ) - (k : ℝ) + 1) < y ⟨k - 1, by omega⟩ ∧ y ⟨k - 1, by omega⟩ < (x ⟨k - 1, by omega⟩ + (k : ℝ) * x ⟨k, hkm⟩) / ((k : ℝ) + 1)",
+        "twin_by": "audit-b1-w1",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 4.1, equation (6) and its reflected inequality",
+      "name": "x2611_15505_eq6",
+      "original": "In addition, for $1\\leq k\\leq m-2$ ,\n\n $(k+1)\\sum_{i=1}^{k}y_{i}<k\\sum_{i=1}^{k+1}x_{i},$ \n\n(6)\n\nwith the reversed inequality for the corresponding rightmost roots.",
+      "lean": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i))\n  (k : ℕ) (hk1 : 1 ≤ k) (hkm : k ≤ m - 2) :\n  ((k : ℝ) + 1) * (∑ i ∈ Finset.range k, y i) <\n    (k : ℝ) * (∑ i ∈ Finset.range (k + 1), x i) ∧\n  (k : ℝ) * (∑ i ∈ Finset.range (k + 1), x (m - 1 - i)) <\n    ((k : ℝ) + 1) * (∑ i ∈ Finset.range k, y (m - 2 - i))",
+      "notes": "Includes both the leftmost-root inequality and the explicitly stated reversed inequality for the rightmost roots. Sums use zero-based indexing, and the reflected sums contain the k largest derivative roots and the k+1 largest original roots.",
+      "fidelity": {
+        "twin": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x : Fin m → ℝ) (y : Fin (m - 1) → ℝ) (hx : x2611_15505_ordered_roots f m x) (hy : x2611_15505_ordered_roots f.derivative (m - 1) y) (hgeneral : ∀ (a b : ℕ), a < m → b < m → a ≠ b → ∀ t : ℝ, ¬ (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[a] f).eval t = 0 ∧ ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[b] f).eval t = 0)) (k : ℕ) (hk₁ : 1 ≤ k) (hk₂ : k ≤ m - 2) : ((k : ℝ) + 1) * (∑ i : Fin k, y ⟨i.val, by omega⟩) < (k : ℝ) * (∑ i : Fin (k + 1), x ⟨i.val, by omega⟩) ∧ (k : ℝ) * (∑ i : Fin (k + 1), x ⟨m - 1 - i.val, by omega⟩) < ((k : ℝ) + 1) * (∑ i : Fin k, y ⟨m - 2 - i.val, by omega⟩)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "original_invalid"
+      }
+    },
+    {
+      "label": "Section 4.1, equation (7)",
+      "name": "x2611_15505_eq7",
+      "original": "If the roots are centered at their common mean and $S_{m}$ denotes their\nsum of squares, coefficient comparison gives\n\n $S_{m-1}=\\frac{m-2}{m}S_{m},\\qquad\\frac{S_{m}}{m(m-1)}=\\frac{S_{2}}{2}.$ \n\n(7)",
+      "lean": "(m : ℕ) (hm : 2 ≤ m) (f : Polynomial ℝ) (x : Fin m → ℝ)\n  (y : Fin (m - 1) → ℝ) (z : Fin 2 → ℝ) (μ : ℝ)\n  (hx : x2611_15505_ordered_roots f m x)\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) y)\n  (hz : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[m - 2] f) 2 z)\n  (hmean : (∑ i, x i) = (m : ℝ) * μ) :\n  (∑ i, (y i - μ) ^ 2) = ((m : ℝ) - 2) / (m : ℝ) * (∑ i, (x i - μ) ^ 2) ∧\n  (∑ i, (x i - μ) ^ 2) / ((m : ℝ) * ((m : ℝ) - 1)) =\n    (∑ i, (z i - μ) ^ 2) / 2",
+      "notes": "S₂ is the centered sum of squares for the quadratic derivative f^(m−2), not an arbitrary degree-two polynomial. The common mean μ is constrained to the root mean of f; equality of derivative means is a consequence, not an additional assumed identity. m≥2 is the domain where S₂ occurs.",
+      "fidelity": {
+        "twin": "(m : ℕ) (hm : 2 ≤ m) (f : Polynomial ℝ) (x : (k : ℕ) → Fin k → ℝ) (hroots : ∀ k, 1 ≤ k → k ≤ m → x2611_15505_ordered_roots ((Polynomial.derivative^[m - k]) f) k (x k)) (hcenter : ∀ k, 1 ≤ k → k ≤ m → ∑ i : Fin k, x k i = 0) (hdisjoint : ∀ k l, 1 ≤ k → k ≤ m → 1 ≤ l → l ≤ m → k ≠ l → ∀ (i : Fin k) (j : Fin l), x k i ≠ x l j) : (∑ i : Fin (m - 1), (x (m - 1) i) ^ 2) = ((m : ℝ) - 2) / (m : ℝ) * (∑ i : Fin m, (x m i) ^ 2) ∧ (∑ i : Fin m, (x m i) ^ 2) / ((m : ℝ) * ((m : ℝ) - 1)) = (∑ i : Fin 2, (x 2 i) ^ 2) / 2",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 4.1, equation (8)",
+      "name": "x2611_15505_eq8",
+      "original": "Metric cuts include rational consequences\nof the span bound\n\n $\\spanop(f^{\\prime})\\geq\\sqrt{\\frac{m-2}{m}}\\,\\spanop(f)$ \n\n(8)\n\nof Meir–Sharma [5].",
+      "lean": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i)) :\n  Real.sqrt (((m : ℝ) - 2) / (m : ℝ)) * (x (m - 1) - x 0) ≤\n    y (m - 2) - y 0",
+      "notes": "span(f) is the largest root minus the smallest root. Uses the standing m≥3 strictly hyperbolic setting of the root inequalities and keeps the square-root constant exactly as printed; no rational rounding is substituted.",
+      "fidelity": {
+        "twin": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x : Fin m → ℝ) (y : Fin (m - 1) → ℝ) (hx : x2611_15505_ordered_roots f m x) (hy : x2611_15505_ordered_roots f.derivative (m - 1) y) : y ⟨m - 2, by omega⟩ - y ⟨0, by omega⟩ ≥ Real.sqrt (((m : ℝ) - 2) / (m : ℝ)) * (x ⟨m - 1, by omega⟩ - x ⟨0, by omega⟩)",
+        "twin_by": "audit-b1-w4",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Proposition 6.1",
+      "name": "x2611_15505_prop6_1",
+      "original": "No strictly hyperbolic sextic in the normalization of\nSection 5 can satisfy all the conditions\n\n $\\begin{gathered}R(v_{-})>0,\\quad R(\\mu)>0,\\quad R(v_{+})<0,\\\\\nP^{\\prime}(a)<0,\\quad P(c)<0,\\quad P^{\\prime}(v_{+})>0,\\quad P(0)>0.\\end{gathered}$ \n\n(14)",
+      "lean": "(u r q C a c d vm vp : ℝ) (hu : 0 < u) (hr : 0 < r)\n  (P : Polynomial ℝ)\n  (hP : P = x2611_15505_F u r - Polynomial.C q * Polynomial.X + Polynomial.C C)\n  (hdeg : P.natDegree = 6) (hsplit : P.Splits) (hsimple : P.roots.Nodup)\n  (ha : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 ![a, c, d])\n  (hv : x2611_15505_ordered_roots (x2611_15505_R u r).derivative.derivative 2 ![vm, vp])\n  (horient : c < (1 + r) / 2) :\n  ¬ (0 < (x2611_15505_R u r).eval vm ∧\n    0 < (x2611_15505_R u r).eval ((1 + r) / 2) ∧\n    (x2611_15505_R u r).eval vp < 0 ∧\n    P.derivative.eval a < 0 ∧ P.eval c < 0 ∧\n    0 < P.derivative.eval vp ∧ 0 < P.eval 0)",
+      "notes": "Expands the normalization of Section 5, including u>0, r>0, the reflected orientation c<μ, P=F−qx+C, and the ordered derivative roots. Strict hyperbolicity is degree six, splitting over ℝ, and a nodup root multiset. T=1+u+2r>1 and positive leading coefficient are already built into R and F. The proposition is stated for strictly hyperbolic sextics, so the hypotheses use simplicity within each derivative root list, without strengthening this to general position across every derivative. All seven printed signs are retained; none of the derived conditions (15)–(16) is assumed.",
+      "fidelity": {
+        "twin": "(u r q C a c d v_minus v_plus : ℝ) (P : Polynomial ℝ) (z : Fin 6 → ℝ) (hu : 0 < u) (hr : 0 < r) (hP : P = x2611_15505_F u r - Polynomial.C q * Polynomial.X + Polynomial.C C) (hhyperbolic : x2611_15505_ordered_roots P 6 z) (hgeneral : ∀ (i j : Fin 6), i ≠ j → ∀ x : ℝ, ¬ (((Polynomial.derivative^[i.val]) P).IsRoot x ∧ ((Polynomial.derivative^[j.val]) P).IsRoot x)) (hcubic : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 ![a, c, d]) (hquadratic : x2611_15505_ordered_roots (x2611_15505_R u r).derivative.derivative 2 ![v_minus, v_plus]) (hRminus : 0 < (x2611_15505_R u r).eval v_minus) (hRmean : 0 < (x2611_15505_R u r).eval ((1 + r) / 2)) (hRplus : (x2611_15505_R u r).eval v_plus < 0) (hPa : P.derivative.eval a < 0) (hPc : P.eval c < 0) (hPplus : 0 < P.derivative.eval v_plus) (hPzero : 0 < P.eval 0) : False",
+        "twin_by": "audit-b1-w5",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 5, equation (13) and orientation equivalence",
+      "name": "x2611_15505_eq13",
+      "original": "Reflection permits the orientation\n $c<\\mu$ , equivalent to $r>0$ , since\n\n $R^{\\prime}(\\mu)=-r(r+u)(r+u+1).$ \n\n(13)",
+      "lean": "(u r a c d : ℝ) (hu : 0 < u) (hT : 1 < 1 + u + 2 * r)\n  (ha : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 ![a, c, d]) :\n  (x2611_15505_R u r).derivative.eval ((1 + r) / 2) = -r * (r + u) * (r + u + 1) ∧\n  (c < (1 + r) / 2 ↔ 0 < r)",
+      "notes": "Keeps r unrestricted in sign before orientation, with the normalized quartic assumptions u>0 and T>1. The displayed identity and the stated equivalence c<μ iff r>0 are both asserted. General position is unnecessary for this equivalence; it is used in the text only to exclude the equality case when selecting an orientation.",
+      "fidelity": {
+        "twin": "(u r μ : ℝ) (P : Polynomial ℝ) (w : List ℕ) (a : Fin 3 → ℝ) (hu : 0 < u) (hT : 1 < 1 + u + 2 * r) (hP : x2611_15505_realizes 6 P w) (hR : P.derivative.derivative = x2611_15505_R u r) (ha : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 a) (hμ : μ = (1 + r) / 2) : (x2611_15505_R u r).derivative.eval μ = -r * (r + u) * (r + u + 1) ∧ (a 1 < μ ↔ 0 < r) ∧ (a 1 < μ ∨ 1 - a 1 < 1 - μ)",
+        "twin_by": "audit-b1-w0",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Section 4.2, Bernstein covers; Section 4.3, Hermite constraints",
+      "reason": "Unnumbered general machinery omitted under the 12-claim cap. These use polynomial positivity and positive definite matrices, which are within Mathlib’s scope; no assertion that they require theory far beyond Mathlib is intended."
+    },
+    {
+      "label": "Section 6, certificate-specific numeric claims and equations (15)–(33)",
+      "reason": "The full obstruction is selected as Proposition 6.1. Additional intermediate inequalities, the asserted minimum Bernstein coefficient 2143/1000000, and the 194-box cover are omitted under the 12-claim cap; the paper text does not contain the actual certificate boxes or per-box coefficient data."
+    },
+    {
+      "label": "Sections 7–8 and Appendix A, individual exclusion counts and corpus comparisons",
+      "reason": "The main exact count is selected as Theorem 1.2 and formal enumeration is selected from the Section 2 table. The text gives ledger totals but not the full sets, per-stage mathematical predicates, or certificates needed to state the full data-specific claims without importing unseen ancillary data."
+    },
+    {
+      "label": "Section 1, earlier degree-four/quintic and polynomial-like-function counts",
+      "reason": "Background counts attributed to earlier papers are omitted to prioritize the present paper’s numbered results and explicit supporting inequalities within the 12-claim cap."
+    }
+  ]
+}

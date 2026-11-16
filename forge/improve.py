@@ -103,8 +103,11 @@ def evaluate(run, set_name, problems, config, workers, minutes, dry_run=False):
         item['tokens'] += row.get('tokens') or 0
         item['seconds'] += row['seconds']
         item['reason'] = row.get('reason', '')
+    # 每道题都认真做过（agent 正常退出或交了证明）才算完整；agent 不可用、服务中断时成绩不能拿来比较
+    attempted = {r['task'] for r in runner.records if r['exit'] == 0 or r['outcome'] == 'solved' or r['timed_out']}
     return dict(run=run, solved=sum(i['solved'] for i in per.values()), problems=len(problems),
-                tokens=sum(i['tokens'] for i in per.values()), per=per)
+                tokens=sum(i['tokens'] for i in per.values()), per=per,
+                complete=set(problems) <= attempted, stop_reason=runner.stop_reason)
 
 
 def better(candidate, best, token_margin=0.9):
@@ -166,7 +169,7 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
         if n % 2 == 1 and not dry_run:   # 奇数轮：让 agent 改写提示词
             name, problems = propose_prompt(best['config']['prompt'], best['dev'], n, f'improve-{set_name}-{n:03d}', set_name)
             if not name:
-                _note(dict(event='candidate_rejected', iteration=n, kind='prompt', problems=problems))
+                _note(dict(event='candidate_rejected', set=set_name, iteration=n, kind='prompt', problems=problems))
                 _save_state(state)
                 continue
             config = dict(best['config'], prompt=name)
@@ -175,11 +178,22 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
             config = dict(best["config"], effort=others[(n // 2 - 1) % len(others)])  # 从最便宜的档位试起
         score = evaluate(f'improve-{set_name}-{n:03d}-dev', set_name, state['dev'], config, workers, minutes, dry_run)
         state['tokens_spent'] += score['tokens']
+        if not score.get('complete', True):
+            # 不完整的成绩（服务中断、额度用完）不能当作“候选更差”；停下，下次从这一轮重来
+            state['iteration'] -= 1
+            _note(dict(event='aborted', set=set_name, iteration=n, config=config, reason=score.get('stop_reason') or '有题没有做完'))
+            _save_state(state)
+            break
         row = dict(event='candidate', set=set_name, iteration=n, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
                    best_dev_solved=best['dev']['solved'], best_dev_tokens=best['dev']['tokens'])
         if better(score, best['dev']):
             hold = evaluate(f'improve-{set_name}-{n:03d}-holdout', set_name, state['holdout'], config, workers, minutes, dry_run)
             state['tokens_spent'] += hold['tokens']
+            if not hold.get('complete', True):
+                state['iteration'] -= 1
+                _note(dict(event='aborted', set=set_name, iteration=n, config=config, reason=hold.get('stop_reason') or '保留集有题没有做完'))
+                _save_state(state)
+                break
             row.update(holdout_solved=hold['solved'], holdout_tokens=hold['tokens'],
                        best_holdout_solved=best['holdout']['solved'])
             if hold['solved'] >= best['holdout']['solved']:

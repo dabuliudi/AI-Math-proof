@@ -1,0 +1,222 @@
+{
+  "arxiv": "2611.16899",
+  "title": "Counterexamples to flagged LLT and nonsymmetric Macdonald atom positivity",
+  "url": "https://arxiv.org/abs/2611.16899",
+  "auditor": "audit-b1-w7",
+  "definitions": [
+    {
+      "name": "x2611_16899_alpha",
+      "lean": "def x2611_16899_alpha : Fin 14 → ℕ := ![0,0,1,2,0,1,2,0,1,2,0,1,2,2]",
+      "notes": "The composition α in Theorem 1. Fin indices 0,…,13 correspond to paper indices 1,…,14."
+    },
+    {
+      "name": "x2611_16899_key_family",
+      "lean": "def x2611_16899_key_family (n : ℕ)\n    (K : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) : Prop :=\n  (∀ b, Antitone b → K b = Finset.univ.prod (fun i => MvPolynomial.X i ^ b i)) ∧\n  ∀ (b : Fin n → ℕ) (i j : Fin n), j.val = i.val + 1 → b i < b j →\n    (MvPolynomial.X i - MvPolynomial.X j) * K b =\n      MvPolynomial.X i * K (b ∘ Equiv.swap i j) -\n      MvPolynomial.X j * MvPolynomial.rename (Equiv.swap i j) (K (b ∘ Equiv.swap i j))",
+      "notes": "A predicate specifying the key polynomials from their exact initial condition and adjacent-ascent recursion. The divided-difference equation is multiplied by x_i−x_{i+1}, so it is expressed entirely in Mathlib multivariate polynomials. This does not assert the theorem being audited."
+    },
+    {
+      "name": "x2611_16899_atom_family",
+      "lean": "def x2611_16899_atom_family (n : ℕ) (τ : RatFunc ℚ)\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) : Prop :=\n  (∀ b, Antitone b → A b = Finset.univ.prod (fun i => MvPolynomial.X i ^ b i)) ∧\n  ∀ (b : Fin n → ℕ) (i j : Fin n), j.val = i.val + 1 → b i < b j →\n    (MvPolynomial.X i - MvPolynomial.X j) * A b =\n      MvPolynomial.C (1 - τ) * MvPolynomial.X j *\n        (A (b ∘ Equiv.swap i j) - MvPolynomial.rename (Equiv.swap i j) (A (b ∘ Equiv.swap i j))) +\n      MvPolynomial.C τ * (MvPolynomial.X i - MvPolynomial.X j) *\n        MvPolynomial.rename (Equiv.swap i j) (A (b ∘ Equiv.swap i j))",
+      "notes": "A predicate specifying the atom family with parameter τ. Clearing the denominator in T_i=(1−τ)(π_i−1)+τs_i gives (1−τ)x_{i+1}(f−s_i f)+τ(x_i−x_{i+1})s_i f. Use τ=RatFunc.X for t-atoms and τ=0 for ordinary atoms. The initial condition is exactly the printed one."
+    },
+    {
+      "name": "x2611_16899_expansion",
+      "lean": "def x2611_16899_expansion (n d : ℕ)\n    (P : MvPolynomial (Fin n) (RatFunc ℚ))\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n    (c : (Fin n → ℕ) → RatFunc ℚ) : Prop :=\n  P = Finset.univ.sum (fun γ : Fin n → Fin (d + 1) =>\n    if Finset.univ.sum (fun i : Fin n => (γ i).val) = d then\n      MvPolynomial.C (c (fun i => (γ i).val)) * A (fun i => (γ i).val) else 0)",
+      "notes": "The homogeneous degree-d basis-expansion relation, with coefficients in ℚ(t). Enumerate all degree-d weak compositions using functions Fin n→Fin(d+1), and retain those of sum d. Entries outside degree d are irrelevant. This specifies coefficients without postulating a new basis theorem or presuming the claimed numeric values."
+    },
+    {
+      "name": "x2611_16899_counterexample_polynomial",
+      "lean": "noncomputable def x2611_16899_counterexample_polynomial : Polynomial ℚ :=\n  Polynomial.X^5 + Polynomial.X^6 + 2*Polynomial.X^7 - Polynomial.X^10 +\n  5*Polynomial.X^11 + 10*Polynomial.X^12 + 26*Polynomial.X^13 + 42*Polynomial.X^14 +\n  58*Polynomial.X^15 + 66*Polynomial.X^16 + 59*Polynomial.X^17 + 42*Polynomial.X^18 +\n  22*Polynomial.X^19 + 7*Polynomial.X^20 + Polynomial.X^21",
+      "notes": "The explicit polynomial printed in equation (2), recorded independently of the actual expansion coefficient. Equality to that coefficient is a worklist claim, not part of this definition."
+    },
+    {
+      "name": "x2611_16899_prefix_height",
+      "lean": "def x2611_16899_prefix_height {n : ℕ} (b : Fin n → ℕ) (k : ℕ) : ℤ :=\n  (k : ℤ) - Finset.univ.sum (fun i : Fin n => if i.val < k then (b i : ℤ) else 0)",
+      "notes": "h_k=k−Σ_{j=1}^k b_j, using integers so a negative height remains negative."
+    },
+    {
+      "name": "x2611_16899_flagged_llt",
+      "lean": "noncomputable def x2611_16899_flagged_llt (n : ℕ) : MvPolynomial (Fin n) (RatFunc ℚ) :=\n  Finset.univ.sum (fun w : Fin n → Fin n =>\n    if ∀ j : Fin n, (w j).val < n - j.val then\n      MvPolynomial.C (RatFunc.X ^\n        ((Finset.univ : Finset (Fin n × Fin n)).filter\n          (fun ij => ij.1 < ij.2 ∧ w ij.2 < w ij.1)).card) *\n      Finset.univ.prod (fun j : Fin n => MvPolynomial.X (w j)) else 0)",
+      "notes": "The exact finite word sum defining G_n in Section 2. A Lean value w_j∈Fin n represents the paper entry w_j+1; the flag condition is w_j.val<n−j.val, and the inversion statistic compares values. The product places one x_{w_j} for each position. Coefficients are rational functions in t."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1 (decreasing rearrangement)",
+      "name": "x2611_16899_thm1_rearrangement",
+      "original": "Set\n\n $\\alpha=(0,(0,1,2)^{4},2)=(0,0,1,2,0,1,2,0,1,2,0,1,2,2),\\qquad\\gamma=(1^{14}).$ \n\nThen $\\alpha^{+}=(2^{5},1^{4},0^{5})$ and\n\n(2)\n\n $\\begin{split}c_{\\alpha,\\gamma}(t)={}&t^{5}+t^{6}+2t^{7}-t^{10}+5t^{11}+10t^{12}+26t^{13}+42t^{14}\\\\\n&+58t^{15}+66t^{16}+59t^{17}+42t^{18}+22t^{19}+7t^{20}+t^{21}.\\end{split}$",
+      "lean": ": (List.ofFn x2611_16899_alpha).mergeSort (fun a b => decide (b ≤ a)) = [2,2,2,2,2,1,1,1,1,0,0,0,0,0]",
+      "notes": "Natural-number compositions are indexed from 0 in Lean. Sorting in decreasing order is the printed α⁺; the following coefficient display is included in the verbatim excerpt for context.",
+      "fidelity": {
+        "twin": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : (List.ofFn x2611_16899_alpha).mergeSort (fun a b : ℕ => b ≤ a) = [2,2,2,2,2,1,1,1,1,0,0,0,0,0] ∧ c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "I kernel-checked Version A’s sorting equality, but could neither prove nor refute Version B’s additional coefficient identity, so I left no proof file.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Theorem 1, equation (2)",
+      "name": "x2611_16899_thm1_eq2",
+      "original": "Set\n\n $\\alpha=(0,(0,1,2)^{4},2)=(0,0,1,2,0,1,2,0,1,2,0,1,2,2),\\qquad\\gamma=(1^{14}).$ \n\nThen $\\alpha^{+}=(2^{5},1^{4},0^{5})$ and\n\n(2)\n\n $\\begin{split}c_{\\alpha,\\gamma}(t)={}&t^{5}+t^{6}+2t^{7}-t^{10}+5t^{11}+10t^{12}+26t^{13}+42t^{14}\\\\\n&+58t^{15}+66t^{16}+59t^{17}+42t^{18}+22t^{19}+7t^{20}+t^{21}.\\end{split}$",
+      "lean": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial",
+      "notes": "K and A range over families satisfying exactly the printed key and t-atom recurrences. hc is the degree-14 basis expansion (1), so c is an actual expansion coefficient, not an arbitrary polynomial chosen to equal (2). All coefficients are in ℚ(t), as printed. The recurrences are written after clearing x_i−x_{i+1}; this is equivalent in the polynomial domain. No Hall–Littlewood duality or formula (3) is assumed.",
+      "fidelity": {
+        "twin": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) x2611_16899_counterexample_polynomial",
+        "twin_by": "audit-b1-w4",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem 1 (only negative term)",
+      "name": "x2611_16899_thm1_only_negative",
+      "original": "In particular, its only negative term is $-t^{10}$ , and\n $c_{\\alpha,\\gamma}(1)=341$ .",
+      "lean": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : (c (fun _ => 1)).denom = 1 ∧ (c (fun _ => 1)).num.coeff 10 = -1 ∧ ∀ r : ℕ, r ≠ 10 → 0 ≤ (c (fun _ => 1)).num.coeff r",
+      "notes": "RatFunc.num and denom are the normalized numerator and monic denominator. Denominator 1 asserts polynomiality, and the remaining conjuncts say the sole negative term is −t¹⁰. The evaluation assertion in the same quoted sentence is a separate entry.",
+      "fidelity": {
+        "twin": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : ∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = c (fun _ => 1) ∧ p.coeff 10 = -1 ∧ (∀ k : ℕ, k ≠ 10 → 0 ≤ p.coeff k) ∧ p.eval 1 = 341",
+        "twin_by": "audit-b1-w5",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "B additionally requires `p.eval 1 = 341`, which I could not derive from A and the shared hypotheses; no proof file remains.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Theorem 1 (evaluation at one)",
+      "name": "x2611_16899_thm1_eval_one",
+      "original": "In particular, its only negative term is $-t^{10}$ , and\n $c_{\\alpha,\\gamma}(1)=341$ .",
+      "lean": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : RatFunc.eval (RingHom.id ℚ) 1 (c (fun _ => 1)) = 341",
+      "notes": "Evaluation of the expansion coefficient as a rational function at t=1; its polynomiality and exact expression are separate claims.",
+      "fidelity": {
+        "twin": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : ∃ p : Polynomial ℚ, c (fun _ => 1) = algebraMap (Polynomial ℚ) (RatFunc ℚ) p ∧ p.coeff 10 = -1 ∧ (∀ k : ℕ, k ≠ 10 → 0 ≤ p.coeff k) ∧ RatFunc.eval (RingHom.id ℚ) 1 (c (fun _ => 1)) = 341",
+        "twin_by": "audit-b1-w1",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "B additionally requires a polynomial representative with specified coefficient signs; I kernel-checked B ⇒ A but could not prove the converse, so I left no file.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Theorem 1 (minimality family)",
+      "name": "x2611_16899_thm1_minimality",
+      "original": "Moreover, for every $n\\leq 13$ and every\n $b\\in\\{0,1,2\\}^{n}$ with $|b|=n$ , the coefficient\n $c_{b,(1^{n})}(t)$ has no negative terms. Thus degree fourteen is minimal\nwithin this family.",
+      "lean": "(n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2) (hs : Finset.univ.sum b = n) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (hc : x2611_16899_expansion n n (K b) A c) : (c (fun _ => 1)).denom = 1 ∧ ∀ r : ℕ, 0 ≤ (c (fun _ => 1)).num.coeff r",
+      "notes": "Includes n=0 because the paper prints every n≤13 without a positive lower bound. b_i≤2 with b_i natural is b∈{0,1,2}ⁿ. Together with the degree-14 negative coefficient this expresses the stated minimality within the indicated family, without claiming global minimality over all weak compositions.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2) (hsize : ∑ i, b i = n) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (c : (Fin n → ℕ) → RatFunc ℚ) (hc : x2611_16899_expansion n n (K b) A c) : ∃ p : Polynomial ℚ, (∀ k : ℕ, 0 ≤ p.coeff k) ∧ algebraMap (Polynomial ℚ) (RatFunc ℚ) p = c (fun _ => 1)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_16899_thm1_minimality_eqv :\n    (∀ (n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2)\n      (hs : Finset.univ.sum b = n)\n      (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n      (c : (Fin n → ℕ) → RatFunc ℚ)\n      (hK : x2611_16899_key_family n K)\n      (hA : x2611_16899_atom_family n RatFunc.X A)\n      (hc : x2611_16899_expansion n n (K b) A c),\n      (c (fun _ => 1)).denom = 1 ∧\n        ∀ r : ℕ, 0 ≤ (c (fun _ => 1)).num.coeff r) ↔\n    (∀ (n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2)\n      (hsize : ∑ i, b i = n)\n      (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n      (hK : x2611_16899_key_family n K)\n      (hA : x2611_16899_atom_family n RatFunc.X A)\n      (c : (Fin n → ℕ) → RatFunc ℚ)\n      (hc : x2611_16899_expansion n n (K b) A c),\n      ∃ p : Polynomial ℚ, (∀ k : ℕ, 0 ≤ p.coeff k) ∧\n        algebraMap (Polynomial ℚ) (RatFunc ℚ) p = c (fun _ => 1)) := by\n  constructor\n  · intro h n hn b hb hsize K A hK hA c hc\n    obtain ⟨hd, hpos⟩ := h n hn b hb hsize K A c hK hA hc\n    refine ⟨(c (fun _ => 1)).num, hpos, ?_⟩\n    simpa only [hd, map_one, div_one] using RatFunc.num_div_denom (c (fun _ => 1))\n  · intro h n hn b hb hs K A c hK hA hc\n    obtain ⟨p, hpos, hp⟩ := h n hn b hb hs K A hK hA c hc\n    rw [← hp, RatFunc.denom_algebraMap, RatFunc.num_algebraMap]\n    exact ⟨rfl, hpos⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Proof of Theorem 1 (negative prefix height)",
+      "name": "x2611_16899_negative_prefix_zero",
+      "original": "For the minimality assertion, put $h_{i}=i-\\sum_{j=1}^{i}b_{j}$ .\nIf some $h_{i}<0$ , then (3) gives $c_{b,(1^{n})}(t)=0$ .",
+      "lean": "(n : ℕ) (b : Fin n → ℕ) (hs : Finset.univ.sum b = n) (hh : ∃ k : ℕ, k ≤ n ∧ x2611_16899_prefix_height b k < 0) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (hc : x2611_16899_expansion n n (K b) A c) : c (fun _ => 1) = 0",
+      "notes": "k is a prefix length from 0 through n. The endpoint heights are zero under hs, so allowing both endpoints does not alter the printed negative-prefix hypothesis.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : n ≤ 13) (b : Fin n → ℕ) (hb : ∀ i, b i ≤ 2) (hsize : Finset.univ.sum b = n) (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family n K) (hA : x2611_16899_atom_family n RatFunc.X A) (hexp : x2611_16899_expansion n n (K b) A c) (hneg : ∃ i : ℕ, 1 ≤ i ∧ i ≤ n ∧ x2611_16899_prefix_height b i < 0) : c (fun _ => 1) = 0",
+        "twin_by": "audit-b1-w0",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "A → B is kernel checked, but B’s bounds `n ≤ 13` and `b i ≤ 2` leave the converse unresolved; no proof file remains.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Proof of Theorem 1 (factorization)",
+      "name": "x2611_16899_zero_prefix_factorization",
+      "original": "If $h_{k}=0$ for $0<k<n$ , the same coefficient extraction factors as\n\n $c_{b,(1^{n})}(t)=c_{(b_{1},\\dotsc,b_{k}),(1^{k})}(t)\\,c_{(b_{k+1},\\dotsc,b_{n}),(1^{n-k})}(t).$",
+      "lean": "(k m : ℕ) (hk : 0 < k) (hm : 0 < m) (b₁ : Fin k → ℕ) (b₂ : Fin m → ℕ) (hs₁ : Finset.univ.sum b₁ = k) (hs₂ : Finset.univ.sum b₂ = m) (K A : (Fin (k + m) → ℕ) → MvPolynomial (Fin (k + m)) (RatFunc ℚ)) (K₁ A₁ : (Fin k → ℕ) → MvPolynomial (Fin k) (RatFunc ℚ)) (K₂ A₂ : (Fin m → ℕ) → MvPolynomial (Fin m) (RatFunc ℚ)) (c : (Fin (k + m) → ℕ) → RatFunc ℚ) (c₁ : (Fin k → ℕ) → RatFunc ℚ) (c₂ : (Fin m → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family (k + m) K) (hA : x2611_16899_atom_family (k + m) RatFunc.X A) (hK₁ : x2611_16899_key_family k K₁) (hA₁ : x2611_16899_atom_family k RatFunc.X A₁) (hK₂ : x2611_16899_key_family m K₂) (hA₂ : x2611_16899_atom_family m RatFunc.X A₂) (hc : x2611_16899_expansion (k + m) (k + m) (K (Fin.append b₁ b₂)) A c) (hc₁ : x2611_16899_expansion k k (K₁ b₁) A₁ c₁) (hc₂ : x2611_16899_expansion m m (K₂ b₂) A₂ c₂) : c (fun _ => 1) = c₁ (fun _ => 1) * c₂ (fun _ => 1)",
+      "notes": "Write n=k+m and split b into its two consecutive blocks using Fin.append. hk and hm are exactly 0<k<n. The two size equalities are equivalent to |b|=n and h_k=0. No nonnegativity assumption on the other heights is added. The printed factorization may be audited independently of its informal justification.",
+      "fidelity": {
+        "twin": "(n k : ℕ) (b : Fin n → ℕ) (hb : Finset.univ.sum b = n) (hk0 : 0 < k) (hkn : k < n) (hh : x2611_16899_prefix_height b k = 0) (K A : (m : ℕ) → (Fin m → ℕ) → MvPolynomial (Fin m) (RatFunc ℚ)) (c : (m : ℕ) → (Fin m → ℕ) → (Fin m → ℕ) → RatFunc ℚ) (hK : ∀ m, x2611_16899_key_family m (K m)) (hA : ∀ m, x2611_16899_atom_family m RatFunc.X (A m)) (hc : ∀ m a, x2611_16899_expansion m (Finset.univ.sum a) (K m a) (A m) (c m a)) : c n b (fun _ => 1) = c k (fun i => b ⟨i.val, Nat.lt_trans i.isLt hkn⟩) (fun _ => 1) * c (n - k) (fun i => b ⟨k + i.val, by omega⟩) (fun _ => 1)",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "Left no file: A ⇒ B checked, but the reverse remains unresolved because B assumes global families and expansions while A permits independent local data.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Proof of Theorem 1 (singleton coefficient)",
+      "name": "x2611_16899_singleton_coefficient",
+      "original": "Since $c_{(1),(1)}(t)=1$ , we need only check compositions\n $b\\in\\{0,1,2\\}^{n}$ with $2\\leq n\\leq 13$ , $|b|=n$ , and $h_{i}>0$ for\n $1\\leq i<n$ . There are $9{,}360$ such compositions. Exact coefficient\nextraction gives no negative term in any of them.",
+      "lean": "(K A : (Fin 1 → ℕ) → MvPolynomial (Fin 1) (RatFunc ℚ)) (c : (Fin 1 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 1 K) (hA : x2611_16899_atom_family 1 RatFunc.X A) (hc : x2611_16899_expansion 1 1 (K (fun _ => 1)) A c) : c (fun _ => 1) = 1",
+      "notes": "The initial assertion c_(1),(1)(t)=1 is extracted from the quoted proof paragraph; the larger finite computation is a separate entry.",
+      "fidelity": {
+        "twin": "(K A : (Fin 1 → ℕ) → MvPolynomial (Fin 1) (RatFunc ℚ)) (c : (Fin 1 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 1 K) (hA : x2611_16899_atom_family 1 RatFunc.X A) (hc : x2611_16899_expansion 1 1 (K (fun _ => 1)) A c) : c (fun _ => 1) = 1",
+        "twin_by": "audit-b1-w3",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Proof of Theorem 1 (9,360 compositions)",
+      "name": "x2611_16899_irreducible_count",
+      "original": "Since $c_{(1),(1)}(t)=1$ , we need only check compositions\n $b\\in\\{0,1,2\\}^{n}$ with $2\\leq n\\leq 13$ , $|b|=n$ , and $h_{i}>0$ for\n $1\\leq i<n$ . There are $9{,}360$ such compositions. Exact coefficient\nextraction gives no negative term in any of them.",
+      "lean": ": (Finset.Icc 2 13).sum (fun n => ((Finset.univ : Finset (Fin n → Fin 3)).filter (fun b => Finset.univ.sum (fun i : Fin n => (b i).val) = n ∧ ∀ k : Fin n, 0 < k.val → 0 < x2611_16899_prefix_height (fun i => (b i).val) k.val)).card) = 9360",
+      "notes": "Counts each n separately and sums for 2≤n≤13. Fin 3 represents entries 0,1,2; k:Fin n with k>0 represents precisely the proper prefix lengths 1≤k<n. This is only the printed enumeration count, not an assumption that a coefficient computation was verified.",
+      "fidelity": {
+        "twin": ": (Finset.sum (Finset.Icc 2 13) (fun n => ((Finset.univ : Finset (Fin n → Fin 3)).filter (fun b => (Finset.univ.sum (fun i : Fin n => (b i).val) = n) ∧ ∀ k : ℕ, 1 ≤ k → k < n → 0 < x2611_16899_prefix_height (fun i => (b i).val) k)).card) = 9360) ∧ ∀ (n : ℕ), 2 ≤ n → n ≤ 13 → ∀ (b : Fin n → Fin 3), Finset.univ.sum (fun i : Fin n => (b i).val) = n → (∀ k : ℕ, 1 ≤ k → k < n → 0 < x2611_16899_prefix_height (fun i => (b i).val) k) → ∀ (K A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)) (c : (Fin n → ℕ) → RatFunc ℚ), x2611_16899_key_family n K → x2611_16899_atom_family n (RatFunc.X : RatFunc ℚ) A → x2611_16899_expansion n n (K (fun i => (b i).val)) A c → ∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = c (fun _ => 1) ∧ ∀ k : ℕ, 0 ≤ p.coeff k",
+        "twin_by": "audit-b1-w4",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "The counting expressions are kernel-checked equal, but B adds polynomiality and coefficient nonnegativity that I could neither prove nor refute; no proof file was left.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "After Theorem 1 (proper prefix heights)",
+      "name": "x2611_16899_alpha_prefix_heights",
+      "original": "The proper prefix heights $h_{i}=i-\\sum_{j=1}^{i}\\alpha_{j}$ , for $1\\leq i<14$ , are\n $h=(1,(2,2,1)^{4})$ . Thus negativity already occurs when all prefix heights\nare at most two.",
+      "lean": ": ∀ i : Fin 13, x2611_16899_prefix_height x2611_16899_alpha (i.val + 1) = (![1,2,2,1,2,2,1,2,2,1,2,2,1] : Fin 13 → ℤ) i",
+      "notes": "Expands (1,(2,2,1)⁴) literally; the vector indexes prefix lengths 1 through 13. In combination with the negative coefficient this yields the following sentence about heights at most two.",
+      "fidelity": {
+        "twin": "(K A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (c : (Fin 14 → ℕ) → RatFunc ℚ) (hK : x2611_16899_key_family 14 K) (hA : x2611_16899_atom_family 14 RatFunc.X A) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) A c) : (fun i : Fin 13 => x2611_16899_prefix_height x2611_16899_alpha (i.val + 1)) = ![(1 : ℤ),2,2,1,2,2,1,2,2,1,2,2,1] ∧ (∀ k : ℕ, 1 ≤ k → k < 14 → x2611_16899_prefix_height x2611_16899_alpha k ≤ 2) ∧ ∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = c (fun _ => 1) ∧ ∃ j : ℕ, p.coeff j < 0",
+        "twin_by": "audit-b1-w5",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "Lean checked A and the height bound, but I could not prove B’s additional assertion that every admissible expansion coefficient is a polynomial with a negative coefficient; no submission file remains.\n\nRESULT: unknown"
+      }
+    },
+    {
+      "label": "Corollary 2, equation (4)",
+      "name": "x2611_16899_cor2_eq4",
+      "original": "With $c(t)=c_{\\alpha,(1^{14})}(t)$ as in (2), we have\n\n(4)\n\n $\\displaystyle[\\mathcal{A}_{\\alpha^{\\mathrm{rev}}}(x)]G_{14}(x;t)$ \n $\\displaystyle=t^{91}c(t^{-1}),$",
+      "lean": "(A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ) (hA : x2611_16899_atom_family 14 0 A) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) : g (fun i : Fin 14 => x2611_16899_alpha i.rev) = algebraMap (Polynomial ℚ) (RatFunc ℚ) (Polynomial.reflect 91 x2611_16899_counterexample_polynomial)",
+      "notes": "G₁₄ is defined by the explicit flagged-word sum printed in Section 2, and A satisfies the ordinary atom recurrence (τ=0). hg specifies its degree-14 atom expansion, so g at rev(α) is the displayed atom coefficient. Polynomial.reflect 91 p is t⁹¹p(t⁻¹), since p has degree at most 91. This uses the printed explicit polynomial (2) for c(t).",
+      "fidelity": {
+        "twin": "(A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (a : (Fin 14 → ℕ) → RatFunc ℚ) (hA : x2611_16899_atom_family 14 0 A) (ha : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A a) : a (fun i => x2611_16899_alpha (Fin.rev i)) = (RatFunc.X : RatFunc ℚ) ^ 91 * Polynomial.eval₂ (algebraMap ℚ (RatFunc ℚ)) ((RatFunc.X : RatFunc ℚ)⁻¹) x2611_16899_counterexample_polynomial",
+        "twin_by": "audit-b1-w0",
+        "verdict": "equivalent",
+        "equivalence_proof": "lemma x2611_16899_cor2_eq4_eqv_aux :\n    algebraMap (Polynomial ℚ) (RatFunc ℚ)\n        (Polynomial.reflect 91 x2611_16899_counterexample_polynomial) =\n      (RatFunc.X : RatFunc ℚ) ^ 91 *\n        Polynomial.eval₂ (algebraMap ℚ (RatFunc ℚ))\n          ((RatFunc.X : RatFunc ℚ)⁻¹) x2611_16899_counterexample_polynomial := by\n  have hd : x2611_16899_counterexample_polynomial.natDegree ≤ 91 := by\n    unfold x2611_16899_counterexample_polynomial\n    compute_degree <;> norm_num\n  have hr : (Polynomial.reflect 91 x2611_16899_counterexample_polynomial).natDegree ≤\n      91 := by\n    exact Polynomial.natDegree_reflect_le.trans (max_le (le_refl 91) hd)\n  letI : Invertible (RatFunc.X : RatFunc ℚ) := invertibleOfNonzero RatFunc.X_ne_zero\n  have h := Polynomial.eval₂_reflect_mul_pow (algebraMap ℚ (RatFunc ℚ))\n    (RatFunc.X : RatFunc ℚ) 91\n    (Polynomial.reflect 91 x2611_16899_counterexample_polynomial) hr\n  have heval (p : Polynomial ℚ) :\n      Polynomial.eval₂ (algebraMap ℚ (RatFunc ℚ)) RatFunc.X p =\n        algebraMap (Polynomial ℚ) (RatFunc ℚ) p := by\n    induction p using Polynomial.induction_on' with\n    | add p q hp hq => simp only [Polynomial.eval₂_add, map_add, hp, hq]\n    | monomial n c =>\n      rw [Polynomial.eval₂_monomial, RatFunc.algebraMap_monomial]\n      rw [show algebraMap ℚ (RatFunc ℚ) = RatFunc.C from Subsingleton.elim _ _]\n  simpa only [Polynomial.reflect_reflect, invOf_eq_inv, heval, mul_comm] using h.symm\n\ntheorem x2611_16899_cor2_eq4_eqv :\n    (∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ))\n      (g : (Fin 14 → ℕ) → RatFunc ℚ)\n      (hA : x2611_16899_atom_family 14 0 A)\n      (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g),\n      g (fun i : Fin 14 => x2611_16899_alpha i.rev) =\n        algebraMap (Polynomial ℚ) (RatFunc ℚ)\n          (Polynomial.reflect 91 x2611_16899_counterexample_polynomial)) ↔\n    (∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ))\n      (a : (Fin 14 → ℕ) → RatFunc ℚ)\n      (hA : x2611_16899_atom_family 14 0 A)\n      (ha : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A a),\n      a (fun i => x2611_16899_alpha (Fin.rev i)) =\n        (RatFunc.X : RatFunc ℚ) ^ 91 *\n          Polynomial.eval₂ (algebraMap ℚ (RatFunc ℚ))\n            ((RatFunc.X : RatFunc ℚ)⁻¹) x2611_16899_counterexample_polynomial) := by\n  constructor\n  · intro h A a hA ha\n    exact (h A a hA ha).trans x2611_16899_cor2_eq4_eqv_aux\n  · intro h A g hA hg\n    exact (h A g hA hg).trans x2611_16899_cor2_eq4_eqv_aux.symm\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 2 (negative flagged LLT coefficient)",
+      "name": "x2611_16899_cor2_negative_term",
+      "original": "Hence the first coefficient contains $-t^{81}$ , while each stable-atom\ncoefficient contains $-q^{0}t^{10}$ .",
+      "lean": "(A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ) (hA : x2611_16899_atom_family 14 0 A) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) : (g (fun i : Fin 14 => x2611_16899_alpha i.rev)).denom = 1 ∧ (g (fun i : Fin 14 => x2611_16899_alpha i.rev)).num.coeff 81 = -1",
+      "notes": "Formalizes only the first-coefficient clause, which is the flagged LLT counterexample. The stable-atom clauses in this same verbatim sentence are listed under skipped, together with (5) and (6).",
+      "fidelity": {
+        "twin": "(K T A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (hK : x2611_16899_key_family 14 K) (hT : x2611_16899_atom_family 14 RatFunc.X T) (hA : x2611_16899_atom_family 14 0 A) (c g : (Fin 14 → ℕ) → RatFunc ℚ) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) T c) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) (stable14 stable10 : Polynomial (RatFunc ℚ)) (hstable14 : stable14 = Polynomial.C (c (fun _ => 1))) (hstable10 : stable10 = Polynomial.C (c (fun _ => 1))) : (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = g (fun i => x2611_16899_alpha (Fin.rev i)) ∧ p.coeff 81 = -1) ∧ (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = stable14.coeff 0 ∧ p.coeff 10 = -1) ∧ (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = stable10.coeff 0 ∧ p.coeff 10 = -1)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "original_invalid"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Corollary 2, equations (5) and (6), and their stable-atom negativity consequences",
+      "original": "(5)\n\n $\\displaystyle[\\mathcal{A}_{\\alpha^{\\mathrm{rev}}\\mid\\varnothing}(x,Y)]\\mathsf{H}_{(1^{14})\\mid\\varnothing}(x,Y;q,t)$ \n $\\displaystyle=c(t),$ \n\n(6)\n\n $\\displaystyle[\\mathcal{A}_{\\beta\\mid(2,1)}(x,Y)]\\mathsf{H}_{(1^{10})\\mid(1^{4})}(x,Y;q,t)$ \n $\\displaystyle=c(t).$ \n\nHence the first coefficient contains $-t^{81}$ , while each stable-atom\ncoefficient contains $-q^{0}t^{10}$ .",
+      "reason": "Modified r-nonsymmetric Macdonald polynomials, nonsymmetric plethysm, the stable atom basis in infinitely many Y variables, and partial Weyl symmetrization are not available in the checked Mathlib source. Faithful definitions of these constructions would require substantial new theory beyond this audit. No abstract arbitrary coefficient is substituted for them."
+    },
+    {
+      "label": "Equation (3), nonsymmetric Hall–Littlewood duality, and related cited general positivity statements",
+      "reason": "The duality and formal Laurent coefficient-extraction machinery, Schur-to-t-atom positivity, and general stable limits require substantial theory absent from the checked Mathlib source. The exact counterexample, its finite family minimality, elementary proof claims, and the finite flagged LLT consequence are instead stated directly from the printed definitions. Key/atom existence and basis construction are represented by their defining-family and expansion predicates, not claimed proved."
+    }
+  ]
+}

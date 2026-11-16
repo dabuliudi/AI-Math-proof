@@ -1,0 +1,210 @@
+{
+  "arxiv": "2611.12360",
+  "title": "Avoiding short progressions in Euclidean Ramsey theory II",
+  "url": "https://arxiv.org/abs/2611.12360",
+  "auditor": "audit-b1-w5",
+  "definitions": [
+    {
+      "name": "x2611_12360_noMono",
+      "lean": "def x2611_12360_noMono (n M : ℕ) (a : ℝ)\n    (color : EuclideanSpace ℝ (Fin n) → Prop) : Prop :=\n  ∀ x v : EuclideanSpace ℝ (Fin n), ‖v‖ = a →\n    ¬ (∀ k : ℕ, k < M → color (x + (k : ℝ) • v))",
+      "notes": "No monochromatic M-term arithmetic progression of consecutive distance a in n-dimensional Euclidean space. Every such progression is parametrized by x + k • v with norm v = a. A color is represented by its set of points."
+    },
+    {
+      "name": "x2611_12360_notArrow",
+      "lean": "def x2611_12360_notArrow (n r M : ℕ) (a : ℝ) : Prop :=\n  ∃ red : EuclideanSpace ℝ (Fin n) → Prop,\n    x2611_12360_noMono n r 1 red ∧\n    x2611_12360_noMono n M a (fun x => ¬ red x)",
+      "notes": "The negative Euclidean Ramsey relation for a unit-spaced red r-term progression and an a-spaced blue M-term progression. Blue is exactly the complement of red. Prop-valued colorings represent arbitrary two-colorings without measurability assumptions."
+    },
+    {
+      "name": "x2611_12360_modMem",
+      "lean": "def x2611_12360_modMem (T : ℝ) (I : Set ℝ) (a : ℝ) : Prop :=\n  ∃ x ∈ I, ∃ m : ℤ, a = x + (m : ℝ) * T",
+      "notes": "The paper's membership a ∈ I mod T, implemented by an integer translate of a point of I. Endpoints are determined by the supplied Mathlib interval."
+    },
+    {
+      "name": "x2611_12360_red",
+      "lean": "def x2611_12360_red (n p s : ℕ) (x : EuclideanSpace ℝ (Fin n)) : Prop :=\n  0 ≤ (⌊‖x‖ ^ 2⌋ : ℤ) % (p : ℤ) ∧\n    (⌊‖x‖ ^ 2⌋ : ℤ) % (p : ℤ) < (s : ℤ)",
+      "notes": "The spherical red coloring (5): the integer floor of squared Euclidean norm has residue in {0,...,s-1} modulo p. In uses, p ≥ 2 and 1 ≤ s ≤ p-1."
+    },
+    {
+      "name": "x2611_12360_gap",
+      "lean": "noncomputable def x2611_12360_gap (p : ℕ)\n    (A : Set (AddCircle (p : ℝ))) : ℝ :=\n  sSup {l : ℝ | 0 ≤ l ∧ l ≤ (p : ℝ) ∧\n    ∃ a : ℝ, ∀ t : ℝ, a < t → t < a + l →\n      (t : AddCircle (p : ℝ)) ∉ A}",
+      "notes": "For a nonempty finite subset of AddCircle p, the largest gap is the supremum of lengths l ∈ [0,p] of open arcs avoiding the set. This is equivalent to the largest gap in cyclic order, including gap = p for a singleton. The definition extends to arbitrary sets, but claims use only nonempty finite ranges. It uses Mathlib's quotient circle, so coincident residues are automatically identified."
+    },
+    {
+      "name": "x2611_12360_G",
+      "lean": "noncomputable def x2611_12360_G (p M : ℕ) (u : ℝ) : ℝ :=\n  sSup (Set.range (fun β : ℝ =>\n    x2611_12360_gap p (Set.range (fun k : Fin M =>\n      ((-u * (k.val : ℝ) ^ 2 - β * (k.val : ℝ) : ℝ) : AddCircle (p : ℝ))))))",
+      "notes": "Equation (6), taking the real supremum over β of the actual circular gaps of {-u k² - β k : 0 ≤ k < M}. For p,M ≥ 2 the range is nonempty and bounded and the supremum is the printed attained maximum. It is deliberately not defined by the finite-candidate formula of Lemma 2.4, which is itself an audited claim."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.1",
+      "name": "x2611_12360_thm1_1",
+      "original": "For every $\\alpha>0$ and positive integer $n$ ,\n\n $\\mathbb{E}^{n}\\not\\to(\\ell_{3},\\alpha\\ell_{22}).$",
+      "lean": "(α : ℝ) (hα : 0 < α) (n : ℕ) (hn : 0 < n) :\n  x2611_12360_notArrow n 3 22 α",
+      "notes": "Exactly the negative Ramsey relation, with positive α and positive dimension n. Congruent copies of a collinear progression are precisely the norm-constrained vector parametrizations in noMono.",
+      "fidelity": {
+        "twin": "(α : ℝ) (hα : 0 < α) (n : ℕ) (hn : 0 < n) : x2611_12360_notArrow n 3 22 α",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem 1.2",
+      "name": "x2611_12360_thm1_2",
+      "original": "For every positive integer $n$ ,\n\n $\\mathbb{E}^{n}\\not\\to(\\ell_{3},\\alpha\\ell_{17})$ \n\nfor all but finitely many $\\alpha>0$ . More precisely, this holds\nwhenever $\\alpha^{2}$ is irrational, or $\\alpha^{2}=a/b$ in lowest\nterms with $a+b/50\\geq 37$ , or\n\n $\\frac{7}{152}\\leq\\alpha^{2}\\leq\\frac{179}{3600}.$",
+      "lean": "(n : ℕ) (hn : 0 < n) :\n  Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧\n  (∀ α : ℝ, 0 < α →\n    (Irrational (α ^ 2) ∨\n      (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧\n        α ^ 2 = (a : ℝ) / (b : ℝ) ∧ 37 ≤ (a : ℝ) + (b : ℝ) / 50) ∨\n      α ^ 2 ∈ Set.Icc ((7 : ℝ) / 152) ((179 : ℝ) / 3600)) →\n    x2611_12360_notArrow n 3 17 α)",
+      "notes": "Includes both the finite-exception assertion and every printed sufficient condition. Lowest terms means positive natural numerator and denominator with Nat.Coprime. The inequality a+b/50 is in ℝ, with no integer truncation.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) : Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧ ∀ α : ℝ, 0 < α → (Irrational (α ^ 2) ∨ (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧ α ^ 2 = (a : ℝ) / (b : ℝ) ∧ (37 : ℝ) ≤ (a : ℝ) + (b : ℝ) / 50) ∨ ((7 : ℝ) / 152 ≤ α ^ 2 ∧ α ^ 2 ≤ (179 : ℝ) / 3600)) → x2611_12360_notArrow n 3 17 α",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Theorem 1.3",
+      "name": "x2611_12360_thm1_3",
+      "original": "For every positive integer $n$ and every $\\alpha>0$ satisfying\n\n $\\alpha^{2}\\notin\\left\\{\\frac{1}{4},\\frac{1}{9},\\frac{2}{15},\\frac{3}{4}\\right\\},$ \n\nwe have\n\n $\\mathbb{E}^{n}\\not\\to(\\ell_{3},\\alpha\\ell_{21}).$",
+      "lean": "(n : ℕ) (hn : 0 < n) (α : ℝ) (hα : 0 < α)\n  (hα2 : α ^ 2 ∉ ({(1 : ℝ) / 4, (1 : ℝ) / 9,\n    (2 : ℝ) / 15, (3 : ℝ) / 4} : Set ℝ)) :\n  x2611_12360_notArrow n 3 21 α",
+      "notes": "The four listed numbers exclude squared spacings, not spacings. The statement does not assert that any of the four excluded cases is actually exceptional.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (α : ℝ) (hα : 0 < α) (hαsq : α ^ 2 ∉ ({(1 / 4 : ℝ), 1 / 9, 2 / 15, 3 / 4} : Set ℝ)) : x2611_12360_notArrow n 3 21 α",
+        "twin_by": "audit-b1-w6",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 2.1",
+      "name": "x2611_12360_lem2_1",
+      "original": "Let $M\\geq 2$ . If $x_{0},\\ldots,x_{M-1}$ form an arithmetic progression\nwith consecutive points at distance $\\sqrt{U}$ , then there are real\nnumbers $\\beta$ and $\\gamma$ such that\n\n(3)\n\n $\\|x_{k}\\|^{2}=Uk^{2}+\\beta k+\\gamma\\qquad(0\\leq k<M).$ \n\nIn particular, three consecutive points $x,y,z$ with spacing\n $\\sqrt{R}$ satisfy\n\n(4)\n\n $\\|x\\|^{2}-2\\|y\\|^{2}+\\|z\\|^{2}=2R.$",
+      "lean": "(n M : ℕ) (hM : 2 ≤ M) (U : ℝ)\n  (x v : EuclideanSpace ℝ (Fin n)) (hv : ‖v‖ = Real.sqrt U) :\n  (∃ β γ : ℝ, ∀ k : ℕ, k < M →\n    ‖x + (k : ℝ) • v‖ ^ 2 = U * (k : ℝ) ^ 2 + β * (k : ℝ) + γ) ∧\n  (3 ≤ M → ‖x‖ ^ 2 - 2 * ‖x + v‖ ^ 2 + ‖x + (2 : ℝ) • v‖ ^ 2 = 2 * U)",
+      "notes": "An arithmetic progression is parametrized by its initial point x and common difference v. The second conjunct records (4) for the first three terms whenever they exist, with R renamed U. POTENTIAL PRINTED OMISSION: the lemma does not explicitly assume U ≥ 0 (nor R ≥ 0). This formalization retains only the printed distance-sqrt(U) assumption. Lean Real.sqrt is zero on negative inputs, so a three-term constant progression makes the literal statement false for U < 0. If spacing implicitly means a positive distance, that convention excludes these inputs, but it is not a separately printed hypothesis. No nonnegativity hypothesis has been added to repair the literal reading. Later applications do explicitly assume positive squared spacings.",
+      "fidelity": {
+        "twin": "(n : ℕ) : (∀ (M : ℕ) (U : ℝ) (x : Fin M → EuclideanSpace ℝ (Fin n)), 2 ≤ M → 0 ≤ U → (∃ a v : EuclideanSpace ℝ (Fin n), ‖v‖ = Real.sqrt U ∧ ∀ k : Fin M, x k = a + (k.val : ℝ) • v) → ∃ β γ : ℝ, ∀ k : Fin M, ‖x k‖ ^ 2 = U * (k.val : ℝ) ^ 2 + β * (k.val : ℝ) + γ) ∧ (∀ (R : ℝ) (x y z : EuclideanSpace ℝ (Fin n)), 0 ≤ R → y - x = z - y → dist x y = Real.sqrt R → ‖x‖ ^ 2 - 2 * ‖y‖ ^ 2 + ‖z‖ ^ 2 = 2 * R)",
+        "twin_by": "audit-b1-w1",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.2",
+      "name": "x2611_12360_lem2_2",
+      "original": "For the coloring (5), let $r,M\\geq 2$ and $R,U>0$ .\n\n(1) \n\nIf $G_{p,r}(R)\\leq p-s$ , then the coloring contains no red\n $r$ -term progression with spacing $\\sqrt{R}$ .\n\n(2) \n\nIf $G_{p,M}(U)\\leq s$ , then the coloring contains no blue\n $M$ -term progression with spacing $\\sqrt{U}$ .\n\nFor red three-term progressions with spacing $\\sqrt{R}$ , the simpler condition\n\n(7)\n\n $R\\in\\left[s,\\frac{p}{2}-s\\right]\\pmod{p/2}$ \n\nalso suffices, provided that $4s<p$ .",
+      "lean": "(n p s r M : ℕ) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1)\n  (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U) :\n  (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) →\n    x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧\n  (x2611_12360_G p M U ≤ (s : ℝ) →\n    x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧\n  (4 * s < p →\n    x2611_12360_modMem ((p : ℝ) / 2)\n      (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R →\n    x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))",
+      "notes": "All three assertions are retained. The surrounding definition (5) supplies p ≥ 2 and 1 ≤ s ≤ p−1. The third assertion is the simpler sufficient red three-term condition (7), with its strict 4s < p hypothesis and closed modular interval.",
+      "fidelity": {
+        "twin": "(n p s r M : ℕ) (hn : 0 < n) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1) (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U) : (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) → x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧ (x2611_12360_G p M U ≤ (s : ℝ) → x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧ (4 * s < p → x2611_12360_modMem ((p : ℝ) / 2) (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R → x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.3",
+      "name": "x2611_12360_lem2_3",
+      "original": "Let $p,M\\geq 2$ be integers. For all real numbers $u,v$ ,\n\n(9)\n\n $G_{p,M}(u+p/2)=G_{p,M}(u)$ \n\nand\n\n(10)\n\n $|G_{p,M}(u)-G_{p,M}(v)|\\leq\\left\\lfloor\\frac{(M-1)^{2}}{4}\\right\\rfloor|u-v|.$",
+      "lean": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u v : ℝ) :\n  x2611_12360_G p M (u + (p : ℝ) / 2) = x2611_12360_G p M u ∧\n  |x2611_12360_G p M u - x2611_12360_G p M v| ≤\n    ((⌊((M : ℝ) - 1) ^ 2 / 4⌋ : ℤ) : ℝ) * |u - v|",
+      "notes": "Both periodicity (9) and the exact printed Lipschitz constant (10) are included. The integer floor is coerced into ℝ in the product; subtraction in (M−1) is real subtraction, equal to the intended integer expression because M ≥ 2.",
+      "fidelity": {
+        "twin": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u v : ℝ) : x2611_12360_G p M (u + (p : ℝ) / 2) = x2611_12360_G p M u ∧ |x2611_12360_G p M u - x2611_12360_G p M v| ≤ ((⌊((M : ℝ) - 1) ^ 2 / 4⌋ : ℤ) : ℝ) * |u - v|",
+        "twin_by": "audit-b1-w2",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Lemma 2.4",
+      "name": "x2611_12360_lem2_4",
+      "original": "Let $u\\in\\mathbb{Q}$ . Then $G_{p,M}(u)$ is rational, and the\nmaximum in (6) is attained at one of the values\n\n(11)\n\n $\\beta=\\frac{pm}{j-i}-u(i+j),\\qquad 0\\leq i<j<M,\\quad 0\\leq m<j-i.$",
+      "lean": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u : ℚ) :\n  (∃ q : ℚ, x2611_12360_G p M (u : ℝ) = (q : ℝ)) ∧\n  (∃ i j m : ℕ, i < j ∧ j < M ∧ m < j - i ∧\n    x2611_12360_G p M (u : ℝ) =\n      x2611_12360_gap p (Set.range (fun k : Fin M =>\n        ((-(u : ℝ) * (k.val : ℝ) ^ 2 -\n          ((p : ℝ) * (m : ℝ) / ((j : ℝ) - (i : ℝ)) -\n            (u : ℝ) * ((i : ℝ) + (j : ℝ))) * (k.val : ℝ) : ℝ) :\n          AddCircle (p : ℝ)))))",
+      "notes": "Uses the standing domain p,M ≥ 2 from (6). Rationality is expressed as equality to the real cast of some rational. The attained maximum is required to equal the actual circular gap at one of the candidates (11); natural indices supply 0 ≤ i and 0 ≤ m.",
+      "fidelity": {
+        "twin": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u : ℚ) : (∃ q : ℚ, x2611_12360_G p M (u : ℝ) = (q : ℝ)) ∧ ∃ i j m : ℕ, i < j ∧ j < M ∧ m < j - i ∧ x2611_12360_gap p (Set.range (fun k : Fin M => ((-(u : ℝ) * (k.val : ℝ) ^ 2 - ((p : ℝ) * (m : ℝ) / ((j : ℝ) - (i : ℝ)) - (u : ℝ) * ((i : ℝ) + (j : ℝ))) * (k.val : ℝ) : ℝ) : AddCircle (p : ℝ)))) = x2611_12360_G p M (u : ℝ)",
+        "twin_by": "audit-b1-w7",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.6",
+      "name": "x2611_12360_lem2_6",
+      "original": "Let $T>0$ , and let $q=a/b>0$ , where $a,b$ are coprime\npositive integers. Suppose that $[A,B]$ and $[c,d]$ are closed\nintervals, with $0<A\\leq B<T$ . There exist $k\\in\\{0,\\ldots,b-1\\}$ \nand $r\\in[A,B]$ such that\n\n $R=Tk+r,\\qquad U=\\frac{a}{b}R,\\qquad U\\in[c,d]\\pmod{T}$ \n\nif and only if\n\n(13)\n\n $\\left\\lceil\\frac{bc-aB}{T}\\right\\rceil\\leq\\left\\lfloor\\frac{bd-aA}{T}\\right\\rfloor.$ \n\nIn particular, such $R,U$ exist whenever\n\n(14)\n\n $a(B-A)+b(d-c)\\geq T.$",
+      "lean": "(T A B c d : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A ≤ B)\n  (hBT : B < T) (hcd : c ≤ d) (a b : ℕ)\n  (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b) :\n  ((∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n    x2611_12360_modMem T (Set.Icc c d)\n      (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r))) ↔\n    (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤\n    (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧\n  (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) →\n    ∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n      x2611_12360_modMem T (Set.Icc c d)\n        (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r)))",
+      "notes": "Includes the iff criterion (13) and sufficient width condition (14). Substitutes the printed definitions q=a/b, R=Tk+r and U=(a/b)R directly. The phrase closed intervals is interpreted as ordered endpoints (including c ≤ d); no sign or period bound is imposed on c,d. The range k ∈ {0,...,b−1} is k : ℕ with k < b.",
+      "fidelity": {
+        "twin": "(T A B c d : ℝ) (a b : ℕ) (hT : 0 < T) (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b) (hA : 0 < A) (hAB : A ≤ B) (hBT : B < T) (hcd : c ≤ d) : ((∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧ R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧ x2611_12360_modMem T (Set.Icc c d) U) ↔ (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤ (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧ (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) → ∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧ R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧ x2611_12360_modMem T (Set.Icc c d) U)",
+        "twin_by": "audit-b1-w6",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 2.7",
+      "name": "x2611_12360_lem2_7",
+      "original": "Let $T>0$ , $0<A<B<T$ , and $u_{0}>0$ . If $q>0$ is irrational,\nthen there exist arbitrarily large positive numbers $R,U$ such that\n\n $R\\in(A,B)\\pmod{T},\\qquad U\\in u_{0}+T\\mathbb{Z},\\qquad U=qR.$",
+      "lean": "(T A B u₀ q : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A < B)\n  (hBT : B < T) (hu₀ : 0 < u₀) (hq : 0 < q) (hiq : Irrational q) :\n  ∀ L : ℝ, ∃ R U : ℝ, 0 < R ∧ 0 < U ∧ L < R ∧ L < U ∧\n    x2611_12360_modMem T (Set.Ioo A B) R ∧\n    x2611_12360_modMem T ({u₀} : Set ℝ) U ∧ U = q * R",
+      "notes": "Arbitrarily large means both positive R and positive U exceed every given real threshold. The red interval is open. The modular singleton condition is exactly U ∈ u₀+Tℤ, with no extra restriction on the translating integer.",
+      "fidelity": {
+        "twin": "(T A B u₀ q : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A < B) (hBT : B < T) (hu₀ : 0 < u₀) (hq : 0 < q) (hqirr : Irrational q) : ∀ L : ℝ, ∃ R U : ℝ, 0 < R ∧ 0 < U ∧ L < R ∧ L < U ∧ x2611_12360_modMem T (Set.Ioo A B) R ∧ (∃ m : ℤ, U = u₀ + (m : ℝ) * T) ∧ U = q * R",
+        "twin_by": "audit-b1-w1",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Remark 2.5 (exact table and equal-spacing consequences)",
+      "name": "x2611_12360_rem2_5",
+      "original": "The criterion of Lemma 2.2 also recovers (2) in which the red and blue\nprogressions have the same spacing.\nTaking $R=U=d$ , exact evaluation using Lemma 2.4\ngives\n\n $\\begin{array}[]{c|c|c|c}(r,M)&(p,s,d)&G_{p,r}(d)&G_{p,M}(d)\\\\\n\\hline\\cr(3,20)&(29,7,7)&22&67/10\\\\\n(4,14)&(29,9,10)&20&62/7\\\\\n(5,8)&(5,2,2)&3&2\\end{array}$ \n\nIn each row, $G_{p,r}(d)\\leq p-s$ and $G_{p,M}(d)\\leq s$ .\nRescaling gives the corresponding results of (2).",
+      "lean": ":\n  x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧\n  x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧\n  x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧\n  (∀ n : ℕ, 0 < n → x2611_12360_notArrow n 3 20 1 ∧\n    x2611_12360_notArrow n 4 14 1 ∧ x2611_12360_notArrow n 5 8 1)",
+      "notes": "All six exact table entries and all three equal-spacing negative Ramsey conclusions referred to as (2). The coloring parameters s are 7,9,2 in the three rows; they do not enter G. The numerical equalities imply the red and blue gap inequalities stated in the remark.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) : (x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧ x2611_12360_G 29 3 7 ≤ (29 : ℝ) - 7 ∧ x2611_12360_G 29 20 7 ≤ 7 ∧ x2611_12360_notArrow n 3 20 1) ∧ (x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧ x2611_12360_G 29 4 10 ≤ (29 : ℝ) - 9 ∧ x2611_12360_G 29 14 10 ≤ 9 ∧ x2611_12360_notArrow n 4 14 1) ∧ (x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧ x2611_12360_G 5 5 2 ≤ (5 : ℝ) - 2 ∧ x2611_12360_G 5 8 2 ≤ 2 ∧ x2611_12360_notArrow n 5 8 1)",
+        "twin_by": "audit-b1-w0",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Table 1",
+      "name": "x2611_12360_table1",
+      "original": "Values used in the finite verification.\n\n $p$ \n $u$ \n $G_{p,22}(u)$ \n $p$ \n $u$ \n $G_{p,22}(u)$ \n\n $17$ \n $1$ \n $4$ \n $29$ \n $7$ \n $6$ \n\n $17$ \n $2$ \n $4$ \n $29$ \n $14$ \n $17/3$ \n\n $17$ \n $1/2$ \n $4$ \n $29$ \n $1/4$ \n $23/4$ \n\n $17$ \n $2/3$ \n $133/39$ \n $29$ \n $157/11$ \n $731/132$ \n\n $17$ \n $3/5$ \n $39/10$ \n $33$ \n $15/4$ \n $15/2$ \n\n $33$ \n $23/4$ \n $8$",
+      "lean": ":\n  x2611_12360_G 17 22 1 = 4 ∧\n  x2611_12360_G 17 22 2 = 4 ∧\n  x2611_12360_G 17 22 ((1 : ℝ) / 2) = 4 ∧\n  x2611_12360_G 17 22 ((2 : ℝ) / 3) = (133 : ℝ) / 39 ∧\n  x2611_12360_G 17 22 ((3 : ℝ) / 5) = (39 : ℝ) / 10 ∧\n  x2611_12360_G 29 22 7 = 6 ∧\n  x2611_12360_G 29 22 14 = (17 : ℝ) / 3 ∧\n  x2611_12360_G 29 22 ((1 : ℝ) / 4) = (23 : ℝ) / 4 ∧\n  x2611_12360_G 29 22 ((157 : ℝ) / 11) = (731 : ℝ) / 132 ∧\n  x2611_12360_G 33 22 ((15 : ℝ) / 4) = (15 : ℝ) / 2 ∧\n  x2611_12360_G 33 22 ((23 : ℝ) / 4) = 8",
+      "notes": "The eleven exact numerical entries of Table 1, read across its two parallel (p,u,G) column groups. No rounding is used.",
+      "fidelity": {
+        "twin": ": x2611_12360_G 17 22 1 = 4 ∧ x2611_12360_G 17 22 2 = 4 ∧ x2611_12360_G 17 22 (1 / 2 : ℝ) = 4 ∧ x2611_12360_G 17 22 (2 / 3 : ℝ) = (133 / 39 : ℝ) ∧ x2611_12360_G 17 22 (3 / 5 : ℝ) = (39 / 10 : ℝ) ∧ x2611_12360_G 29 22 7 = 6 ∧ x2611_12360_G 29 22 14 = (17 / 3 : ℝ) ∧ x2611_12360_G 29 22 (1 / 4 : ℝ) = (23 / 4 : ℝ) ∧ x2611_12360_G 29 22 (157 / 11 : ℝ) = (731 / 132 : ℝ) ∧ x2611_12360_G 33 22 (15 / 4 : ℝ) = (15 / 2 : ℝ) ∧ x2611_12360_G 33 22 (23 / 4 : ℝ) = 8",
+        "twin_by": "audit-b1-w5",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Equation (19) / Section 4.1 (certified real interval)",
+      "name": "x2611_12360_eq19",
+      "original": "The exact interval verification\nin Section 4 establishes\n\n(19)\n\n $G_{33,22}(U)\\leq 8\\qquad\\left(\\frac{9}{25}\\leq U\\leq\\frac{16}{25}\\right).$",
+      "lean": "(U : ℝ) (hU : U ∈ Set.Icc ((9 : ℝ) / 25) ((16 : ℝ) / 25)) :\n  x2611_12360_G 33 22 U ≤ 8",
+      "notes": "The bound is quantified over all real U in the closed interval, rather than just the rational midpoint samples used in the finite verification.",
+      "fidelity": {
+        "twin": "(U : ℝ) (hUlo : (9 : ℝ) / 25 ≤ U) (hUhi : U ≤ (16 : ℝ) / 25) : x2611_12360_G 33 22 U ≤ 8",
+        "twin_by": "audit-b1-w2",
+        "verdict": "pending"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Introduction: claims attributed to references [1]–[10]",
+      "reason": "Prior-work results rather than new claims of this paper; omitted to prioritize the three main theorems and their framework within the 12-claim limit."
+    },
+    {
+      "label": "Equations (16), (17), and the exact G₃₃,₂₁(3/10) evaluation in Section 3.3",
+      "reason": "Precise finite numerical claims, but omitted under the 12-claim cap; representative exact evaluations are included as Table 1 and Remark 2.5."
+    },
+    {
+      "label": "Sections 3.2–4.2: counts 187,104,83,5262,728,5254; the eight residual fractions (25); 32 subintervals and 63 evaluations",
+      "reason": "Finite combinatorial and algorithm-output claims could be encoded using the framework, but omitted under the claim cap. The exhaustive program output and supporting tables are referenced externally and are not contained in the supplied text."
+    },
+    {
+      "label": "Section 3.3: the four-row 21-term exceptional-ratio verification table",
+      "reason": "Another precise numerical table, omitted under the 12-claim cap. The main 21-term theorem itself is retained."
+    },
+    {
+      "label": "Open cases following Theorem 1.3",
+      "reason": "The paper explicitly leaves these cases open; they are not asserted theorems."
+    }
+  ]
+}

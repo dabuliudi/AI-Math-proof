@@ -1,0 +1,225 @@
+{
+  "arxiv": "2611.15723",
+  "title": "Shuffles of permutations in cycle form",
+  "url": "https://arxiv.org/abs/2611.15723",
+  "auditor": "audit-b1-w4",
+  "definitions": [
+    {
+      "name": "x2611_15723_descents",
+      "lean": "def x2611_15723_descents {n : ℕ} (π : Equiv.Perm (Fin n)) : Finset ℕ :=\n  (Finset.univ.filter (fun i : Fin n =>\n    ∃ j : Fin n, j.val = i.val + 1 ∧ π j < π i)).image (fun i => i.val + 1)",
+      "notes": "One-based descent positions. Fin n represents the paper's [n] by shifting labels down by one."
+    },
+    {
+      "name": "x2611_15723_des",
+      "lean": "def x2611_15723_des {n : ℕ} (π : Equiv.Perm (Fin n)) : ℕ :=\n  (x2611_15723_descents π).card",
+      "notes": "Descent number."
+    },
+    {
+      "name": "x2611_15723_maj",
+      "lean": "def x2611_15723_maj {n : ℕ} (π : Equiv.Perm (Fin n)) : ℕ :=\n  (x2611_15723_descents π).sum id",
+      "notes": "Major index, with the original one-based positions."
+    },
+    {
+      "name": "x2611_15723_cycleShuffle",
+      "lean": "noncomputable def x2611_15723_cycleShuffle {k l : ℕ}\n    (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) :\n    Finset (Equiv.Perm (Fin (k + l))) := by\n  classical\n  exact Finset.univ.filter (fun π =>\n    ∃ (e : Fin k ↪o Fin (k + l)) (f : Fin l ↪o Fin (k + l)),\n      Disjoint (Set.range e) (Set.range f) ∧\n      Set.range e ∪ Set.range f = Set.univ ∧\n      (∀ i, π (e i) = e (σ i)) ∧ (∀ j, π (f j) = f (τ j)))",
+      "notes": "Definition 1.1 via the printed equivalent invariant-subset description. The increasing embeddings are the standardizations of the two complementary invariant subsets."
+    },
+    {
+      "name": "x2611_15723_shuffle",
+      "lean": "noncomputable def x2611_15723_shuffle {k l : ℕ}\n    (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) :\n    Finset (Equiv.Perm (Fin (k + l))) := by\n  classical\n  exact Finset.univ.filter (fun π =>\n    (List.ofFn (fun i : Fin k => (σ i).val)).Sublist\n      (List.ofFn (fun i : Fin (k + l) => (π i).val)) ∧\n    (List.ofFn (fun j : Fin l => k + (τ j).val)).Sublist\n      (List.ofFn (fun i : Fin (k + l) => (π i).val)))",
+      "notes": "The usual shuffle of the one-line word of σ with the word of τ shifted by k."
+    },
+    {
+      "name": "x2611_15723_noOrderIso",
+      "lean": "def x2611_15723_noOrderIso {k l : ℕ}\n    (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) : Prop :=\n  ∀ (a : Fin k) (b : Fin l),\n    ¬ ∃ e : {x : Fin k // σ.SameCycle a x} ≃o\n        {y : Fin l // τ.SameCycle b y},\n      ∀ x y : {z : Fin k // σ.SameCycle a z},\n        σ x.val = y.val → τ (e x).val = (e y).val",
+      "notes": "No cycle of σ is order-isomorphic to a cycle of τ. An order isomorphism of orbit supports must intertwine the permutations. SameCycle includes fixed-point singleton cycles."
+    },
+    {
+      "name": "x2611_15723_qchoose",
+      "lean": "def x2611_15723_qchoose (q : ℚ) (n k : ℕ) : ℚ :=\n  ∑ S ∈ (Finset.range n).powersetCard k,\n    q ^ ((∑ i ∈ S, i) - k * (k - 1) / 2)",
+      "notes": "Gaussian binomial polynomial evaluated at q, defined by the k-subset formula. This polynomial definition includes q = 0, 1 and roots of unity without a quotient singularity."
+    },
+    {
+      "name": "x2611_15723_zchoose",
+      "lean": "def x2611_15723_zchoose (n k : ℤ) : ℕ :=\n  if 0 ≤ n ∧ 0 ≤ k then Nat.choose n.toNat k.toNat else 0",
+      "notes": "Ordinary binomial coefficient with signed indices, zero for negative lower indices or negative upper indices. The upper indices in Corollary 1.7 are nonnegative."
+    },
+    {
+      "name": "x2611_15723_fundamental",
+      "lean": "def x2611_15723_fundamental (m n : ℕ) (J : Finset ℕ)\n    (x : Fin m → ℚ) : ℚ :=\n  ∑ w : Fin n → Fin m,\n    if Monotone w ∧\n        (∀ i j : Fin n, j.val = i.val + 1 → i.val + 1 ∈ J → w i < w j)\n    then ∏ i : Fin n, x (w i) else 0",
+      "notes": "Finite-alphabet evaluation F_{n,J}(x_1,...,x_m,0,...), with weakly increasing indices and strict rises at J. Requiring identities for every m and every rational x is equivalent to the printed homogeneous formal-series identities."
+    },
+    {
+      "name": "x2611_15723_psi",
+      "lean": "def x2611_15723_psi (q : ℚ) (n : ℕ) (J : Finset ℕ) : PowerSeries ℚ :=\n  PowerSeries.mk (fun m =>\n    x2611_15723_fundamental m n J (fun i => q ^ i.val))",
+      "notes": "The operator Ψ on a fundamental function, viewed as a power series in t after rational specialization of q. Its t^m coefficient is F_{n,J}(1,q,...,q^{m-1},0,...)."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Section 1.1, cardinality of ordinary shuffles",
+      "name": "x2611_15723_shuffle_card",
+      "original": "Clearly, $|\\sigma\\shuffle\\tau|=\\binom{n}{k}$ .",
+      "lean": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) :\n  (x2611_15723_shuffle σ τ).card = Nat.choose (k + l) k",
+      "notes": "The paper uses n and n-k. Here the two sizes are k and l, so n = k+l. The unlabelled explicit counting claim is retained.",
+      "fidelity": {
+        "twin": "(n k : ℕ) (hkn : k ≤ n) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin (n - k))) : (x2611_15723_shuffle σ τ).card = Nat.choose n k",
+        "twin_by": "audit-b1-w6",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Section 1.1, cardinality with no order-isomorphic cycles",
+      "name": "x2611_15723_cycleShuffle_card",
+      "original": "We first investigate the case when no cycle of $\\sigma$ is order-isomorphic to a cycle of $\\tau$ ; we say that $\\sigma$ and $\\tau$ have no order-isomorphic cycles. In this case, we have $|\\sigma\\shuffle_{c}\\tau|=\\binom{n}{k}$ , since $\\pi\\in\\sigma\\shuffle_{c}\\tau$ is uniquely determined by the partition $[n]=K\\sqcup L$ .",
+      "lean": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) :\n  (x2611_15723_cycleShuffle σ τ).card = Nat.choose (k + l) k",
+      "notes": "The hypothesis compares all orbit cycles, including singleton fixed-point cycles. The ambient size is k+l.",
+      "fidelity": {
+        "twin": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) (h : x2611_15723_noOrderIso σ τ) : (x2611_15723_cycleShuffle σ τ).card = Nat.choose (k + l) k",
+        "twin_by": "audit-b1-w7",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Example 1.2",
+      "name": "x2611_15723_example1_2",
+      "original": "If $\\sigma=(1,3)(2)$ and $\\tau=(1,4,3)(2,5)$ , then $\\pi=({\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}7})({\\color[rgb]{0,0,1}3})({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}6},{\\color[rgb]{1,0,0}5})({\\color[rgb]{1,0,0}4},{\\color[rgb]{1,0,0}8})\\in{\\color[rgb]{0,0,1}\\sigma}\\shuffle_{c}{\\color[rgb]{1,0,0}\\tau}$ because $\\st_{c}(({\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}7})({\\color[rgb]{0,0,1}3}))=\\sigma$ and $\\st_{c}(({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}6},{\\color[rgb]{1,0,0}5})({\\color[rgb]{1,0,0}4},{\\color[rgb]{1,0,0}8}))=\\tau$ .",
+      "lean": ":\n  (List.formPerm [(1 : Fin 8), 6] *\n    List.formPerm [(0 : Fin 8), 5, 4] * Equiv.swap (3 : Fin 8) 7) ∈\n  x2611_15723_cycleShuffle (Equiv.swap (0 : Fin 3) 2)\n    (List.formPerm [(0 : Fin 5), 3, 2] * Equiv.swap (1 : Fin 5) 4)",
+      "notes": "The printed membership is the selected claim. List.formPerm represents each displayed cycle, with every label shifted down by one. Fixed points are implicit in permutations.",
+      "fidelity": {
+        "twin": "(σ : Equiv.Perm (Fin 3)) (τ : Equiv.Perm (Fin 5)) (π : Equiv.Perm (Fin (3 + 5))) (hσ : σ = Equiv.swap 0 2) (hτ : τ = List.formPerm [0, 3, 2] * Equiv.swap 1 4) (hπ : π = Equiv.swap 1 6 * List.formPerm [0, 5, 4] * Equiv.swap 3 7) : π ∈ x2611_15723_cycleShuffle σ τ",
+        "twin_by": "audit-b1-w4",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Example 1.4",
+      "name": "x2611_15723_example1_4",
+      "original": "For $\\sigma=(1,3,2)=312$ and $\\tau=(1,2)=21$ we have\n\n $\\displaystyle{\\color[rgb]{0,0,1}\\sigma}\\shuffle_{c}{\\color[rgb]{1,0,0}\\tau}$ \n $\\displaystyle=\\{({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}3},{\\color[rgb]{0,0,1}2})({\\color[rgb]{1,0,0}4},{\\color[rgb]{1,0,0}5}),({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}4},{\\color[rgb]{0,0,1}2})({\\color[rgb]{1,0,0}3},{\\color[rgb]{1,0,0}5}),({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}2})({\\color[rgb]{1,0,0}3},{\\color[rgb]{1,0,0}4}),({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}4},{\\color[rgb]{0,0,1}3})({\\color[rgb]{1,0,0}2},{\\color[rgb]{1,0,0}5}),({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}3})({\\color[rgb]{1,0,0}2},{\\color[rgb]{1,0,0}4}),$ \n\n $\\displaystyle\\qquad({\\color[rgb]{0,0,1}1},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}4})({\\color[rgb]{1,0,0}2},{\\color[rgb]{1,0,0}3}),({\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}4},{\\color[rgb]{0,0,1}3})({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}5}),({\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}3})({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}4}),({\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}4})({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}3}),({\\color[rgb]{0,0,1}3},{\\color[rgb]{0,0,1}5},{\\color[rgb]{0,0,1}4})({\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}2})\\}$ \n\n $\\displaystyle=\\{{\\color[rgb]{0,0,1}312}{\\color[rgb]{1,0,0}54},{\\color[rgb]{0,0,1}41}{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}2}{\\color[rgb]{1,0,0}3},{\\color[rgb]{0,0,1}51}{\\color[rgb]{1,0,0}43}{\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}4}{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}13}{\\color[rgb]{1,0,0}2},{\\color[rgb]{0,0,1}5}{\\color[rgb]{1,0,0}4}{\\color[rgb]{0,0,1}1}{\\color[rgb]{1,0,0}2}{\\color[rgb]{0,0,1}3},{\\color[rgb]{0,0,1}5}{\\color[rgb]{1,0,0}32}{\\color[rgb]{0,0,1}14},{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}423}{\\color[rgb]{1,0,0}1},{\\color[rgb]{1,0,0}4}{\\color[rgb]{0,0,1}52}{\\color[rgb]{1,0,0}1}{\\color[rgb]{0,0,1}3},{\\color[rgb]{1,0,0}3}{\\color[rgb]{0,0,1}5}{\\color[rgb]{1,0,0}1}{\\color[rgb]{0,0,1}24},{\\color[rgb]{1,0,0}21}{\\color[rgb]{0,0,1}534}\\},$ \n\n ${\\color[rgb]{0,0,1}\\sigma}\\shuffle{\\color[rgb]{1,0,0}\\tau}=\\{{\\color[rgb]{0,0,1}312}{\\color[rgb]{1,0,0}54},{\\color[rgb]{0,0,1}31}{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}2}{\\color[rgb]{1,0,0}4},{\\color[rgb]{0,0,1}31}{\\color[rgb]{1,0,0}54}{\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}3}{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}12}{\\color[rgb]{1,0,0}4},{\\color[rgb]{0,0,1}3}{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}1}{\\color[rgb]{1,0,0}4}{\\color[rgb]{0,0,1}2},{\\color[rgb]{0,0,1}3}{\\color[rgb]{1,0,0}54}{\\color[rgb]{0,0,1}12},{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}312}{\\color[rgb]{1,0,0}4},{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}31}{\\color[rgb]{1,0,0}4}{\\color[rgb]{0,0,1}2},{\\color[rgb]{1,0,0}5}{\\color[rgb]{0,0,1}3}{\\color[rgb]{1,0,0}4}{\\color[rgb]{0,0,1}12},{\\color[rgb]{1,0,0}54}{\\color[rgb]{0,0,1}312}\\}.$",
+      "lean": ":\n  ((x2611_15723_cycleShuffle (List.formPerm [(0 : Fin 3), 2, 1])\n      (Equiv.swap (0 : Fin 2) 1)).image\n      (fun π => List.ofFn (fun i : Fin 5 => (π i).val + 1)) =\n    {[3,1,2,5,4], [4,1,5,2,3], [5,1,4,3,2], [4,5,1,3,2],\n     [5,4,1,2,3], [5,3,2,1,4], [5,4,2,3,1], [4,5,2,1,3],\n     [3,5,1,2,4], [2,1,5,3,4]}) ∧\n  ((x2611_15723_shuffle (List.formPerm [(0 : Fin 3), 2, 1])\n      (Equiv.swap (0 : Fin 2) 1)).image\n      (fun π => List.ofFn (fun i : Fin 5 => (π i).val + 1)) =\n    {[3,1,2,5,4], [3,1,5,2,4], [3,1,5,4,2], [3,5,1,2,4],\n     [3,5,1,4,2], [3,5,4,1,2], [5,3,1,2,4], [5,3,1,4,2],\n     [5,3,4,1,2], [5,4,3,1,2]})",
+      "notes": "Both printed ten-element sets are represented by their one-line words with the original labels 1 through 5. The word map is injective, so these are the exact set enumerations. The cycle-notation enumeration is the same cycle-shuffle set.",
+      "fidelity": {
+        "twin": "(σ : Equiv.Perm (Fin 3)) (τ : Equiv.Perm (Fin 2)) (hσ : σ = Equiv.swap 0 2 * Equiv.swap 2 1) (hτ : τ = Equiv.swap 0 1) : x2611_15723_cycleShuffle σ τ = {(Equiv.swap 0 2 * Equiv.swap 2 1 * Equiv.swap 3 4), (Equiv.swap 0 3 * Equiv.swap 3 1 * Equiv.swap 2 4), (Equiv.swap 0 4 * Equiv.swap 4 1 * Equiv.swap 2 3), (Equiv.swap 0 3 * Equiv.swap 3 2 * Equiv.swap 1 4), (Equiv.swap 0 4 * Equiv.swap 4 2 * Equiv.swap 1 3), (Equiv.swap 0 4 * Equiv.swap 4 3 * Equiv.swap 1 2), (Equiv.swap 1 3 * Equiv.swap 3 2 * Equiv.swap 0 4), (Equiv.swap 1 4 * Equiv.swap 4 2 * Equiv.swap 0 3), (Equiv.swap 1 4 * Equiv.swap 4 3 * Equiv.swap 0 2), (Equiv.swap 2 4 * Equiv.swap 4 3 * Equiv.swap 0 1)} ∧ (x2611_15723_cycleShuffle σ τ).image (fun π => List.ofFn (fun i => (π i).val + 1)) = ({[3, 1, 2, 5, 4], [4, 1, 5, 2, 3], [5, 1, 4, 3, 2], [4, 5, 1, 3, 2], [5, 4, 1, 2, 3], [5, 3, 2, 1, 4], [5, 4, 2, 3, 1], [4, 5, 2, 1, 3], [3, 5, 1, 2, 4], [2, 1, 5, 3, 4]} : Finset (List ℕ)) ∧ (x2611_15723_shuffle σ τ).image (fun π => List.ofFn (fun i => (π i).val + 1)) = ({[3, 1, 2, 5, 4], [3, 1, 5, 2, 4], [3, 1, 5, 4, 2], [3, 5, 1, 2, 4], [3, 5, 1, 4, 2], [3, 5, 4, 1, 2], [5, 3, 1, 2, 4], [5, 3, 1, 4, 2], [5, 3, 4, 1, 2], [5, 4, 3, 1, 2]} : Finset (List ℕ))",
+        "twin_by": "audit-b1-w2",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Theorem 1.6",
+      "name": "x2611_15723_thm1_6",
+      "original": "For every $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}F_{n,\\Des(\\pi)}=\\sum_{\\pi^{\\prime}\\in\\sigma\\shuffle\\tau}F_{n,\\Des(\\pi^{\\prime})}.$ \n\n(1)\n\nEquivalently, for any pair $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\nthe statistic $\\Des$ has the same distribution on the set of\nshuffles-by-cycle\n $\\sigma\\shuffle_{c}\\tau$ as on the set of standard shuffles $\\sigma\\shuffle\\tau$ .",
+      "lean": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (J : Finset ℕ) :\n  ((x2611_15723_cycleShuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card =\n    ((x2611_15723_shuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card",
+      "notes": "Uses the equivalently clause printed immediately after equation (1), namely equality of the descent-set distributions. J ranges over all finite sets of one-based positions. Sets outside the possible descent range have empty fibers on both sides.",
+      "fidelity": {
+        "twin": "(n k : ℕ) (hk : k ≤ n) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin (n - k))) (h : x2611_15723_noOrderIso σ τ) : ∀ (m : ℕ) (x : Fin m → ℚ), (∑ π ∈ x2611_15723_cycleShuffle σ τ, x2611_15723_fundamental m n (x2611_15723_descents π) x) = ∑ π ∈ x2611_15723_shuffle σ τ, x2611_15723_fundamental m n (x2611_15723_descents π) x",
+        "twin_by": "audit-b1-w6",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Corollary 1.7",
+      "name": "x2611_15723_cor1_7",
+      "original": "For every $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}q^{\\maj(\\pi)}=q^{\\maj(\\sigma)+\\maj(\\tau)}{{n}\\brack{k}}_{q}$ \n\nand\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}t^{\\des(\\pi)}=\\sum_{i=0}^{n}\\binom{k+\\des(\\tau)-\\des(\\sigma)}{i-\\des(\\sigma)}\\binom{n-k+\\des(\\sigma)-\\des(\\tau)}{i-\\des(\\tau)}\\,t^{i}.$",
+      "lean": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (q t : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ τ, q ^ x2611_15723_maj π) =\n    q ^ (x2611_15723_maj σ + x2611_15723_maj τ) *\n      x2611_15723_qchoose q (k + l) k ∧\n  (∑ π ∈ x2611_15723_cycleShuffle σ τ, t ^ x2611_15723_des π) =\n    ∑ i ∈ Finset.range (k + l + 1),\n      (x2611_15723_zchoose\n        ((k : ℤ) + (x2611_15723_des τ : ℤ) - (x2611_15723_des σ : ℤ))\n        ((i : ℤ) - (x2611_15723_des σ : ℤ)) : ℚ) *\n      (x2611_15723_zchoose\n        ((l : ℤ) + (x2611_15723_des σ : ℤ) - (x2611_15723_des τ : ℤ))\n        ((i : ℤ) - (x2611_15723_des τ : ℤ)) : ℚ) * t ^ i",
+      "notes": "Both displayed formulas are retained as a conjunction. All differences in binomial indices are taken in ℤ, with negative lower index giving zero. Polynomial identities are expressed for every rational q and t, which is equivalent to their formal polynomial versions over ℚ. The Gaussian binomial uses its polynomial subset formula.",
+      "fidelity": {
+        "twin": "(n k : ℕ) (hkn : k ≤ n) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin (n - k))) (h : x2611_15723_noOrderIso σ τ) (q t : ℚ) : (∑ π ∈ x2611_15723_cycleShuffle σ τ, q ^ x2611_15723_maj π) = q ^ (x2611_15723_maj σ + x2611_15723_maj τ) * x2611_15723_qchoose q n k ∧ (∑ π ∈ x2611_15723_cycleShuffle σ τ, t ^ x2611_15723_des π) = ∑ i ∈ Finset.range (n + 1), (x2611_15723_zchoose ((k : ℤ) + (x2611_15723_des τ : ℤ) - (x2611_15723_des σ : ℤ)) ((i : ℤ) - (x2611_15723_des σ : ℤ)) : ℚ) * (x2611_15723_zchoose ((n : ℤ) - (k : ℤ) + (x2611_15723_des σ : ℤ) - (x2611_15723_des τ : ℤ)) ((i : ℤ) - (x2611_15723_des τ : ℤ)) : ℚ) * t ^ i",
+        "twin_by": "audit-b1-w5",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Theorem 1.12",
+      "name": "x2611_15723_thm1_12",
+      "original": "For every cycle $\\sigma\\in\\mathcal{C}_{(n)}$ ,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\sigma}q^{\\maj(\\pi)}t^{\\des(\\pi)}=q^{2\\maj(\\sigma)}t^{\\des(\\sigma)}\\cdot\\sum\\limits_{i=0}^{n}\\frac{1}{2}\\left({n\\brack i}_{q}^{2}+(-1)^{i}{n\\brack i}_{q^{2}}\\right)q^{i^{2}}t^{i}.$",
+      "lean": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (q t : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ,\n      q ^ x2611_15723_maj π * t ^ x2611_15723_des π) =\n    q ^ (2 * x2611_15723_maj σ) * t ^ x2611_15723_des σ *\n      ∑ i ∈ Finset.range (n + 1),\n        (1 / 2 : ℚ) *\n          (x2611_15723_qchoose q n i ^ 2 +\n            (-1 : ℚ) ^ i * x2611_15723_qchoose (q ^ 2) n i) *\n          q ^ (i ^ 2) * t ^ i",
+      "notes": "The paper's n-cycle hypothesis is represented by positive n and transitivity on all of Fin n. IsCycleOn includes the n=1 singleton cycle. The exponent of t in the prefactor is des(σ), exactly as printed. Universal rational specialization expresses the same bivariate polynomial identity.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n)) (hσ : σ.IsCycleOn Set.univ) (q t : ℚ) : (∑ π ∈ x2611_15723_cycleShuffle σ σ, q ^ x2611_15723_maj π * t ^ x2611_15723_des π) = q ^ (2 * x2611_15723_maj σ) * t ^ x2611_15723_des σ * ∑ i ∈ Finset.range (n + 1), (1 / 2 : ℚ) * ((x2611_15723_qchoose q n i) ^ 2 + (-1 : ℚ) ^ i * x2611_15723_qchoose (q ^ 2) n i) * q ^ (i ^ 2) * t ^ i",
+        "twin_by": "audit-b1-w0",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.13",
+      "name": "x2611_15723_cor1_13",
+      "original": "For every cycle $\\sigma\\in\\mathcal{C}_{(n)}$ ,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\sigma}q^{\\maj(\\pi)}=q^{2\\maj(\\sigma)}\\cdot\\frac{1}{2}\\left({2n\\brack n}_{q}+\\prod\\limits_{i=1}^{n}(1-q^{2i-1})\\right).$",
+      "lean": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (q : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ, q ^ x2611_15723_maj π) =\n    q ^ (2 * x2611_15723_maj σ) * (1 / 2 : ℚ) *\n      (x2611_15723_qchoose q (2 * n) n +\n        ∏ i ∈ Finset.Icc 1 n, (1 - q ^ (2 * i - 1)))",
+      "notes": "Formalizes the displayed statement, including the product upper limit n. The proof later prints r in the corresponding product, an unbound-index typo that does not alter this corollary's printed statement. Uses universal rational specialization and includes singleton cycles.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n)) (hσ : σ.IsCycleOn Set.univ) (q : ℚ) : (∑ π ∈ x2611_15723_cycleShuffle σ σ, q ^ x2611_15723_maj π) = q ^ (2 * x2611_15723_maj σ) * (1 / 2 : ℚ) * (x2611_15723_qchoose q (2 * n) n + ∏ i ∈ Finset.Icc 1 n, (1 - q ^ (2 * i - 1)))",
+        "twin_by": "audit-b1-w7",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Corollary 1.14",
+      "name": "x2611_15723_cor1_14",
+      "original": "For every cycle $\\sigma\\in\\mathcal{C}_{(n)}$ ,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\sigma}t^{\\des(\\pi)}=t^{\\des(\\sigma)}\\cdot\\sum_{i=0}^{n}a_{i,n}t^{i},$ \n\nwhere\n\n $a_{i,n}=\\begin{cases}\\displaystyle\\binom{\\binom{n}{i}+1}{2},&\\ \\text{if $i$ is even};\\\\\n{}\\\\\n\\displaystyle\\binom{\\binom{n}{i}}{2},&\\ \\text{if $i$ is odd}.\\end{cases}$",
+      "lean": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (t : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ, t ^ x2611_15723_des π) =\n    t ^ x2611_15723_des σ *\n      ∑ i ∈ Finset.range (n + 1),\n        ((if Even i then Nat.choose (Nat.choose n i + 1) 2\n          else Nat.choose (Nat.choose n i) 2 : ℕ) : ℚ) * t ^ i",
+      "notes": "The piecewise coefficients a_{i,n} are expanded in place, preserving the printed parity convention. Uses the positive n-cycle convention and universal rational specialization of the polynomial variable.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n)) (hσ : ∀ i j : Fin n, σ.SameCycle i j) : (∑ π ∈ x2611_15723_cycleShuffle σ σ, (Polynomial.X : Polynomial ℚ) ^ x2611_15723_des π) = (Polynomial.X : Polynomial ℚ) ^ x2611_15723_des σ * ∑ i ∈ Finset.range (n + 1), Polynomial.C ((if Even i then Nat.choose (Nat.choose n i + 1) 2 else Nat.choose (Nat.choose n i) 2 : ℕ) : ℚ) * Polynomial.X ^ i",
+        "twin_by": "audit-b1-w4",
+        "verdict": "pending"
+      }
+    },
+    {
+      "label": "Lemma 4.1",
+      "name": "x2611_15723_lemma4_1",
+      "original": "For every cycle $\\sigma\\in\\mathcal{C}_{(n)}$ ,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\sigma}F_{2n,\\Des(\\pi)}=\\frac{1}{2}\\left(F_{n,\\Des(\\sigma)}^{2}+\\left.F_{n,\\Des(\\sigma)}\\right|_{x_{i}\\mapsto x_{i}^{2}}\\right)=\\frac{1}{2}\\left(\\sum_{\\pi^{\\prime}\\in\\sigma\\shuffle\\sigma}F_{2n,\\Des(\\pi^{\\prime})}+\\left.F_{n,\\Des(\\sigma)}\\right|_{x_{i}\\mapsto x_{i}^{2}}\\right),$ \n\nwhere $\\left.f\\right|_{x_{i}\\mapsto x_{i}^{2}}:=f(x_{1}^{2},x_{2}^{2},\\ldots)$ .",
+      "lean": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (m : ℕ) (x : Fin m → ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ,\n      x2611_15723_fundamental m (n + n) (x2611_15723_descents π) x) =\n    (1 / 2 : ℚ) *\n      (x2611_15723_fundamental m n (x2611_15723_descents σ) x ^ 2 +\n        x2611_15723_fundamental m n (x2611_15723_descents σ)\n          (fun i => x i ^ 2)) ∧\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ,\n      x2611_15723_fundamental m (n + n) (x2611_15723_descents π) x) =\n    (1 / 2 : ℚ) *\n      ((∑ π ∈ x2611_15723_shuffle σ σ,\n          x2611_15723_fundamental m (n + n) (x2611_15723_descents π) x) +\n        x2611_15723_fundamental m n (x2611_15723_descents σ)\n          (fun i => x i ^ 2))",
+      "notes": "Both equalities in the chain are retained. They are asserted after every finite-alphabet rational evaluation. This is equivalent to equality of the printed homogeneous quasisymmetric formal series, since each coefficient is visible on a sufficiently large finite alphabet and ℚ is infinite. The variable-square substitution is pointwise x_i ↦ x_i².",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n)) (hσ : σ.IsCycleOn Set.univ) (m : ℕ) (x : Fin m → ℚ) : (∑ π ∈ x2611_15723_cycleShuffle σ σ, x2611_15723_fundamental m (2 * n) (x2611_15723_descents π) x) = (1 / 2 : ℚ) * ((x2611_15723_fundamental m n (x2611_15723_descents σ) x) ^ 2 + x2611_15723_fundamental m n (x2611_15723_descents σ) (fun i => x i ^ 2)) ∧ (1 / 2 : ℚ) * ((x2611_15723_fundamental m n (x2611_15723_descents σ) x) ^ 2 + x2611_15723_fundamental m n (x2611_15723_descents σ) (fun i => x i ^ 2)) = (1 / 2 : ℚ) * ((∑ π ∈ x2611_15723_shuffle σ σ, x2611_15723_fundamental m (2 * n) (x2611_15723_descents π) x) + x2611_15723_fundamental m n (x2611_15723_descents σ) (fun i => x i ^ 2))",
+        "twin_by": "audit-b1-w3",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": ""
+      }
+    },
+    {
+      "label": "Lemma 4.2",
+      "name": "x2611_15723_lemma4_2",
+      "original": "For any subset $J=\\{j_{1},\\ldots,j_{k}\\}\\subseteq[n-1]$ ,\n\n $\\Psi(F_{n,J})=\\frac{q^{\\comaj(J)}t^{|J|+1}}{(t;q)_{n+1}}$ \n\nwhere $\\comaj(J):=\\sum_{i=1}^{k}(n-j_{i})=\\sum_{s=1}^{n}|J\\cap[s-1]|$ .",
+      "lean": "(n : ℕ) (J : Finset ℕ)\n    (hJ : J ⊆ Finset.Icc 1 (n - 1)) (q : ℚ) :\n  x2611_15723_psi q n J *\n      (∏ j ∈ Finset.range (n + 1),\n        (1 - PowerSeries.C (q ^ j) * PowerSeries.X : PowerSeries ℚ)) =\n    PowerSeries.C (q ^ (∑ j ∈ J, (n - j))) *\n      (PowerSeries.X : PowerSeries ℚ) ^ (J.card + 1)",
+      "notes": "The rational expression is multiplied by its denominator (t;q)_{n+1}, whose constant coefficient is 1, so this is equivalent in formal power series. q is universally specialized to ℚ, and t is PowerSeries.X. The comajor index is the printed sum ∑_{j∈J}(n−j). The paper gives no explicit positivity hypothesis on n in this lemma. This literal ℕ transcription allows n=0 and J=∅, where the printed identity fails. A positive-degree convention would exclude that boundary case.",
+      "fidelity": {
+        "twin": "(n : ℕ) (hn : 0 < n) (J : Finset ℕ) (hJ : J ⊆ Finset.Icc 1 (n - 1)) (q : ℚ) : x2611_15723_psi q n J = PowerSeries.C (q ^ (∑ j ∈ J, (n - j))) * (PowerSeries.X : PowerSeries ℚ) ^ (J.card + 1) * (∏ i ∈ Finset.range (n + 1), (1 - PowerSeries.C (q ^ i) * PowerSeries.X))⁻¹",
+        "twin_by": "audit-b1-w5",
+        "verdict": "pending"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Lemma 2.2",
+      "reason": "The Gessel–Reutenauer map p on primitive necklaces, including its tie-breaking convention for repeated necklaces, requires substantial new combinatorial infrastructure beyond the Mathlib notions used here."
+    },
+    {
+      "label": "Theorem 1.11",
+      "reason": "The general multi-factor formula requires complete homogeneous symmetric functions and plethysm on quasisymmetric formal series. Mathlib has no directly usable development of that theory. The selected Theorem 1.6 and Lemma 4.1 retain finite-evaluation versions of the relevant special cases."
+    },
+    {
+      "label": "Lemma 3.1",
+      "reason": "The identity h_k[F_{r,Des(σ)}] requires the same general quasisymmetric plethysm infrastructure as Theorem 1.11."
+    },
+    {
+      "label": "Proposition 5.1",
+      "reason": "The displayed formula and its partition expansion require plethysm in the two-variable formal-series algebra with Hadamard multiplication in t, beyond the ordinary PowerSeries and finite-polynomial notions introduced for this worklist."
+    }
+  ]
+}

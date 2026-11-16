@@ -1,0 +1,163 @@
+{
+  "arxiv": "2611.15512",
+  "title": "Every rank-three matroid is $Z$-Rayleigh",
+  "url": "https://arxiv.org/abs/2611.15512",
+  "auditor": "audit-b1-w0",
+  "definitions": [
+    {
+      "name": "x2611_15512_set_polynomial",
+      "lean": "noncomputable def x2611_15512_set_polynomial {α : Type*} [Fintype α]\n    (P : Set α → Prop) : MvPolynomial α ℝ := by\n  classical\n  exact ∑ A ∈ Finset.univ.powerset.filter (fun A : Finset α => P (↑A : Set α)),\n    ∏ a ∈ A, MvPolynomial.X a",
+      "notes": "The square-free generating polynomial of the subsets satisfying P. With Mathlib predicates M.IsBase, M.Indep, and M.Spanning this gives exactly B_M, I_M, and S_M. Those predicates include containment in M.E; no subsets containing ambient junk elements are counted."
+    },
+    {
+      "name": "x2611_15512_rayleigh_difference",
+      "lean": "noncomputable def x2611_15512_rayleigh_difference {α R : Type*} [CommRing R]\n    (F : MvPolynomial α R) (e f : α) : MvPolynomial α R :=\n  MvPolynomial.pderiv e F * MvPolynomial.pderiv f F -\n    F * MvPolynomial.pderiv e (MvPolynomial.pderiv f F)",
+      "notes": "The printed Rayleigh difference, using Mathlib partial polynomial derivatives. The coefficient ring is generic so it also applies to polynomials in x with coefficients in ℝ[q]."
+    },
+    {
+      "name": "x2611_15512_tutte",
+      "lean": "noncomputable def x2611_15512_tutte {α : Type*} [Fintype α]\n    (M : Matroid α) (q : ℝ) : MvPolynomial α ℝ := by\n  classical\n  exact ∑ A ∈ M.E.toFinset.powerset,\n    MvPolynomial.C ((q ^ (M.eRk (↑A : Set α)).toNat)⁻¹) *\n      ∏ a ∈ A, MvPolynomial.X a",
+      "notes": "Z_M(q,x) = sum over A subset E of q^(-r_M(A)) x^A. Finite matroid ranks are natural numbers; (q^rank)⁻¹ is exactly the printed negative power for q > 0. Coefficients are real and q is held fixed."
+    },
+    {
+      "name": "x2611_15512_z_rayleigh",
+      "lean": "def x2611_15512_z_rayleigh {α : Type*} [Fintype α]\n    (M : Matroid α) : Prop :=\n  ∀ (q : ℝ), 0 < q → q ≤ 1 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n        0 ≤ MvPolynomial.eval x\n          (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)",
+      "notes": "The Z-Rayleigh property expanded as its inequalities for 0 < q ≤ 1. The defining Tutte polynomial is automatically nonzero, multiaffine, and coefficientwise positive at q > 0. Weights are required positive exactly on the matroid ground set."
+    },
+    {
+      "name": "x2611_15512_simple",
+      "lean": "def x2611_15512_simple {α : Type*} (M : Matroid α) : Prop :=\n  ∀ (A : Set α), A ⊆ M.E → A.encard ≤ 2 → M.Indep A",
+      "notes": "Simple matroid: all ground-set subsets of size at most two are independent. This excludes both loops and parallel pairs. The installed Mathlib provides Indep and Loopless but no Matroid.Simple predicate."
+    },
+    {
+      "name": "x2611_15512_normalized_tutte",
+      "lean": "noncomputable def x2611_15512_normalized_tutte {α : Type*} [Fintype α]\n    (M : Matroid α) : MvPolynomial α (Polynomial ℝ) := by\n  classical\n  exact ∑ A ∈ M.E.toFinset.powerset,\n    MvPolynomial.C ((Polynomial.X : Polynomial ℝ) ^ (3 - (M.eRk (↑A : Set α)).toNat)) *\n      ∏ a ∈ A, MvPolynomial.X a",
+      "notes": "W_M(q,x) = sum q^(3-r_M(A)) x^A, used only under rank M = 3. q is Polynomial.X in the coefficient ring ℝ[q]; the x variables are MvPolynomial variables. This avoids restricting the polynomial identity to numeric q."
+    },
+    {
+      "name": "x2611_15512_graph_star",
+      "lean": "noncomputable def x2611_15512_graph_star {α β : Type*} [Fintype β]\n    (E : Finset α) (p : α → β) : MvPolynomial α ℝ := by\n  classical\n  exact ∑ v : β,\n    ((∏ a ∈ E.filter (fun a => p a = v), (1 + MvPolynomial.X a)) - 1)",
+      "notes": "For an endpoint map p, sum over vertices v of P_delta(v) - 1. Applied to left and right endpoint maps this is E_G and F_G. A graph is encoded by finite labeled edges and two endpoint maps into separate vertex classes."
+    },
+    {
+      "name": "x2611_15512_graph_d",
+      "lean": "noncomputable def x2611_15512_graph_d {α L R : Type*} [Fintype L] [Fintype R]\n    (E : Finset α) (l : α → L) (r : α → R) : MvPolynomial α ℝ := by\n  classical\n  exact x2611_15512_graph_star E l * x2611_15512_graph_star E r +\n    ((∏ a ∈ E, (1 + MvPolynomial.X a)) - 1) *\n      ((∑ A ∈ (E.powersetCard 2).filter\n          (fun A => (A.image l).card = 2 ∧ (A.image r).card = 2),\n        ∏ a ∈ A, MvPolynomial.X a) - ∑ a ∈ E, MvPolynomial.X a)",
+      "notes": "D_G = E_G F_G + (P_E - 1)(H_G - sigma_E). A two-edge subset is a matching exactly when its left endpoints and right endpoints are both distinct. Simplicity is a separate hypothesis in the statement."
+    },
+    {
+      "name": "x2611_15512_graph_q",
+      "lean": "noncomputable def x2611_15512_graph_q {α L R : Type*}\n    (E : Finset α) (l : α → L) (r : α → R) : MvPolynomial α ℝ := by\n  classical\n  exact MvPolynomial.C (1 / 4 : ℝ) *\n    ∑ A ∈ E.powersetCard 5, ∑ z ∈ A,\n      if ((A.erase z).image l).card = 2 ∧ ((A.erase z).image r).card = 2 ∧\n          Xor (l z ∈ (A.erase z).image l) (r z ∈ (A.erase z).image r) then\n        MvPolynomial.X z *\n          ∑ B ∈ ((A.erase z).powersetCard 2).filter\n              (fun B => (B.image l).card = 2 ∧ (B.image r).card = 2),\n            ((∏ a ∈ B, MvPolynomial.X a) -\n              ∏ a ∈ A.erase z \\ B, MvPolynomial.X a) ^ 2\n      else 0",
+      "notes": "Equation (5). For an injective endpoint-pair map, four distinct edges with two endpoints on each side form a 4-cycle. The exclusive-or condition says that z has exactly one endpoint on that cycle, so is pendant. The inner sum enumerates the two opposite-edge matchings; their squared differences agree. The factor 1/4 therefore gives exactly the paper's factor 1/2, with each five-edge support counted once."
+    }
+  ],
+  "statements": [
+    {
+      "label": "Theorem 1.3",
+      "name": "x2611_15512_thm1_3",
+      "original": "Every matroid of rank or corank at most three is $Z$ -Rayleigh.\nMoreover, if $M$ is simple of rank three, then, for all distinct\n $e,f\\in E(M)$ , all $0<q\\leq 1$ and all $x>0$ ,\n\n $q^{6}(\\Delta_{e,f}Z_{M})(q,x)\\geq(1-q)^{2}(\\Delta_{e,f}S_{M})(x)\\geq(1-q)^{2}(\\Delta_{e,f}B_{M})(x)\\geq 0.$",
+      "lean": "{α : Type*} [Fintype α] (M : Matroid α) :\n  ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧\n  (x2611_15512_simple M → M.eRank = 3 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (q : ℝ), 0 < q → q ≤ 1 →\n        ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≤\n              q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)) ∧\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ≤\n              (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n          0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f))",
+      "notes": "Both sentences of the numbered theorem are retained, as a conjunction. Rank and corank are Mathlib eRank of M and its dual, respectively; because the ambient type is finite these are the ordinary finite ranks. The second conjunct retains simplicity, rank exactly three, distinct ground-set elements, all positive ground-set weights, and 0 < q ≤ 1. The three inequalities are written in increasing-order Lean notation. No claim of proof is made.",
+      "fidelity": {
+        "twin": "{α : Type*} [Fintype α] (M : Matroid α) : ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧ (x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (q : ℝ), 0 < q → q ≤ 1 → ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) → q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f) ≥ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ∧ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≥ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ∧ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ≥ 0)",
+        "twin_by": "audit-b1-w0",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "主定理 `x2611_15512_thm1_3_eqv` 的命题与任务要求不一致。要求：: (∀ {α : Type*} [Fintype α] (M : Matroid α), ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧\n  (x2611_15512_simple M → M.eRank = 3 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (q : ℝ), 0 < q → q ≤ 1 →\n        ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≤\n              q ^ 6 * MvPolynomial.eval x (x2611_15512_ra"
+      }
+    },
+    {
+      "label": "Theorem 2.1",
+      "name": "x2611_15512_thm2_1",
+      "original": "For every rank- $3$ matroid $M$ , every pair of distinct elements $e,f$ \nand every $x>0$ , $(\\Delta_{e,f}B_{M})(x)\\geq 0$ .",
+      "lean": "{α : Type*} [Fintype α] (M : Matroid α) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) :\n  0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+      "notes": "The rank-three basis-Rayleigh theorem cited from Wagner. No simplicity hypothesis is added. The finite-ambient representation loses no finite matroids, since each can be represented on its finite ground type.",
+      "fidelity": {
+        "twin": "{α : Type*} [Fintype α] (M : Matroid α) (h_rank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) : 0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+        "twin_by": "audit-b1-w5",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem 2.2",
+      "name": "x2611_15512_thm2_2",
+      "original": "For every rank- $3$ matroid $M$ , every pair of distinct elements $e,f$ \nand every $x>0$ , $(\\Delta_{e,f}I_{M})(x)\\geq 0$ .",
+      "lean": "{α : Type*} [Fintype α] (M : Matroid α) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) :\n  0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Indep) e f)",
+      "notes": "The rank-three independent-set Rayleigh theorem cited from Cocks. All independent ground-set subsets are included in I_M; no simplicity assumption is imposed.",
+      "fidelity": {
+        "twin": "{α : Type*} [Fintype α] (M : Matroid α) (h_rank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) : 0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Indep) e f)",
+        "twin_by": "audit-b1-w2",
+        "verdict": "same",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Theorem 2.3",
+      "name": "x2611_15512_thm2_3",
+      "original": "In a bipartite graph, the maximum size of a matching equals the\nminimum size of a vertex cover.",
+      "lean": "{V : Type*} [Fintype V] (G : SimpleGraph V) (hG : G.IsBipartite) :\n  ∃ (H : G.Subgraph) (C : Set V), H.IsMatching ∧ G.IsVertexCover C ∧\n    H.edgeSet.ncard = C.ncard ∧\n    (∀ N : G.Subgraph, N.IsMatching → N.edgeSet.ncard ≤ H.edgeSet.ncard) ∧\n    (∀ D : Set V, G.IsVertexCover D → C.ncard ≤ D.ncard)",
+      "notes": "Kőnig's theorem, with the paper's global finiteness convention. Uses Mathlib's simple graph, bipartiteness, matching subgraph, and vertex-cover notions. The exhibited matching and cover have equal cardinality and are respectively maximum and minimum. Unordered edges are counted once by edgeSet.ncard.",
+      "fidelity": {
+        "twin": "(V : Type*) [Finite V] (G : SimpleGraph V) (hG : G.IsBipartite) : (⨆ (M : G.Subgraph) (_ : M.IsMatching), M.edgeSet.encard) = G.vertexCoverNum",
+        "twin_by": "audit-b1-w7",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "Lean 报错"
+      }
+    },
+    {
+      "label": "Lemma 2.4",
+      "name": "x2611_15512_lem2_4",
+      "original": "For every simple bipartite graph $G$ , there is a polynomial $C_{G}\\succeq 0$ \nwith no terms of degree less than five such that\n\n $D_{G}=(D_{G})_{4}+Q_{G}+C_{G}.$",
+      "lean": "{α L R : Type*} [Fintype L] [Fintype R]\n  (E : Finset α) (l : α → L) (r : α → R)\n  (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)) :\n  ∃ C : MvPolynomial α ℝ, (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_graph_d E l r =\n      MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n      x2611_15512_graph_q E l r + C",
+      "notes": "A finite bipartite graph is encoded by an edge-label finset E and endpoint maps into separate finite left and right vertex types. Injectivity of the endpoint pair on E states exactly that parallel edges are absent; the two vertex classes are treated as disjoint copies, so loops cannot occur. The empty edge set is allowed. Coefficient nonnegativity and the absence of terms below degree five are asserted separately. The homogeneous part and derivatives use existing Mathlib operations.",
+      "fidelity": {
+        "twin": "{α L R : Type*} [Fintype L] [Fintype R] (E : Finset α) (l : α → L) (r : α → R) (h_simple : Set.InjOn (fun e => (l e, r e)) (↑E : Set α)) : ∃ C : MvPolynomial α ℝ, (∀ m, 0 ≤ MvPolynomial.coeff m C) ∧ (∀ n : ℕ, n < 5 → MvPolynomial.homogeneousComponent n C = 0) ∧ x2611_15512_graph_d E l r = MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) + x2611_15512_graph_q E l r + C",
+        "twin_by": "audit-b1-w6",
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_15512_lem2_4_eqv_aux_star\n    {α β L K : Type*} [Fintype L] [Fintype K]\n    (f : α ↪ β) (e : L ≃ K) (E : Finset α) (l₀ : α → L) (l : β → K)\n    (hl : ∀ a, l (f a) = e (l₀ a)) :\n    MvPolynomial.rename f (x2611_15512_graph_star E l₀) =\n      x2611_15512_graph_star (E.map f) l := by\n  classical\n  unfold x2611_15512_graph_star\n  rw [map_sum]\n  apply Fintype.sum_equiv e\n  intro v\n  have hfilt : (E.map f).filter (fun a => l a = e v) =\n      (E.filter (fun a => l₀ a = v)).map f := by\n    simp only [Finset.filter_map, Function.comp_def, hl, e.injective.eq_iff]\n  simp [hfilt, Finset.prod_map]\n\ntheorem x2611_15512_lem2_4_eqv_aux_graph\n    {α β L K R S : Type*} [Fintype L] [Fintype K] [Fintype R] [Fintype S]\n    (f : α ↪ β) (eL : L ≃ K) (eR : R ≃ S) (E : Finset α)\n    (l₀ : α → L) (r₀ : α → R) (l : β → K) (r : β → S)\n    (hl : ∀ a, l (f a) = eL (l₀ a)) (hr : ∀ a, r (f a) = eR (r₀ a)) :\n    MvPolynomial.rename f (x2611_15512_graph_d E l₀ r₀) =\n        x2611_15512_graph_d (E.map f) l r ∧\n      MvPolynomial.rename f (x2611_15512_graph_q E l₀ r₀) =\n        x2611_15512_graph_q (E.map f) l r := by\n  classical\n  have himgL (A : Finset α) : (A.map f).image l = (A.image l₀).map eL.toEmbedding := by\n    simp only [Finset.map_eq_image, Finset.image_image, Function.comp_def,\n      Equiv.toEmbedding_apply, hl]\n  have himgR (A : Finset α) : (A.map f).image r = (A.image r₀).map eR.toEmbedding := by\n    simp only [Finset.map_eq_image, Finset.image_image, Function.comp_def,\n      Equiv.toEmbedding_apply, hr]\n  constructor\n  · unfold x2611_15512_graph_d\n    simp [map_add, map_mul, map_sub,\n      x2611_15512_lem2_4_eqv_aux_star f eL E l₀ l hl,\n      x2611_15512_lem2_4_eqv_aux_star f eR E r₀ r hr,\n      Finset.powersetCard_map, Finset.filter_map, Finset.sum_map,\n      Finset.prod_map, himgL, himgR]\n  · unfold x2611_15512_graph_q\n    simp [apply_ite, Finset.powersetCard_map, Finset.filter_map, Finset.sum_map,\n      Finset.prod_map, ← Finset.map_erase, ← Finset.map_sdiff,\n      himgL, himgR, hl, hr]\n\ntheorem x2611_15512_lem2_4_eqv_aux_lift\n    (h : ∀ {α L R : Type*} [Fintype L] [Fintype R]\n      (E : Finset α) (l : α → L) (r : α → R)\n      (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)),\n      ∃ C : MvPolynomial α ℝ, (∀ d, 0 ≤ MvPolynomial.coeff d C) ∧\n        (∀ n : ℕ, n < 5 → MvPolynomial.homogeneousComponent n C = 0) ∧\n        x2611_15512_graph_d E l r =\n          MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n          x2611_15512_graph_q E l r + C) :\n    ∀ {α L R : Type*} [Fintype L] [Fintype R]\n      (E : Finset α) (l : α → L) (r : α → R)\n      (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)),\n      ∃ C : MvPolynomial α ℝ, (∀ d, 0 ≤ MvPolynomial.coeff d C) ∧\n        (∀ n : ℕ, n < 5 → MvPolynomial.homogeneousComponent n C = 0) ∧\n        x2611_15512_graph_d E l r =\n          MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n          x2611_15512_graph_q E l r + C := by\n  classical\n  intro α L R _ _ E l r hsimple\n  let W := ULift (Fin (Fintype.card E))\n  let KL := ULift (Fin (Fintype.card L))\n  let KR := ULift (Fin (Fintype.card R))\n  let e : W ≃ E := Equiv.ulift.trans (Fintype.equivFin E).symm\n  let eL : KL ≃ L := Equiv.ulift.trans (Fintype.equivFin L).symm\n  let eR : KR ≃ R := Equiv.ulift.trans (Fintype.equivFin R).symm\n  let f : W ↪ α := ⟨fun w => (e w).val, Subtype.val_injective.comp e.injective⟩\n  let F : Finset W := Finset.univ\n  let l₀ : W → KL := fun w => eL.symm (l (f w))\n  let r₀ : W → KR := fun w => eR.symm (r (f w))\n  have hE : F.map f = E := by\n    ext a\n    constructor\n    · intro ha\n      obtain ⟨w, _, rfl⟩ := Finset.mem_map.mp ha\n      exact (e w).property\n    · intro ha\n      apply Finset.mem_map.mpr\n      refine ⟨e.symm ⟨a, ha⟩, Finset.mem_univ _, ?_⟩\n      simp [f]\n  have hl : ∀ w, l (f w) = eL (l₀ w) := by simp [l₀]\n  have hr : ∀ w, r (f w) = eR (r₀ w) := by simp [r₀]\n  have hs : Set.InjOn (fun w => (l₀ w, r₀ w)) (↑F : Set W) := by\n    intro x hx y hy hxy\n    apply f.injective\n    apply hsimple (show f x ∈ E from (e x).property)\n      (show f y ∈ E from (e y).property)\n    have hpair := congrArg (fun p : KL × KR => (eL p.1, eR p.2)) hxy\n    simpa only [l₀, r₀, Equiv.apply_symm_apply] using hpair\n  obtain ⟨C, hnonneg, hdegree, hEq⟩ := h F l₀ r₀ hs\n  obtain ⟨hD, hQ⟩ :=\n    x2611_15512_lem2_4_eqv_aux_graph f eL eR F l₀ r₀ l r hl hr\n  rw [hE] at hD hQ\n  refine ⟨MvPolynomial.rename f C, ?_, ?_, ?_⟩\n  · intro d\n    by_cases hd : MvPolynomial.coeff d (MvPolynomial.rename f C) = 0\n    · simp [hd]\n    · obtain ⟨m, hm, _⟩ := MvPolynomial.coeff_rename_ne_zero f C d hd\n      rw [← hm, MvPolynomial.coeff_rename_mapDomain f f.injective]\n      exact hnonneg m\n  · intro n hn\n    rw [← MvPolynomial.rename_homogeneousComponent, hdegree n hn, map_zero]\n  · have heq := congrArg (MvPolynomial.rename f) hEq\n    simpa only [map_add, MvPolynomial.rename_homogeneousComponent, hD, hQ] using heq\n\ntheorem x2611_15512_lem2_4_eqv : (∀ {α L R : Type*} [Fintype L] [Fintype R]\n  (E : Finset α) (l : α → L) (r : α → R)\n  (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)), ∃ C : MvPolynomial α ℝ, (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_graph_d E l r =\n      MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n      x2611_15512_graph_q E l r + C) ↔ (∀ {α L R : Type*} [Fintype L] [Fintype R] (E : Finset α) (l : α → L) (r : α → R) (h_simple : Set.InjOn (fun e => (l e, r e)) (↑E : Set α)), ∃ C : MvPolynomial α ℝ, (∀ m, 0 ≤ MvPolynomial.coeff m C) ∧ (∀ n : ℕ, n < 5 → MvPolynomial.homogeneousComponent n C = 0) ∧ x2611_15512_graph_d E l r = MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) + x2611_15512_graph_q E l r + C) := by\n  classical\n  constructor\n  · intro h\n    apply x2611_15512_lem2_4_eqv_aux_lift\n    intro α L R _ _ E l r hsimple\n    obtain ⟨C, hnonneg, hdegree, hEq⟩ := h E l r hsimple\n    refine ⟨C, hnonneg, ?_, hEq⟩\n    intro n hn\n    apply MvPolynomial.ext\n    intro d\n    rw [MvPolynomial.coeff_homogeneousComponent, MvPolynomial.coeff_zero]\n    split_ifs with hd\n    · exact hdegree d (by simpa only [hd] using hn)\n    · rfl\n  · intro h α L R _ _ E l r hsimple\n    obtain ⟨C, hnonneg, hdegree, hEq⟩ :=\n      x2611_15512_lem2_4_eqv_aux_lift h E l r hsimple\n    refine ⟨C, hnonneg, ?_, hEq⟩\n    intro d hd\n    have hcoeff := congrArg (MvPolynomial.coeff d) (hdegree (Finsupp.degree d) hd)\n    simpa [MvPolynomial.coeff_homogeneousComponent] using hcoeff\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
+      }
+    },
+    {
+      "label": "Proposition 3.1",
+      "name": "x2611_15512_prop3_1",
+      "original": "Let $M$ be a simple rank- $3$ matroid, and let $e,f\\in E(M)$ be\ndistinct. There is a simple bipartite graph $G$ whose edges are indexed\nby $E(M)\\setminus\\operatorname{cl}_{M}\\{e,f\\}$ and a polynomial $R_{M,e,f}\\succeq 0$ \nwith no terms of degree less than five such that\n\n $\\Delta_{e,f}S_{M}=\\Delta_{e,f}B_{M}+Q_{G}+R_{M,e,f}.$ \n\nHere $Q_{G}$ is defined by (5).",
+      "lean": "{α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) :\n  ∃ (n m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ),\n    Set.InjOn (fun a => (l a, r a)) (M.E \\ M.closure ({e, f} : Set α)) ∧\n    (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f +\n      x2611_15512_graph_q ((Set.toFinite (M.E \\ M.closure ({e, f} : Set α))).toFinset) l r + C",
+      "notes": "The existential graph is represented by finite vertex sets Fin n and Fin m and endpoint maps. Its edge labels are exactly E(M) minus cl_M{e,f}; values of the endpoint maps on other ambient elements are ignored. Injectivity on this edge set enforces simplicity. C is the paper's R_{M,e,f}, coefficientwise nonnegative with all coefficients of degree less than five equal to zero. The conclusion is an equality of actual polynomials, not merely of values at positive weights.",
+      "fidelity": {
+        "twin": "{α : Type*} [Fintype α] (M : Matroid α) (hM : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) : ∃ (U : Finset α) (nL nR : ℕ) (l : α → Fin nL) (r : α → Fin nR) (R : MvPolynomial α ℝ), (↑U : Set α) = M.E \\ M.closure {e, f} ∧ Set.InjOn (fun a => (l a, r a)) (↑U : Set α) ∧ (∀ d : α →₀ ℕ, 0 ≤ R.coeff d) ∧ (∀ d : α →₀ ℕ, d.sum (fun _ n => n) < 5 → R.coeff d = 0) ∧ x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f + x2611_15512_graph_q U l r + R",
+        "twin_by": "audit-b1-w4",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "Lean 报错"
+      }
+    },
+    {
+      "label": "Proposition 3.2",
+      "name": "x2611_15512_prop3_2",
+      "original": "Let $M$ be a simple rank- $3$ matroid, and let $e,f\\in E(M)$ be distinct.\nThere is a polynomial $\\mathcal{R}_{M,e,f}(q,x)$ with nonnegative\ncoefficients in $q$ and $x$ such that\n\n $(\\Delta_{e,f}W_{M})(q,x)=(1-q)^{2}(\\Delta_{e,f}S_{M})(x)+q(1-q)\\mathcal{R}_{M,e,f}(q,x).$ \n\n(9)",
+      "lean": "{α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) :\n  ∃ R : MvPolynomial α (Polynomial ℝ),\n    (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f =\n      (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) ^ 2 *\n        MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) +\n      MvPolynomial.C (Polynomial.X : Polynomial ℝ) *\n        (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) * R",
+      "notes": "This is the printed polynomial identity (9) over ℝ[q][x]. Nonnegative coefficients in both q and x are expressed by nonnegativity of every coefficient of q^k in each x-monomial coefficient. Mapping S_M along Polynomial.C embeds it as a polynomial constant in q. No positivity or interval restriction on q is inserted: the proposition asserts a formal polynomial identity.",
+      "fidelity": {
+        "twin": "{α : Type*} [Fintype α] (M : Matroid α) (hM : x2611_15512_simple M) (hr : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) : ∃ R : MvPolynomial α (Polynomial ℝ), (∀ (d : α →₀ ℕ) (n : ℕ), 0 ≤ (R.coeff d).coeff n) ∧ x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f = MvPolynomial.C (((1 : Polynomial ℝ) - Polynomial.X) ^ 2) * MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) + MvPolynomial.C ((Polynomial.X : Polynomial ℝ) * (1 - Polynomial.X)) * R",
+        "twin_by": "audit-b1-w3",
+        "verdict": "unknown",
+        "equivalence_proof": "",
+        "note": "主定理 `x2611_15512_prop3_2_eqv` 的命题与任务要求不一致。要求：: (∀ {α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f), ∃ R : MvPolynomial α (Polynomial ℝ),\n    (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f =\n      (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) ^ 2 *\n        MvPolynomial.map (Polynomial.C : ℝ →+* Polynomia"
+      }
+    }
+  ],
+  "skipped": [
+    {
+      "label": "Problem 1.1 and Conjecture 1.2",
+      "reason": "Not separate worklist entries: Problem 1.1 is a question and Conjecture 1.2 is restated and proved as the first sentence of Theorem 1.3."
+    },
+    {
+      "label": "Introduction: rank-four S_8 numeric sharpness example",
+      "original": "The rank threshold is sharp. Choe and Wagner [2]\ndiscuss the rank-four matroid $S_{8}$ , with its ground set labelled so that\n $(\\Delta_{1,8}B_{S_{8}})(\\mathbf{1})=-16$ , where $\\mathbf{1}$ is the all-one vector.\nFor a rank- $r$ matroid,\n\n $(\\Delta_{e,f}S_{M})(tx)=t^{2r-2}(\\Delta_{e,f}B_{M})(x)+O(t^{2r-1})\\qquad(t\\longrightarrow 0^{+}).$ \n\nConsequently, $S_{8}$ is not $S$ -Rayleigh, and\n(1) implies that it is not $Z$ -Rayleigh.",
+      "reason": "The supplied text refers to a ground-set labeling from an external source but does not give the bases or rank function of S_8. Encoding the value -16 faithfully would require identifying that particular matroid and labeling from the cited paper. No arbitrary replacement matroid or strengthened numeric assertion is introduced."
+    }
+  ]
+}

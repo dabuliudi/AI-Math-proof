@@ -223,7 +223,7 @@ def _publish(message, result, state=None):
     commit = _git('commit-tree', tree, '-p', 'origin/main', '-m', message).stdout.strip()
     head = _git('rev-parse', 'HEAD').stdout.strip()
     reuse = pr and pr.get('state') == 'OPEN' and not pr.get('isCrossRepository')
-    branch = state['branch'] if reuse else f"{SNAPSHOT_BRANCH}{state['lane']}-{time.strftime('%Y%m%d-%H%M%S')}"
+    branch = state['branch'] if reuse else f"{SNAPSHOT_BRANCH}{state['lane']}-{time.strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:4]}"
     expected = state.get('pushed', '') if reuse else ''  # 新分支：租约要求远端还没有这个分支
     pushed = _git('push', '-q', f'--force-with-lease=refs/heads/{branch}:{expected}', 'origin', f'{commit}:refs/heads/{branch}')
     if pushed.returncode:

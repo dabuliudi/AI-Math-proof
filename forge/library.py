@@ -77,6 +77,9 @@ LIBRARY_PATHS = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean
 DATA_DIRS = ('forge/data/', 'lean/Mathlib2/', 'phase2/benchmarks/', 'reports/', 'audits/', 'lean/Research/')
 
 
+SNAPSHOT_BRANCH = 'data/snapshot-'
+
+
 def is_data(path):
     norm = os.path.normpath(path).replace(os.sep, '/')
     return '..' not in norm.split('/') and (norm == 'lean/Mathlib2.lean' or norm.startswith(DATA_DIRS) or norm + '/' in DATA_DIRS)
@@ -183,8 +186,9 @@ def snapshot(message, include=(), publish=True):
     listed = _gh('pr', 'list', '--state', 'open', '--base', 'main', '--limit', '100', '--json', 'headRefName,url')
     if listed.returncode:
         return dict(result, ok=False, published=False, reason='查询打开的 PR 失败', error=listed.stderr.strip()[-300:])
-    open_data = [pr for pr in json.loads(listed.stdout or '[]') if pr['headRefName'].startswith('data/')]
-    branch = open_data[0]['headRefName'] if open_data else 'data/' + time.strftime('%Y%m%d-%H%M%S-') + uuid.uuid4().hex[:6]
+    # 只接手自己开的数据 PR：别人手写的 data/… PR 有自己的说明，强推会把它换成别的内容
+    open_data = [pr for pr in json.loads(listed.stdout or '[]') if pr['headRefName'].startswith(SNAPSHOT_BRANCH)]
+    branch = open_data[0]['headRefName'] if open_data else SNAPSHOT_BRANCH + time.strftime('%Y%m%d-%H%M%S-') + uuid.uuid4().hex[:6]
     pushed = _git('push', '-q', '--force', 'origin', f'{commit}:refs/heads/{branch}')  # 数据分支每次从 origin/main 重建
     if pushed.returncode:
         return dict(result, ok=False, published=False, branch=branch, reason='推送数据分支失败', error=pushed.stderr.strip()[-500:])

@@ -1321,14 +1321,14 @@ class SnapshotPublishTests(unittest.TestCase):
     def test_snapshot_reuses_an_open_data_pr(self):
         import json as _json
         (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        self.git('push', '-q', 'origin', 'main:refs/heads/data/old')
-        self.open_prs.write_text(_json.dumps([dict(headRefName='data/old', url='https://github.com/o/r/pull/5')]))
+        self.git('push', '-q', 'origin', 'main:refs/heads/data/snapshot-old')
+        self.open_prs.write_text(_json.dumps([dict(headRefName='data/snapshot-old', url='https://github.com/o/r/pull/5')]))
         result = self.library.snapshot('more')
         self.assertTrue(result['ok'] and result['updated_existing_pr'], result)
         self.assertEqual(result['pr'], 'https://github.com/o/r/pull/5')
         self.assertNotIn('pr create', self.log.read_text())
-        self.assertEqual(self.git('show', 'data/old:forge/data/ledger.jsonl', cwd=self.origin), 'a\nb\n')
-        self.assertEqual(self.git('rev-parse', 'data/old~1', cwd=self.origin).strip(), self.git('rev-parse', 'main', cwd=self.origin).strip())
+        self.assertEqual(self.git('show', 'data/snapshot-old:forge/data/ledger.jsonl', cwd=self.origin), 'a\nb\n')
+        self.assertEqual(self.git('rev-parse', 'data/snapshot-old~1', cwd=self.origin).strip(), self.git('rev-parse', 'main', cwd=self.origin).strip())
 
     def test_snapshot_off_main_commits_locally(self):
         self.git('checkout', '-q', '-b', 'upgrade')
@@ -1404,3 +1404,14 @@ class SnapshotPublishTests(unittest.TestCase):
         self.assertEqual(self.git('status', '--short', '--', 'reports', 'forge/data'), '')
         result = self.library.snapshot('nothing', include=['reports/r.txt'], publish=False)  # tasks 目录已空但还在
         self.assertTrue(result['ok'] and not result['committed'], result)
+
+    def test_snapshot_leaves_hand_written_data_prs_alone(self):
+        import json as _json
+        self.git('push', '-q', 'origin', 'main:refs/heads/data/audit-b1-results')
+        before = self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin)
+        self.open_prs.write_text(_json.dumps([dict(headRefName='data/audit-b1-results', url='https://github.com/o/r/pull/8')]))
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        result = self.library.snapshot('mine')
+        self.assertTrue(result['ok'] and result['published'] and not result.get('updated_existing_pr'), result)
+        self.assertEqual(self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin), before)
+        self.assertIn('--head data/snapshot-', self.log.read_text())

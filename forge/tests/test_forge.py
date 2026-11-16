@@ -971,3 +971,41 @@ class ImproveAbortTests(unittest.TestCase):
         rows = [json.loads(l) for l in (root / 'h.jsonl').read_text().splitlines()]
         self.assertEqual([r['event'] for r in rows], ['baseline', 'aborted'])
         self.assertEqual(result['iterations'], 0)
+
+
+class PortfolioTests(unittest.TestCase):
+    """组合拆解：拼装与作废逻辑，不调用真实 agent。"""
+
+    def test_assemble_body_fills_every_hole(self):
+        from forge.portfolio import assemble_body
+        body = assemble_body('p', 'theorem p : True ∧ True := by\n  exact ⟨by sorry, by sorry⟩',
+                             ['theorem p_d1_h1 : True := trivial'], [('p_d1_h1', [])])
+        self.assertNotIn('sorry', body)
+        self.assertTrue(body.startswith('theorem p_d1_h1'))
+        self.assertIn('exact p_d1_h1', body)
+
+    def test_disproved_lemma_kills_every_dag_using_it(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        item = dict(name='p', statement=': True')
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[item]):
+            runner = portfolio.Portfolio('t-pf', workers=2, max_tasks=1000, dry_run=True)
+            def sketch(agent, problem, k):
+                with runner.file_lock:
+                    runner.state['lemmas'].setdefault('shared', dict(set='s', problem='p', statement='True', hash='h',
+                                                                     status='open', dags=[]))['dags'].append(f'd{k}')
+                    runner.state['problems']['p']['dags'][f'd{k}'] = dict(skeleton='', holes=[dict(lemma='shared', args=[])],
+                                                                          status='open', planner=agent)
+                if k == 1:
+                    runner._push(('lemma', 'p', 'shared'))
+            def lemma(agent, problem, name):
+                with runner.file_lock:
+                    runner.state['lemmas'][name]['status'] = 'disproved'
+                    for d in runner.state['lemmas'][name]['dags']:
+                        runner.state['problems'][problem]['dags'][d]['status'] = 'dead'
+            runner._sketch, runner._lemma = sketch, lemma
+            result = runner.run_portfolio('s', ['p'], k=3)
+        self.assertEqual(result['solved'], 0)
+        self.assertEqual({d['status'] for d in runner.state['problems']['p']['dags'].values()}, {'dead'})

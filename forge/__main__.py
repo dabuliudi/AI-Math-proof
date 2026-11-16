@@ -125,6 +125,16 @@ def main(argv=None):
     p.add_argument('--no-propose', action='store_true', help='只判定忠实度，不把一致的命题放进队列')
     p.add_argument('--effort', default='xhigh'); p.add_argument('--dry-run', action='store_true')
     p = sub.add_parser('audit-summary', help='一篇论文的体检结果'); p.add_argument('paper')
+    p = sub.add_parser('portfolio', help='组合拆解：每道难题拆成 K 张引理 DAG，各组并行证子引理，先拼完整的算解出')
+    p.add_argument('--run', required=True); p.add_argument('--bench', required=True)
+    p.add_argument('--problems', required=True, help='题目名，逗号分隔')
+    p.add_argument('--k', type=int, default=6, help='每道题几张 DAG（几个规划者）')
+    p.add_argument('--workers', type=int, default=8); p.add_argument('--task-minutes', type=int, default=40)
+    p.add_argument('--lemma-minutes', type=int, default=40); p.add_argument('--lemma-attempts', type=int, default=2)
+    p.add_argument('--budget-minutes', type=int, default=720); p.add_argument('--effort', default='xhigh')
+    p = sub.add_parser('portfolio-sketch-check', help='组合拆解：规划者自检骨架'); p.add_argument('run'); p.add_argument('problem'); p.add_argument('file', type=Path)
+    p = sub.add_parser('portfolio-lemma-check', help='组合拆解：证明者自检子引理'); p.add_argument('run'); p.add_argument('lemma'); p.add_argument('file', type=Path)
+    p = sub.add_parser('portfolio-summary', help='组合拆解：每道题的 DAG 与子引理进展'); p.add_argument('run')
     p = sub.add_parser('run-report', help='读回某一轮调度的记账'); p.add_argument('run')
     sub.add_parser('upgrade-migrate-records', help='把经过审核的陈述迁移同步到台账、任务与辅助引理索引')
     sub.add_parser('upgrade-rehash', help='升级后重算评测集、台账、任务的结构哈希（评测题保护与查重依赖它）')
@@ -314,6 +324,21 @@ def main(argv=None):
     elif args.command == 'audit-summary':
         from .audit import summary
         emit(summary(args.paper))
+    elif args.command == 'portfolio':
+        from .portfolio import Portfolio
+        runner = Portfolio(args.run, workers=args.workers, max_tasks=100000, budget_minutes=args.budget_minutes,
+                           task_minutes=args.task_minutes, max_failures=1000, effort=args.effort)
+        emit(runner.run_portfolio(args.bench, args.problems.split(','), k=args.k, lemma_minutes=args.lemma_minutes,
+                                  lemma_attempts=args.lemma_attempts))
+    elif args.command == 'portfolio-sketch-check':
+        from .portfolio import sketch_check
+        emit(sketch_check(args.run, args.problem, args.file))
+    elif args.command == 'portfolio-lemma-check':
+        from .portfolio import lemma_check
+        emit(lemma_check(args.run, args.lemma, args.file))
+    elif args.command == 'portfolio-summary':
+        from .portfolio import summary
+        emit(summary(args.run))
     elif args.command == 'improve':
         from . import improve
         print(json.dumps(improve.run_loop(args.bench, iterations=args.iterations, dev_size=args.dev_size,

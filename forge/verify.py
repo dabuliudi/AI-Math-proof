@@ -231,9 +231,12 @@ def check_sketch(task, body, timeout=300):
         return dict(ok=False, reason='骨架里没有 `sorry` 空洞；完整证明请直接 submit')
     nonce = uuid.uuid4().hex
     marked = HOLE.sub(f'forge_hole "{nonce}"', body)
-    prefix = HEADER + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n'
+    # 评测题（例如 Formal Conjectures）的骨架：与 check_submission 一样带上题目自己的导入、前置定义和记号设置
+    opens, preamble = task.get('opens', ''), task.get('preamble', '')
+    prefix = (header(task.get('imports')) + (preamble.rstrip('\n') + '\n' if preamble else '') +
+              f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else ''))
     offset = prefix.count('\n')
-    tail = f'\nend\nend Mathlib2\nopen Mathlib2 in\n#forge_match "{nonce}" Mathlib2.{names[-1]} "proved" ({closed_form(task["statement"])})\n'
+    tail = f'\nend\nend Mathlib2\nopen Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{names[-1]} "proved" ({closed_form(task["statement"])})\n'
     result = run_source(prefix + marked.rstrip('\n') + tail, timeout=timeout, nonce=nonce)
     if result.timed_out:
         return dict(ok=False, reason=f'骨架编译超时（{timeout} 秒）')

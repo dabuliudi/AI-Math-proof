@@ -14,6 +14,15 @@ from mathlib2.store import Store
 from mathlib2.workbench import state
 
 
+# lemma3 检索报告生成时的 Mathlib 提交（v4.24.0）。它引用的源码行号和文件哈希只对这个版本成立。
+REPORT_MATHLIB = 'f897ebcf72cd16f89ab4577d0c826cd14afaafc7'
+
+
+def installed_mathlib():
+    manifest = json.loads((ROOT / 'lean' / 'lake-manifest.json').read_text(encoding='utf-8'))
+    return next(p['rev'] for p in manifest['packages'] if p['name'] == 'mathlib')
+
+
 def report(name):
     return json.loads((ROOT / 'reports' / name).read_text(encoding='utf-8'))
 
@@ -66,6 +75,8 @@ class Lemma3Tests(unittest.TestCase):
             self.assertIn(edge['origin'], ('已有 Lemma 组合', 'Mathlib 定理复用'))
         references = report('lemma3-retrieval.json')['results']
         self.assertEqual(sum(r['used'] for r in references), 9)
+        if installed_mathlib() != REPORT_MATHLIB:
+            self.skipTest(f'检索报告的行号与哈希对应 Mathlib {REPORT_MATHLIB[:7]}（v4.24.0），当前是 {installed_mathlib()[:7]}')
         for ref in references:
             path = ROOT / ref['path'].replace('\\', '/')  # 报告在 Windows 生成，路径分隔符需归一
             raw = path.read_bytes()

@@ -1009,3 +1009,81 @@ class PortfolioTests(unittest.TestCase):
             result = runner.run_portfolio('s', ['p'], k=3)
         self.assertEqual(result['solved'], 0)
         self.assertEqual({d['status'] for d in runner.state['problems']['p']['dags'].values()}, {'dead'})
+
+
+class SnapshotPublishTests(unittest.TestCase):
+    """forge snapshot 开数据 PR、forge sync 只 fast-forward：用真实 git 仓库和一个假的 gh。"""
+
+    def setUp(self):
+        import subprocess
+        self.tmp = tempfile.TemporaryDirectory()
+        base = Path(self.tmp.name)
+        self.origin, self.root, bin_dir = base / 'origin.git', base / 'work', base / 'bin'
+        self.log = base / 'gh.log'
+
+        def git(*args, cwd=None):
+            return subprocess.run(['git', *args], cwd=cwd or self.root, capture_output=True, text=True, check=True).stdout
+        self.git = git
+        git('init', '-q', '--bare', '-b', 'main', str(self.origin), cwd=base)
+        git('clone', '-q', str(self.origin), str(self.root), cwd=base)
+        git('config', 'user.email', 't@example.com'); git('config', 'user.name', 't')
+        git('checkout', '-q', '-b', 'main')
+        (self.root / 'forge' / 'data').mkdir(parents=True)
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\n')
+        (self.root / 'app.py').write_text('x = 1\n')
+        git('add', '-A'); git('commit', '-q', '-m', 'init'); git('push', '-q', 'origin', 'main')
+        bin_dir.mkdir()
+        gh = bin_dir / 'gh'
+        gh.write_text(f'#!/bin/sh\necho "$@" >> {self.log}\necho https://github.com/o/r/pull/7\n')
+        gh.chmod(0o755)
+        from forge import leanrun, library
+        self.patches = [mock.patch.object(leanrun, 'ROOT', self.root), mock.patch.object(library, 'LOCK', base / 'lock'),
+                        mock.patch('forge.regressions.consistency', return_value=dict(missing_in_shards=[], missing_in_ledger=[])),
+                        mock.patch.dict(os.environ, PATH=f'{bin_dir}{os.pathsep}{os.environ["PATH"]}')]
+        for p in self.patches:
+            p.start()
+        self.library = library
+
+    def tearDown(self):
+        for p in reversed(self.patches):
+            p.stop()
+        self.tmp.cleanup()
+
+    def test_snapshot_pushes_a_data_branch_and_requests_auto_merge(self):
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        (self.root / 'app.py').write_text('x = 2\n')
+        result = self.library.snapshot('two entries')
+        self.assertTrue(result['ok'] and result['committed'] and result['published'] and result['auto_merge'], result)
+        self.assertIn('data/', self.git('ls-remote', '--heads', 'origin'))
+        self.assertEqual(self.git('rev-parse', 'origin/main').strip(), self.git('rev-parse', 'HEAD~1').strip())  # main 没被直接推
+        self.assertIn('M app.py', self.git('status', '--short'))  # 代码改动没被带进快照
+        calls = self.log.read_text()
+        self.assertIn('pr create --base main', calls)
+        self.assertIn('--auto --merge', calls)
+
+    def test_snapshot_refuses_when_local_main_has_unreviewed_code(self):
+        (self.root / 'app.py').write_text('x = 3\n')
+        self.git('commit', '-q', '-am', 'code on main')
+        result = self.library.snapshot('data')
+        self.assertFalse(result['ok'])
+        self.assertEqual(result['paths'], ['app.py'])
+
+    def test_include_only_takes_result_paths(self):
+        self.assertFalse(self.library.snapshot('x', include=['app.py'])['ok'])
+
+    def test_sync_fast_forwards_and_keeps_uncommitted_data(self):
+        other = Path(self.tmp.name) / 'other'
+        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
+        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
+        (other / 'app.py').write_text('x = 9\n')
+        self.git('commit', '-q', '-am', 'merged code PR', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nunsaved\n')
+        result = self.library.sync()
+        self.assertTrue(result['ok'], result)
+        self.assertEqual((self.root / 'app.py').read_text(), 'x = 9\n')
+        self.assertEqual((self.root / 'forge' / 'data' / 'ledger.jsonl').read_text(), 'a\nunsaved\n')
+
+    def test_sync_waits_while_a_data_commit_is_unmerged(self):
+        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        self.library.snapshot('local only', publish=False)
+        self.assertFalse(self.library.sync()['ok'])

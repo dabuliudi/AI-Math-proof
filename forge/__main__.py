@@ -144,7 +144,10 @@ def main(argv=None):
     p.add_argument('--start', help='从这个分片开始，例如 S0005'); p.add_argument('--effort', default='xhigh')
     p.add_argument('--parallel', type=int, default=0, help='>0 时先打桩再并行修（这么多个 agent 同时修不同的分片）')
     p = sub.add_parser('regress', help='事故回归集：把出过的问题当用例重跑'); p.add_argument('--jobs', type=int, default=3)
-    p = sub.add_parser('snapshot', help='持锁提交库的快照（核对一致后只提交台账、分片、任务）'); p.add_argument('-m', '--message', required=True)
+    p = sub.add_parser('snapshot', help='持锁提交库的快照（核对一致后只提交台账、分片、任务），开数据 PR 并请求自动合并'); p.add_argument('-m', '--message', required=True)
+    p.add_argument('--include', nargs='*', default=[], help='一起提交的实验结果路径（只能在数据目录下）')
+    p.add_argument('--no-publish', action='store_true', help='只在本地提交，不推分支、不开 PR')
+    sub.add_parser('sync', help='主检出 fast-forward 到 origin/main（拿到已合并的代码和数据）')
     sub.add_parser('consistency', help='台账与分片是否一致（提交前检查）')
     p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
@@ -367,7 +370,11 @@ def main(argv=None):
         emit(result); return 0 if result['ok'] else 1
     elif args.command == 'snapshot':
         from .library import snapshot
-        result = snapshot(args.message)
+        result = snapshot(args.message, include=args.include, publish=not args.no_publish)
+        emit(result); return 0 if result['ok'] else 1
+    elif args.command == 'sync':
+        from .library import sync
+        result = sync()
         emit(result); return 0 if result['ok'] else 1
     elif args.command == 'consistency':
         from .regressions import consistency

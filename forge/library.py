@@ -70,7 +70,12 @@ def locked():
 
 LIBRARY_PATHS = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean', 'forge/data/tasks', 'forge/data/helpers.json']
 # 实验结果可以随快照一起提交，代码不行：代码走 worktree 和 PR。
-DATA_PREFIXES = ('forge/data/', 'lean/Mathlib2', 'phase2/benchmarks/', 'reports/', 'audits/', 'lean/Research/')
+DATA_DIRS = ('forge/data/', 'lean/Mathlib2/', 'phase2/benchmarks/', 'reports/', 'audits/', 'lean/Research/')
+
+
+def is_data(path):
+    norm = os.path.normpath(path).replace(os.sep, '/')
+    return '..' not in norm.split('/') and (norm == 'lean/Mathlib2.lean' or norm.startswith(DATA_DIRS) or norm + '/' in DATA_DIRS)
 
 
 def _git(*args):
@@ -79,50 +84,71 @@ def _git(*args):
     return subprocess.run(['git', *args], cwd=ROOT, capture_output=True, text=True)
 
 
+def _gh(*args):
+    import subprocess
+    from .leanrun import ROOT
+    return subprocess.run(['gh', *args], cwd=ROOT, capture_output=True, text=True)
+
+
+def _unpublished_paths():
+    """本地 main 相对 origin/main 改过的路径（合并基之后）。git 出错时返回 None。"""
+    diff = _git('diff', '--name-only', '-z', 'origin/main...HEAD')
+    return None if diff.returncode else [p for p in diff.stdout.split('\0') if p]
+
+
 def snapshot(message, include=(), publish=True):
     """持锁提交库的快照（台账、分片、任务、辅助引理索引，加上 include 里的实验结果），提交前核对台账与分片一致。
 
-    publish 时把未发布的提交推到 data/<时间> 分支，开 PR 并请求 CI 通过后自动合并。用 merge commit 合并，
-    这样主检出的 main 仍是 origin/main 的祖先，`forge sync` 能 fast-forward。主检出从不直接推 main。"""
-    import subprocess
+    在主检出的 main 上且 publish 时，把未发布的提交推到数据分支并请求 CI 通过后自动合并：已有打开的数据 PR
+    就推到它的分支上，没有才开新 PR。主检出从不直接推 main。在其他分支上（例如升级分支）只在本地提交。"""
     from .leanrun import ROOT
     from .regressions import consistency
-    bad = [p for p in include if not p.startswith(DATA_PREFIXES)]
+    bad = [p for p in include if not is_data(p)]
     if bad:
-        return dict(ok=False, reason='--include 只能是数据或实验结果路径', paths=bad, allowed=list(DATA_PREFIXES))
+        return dict(ok=False, reason='--include 只能是数据或实验结果路径', paths=bad, allowed=list(DATA_DIRS))
     paths = [p for p in LIBRARY_PATHS + list(include) if (ROOT / p).exists()]
+    on_main = _git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() == 'main'
+    publish = publish and on_main
     if publish:
-        if _git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() != 'main':
-            return dict(ok=False, reason='快照只从主检出的 main 发布')
         if _git('fetch', '-q', 'origin', 'main').returncode:
             return dict(ok=False, reason='fetch 失败，没有提交')
-        code = [p for p in _git('diff', '--name-only', 'origin/main...HEAD').stdout.split() if not p.startswith(DATA_PREFIXES)]
+        changed = _unpublished_paths()
+        if changed is None:
+            return dict(ok=False, reason='无法比较本地 main 与 origin/main，没有提交')
+        code = [p for p in changed if not is_data(p)]
         if code:
             return dict(ok=False, reason='本地 main 上有没走 PR 的代码提交，先把它们移到分支开 PR', paths=code)
     with locked():
         problems = consistency()
         if any(problems.values()):
             return dict(ok=False, reason='台账与分片不一致，没有提交', problems=problems)
-        _git('add', '-A', '--', *paths)
+        added = _git('add', '-A', '--', *paths)
+        if added.returncode:
+            return dict(ok=False, reason='git add 失败', error=added.stderr.strip()[-300:])
         committed = _git('diff', '--cached', '--quiet', '--', *paths).returncode != 0
         if committed and _git('commit', '-q', '-m', message, '--', *paths).returncode:
             return dict(ok=False, reason='git commit 失败')
     result = dict(ok=True, committed=committed, commit=_git('rev-parse', '--short', 'HEAD').stdout.strip())
     if not publish:
-        return result
+        return dict(result, published=False, **({} if on_main else dict(reason='不在 main 上，只在本地提交')))
     if _git('rev-list', '--count', 'origin/main..HEAD').stdout.strip() == '0':
         return dict(result, published=False, reason='没有未发布的提交')
-    branch = 'data/' + time.strftime('%Y%m%d-%H%M%S')
+    listed = _gh('pr', 'list', '--state', 'open', '--base', 'main', '--limit', '100', '--json', 'headRefName,url')
+    if listed.returncode:
+        return dict(result, ok=False, published=False, reason='查询打开的 PR 失败', error=listed.stderr.strip()[-300:])
+    open_data = [pr for pr in json.loads(listed.stdout or '[]') if pr['headRefName'].startswith('data/')]
+    branch = open_data[0]['headRefName'] if open_data else 'data/' + time.strftime('%Y%m%d-%H%M%S-') + uuid.uuid4().hex[:6]
     pushed = _git('push', '-q', 'origin', f'HEAD:refs/heads/{branch}')
     if pushed.returncode:
-        return dict(result, ok=False, published=False, reason='推送数据分支失败', error=pushed.stderr.strip()[-500:])
+        return dict(result, ok=False, published=False, branch=branch, reason='推送数据分支失败', error=pushed.stderr.strip()[-500:])
+    if open_data:
+        return dict(result, published=True, pr=open_data[0]['url'], updated_existing_pr=True)
     body = '由 `forge snapshot` 生成的库与实验数据快照（风险级别：低）。CI 核对台账与分片、重建并审计全库，通过后自动合并。'
-    pr = subprocess.run(['gh', 'pr', 'create', '--base', 'main', '--head', branch, '--title', f'data: {message}', '--body', body],
-                        cwd=ROOT, capture_output=True, text=True)
+    pr = _gh('pr', 'create', '--base', 'main', '--head', branch, '--title', f'data: {message}', '--body', body)
     if pr.returncode:
         return dict(result, ok=False, published=False, branch=branch, reason='开 PR 失败', error=pr.stderr.strip()[-500:])
     url = pr.stdout.strip().splitlines()[-1]
-    auto = subprocess.run(['gh', 'pr', 'merge', url, '--auto', '--merge'], cwd=ROOT, capture_output=True, text=True)
+    auto = _gh('pr', 'merge', url, '--auto', '--merge')
     result.update(published=True, pr=url, auto_merge=auto.returncode == 0)
     if auto.returncode:
         result['auto_merge_error'] = auto.stderr.strip()[-300:]
@@ -130,19 +156,25 @@ def snapshot(message, include=(), publish=True):
 
 
 def sync():
-    """主检出拿到 main 上新合并的代码和数据：只 fast-forward，不碰未提交的数据。"""
+    """主检出拿到 main 上新合并的代码和数据，不碰未提交的数据。
+
+    本地 main 上的数据提交只要内容已经在 origin/main 里（不论用 merge、squash 还是 rebase 合并的），就直接对齐到
+    origin/main（git reset --keep：有未提交改动的文件若要被改写就中止）。内容还没进去就等数据 PR 合并。"""
     if _git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() != 'main':
         return dict(ok=False, reason='只在主检出的 main 上同步')
     with locked():
         fetched = _git('fetch', '-q', 'origin', 'main')
         if fetched.returncode:
             return dict(ok=False, reason='fetch 失败', error=fetched.stderr.strip()[-300:])
-        if _git('merge-base', '--is-ancestor', 'HEAD', 'origin/main').returncode:
-            ahead = _git('rev-list', '--count', 'origin/main..HEAD').stdout.strip()
-            return dict(ok=False, reason=f'本地 main 有 {ahead} 个提交还没进 origin/main，等数据 PR 合并后再同步')
-        merged = _git('merge', '--ff-only', '-q', 'origin/main')
-        if merged.returncode:
-            return dict(ok=False, reason='fast-forward 失败', error=merged.stderr.strip()[-500:])
+        changed = _unpublished_paths()
+        if changed is None:
+            return dict(ok=False, reason='无法比较本地 main 与 origin/main')
+        if changed and _git('diff', '--quiet', 'HEAD', 'origin/main', '--', *changed).returncode:
+            pending = _git('diff', '--name-only', 'HEAD', 'origin/main', '--', *changed).stdout.split()
+            return dict(ok=False, reason='本地 main 上的数据提交还没进 origin/main，等数据 PR 合并后再同步', paths=pending[:20])
+        moved = _git('reset', '-q', '--keep', 'origin/main')
+        if moved.returncode:
+            return dict(ok=False, reason='对齐 origin/main 失败（有未提交改动的文件会被改写）', error=moved.stderr.strip()[-500:])
     return dict(ok=True, head=_git('rev-parse', '--short', 'HEAD').stdout.strip())
 
 

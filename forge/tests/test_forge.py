@@ -1255,35 +1255,60 @@ class PortfolioTests(unittest.TestCase):
 
 
 class SnapshotPublishTests(unittest.TestCase):
-    """forge snapshot 开数据 PR、forge sync 只 fast-forward：用真实 git 仓库和一个假的 gh。"""
+    """forge snapshot 开或更新本检出自己的数据 PR、forge sync 对齐 origin/main：用真实 git 仓库和一个记着 PR 状态的假 gh。"""
+
+    GH = r"""#!/usr/bin/env python3
+import json, sys
+from pathlib import Path
+store, log = Path(sys.argv[0]).with_name('prs.json'), Path(sys.argv[0]).with_name('gh.log')
+with open(log, 'a') as f:
+    f.write(' '.join(sys.argv[1:]) + '\n')
+prs = json.loads(store.read_text()) if store.exists() else {}
+args = sys.argv[1:]
+if args[:2] == ['pr', 'create']:
+    head = args[args.index('--head') + 1]
+    prs[head] = dict(state='OPEN', url=f'https://github.com/o/r/pull/{100 + len(prs)}', isCrossRepository=False, autoMergeRequest=None)
+    print(prs[head]['url'])
+elif args[:2] == ['pr', 'view']:
+    pr = prs.get(args[2])
+    if not pr:
+        sys.exit(1)
+    flip = pr.pop('flip_after', None)
+    if flip is not None:
+        if flip == 0:
+            pr['state'] = 'MERGED'
+        else:
+            pr['flip_after'] = flip - 1
+    print(json.dumps({k: v for k, v in pr.items() if k != 'flip_after'}))
+elif args[:2] == ['pr', 'merge']:
+    for pr in prs.values():
+        if pr['url'] == args[2]:
+            pr['autoMergeRequest'] = dict(mergeMethod='SQUASH')
+store.write_text(json.dumps(prs))
+"""
 
     def setUp(self):
         import subprocess
         self.tmp = tempfile.TemporaryDirectory()
-        base = Path(self.tmp.name)
-        self.origin, self.root, bin_dir = base / 'origin.git', base / 'work', base / 'bin'
-        self.log = base / 'gh.log'
+        self.base = Path(self.tmp.name)
+        self.origin, bin_dir = self.base / 'origin.git', self.base / 'bin'
 
         def git(*args, cwd=None):
             return subprocess.run(['git', *args], cwd=cwd or self.root, capture_output=True, text=True, check=True).stdout
         self.git = git
-        git('init', '-q', '--bare', '-b', 'main', str(self.origin), cwd=base)
-        git('clone', '-q', str(self.origin), str(self.root), cwd=base)
-        git('config', 'user.email', 't@example.com'); git('config', 'user.name', 't')
-        git('checkout', '-q', '-b', 'main')
+        git('init', '-q', '--bare', '-b', 'main', str(self.origin), cwd=self.base)
+        self.root = self._clone('work')
         (self.root / 'forge' / 'data').mkdir(parents=True)
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\n')
-        (self.root / 'app.py').write_text('x = 1\n')
+        self._write('forge/data/ledger.jsonl', 'a\n')
+        self._write('app.py', 'x = 1\n')
         git('add', '-A'); git('commit', '-q', '-m', 'init'); git('push', '-q', 'origin', 'main')
         bin_dir.mkdir()
         gh = bin_dir / 'gh'
-        self.open_prs = base / 'open.json'
-        self.open_prs.write_text('[]')
-        gh.write_text(f'#!/bin/sh\necho "$@" >> {self.log}\n'
-                      f'if [ "$2" = list ]; then cat {self.open_prs}; else echo https://github.com/o/r/pull/7; fi\n')
-        gh.chmod(0o755)
+        gh.write_text(self.GH); gh.chmod(0o755)
+        self.prs, self.log = bin_dir / 'prs.json', bin_dir / 'gh.log'
         from forge import leanrun, library
-        self.patches = [mock.patch.object(leanrun, 'ROOT', self.root), mock.patch.object(library, 'LOCK', base / 'lock'),
+        self.root_patch = mock.patch.object(leanrun, 'ROOT', self.root)
+        self.patches = [self.root_patch, mock.patch.object(library, 'LOCK', self.base / 'lock'),
                         mock.patch('forge.regressions.consistency', return_value=dict(missing_in_shards=[], missing_in_ledger=[])),
                         mock.patch.dict(os.environ, PATH=f'{bin_dir}{os.pathsep}{os.environ["PATH"]}')]
         for p in self.patches:
@@ -1295,20 +1320,52 @@ class SnapshotPublishTests(unittest.TestCase):
             p.stop()
         self.tmp.cleanup()
 
-    def test_snapshot_pushes_a_data_branch_and_requests_auto_merge(self):
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        (self.root / 'app.py').write_text('x = 2\n')
+    def _clone(self, name):
+        path = self.base / name
+        self.git('clone', '-q', str(self.origin), str(path), cwd=self.base)
+        self.git('config', 'user.email', 't@example.com', cwd=path); self.git('config', 'user.name', 't', cwd=path)
+        if not self.git('branch', '--show-current', cwd=path).strip():
+            self.git('checkout', '-q', '-b', 'main', cwd=path)
+        return path
+
+    def _write(self, rel, text, root=None):
+        path = (root or self.root) / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text)
+
+    def _show(self, ref, rel):
+        return self.git('show', f'{ref}:{rel}', cwd=self.origin)
+
+    def _pr_state(self):
+        return json.loads(self.prs.read_text()) if self.prs.exists() else {}
+
+    def _set_pr(self, branch, **fields):
+        prs = self._pr_state(); prs[branch].update(fields); self.prs.write_text(json.dumps(prs))
+
+    def _merge(self, branch):
+        """模拟 GitHub 的 squash 合并，并把 PR 记成已合并。"""
+        other = self._clone('gh-' + uuid.uuid4().hex[:6])
+        self.git('merge', '-q', '--squash', f'origin/{branch}', cwd=other)
+        self.git('commit', '-q', '-m', 'squash', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
+        self._set_pr(branch, state='MERGED')
+
+    def _push_from(self, root, rel, text):
+        self._write(rel, text, root)
+        self.git('add', '-A', cwd=root); self.git('commit', '-q', '-m', 'elsewhere', cwd=root); self.git('push', '-q', 'origin', 'main', cwd=root)
+
+    def test_snapshot_opens_its_own_data_pr_and_requests_auto_merge(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n')
+        self._write('app.py', 'x = 2\n')
         result = self.library.snapshot('two entries')
         self.assertTrue(result['ok'] and result['committed'] and result['published'] and result['auto_merge'], result)
-        self.assertIn('data/', self.git('ls-remote', '--heads', 'origin'))
-        self.assertEqual(self.git('rev-parse', 'origin/main').strip(), self.git('rev-parse', 'HEAD~1').strip())  # main 没被直接推
-        self.assertIn('M app.py', self.git('status', '--short'))  # 代码改动没被带进快照
-        calls = self.log.read_text()
-        self.assertIn('pr create --base main', calls)
-        self.assertIn('--auto --squash', calls)
+        self.assertTrue(result['branch'].startswith('data/snapshot-'))
+        self.assertEqual(self._show(result['branch'], 'forge/data/ledger.jsonl'), 'a\nb\n')
+        self.assertEqual(self._show(result['branch'], 'app.py'), 'x = 1\n')  # 代码改动没被带进快照
+        self.assertEqual(self.git('rev-parse', 'main', cwd=self.origin), self.git('rev-parse', 'HEAD~1'))  # main 没被直接推
+        self.assertIn('--auto --squash', self.log.read_text())
 
     def test_snapshot_refuses_when_local_main_has_unreviewed_code(self):
-        (self.root / 'app.py').write_text('x = 3\n')
+        self._write('app.py', 'x = 3\n')
         self.git('commit', '-q', '-am', 'code on main')
         result = self.library.snapshot('data')
         self.assertFalse(result['ok'])
@@ -1318,100 +1375,113 @@ class SnapshotPublishTests(unittest.TestCase):
         for path in ['app.py', 'forge/data/../../app.py', 'lean/Mathlib2Evil.py']:
             self.assertFalse(self.library.snapshot('x', include=[path])['ok'], path)
 
-    def test_snapshot_reuses_an_open_data_pr(self):
-        import json as _json
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        self.git('push', '-q', 'origin', 'main:refs/heads/data/snapshot-old')
-        self.open_prs.write_text(_json.dumps([dict(headRefName='data/snapshot-old', url='https://github.com/o/r/pull/5')]))
-        result = self.library.snapshot('more')
-        self.assertTrue(result['ok'] and result['updated_existing_pr'], result)
-        self.assertEqual(result['pr'], 'https://github.com/o/r/pull/5')
-        self.assertNotIn('pr create', self.log.read_text())
-        self.assertEqual(self.git('show', 'data/snapshot-old:forge/data/ledger.jsonl', cwd=self.origin), 'a\nb\n')
-        self.assertEqual(self.git('rev-parse', 'data/snapshot-old~1', cwd=self.origin).strip(), self.git('rev-parse', 'main', cwd=self.origin).strip())
-
     def test_snapshot_off_main_commits_locally(self):
         self.git('checkout', '-q', '-b', 'upgrade')
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
+        self._write('forge/data/ledger.jsonl', 'a\nb\n')
         result = self.library.snapshot('upgrade data')
         self.assertTrue(result['ok'] and result['committed'] and not result['published'], result)
         self.assertFalse(self.log.exists())
 
-    def test_sync_after_a_squash_merge(self):
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        self.library.snapshot('local', publish=False)
-        other = Path(self.tmp.name) / 'squash'
-        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
-        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
-        (other / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        (other / 'app.py').write_text('x = 5\n')
-        self.git('commit', '-q', '-am', 'squashed data PR and a code PR', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
-        (self.root / 'forge' / 'data' / 'papers.json').write_text('{}')
-        result = self.library.sync()
-        self.assertTrue(result['ok'], result)
-        self.assertEqual(self.git('rev-parse', 'HEAD').strip(), self.git('rev-parse', 'origin/main').strip())
-        self.assertEqual((self.root / 'app.py').read_text(), 'x = 5\n')
-        self.assertTrue((self.root / 'forge' / 'data' / 'papers.json').exists())
+    def test_second_snapshot_updates_its_open_pr(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        self._write('forge/data/ledger.jsonl', 'a\nb\nc\n'); second = self.library.snapshot('two')
+        self.assertTrue(second['updated_existing_pr'], second)
+        self.assertEqual(first['branch'], second['branch'])
+        self.assertEqual(self.log.read_text().count('pr create'), 1)
+        self.assertEqual(self._show(second['branch'], 'forge/data/ledger.jsonl'), 'a\nb\nc\n')
 
-    def test_sync_fast_forwards_and_keeps_uncommitted_data(self):
-        other = Path(self.tmp.name) / 'other'
-        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
-        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
-        (other / 'app.py').write_text('x = 9\n')
-        self.git('commit', '-q', '-am', 'merged code PR', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nunsaved\n')
-        result = self.library.sync()
-        self.assertTrue(result['ok'], result)
-        self.assertEqual((self.root / 'app.py').read_text(), 'x = 9\n')
-        self.assertEqual((self.root / 'forge' / 'data' / 'ledger.jsonl').read_text(), 'a\nunsaved\n')
-
-    def test_sync_waits_while_a_data_commit_is_unmerged(self):
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        self.library.snapshot('local only', publish=False)
-        self.assertFalse(self.library.sync()['ok'])
-
-    def _squash_merge(self, branch):
-        """模拟 GitHub 的 squash 合并：把数据分支的内容作为一个新提交放到 origin 的 main 上。"""
-        other = Path(self.tmp.name) / ('gh-' + uuid.uuid4().hex[:6])
-        self.git('clone', '-q', str(self.origin), str(other), cwd=self.tmp.name)
-        self.git('config', 'user.email', 't@example.com', cwd=other); self.git('config', 'user.name', 't', cwd=other)
-        self.git('merge', '-q', '--squash', f'origin/{branch}', cwd=other)
-        self.git('commit', '-q', '-m', 'squash', cwd=other); self.git('push', '-q', 'origin', 'main', cwd=other)
-
-    def _data_branch(self):
-        return [line.split('refs/heads/')[1] for line in self.git('ls-remote', '--heads', 'origin').splitlines() if 'refs/heads/data/' in line][-1]
-
-    def test_new_data_after_a_squash_merge_publishes_cleanly(self):
-        ledger = self.root / 'forge' / 'data' / 'ledger.jsonl'
-        ledger.write_text('a\nb\n'); self.library.snapshot('d1')
-        ledger.write_text('a\nb\nc\n'); self.library.snapshot('d2', publish=False)
-        self._squash_merge(self._data_branch())
-        self.assertFalse(self.library.sync()['ok'])  # d2 还没进 origin/main
-        self.git('push', '-q', 'origin', '--delete', self._data_branch())
-        result = self.library.snapshot('d3')
-        self.assertTrue(result['ok'] and result['published'], result)
-        self._squash_merge(self._data_branch())  # 新分支建在 origin/main 上，不带旧的 d1，能干净合并
+    def test_after_its_pr_merges_the_next_snapshot_opens_a_new_one(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        self._merge(first['branch'])
+        self._write('forge/data/ledger.jsonl', 'a\nb\nc\n'); second = self.library.snapshot('two')
+        self.assertTrue(second['ok'] and second['published'] and not second['updated_existing_pr'], second)
+        self.assertNotEqual(first['branch'], second['branch'])
+        self._merge(second['branch'])
         self.assertTrue(self.library.sync()['ok'])
         self.assertEqual(self.git('show', 'HEAD:forge/data/ledger.jsonl'), 'a\nb\nc\n')
 
+    def test_pr_merged_between_check_and_push_gets_a_new_pr(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        self._set_pr(first['branch'], flip_after=1)  # 第一次查询还开着，推送后再查已合并
+        self._write('forge/data/ledger.jsonl', 'a\nb\nc\n'); second = self.library.snapshot('two')
+        self.assertTrue(second['published'] and second['branch'] != first['branch'], second)
+        self.assertEqual(self._pr_state()[second['branch']]['state'], 'OPEN')
+
+    def test_another_checkouts_snapshot_pr_is_left_alone(self):
+        self._write('forge/data/ledger.jsonl', 'a\nA\n'); mine = self.library.snapshot('machine A')
+        other = self._clone('machine-b')
+        self.root_patch.stop()
+        with mock.patch('forge.leanrun.ROOT', other):
+            self._write('forge/data/helpers.json', '{}', other)
+            theirs = self.library.snapshot('machine B', include=['forge/data/helpers.json'])
+        self.root_patch.start()
+        self.assertTrue(theirs['published'] and theirs['branch'] != mine['branch'], theirs)
+        self.assertEqual(self._show(mine['branch'], 'forge/data/ledger.jsonl'), 'a\nA\n')
+
+    def test_hand_written_data_pr_is_left_alone(self):
+        self.git('push', '-q', 'origin', 'main:refs/heads/data/audit-b1-results')
+        before = self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin)
+        self._write('forge/data/ledger.jsonl', 'a\nb\n')
+        result = self.library.snapshot('mine')
+        self.assertTrue(result['published'] and result['branch'].startswith('data/snapshot-'), result)
+        self.assertEqual(self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin), before)
+
+    def test_a_task_claimed_elsewhere_is_a_conflict_not_undone(self):
+        self._write('forge/data/tasks/open/x.json', '{"v":0}')
+        self.git('add', '-A'); self.git('commit', '-q', '-m', 'x'); self.git('push', '-q', 'origin', 'main')
+        (self.root / 'forge/data/tasks/open/x.json').unlink(); self.library.snapshot('claim x', publish=False)
+        self._write('forge/data/tasks/open/x.json', '{"v":1}'); self.library.snapshot('release x', publish=False)
+        other = self._clone('claimer')
+        (other / 'forge/data/tasks/open/x.json').unlink()
+        self._push_from(other, 'forge/data/tasks/claimed/x.json', '{"v":0}')
+        result = self.library.snapshot('publish')
+        self.assertFalse(result['ok'], result)
+        self.assertIn('forge/data/tasks/open/x.json', result['paths'])
+
+    def test_auto_merge_is_requested_again_on_an_open_pr(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        self._set_pr(first['branch'], autoMergeRequest=None)  # 自动合并被取消或当初没开成
+        self._write('forge/data/ledger.jsonl', 'a\nb\nc\n'); second = self.library.snapshot('two')
+        self.assertTrue(second['auto_merge'], second)
+        self.assertEqual(self.log.read_text().count('--auto --squash'), 2)
+
+    def test_push_refuses_to_overwrite_a_branch_changed_by_someone_else(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        other = self._clone('intruder')
+        self.git('fetch', '-q', 'origin', first['branch'], cwd=other)
+        self.git('checkout', '-q', '-b', 'x', 'FETCH_HEAD', cwd=other)
+        self._write('forge/data/extra.txt', 'theirs', other)
+        self.git('add', '-A', cwd=other); self.git('commit', '-q', '-m', 'e', cwd=other)
+        self.git('push', '-q', 'origin', f'x:{first["branch"]}', cwd=other)
+        self._write('forge/data/ledger.jsonl', 'a\nb\nc\n'); second = self.library.snapshot('two')
+        self.assertFalse(second['ok'], second)
+        self.assertEqual(self._show(first['branch'], 'forge/data/extra.txt'), 'theirs')
+
+    def test_sync_fast_forwards_and_keeps_uncommitted_data(self):
+        self._push_from(self._clone('other'), 'app.py', 'x = 9\n')
+        self._write('forge/data/ledger.jsonl', 'a\nunsaved\n')
+        self.assertTrue(self.library.sync()['ok'])
+        self.assertEqual((self.root / 'app.py').read_text(), 'x = 9\n')
+        self.assertEqual((self.root / 'forge/data/ledger.jsonl').read_text(), 'a\nunsaved\n')
+
+    def test_sync_waits_while_data_is_unmerged(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); self.library.snapshot('local only', publish=False)
+        self.assertFalse(self.library.sync()['ok'])
+
+    def test_sync_after_merge_even_if_the_file_changed_again_upstream(self):
+        self._write('forge/data/ledger.jsonl', 'a\nb\n'); first = self.library.snapshot('one')
+        self._merge(first['branch'])
+        self._push_from(self._clone('later'), 'forge/data/ledger.jsonl', 'a\nb\nlater\n')
+        result = self.library.sync()
+        self.assertTrue(result['ok'], result)
+        self.assertEqual((self.root / 'forge/data/ledger.jsonl').read_text(), 'a\nb\nlater\n')
+
     def test_deleted_include_and_emptied_directory_are_committed(self):
-        (self.root / 'reports').mkdir(); (self.root / 'reports' / 'r.txt').write_text('r')
-        tasks_dir = self.root / 'forge' / 'data' / 'tasks'; tasks_dir.mkdir(); (tasks_dir / 't.json').write_text('{}')
+        self._write('reports/r.txt', 'r'); self._write('forge/data/tasks/t.json', '{}')
         self.assertTrue(self.library.snapshot('add', include=['reports/r.txt'], publish=False)['committed'])
-        (self.root / 'reports' / 'r.txt').unlink(); (tasks_dir / 't.json').unlink()
+        (self.root / 'reports/r.txt').unlink(); (self.root / 'forge/data/tasks/t.json').unlink()
         result = self.library.snapshot('remove', include=['reports/r.txt'], publish=False)
         self.assertTrue(result['ok'] and result['committed'], result)
         self.assertEqual(self.git('status', '--short', '--', 'reports', 'forge/data'), '')
-        result = self.library.snapshot('nothing', include=['reports/r.txt'], publish=False)  # tasks 目录已空但还在
+        result = self.library.snapshot('nothing', include=['reports/r.txt'], publish=False)
         self.assertTrue(result['ok'] and not result['committed'], result)
-
-    def test_snapshot_leaves_hand_written_data_prs_alone(self):
-        import json as _json
-        self.git('push', '-q', 'origin', 'main:refs/heads/data/audit-b1-results')
-        before = self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin)
-        self.open_prs.write_text(_json.dumps([dict(headRefName='data/audit-b1-results', url='https://github.com/o/r/pull/8')]))
-        (self.root / 'forge' / 'data' / 'ledger.jsonl').write_text('a\nb\n')
-        result = self.library.snapshot('mine')
-        self.assertTrue(result['ok'] and result['published'] and not result.get('updated_existing_pr'), result)
-        self.assertEqual(self.git('rev-parse', 'data/audit-b1-results', cwd=self.origin), before)
-        self.assertIn('--head data/snapshot-', self.log.read_text())

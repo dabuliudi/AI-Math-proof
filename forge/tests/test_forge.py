@@ -1224,8 +1224,10 @@ class PortfolioTests(unittest.TestCase):
         body = assemble_body('p', 'theorem p : True ∧ True := by\n  exact ⟨by sorry, by sorry⟩',
                              ['theorem p_d1_h1 : True := trivial'], [('p_d1_h1', [])])
         self.assertNotIn('sorry', body)
-        self.assertTrue(body.startswith('theorem p_d1_h1'))
-        self.assertIn('exact p_d1_h1', body)
+        # 评测检查器要求附加定理叫 `<题名>_aux…`：引理和用到它的地方一起改名
+        self.assertTrue(body.startswith('theorem p_aux_d1_h1'))
+        self.assertIn('exact p_aux_d1_h1', body)
+        self.assertNotIn('p_d1_h1', body)
 
     def test_disproved_lemma_kills_every_dag_using_it(self):
         from forge import portfolio

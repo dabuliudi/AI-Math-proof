@@ -60,7 +60,7 @@ Lemma `{lemma}` (a closed statement; it is one step in a decomposition of the pr
 Write to {file} either
 - `theorem {lemma} : <the statement above> := by ...`   (a proof), or
 - `theorem {lemma}_disproof : ¬ (<the statement above>) := by ...`   (if it is false - that tells us the plan is wrong).
-Helper lemmas are fine but their names must start with `{lemma}_`. No sorry, no axiom, no native_decide.
+Helper lemmas are fine but their names must start with `{lemma}_aux`. No sorry, no axiom, no native_decide.
 Check with `{forge} portfolio-lemma-check {run} {lemma} {file}` until it says ok. You have up to {minutes} minutes:
 keep going; try several approaches before you stop. Do not edit other files.
 End with one line: RESULT: proved | disproved | unsolved.
@@ -69,8 +69,9 @@ End with one line: RESULT: proved | disproved | unsolved.
 ASSEMBLE_PROMPT = '''In a Lean 4 + Mathlib project at {root} (agent `{agent}`): all lemmas of a proof plan for `{name}` are proved.
 Skeleton (with sorry holes): {skeleton}
 Proved lemma files (each defines `theorem <lemma> : <closed statement>` and helpers): {lemmas}
-Write ONE file {file} containing all lemma proofs (copy them) followed by the final `theorem {name} ...` whose proof is the
-skeleton with every sorry replaced by a use of the matching lemma. Check it with `{forge} bench-check {set} {name} {file}`
+Write ONE file {file} containing all lemma proofs (copy them, renaming every lemma and helper to start with `{name}_aux`, as
+the checker requires for extra theorems) followed by the final `theorem {name} ...` whose proof is the skeleton with every
+sorry replaced by a use of the matching lemma. Check it with `{forge} bench-check {set} {name} {file}`
 until it says solved. Do not edit other files. End with one line: RESULT: solved | failed.
 '''
 
@@ -100,11 +101,12 @@ def load_state(run):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else dict(run=run, problems={}, lemmas={})
 
 
-def _task(item, name=None, statement=None):
+def _task(item, name=None, statement=None, closed=None):
     """检查用的任务：评测题本身，或者它的一个子引理（闭命题）——都带上题目的导入、前置定义和记号设置。"""
     return dict(name=name or item['name'], statement=statement if statement is not None else item['statement'],
                 opens=item.get('opens', ''), preamble=item.get('preamble', ''), imports=item.get('imports', []),
-                library=False)  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
+                library=False,  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
+                **(dict(closed=closed) if closed else {}))
 
 
 def _locked_retry(check, *args):
@@ -138,13 +140,20 @@ def lemma_check(run, lemma, path):
         return dict(ok=False, reason=f'轮次 {run} 里没有引理 {lemma}')
     item = next(i for i in bench.load(info['set']) if i['name'] == info['problem'])
     try:
-        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), Path(path).read_text(encoding='utf-8'))
+        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), Path(path).read_text(encoding='utf-8'))
     except Exception as exc:  # noqa: BLE001
         return dict(ok=False, reason=str(exc))
 
 
+def aux_names(name, text):
+    """评测检查器要求附加定理都叫 `<题名>_aux…`：把子引理 `<题名>_d<k>_h<i>`（及其辅助引理）改名成 `<题名>_aux_d<k>_h<i>`。"""
+    return re.sub(re.escape(name) + r'_(d\d+_h\d+)', name + r'_aux_\1', text)
+
+
 def assemble_body(name, skeleton, lemma_bodies, lemma_args):
     """机械拼装：引理证明放在前面，骨架里每个 sorry 处把所有引理挨个试（sorry 与目标不必一一对应）。"""
+    lemma_bodies = [aux_names(name, b) for b in lemma_bodies]
+    lemma_args = [(aux_names(name, lemma), args) for lemma, args in lemma_args]
     options = []
     for lemma, args in lemma_args:
         if args:
@@ -157,7 +166,7 @@ def assemble_body(name, skeleton, lemma_bodies, lemma_args):
 class Portfolio(Scheduler):
     """在调度器上加三种工作项：sketch、lemma、assemble，放在一个共享队列里，前一步完成后把下一步放进去。"""
 
-    def run_portfolio(self, set_name, problems, k=6, lemma_minutes=None, lemma_attempts=2):
+    def run_portfolio(self, set_name, problems, k=6, lemma_minutes=None, lemma_attempts=2, revive=False):
         self.set_name, self.k, self.lemma_attempts = set_name, k, lemma_attempts
         self.lemma_seconds = (lemma_minutes or self.task_seconds // 60) * 60
         self.items = {i['name']: i for i in bench.load(set_name) if i['name'] in set(problems)}
@@ -168,6 +177,16 @@ class Portfolio(Scheduler):
         for p in problems:
             self.state['problems'].setdefault(p, dict(set=set_name, dags={}, solved_by=None))
         self._save()
+        if revive:
+            # 检查器修好后：被判“没法检查”的引理重新开放，只因它们作废（没有被证伪的引理）的图恢复
+            for lemma in self.state['lemmas'].values():
+                if lemma['status'] == 'uncheckable':
+                    lemma.update(status='open', attempts=0)
+            for p in problems:
+                for dag, d in self.state['problems'][p]['dags'].items():
+                    if d['status'] in ('dead', 'assembly_failed') and not any(
+                            self.state['lemmas'][h['lemma']]['status'] == 'disproved' for h in d['holes']):
+                        d['status'] = 'open'
         # 接着上次的状态跑：已有骨架的图不再重写；没证完的子引理、该拼装的图重新排队
         self.queue = [('sketch', p, i) for i in range(1, k + 1) for p in problems
                       if f'd{i}' not in self.state['problems'][p]['dags']]
@@ -294,7 +313,7 @@ class Portfolio(Scheduler):
         if path.exists():
             body = path.read_text(encoding='utf-8')
             try:
-                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), body)
+                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), body)
             except Exception as exc:  # noqa: BLE001 - 静态检查拒收（例如空洞目标里带 let 的 `:=`）：这条引理没法检查
                 result = dict(ok=False, reason=str(exc), uncheckable=True)
             reason = result.get('reason', '')
@@ -335,7 +354,7 @@ class Portfolio(Scheduler):
         bodies = [self.state['lemmas'][l]['body'] for l in lemmas]
         began = time.time()
         body = assemble_body(problem, d['skeleton'], bodies, [(h['lemma'], h['args']) for h in d['holes']])
-        result = bench.check(self.set_name, problem, body, self.run, 'scheduler')
+        result = _safe_check(self.set_name, problem, body, self.run)
         used, code, slow, message, how = 0, 0, False, '', 'mechanical'
         if not result.get('solved'):
             # 机械拼装失败：派一个 agent 手工拼，结果仍由评测检查器判定
@@ -354,7 +373,7 @@ class Portfolio(Scheduler):
             code, message, used, slow = self._invoke(prompt, agent)
             how = 'agent'
             if out.exists():
-                result = bench.check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run, 'scheduler')
+                result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run)
         with self.file_lock:
             if result.get('solved'):
                 d['status'] = 'solved'
@@ -366,6 +385,14 @@ class Portfolio(Scheduler):
                           outcome='solved' if result.get('solved') else 'failed', progress=bool(result.get('solved')),
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
                           reason=f'{how}: ' + result.get('reason', '')[:280], message=message[-300:]))
+
+
+def _safe_check(set_name, problem, body, run):
+    """评测检查器；静态检查拒收（命名、禁用词）时记为没解出，不让异常打断整轮。"""
+    try:
+        return bench.check(set_name, problem, body, run, 'scheduler')
+    except Exception as exc:  # noqa: BLE001
+        return dict(ok=False, solved=False, reason=str(exc))
 
 
 def summary(run):

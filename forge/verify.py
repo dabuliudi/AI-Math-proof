@@ -57,7 +57,9 @@ def check_submission(task, body, disproof=False, timeout=300):
     offset = prefix.count('\n')
     main = names[-1]
     tail = '\nend\nend Mathlib2\n' + ''.join(f'#forge_info "{nonce}" Mathlib2.{n}\n' for n in names)
-    tail += f'open Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{main} "{"disproved" if disproof else "proved"}" ({closed_form(task["statement"])})\n'
+    # task['closed']：内核给出的闭命题（例如骨架空洞的目标），可能带 let 的 `:=`，不再按签名解析
+    closed = task.get('closed') or closed_form(task['statement'])
+    tail += f'open Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{main} "{"disproved" if disproof else "proved"}" ({closed})\n'
     result = run_source(prefix + body.rstrip('\n') + tail, timeout=timeout, nonce=nonce)
     out = dict(ok=False, kind='disproved' if disproof else 'proved', names=names, elapsed=round(result.elapsed, 1))
     if result.timed_out:
@@ -77,7 +79,7 @@ def check_submission(task, body, disproof=False, timeout=300):
             return dict(out, reason=f'`{n}` 依赖了不允许的公理：{", ".join(bad)}（出现 sorryAx 说明证明没写完）')
     match = [m for m in result.tagged('FORGE_MATCH') if m['name'] == 'Mathlib2.' + main]
     if not match or not match[0]['ok']:
-        want = f'¬ ({closed_form(task["statement"])})' if disproof else task['statement']
+        want = f'¬ ({closed})' if disproof else task['statement']
         return dict(out, reason=f'主定理 `{main}` 的命题与任务要求不一致。要求：{want}')
     info = infos['Mathlib2.' + main]
     deps = set()

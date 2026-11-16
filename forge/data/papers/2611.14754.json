@@ -35,9 +35,11 @@
       "fidelity": {
         "twin": "(n d : ℕ) (hn : 1 < n) (hd : 2 ≤ d) : (∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ ∀ p : ℕ, Nat.Prime p → p ∣ n → 2 ^ d < p",
         "twin_by": "audit-b1-w2",
-        "verdict": "unknown",
-        "equivalence_proof": "",
-        "note": ""
+        "verdict": "equivalent",
+        "equivalence_proof": "theorem x2611_14754_thm1_1_eqv :\n    (∀ (n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 2 ≤ d),\n      (∃ S : Finset (Fin d → ZMod n),\n        S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔\n        ∀ p : ℕ, p.Prime → p ∣ n → 2 ^ d < p) ↔\n    (∀ (n d : ℕ) (hn : 1 < n) (hd : 2 ≤ d),\n      (∃ S : Finset (Fin d → ZMod n),\n        S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔\n        ∀ p : ℕ, Nat.Prime p → p ∣ n → 2 ^ d < p) := by\n  constructor\n  · intro h n d hn hd\n    letI : NeZero n := ⟨by omega⟩\n    exact h n d hn hd\n  · intro h n d _ hn hd\n    exact h n d hn hd\n",
+        "note": "通过：命题匹配，公理合规",
+        "equiv_attempts": 2,
+        "queued": "open"
       }
     },
     {
@@ -62,7 +64,11 @@
       "fidelity": {
         "twin": "(n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i : Fin r, z i ^ n = 1) : (if r ≤ n + 1 then ∑ α ∈ Finset.Nat.antidiagonalTuple r (n + 1 - r), ∏ i : Fin r, z i ^ α i else 0) = 0",
         "twin_by": "audit-b1-w0",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14754_lem3_2_eqv : (∀ (n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i, z i ^ n = 1), (if r ≤ n + 1 then MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ (n + 1 - r)) else 0) = 0) ↔ (∀ (n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i : Fin r, z i ^ n = 1), (if r ≤ n + 1 then ∑ α ∈ Finset.Nat.antidiagonalTuple r (n + 1 - r), ∏ i : Fin r, z i ^ α i else 0) = 0) := by\n  classical\n  have heval (r k : ℕ) (z : Fin r → ℂ) :\n      MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ k) =\n        ∑ α ∈ Finset.Nat.antidiagonalTuple r k, ∏ i : Fin r, z i ^ α i := by\n    let e : Sym (Fin r) k ≃ (Finset.Nat.antidiagonalTuple r k) :=\n      (Sym.equivNatSumOfFintype (Fin r) k).trans\n        (Equiv.subtypeEquivRight fun α => Finset.Nat.mem_antidiagonalTuple.symm)\n    calc\n      MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ k) =\n          ∑ s : Sym (Fin r) k, (s.1.map z).prod := by\n        simp [MvPolynomial.hsymm, ← Multiset.prod_hom']\n      _ = ∑ α : Finset.Nat.antidiagonalTuple r k, ∏ i : Fin r, z i ^ α.1 i := by\n        apply Fintype.sum_equiv e\n        intro s\n        change (s.1.map z).prod = ∏ i : Fin r, z i ^ s.1.count i\n        rw [Finset.prod_multiset_map_count]\n        apply Finset.prod_subset (Finset.subset_univ _)\n        intro i hi hnot\n        simp only [Multiset.mem_toFinset] at hnot\n        rw [Multiset.count_eq_zero_of_notMem hnot, pow_zero]\n      _ = _ := Finset.sum_coe_sort (Finset.Nat.antidiagonalTuple r k)\n        (fun α : Fin r → ℕ => ∏ i : Fin r, z i ^ α i)\n  constructor\n  · intro h n r hn hr z hz hroot\n    simpa only [heval] using h n r hn hr z hz hroot\n  · intro h n r hn hr z hz hroot\n    simpa only [heval] using h n r hn hr z hz hroot\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -87,7 +93,11 @@
       "fidelity": {
         "twin": "(n d : ℕ) (hn : 1 < n) (hd : 1 < d) (hq : ∃ p : ℕ, p.Prime ∧ p ∣ n ∧ p ^ (n.factorization p) < 2 ^ d) : ¬ ∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S",
         "twin_by": "audit-b1-w3",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14754_thm1_1_prime_eqv : (∀ (n d p k : ℕ) [NeZero n] (hn : 1 < n) (hd : 1 < d) (hp : p.Prime) (hk : 0 < k) (hdiv : p ^ k ∣ n) (hmax : ¬ p ^ (k + 1) ∣ n) (hsmall : p ^ k < 2 ^ d), ¬ ∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ (∀ (n d : ℕ) (hn : 1 < n) (hd : 1 < d) (hq : ∃ p : ℕ, p.Prime ∧ p ∣ n ∧ p ^ (n.factorization p) < 2 ^ d), ¬ ∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) := by\n  constructor\n  · intro hA n d hn hd hq\n    obtain ⟨p, hp, hpn, hsmall⟩ := hq\n    have hn0 : n ≠ 0 := by omega\n    letI : NeZero n := ⟨hn0⟩\n    exact hA n d p (n.factorization p) hn hd hp\n      (hp.factorization_pos_of_dvd hn0 hpn)\n      ((hp.pow_dvd_iff_le_factorization hn0).2 le_rfl)\n      (Nat.pow_succ_factorization_not_dvd hn0 hp) hsmall\n  · intro hB n d p k hnz hn hd hp hk hdiv hmax hsmall\n    have hn0 : n ≠ 0 := by omega\n    have hle : k ≤ n.factorization p :=\n      (hp.pow_dvd_iff_le_factorization hn0).1 hdiv\n    have hnot : ¬ k + 1 ≤ n.factorization p := by\n      intro h\n      exact hmax ((hp.pow_dvd_iff_le_factorization hn0).2 h)\n    have heq : n.factorization p = k := by omega\n    apply hB n d hn hd\n    refine ⟨p, hp, ?_, ?_⟩\n    · exact (dvd_pow_self p (Nat.ne_of_gt hk)).trans hdiv\n    · simpa only [heq] using hsmall\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     }
   ],

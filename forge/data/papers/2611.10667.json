@@ -25,7 +25,11 @@
       "fidelity": {
         "twin": "(q p r : ℕ) (hq : 0 < q) (hp : 0 < p) (hr : 0 < r) : ∀ (a b c : ℤ), (a, b, c) ∈ ({(1, -1, 0), (-1, 1, 0), (1, 0, -1), (-1, 0, 1), (0, 1, -1), (0, -1, 1)} : Set (ℤ × ℤ × ℤ)) → a ^ q + b ^ p + c ^ r = 0",
         "twin_by": "audit-b1-w7",
-        "verdict": "original_invalid"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_10667_trivial_solutions_as_printed_eqv :\n    (∀ (q p r : ℕ) (hq : 0 < q) (hp : 0 < p) (hr : 0 < r),\n      (1 : ℤ) ^ q + (-1 : ℤ) ^ p + (0 : ℤ) ^ r = 0 ∧\n      (-1 : ℤ) ^ q + (1 : ℤ) ^ p + (0 : ℤ) ^ r = 0 ∧\n      (1 : ℤ) ^ q + (0 : ℤ) ^ p + (-1 : ℤ) ^ r = 0 ∧\n      (-1 : ℤ) ^ q + (0 : ℤ) ^ p + (1 : ℤ) ^ r = 0 ∧\n      (0 : ℤ) ^ q + (1 : ℤ) ^ p + (-1 : ℤ) ^ r = 0 ∧\n      (0 : ℤ) ^ q + (-1 : ℤ) ^ p + (1 : ℤ) ^ r = 0) ↔\n    (∀ (q p r : ℕ) (hq : 0 < q) (hp : 0 < p) (hr : 0 < r),\n      ∀ (a b c : ℤ),\n        (a, b, c) ∈ ({(1, -1, 0), (-1, 1, 0), (1, 0, -1),\n          (-1, 0, 1), (0, 1, -1), (0, -1, 1)} : Set (ℤ × ℤ × ℤ)) →\n        a ^ q + b ^ p + c ^ r = 0) := by\n  constructor\n  · intro h q p r hq hp hr a b c habc\n    have hs := h q p r hq hp hr\n    simp only [Set.mem_insert_iff, Set.mem_singleton_iff, Prod.mk.injEq] at habc\n    rcases habc with ⟨rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl⟩ |\n      ⟨rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl⟩ | ⟨rfl, rfl, rfl⟩ |\n      ⟨rfl, rfl, rfl⟩\n    · exact hs.1\n    · exact hs.2.1\n    · exact hs.2.2.1\n    · exact hs.2.2.2.1\n    · exact hs.2.2.2.2.1\n    · exact hs.2.2.2.2.2\n  · intro h q p r hq hp hr\n    have hs := h q p r hq hp hr\n    exact ⟨hs 1 (-1) 0 (by simp), hs (-1) 1 0 (by simp),\n      hs 1 0 (-1) (by simp), hs (-1) 0 1 (by simp),\n      hs 0 1 (-1) (by simp), hs 0 (-1) 1 (by simp)⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -136,7 +140,8 @@
       "fidelity": {
         "twin": "(q r : ℕ) (hq : Nat.Prime q) (hr : Nat.Prime r) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (hv : 0 < padicValRat q (t - 1)) : padicValRat q (t - 1) = padicValRat q (t⁻¹ - 1)",
         "twin_by": "audit-b1-w7",
-        "verdict": "original_invalid"
+        "verdict": "same",
+        "queued": "open"
       }
     },
     {
@@ -148,7 +153,11 @@
       "fidelity": {
         "twin": "(q p r : ℕ) (hq : q.Prime) (hp : p.Prime) (hr : r.Prime) (hqr : q > r) (hr2 : r > 2) (hp3 : p > 3) (a b c : ℤ) (hprimitive : Nat.gcd (Nat.gcd a.natAbs b.natAbs) c.natAbs = 1) (hnontrivial : a * b * c ≠ 0) (hsolution : a ^ q + b ^ p + c ^ r = 0) (t : ℚ) (ht : t = -(a : ℚ) ^ q / (c : ℚ) ^ r) : t - 1 = (b : ℚ) ^ p / (c : ℚ) ^ r",
         "twin_by": "audit-b1-w2",
-        "verdict": "original_invalid"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_10667_lemma4_1_t_sub_one_eqv :\n    (∀ (q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime)\n      (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ)\n      (hsol : a ^ q + b ^ p + c ^ r = 0)\n      (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1)\n      (hnt : a * b * c ≠ 0),\n      -(a : ℚ) ^ q / (c : ℚ) ^ r - 1 = (b : ℚ) ^ p / (c : ℚ) ^ r) ↔\n    (∀ (q p r : ℕ) (hq : q.Prime) (hp : p.Prime) (hr : r.Prime)\n      (hqr : q > r) (hr2 : r > 2) (hp3 : p > 3) (a b c : ℤ)\n      (hprimitive : Nat.gcd (Nat.gcd a.natAbs b.natAbs) c.natAbs = 1)\n      (hnontrivial : a * b * c ≠ 0)\n      (hsolution : a ^ q + b ^ p + c ^ r = 0)\n      (t : ℚ) (ht : t = -(a : ℚ) ^ q / (c : ℚ) ^ r),\n      t - 1 = (b : ℚ) ^ p / (c : ℚ) ^ r) := by\n  constructor\n  · intro hA q p r hq hp hr hqr hr2 hp3 a b c hprimitive hnontrivial hsolution t ht\n    subst t\n    exact hA q r p hq hr hp hqr hr2 hp3 a b c hsolution\n      (by simpa only [Int.gcd_def] using hprimitive) hnontrivial\n  · intro hB q r p hq hr hp hqr hr2 hp3 a b c hsol hprim hnt\n    exact hB q p r hq hp hr hqr hr2 hp3 a b c\n      (by simpa only [Int.gcd_def] using hprim) hnt hsol\n      (-(a : ℚ) ^ q / (c : ℚ) ^ r) rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -160,7 +169,11 @@
       "fidelity": {
         "twin": "(q r p : ℕ) (a b c : ℤ) (hq : Nat.Prime q) (hr : Nat.Prime r) (hp : Nat.Prime p) (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (hsol : a ^ q + b ^ p + c ^ r = 0) (hnontrivial : a * b * c ≠ 0) (hprimitive : Nat.gcd (Nat.gcd a.natAbs b.natAbs) c.natAbs = 1) : b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ : ℕ, Nat.Prime ℓ ∧ (ℓ : ℤ) ∣ b",
         "twin_by": "audit-b1-w4",
-        "verdict": "original_invalid"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_10667_lemma4_1_prime_divisor_eqv :\n    (∀ (q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime)\n      (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ)\n      (hsol : a ^ q + b ^ p + c ^ r = 0)\n      (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1)\n      (hnt : a * b * c ≠ 0),\n      b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ : ℕ, ℓ.Prime ∧ (ℓ : ℤ) ∣ b) ↔\n    (∀ (q r p : ℕ) (a b c : ℤ) (hq : Nat.Prime q)\n      (hr : Nat.Prime r) (hp : Nat.Prime p) (hqr : r < q)\n      (hr2 : 2 < r) (hp3 : 3 < p)\n      (hsol : a ^ q + b ^ p + c ^ r = 0)\n      (hnontrivial : a * b * c ≠ 0)\n      (hprimitive : Nat.gcd (Nat.gcd a.natAbs b.natAbs) c.natAbs = 1),\n      b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ : ℕ, Nat.Prime ℓ ∧ (ℓ : ℤ) ∣ b) := by\n  constructor\n  · intro h q r p a b c hq hr hp hqr hr2 hp3 hsol hnontrivial hprimitive\n    exact h q r p hq hr hp hqr hr2 hp3 a b c hsol hprimitive hnontrivial\n  · intro h q r p hq hr hp hqr hr2 hp3 a b c hsol hprim hnt\n    exact h q r p a b c hq hr hp hqr hr2 hp3 hsol hnt hprim\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {

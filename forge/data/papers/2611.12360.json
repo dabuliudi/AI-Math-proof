@@ -58,7 +58,11 @@
       "fidelity": {
         "twin": "(n : ℕ) (hn : 0 < n) : Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧ ∀ α : ℝ, 0 < α → (Irrational (α ^ 2) ∨ (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧ α ^ 2 = (a : ℝ) / (b : ℝ) ∧ (37 : ℝ) ≤ (a : ℝ) + (b : ℝ) / 50) ∨ ((7 : ℝ) / 152 ≤ α ^ 2 ∧ α ^ 2 ≤ (179 : ℝ) / 3600)) → x2611_12360_notArrow n 3 17 α",
         "twin_by": "audit-b1-w7",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_thm1_2_eqv : (∀ (n : ℕ) (hn : 0 < n), Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧\n  (∀ α : ℝ, 0 < α →\n    (Irrational (α ^ 2) ∨\n      (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧\n        α ^ 2 = (a : ℝ) / (b : ℝ) ∧ 37 ≤ (a : ℝ) + (b : ℝ) / 50) ∨\n      α ^ 2 ∈ Set.Icc ((7 : ℝ) / 152) ((179 : ℝ) / 3600)) →\n    x2611_12360_notArrow n 3 17 α)) ↔ (∀ (n : ℕ) (hn : 0 < n), Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧ ∀ α : ℝ, 0 < α → (Irrational (α ^ 2) ∨ (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧ α ^ 2 = (a : ℝ) / (b : ℝ) ∧ (37 : ℝ) ≤ (a : ℝ) + (b : ℝ) / 50) ∨ ((7 : ℝ) / 152 ≤ α ^ 2 ∧ α ^ 2 ≤ (179 : ℝ) / 3600)) → x2611_12360_notArrow n 3 17 α) := by\n  rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -83,7 +87,10 @@
       "fidelity": {
         "twin": "(n : ℕ) : (∀ (M : ℕ) (U : ℝ) (x : Fin M → EuclideanSpace ℝ (Fin n)), 2 ≤ M → 0 ≤ U → (∃ a v : EuclideanSpace ℝ (Fin n), ‖v‖ = Real.sqrt U ∧ ∀ k : Fin M, x k = a + (k.val : ℝ) • v) → ∃ β γ : ℝ, ∀ k : Fin M, ‖x k‖ ^ 2 = U * (k.val : ℝ) ^ 2 + β * (k.val : ℝ) + γ) ∧ (∀ (R : ℝ) (x y z : EuclideanSpace ℝ (Fin n)), 0 ≤ R → y - x = z - y → dist x y = Real.sqrt R → ‖x‖ ^ 2 - 2 * ‖y‖ ^ 2 + ‖z‖ ^ 2 = 2 * R)",
         "twin_by": "audit-b1-w1",
-        "verdict": "pending"
+        "verdict": "different",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_lem2_1_eqv_disproof : ¬ ((∀ (n M : ℕ) (hM : 2 ≤ M) (U : ℝ)\n  (x v : EuclideanSpace ℝ (Fin n)) (hv : ‖v‖ = Real.sqrt U), (∃ β γ : ℝ, ∀ k : ℕ, k < M →\n    ‖x + (k : ℝ) • v‖ ^ 2 = U * (k : ℝ) ^ 2 + β * (k : ℝ) + γ) ∧\n  (3 ≤ M → ‖x‖ ^ 2 - 2 * ‖x + v‖ ^ 2 + ‖x + (2 : ℝ) • v‖ ^ 2 = 2 * U)) ↔ (∀ (n : ℕ), (∀ (M : ℕ) (U : ℝ) (x : Fin M → EuclideanSpace ℝ (Fin n)), 2 ≤ M → 0 ≤ U → (∃ a v : EuclideanSpace ℝ (Fin n), ‖v‖ = Real.sqrt U ∧ ∀ k : Fin M, x k = a + (k.val : ℝ) • v) → ∃ β γ : ℝ, ∀ k : Fin M, ‖x k‖ ^ 2 = U * (k.val : ℝ) ^ 2 + β * (k.val : ℝ) + γ) ∧ (∀ (R : ℝ) (x y z : EuclideanSpace ℝ (Fin n)), 0 ≤ R → y - x = z - y → dist x y = Real.sqrt R → ‖x‖ ^ 2 - 2 * ‖y‖ ^ 2 + ‖z‖ ^ 2 = 2 * R))) := by\n  have hp (n : ℕ) (U : ℝ) (a v : EuclideanSpace ℝ (Fin n))\n      (hU : 0 ≤ U) (hv : ‖v‖ = Real.sqrt U) (t : ℝ) :\n      ‖a + t • v‖ ^ 2 = U * t ^ 2 + (2 * inner ℝ a v) * t + ‖a‖ ^ 2 := by\n    simp only [norm_add_sq_real, real_inner_smul_right, norm_smul,\n      Real.norm_eq_abs, mul_pow, sq_abs, hv, Real.sq_sqrt hU]\n    ring\n  intro heq\n  have hA := heq.mpr (by\n    intro n\n    constructor\n    · intro M U x _ hU hx\n      obtain ⟨a, v, hv, hx⟩ := hx\n      refine ⟨2 * inner ℝ a v, ‖a‖ ^ 2, ?_⟩\n      intro k\n      rw [hx k]\n      exact hp n U a v hU hv (k.val : ℝ)\n    · intro R x y z hR hstep hdist\n      have hv : ‖y - x‖ = Real.sqrt R := by\n        calc\n          ‖y - x‖ = dist y x := (dist_eq_norm y x).symm\n          _ = dist x y := dist_comm y x\n          _ = Real.sqrt R := hdist\n      have hxy : x + (1 : ℝ) • (y - x) = y := by\n        simp only [one_smul]\n        abel\n      have hxz : x + (2 : ℝ) • (y - x) = z := by\n        calc\n          x + (2 : ℝ) • (y - x) = y + (y - x) := by\n            rw [two_smul]\n            abel\n          _ = y + (z - y) := by rw [hstep]\n          _ = z := by abel\n      have h1 := hp n R x (y - x) hR hv 1\n      have h2 := hp n R x (y - x) hR hv 2\n      rw [hxy] at h1\n      rw [hxz] at h2\n      nlinarith)\n  have hbad := (hA 1 3 (by norm_num) (-1) 0 0\n    (by norm_num [Real.sqrt_eq_zero_of_nonpos])).2 (by norm_num)\n  norm_num at hbad\n",
+        "note": "通过：命题匹配，公理合规"
       }
     },
     {
@@ -95,7 +102,11 @@
       "fidelity": {
         "twin": "(n p s r M : ℕ) (hn : 0 < n) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1) (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U) : (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) → x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧ (x2611_12360_G p M U ≤ (s : ℝ) → x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧ (4 * s < p → x2611_12360_modMem ((p : ℝ) / 2) (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R → x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))",
         "twin_by": "audit-b1-w5",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_lem2_2_eqv : (∀ (n p s r M : ℕ) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1)\n  (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U), (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) →\n    x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧\n  (x2611_12360_G p M U ≤ (s : ℝ) →\n    x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧\n  (4 * s < p →\n    x2611_12360_modMem ((p : ℝ) / 2)\n      (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R →\n    x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))) ↔ (∀ (n p s r M : ℕ) (hn : 0 < n) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1) (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U), (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) → x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧ (x2611_12360_G p M U ≤ (s : ℝ) → x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧ (4 * s < p → x2611_12360_modMem ((p : ℝ) / 2) (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R → x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))) := by\n  constructor\n  · intro h n p s r M hn hp hs hsp hr hM R U hR hU\n    exact h n p s r M hp hs hsp hr hM R U hR hU\n  · intro h n p s r M hp hs hsp hr hM R U hR hU\n    by_cases hn : 0 < n\n    · exact h n p s r M hn hp hs hsp hr hM R U hR hU\n    · have hn0 : n = 0 := by omega\n      subst n\n      have hz (k : ℕ) (a : ℝ) (ha : 0 < a)\n          (c : EuclideanSpace ℝ (Fin 0) → Prop) :\n          x2611_12360_noMono 0 k (Real.sqrt a) c := by\n        intro x v hv\n        have hv0 : v = 0 := Subsingleton.elim _ _\n        rw [hv0, norm_zero] at hv\n        exact False.elim ((ne_of_gt (Real.sqrt_pos.2 ha)) hv.symm)\n      exact ⟨fun _ => hz r R hR _, fun _ => hz M U hU _,\n        fun _ _ => hz 3 R hR _⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -120,7 +131,11 @@
       "fidelity": {
         "twin": "(p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u : ℚ) : (∃ q : ℚ, x2611_12360_G p M (u : ℝ) = (q : ℝ)) ∧ ∃ i j m : ℕ, i < j ∧ j < M ∧ m < j - i ∧ x2611_12360_gap p (Set.range (fun k : Fin M => ((-(u : ℝ) * (k.val : ℝ) ^ 2 - ((p : ℝ) * (m : ℝ) / ((j : ℝ) - (i : ℝ)) - (u : ℝ) * ((i : ℝ) + (j : ℝ))) * (k.val : ℝ) : ℝ) : AddCircle (p : ℝ)))) = x2611_12360_G p M (u : ℝ)",
         "twin_by": "audit-b1-w7",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_lem2_4_eqv : (∀ (p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u : ℚ), (∃ q : ℚ, x2611_12360_G p M (u : ℝ) = (q : ℝ)) ∧\n  (∃ i j m : ℕ, i < j ∧ j < M ∧ m < j - i ∧\n    x2611_12360_G p M (u : ℝ) =\n      x2611_12360_gap p (Set.range (fun k : Fin M =>\n        ((-(u : ℝ) * (k.val : ℝ) ^ 2 -\n          ((p : ℝ) * (m : ℝ) / ((j : ℝ) - (i : ℝ)) -\n            (u : ℝ) * ((i : ℝ) + (j : ℝ))) * (k.val : ℝ) : ℝ) :\n          AddCircle (p : ℝ)))))) ↔ (∀ (p M : ℕ) (hp : 2 ≤ p) (hM : 2 ≤ M) (u : ℚ), (∃ q : ℚ, x2611_12360_G p M (u : ℝ) = (q : ℝ)) ∧ ∃ i j m : ℕ, i < j ∧ j < M ∧ m < j - i ∧ x2611_12360_gap p (Set.range (fun k : Fin M => ((-(u : ℝ) * (k.val : ℝ) ^ 2 - ((p : ℝ) * (m : ℝ) / ((j : ℝ) - (i : ℝ)) - (u : ℝ) * ((i : ℝ) + (j : ℝ))) * (k.val : ℝ) : ℝ) : AddCircle (p : ℝ)))) = x2611_12360_G p M (u : ℝ)) := by\n  constructor\n  · intro h p M hp hM u\n    obtain ⟨hq, i, j, m, hij, hjM, hm, heq⟩ := h p M hp hM u\n    exact ⟨hq, i, j, m, hij, hjM, hm, heq.symm⟩\n  · intro h p M hp hM u\n    obtain ⟨hq, i, j, m, hij, hjM, hm, heq⟩ := h p M hp hM u\n    exact ⟨hq, i, j, m, hij, hjM, hm, heq.symm⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -132,7 +147,11 @@
       "fidelity": {
         "twin": "(T A B c d : ℝ) (a b : ℕ) (hT : 0 < T) (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b) (hA : 0 < A) (hAB : A ≤ B) (hBT : B < T) (hcd : c ≤ d) : ((∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧ R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧ x2611_12360_modMem T (Set.Icc c d) U) ↔ (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤ (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧ (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) → ∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧ R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧ x2611_12360_modMem T (Set.Icc c d) U)",
         "twin_by": "audit-b1-w6",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_lem2_6_eqv :\n    (∀ (T A B c d : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A ≤ B)\n      (hBT : B < T) (hcd : c ≤ d) (a b : ℕ)\n      (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b),\n      ((∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n        x2611_12360_modMem T (Set.Icc c d)\n          (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r))) ↔\n        (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤\n        (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧\n      (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) →\n        ∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n          x2611_12360_modMem T (Set.Icc c d)\n            (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r)))) ↔\n    (∀ (T A B c d : ℝ) (a b : ℕ) (hT : 0 < T) (ha : 0 < a)\n      (hb : 0 < b) (hab : Nat.Coprime a b) (hA : 0 < A) (hAB : A ≤ B)\n      (hBT : B < T) (hcd : c ≤ d),\n      ((∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧\n        R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧\n        x2611_12360_modMem T (Set.Icc c d) U) ↔\n        (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤\n        (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧\n      (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) →\n        ∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧\n          R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧\n          x2611_12360_modMem T (Set.Icc c d) U)) := by\n  have hex (T A B c d : ℝ) (a b : ℕ) :\n      (∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n        x2611_12360_modMem T (Set.Icc c d)\n          (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r))) ↔\n      (∃ (k : ℕ) (r R U : ℝ), k < b ∧ r ∈ Set.Icc A B ∧\n        R = T * (k : ℝ) + r ∧ U = ((a : ℝ) / (b : ℝ)) * R ∧\n        x2611_12360_modMem T (Set.Icc c d) U) := by\n    constructor\n    · rintro ⟨k, hk, r, hr, hm⟩\n      exact ⟨k, r, T * (k : ℝ) + r,\n        ((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r), hk, hr, rfl, rfl, hm⟩\n    · rintro ⟨k, r, R, U, hk, hr, rfl, rfl, hm⟩\n      exact ⟨k, hk, r, hr, hm⟩\n  constructor\n  · intro h T A B c d a b hT ha hb hab hA hAB hBT hcd\n    have h' := h T A B c d hT hA hAB hBT hcd a b ha hb hab\n    exact ⟨(hex T A B c d a b).symm.trans h'.1,\n      fun hw => (hex T A B c d a b).mp (h'.2 hw)⟩\n  · intro h T A B c d hT hA hAB hBT hcd a b ha hb hab\n    have h' := h T A B c d a b hT ha hb hab hA hAB hBT hcd\n    exact ⟨(hex T A B c d a b).trans h'.1,\n      fun hw => (hex T A B c d a b).mpr (h'.2 hw)⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -144,7 +163,11 @@
       "fidelity": {
         "twin": "(T A B u₀ q : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A < B) (hBT : B < T) (hu₀ : 0 < u₀) (hq : 0 < q) (hqirr : Irrational q) : ∀ L : ℝ, ∃ R U : ℝ, 0 < R ∧ 0 < U ∧ L < R ∧ L < U ∧ x2611_12360_modMem T (Set.Ioo A B) R ∧ (∃ m : ℤ, U = u₀ + (m : ℝ) * T) ∧ U = q * R",
         "twin_by": "audit-b1-w1",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_lem2_7_eqv :\n    (∀ (T A B u₀ q : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A < B)\n      (hBT : B < T) (hu₀ : 0 < u₀) (hq : 0 < q) (hiq : Irrational q),\n      ∀ L : ℝ, ∃ R U : ℝ, 0 < R ∧ 0 < U ∧ L < R ∧ L < U ∧\n        x2611_12360_modMem T (Set.Ioo A B) R ∧\n        x2611_12360_modMem T ({u₀} : Set ℝ) U ∧ U = q * R) ↔\n    (∀ (T A B u₀ q : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A < B)\n      (hBT : B < T) (hu₀ : 0 < u₀) (hq : 0 < q) (hqirr : Irrational q),\n      ∀ L : ℝ, ∃ R U : ℝ, 0 < R ∧ 0 < U ∧ L < R ∧ L < U ∧\n        x2611_12360_modMem T (Set.Ioo A B) R ∧\n        (∃ m : ℤ, U = u₀ + (m : ℝ) * T) ∧ U = q * R) := by\n  simp only [x2611_12360_modMem, Set.mem_singleton_iff, exists_eq_left]\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -156,7 +179,11 @@
       "fidelity": {
         "twin": "(n : ℕ) (hn : 0 < n) : (x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧ x2611_12360_G 29 3 7 ≤ (29 : ℝ) - 7 ∧ x2611_12360_G 29 20 7 ≤ 7 ∧ x2611_12360_notArrow n 3 20 1) ∧ (x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧ x2611_12360_G 29 4 10 ≤ (29 : ℝ) - 9 ∧ x2611_12360_G 29 14 10 ≤ 9 ∧ x2611_12360_notArrow n 4 14 1) ∧ (x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧ x2611_12360_G 5 5 2 ≤ (5 : ℝ) - 2 ∧ x2611_12360_G 5 8 2 ≤ 2 ∧ x2611_12360_notArrow n 5 8 1)",
         "twin_by": "audit-b1-w0",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_rem2_5_eqv :\n    (x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧\n      x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧\n      x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧\n      (∀ n : ℕ, 0 < n → x2611_12360_notArrow n 3 20 1 ∧\n        x2611_12360_notArrow n 4 14 1 ∧ x2611_12360_notArrow n 5 8 1)) ↔\n    (∀ (n : ℕ) (hn : 0 < n),\n      (x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧\n        x2611_12360_G 29 3 7 ≤ (29 : ℝ) - 7 ∧ x2611_12360_G 29 20 7 ≤ 7 ∧\n        x2611_12360_notArrow n 3 20 1) ∧\n      (x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧\n        x2611_12360_G 29 4 10 ≤ (29 : ℝ) - 9 ∧ x2611_12360_G 29 14 10 ≤ 9 ∧\n        x2611_12360_notArrow n 4 14 1) ∧\n      (x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧\n        x2611_12360_G 5 5 2 ≤ (5 : ℝ) - 2 ∧ x2611_12360_G 5 8 2 ≤ 2 ∧\n        x2611_12360_notArrow n 5 8 1)) := by\n  constructor\n  · rintro ⟨h1, h2, h3, h4, h5, h6, h⟩ n hn\n    obtain ⟨ha, hb, hc⟩ := h n hn\n    refine ⟨⟨h1, h2, ?_, ?_, ha⟩, ⟨h3, h4, ?_, ?_, hb⟩,\n      ⟨h5, h6, ?_, ?_, hc⟩⟩\n    all_goals norm_num [h1, h2, h3, h4, h5, h6]\n  · intro h\n    obtain ⟨ha, hb, hc⟩ := h 1 (by norm_num)\n    refine ⟨ha.1, ha.2.1, hb.1, hb.2.1, hc.1, hc.2.1, ?_⟩\n    intro n hn\n    obtain ⟨ha', hb', hc'⟩ := h n hn\n    exact ⟨ha'.2.2.2.2, hb'.2.2.2.2, hc'.2.2.2.2⟩\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -181,7 +208,11 @@
       "fidelity": {
         "twin": "(U : ℝ) (hUlo : (9 : ℝ) / 25 ≤ U) (hUhi : U ≤ (16 : ℝ) / 25) : x2611_12360_G 33 22 U ≤ 8",
         "twin_by": "audit-b1-w2",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_12360_eq19_eqv : (∀ (U : ℝ) (hU : U ∈ Set.Icc ((9 : ℝ) / 25) ((16 : ℝ) / 25)), x2611_12360_G 33 22 U ≤ 8) ↔ (∀ (U : ℝ) (hUlo : (9 : ℝ) / 25 ≤ U) (hUhi : U ≤ (16 : ℝ) / 25), x2611_12360_G 33 22 U ≤ 8) := by\n  constructor\n  · intro h U hUlo hUhi\n    exact h U ⟨hUlo, hUhi⟩\n  · intro h U hU\n    exact h U hU.1 hU.2\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     }
   ],

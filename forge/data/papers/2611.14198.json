@@ -40,7 +40,11 @@
       "fidelity": {
         "twin": "(d p : ℕ) (hd : 3 ≤ d) (hodd : Odd d) [Fact p.Prime] (hpnd : ¬ p ∣ 2 * d) (hpmod : p % 4 = 1) : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ ∃ ℓ n : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))",
         "twin_by": "audit-b1-w1",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_thm1_1_maximal_eqv :\n    (∀ (d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hodd : Odd d)\n      (hcop : ¬ p ∣ 2 * d) (hp : p % 4 = 1),\n      (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔\n        (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧\n          IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))) ↔\n    (∀ (d p : ℕ) (hd : 3 ≤ d) (hodd : Odd d) [Fact p.Prime]\n      (hpnd : ¬ p ∣ 2 * d) (hpmod : p % 4 = 1),\n      (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔\n        ∃ ℓ n : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧\n          IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) := by\n  constructor\n  · intro h d p hd hodd hprime hpnd hpmod\n    exact @h d p hprime hd hodd hpnd hpmod\n  · intro h d p hprime hd hodd hcop hp\n    exact @h d p hd hodd hprime hcop hp\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -52,7 +56,11 @@
       "fidelity": {
         "twin": "(ℓ p n r : ℕ) (hℓ : ℓ.Prime) [Fact p.Prime] (hℓmod : ℓ % 4 = 1) (hpmod : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : orderOf (p : ZMod (ℓ ^ n)) = Nat.totient (ℓ ^ n)) (hr : 1 ≤ r) : (x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧ (x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
         "twin_by": "audit-b1-w2",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_thm1_2_fields_eqv :\n    (∀ (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime]\n      (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n)\n      (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))\n      (r : ℕ) (hr : 1 ≤ r),\n      (x2611_14198_maximal (ℓ ^ n) p r ↔\n        ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧\n      (x2611_14198_minimal (ℓ ^ n) p r ↔\n        ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)) ↔\n    (∀ (ℓ p n r : ℕ) (hℓ : ℓ.Prime) [Fact p.Prime]\n      (hℓmod : ℓ % 4 = 1) (hpmod : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n)\n      (hgen : orderOf (p : ZMod (ℓ ^ n)) = Nat.totient (ℓ ^ n)) (hr : 1 ≤ r),\n      (x2611_14198_maximal (ℓ ^ n) p r ↔\n        ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧\n      (x2611_14198_minimal (ℓ ^ n) p r ↔\n        ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)) := by\n  constructor\n  · intro hA ℓ p n r hℓ hp hℓmod hpmod hne hn hgen hr\n    letI : Fact ℓ.Prime := ⟨hℓ⟩\n    exact @hA ℓ p n inferInstance hp hℓmod hpmod hne hn\n      (IsPrimitiveRoot.iff_orderOf.mpr hgen) r hr\n  · intro hB ℓ p n hℓ hp hℓmod hpmod hne hn hgen r hr\n    exact @hB ℓ p n r hℓ.out hp hℓmod hpmod hne hn\n      (IsPrimitiveRoot.iff_orderOf.mp hgen) hr\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -64,7 +72,10 @@
       "fidelity": {
         "twin": "(p d : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) : ((∃ r : ℕ, 0 < r ∧ x2611_14198_maximal d p r) ↔ ((d = 4 ∧ p % 8 = 5) ∨ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ ∃ u : (ZMod (ℓ ^ a))ˣ, (u : ZMod (ℓ ^ a)) = (p : ZMod (ℓ ^ a)) ∧ Subgroup.zpowers u = ⊤)) ∧ ((d = 4 ∧ p % 8 = 5) → ∀ r : ℕ, 0 < r → (x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = 2 * b)) ∧ (∀ ℓ a : ℕ, ℓ.Prime → ℓ % 4 = 1 → 1 ≤ a → d = 2 * ℓ ^ a → (∃ u : (ZMod (ℓ ^ a))ˣ, (u : ZMod (ℓ ^ a)) = (p : ZMod (ℓ ^ a)) ∧ Subgroup.zpowers u = ⊤) → ∀ r : ℕ, 0 < r → (x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b))",
         "twin_by": "audit-b1-w6",
-        "verdict": "pending"
+        "verdict": "unknown",
+        "equiv_attempts": 1,
+        "equivalence_proof": "",
+        "note": "B → A is kernel-checked, but B also specifies every maximal extension degree, and I could not derive those formulas from A or prove non-equivalence; no output file remains.\n\nRESULT: unknown"
       }
     },
     {
@@ -76,7 +87,11 @@
       "fidelity": {
         "twin": "(p d r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) (hd4 : d = 4) (hp5 : p % 8 = 5) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = 2 * b",
         "twin_by": "audit-b1-w5",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_thm1_3_case1_fields_eqv :\n    (∀ (p r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hp8 : p % 8 = 5)\n      (hcop : ¬ p ∣ 2 * 4) (hr : 1 ≤ r),\n      x2611_14198_maximal 4 p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ↔\n    (∀ (p d r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d)\n      (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) (hd4 : d = 4)\n      (hp5 : p % 8 = 5) (hr : 1 ≤ r),\n      x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = 2 * b) := by\n  constructor\n  · intro h p d r hpFact hp hd hd_even hpd hd4 hp5 hr\n    subst d\n    simpa only [Nat.succ_le_iff] using h p r hp hp5 hpd hr\n  · intro h p r hpFact hp hp8 hcop hr\n    simpa only [Nat.succ_le_iff] using\n      h p 4 r hp (by decide) (by exact ⟨2, rfl⟩) hcop rfl hp8 hr\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -88,7 +103,11 @@
       "fidelity": {
         "twin": "(p d ℓ a r : ℕ) [Fact p.Prime] (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d) (hℓ : ℓ.Prime) (hℓ_mod : ℓ % 4 = 1) (ha : 1 ≤ a) (hd_eq : d = 2 * ℓ ^ a) (hgen : orderOf (p : ZMod (ℓ ^ a)) = (ℓ ^ a).totient) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b",
         "twin_by": "audit-b1-w0",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_thm1_3_case2_fields_eqv :\n    (∀ (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime]\n      (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n)\n      (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))\n      (hd : 4 ≤ 2 * ℓ ^ n) (heven : Even (2 * ℓ ^ n))\n      (hcop : ¬ p ∣ 2 * (2 * ℓ ^ n)) (r : ℕ) (hr : 1 ≤ r),\n      x2611_14198_maximal (2 * ℓ ^ n) p r ↔\n        ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ↔\n    (∀ (p d ℓ a r : ℕ) [Fact p.Prime]\n      (hp : p % 4 = 1) (hd : 4 ≤ d) (hd_even : Even d) (hpd : ¬ p ∣ 2 * d)\n      (hℓ : ℓ.Prime) (hℓ_mod : ℓ % 4 = 1) (ha : 1 ≤ a)\n      (hd_eq : d = 2 * ℓ ^ a)\n      (hgen : orderOf (p : ZMod (ℓ ^ a)) = (ℓ ^ a).totient) (hr : 1 ≤ r),\n      x2611_14198_maximal d p r ↔\n        ∃ b : ℕ, 0 < b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) := by\n  constructor\n  · intro hA p d ℓ a r hpFact hp hd hd_even hpd hℓ hℓ_mod ha hd_eq hgen hr\n    letI : Fact ℓ.Prime := ⟨hℓ⟩\n    subst d\n    have hne : ℓ ≠ p := by\n      intro heq\n      apply hpd\n      rw [← heq]\n      exact dvd_mul_of_dvd_right\n        (dvd_mul_of_dvd_right (dvd_pow_self ℓ (by omega : a ≠ 0)) 2) 2\n    simpa only [Nat.succ_le_iff] using\n      (@hA ℓ p a inferInstance hpFact hℓ_mod hp hne ha\n        (IsPrimitiveRoot.iff_orderOf.mpr hgen) hd hd_even hpd r hr)\n  · intro hB ℓ p n hℓFact hpFact hℓ hp hne hn hgen hd heven hcop r hr\n    simpa only [Nat.succ_le_iff] using\n      (@hB p (2 * ℓ ^ n) ℓ n r hpFact hp hd heven hcop hℓFact.out hℓ hn rfl\n        (IsPrimitiveRoot.iff_orderOf.mp hgen) hr)\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -100,7 +119,11 @@
       "fidelity": {
         "twin": "(d : ℕ) (hd : 1 < d) (hd_odd : Odd d) (χ : DirichletCharacter ℂ d) (hχ : χ.Even) : x2611_14198_character_sum d χ = -((ZMod.χ₄ (d : ZMod 4) : ℂ) / χ (2 : ZMod d)) * @DirichletCharacter.LFunction (4 * d) ⟨by omega⟩ (x2611_14198_twist d χ) 0",
         "twin_by": "audit-b1-w4",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_lem4_2_identity_eqv : (∀ (d : ℕ) [NeZero d] (hd : 1 < d) (hodd : Odd d) (χ : DirichletCharacter ℂ d) (heven : χ.Even), x2611_14198_character_sum d χ = -((ZMod.χ₄ (d : ZMod 4) : ℤ) : ℂ) / χ (2 : ZMod d) * DirichletCharacter.LFunction (x2611_14198_twist d χ) 0) ↔ (∀ (d : ℕ) (hd : 1 < d) (hd_odd : Odd d) (χ : DirichletCharacter ℂ d) (hχ : χ.Even), x2611_14198_character_sum d χ = -((ZMod.χ₄ (d : ZMod 4) : ℂ) / χ (2 : ZMod d)) * @DirichletCharacter.LFunction (4 * d) ⟨by omega⟩ (x2611_14198_twist d χ) 0) := by\n  constructor\n  · intro h d hd hodd χ heven\n    letI : NeZero d := ⟨by omega⟩\n    simpa only [neg_div] using h d hd hodd χ heven\n  · intro h d _ hd hodd χ heven\n    simpa only [neg_div] using h d hd hodd χ heven\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -112,7 +135,10 @@
       "fidelity": {
         "twin": "(d : ℕ) [NeZero d] (hd : 1 < d) (hodd : Odd d) (χ : DirichletCharacter ℂ d) (heven : χ.Even) : x2611_14198_character_sum d χ = -((ZMod.χ₄.ringHomComp (Int.castRingHom ℂ)) (d : ZMod 4)) / χ (2 : ZMod d) * DirichletCharacter.LFunction (x2611_14198_twist d χ) 0 ∧ (χ.IsPrimitive → χ ≠ 1 → (x2611_14198_twist d χ).IsPrimitive ∧ (x2611_14198_twist d χ).Odd ∧ DirichletCharacter.LFunction (x2611_14198_twist d χ) 0 ≠ 0 ∧ x2611_14198_character_sum d χ ≠ 0)",
         "twin_by": "audit-b1-w7",
-        "verdict": "pending"
+        "verdict": "unknown",
+        "equiv_attempts": 1,
+        "equivalence_proof": "",
+        "note": "B → A passed Lean, but B additionally asserts the character-sum/L-value identity for all even characters, which I could neither prove nor refute; no output file was left.\n\nRESULT: unknown"
       }
     },
     {
@@ -124,7 +150,11 @@
       "fidelity": {
         "twin": "(d ℓ n : ℕ) (hℓ : Nat.Prime ℓ) (hℓ_mod_four : ℓ % 4 = 1) (hn : 1 ≤ n) (hd : d = ℓ ^ n) : x2611_14198_character_sum d (1 : DirichletCharacter ℂ d) = 0 ∧ ∀ χ : DirichletCharacter ℂ d, χ ≠ 1 → χ.Even → x2611_14198_character_sum d χ ≠ 0",
         "twin_by": "audit-b1-w5",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_lem4_3_eqv :\n    (∀ (ℓ n : ℕ) [Fact ℓ.Prime] (hℓ : ℓ % 4 = 1),\n      x2611_14198_character_sum (ℓ ^ n) (1 : DirichletCharacter ℂ (ℓ ^ n)) = 0 ∧\n        ∀ χ : DirichletCharacter ℂ (ℓ ^ n), χ ≠ 1 → χ.Even →\n          x2611_14198_character_sum (ℓ ^ n) χ ≠ 0) ↔\n    (∀ (d ℓ n : ℕ) (hℓ : Nat.Prime ℓ) (hℓ_mod_four : ℓ % 4 = 1)\n      (hn : 1 ≤ n) (hd : d = ℓ ^ n),\n      x2611_14198_character_sum d (1 : DirichletCharacter ℂ d) = 0 ∧\n        ∀ χ : DirichletCharacter ℂ d, χ ≠ 1 → χ.Even →\n          x2611_14198_character_sum d χ ≠ 0) := by\n  constructor\n  · intro h d ℓ n hℓ hℓ_mod_four _ hd\n    subst d\n    letI : Fact ℓ.Prime := ⟨hℓ⟩\n    exact h ℓ n hℓ_mod_four\n  · intro h ℓ n _ hℓ_mod_four\n    by_cases hn : n = 0\n    · subst n\n      constructor\n      · norm_num [x2611_14198_character_sum]\n      · intro χ hχ\n        exact (hχ (Subsingleton.elim (α := DirichletCharacter ℂ 1) χ 1)).elim\n    · exact h (ℓ ^ n) ℓ n Fact.out hℓ_mod_four (by omega) rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "invalid"
       }
     },
     {
@@ -136,7 +166,11 @@
       "fidelity": {
         "twin": "(ℓ p n : ℕ) (hℓ : Nat.Prime ℓ) [hp : Fact (Nat.Prime p)] (hℓ4 : ℓ % 4 = 1) (hp4 : p % 4 = 1) (hdistinct : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) : ∀ r : ℕ, 1 ≤ r → (x2611_14198_point_count (ℓ ^ n) p r : ℝ) = (p : ℝ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r), ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) * (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * Real.sqrt ((p : ℝ) ^ r)",
         "twin_by": "audit-b1-w1",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_cor5_4_points_eqv : (∀ (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (r : ℕ) (hr : 1 ≤ r), (x2611_14198_point_count (ℓ ^ n) p r : ℤ) = (p : ℤ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r), ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) * (-1 : ℤ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (p : ℤ) ^ (r / 2)) ↔ (∀ (ℓ p n : ℕ) (hℓ : Nat.Prime ℓ) [hp : Fact (Nat.Prime p)] (hℓ4 : ℓ % 4 = 1) (hp4 : p % 4 = 1) (hdistinct : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))), ∀ r : ℕ, 1 ≤ r → (x2611_14198_point_count (ℓ ^ n) p r : ℝ) = (p : ℝ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r), ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) * (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * Real.sqrt ((p : ℝ) ^ r)) := by\n  classical\n  have hsqrt (ℓ p r j : ℕ) (hℓ : ℓ % 4 = 1)\n      (hd : ℓ ^ (j - 1) * (ℓ - 1) ∣ r) :\n      Real.sqrt ((p : ℝ) ^ r) = (p : ℝ) ^ (r / 2) := by\n    have htwo : 2 ∣ ℓ - 1 := by omega\n    have hr : 2 ∣ r := dvd_trans (dvd_mul_of_dvd_right htwo _) hd\n    have heq : r = r / 2 * 2 := (Nat.div_mul_cancel hr).symm\n    conv_lhs => rw [heq, pow_mul]\n    exact Real.sqrt_sq (by positivity)\n  have hsum (ℓ p n r : ℕ) (hℓ : ℓ % 4 = 1) :\n      (∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r),\n        ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) *\n          (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (p : ℝ) ^ (r / 2)) =\n      ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r),\n        ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) *\n          (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * Real.sqrt ((p : ℝ) ^ r) := by\n    apply Finset.sum_congr rfl\n    intro j hj\n    rw [hsqrt ℓ p r j hℓ (Finset.mem_filter.mp hj).2]\n  constructor\n  · intro h ℓ p n hℓ hp hℓ4 hp4 hne hn hgen r hr\n    letI : Fact ℓ.Prime := ⟨hℓ⟩\n    have hz := h ℓ p n hℓ4 hp4 hne hn hgen r hr\n    have hre : (x2611_14198_point_count (ℓ ^ n) p r : ℝ) =\n        (p : ℝ) ^ r + 1 - ∑ j ∈ (Finset.Icc 1 n).filter\n          (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r),\n          ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℝ) *\n            (-1 : ℝ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (p : ℝ) ^ (r / 2) := by\n      exact_mod_cast hz\n    rw [hsum ℓ p n r hℓ4] at hre\n    exact hre\n  · intro h ℓ p n hℓ hp hℓ4 hp4 hne hn hgen r hr\n    have hre := h ℓ p n (Fact.out : ℓ.Prime) hℓ4 hp4 hne hn hgen r hr\n    rw [← hsum ℓ p n r hℓ4] at hre\n    exact_mod_cast hre\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -148,7 +182,11 @@
       "fidelity": {
         "twin": "[Fact (Nat.Prime 157)] : ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r",
         "twin_by": "audit-b1-w2",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_14198_remark5_5_157_eqv :\n    (∀ [Fact (Nat.Prime 157)],\n      IsPrimitiveRoot (157 : ZMod 5) (Nat.totient 5) ∧\n      ¬ IsPrimitiveRoot (157 : ZMod 25) (Nat.totient 25) ∧\n      orderOf (157 : ZMod 25) = 4 ∧\n      ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r) ↔\n    (∀ [Fact (Nat.Prime 157)],\n      ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r) := by\n  have h5 : orderOf (157 : ZMod 5) = 4 := by\n    apply (orderOf_eq_iff (by decide : 0 < 4)).2\n    constructor\n    · decide\n    · intro m hm hpos\n      have hm' : m = 1 ∨ m = 2 ∨ m = 3 := by omega\n      rcases hm' with rfl | rfl | rfl <;> decide\n  have h25 : orderOf (157 : ZMod 25) = 4 := by\n    apply (orderOf_eq_iff (by decide : 0 < 4)).2\n    constructor\n    · decide\n    · intro m hm hpos\n      have hm' : m = 1 ∨ m = 2 ∨ m = 3 := by omega\n      rcases hm' with rfl | rfl | rfl <;> decide\n  have ht5 : Nat.totient 5 = 4 := by decide\n  have ht25 : Nat.totient 25 = 20 := by decide\n  constructor\n  · intro hA hp\n    exact (@hA hp).2.2.2\n  · intro hB hp\n    refine ⟨IsPrimitiveRoot.iff_orderOf.mpr (h5.trans ht5.symm), ?_, h25, @hB hp⟩\n    intro hprim\n    have h := IsPrimitiveRoot.iff_orderOf.mp hprim\n    rw [h25, ht25] at h\n    norm_num at h\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -160,7 +198,11 @@
       "fidelity": {
         "twin": "(d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hp : ¬ p ∣ 2 * d) (r : ℕ) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ (p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ j : ℕ, (p : ZMod (4 * d)) ^ j = -1 ∨ (p : ZMod (4 * d)) ^ j = (1 + 2 * d : ℕ)) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (4 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ j : ℕ, (p : ZMod (2 * d)) ^ j = -1) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (2 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b)",
         "twin_by": "audit-b1-w6",
-        "verdict": "pending"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "lemma x2611_14198_cor6_2_fields_eqv_aux_order (n p : ℕ) (h4 : 4 ∣ n) (hp : p % 4 = 3)\n    (y : ZMod n) (hy2 : y ^ 2 = 1)\n    (hy4 : ZMod.castHom h4 (ZMod 4) y = -1)\n    (hpow : ∃ j : ℕ, (p : ZMod n) ^ j = y) :\n    ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod n) = 2 * k := by\n  let f : ZMod n →+* ZMod 4 := ZMod.castHom h4 (ZMod 4)\n  change f y = -1 at hy4\n  have hp4 : (p : ZMod 4) = -1 := by\n    calc\n      (p : ZMod 4) = (3 : ZMod 4) :=\n        (ZMod.natCast_eq_natCast_iff' p 3 4).2 (by omega)\n      _ = -1 := by decide\n  have hne : (-1 : ZMod 4) ≠ 1 := by decide\n  obtain ⟨j, hj⟩ := hpow\n  have hjodd : Odd j := (neg_one_pow_eq_neg_one_iff_odd hne).mp (by\n    have h := congrArg f hj\n    simpa only [map_pow, map_natCast, hp4, hy4] using h)\n  have ho : Even (orderOf (p : ZMod n)) := (neg_one_pow_eq_one_iff_even hne).mp (by\n    have h := congrArg f (pow_orderOf_eq_one (p : ZMod n))\n    simpa only [map_pow, map_natCast, hp4, map_one] using h)\n  obtain ⟨k, hk⟩ := ho.two_dvd\n  have hdvd : orderOf (p : ZMod n) ∣ 2 * j := orderOf_dvd_of_pow_eq_one (by\n    rw [mul_comm 2 j, pow_mul, hj, hy2])\n  rw [hk] at hdvd\n  have hkj : k ∣ j := (Nat.mul_dvd_mul_iff_left (by omega : 0 < 2)).mp hdvd\n  have hkodd : Odd k := hjodd.of_dvd_nat hkj\n  refine ⟨k, ?_, hkodd, hk⟩\n  obtain ⟨t, ht⟩ := hkodd\n  omega\nlemma x2611_14198_cor6_2_fields_eqv_aux_odd_order (d p : ℕ) (hp : p % 4 = 3) (hd : Odd d)\n    (hpow : ∃ j : ℕ, (p : ZMod (4 * d)) ^ j = -1 ∨\n      (p : ZMod (4 * d)) ^ j = ((1 + 2 * d : ℕ) : ZMod (4 * d))) :\n    ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (4 * d)) = 2 * k := by\n  have h4 : 4 ∣ 4 * d := dvd_mul_right 4 d\n  obtain ⟨j, hj | hj⟩ := hpow\n  · exact x2611_14198_cor6_2_fields_eqv_aux_order (4 * d) p h4 hp (-1) (by simp) (by rw [map_neg, map_one]) ⟨j, hj⟩\n  · apply x2611_14198_cor6_2_fields_eqv_aux_order (4 * d) p h4 hp ((1 + 2 * d : ℕ) : ZMod (4 * d))\n      ?_ ?_ ⟨j, hj⟩\n    · have hz : ((4 * d : ℕ) : ZMod (4 * d)) = 0 := by simp\n      calc\n        (((1 + 2 * d : ℕ) : ZMod (4 * d))) ^ 2 =\n          1 + ((4 * d : ℕ) : ZMod (4 * d)) * ((d + 1 : ℕ) : ZMod (4 * d)) := by\n            push_cast\n            ring\n        _ = 1 := by rw [hz]; simp\n    · simp only [map_natCast]\n      obtain ⟨t, ht⟩ := hd\n      calc\n        ((1 + 2 * d : ℕ) : ZMod 4) = (3 : ZMod 4) :=\n          (ZMod.natCast_eq_natCast_iff' (1 + 2 * d) 3 4).2 (by omega)\n        _ = -1 := by decide\n\nlemma x2611_14198_cor6_2_fields_eqv_aux_even_order (d p : ℕ) (hp : p % 4 = 3) (hd : Even d)\n    (hpow : ∃ j : ℕ, (p : ZMod (2 * d)) ^ j = -1) :\n    ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (2 * d)) = 2 * k := by\n  have h4 : 4 ∣ 2 * d := by\n    obtain ⟨t, ht⟩ := hd\n    exact ⟨t, by omega⟩\n  exact x2611_14198_cor6_2_fields_eqv_aux_order (2 * d) p h4 hp (-1) (by simp) (by rw [map_neg, map_one]) hpow\nlemma x2611_14198_cor6_2_fields_eqv_aux_rhs (d p r : ℕ) : (((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k : ℕ, (p : ZMod (4 * d)) ^ k = -1 ∨ (p : ZMod (4 * d)) ^ k = ((1 + 2 * d : ℕ) : ZMod (4 * d))) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (4 * d)) * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ k : ℕ, (p : ZMod (2 * d)) ^ k = -1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (2 * d)) * b))) ↔ ((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ j : ℕ, (p : ZMod (4 * d)) ^ j = -1 ∨ (p : ZMod (4 * d)) ^ j = (1 + 2 * d : ℕ)) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (4 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ j : ℕ, (p : ZMod (2 * d)) ^ j = -1) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (2 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b)) := by\n  constructor\n  · intro h\n    rcases h with h | h | h | h | h\n    · rcases h with ⟨hp, hd, ℓ, a, b, hℓ, hℓ4, ha, heq, hroot, hb, hodd, hr⟩\n      refine Or.inl ⟨hp, hd, ℓ, a, hℓ, hℓ4, ha, heq, ?_, b, hb, hodd, hr⟩\n      simpa only [Nat.totient_prime_pow hℓ (by omega : 0 < a)] using\n        (IsPrimitiveRoot.iff_orderOf.mp hroot)\n    · rcases h with ⟨hp, hd, ℓ, a, b, hℓ, hℓ4, ha, heq, hroot, hb, hodd, hr⟩\n      refine Or.inr (Or.inl ⟨hp, hd, ℓ, a, hℓ, hℓ4, ha, heq, ?_, b, hb, hodd, hr⟩)\n      simpa only [Nat.totient_prime_pow hℓ (by omega : 0 < a)] using\n        (IsPrimitiveRoot.iff_orderOf.mp hroot)\n    · exact Or.inr (Or.inr (Or.inl h))\n    · rcases h with ⟨hp, hd, hpow, b, hb, hodd, hr⟩\n      obtain ⟨k, hk, hkodd, horder⟩ := x2611_14198_cor6_2_fields_eqv_aux_odd_order d p hp hd hpow\n      refine Or.inr (Or.inr (Or.inr (Or.inl\n        ⟨hp, hd, hpow, k, hk, hkodd, horder, b, hb, hodd, ?_⟩)))\n      simpa only [horder] using hr\n    · rcases h with ⟨hp, hd, hpow, b, hb, hodd, hr⟩\n      obtain ⟨k, hk, hkodd, horder⟩ := x2611_14198_cor6_2_fields_eqv_aux_even_order d p hp hd hpow\n      refine Or.inr (Or.inr (Or.inr (Or.inr\n        ⟨hp, hd, hpow, k, hk, hkodd, horder, b, hb, hodd, ?_⟩)))\n      simpa only [horder] using hr\n  · intro h\n    rcases h with h | h | h | h | h\n    · rcases h with ⟨hp, hd, ℓ, a, hℓ, hℓ4, ha, heq, horder, b, hb, hodd, hr⟩\n      refine Or.inl ⟨hp, hd, ℓ, a, b, hℓ, hℓ4, ha, heq, ?_, hb, hodd, hr⟩\n      apply IsPrimitiveRoot.iff_orderOf.mpr\n      simpa only [Nat.totient_prime_pow hℓ (by omega : 0 < a)] using horder\n    · rcases h with ⟨hp, hd, ℓ, a, hℓ, hℓ4, ha, heq, horder, b, hb, hodd, hr⟩\n      refine Or.inr (Or.inl ⟨hp, hd, ℓ, a, b, hℓ, hℓ4, ha, heq, ?_, hb, hodd, hr⟩)\n      apply IsPrimitiveRoot.iff_orderOf.mpr\n      simpa only [Nat.totient_prime_pow hℓ (by omega : 0 < a)] using horder\n    · exact Or.inr (Or.inr (Or.inl h))\n    · rcases h with ⟨hp, hd, hpow, k, hk, hkodd, horder, b, hb, hodd, hr⟩\n      refine Or.inr (Or.inr (Or.inr (Or.inl ⟨hp, hd, hpow, b, hb, hodd, ?_⟩)))\n      simpa only [horder] using hr\n    · rcases h with ⟨hp, hd, hpow, k, hk, hkodd, horder, b, hb, hodd, hr⟩\n      refine Or.inr (Or.inr (Or.inr (Or.inr ⟨hp, hd, hpow, b, hb, hodd, ?_⟩)))\n      simpa only [horder] using hr\n\ntheorem x2611_14198_cor6_2_fields_eqv : (∀ (d p r : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hcop : ¬ p ∣ 2 * d) (hr : 1 ≤ r), x2611_14198_maximal d p r ↔ ((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k : ℕ, (p : ZMod (4 * d)) ^ k = -1 ∨ (p : ZMod (4 * d)) ^ k = ((1 + 2 * d : ℕ) : ZMod (4 * d))) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (4 * d)) * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ k : ℕ, (p : ZMod (2 * d)) ^ k = -1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (2 * d)) * b))) ↔ (∀ (d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hp : ¬ p ∣ 2 * d) (r : ℕ) (hr : 1 ≤ r), x2611_14198_maximal d p r ↔ (p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ orderOf (p : ZMod (ℓ ^ a)) = ℓ ^ (a - 1) * (ℓ - 1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ j : ℕ, (p : ZMod (4 * d)) ^ j = -1 ∨ (p : ZMod (4 * d)) ^ j = (1 + 2 * d : ℕ)) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (4 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ j : ℕ, (p : ZMod (2 * d)) ^ j = -1) ∧ ∃ k : ℕ, 1 ≤ k ∧ Odd k ∧ orderOf (p : ZMod (2 * d)) = 2 * k ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * k * b)) := by\n  constructor\n  · intro h d p hp hd hcop r hr\n    exact (h d p r hd hcop hr).trans (x2611_14198_cor6_2_fields_eqv_aux_rhs d p r)\n  · intro h d p r hp hd hcop hr\n    exact (h d p hd hcop r hr).trans (x2611_14198_cor6_2_fields_eqv_aux_rhs d p r).symm\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     }
   ],

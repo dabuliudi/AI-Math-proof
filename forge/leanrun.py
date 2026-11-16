@@ -113,7 +113,29 @@ def replay(timeout=3600):
     return dict(ok=False, kernel_error='重放没有给出结果', output_tail=(proc.stdout + proc.stderr)[-1500:])
 
 
-def lake_build(target='Mathlib2', timeout=1800):
-    proc = subprocess.run([find_lake(), 'build', target], cwd=PROJECT, env=_env(), capture_output=True,
-                          text=True, encoding='utf-8', errors='replace', timeout=timeout)
-    return proc.returncode, proc.stdout + proc.stderr
+def _kill_tree(proc):
+    if os.name == 'nt':
+        subprocess.run(['taskkill', '/PID', str(proc.pid), '/T', '/F'], capture_output=True)
+    else:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except (ProcessLookupError, PermissionError):
+            pass
+    proc.kill()
+
+
+def lake_build(target='Mathlib2', timeout=1800, on_start=None):
+    """在自己的进程组里构建；超时或出错时结束整组（只结束 lake 的话，它起的 lean 会留下来跟下一次构建抢资源）。
+    on_start(pid) 在构建开始时被调用，pid 也是进程组号，供调用方记下、在自己被杀后由别人收拾。"""
+    proc = subprocess.Popen([find_lake(), 'build', target], cwd=PROJECT, env=_env(), stdout=subprocess.PIPE,
+                            stderr=subprocess.PIPE, text=True, encoding='utf-8', errors='replace',
+                            start_new_session=os.name != 'nt')
+    try:
+        if on_start:
+            on_start(proc.pid)
+        stdout, stderr = proc.communicate(timeout=timeout)
+    except BaseException:
+        _kill_tree(proc)
+        proc.communicate()
+        raise
+    return proc.returncode, stdout + stderr

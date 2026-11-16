@@ -1,8 +1,10 @@
 """forge 的测试。纯逻辑部分总是运行；需要真实 Lean 的部分设置 FORGE_INTEGRATION=1 才运行，且不修改库和队列。"""
+import contextlib
 import json
 import os
 import tempfile
 import threading
+import time
 import unittest
 import uuid
 from pathlib import Path
@@ -299,16 +301,17 @@ class HardeningTests(unittest.TestCase):
         from forge import library
         calls = []
 
-        def fake_admit_batch(items, _real=library.admit_batch):
+        def fake_admit_batch(items, tickets=None, _real=library.admit_batch):
             calls.append(len(items))
-            return _real(items)
+            return _real(items, tickets)
 
         # 合并构建失败、回滚后重建、t0 单独构建成功、t1 单独构建失败、回滚后重建
         builds = iter([(1, 'error: duplicate'), (0, ''), (0, ''), (1, 'error'), (0, '')])
         with mock.patch.object(library, 'SHARDS', self.root / 'Shard'), \
                 mock.patch.object(library, 'ROOT_FILE', self.root / 'Mathlib2.lean'), \
                 mock.patch.object(library, 'LEDGER', self.root / 'ledger.jsonl'), \
-                mock.patch.object(library, 'lake_build', side_effect=lambda target: next(builds)), \
+                mock.patch.object(library, 'JOURNAL', self.root / 'admit-journal.json'), \
+                mock.patch.object(library, 'lake_build', side_effect=lambda target, **_: next(builds)), \
                 mock.patch.object(library, 'admit_batch', side_effect=fake_admit_batch):
             (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
             check = dict(kind='proved', type='True', axioms=[], library_deps=[], external_deps=0, names=['x'])
@@ -325,12 +328,250 @@ class HardeningTests(unittest.TestCase):
         self.assertIn('theorem t0', shard)
         self.assertNotIn('theorem t1', shard)
 
+    def _library_paths(self):
+        from forge import library
+        return [mock.patch.object(library, 'SHARDS', self.root / 'Shard'),
+                mock.patch.object(library, 'ROOT_FILE', self.root / 'Mathlib2.lean'),
+                mock.patch.object(library, 'LEDGER', self.root / 'ledger.jsonl'),
+                mock.patch.object(library, 'JOURNAL', self.root / 'admit-journal.json'),
+                mock.patch.object(library, 'LOCK', self.root / 'lock'),
+                mock.patch.object(library, 'PENDING', self.root / 'pending')]
+
+    def _item(self, name='t0'):
+        check = dict(kind='proved', type='True', axioms=[], library_deps=[], external_deps=0, names=[name])
+        return dict(name=name, statement=': True'), f'theorem {name} : True := trivial\n', check, 'a'
+
+    def _patched(self, stack, **build):
+        from forge import library
+        (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
+        for patch in self._library_paths():
+            stack.enter_context(patch)
+        stack.enter_context(mock.patch.object(library, 'lake_build', **(build or dict(return_value=(0, '')))))
+
+    def _shard_names(self):
+        import re
+        return [n for p in sorted((self.root / 'Shard').glob('S*.lean'))
+                for n in re.findall(r'^-- forge:entry (\S+) ', p.read_text(encoding='utf-8'), re.M)]
+
+    def test_build_timeout_rolls_back(self):
+        import subprocess
+        from forge import library
+        with contextlib.ExitStack() as stack:
+            self._patched(stack, side_effect=subprocess.TimeoutExpired('lake', 1))
+            result = library.admit_batch([self._item()])
+        self.assertFalse(result[0]['ok'])
+        self.assertIn('TimeoutExpired', result[0]['reason'])
+        self.assertFalse((self.root / 'Shard' / 'S0001.lean').exists())
+        self.assertEqual((self.root / 'Mathlib2.lean').read_text(encoding='utf-8'), 'import Mathlib\n')
+        self.assertFalse((self.root / 'admit-journal.json').exists())
+
+    def test_ticket_whose_build_raises_does_not_block_later_commits(self):
+        # 审查发现：出错的提交回滚后票据留在待入库区，之后每次组提交都带上它、一起失败，库再也进不了东西
+        import subprocess
+        from forge import library
+
+        def build(target, **_):
+            if 'theorem bad ' in ''.join(p.read_text(encoding='utf-8') for p in library.SHARDS.glob('S*.lean')):
+                raise subprocess.TimeoutExpired('lake', 1800)
+            return 0, ''
+
+        with contextlib.ExitStack() as stack:
+            self._patched(stack, side_effect=build)
+            outcomes = []
+            for name in ('bad', 'good1', 'good2'):
+                try:
+                    outcomes.append(library.commit(*self._item(name))['ok'])
+                except subprocess.TimeoutExpired:
+                    outcomes.append('raised')
+            ledger = [e['name'] for e in library.entries()]
+        self.assertEqual(outcomes, [False, True, True])
+        self.assertEqual(ledger, ['good1', 'good2'])
+        self.assertEqual(list((self.root / 'pending').glob('*.json')), [])
+
+    def test_stale_journal_does_not_truncate_a_rewritten_ledger(self):
+        # 审查发现：回滚日志留下后有别人改了台账（同步、重算哈希），按旧的字节数截断会把台账截在一行中间
+        import hashlib
+        from forge import library
+        with contextlib.ExitStack() as stack:
+            self._patched(stack)
+            library.admit_batch([self._item('e1')])
+            ledger = library.LEDGER.read_bytes()
+            library.JOURNAL.write_text(json.dumps(dict(
+                names=['e9'], root=library.ROOT_FILE.read_text(encoding='utf-8'), ledger_size=len(ledger),
+                ledger_digest=hashlib.sha256(ledger).hexdigest(), shards={}, build=None)), encoding='utf-8')
+            entry = library.entries()[0]
+            entry['hash'] = 'x' * 40
+            library.LEDGER.write_text(json.dumps(entry) + '\n', encoding='utf-8')
+            library.admit_batch([self._item('e2')])
+            names = [e['name'] for e in library.entries()]
+        self.assertEqual(names, ['e1', 'e2'])
+        self.assertEqual(self._shard_names(), ['e1', 'e2'])
+
+    def test_stale_journal_does_not_revert_a_shard_changed_since(self):
+        from forge import library
+        with contextlib.ExitStack() as stack:
+            self._patched(stack)
+            library.admit_batch([self._item('e1')])
+            shard = self.root / 'Shard' / 'S0001.lean'
+            ledger = library.LEDGER.read_bytes()
+            import hashlib
+            library.JOURNAL.write_text(json.dumps(dict(
+                names=['e9'], root=library.ROOT_FILE.read_text(encoding='utf-8'), ledger_size=len(ledger),
+                ledger_digest=hashlib.sha256(ledger).hexdigest(), shards={str(shard): 'stale text\nend Mathlib2\n'},
+                build=None)), encoding='utf-8')
+            library.admit_batch([self._item('e2')])
+        self.assertEqual(self._shard_names(), ['e1', 'e2'])
+        self.assertTrue(list(self.root.glob('admit-journal.rejected-*.json')))
+
+    def test_unreadable_journal_does_not_block_admission(self):
+        # 审查发现：空的或写了一半的回滚日志让 json.loads 报错，之后每次入库都失败
+        from forge import library
+        with contextlib.ExitStack() as stack:
+            self._patched(stack)
+            library.JOURNAL.write_text('', encoding='utf-8')
+            result = library.admit_batch([self._item('x')])
+        self.assertTrue(result[0]['ok'])
+        self.assertEqual(self._shard_names(), ['x'])
+
+    def test_untrusted_journal_on_inconsistent_library_stops_admission(self):
+        from forge import library
+        with contextlib.ExitStack() as stack:
+            self._patched(stack)
+            library.admit_batch([self._item('e1')])
+            library.LEDGER.write_text('', encoding='utf-8')  # 分片里有 e1，台账里没有
+            library.JOURNAL.write_text('{', encoding='utf-8')
+            with self.assertRaises(RuntimeError):
+                library.admit_batch([self._item('e2')])
+        self.assertEqual(self._shard_names(), ['e1'])
+
+    @unittest.skipIf(os.name == 'nt', 'needs SIGKILL')
+    def test_committer_killed_after_ledger_write_does_not_replay_tickets(self):
+        # 审查发现：台账写完、票据还没标完成时进程死掉，下一个提交者重放已入库的票据，重复声明构建失败
+        import subprocess
+        import sys
+        script = f"""
+import os, signal
+from pathlib import Path
+from unittest import mock
+from forge import library
+from forge.tests.test_forge import HardeningTests
+case = HardeningTests()
+case.root = Path({str(self.root)!r})
+for patch in case._library_paths():
+    patch.start()
+real = Path.write_text
+def write_text(self, *args, **kwargs):
+    if self.suffix == '.done' or (self.suffix == '.tmp' and '.done.' in self.name):
+        os.kill(os.getpid(), signal.SIGKILL)
+    return real(self, *args, **kwargs)
+real_replace = os.replace
+def replace(src, dst):
+    if str(dst).endswith('.done'):
+        os.kill(os.getpid(), signal.SIGKILL)
+    return real_replace(src, dst)
+with mock.patch.object(library, 'lake_build', return_value=(0, '')), \\
+        mock.patch.object(Path, 'write_text', write_text), mock.patch.object(os, 'replace', replace):
+    library.commit(*case._item('A1'))
+"""
+        (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
+        proc = subprocess.run([sys.executable, '-c', script], cwd=Path(__file__).resolve().parents[2])
+        self.assertEqual(proc.returncode, -9)
+        from forge import library
+
+        def build(target, **_):
+            names = self._shard_names()
+            return (1, 'error: already declared') if len(names) != len(set(names)) else (0, '')
+
+        with contextlib.ExitStack() as stack:
+            for patch in self._library_paths():
+                stack.enter_context(patch)
+            stack.enter_context(mock.patch.object(library, 'lake_build', side_effect=build))
+            result = library.commit(*self._item('C1'))
+            ledger = [e['name'] for e in library.entries()]
+        self.assertTrue(result['ok'])
+        self.assertEqual(ledger, ['A1', 'C1'])
+        self.assertEqual(self._shard_names(), ['A1', 'C1'])
+        self.assertEqual(list((self.root / 'pending').glob('*.json')), [])
+        for done in (self.root / 'pending').glob('*.done'):
+            self.assertTrue(json.loads(done.read_text(encoding='utf-8'))['ok'])
+
+    @unittest.skipIf(os.name == 'nt', 'needs process groups')
+    def test_lake_build_timeout_kills_the_whole_build(self):
+        # 审查发现：subprocess.run 超时只杀 lake，它起的 lean 留下来跟下一次构建抢资源
+        import subprocess
+        from forge import leanrun
+        pidfile = self.root / 'child.pid'
+        fake = self.root / 'lake'
+        fake.write_text(f'#!/bin/sh\nsleep 30 &\necho $! > {pidfile}\nwait\n', encoding='utf-8')
+        fake.chmod(0o755)
+        with mock.patch.object(leanrun, 'find_lake', return_value=str(fake)):
+            with self.assertRaises(subprocess.TimeoutExpired):
+                leanrun.lake_build('Mathlib2', timeout=1)
+        child = int(pidfile.read_text())
+        deadline = time.time() + 5
+        alive = True
+        while alive and time.time() < deadline:
+            try:
+                os.kill(child, 0)
+                time.sleep(0.1)
+            except ProcessLookupError:
+                alive = False
+        if alive:
+            os.kill(child, 9)
+        self.assertFalse(alive, 'the build left a child process running')
+
+    @unittest.skipIf(os.name == 'nt', 'needs SIGKILL')
+    def test_admission_killed_mid_build_is_undone_by_next_admission(self):
+        # 事故：提交进程在构建中途被结束，分片留着没进台账的条目，下一次入库又把同一条追加了一遍
+        import signal
+        import subprocess
+        import sys
+        from forge import library
+        (self.root / 'Mathlib2.lean').write_text('import Mathlib\n', encoding='utf-8')
+        script = f"""
+import time
+from pathlib import Path
+from unittest import mock
+from forge import library
+from forge.tests.test_forge import HardeningTests
+root = Path({str(self.root)!r})
+def hang(target, **_):
+    (root / 'build-started').write_text('')
+    time.sleep(60)
+case = HardeningTests()
+case.root = root
+for patch in case._library_paths():
+    patch.start()
+with mock.patch.object(library, 'lake_build', side_effect=hang):
+    library.admit_batch([case._item()])
+"""
+        proc = subprocess.Popen([sys.executable, '-c', script], cwd=Path(__file__).resolve().parents[2])
+        try:
+            deadline = time.time() + 60
+            while not (self.root / 'build-started').exists():
+                self.assertIsNone(proc.poll(), 'admission subprocess exited early')
+                self.assertLess(time.time(), deadline)
+                time.sleep(0.05)
+        finally:
+            proc.send_signal(signal.SIGKILL)
+            proc.wait()
+        with contextlib.ExitStack() as stack:
+            for patch in self._library_paths():
+                stack.enter_context(patch)
+            stack.enter_context(mock.patch.object(library, 'lake_build', return_value=(0, '')))
+            result = library.admit_batch([self._item()])
+        self.assertTrue(result[0]['ok'])
+        shard = (self.root / 'Shard' / 'S0001.lean').read_text(encoding='utf-8')
+        self.assertEqual(shard.count('-- forge:entry t0 '), 1)
+        self.assertEqual(len((self.root / 'ledger.jsonl').read_text(encoding='utf-8').splitlines()), 1)
+        self.assertFalse((self.root / 'admit-journal.json').exists())
+
     def test_concurrent_commits_share_one_build(self):
         from forge import library
         builds = []
         gate = threading.Event()
 
-        def slow_build(target):
+        def slow_build(target, **_):
             builds.append(target)
             gate.wait(2)  # 第一次构建期间其余提交排进待入库区
             return 0, ''
@@ -338,6 +579,7 @@ class HardeningTests(unittest.TestCase):
         with mock.patch.object(library, 'SHARDS', self.root / 'Shard'), \
                 mock.patch.object(library, 'ROOT_FILE', self.root / 'Mathlib2.lean'), \
                 mock.patch.object(library, 'LEDGER', self.root / 'ledger.jsonl'), \
+                mock.patch.object(library, 'JOURNAL', self.root / 'admit-journal.json'), \
                 mock.patch.object(library, 'LOCK', self.root / 'lock'), \
                 mock.patch.object(library, 'PENDING', self.root / 'pending'), \
                 mock.patch.object(library, 'lake_build', side_effect=slow_build):

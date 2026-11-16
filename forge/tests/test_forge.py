@@ -1009,3 +1009,23 @@ class PortfolioTests(unittest.TestCase):
             result = runner.run_portfolio('s', ['p'], k=3)
         self.assertEqual(result['solved'], 0)
         self.assertEqual({d['status'] for d in runner.state['problems']['p']['dags'].values()}, {'dead'})
+
+
+class PortfolioResumeTests(unittest.TestCase):
+    def test_resume_skips_written_sketches_and_requeues_open_lemmas(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / 'pf').mkdir()
+        state = dict(run='t-r', problems=dict(p=dict(set='s', solved_by=None, dags=dict(
+            d1=dict(skeleton='', holes=[dict(lemma='l1', args=[])], status='open', planner='w')))),
+            lemmas=dict(l1=dict(set='s', problem='p', statement='True', hash='h', status='open', dags=['d1'], queued=True)))
+        (root / 'pf' / 't-r.json').write_text(json.dumps(state))
+        seen = []
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]):
+            runner = portfolio.Portfolio('t-r', workers=2, max_tasks=1000, dry_run=True)
+            runner._sketch = lambda agent, p, k: seen.append(('sketch', k))
+            runner._lemma = lambda agent, p, name: seen.append(('lemma', name))
+            runner.run_portfolio('s', ['p'], k=2)
+        self.assertEqual(sorted(seen), [('lemma', 'l1'), ('sketch', 2)])

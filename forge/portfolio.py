@@ -168,9 +168,23 @@ class Portfolio(Scheduler):
         for p in problems:
             self.state['problems'].setdefault(p, dict(set=set_name, dags={}, solved_by=None))
         self._save()
-        self.queue = [('sketch', p, i) for i in range(1, k + 1) for p in problems]
+        # 接着上次的状态跑：已有骨架的图不再重写；没证完的子引理、该拼装的图重新排队
+        self.queue = [('sketch', p, i) for i in range(1, k + 1) for p in problems
+                      if f'd{i}' not in self.state['problems'][p]['dags']]
+        for name, lemma in self.state['lemmas'].items():
+            live = [d for d in lemma['dags'] if self.state['problems'][lemma['problem']]['dags'][d]['status'] == 'open']
+            if lemma['problem'] in self.items and lemma['status'] in ('open', 'unsolved') and live \
+                    and lemma.get('attempts', 0) < lemma_attempts:
+                lemma['status'], lemma['queued'] = 'open', True
+                self.queue.append(('lemma', lemma['problem'], name))
+        for p in problems:
+            for d in self.state['problems'][p]['dags'].values():
+                if d['status'] == 'assembling':  # 上次拼装到一半被打断
+                    d['status'] = 'open'
         self.busy = 0
         self.file_lock = threading.Lock()
+        for p in problems:
+            self._maybe_assemble(p)
         out = self._run_threads(self._worker, ())
         solved = [p for p in problems if self.state['problems'][p]['solved_by']]
         return dict(out or {}, solved=len(solved), problems=len(problems), solved_list=solved, tokens=self.tokens,

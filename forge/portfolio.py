@@ -103,7 +103,8 @@ def load_state(run):
 def _task(item, name=None, statement=None):
     """检查用的任务：评测题本身，或者它的一个子引理（闭命题）——都带上题目的导入、前置定义和记号设置。"""
     return dict(name=name or item['name'], statement=statement if statement is not None else item['statement'],
-                opens=item.get('opens', ''), preamble=item.get('preamble', ''), imports=item.get('imports', []))
+                opens=item.get('opens', ''), preamble=item.get('preamble', ''), imports=item.get('imports', []),
+                library=False)  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
 
 
 def _locked_retry(check, *args):

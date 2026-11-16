@@ -9,7 +9,7 @@ HEADER = 'import Mathlib\nimport Mathlib2\nimport Forge\nset_option autoImplicit
 MODULE = re.compile(r'[A-Za-z_][A-Za-z0-9_]*(\.([A-Za-z_][A-Za-z0-9_]*|«[^«»\n]+»))*')
 
 
-def header(imports=()):
+def header(imports=(), library=True):
     """HEADER 加上评测题自带的模块导入（例如 Formal Conjectures 的题目模块，题目里的定义在那里）。
 
     import 必须在文件最前面，所以插在固定的三行 import 之后。模块名只许是普通的点分名字，防止借 import 行注入别的命令。
@@ -20,6 +20,9 @@ def header(imports=()):
             raise ValueError(f'不合法的模块名：{module!r}')
         extra.append(f'import {module}\n')
     head, _, rest = HEADER.partition('set_option')
+    if not library:
+        # 不引用 Mathlib2 的检查（例如组合拆解里评测题的子引理）不导入它：别的进程重建库时不用等入库锁
+        head = head.replace('import Mathlib2\n', '')
     return head + ''.join(extra) + 'set_option' + rest
 HEARTBEATS = 400000
 
@@ -50,7 +53,7 @@ def check_submission(task, body, disproof=False, timeout=300):
     opens = task.get('opens', '')
     # 评测题可以带前置定义（例如 PutnamBench 的 `abbrev …_solution := 官方答案`）：由数据集给出、放在最前面，agent 不能改
     preamble = task.get('preamble', '')
-    prefix = header(task.get('imports')) + (preamble.rstrip('\n') + '\n' if preamble else '') + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
+    prefix = header(task.get('imports'), task.get('library', True)) + (preamble.rstrip('\n') + '\n' if preamble else '') + f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else '')
     offset = prefix.count('\n')
     main = names[-1]
     tail = '\nend\nend Mathlib2\n' + ''.join(f'#forge_info "{nonce}" Mathlib2.{n}\n' for n in names)
@@ -233,7 +236,7 @@ def check_sketch(task, body, timeout=300):
     marked = HOLE.sub(f'forge_hole "{nonce}"', body)
     # 评测题（例如 Formal Conjectures）的骨架：与 check_submission 一样带上题目自己的导入、前置定义和记号设置
     opens, preamble = task.get('opens', ''), task.get('preamble', '')
-    prefix = (header(task.get('imports')) + (preamble.rstrip('\n') + '\n' if preamble else '') +
+    prefix = (header(task.get('imports'), task.get('library', True)) + (preamble.rstrip('\n') + '\n' if preamble else '') +
               f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else ''))
     offset = prefix.count('\n')
     tail = f'\nend\nend Mathlib2\nopen Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{names[-1]} "proved" ({closed_form(task["statement"])})\n'

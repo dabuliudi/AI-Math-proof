@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thmA_s1h1",
+  "statement": ": ∃ (C : AbstractSimplicialComplex (Fin 15)), Nonempty ((↑{x : Fin 15 → ℝ | (∀ (i : Fin 15), 0 ≤ x i) ∧ ∑ i : Fin 15, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} : Type) ≃ₜ (Fin 3 → Circle))",
+  "closed": "∃ (C : AbstractSimplicialComplex (Fin 15)), Nonempty ((↑{x : Fin 15 → ℝ | (∀ (i : Fin 15), 0 ≤ x i) ∧ ∑ i : Fin 15, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} : Type) ≃ₜ (Fin 3 → Circle))",
+  "informal": "x2611_15358_thmA 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15358_thmA",
+  "original": "",
+  "proposed_by": "queue-r7-w0",
+  "hash": "637635245",
+  "type": "∃ C, Nonempty (↑{x | (∀ (i : Fin 15), 0 ≤ x i) ∧ ∑ i, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} ≃ₜ (Fin 3 → Circle))",
+  "attempts": [],
+  "created_at": "2026-11-16T12:42:53+0800",
+  "status": "open"
+}

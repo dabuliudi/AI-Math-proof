@@ -1,0 +1,19 @@
+{
+  "cases": 7,
+  "proved": 6,
+  "unknown": 1,
+  "first_success_rate": 0.14285714285714285,
+  "final_success_rate": 0.8571428571428571,
+  "average_compiles": 2.857142857142857,
+  "average_repairs": 0.0,
+  "average_mathlib_reuse": 1.1428571428571428,
+  "average_core_reuse": 0.2857142857142857,
+  "average_intermediate_lemmas": 1.0,
+  "average_dag_depth": 2.7142857142857144,
+  "human_interventions": 0,
+  "ai_calls": 0,
+  "ai_cost": 0,
+  "ai_status": "no AI call",
+  "source_alignment": "unconfirmed",
+  "external_blind_independence": "NOT VERIFIED"
+}

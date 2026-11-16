@@ -1,0 +1,7830 @@
+[
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "var": 3
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      },
+      {
+        "premise": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 3
+      }
+    },
+    "name": "le_imp_le_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 3
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d",
+    "variables": 4,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 187,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "var": 3
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      },
+      {
+        "premise": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 3
+      }
+    },
+    "name": "le_implies_le_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 3
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d",
+    "variables": 4,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 190,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Dvd.dvd.trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c",
+    "variables": 3,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 67,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LE.le.trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 137,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "LE.le.trans'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c ≤ b → c ≤ a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 138,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.dvd_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {a b c : ℕ}, a ∣ b → b ∣ c → a ∣ c",
+    "variables": 3,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 23,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n ≤ m → m ≤ k → n ≤ k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1881,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Preorder.le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [self : Preorder α] (a b c : α), a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 42,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Std.IsPreorder.le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} {inst : LE α} [self : Std.IsPreorder α] (a b c : α), a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Init.Data.Order.Classes",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Classes.lean",
+    "line": 56,
+    "source_sha256": "5e71a5b69cc510bf6527e1584faf8070f241583b2998b5b07dbb77fd328c8a67",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Std.le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [Trans (fun x1 x2 => x1 ≤ x2) (fun x1 x2 => x1 ≤ x2) fun x1 x2 => x1 ≤ x2] {a b c : α},\n  a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 70,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "dvd_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c",
+    "variables": 3,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 64,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "ge_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c ≤ b → c ≤ a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 89,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "le_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 64,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "le_trans'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c ≤ b → c ≤ a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 135,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Eq.trans_ge",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LE α] {a b c : α}, b = c → a ≤ b → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 83,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Eq.trans_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LE α], a = b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 82,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LE.le.trans_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LE α], a ≤ b → b = c → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 80,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LE.le.trans_eq'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LE α] {a b c : α}, b ≤ c → a = b → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 81,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_dvd",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, 0 < n → m ∣ n → m ≤ n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 56,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "le_of_eq_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LE α], a = b → b ≤ c → a ≤ c",
+    "variables": 3,
+    "module": "Init.Core",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Core.lean",
+    "line": 2417,
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "le_of_eq_of_le'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LE α] {a b c : α}, b = c → a ≤ b → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 78,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "le_of_le_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LE α], a ≤ b → b = c → a ≤ c",
+    "variables": 3,
+    "module": "Init.Core",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Core.lean",
+    "line": 2419,
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "le_of_le_of_eq'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LE α] {a b c : α}, b ≤ c → a = b → a ≤ c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 77,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "var": 3
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      },
+      {
+        "premise": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 3
+      }
+    },
+    "name": "Mathlib.Tactic.Ring.le_congr",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 3
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : LE α] {a b c d : α}, a = b → b ≤ c → d = c → a ≤ d",
+    "variables": 4,
+    "module": "Mathlib.Tactic.Ring.Compare",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring/Compare.lean",
+    "line": 190,
+    "source_sha256": "11b92d7f3ec2ea1bbf5ac8b61964f87305ab9d5cfec4b259ccbc6cfa367e64ae",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.one_nonneg",
+    "premises": [],
+    "type": "0 ≤ 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Int/Order.lean",
+    "line": 148,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "LinearOrderedCommMonoidWithZero.zero_le_one",
+    "premises": [],
+    "type": "∀ {α : Type u_3} [self : LinearOrderedCommMonoidWithZero α], 0 ≤ 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.GroupWithZero.Canonical",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/GroupWithZero/Canonical.lean",
+    "line": 38,
+    "source_sha256": "89db2816656288c562772a47fc85ab8261e58abda6da27c43cade2ffbea3f646",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.dvd_refl",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ∣ a",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 16,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.dvd_zero",
+    "premises": [],
+    "type": "∀ (a : ℕ), a ∣ 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 18,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.le_refl",
+    "premises": [],
+    "type": "∀ (n : ℕ), n ≤ n",
+    "variables": 1,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1897,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.one_dvd",
+    "premises": [],
+    "type": "∀ (n : ℕ), 1 ∣ n",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 75,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.zero_le",
+    "premises": [],
+    "type": "∀ (n : ℕ), 0 ≤ n",
+    "variables": 1,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1867,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Preorder.le_refl",
+    "premises": [],
+    "type": "∀ {α : Type u_2} [self : Preorder α] (a : α), a ≤ a",
+    "variables": 1,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 41,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.IsPreorder.le_refl",
+    "premises": [],
+    "type": "∀ {α : Type u} {inst : LE α} [self : Std.IsPreorder α] (a : α), a ≤ a",
+    "variables": 1,
+    "module": "Init.Data.Order.Classes",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Classes.lean",
+    "line": 55,
+    "source_sha256": "5e71a5b69cc510bf6527e1584faf8070f241583b2998b5b07dbb77fd328c8a67",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Std.le_refl",
+    "premises": [],
+    "type": "∀ {α : Type u} [inst : LE α] [Std.Refl fun x1 x2 => x1 ≤ x2] (a : α), a ≤ a",
+    "variables": 1,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 59,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "ZeroLEOneClass.zero_le_one",
+    "premises": [],
+    "type": "∀ {α : Type u_2} {inst : Zero α} {inst_1 : One α} {inst_2 : LE α} [self : ZeroLEOneClass α], 0 ≤ 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 19,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "dvd_refl",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Monoid α] (a : α), a ∣ a",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 114,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "dvd_rfl",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Monoid α] {a : α}, a ∣ a",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 117,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "dvd_zero",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : SemigroupWithZero α] (a : α), a ∣ 0",
+    "variables": 1,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 38,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "le_refl",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] (a : α), a ≤ a",
+    "variables": 1,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 58,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "le_rfl",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a : α}, a ≤ a",
+    "variables": 1,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 61,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "∣",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "one_dvd",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Monoid α] (a : α), 1 ∣ a",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 122,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "one_le_two",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : LE α] [ZeroLEOneClass α] [AddLeftMono α], 1 ≤ 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 43,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "one_le_two'",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : LE α] [ZeroLEOneClass α] [AddRightMono α], 1 ≤ 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 49,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "zero_le",
+    "premises": [],
+    "type": "∀ {α : Type u} [inst : AddZeroClass α] [inst_1 : LE α] [CanonicallyOrderedAdd α] (a : α), 0 ≤ a",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Order.Monoid.Canonical.Defs",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/Canonical/Defs.lean",
+    "line": 125,
+    "source_sha256": "a2684a8e527678f24e3edd75492cd9eba1ce8e693f5c3ddc780acb9cfe0d5868",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "zero_le'",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : LinearOrderedCommMonoidWithZero α] {a : α}, 0 ≤ a",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Order.GroupWithZero.Canonical",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/GroupWithZero/Canonical.lean",
+    "line": 76,
+    "source_sha256": "89db2816656288c562772a47fc85ab8261e58abda6da27c43cade2ffbea3f646",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 4
+      }
+    },
+    "name": "zero_le_four",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : Preorder α] [ZeroLEOneClass α] [AddLeftMono α], 0 ≤ 4",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 38,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "zero_le_one",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Zero α] [inst_1 : One α] [inst_2 : LE α] [ZeroLEOneClass α], 0 ≤ 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 22,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "zero_le_one'",
+    "premises": [],
+    "type": "∀ (α : Type u_2) [inst : Zero α] [inst_1 : One α] [inst_2 : LE α] [ZeroLEOneClass α], 0 ≤ 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 30,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 3
+      }
+    },
+    "name": "zero_le_three",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : Preorder α] [ZeroLEOneClass α] [AddLeftMono α], 0 ≤ 3",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 33,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "≤",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "zero_le_two",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : Preorder α] [ZeroLEOneClass α] [AddLeftMono α], 0 ≤ 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 28,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Eq.dvd",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Monoid α] {a b : α}, a = b → a ∣ b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 127,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Eq.ge",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : Preorder α] {a b : α}, a = b → b ≤ a",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 149,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Eq.le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b : α}, a = b → a ≤ b",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 148,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "LT.lt.le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b : α}, a < b → a ≤ b",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 146,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Lean.Grind.Nat.le_of_eq_1",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u = v → u ≤ v",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Offset.lean",
+    "line": 91,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Lean.Grind.Nat.le_of_eq_2",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u = v → v ≤ u",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Offset.lean",
+    "line": 92,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Lean.Grind.Preorder.le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Std.LawfulOrderLT α] {a b : α}, a < b → a ≤ b",
+    "variables": 2,
+    "module": "Init.Grind.Ordered.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Ordered/Order.lean",
+    "line": 22,
+    "source_sha256": "8f471997109c3f287be30961931ff84cd66417fd3b4ad1aedcf1562cd3a0bdfe",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n = m → n ≤ m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 310,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n < m → n ≤ m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 317,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.one_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a < b → 1 ≤ b",
+    "variables": 2,
+    "module": "Init.Data.Nat.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Lemmas.lean",
+    "line": 153,
+    "source_sha256": "7c590062414f7c8970454eb99af6a497491b8d3454443f33dfa8c8d16add9dad",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Std.le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LT α] [inst_1 : LE α] [Std.LawfulOrderLT α] {a b : α}, a < b → a ≤ b",
+    "variables": 2,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 99,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "∣",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "dvd_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Monoid α] {a b : α}, a = b → a ∣ b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.Divisibility.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+    "line": 125,
+    "source_sha256": "b3d81c01c483a94706fc596c94771ab3fbcdbab3f2c83c67625f47828eb37179",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "≤",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "ge_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : Preorder α] {a b : α}, a = b → b ≤ a",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 131,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "le_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b : α}, a = b → a ≤ b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 74,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "≤",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b : α}, a < b → a ≤ b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 75,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Dvd.dvd.antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : CancelCommMonoidWithZero α] {a b : α} [Subsingleton αˣ], a ∣ b → b ∣ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 146,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Dvd.dvd.antisymm'",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : CancelCommMonoidWithZero α] {a b : α} [Subsingleton αˣ], a ∣ b → b ∣ a → b = a",
+    "variables": 2,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 148,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "LE.le.antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 225,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "LE.le.antisymm'",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → b = a",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 226,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Lean.Grind.Nat.eq_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ (u v : ℕ), u ≤ v → v ≤ u → u = v",
+    "variables": 2,
+    "module": "Init.Grind.Offset",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Offset.lean",
+    "line": 93,
+    "source_sha256": "c6e019502c4f65b547de5b70d60602216c4e14286ec4882835a8adc3e9140ce0",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.dvd_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, m ∣ n → n ∣ m → m = n",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 67,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {n m : ℕ}, n ≤ m → m ≤ n → n = m",
+    "variables": 2,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1960,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "PartialOrder.le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [self : PartialOrder α] (a b : α), a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 161,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Std.IsPartialOrder.le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} {inst : LE α} [self : Std.IsPartialOrder α] (a b : α), a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Init.Data.Order.Classes",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Classes.lean",
+    "line": 64,
+    "source_sha256": "5e71a5b69cc510bf6527e1584faf8070f241583b2998b5b07dbb77fd328c8a67",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Std.le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [Std.Antisymm fun x1 x2 => x1 ≤ x2] {a b : α}, a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 62,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "dvd_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : CancelCommMonoidWithZero α] {a b : α} [Subsingleton αˣ], a ∣ b → b ∣ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 138,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "dvd_antisymm'",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : CancelCommMonoidWithZero α] {a b : α} [Subsingleton αˣ], a ∣ b → b ∣ a → b = a",
+    "variables": 2,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 143,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "eq_of_le_of_ge",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 170,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "eq_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 172,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "ge_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → b = a",
+    "variables": 2,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 214,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "le_antisymm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : PartialOrder α] {a b : α}, a ≤ b → b ≤ a → a = b",
+    "variables": 2,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 168,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "var": 3
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      },
+      {
+        "premise": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 3
+      }
+    },
+    "name": "lt_imp_lt_of_le_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 3
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a < b → c < d",
+    "variables": 4,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 193,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Nat.eq_one_of_dvd_one",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "lit": 1
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, n ∣ 1 → n = 1",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 77,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_le_zero",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "lit": 0
+        }
+      }
+    ],
+    "type": "∀ {n : ℕ}, n ≤ 0 → n = 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 341,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_zero_dvd",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {a : ℕ}, 0 ∣ a → a = 0",
+    "variables": 1,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 34,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "eq_zero_of_zero_dvd",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : SemigroupWithZero α] {a : α}, 0 ∣ a → a = 0",
+    "variables": 1,
+    "module": "Mathlib.Algebra.GroupWithZero.Divisibility",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+    "line": 26,
+    "source_sha256": "65600742ad74bcd9bd9e122505c0038d39f9c2049719f6ef9beb05cd0ed3876c",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LE.le.trans_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b < c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 141,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "LE.le.trans_lt'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 142,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LT.lt.trans_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b ≤ c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 143,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "LT.lt.trans_le'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c ≤ b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 144,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Lean.Grind.Preorder.lt_of_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Std.LawfulOrderLT α] [Std.IsPreorder α] {a b c : α}, a ≤ b → b < c → a < c",
+    "variables": 3,
+    "module": "Init.Grind.Ordered.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Ordered/Order.lean",
+    "line": 40,
+    "source_sha256": "8f471997109c3f287be30961931ff84cd66417fd3b4ad1aedcf1562cd3a0bdfe",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Lean.Grind.Preorder.lt_of_lt_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Std.LawfulOrderLT α] [Std.IsPreorder α] {a b c : α}, a < b → b ≤ c → a < c",
+    "variables": 3,
+    "module": "Init.Grind.Ordered.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Ordered/Order.lean",
+    "line": 36,
+    "source_sha256": "8f471997109c3f287be30961931ff84cd66417fd3b4ad1aedcf1562cd3a0bdfe",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Nat.eq_zero_of_dvd_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a ∣ b → b < a → b = 0",
+    "variables": 2,
+    "module": "Init.Data.Nat.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Lemmas.lean",
+    "line": 1679,
+    "source_sha256": "7c590062414f7c8970454eb99af6a497491b8d3454443f33dfa8c8d16add9dad",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n ≤ m → m < k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1957,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_lt_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m ≤ k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1885,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Nat.pos_of_dvd_of_pos",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "∣",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {m n : ℕ}, m ∣ n → 0 < n → 0 < m",
+    "variables": 2,
+    "module": "Init.Data.Nat.Dvd",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+    "line": 72,
+    "source_sha256": "29084555932784e3d24c23a541c1dc0ae1881588d590abc58de69f078fbd59f7",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Std.lt_of_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Trans (fun x1 x2 => x1 ≤ x2) (fun x1 x2 => x1 ≤ x2) fun x1 x2 => x1 ≤ x2]\n  [Std.LawfulOrderLT α] {a b c : α}, a ≤ b → b < c → a < c",
+    "variables": 3,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 141,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Std.lt_of_lt_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Trans (fun x1 x2 => x1 ≤ x2) (fun x1 x2 => x1 ≤ x2) fun x1 x2 => x1 ≤ x2]\n  [Std.LawfulOrderLT α] {a b c : α}, a < b → b ≤ c → a < c",
+    "variables": 3,
+    "module": "Init.Data.Order.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Order/Lemmas.lean",
+    "line": 150,
+    "source_sha256": "93222928920113755e37640664fab1df565c6b34cc56eb30752888ffaaa683ed",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "gt_of_ge_of_gt",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 105,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "gt_of_gt_of_ge",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c ≤ b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 104,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_le_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b < c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 98,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "lt_of_le_of_lt'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 102,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_lt_of_le",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "≤",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b ≤ c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 95,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "lt_of_lt_of_le'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "≤",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c ≤ b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 101,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.one_pos",
+    "premises": [],
+    "type": "∀ {n : ℕ}, 0 < 1",
+    "variables": 1,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Fin/Lemmas.lean",
+    "line": 389,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Fin.zero_lt_one",
+    "premises": [],
+    "type": "∀ {n : ℕ}, 0 < 1",
+    "variables": 1,
+    "module": "Init.Data.Fin.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Fin/Lemmas.lean",
+    "line": 236,
+    "source_sha256": "6dc1ac46d247a5ccfefa85746c8ba3e0062f7caa838cca0cd6fd0360d0883f71",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "ISize.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/SInt/Lemmas.lean",
+    "line": 2339,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.one_pos",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Int/Order.lean",
+    "line": 144,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Int.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Int/Order.lean",
+    "line": 142,
+    "source_sha256": "1b3b31b6097a4c2e7109f95b3d68b0d5e638628e89d0f21a90645851237dc20e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int16.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/SInt/Lemmas.lean",
+    "line": 2336,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int32.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/SInt/Lemmas.lean",
+    "line": 2337,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int64.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/SInt/Lemmas.lean",
+    "line": 2338,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Int8.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.SInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/SInt/Lemmas.lean",
+    "line": 2335,
+    "source_sha256": "3d46056e763b80c8282a9d8a7dbdc5c0460f7d4e771dd11bbf91607809024255",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Lean.Grind.OrderedRing.zero_lt_one",
+    "premises": [],
+    "type": "∀ {R : Type u} {inst : Grind.Semiring R} {inst_1 : LE R} {inst_2 : LT R} {inst_3 : Std.IsPreorder R}\n  [self : Grind.OrderedRing R], 0 < 1",
+    "variables": 0,
+    "module": "Init.Grind.Ordered.Ring",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Ordered/Ring.lean",
+    "line": 23,
+    "source_sha256": "28ae7b038d32b42d7aaa29703ee60ea2d953eac0b0806f53217dcc91b3017b50",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Mathlib.Tactic.Linarith.zero_lt_one",
+    "premises": [],
+    "type": "∀ {α : Type u} [inst : Semiring α] [inst_1 : PartialOrder α] [IsStrictOrderedRing α], 0 < 1",
+    "variables": 0,
+    "module": "Mathlib.Tactic.Linarith.Lemmas",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Tactic/Linarith/Lemmas.lean",
+    "line": 33,
+    "source_sha256": "e2175677582f6a2cce9e375875e40c41d20cca9951efba17f2683ba592486193",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.one_lt_two",
+    "premises": [],
+    "type": "1 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 596,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.two_pos",
+    "premises": [],
+    "type": "0 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 590,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "Nat.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 499,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "Nat.zero_lt_two",
+    "premises": [],
+    "type": "0 < 2",
+    "variables": 0,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 594,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt16.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/UInt/Lemmas.lean",
+    "line": 2456,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt32.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/UInt/Lemmas.lean",
+    "line": 2457,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt64.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/UInt/Lemmas.lean",
+    "line": 2458,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "UInt8.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/UInt/Lemmas.lean",
+    "line": 2455,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "USize.zero_lt_one",
+    "premises": [],
+    "type": "0 < 1",
+    "variables": 0,
+    "module": "Init.Data.UInt.Lemmas",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/UInt/Lemmas.lean",
+    "line": 2459,
+    "source_sha256": "1cf0f0825399cd4b3e806032560da22e2601e9091cac3c99077b3f9cb03c9489",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 4
+      }
+    },
+    "name": "four_pos",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 4",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 101,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 1
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "one_lt_two",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1]\n  [AddLeftStrictMono α], 1 < 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 91,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "one_pos",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Zero α] [inst_1 : One α] [inst_2 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1], 0 < 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 49,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 3
+      }
+    },
+    "name": "three_pos",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 3",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 99,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "two_pos",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 97,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 4
+      }
+    },
+    "name": "zero_lt_four",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 4",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 70,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 4
+      }
+    },
+    "name": "zero_lt_four'",
+    "premises": [],
+    "type": "∀ (α : Type u_1) [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 4",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 83,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "zero_lt_one",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : Zero α] [inst_1 : One α] [inst_2 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1], 0 < 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 37,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 1
+      }
+    },
+    "name": "zero_lt_one'",
+    "premises": [],
+    "type": "∀ (α : Type u_1) [inst : Zero α] [inst_1 : One α] [inst_2 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1], 0 < 1",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.ZeroLEOne",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/ZeroLEOne.lean",
+    "line": 45,
+    "source_sha256": "63b48309c89474841067d0ee1236648976d6b3b8dded62c33d4b3f81b53f5cd6",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 3
+      }
+    },
+    "name": "zero_lt_three",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 3",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 65,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 3
+      }
+    },
+    "name": "zero_lt_three'",
+    "premises": [],
+    "type": "∀ (α : Type u_1) [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 3",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 80,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "zero_lt_two",
+    "premises": [],
+    "type": "∀ {α : Type u_1} [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 62,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "lit": 2
+      }
+    },
+    "name": "zero_lt_two'",
+    "premises": [],
+    "type": "∀ (α : Type u_1) [inst : AddMonoidWithOne α] [inst_1 : PartialOrder α] [ZeroLEOneClass α] [NeZero 1] [AddLeftMono α],\n  0 < 2",
+    "variables": 0,
+    "module": "Mathlib.Algebra.Order.Monoid.NatCast",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/NatCast.lean",
+    "line": 77,
+    "source_sha256": "68eddf19da1cdee5d385e54cadec6ee37d6e9ed02d8b302f8c964becc5dd4ff4",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 1
+      },
+      "op": "=",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "Eq.symm",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Sort u} {a b : α}, a = b → b = a",
+    "variables": 2,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 321,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "LT.lt.pos",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : AddZeroClass α] [inst_1 : Preorder α] [CanonicallyOrderedAdd α] {a b : α}, a < b → 0 < b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.Order.Monoid.Canonical.Defs",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/Canonical/Defs.lean",
+    "line": 140,
+    "source_sha256": "a2684a8e527678f24e3edd75492cd9eba1ce8e693f5c3ddc780acb9cfe0d5868",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "Module.eq_zero_of_zero_eq_one",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "=",
+        "right": {
+          "lit": 1
+        }
+      }
+    ],
+    "type": "∀ {R : Type u_1} {M : Type u_3} [inst : Semiring R] [inst_1 : AddCommMonoid M] [_root_.Module R M] (x : M),\n  0 = 1 → x = 0",
+    "variables": 1,
+    "module": "Mathlib.Algebra.Module.Defs",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Module/Defs.lean",
+    "line": 101,
+    "source_sha256": "b5b85882a834f2bda1b55aad6bfda6ad94e9f0aee92bbd7a6c372014d560fecc",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Nat.zero_lt_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {a b : ℕ}, a < b → 0 < b",
+    "variables": 2,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 343,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "eq_of_zero_eq_one",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "=",
+        "right": {
+          "lit": 1
+        }
+      }
+    ],
+    "type": "∀ {M₀ : Type u_1} [inst : MulZeroOneClass M₀], 0 = 1 → ∀ (a b : M₀), a = b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.GroupWithZero.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Basic.lean",
+    "line": 117,
+    "source_sha256": "6bda3b98ed0f729102283dfe4abfdfb9e525c5cd2deb705b85e9b45db53996bf",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "var": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "lit": 0
+      }
+    },
+    "name": "eq_zero_of_zero_eq_one",
+    "premises": [
+      {
+        "left": {
+          "lit": 0
+        },
+        "op": "=",
+        "right": {
+          "lit": 1
+        }
+      }
+    ],
+    "type": "∀ {M₀ : Type u_1} [inst : MulZeroOneClass M₀], 0 = 1 → ∀ (a : M₀), a = 0",
+    "variables": 1,
+    "module": "Mathlib.Algebra.GroupWithZero.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Basic.lean",
+    "line": 99,
+    "source_sha256": "6bda3b98ed0f729102283dfe4abfdfb9e525c5cd2deb705b85e9b45db53996bf",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "premise": 0
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "lit": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "pos_of_gt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : AddZeroClass α] [inst_1 : Preorder α] [CanonicallyOrderedAdd α] {a b : α}, a < b → 0 < b",
+    "variables": 2,
+    "module": "Mathlib.Algebra.Order.Monoid.Canonical.Defs",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Order/Monoid/Canonical/Defs.lean",
+    "line": 136,
+    "source_sha256": "a2684a8e527678f24e3edd75492cd9eba1ce8e693f5c3ddc780acb9cfe0d5868",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Eq.trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Sort u} {a b c : α}, a = b → b = c → a = c",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 333,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Eq.trans_gt",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LT α] {a b c : α}, b = c → a < b → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 100,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Eq.trans_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LT α], a = b → b < c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 99,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LT.lt.trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b < c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 139,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "LT.lt.trans'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 140,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LT.lt.trans_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LT α], a < b → b = c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 97,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "LT.lt.trans_eq'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LT α] {a b c : α}, b < c → a = b → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 98,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Lean.Grind.Preorder.lt_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u} [inst : LE α] [inst_1 : LT α] [Std.LawfulOrderLT α] [Std.IsPreorder α] {a b c : α}, a < b → b < c → a < c",
+    "variables": 3,
+    "module": "Init.Grind.Ordered.Order",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Grind/Ordered/Order.lean",
+    "line": 44,
+    "source_sha256": "8f471997109c3f287be30961931ff84cd66417fd3b4ad1aedcf1562cd3a0bdfe",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "=",
+      "right": {
+        "var": 1
+      }
+    },
+    "name": "Mathlib.Tactic.Ring.of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Sort u_2} {a b c : α}, a = c → b = c → a = b",
+    "variables": 3,
+    "module": "Mathlib.Tactic.Ring.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring/Basic.lean",
+    "line": 1354,
+    "source_sha256": "b86e6c12e0562e3cb1ffadb312447149695c8a114bd44ca74355bbef9cfdcfe1",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_of_lt_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m = k → n < k",
+    "variables": 3,
+    "module": "Init.Data.Nat.Basic",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Basic.lean",
+    "line": 295,
+    "source_sha256": "7dc1b2d9f97bb8ec029cf87dfb9b848e5859cea1658c2b2fa00056c4f8f3e44e",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "Nat.lt_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {n m k : ℕ}, n < m → m < k → n < k",
+    "variables": 3,
+    "module": "Init.Prelude",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Prelude.lean",
+    "line": 1888,
+    "source_sha256": "a590e5b64fdaf40d4a4cc5cc123b4056bd152330ff608072de27e54094609632",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "gt_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 108,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_eq_of_lt",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LT α], a = b → b < c → a < c",
+    "variables": 3,
+    "module": "Init.Core",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Core.lean",
+    "line": 2421,
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_eq_of_lt'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LT α] {a b c : α}, b = c → a < b → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 95,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "instance": true
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_lt_of_eq",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} {a b c : α} [inst : LT α], a < b → b = c → a < c",
+    "variables": 3,
+    "module": "Init.Core",
+    "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Core.lean",
+    "line": 2423,
+    "source_sha256": "404928f2fdaa31a580125d2edc55badb5eafffb765506d27f1b385b3cb7f0899",
+    "origin": "Lean Core Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_of_lt_of_eq'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_2} [inst : LT α] {a b c : α}, b < c → a = b → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 94,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 2
+      }
+    },
+    "name": "lt_trans",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b < c → a < c",
+    "variables": 3,
+    "module": "Mathlib.Order.Defs.PartialOrder",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Defs/PartialOrder.lean",
+    "line": 107,
+    "source_sha256": "901314bfb32640ee0cdbeecc4dc26b9b77cba52451b7ea2ee86dbda692fe78e3",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 2
+      },
+      "op": "<",
+      "right": {
+        "var": 0
+      }
+    },
+    "name": "lt_trans'",
+    "premises": [
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 0
+        }
+      },
+      {
+        "left": {
+          "var": 2
+        },
+        "op": "<",
+        "right": {
+          "var": 1
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b < a → c < b → c < a",
+    "variables": 3,
+    "module": "Mathlib.Order.Basic",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+    "line": 136,
+    "source_sha256": "801df2757cb9e252e1e7fea702ab5870195719c2ac5b6466531b0ed7fda28777",
+    "origin": "Mathlib Reuse"
+  },
+  {
+    "binders": [
+      {
+        "type": "Nat"
+      },
+      {
+        "instance": true
+      },
+      {
+        "var": 0
+      },
+      {
+        "var": 1
+      },
+      {
+        "var": 2
+      },
+      {
+        "var": 3
+      },
+      {
+        "premise": 0
+      },
+      {
+        "premise": 1
+      },
+      {
+        "premise": 2
+      }
+    ],
+    "conclusion": {
+      "left": {
+        "var": 0
+      },
+      "op": "<",
+      "right": {
+        "var": 3
+      }
+    },
+    "name": "Mathlib.Tactic.Ring.lt_congr",
+    "premises": [
+      {
+        "left": {
+          "var": 0
+        },
+        "op": "=",
+        "right": {
+          "var": 1
+        }
+      },
+      {
+        "left": {
+          "var": 1
+        },
+        "op": "<",
+        "right": {
+          "var": 2
+        }
+      },
+      {
+        "left": {
+          "var": 3
+        },
+        "op": "=",
+        "right": {
+          "var": 2
+        }
+      }
+    ],
+    "type": "∀ {α : Type u_1} [inst : LT α] {a b c d : α}, a = b → b < c → d = c → a < d",
+    "variables": 4,
+    "module": "Mathlib.Tactic.Ring.Compare",
+    "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Tactic/Ring/Compare.lean",
+    "line": 194,
+    "source_sha256": "11b92d7f3ec2ea1bbf5ac8b61964f87305ab9d5cfec4b259ccbc6cfa367e64ae",
+    "origin": "Mathlib Reuse"
+  }
+]

@@ -1,0 +1,117 @@
+{
+  "name": "x2611_15512_thm1_3",
+  "statement": "{α : Type*} [Fintype α] (M : Matroid α) :\n  ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧\n  (x2611_15512_simple M → M.eRank = 3 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (q : ℝ), 0 < q → q ≤ 1 →\n        ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≤\n              q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)) ∧\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ≤\n              (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n          0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f))",
+  "closed": "∀ {α : Type*} [Fintype α] (M : Matroid α), ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧\n  (x2611_15512_simple M → M.eRank = 3 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (q : ℝ), 0 < q → q ≤ 1 →\n        ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≤\n              q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)) ∧\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ≤\n              (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n          0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f))",
+  "informal": "Theorem 1.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "Every matroid of rank or corank at most three is $Z$ -Rayleigh.\nMoreover, if $M$ is simple of rank three, then, for all distinct\n $e,f\\in E(M)$ , all $0<q\\leq 1$ and all $x>0$ ,\n\n $q^{6}(\\Delta_{e,f}Z_{M})(q,x)\\geq(1-q)^{2}(\\Delta_{e,f}S_{M})(x)\\geq(1-q)^{2}(\\Delta_{e,f}B_{M})(x)\\geq 0.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3933053830",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), (M.eRank ≤ 3 ∨ M✶.eRank ≤ 3 → Mathlib2.x2611_15512_z_rayleigh M) ∧ (Mathlib2.x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (q : ℝ), 0 < q → q ≤ 1 → ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) → (1 - q) ^ 2 * (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Spanning) e f) ≤ q ^ 6 * (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_tutte M q) e f) ∧ (1 - q) ^ 2 * (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f) ≤ (1 - q) ^ 2 * (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Spanning) e f) ∧ 0 ≤ (1 - q) ^ 2 * (MvPolynomial.eval x) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f))",
+  "attempts": [],
+  "created_at": "2026-11-16T11:08:05+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w7",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "sketches": [
+    {
+      "agent": "queue-papers-b1-w7",
+      "body": "open BigOperators\n\nlemma x2611_15512_thm1_3_aux1 {α : Type*} (P : MvPolynomial α ℝ)\n    (hP : ∀ d, 0 ≤ P.coeff d) (x : α → ℝ) (hx : ∀ a, 0 ≤ x a) :\n    0 ≤ MvPolynomial.eval x P := by\n  rw [MvPolynomial.eval_eq]\n  exact Finset.sum_nonneg fun d hd =>\n    mul_nonneg (hP d) (Finset.prod_nonneg fun a ha => pow_nonneg (hx a) _)\n\nlemma x2611_15512_thm1_3_aux2 {α : Type*} (P : MvPolynomial α (Polynomial ℝ))\n    (hP : ∀ d k, 0 ≤ (P.coeff d).coeff k)\n    (q : ℝ) (hq : 0 ≤ q) (x : α → ℝ) (hx : ∀ a, 0 ≤ x a) :\n    0 ≤ MvPolynomial.eval₂ (Polynomial.evalRingHom q) x P := by\n  rw [MvPolynomial.eval₂_eq]\n  apply Finset.sum_nonneg\n  intro d hd\n  apply mul_nonneg\n  · change 0 ≤ Polynomial.eval q (P.coeff d)\n    rw [Polynomial.eval_eq_sum, Polynomial.sum_def]\n    exact Finset.sum_nonneg fun k hk => mul_nonneg (hP d k) (pow_nonneg hq _)\n  · exact Finset.prod_nonneg fun a ha => pow_nonneg (hx a) _\n\nlemma x2611_15512_thm1_3_aux3 {α R : Type*} [CommSemiring R]\n    (P : MvPolynomial α R) (e : α) :\n    (MvPolynomial.pderiv e P).vars ⊆ P.vars := by\n  classical\n  intro a ha\n  obtain ⟨d, hd, had⟩ := (MvPolynomial.mem_vars_iff_mem_support a).mp ha\n  have hc : P.coeff (d + Finsupp.single e 1) ≠ 0 := by\n    have h := MvPolynomial.mem_support_iff.mp hd\n    rw [MvPolynomial.coeff_pderiv] at h\n    intro hc\n    exact h (by rw [hc, zero_mul])\n  apply (MvPolynomial.mem_vars_iff_mem_support a).mpr\n  refine ⟨d + Finsupp.single e 1, MvPolynomial.mem_support_iff.mpr hc, ?_⟩\n  have hda : d a ≠ 0 := Finsupp.mem_support_iff.mp had\n  simp only [Finsupp.mem_support_iff, Finsupp.add_apply]\n  omega\n\nlemma x2611_15512_thm1_3_aux4 {α R : Type*} [CommRing R]\n    (P : MvPolynomial α R) (e f : α) :\n    (x2611_15512_rayleigh_difference P e f).vars ⊆ P.vars := by\n  classical\n  intro a ha\n  have hsub := MvPolynomial.vars_sub_subset\n    (p := MvPolynomial.pderiv e P * MvPolynomial.pderiv f P)\n    (q := P * MvPolynomial.pderiv e (MvPolynomial.pderiv f P)) ha\n  rcases Finset.mem_union.mp hsub with h | h\n  · rcases Finset.mem_union.mp (MvPolynomial.vars_mul _ _ h) with h | h\n    · exact x2611_15512_thm1_3_aux3 P e h\n    · exact x2611_15512_thm1_3_aux3 P f h\n  · rcases Finset.mem_union.mp (MvPolynomial.vars_mul _ _ h) with h | h\n    · exact h\n    · exact x2611_15512_thm1_3_aux3 P f\n        (x2611_15512_thm1_3_aux3 (MvPolynomial.pderiv f P) e h)\n\nlemma x2611_15512_thm1_3_aux5 {α R : Type*} [CommSemiring R] [Nontrivial R]\n    (A : Finset α) :\n    (∏ a ∈ A, (MvPolynomial.X a : MvPolynomial α R)).vars ⊆ A := by\n  classical\n  intro a ha\n  have h := MvPolynomial.vars_prod (fun b : α => (MvPolynomial.X b : MvPolynomial α R)) ha\n  obtain ⟨b, hb, hab⟩ := Finset.mem_biUnion.mp h\n  have hab' : a = b := by simpa only [MvPolynomial.vars_X, Finset.mem_singleton] using hab\n  simpa only [hab'] using hb\n\nlemma x2611_15512_thm1_3_aux6 {α : Type*} [Fintype α]\n    (P : Set α → Prop) (E : Set α) (hP : ∀ A, P A → A ⊆ E) :\n    ∀ a ∈ (x2611_15512_set_polynomial P).vars, a ∈ E := by\n  classical\n  intro a ha\n  unfold x2611_15512_set_polynomial at ha\n  have h := MvPolynomial.vars_sum_subset _ _ ha\n  obtain ⟨A, hA, ha⟩ := Finset.mem_biUnion.mp h\n  exact hP (↑A) (Finset.mem_filter.mp hA).2\n    (x2611_15512_thm1_3_aux5 A ha)\n\nlemma x2611_15512_thm1_3_aux7 {α : Type*} [Fintype α]\n    (M : Matroid α) (q : ℝ) :\n    ∀ a ∈ (x2611_15512_tutte M q).vars, a ∈ M.E := by\n  classical\n  intro a ha\n  unfold x2611_15512_tutte at ha\n  have h := MvPolynomial.vars_sum_subset _ _ ha\n  obtain ⟨A, hA, ha⟩ := Finset.mem_biUnion.mp h\n  have ha' : a ∈ (∏ b ∈ A, (MvPolynomial.X b : MvPolynomial α ℝ)).vars := by\n    have hh := MvPolynomial.vars_mul _ _ ha\n    simpa using hh\n  exact Set.mem_toFinset.mp ((Finset.mem_powerset.mp hA)\n    (x2611_15512_thm1_3_aux5 A ha'))\n\nlemma x2611_15512_thm1_3_aux8 {α R : Type*} [CommSemiring R]\n    (P : MvPolynomial α R) (x y : α → R)\n    (h : ∀ a ∈ P.vars, x a = y a) :\n    MvPolynomial.eval x P = MvPolynomial.eval y P := by\n  exact MvPolynomial.eval₂Hom_congr' rfl (fun a ha _ => h a ha) rfl\n\nlemma x2611_15512_thm1_3_aux9 {α L R : Type*}\n    (E : Finset α) (l : α → L) (r : α → R)\n    (x : α → ℝ) (hx : ∀ a ∈ E, 0 ≤ x a) :\n    0 ≤ MvPolynomial.eval x (x2611_15512_graph_q E l r) := by\n  classical\n  unfold x2611_15512_graph_q\n  simp only [map_mul, MvPolynomial.eval_C, map_sum]\n  apply mul_nonneg (by norm_num)\n  apply Finset.sum_nonneg\n  intro A hA\n  apply Finset.sum_nonneg\n  intro z hz\n  split_ifs with h\n  · simp only [map_mul, MvPolynomial.eval_X, map_sum, map_pow]\n    apply mul_nonneg (hx z ((Finset.mem_powersetCard.mp hA).1 hz))\n    exact Finset.sum_nonneg fun B hB => sq_nonneg _\n  · simp\n\nlemma x2611_15512_thm1_3_aux10 {α R : Type*} [CommRing R]\n    (P : MvPolynomial α R) (c : R) (e f : α) :\n    x2611_15512_rayleigh_difference (MvPolynomial.C c * P) e f =\n      MvPolynomial.C (c ^ 2) * x2611_15512_rayleigh_difference P e f := by\n  simp only [x2611_15512_rayleigh_difference, MvPolynomial.pderiv_C_mul, map_pow]\n  ring\n\nlemma x2611_15512_thm1_3_aux11 {α R S : Type*} [CommRing R] [CommRing S]\n    (φ : R →+* S) (P : MvPolynomial α R) (e f : α) :\n    MvPolynomial.map φ (x2611_15512_rayleigh_difference P e f) =\n      x2611_15512_rayleigh_difference (MvPolynomial.map φ P) e f := by\n  simp only [x2611_15512_rayleigh_difference, map_sub, map_mul, MvPolynomial.pderiv_map]\n\nlemma x2611_15512_thm1_3_aux12 {α : Type*} [Fintype α]\n    (M : Matroid α) (hr : M.eRank ≤ 3) (q : ℝ) (hq : q ≠ 0) :\n    MvPolynomial.map (Polynomial.evalRingHom q) (x2611_15512_normalized_tutte M) =\n      MvPolynomial.C (q ^ 3) * x2611_15512_tutte M q := by\n  classical\n  unfold x2611_15512_normalized_tutte x2611_15512_tutte\n  rw [map_sum, Finset.mul_sum]\n  apply Finset.sum_congr rfl\n  intro A hA\n  simp only [map_mul, MvPolynomial.map_C, map_prod, MvPolynomial.map_X,\n    Polynomial.coe_evalRingHom, Polynomial.eval_pow, Polynomial.eval_X]\n  rw [← mul_assoc, ← map_mul]\n  congr 2\n  have hn : (M.eRk (↑A : Set α)).toNat ≤ 3 :=\n    ENat.toNat_le_of_le_natCast ((M.eRk_le_eRank _).trans hr)\n  apply (eq_mul_inv_iff_mul_eq₀ (pow_ne_zero _ hq)).mpr\n  rw [← pow_add, Nat.sub_add_cancel hn]\n\nlemma x2611_15512_thm1_3_aux13 {α : Type*} [Fintype α] (M : Matroid α) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) :\n  0 ≤ MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) := by\n  sorry\n\nlemma x2611_15512_thm1_3_aux14 {α : Type*} [Fintype α]\n    (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3)\n    (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f)\n    (E : Finset α) (hE : (↑E : Set α) = M.E \\ M.closure ({e, f} : Set α)) :\n    ∃ (n m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ),\n      (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧\n      x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f =\n        x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f +\n          x2611_15512_graph_q E l r + C := by\n  sorry\n\nlemma x2611_15512_thm1_3_aux15 {α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) :\n  ∃ R : MvPolynomial α (Polynomial ℝ),\n    (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f =\n      (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) ^ 2 *\n        MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) +\n      MvPolynomial.C (Polynomial.X : Polynomial ℝ) *\n        (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) * R := by\n  sorry\n\nlemma x2611_15512_thm1_3_aux16 {α : Type*} [Fintype α]\n    (M : Matroid α) (hs : x2611_15512_simple M) (hr : M.eRank = 3)\n    (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f)\n    (q : ℝ) (hq : 0 < q) (hq1 : q ≤ 1) (x : α → ℝ) (hx : ∀ a, 0 < x a) :\n    ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.Spanning) e f) ≤\n      q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_tutte M q) e f)) ∧\n    ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.IsBase) e f) ≤\n      (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n    0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.IsBase) e f) := by\n  classical\n  have hB := x2611_15512_thm1_3_aux13 M hr e f he hf hef x (fun a ha => hx a)\n  let E : Finset α := (Set.toFinite (M.E \\ M.closure ({e, f} : Set α))).toFinset\n  have hE : (↑E : Set α) = M.E \\ M.closure ({e, f} : Set α) := by\n    simp only [E, Set.Finite.coe_toFinset]\n  obtain ⟨n, m, l, r, C, hC, hSC⟩ :=\n    x2611_15512_thm1_3_aux14 M hs hr e f he hf hef E hE\n  have hQ := x2611_15512_thm1_3_aux9 E l r x (fun a ha => (hx a).le)\n  have hCn := x2611_15512_thm1_3_aux1 C hC x (fun a => (hx a).le)\n  have hBS : MvPolynomial.eval x (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.IsBase) e f) ≤\n      MvPolynomial.eval x (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.Spanning) e f) := by\n    have hh := congrArg (MvPolynomial.eval x) hSC\n    simp only [map_add] at hh\n    linarith\n  obtain ⟨R, hR, hWR⟩ := x2611_15512_thm1_3_aux15 M hs hr e f he hf hef\n  have hRn := x2611_15512_thm1_3_aux2 R hR q hq.le x (fun a => (hx a).le)\n  have hW : MvPolynomial.eval₂ (Polynomial.evalRingHom q) x\n      (x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f) =\n      q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_tutte M q) e f) := by\n    rw [MvPolynomial.eval₂_eq_eval_map, x2611_15512_thm1_3_aux11,\n      x2611_15512_thm1_3_aux12 M hr.le q hq.ne', x2611_15512_thm1_3_aux10]\n    simp only [map_mul, MvPolynomial.eval_C]\n    ring\n  have hc : (Polynomial.evalRingHom q).comp (Polynomial.C : ℝ →+* Polynomial ℝ) =\n      RingHom.id ℝ := by\n    ext a\n    simp\n  have hSmap : MvPolynomial.map (Polynomial.evalRingHom q)\n      (MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ)\n        (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f)) =\n      x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f := by\n    rw [MvPolynomial.map_map, hc, MvPolynomial.map_id]\n  have hEq := congrArg (fun P =>\n    MvPolynomial.eval x (MvPolynomial.map (Polynomial.evalRingHom q) P)) hWR\n  simp only [map_add, map_mul, map_pow, map_sub, map_one, MvPolynomial.map_C,\n    Polynomial.coe_evalRingHom, Polynomial.eval_X, MvPolynomial.eval_C, hSmap] at hEq\n  have hEq' : q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_tutte M q) e f) =\n      (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.Spanning) e f) +\n      q * (1 - q) * MvPolynomial.eval₂ (Polynomial.evalRingHom q) x R := by\n    rw [MvPolynomial.eval₂_eq_eval_map] at hW ⊢\n    rw [← hW]\n    exact hEq\n  refine ⟨?_, mul_le_mul_of_nonneg_left hBS (sq_nonneg _),\n    mul_nonneg (sq_nonneg _) hB⟩\n  rw [hEq']\n  exact le_add_of_nonneg_right\n    (mul_nonneg (mul_nonneg hq.le (sub_nonneg.mpr hq1)) hRn)\n\nlemma x2611_15512_thm1_3_aux17 {α : Type*} [Fintype α] (M : Matroid α) :\n    x2611_15512_z_rayleigh M.dual → x2611_15512_z_rayleigh M := by\n  sorry\n\nlemma x2611_15512_thm1_3_aux18 {α : Type*} [Fintype α]\n    (h : ∀ (N : Matroid α),\n      x2611_15512_simple N → N.eRank = 3 → x2611_15512_z_rayleigh N)\n    (M : Matroid α) (hr : M.eRank ≤ 3) :\n    x2611_15512_z_rayleigh M := by\n  sorry\n\nlemma x2611_15512_thm1_3_aux19 {α : Type*} [Fintype α]\n    (M : Matroid α) (hs : x2611_15512_simple M) (hr : M.eRank = 3)\n    (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f)\n    (q : ℝ) (hq : 0 < q) (hq1 : q ≤ 1) (x : α → ℝ) (hx : ∀ a ∈ M.E, 0 < x a) :\n    ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.Spanning) e f) ≤\n      q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_tutte M q) e f)) ∧\n    ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.IsBase) e f) ≤\n      (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n    0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference\n        (x2611_15512_set_polynomial M.IsBase) e f) := by\n  classical\n  let y : α → ℝ := fun a => if a ∈ M.E then x a else 1\n  have hy : ∀ a, 0 < y a := by\n    intro a\n    dsimp [y]\n    split_ifs with ha\n    · exact hx a ha\n    · norm_num\n  have hS : MvPolynomial.eval y (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.Spanning) e f) =\n      MvPolynomial.eval x (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.Spanning) e f) := by\n    apply x2611_15512_thm1_3_aux8\n    intro a ha\n    have haE := x2611_15512_thm1_3_aux6 M.Spanning M.E\n      (fun A hA => hA.subset_ground) a (x2611_15512_thm1_3_aux4 _ e f ha)\n    simp [y, haE]\n  have hB : MvPolynomial.eval y (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.IsBase) e f) =\n      MvPolynomial.eval x (x2611_15512_rayleigh_difference\n      (x2611_15512_set_polynomial M.IsBase) e f) := by\n    apply x2611_15512_thm1_3_aux8\n    intro a ha\n    have haE := x2611_15512_thm1_3_aux6 M.IsBase M.E\n      (fun A hA => hA.subset_ground) a (x2611_15512_thm1_3_aux4 _ e f ha)\n    simp [y, haE]\n  have hZ : MvPolynomial.eval y (x2611_15512_rayleigh_difference\n      (x2611_15512_tutte M q) e f) =\n      MvPolynomial.eval x (x2611_15512_rayleigh_difference\n      (x2611_15512_tutte M q) e f) := by\n    apply x2611_15512_thm1_3_aux8\n    intro a ha\n    have haE := x2611_15512_thm1_3_aux7 M q a (x2611_15512_thm1_3_aux4 _ e f ha)\n    simp [y, haE]\n  simpa only [hS, hB, hZ] using\n    x2611_15512_thm1_3_aux16 M hs hr e f he hf hef q hq hq1 y hy\n\ntheorem x2611_15512_thm1_3 {α : Type*} [Fintype α] (M : Matroid α) :\n  ((M.eRank ≤ 3 ∨ M.dual.eRank ≤ 3) → x2611_15512_z_rayleigh M) ∧\n  (x2611_15512_simple M → M.eRank = 3 →\n    ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f →\n      ∀ (q : ℝ), 0 < q → q ≤ 1 →\n        ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) →\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) ≤\n              q ^ 6 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_tutte M q) e f)) ∧\n          ((1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f) ≤\n              (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f)) ∧\n          0 ≤ (1 - q) ^ 2 * MvPolynomial.eval x (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)) := by\n  have hsimple : ∀ (N : Matroid α),\n      x2611_15512_simple N → N.eRank = 3 → x2611_15512_z_rayleigh N := by\n    intro N hs hr q hq hq1 e f he hf hef x hx\n    obtain ⟨hZS, hSB, hB⟩ :=\n      x2611_15512_thm1_3_aux19 N hs hr e f he hf hef q hq hq1 x hx\n    have hscaled := hB.trans (hSB.trans hZS)\n    have hq6 : 0 < q ^ 6 := pow_pos hq 6\n    nlinarith\n  refine ⟨?_, x2611_15512_thm1_3_aux19 M⟩\n  intro hr\n  rcases hr with hr | hr\n  · exact x2611_15512_thm1_3_aux18 hsimple M hr\n  · exact x2611_15512_thm1_3_aux17 M\n      (x2611_15512_thm1_3_aux18 hsimple M.dual hr)\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_15512_thm2_1",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (x : α → ℝ), (∀ a ∈ M.E, 0 < x a) → 0 ≤ (MvPolynomial.eval x : MvPolynomial α ℝ → ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f)",
+          "args": [
+            "α",
+            "_",
+            "M",
+            "hrank",
+            "e",
+            "f",
+            "he",
+            "hf",
+            "hef",
+            "x",
+            "hx"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_15512_thm1_3_s1h2",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (E : Finset α), (↑E : Set α) = M.E \\ M.closure {e, f} → ∃ (n : ℕ) (m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ), (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f + x2611_15512_graph_q E l r + C",
+          "args": [
+            "α",
+            "_",
+            "M",
+            "hsimple",
+            "hrank",
+            "e",
+            "f",
+            "he",
+            "hf",
+            "hef",
+            "E",
+            "hE"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "x2611_15512_prop3_2",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∃ (R : MvPolynomial α (Polynomial ℝ)), (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧ x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f = (1 - (MvPolynomial.C : Polynomial ℝ → MvPolynomial α (Polynomial ℝ)) Polynomial.X) ^ 2 * (MvPolynomial.map Polynomial.C : MvPolynomial α ℝ → MvPolynomial α (Polynomial ℝ)) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) + (MvPolynomial.C : Polynomial ℝ → MvPolynomial α (Polynomial ℝ)) Polynomial.X * (1 - (MvPolynomial.C : Polynomial ℝ → MvPolynomial α (Polynomial ℝ)) Polynomial.X) * R",
+          "args": [
+            "α",
+            "_",
+            "M",
+            "hsimple",
+            "hrank",
+            "e",
+            "f",
+            "he",
+            "hf",
+            "hef"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 4,
+          "task": "x2611_15512_thm1_3_s1h4",
+          "status": "open",
+          "statement": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), x2611_15512_z_rayleigh M✶ → x2611_15512_z_rayleigh M",
+          "args": [
+            "α",
+            "_",
+            "M"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 5,
+          "task": "x2611_15512_thm1_3_s1h5",
+          "status": "open",
+          "statement": "∀ {α : Type*} [inst : Fintype α], (∀ (N : Matroid α), x2611_15512_simple N → N.eRank = 3 → x2611_15512_z_rayleigh N) → ∀ (M : Matroid α), M.eRank ≤ 3 → x2611_15512_z_rayleigh M",
+          "args": [
+            "α",
+            "_",
+            "h",
+            "M",
+            "hr"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T13:12:45+0800"
+    }
+  ]
+}

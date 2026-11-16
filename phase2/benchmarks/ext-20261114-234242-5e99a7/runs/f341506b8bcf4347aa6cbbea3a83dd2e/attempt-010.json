@@ -1,0 +1,90 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:2:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:2:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:2:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:2:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:2:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:5:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:5:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:5:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:5:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:5:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:8:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:8:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:8:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:8:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:8:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:11:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:11:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:11:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:11:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:11:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:14:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:14:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:14:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:14:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:14:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:17:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:17:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:17:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:17:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:17:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:20:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:20:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:20:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:20:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:20:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:23:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:23:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:23:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:23:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:23:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:26:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:26:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean:26:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n'p2_n002' depends on axioms: [propext, Classical.choice, Quot.sound]\n'p2_n003' does not depend on any axioms\n'p2_n004' depends on axioms: [propext]\n'p2_n005' depends on axioms: [propext]\n'p2_n006' depends on axioms: [propext, Classical.choice, Quot.sound]\n'p2_n007' depends on axioms: [propext, Classical.choice, Quot.sound]\n'p2_n008' depends on axioms: [propext, Classical.choice, Quot.sound]\n'p2_n009' depends on axioms: [propext]\n'p2_n010' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.262833166998462,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n004": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n005": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n006": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n007": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n008": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    },
+    "p2_n009": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n010": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 ≤ p2v2) := by\n  exact @zero_le Nat _ _ _ p2v2\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 < 1) := by\n  exact @Mathlib.Tactic.Linarith.zero_lt_one Nat _ _ _\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (p2v2 ≤ p2v2) := by\n  exact @Preorder.le_refl Nat _ p2v2\n\ntheorem p2_n004 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (p2v2 ∣ p2v2) := by\n  exact @dvd_refl Nat _ p2v2\n\ntheorem p2_n005 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (p2v2 ∣ 0) := by\n  exact @dvd_zero Nat _ p2v2\n\ntheorem p2_n006 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 < 4) := by\n  exact @four_pos Nat _ _ _ _ _\n\ntheorem p2_n007 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 < 3) := by\n  exact @three_pos Nat _ _ _ _ _\n\ntheorem p2_n008 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 < 2) := by\n  exact @two_pos Nat _ _ _ _ _\n\ntheorem p2_n009 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (p2v2 ∣ p2v1) := by\n  exact @Dvd.dvd.trans Nat _ p2v2 p2v3 p2v1 h2 h1\n\ntheorem p2_n010 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (p2v2 ∣ p2v4) := by\n  exact @Dvd.dvd.trans Nat _ p2v2 p2v1 p2v4 (p2_n009 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3 h4) h3\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n#print axioms p2_n004\n#print axioms p2_n005\n#print axioms p2_n006\n#print axioms p2_n007\n#print axioms p2_n008\n#print axioms p2_n009\n#print axioms p2_n010\n",
+  "source_sha256": "e5cbf2bc0137fe8da6db9febad66c3b7bd642da65da44fc56ae02bdf7fedcf51",
+  "goal": "(p2v2 ∣ p2v4)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-010.lean",
+  "log": "attempt-010.json"
+}

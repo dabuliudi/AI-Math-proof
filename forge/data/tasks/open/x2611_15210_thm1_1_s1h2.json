@@ -9,7 +9,15 @@
   "proposed_by": "queue-r5-w1",
   "hash": "2209114896",
   "type": "∀ (k : ℕ), 2 ≤ k → (¬∃ a, k = 2 ^ a) → ∃ c b, 0 < c ∧ 2 < b ∧ ∀ (r : ℕ), 1 ≤ r → c * b ^ r ≤ ↑(Mathlib2.x2611_15210_s k (Fin r → ZMod k))",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r7-w4",
+      "note": "Verified a complete conditional reduction to the existing open x2611_15210_thm1_4. Drafts: forge/data/staging/agents/queue-r7/queue-r7-w4/conditional.lean (no sorry; aux4 assumes exactly Theorem 1.4); conditional_check.lean compiles and #print axioms reports only propext, Classical.choice, Quot.sound. Aux1 proves binary zero sums of length n are constant; aux2 proves (n-1)*2^r+1 <= s(n,C_n^r); aux3 combines this with newly proved x2611_15210_thm1_1_s1h1 to show s(2k,C_2k^r) <= 3*s(k,C_k^r). Main idea: write k=2^a*m with m odd>=3, apply Theorem 1.4 to 2*k=2^(a+1)*m at p=1/2; divide its positive exponential constant by 3. This handles odd k as well, avoiding a separate odd-modulus construction. reduction.lean is the complete one-hole sketch, but ./forge.sh sketch rejected its high=Theorem1.4 hole because pretty printing Z^((1:Real)/4) loses the real exponent annotation, so the printed hole does not round-trip. Did not create redundant equivalent tasks. Remaining mathematics is exactly the existing Theorem 1.4, not proved in the current library. Small case r=1 agrees with EGZ threshold 2*k-1.",
+      "at": "2026-11-16T10:53:17+0800"
+    }
+  ],
   "created_at": "2026-11-16T03:03:24+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w4",
+  "claimed_at": "2026-11-16T10:42:15+0800"
 }

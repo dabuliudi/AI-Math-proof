@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_rem2_5",
+  "statement": ":\n  x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧\n  x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧\n  x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧\n  (∀ n : ℕ, 0 < n → x2611_12360_notArrow n 3 20 1 ∧\n    x2611_12360_notArrow n 4 14 1 ∧ x2611_12360_notArrow n 5 8 1)",
+  "closed": "x2611_12360_G 29 3 7 = 22 ∧ x2611_12360_G 29 20 7 = (67 : ℝ) / 10 ∧\n  x2611_12360_G 29 4 10 = 20 ∧ x2611_12360_G 29 14 10 = (62 : ℝ) / 7 ∧\n  x2611_12360_G 5 5 2 = 3 ∧ x2611_12360_G 5 8 2 = 2 ∧\n  (∀ n : ℕ, 0 < n → x2611_12360_notArrow n 3 20 1 ∧\n    x2611_12360_notArrow n 4 14 1 ∧ x2611_12360_notArrow n 5 8 1)",
+  "informal": "Remark 2.5 (exact table and equal-spacing consequences)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "The criterion of Lemma 2.2 also recovers (2) in which the red and blue\nprogressions have the same spacing.\nTaking $R=U=d$ , exact evaluation using Lemma 2.4\ngives\n\n $\\begin{array}[]{c|c|c|c}(r,M)&(p,s,d)&G_{p,r}(d)&G_{p,M}(d)\\\\\n\\hline\\cr(3,20)&(29,7,7)&22&67/10\\\\\n(4,14)&(29,9,10)&20&62/7\\\\\n(5,8)&(5,2,2)&3&2\\end{array}$ \n\nIn each row, $G_{p,r}(d)\\leq p-s$ and $G_{p,M}(d)\\leq s$ .\nRescaling gives the corresponding results of (2).",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1761043030",
+  "type": "Mathlib2.x2611_12360_G 29 3 7 = 22 ∧ Mathlib2.x2611_12360_G 29 20 7 = 67 / 10 ∧ Mathlib2.x2611_12360_G 29 4 10 = 20 ∧ Mathlib2.x2611_12360_G 29 14 10 = 62 / 7 ∧ Mathlib2.x2611_12360_G 5 5 2 = 3 ∧ Mathlib2.x2611_12360_G 5 8 2 = 2 ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_12360_notArrow n 3 20 1 ∧ Mathlib2.x2611_12360_notArrow n 4 14 1 ∧ Mathlib2.x2611_12360_notArrow n 5 8 1",
+  "attempts": [],
+  "created_at": "2026-11-16T12:24:57+0800",
+  "status": "open"
+}

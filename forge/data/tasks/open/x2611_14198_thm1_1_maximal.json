@@ -1,0 +1,65 @@
+{
+  "name": "x2611_14198_thm1_1_maximal",
+  "statement": "(d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hodd : Odd d) (hcop : ¬ p ∣ 2 * d) (hp : p % 4 = 1) : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))",
+  "closed": "∀ (d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hodd : Odd d) (hcop : ¬ p ∣ 2 * d) (hp : p % 4 = 1), (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔ (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))",
+  "informal": "Theorem 1.1 (conditions (2) and (3))",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14198",
+  "original": "Let $d\\geq 3$ be odd and let $p\\nmid 2d$ be a prime with\n $p\\equiv 1\\pmod{4}$ . The following conditions are equivalent:\n\n(1) \n\n $\\operatorname{Jac}(\\mathcal{H}_{d})$ is supersingular;\n\n(2) \n\n $\\mathcal{H}_{d}$ is maximal over some finite extension of $\\mathbb{F}_{p}$ ;\n\n(3) \n\n $d=\\ell^{n}$ for a prime $\\ell\\equiv 1\\pmod{4}$ and an integer\n $n\\geq 1$ , and $p$ generates $(\\mathbb{Z}/\\ell^{n}\\mathbb{Z})^{\\times}$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3846426928",
+  "type": "∀ (d p : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → Odd d → ¬p ∣ 2 * d → p % 4 = 1 → ((∃ r, 1 ≤ r ∧ Mathlib2.x2611_14198_maximal d p r) ↔ ∃ ℓ n, Nat.Prime ℓ ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧ IsPrimitiveRoot (↑p) (ℓ ^ n).totient)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:10:20+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w2",
+  "claimed_at": "2026-11-16T14:08:57+0800",
+  "sketches": [
+    {
+      "agent": "queue-papers-b1-w2",
+      "body": "open scoped BigOperators\n\nlemma x2611_14198_thm1_1_maximal_aux1 (d a : ℕ) (hd : 0 < d)\n    (h : IsPrimitiveRoot (a : ZMod d) d.totient) : IsCyclic (ZMod d)ˣ := by\n  letI : NeZero d := ⟨hd.ne'⟩\n  obtain ⟨u, hu⟩ := h.isUnit (Nat.totient_pos.mpr hd).ne'\n  apply isCyclic_of_orderOf_eq_card u\n  rw [← orderOf_units, hu, ← h.eq_orderOf, Nat.card_eq_fintype_card,\n    ZMod.card_units_eq_totient]\n\nlemma x2611_14198_thm1_1_maximal_aux2 (ℓ n : ℕ) (hℓ : ℓ.Prime)\n    (hodd : Odd ℓ) (hn : 0 < n) :\n    4 ∣ (ℓ ^ n).totient ↔ ℓ % 4 = 1 := by\n  rw [Nat.totient_prime_pow hℓ hn]\n  have hc : Nat.Coprime 4 (ℓ ^ (n - 1)) := by\n    simpa using ((hodd.pow : Odd (ℓ ^ (n - 1))).coprime_two_left.pow_left 2)\n  rw [hc.dvd_mul_left]\n  have hl := hℓ.two_le\n  omega\n\nlemma x2611_14198_thm1_1_maximal_aux3 (d a : ℕ) (hd : 3 ≤ d) (hodd : Odd d) :\n    (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧\n      IsPrimitiveRoot (a : ZMod (ℓ ^ n)) (ℓ ^ n).totient) ↔\n    (IsPrimitiveRoot (a : ZMod d) d.totient ∧ 4 ∣ d.totient) := by\n  constructor\n  · rintro ⟨ℓ, n, hℓ, hmod, hn, rfl, hroot⟩\n    refine ⟨hroot, (x2611_14198_thm1_1_maximal_aux2 ℓ n hℓ ?_ hn).mpr hmod⟩\n    exact Nat.odd_iff.mpr (by omega)\n  · rintro ⟨hroot, hfour⟩\n    have hc := x2611_14198_thm1_1_maximal_aux1 d a (by omega) hroot\n    obtain ⟨ℓ, n, hℓ, hoddℓ, heq⟩ := (ZMod.isCyclic_units_iff_of_odd hodd).mp hc\n    have hn : 1 ≤ n := by\n      by_contra h\n      have hn0 : n = 0 := by omega\n      simp [hn0] at heq\n      omega\n    subst d\n    exact ⟨ℓ, n, hℓ,\n      (x2611_14198_thm1_1_maximal_aux2 ℓ n hℓ hoddℓ hn).mp hfour,\n      hn, rfl, hroot⟩\n\nlemma x2611_14198_thm1_1_maximal_aux4 (ℓ n : ℕ) (hℓ : 1 ≤ ℓ) :\n    (∑ j ∈ Finset.Icc 1 n, ℓ ^ (j - 1) * (ℓ - 1)) + 1 = ℓ ^ n := by\n  induction n with\n  | zero => simp\n  | succ n ih =>\n    rw [Finset.sum_Icc_succ_top (by omega)]\n    simp only [Nat.add_sub_cancel]\n    calc\n      _ = ((∑ j ∈ Finset.Icc 1 n, ℓ ^ (j - 1) * (ℓ - 1)) + 1) +\n          ℓ ^ n * (ℓ - 1) := by omega\n      _ = ℓ ^ n * (ℓ - 1 + 1) := by rw [ih]; ring\n      _ = ℓ ^ (n + 1) := by rw [Nat.sub_add_cancel hℓ, pow_succ]\n\nlemma x2611_14198_thm1_1_maximal_aux5 (ℓ n j : ℕ) (hj : 1 ≤ j) (hjn : j ≤ n) :\n    ℓ ^ (n - 1) * (ℓ - 1) = (ℓ ^ (j - 1) * (ℓ - 1)) * ℓ ^ (n - j) := by\n  calc\n    _ = ℓ ^ ((j - 1) + (n - j)) * (ℓ - 1) := by congr 2; omega\n    _ = _ := by rw [pow_add]; ring\n\nlemma x2611_14198_thm1_1_maximal_aux6 (p r : ℕ) (hr : Even r) :\n    Real.sqrt ((p : ℝ) ^ r) = (p : ℝ) ^ (r / 2) := by\n  obtain ⟨k, rfl⟩ := hr\n  have hk : k + k = k * 2 := by omega\n  rw [hk, Nat.mul_div_cancel k (by decide), pow_mul, Real.sqrt_sq (by positivity)]\n\nlemma x2611_14198_thm1_1_maximal_aux7 (ℓ n : ℕ) (hℓ : 1 < ℓ) (hodd : Odd ℓ) :\n    (∑ j ∈ (Finset.Icc 1 n).filter\n      (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ ℓ ^ (n - 1) * (ℓ - 1)),\n      ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) *\n        (-1 : ℤ) ^ ((ℓ ^ (n - 1) * (ℓ - 1)) / (ℓ ^ (j - 1) * (ℓ - 1)))) =\n      -((ℓ ^ n - 1 : ℕ) : ℤ) := by\n  have hf : (Finset.Icc 1 n).filter\n      (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ ℓ ^ (n - 1) * (ℓ - 1)) =\n      Finset.Icc 1 n := by\n    apply Finset.filter_eq_self.mpr\n    intro j hj\n    obtain ⟨hj, hjn⟩ := Finset.mem_Icc.mp hj\n    exact ⟨ℓ ^ (n - j), x2611_14198_thm1_1_maximal_aux5 ℓ n j hj hjn⟩\n  rw [hf]\n  calc\n    _ = ∑ j ∈ Finset.Icc 1 n, -((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) := by\n      apply Finset.sum_congr rfl\n      intro j hj\n      obtain ⟨hj, hjn⟩ := Finset.mem_Icc.mp hj\n      have hm : 0 < ℓ ^ (j - 1) * (ℓ - 1) :=\n        Nat.mul_pos (pow_pos (by omega : 0 < ℓ) _) (by omega)\n      rw [x2611_14198_thm1_1_maximal_aux5 ℓ n j hj hjn,\n        Nat.mul_div_cancel_left _ hm,\n        (hodd.pow : Odd (ℓ ^ (n - j))).neg_one_pow, mul_neg_one]\n    _ = -((∑ j ∈ Finset.Icc 1 n, ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) := by\n      simp only [Finset.sum_neg_distrib, Nat.cast_sum]\n    _ = _ := by\n      congr 1\n      have h := x2611_14198_thm1_1_maximal_aux4 ℓ n (by omega)\n      congr 1\n      omega\n\nlemma x2611_14198_thm1_1_maximal_aux8 (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime]\n    (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n)\n    (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n)))\n    (r : ℕ) (hr : 1 ≤ r) :\n    (x2611_14198_point_count (ℓ ^ n) p r : ℤ) = (p : ℤ) ^ r + 1 -\n      ∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r),\n        ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) *\n          (-1 : ℤ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (p : ℤ) ^ (r / 2) := by\n  sorry\n\nlemma x2611_14198_thm1_1_maximal_aux9 (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime]\n    (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n)\n    (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) :\n    ∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal (ℓ ^ n) p r := by\n  have hprime : ℓ.Prime := Fact.out\n  have hl : 1 < ℓ := hprime.one_lt\n  have hodd : Odd ℓ := Nat.odd_iff.mpr (by omega)\n  let r := ℓ ^ (n - 1) * (ℓ - 1)\n  have hr : 1 ≤ r := by\n    change 0 < ℓ ^ (n - 1) * (ℓ - 1)\n    exact Nat.mul_pos (pow_pos (by omega : 0 < ℓ) _) (by omega)\n  refine ⟨r, hr, ?_⟩\n  have hc := x2611_14198_thm1_1_maximal_aux8 ℓ p n hℓ hp hne hn hgen r hr\n  rw [← Finset.sum_mul] at hc\n  have hsum := x2611_14198_thm1_1_maximal_aux7 ℓ n hl hodd\n  change (∑ j ∈ (Finset.Icc 1 n).filter (fun j => ℓ ^ (j - 1) * (ℓ - 1) ∣ r),\n      ((ℓ ^ (j - 1) * (ℓ - 1) : ℕ) : ℤ) *\n        (-1 : ℤ) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1)))) =\n      -((ℓ ^ n - 1 : ℕ) : ℤ) at hsum\n  rw [hsum, neg_mul, sub_neg_eq_add] at hc\n  have hcR : (x2611_14198_point_count (ℓ ^ n) p r : ℝ) =\n      (p : ℝ) ^ r + 1 + ((ℓ ^ n - 1 : ℕ) : ℝ) * (p : ℝ) ^ (r / 2) := by\n    exact_mod_cast hc\n  have hr4 : 4 ∣ r := by\n    change 4 ∣ ℓ ^ (n - 1) * (ℓ - 1)\n    rw [← Nat.totient_prime_pow hprime (by omega : 0 < n)]\n    exact (x2611_14198_thm1_1_maximal_aux2 ℓ n hprime hodd (by omega)).mpr hℓ\n  have hrEven : Even r := even_iff_two_dvd.mpr (dvd_trans (by decide : 2 ∣ 4) hr4)\n  have hoddD : (ℓ ^ n) % 2 = 1 := Nat.odd_iff.mp (hodd.pow : Odd (ℓ ^ n))\n  have hg : 2 * ((ℓ ^ n - 1) / 2) = ℓ ^ n - 1 := by omega\n  have hgR : (2 : ℝ) * (((ℓ ^ n - 1) / 2 : ℕ) : ℝ) = ((ℓ ^ n - 1 : ℕ) : ℝ) := by\n    exact_mod_cast hg\n  unfold x2611_14198_maximal\n  rw [hcR, x2611_14198_thm1_1_maximal_aux6 p r hrEven, hgR]\n\ntheorem x2611_14198_thm1_1_maximal (d p : ℕ) [Fact p.Prime] (hd : 3 ≤ d)\n    (hodd : Odd d) (hcop : ¬ p ∣ 2 * d) (hp : p % 4 = 1) :\n    (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) ↔\n    (∃ (ℓ n : ℕ), ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ n ∧ d = ℓ ^ n ∧\n      IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) := by\n  have hnecessity : (∃ r : ℕ, 1 ≤ r ∧ x2611_14198_maximal d p r) →\n      (IsPrimitiveRoot (p : ZMod d) d.totient ∧ 4 ∣ d.totient) := by\n    sorry\n  constructor\n  · intro hm\n    exact (x2611_14198_thm1_1_maximal_aux3 d p hd hodd).mpr (hnecessity hm)\n  · rintro ⟨ℓ, n, hprime, hℓ, hn, rfl, hgen⟩\n    letI : Fact ℓ.Prime := ⟨hprime⟩\n    have hne : ℓ ≠ p := by\n      intro heq\n      subst ℓ\n      exact hcop (dvd_mul_of_dvd_right (dvd_pow_self p (by omega)) 2)\n    exact x2611_14198_thm1_1_maximal_aux9 ℓ p n hℓ hp hne hn hgen\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_14198_cor5_4_points",
+          "status": "duplicate",
+          "statement": "∀ (ℓ p n : ℕ) [Fact (Nat.Prime ℓ)] [inst : Fact (Nat.Prime p)], ℓ % 4 = 1 → p % 4 = 1 → ℓ ≠ p → 1 ≤ n → IsPrimitiveRoot (↑p : ZMod (ℓ ^ n)) (ℓ ^ n).totient → ∀ (r : ℕ), 1 ≤ r → (↑(x2611_14198_point_count (ℓ ^ n) p r) : ℤ) = (↑p : ℤ) ^ r + 1 - ∑ j ∈ Finset.Icc 1 n with ℓ ^ (j - 1) * (ℓ - 1) ∣ r, (↑(ℓ ^ (j - 1) * (ℓ - 1)) : ℤ) * (-1) ^ (r / (ℓ ^ (j - 1) * (ℓ - 1))) * (↑p : ℤ) ^ (r / 2)",
+          "args": [
+            "ℓ",
+            "p",
+            "n",
+            "(by assumption)",
+            "(by assumption)",
+            "hℓ",
+            "hp",
+            "hne",
+            "hn",
+            "hgen",
+            "r",
+            "hr"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_14198_thm1_1_maximal_s1h2",
+          "status": "open",
+          "statement": "∀ (d p : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → Odd d → ¬p ∣ 2 * d → p % 4 = 1 → (∃ (r : ℕ), 1 ≤ r ∧ x2611_14198_maximal d p r) → IsPrimitiveRoot (↑p : ZMod d) d.totient ∧ 4 ∣ d.totient",
+          "args": [
+            "d",
+            "p",
+            "(by assumption)",
+            "hd",
+            "hodd",
+            "hcop",
+            "hp"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T14:46:33+0800"
+    }
+  ]
+}

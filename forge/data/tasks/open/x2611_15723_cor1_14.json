@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15723_cor1_14",
+  "statement": "(n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (t : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ σ, t ^ x2611_15723_des π) =\n    t ^ x2611_15723_des σ *\n      ∑ i ∈ Finset.range (n + 1),\n        ((if Even i then Nat.choose (Nat.choose n i + 1) 2\n          else Nat.choose (Nat.choose n i) 2 : ℕ) : ℚ) * t ^ i",
+  "closed": "∀ (n : ℕ) (hn : 0 < n) (σ : Equiv.Perm (Fin n))\n    (hσ : σ.IsCycleOn Set.univ) (t : ℚ), (∑ π ∈ x2611_15723_cycleShuffle σ σ, t ^ x2611_15723_des π) =\n    t ^ x2611_15723_des σ *\n      ∑ i ∈ Finset.range (n + 1),\n        ((if Even i then Nat.choose (Nat.choose n i + 1) 2\n          else Nat.choose (Nat.choose n i) 2 : ℕ) : ℚ) * t ^ i",
+  "informal": "Corollary 1.14",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15723",
+  "original": "For every cycle $\\sigma\\in\\mathcal{C}_{(n)}$ ,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\sigma}t^{\\des(\\pi)}=t^{\\des(\\sigma)}\\cdot\\sum_{i=0}^{n}a_{i,n}t^{i},$ \n\nwhere\n\n $a_{i,n}=\\begin{cases}\\displaystyle\\binom{\\binom{n}{i}+1}{2},&\\ \\text{if $i$ is even};\\\\\n{}\\\\\n\\displaystyle\\binom{\\binom{n}{i}}{2},&\\ \\text{if $i$ is odd}.\\end{cases}$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2989982189",
+  "type": "∀ (n : ℕ), 0 < n → ∀ (σ : Equiv.Perm (Fin n)), σ.IsCycleOn Set.univ → ∀ (t : ℚ), ∑ π ∈ Mathlib2.x2611_15723_cycleShuffle σ σ, t ^ Mathlib2.x2611_15723_des π = t ^ Mathlib2.x2611_15723_des σ * ∑ i ∈ Finset.range (n + 1), ↑(if Even i then (n.choose i + 1).choose 2 else (n.choose i).choose 2) * t ^ i",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w7",
+      "note": "Exhaustively checked every full cycle for n=1 through 6 in Python; formula holds. Prepared forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w7/reduction.lean: specializes the existing open x2611_15723_thm1_12 at q=1, with exactly that upstream theorem as the intended sketch hole. The general parity coefficient lemma and the unfolded qchoose(1)=choose calculation both compile successfully in arithmetic.lean with minimal Mathlib imports. Full forge sketch initially failed because S0061.olean was missing; rebuilt S0061 successfully (1586 seconds), but the final full sketch check timed out after 300 seconds under heavy system load. Sketch was NOT registered and full reduction was NOT validated. S0062 rebuild was interrupted when returning task. No Lean source or forge state was manually edited.",
+      "at": "2026-11-16T14:28:44+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:57:33+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w7",
+  "claimed_at": "2026-11-16T13:50:29+0800"
+}

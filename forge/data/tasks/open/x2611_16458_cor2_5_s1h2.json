@@ -9,7 +9,60 @@
   "proposed_by": "queue-r6-w0",
   "hash": "2696928029",
   "type": "∀ {V : Type u_1} [inst : Finite V] (G : SimpleGraph V), Mathlib2.x2611_16458_twoConnected G → 1 ≤ Mathlib2.x2611_16458_beta G",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r7-w7",
+      "note": "No counterexample: exhaustive enumeration of all connected simple graphs on 3,4,5 vertices verifies beta equals the bipolar-orientation count, and all 249 two-connected graphs have beta >= 1. No Mathlib/Mathlib2 chromatic-beta or st-numbering theorem found. Draft forge/data/staging/agents/queue-r7/queue-r7-w7/proof.lean compiles except for two intentional sketch holes: signed component sum equals bipolar-orientation count for connected G with adjacent source/sink, and existence of an st-numbering in a two-connected graph. Unsigned polynomial expansion, derivative/component-sum formula, conversion of st-numbering to orientation, and final cardinality proof are complete. Registering this as a two-hole sketch next.",
+      "at": "2026-11-16T12:40:03+0800"
+    }
+  ],
   "created_at": "2026-11-16T03:30:49+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w7",
+  "claimed_at": "2026-11-16T12:29:59+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w7",
+      "body": "theorem x2611_16458_cor2_5_s1h2_aux1 {V : Type*} (G : SimpleGraph V) :\n    x2611_16458_balanced G ⊥ := by\n  exact ⟨fun _ => false, fun _ _ _ => rfl, fun _ _ h => h.elim⟩\n\ntheorem x2611_16458_cor2_5_s1h2_aux2 {V : Type*} [Finite V]\n    (G : SimpleGraph V) (E : Finset (Sym2 V))\n    (hE : (↑E : Set (Sym2 V)) = G.edgeSet) :\n    x2611_16458_zeroFree G ⊥ =\n      ∑ F ∈ E.powerset,\n        Polynomial.C ((-1 : ℤ) ^ F.card) *\n          Polynomial.X ^ Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent := by\n  classical\n  letI := Fintype.ofFinite V\n  have he (i : Fintype G.edgeSet) : @SimpleGraph.edgeFinset V G i = E := by\n    ext e\n    simp only [SimpleGraph.mem_edgeFinset, ← hE, Finset.mem_coe]\n  have hb (i : Fintype (⊥ : SimpleGraph V).edgeSet) :\n      @SimpleGraph.edgeFinset V ⊥ i = ∅ := by\n    ext e\n    simp\n  unfold x2611_16458_zeroFree\n  simp only [hb, he]\n  rw [Finset.disjSum_empty,\n    Finset.map_eq_image, Finset.powerset_image]\n  rw [Finset.sum_image]\n  · apply Finset.sum_congr rfl\n    intro F hF\n    have hp : {e : Sym2 V | Sum.inl e ∈ F.image (Sum.inl : Sym2 V → Sym2 V ⊕ Sym2 V)} =\n        (↑F : Set (Sym2 V)) := by ext e; simp\n    have hn : {e : Sym2 V | Sum.inr e ∈ F.image (Sum.inl : Sym2 V → Sym2 V ⊕ Sym2 V)} =\n        ∅ := by ext e; simp\n    have hi : ((Function.Embedding.inl : Sym2 V ↪ Sym2 V ⊕ Sym2 V) :\n        Sym2 V → Sym2 V ⊕ Sym2 V) = Sum.inl := rfl\n    rw [hi]\n    simp only [hp, hn, SimpleGraph.fromEdgeSet_empty,\n      x2611_16458_cor2_5_s1h2_aux1, if_true, sup_bot_eq]\n    rw [Finset.card_image_of_injective _ Sum.inl_injective]\n  · exact (Finset.image_injective Sum.inl_injective).injOn\n\ntheorem x2611_16458_cor2_5_s1h2_aux3 {ι : Type*} (s : Finset ι)\n    (c : ι → ℤ) (d : ι → ℕ) :\n    (∑ i ∈ s, Polynomial.C (c i) * Polynomial.X ^ d i).derivative.eval 1 =\n      ∑ i ∈ s, c i * (d i : ℤ) := by\n  simp [Polynomial.derivative_mul, Polynomial.derivative_X_pow, Polynomial.eval_finsetSum]\n\ntheorem x2611_16458_cor2_5_s1h2_aux4 {V : Type*} [Finite V]\n    (G : SimpleGraph V) (E : Finset (Sym2 V))\n    (hE : (↑E : Set (Sym2 V)) = G.edgeSet) :\n    x2611_16458_beta G = (-1 : ℤ) ^ Nat.card V *\n      ∑ F ∈ E.powerset, (-1 : ℤ) ^ F.card *\n        (Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent : ℤ) := by\n  rw [x2611_16458_beta, x2611_16458_cor2_5_s1h2_aux2 G E hE]\n  rw [x2611_16458_cor2_5_s1h2_aux3]\n\ntheorem x2611_16458_cor2_5_s1h2_aux5 {V : Type*}\n    (G : SimpleGraph V) (s t : V) (r : V → ℕ)\n    (hr : Function.Injective r)\n    (hmin : ∀ v, r s ≤ r v) (hmax : ∀ v, r v ≤ r t)\n    (hprev : ∀ v, v ≠ s → ∃ w, G.Adj w v ∧ r w < r v)\n    (hnext : ∀ v, v ≠ t → ∃ w, G.Adj v w ∧ r v < r w) :\n    ∃ O : V → V → Bool,\n      (∀ v w, (O v w = true ∨ O w v = true) ↔ G.Adj v w) ∧\n      (∃ q : V → ℕ, ∀ v w, O v w = true → q v < q w) ∧\n      (∀ v, (∀ w, O w v = false) ↔ v = s) ∧\n      (∀ v, (∀ w, O v w = false) ↔ v = t) := by\n  classical\n  refine ⟨fun v w => decide (G.Adj v w ∧ r v < r w), ?_, ⟨r, ?_⟩, ?_, ?_⟩\n  · intro v w\n    simp only [decide_eq_true_eq]\n    constructor\n    · rintro (h | h)\n      · exact h.1\n      · exact h.1.symm\n    · intro h\n      have hne : r v ≠ r w := fun he => h.ne (hr he)\n      obtain hlt | hlt := lt_or_gt_of_ne hne\n      · exact Or.inl ⟨h, hlt⟩\n      · exact Or.inr ⟨h.symm, hlt⟩\n  · intro v w h\n    exact (of_decide_eq_true h).2\n  · intro v\n    constructor\n    · intro h\n      by_contra hv\n      obtain ⟨w, hw, hlt⟩ := hprev v hv\n      have hh := h w\n      simp [hw, hlt] at hh\n    · rintro rfl w\n      have hh := hmin w\n      simp only [decide_eq_false_iff_not]\n      rintro ⟨_, hlt⟩\n      omega\n  · intro v\n    constructor\n    · intro h\n      by_contra hv\n      obtain ⟨w, hw, hlt⟩ := hnext v hv\n      have hh := h w\n      simp [hw, hlt] at hh\n    · rintro rfl w\n      have hh := hmax w\n      simp only [decide_eq_false_iff_not]\n      rintro ⟨_, hlt⟩\n      omega\n\n-- The signed component sum is the number of acyclic orientations with prescribed\n-- unique source s and unique sink t, when s and t are adjacent. The natural-valued\n-- potential expresses acyclicity without introducing an additional definition.\n-- The connectedness hypothesis is essential: an edge and an isolated vertex\n-- would give signed sum -1. Exhaustively checked for connected graphs on <= 5 vertices.\ntheorem x2611_16458_cor2_5_s1h2_aux6 {V : Type*} [Finite V]\n    (G : SimpleGraph V) (E : Finset (Sym2 V))\n    (hE : (↑E : Set (Sym2 V)) = G.edgeSet) (s t : V)\n    (hconn : G.Connected) (hst : G.Adj s t) :\n    (-1 : ℤ) ^ Nat.card V *\n      (∑ F ∈ E.powerset, (-1 : ℤ) ^ F.card *\n        (Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent : ℤ)) =\n      (Nat.card {O : V → V → Bool //\n        (∀ v w, (O v w = true ∨ O w v = true) ↔ G.Adj v w) ∧\n        (∃ q : V → ℕ, ∀ v w, O v w = true → q v < q w) ∧\n        (∀ v, (∀ w, O w v = false) ↔ v = s) ∧\n        (∀ v, (∀ w, O v w = false) ↔ v = t)} : ℤ) := by\n  sorry\n\n-- The st-numbering theorem. One route starts with the edge st and extends a\n-- maximal ordered vertex set by an ear. Two-connectivity ensures an outside\n-- component has two distinct attachments, allowing its path to be inserted.\ntheorem x2611_16458_cor2_5_s1h2_aux7 {V : Type*} [Finite V]\n    (G : SimpleGraph V) (s t : V)\n    (hG : x2611_16458_twoConnected G) (hst : G.Adj s t) :\n    ∃ r : V → ℕ, Function.Injective r ∧\n      (∀ v, r s ≤ r v) ∧ (∀ v, r v ≤ r t) ∧\n      (∀ v, v ≠ s → ∃ w, G.Adj w v ∧ r w < r v) ∧\n      (∀ v, v ≠ t → ∃ w, G.Adj v w ∧ r v < r w) := by\n  sorry\n\ntheorem x2611_16458_cor2_5_s1h2 :\n    ∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V),\n      x2611_16458_twoConnected G → 1 ≤ x2611_16458_beta G := by\n  classical\n  intro V inst G hG\n  letI := Fintype.ofFinite V\n  haveI : Nontrivial V := Finite.one_lt_card_iff_nontrivial.mp (by have := hG.1; omega)\n  obtain ⟨s⟩ := hG.2.1.nonempty\n  obtain ⟨t, hst⟩ := hG.2.1.preconnected.exists_adj_of_nontrivial s\n  obtain ⟨r, hr, hmin, hmax, hprev, hnext⟩ :=\n    x2611_16458_cor2_5_s1h2_aux7 G s t hG hst\n  obtain ⟨O, hO⟩ := x2611_16458_cor2_5_s1h2_aux5 G s t r hr hmin hmax hprev hnext\n  let B := {O : V → V → Bool //\n    (∀ v w, (O v w = true ∨ O w v = true) ↔ G.Adj v w) ∧\n    (∃ q : V → ℕ, ∀ v w, O v w = true → q v < q w) ∧\n    (∀ v, (∀ w, O w v = false) ↔ v = s) ∧\n    (∀ v, (∀ w, O v w = false) ↔ v = t)}\n  haveI : Nonempty B := ⟨⟨O, hO⟩⟩\n  have hb : x2611_16458_beta G = (Nat.card B : ℤ) := by\n    rw [x2611_16458_cor2_5_s1h2_aux4 G G.edgeFinset (by simp)]\n    exact x2611_16458_cor2_5_s1h2_aux6 G G.edgeFinset (by simp) s t hG.2.1 hst\n  rw [hb]\n  exact_mod_cast Nat.card_pos (α := B)\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16458_cor2_5_s1h2_s1h1",
+          "status": "open",
+          "statement": "∀ {V : Type*} [Finite V] (G : SimpleGraph V) (E : Finset (Sym2 V)), (↑E : Set (Sym2 V)) = G.edgeSet → ∀ (s t : V), G.Connected → G.Adj s t → (-1) ^ Nat.card V * ∑ F ∈ E.powerset, (-1) ^ F.card * (↑(Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent) : ℤ) = (↑(Nat.card { O : V → V → Bool // (∀ (v w : V), O v w = true ∨ O w v = true ↔ G.Adj v w) ∧ (∃ (q : V → ℕ), ∀ (v w : V), O v w = true → q v < q w) ∧ (∀ (v : V), (∀ (w : V), O w v = false) ↔ v = s) ∧ ∀ (v : V), (∀ (w : V), O v w = false) ↔ v = t }) : ℤ)",
+          "args": [
+            "V",
+            "(by assumption)",
+            "G",
+            "E",
+            "hE",
+            "s",
+            "t",
+            "hconn",
+            "hst"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16458_cor2_5_s1h2_s1h2",
+          "status": "open",
+          "statement": "∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V) (s t : V), x2611_16458_twoConnected G → G.Adj s t → ∃ (r : V → ℕ), Function.Injective r ∧ (∀ (v : V), r s ≤ r v) ∧ (∀ (v : V), r v ≤ r t) ∧ (∀ (v : V), v ≠ s → ∃ (w : V), G.Adj w v ∧ r w < r v) ∧ ∀ (v : V), v ≠ t → ∃ (w : V), G.Adj v w ∧ r v < r w",
+          "args": [
+            "V",
+            "(by assumption)",
+            "G",
+            "s",
+            "t",
+            "hG",
+            "hst"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:42:11+0800"
+    }
+  ]
 }

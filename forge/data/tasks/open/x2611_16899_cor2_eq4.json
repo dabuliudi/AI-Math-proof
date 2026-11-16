@@ -11,5 +11,37 @@
   "type": "∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (g : (Fin 14 → ℕ) → RatFunc ℚ), Mathlib2.x2611_16899_atom_family 14 0 A → Mathlib2.x2611_16899_expansion 14 14 (Mathlib2.x2611_16899_flagged_llt 14) A g → (g fun i => Mathlib2.x2611_16899_alpha i.rev) = (algebraMap (Polynomial ℚ) (RatFunc ℚ)) (Polynomial.reflect 91 Mathlib2.x2611_16899_counterexample_polynomial)",
   "attempts": [],
   "created_at": "2026-11-16T03:28:49+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w7",
+  "claimed_at": "2026-11-16T12:18:26+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w7",
+      "body": "open BigOperators\n\nlemma x2611_16899_cor2_eq4_aux1\n    {R σ ι : Type*} [CommRing R] [Fintype ι] [DecidableEq ι]\n    (e : ι → σ →₀ ℕ) (A : ι → MvPolynomial σ R) (c : ι → R)\n    (P : MvPolynomial σ R)\n    (hP : P = ∑ j, MvPolynomial.C (c j) * A j)\n    (hdet : IsUnit (Matrix.of (fun i j => MvPolynomial.coeff (e i) (A j))).det) :\n    c = Matrix.mulVec (Matrix.of (fun i j => MvPolynomial.coeff (e i) (A j)))⁻¹\n      (fun i => MvPolynomial.coeff (e i) P) := by\n  classical\n  have hvec : Matrix.mulVec (Matrix.of (fun i j => MvPolynomial.coeff (e i) (A j))) c =\n      (fun i => MvPolynomial.coeff (e i) P) := by\n    funext i\n    simp only [Matrix.mulVec, dotProduct, Matrix.of_apply]\n    rw [hP, MvPolynomial.coeff_sum]\n    apply Finset.sum_congr rfl\n    intro j hj\n    rw [MvPolynomial.coeff_C_mul, mul_comm]\n  rw [← hvec, Matrix.mulVec_mulVec, Matrix.nonsing_inv_mul _ hdet, Matrix.one_mulVec]\n\nlemma x2611_16899_cor2_eq4_aux2\n    (n d : ℕ) (P : MvPolynomial (Fin n) (RatFunc ℚ))\n    (A : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ))\n    (c : (Fin n → ℕ) → RatFunc ℚ)\n    (hc : x2611_16899_expansion n d P A c) :\n    P = ∑ γ : {γ : Fin n → Fin (d + 1) // ∑ i, (γ i).val = d},\n      MvPolynomial.C (c (fun i => (γ.val i).val)) * A (fun i => (γ.val i).val) := by\n  classical\n  unfold x2611_16899_expansion at hc\n  calc\n    P = ∑ γ ∈ (Finset.univ : Finset (Fin n → Fin (d + 1))).filter\n        (fun γ => ∑ i, (γ i).val = d),\n        MvPolynomial.C (c (fun i => (γ i).val)) * A (fun i => (γ i).val) := by\n      simpa only [Finset.sum_filter] using hc\n    _ = _ := Finset.sum_subtype _ (by simp) _\n\ntheorem x2611_16899_cor2_eq4\n    (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ))\n    (g : (Fin 14 → ℕ) → RatFunc ℚ)\n    (hA : x2611_16899_atom_family 14 0 A)\n    (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) :\n    g (fun i : Fin 14 => x2611_16899_alpha i.rev) =\n      algebraMap (Polynomial ℚ) (RatFunc ℚ)\n        (Polynomial.reflect 91 x2611_16899_counterexample_polynomial) := by\n  classical\n  have hatom : ∀ (n d : ℕ)\n      (B : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)),\n      x2611_16899_atom_family n 0 B →\n      IsUnit (Matrix.of (fun (r s : {γ : Fin n → Fin (d + 1) // ∑ i, (γ i).val = d}) =>\n        MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm (fun i => (r.val i).val))\n          (B (fun i => (s.val i).val))) :\n        Matrix {γ : Fin n → Fin (d + 1) // ∑ i, (γ i).val = d}\n          {γ : Fin n → Fin (d + 1) // ∑ i, (γ i).val = d} (RatFunc ℚ)).det := by\n    clear A g hA hg\n    sorry\n  have hcompute : ∀ (β : Fin 14 → Fin 15) (hβ : ∑ i, (β i).val = 14),\n      (∀ i, (β i).val = x2611_16899_alpha i.rev) →\n      Matrix.mulVec\n        (Matrix.of (fun (r s : {γ : Fin 14 → Fin 15 // ∑ i, (γ i).val = 14}) =>\n          MvPolynomial.coeff\n            (Finsupp.equivFunOnFinite.symm (fun i => (r.val i).val))\n            (A (fun i => (s.val i).val))))⁻¹\n        (fun r : {γ : Fin 14 → Fin 15 // ∑ i, (γ i).val = 14} =>\n          MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm (fun i => (r.val i).val))\n            (x2611_16899_flagged_llt 14)) ⟨β, hβ⟩ =\n        algebraMap (Polynomial ℚ) (RatFunc ℚ)\n          (Polynomial.reflect 91 x2611_16899_counterexample_polynomial) := by\n    clear g hg hatom\n    sorry\n  let I := {γ : Fin 14 → Fin 15 // ∑ i, (γ i).val = 14}\n  let M : Matrix I I (RatFunc ℚ) := Matrix.of (fun r s =>\n    MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm (fun i => (r.val i).val))\n      (A (fun i => (s.val i).val)))\n  let β : Fin 14 → Fin 15 := fun i =>\n    ⟨x2611_16899_alpha i.rev, by fin_cases i <;> decide⟩\n  have hβ : ∑ i, (β i).val = 14 := by decide\n  let b : I := ⟨β, hβ⟩\n  have hdet : IsUnit M.det := hatom 14 14 A hA\n  have hvec := x2611_16899_cor2_eq4_aux1\n    (fun r : I => Finsupp.equivFunOnFinite.symm (fun i => (r.val i).val))\n    (fun s : I => A (fun i => (s.val i).val))\n    (fun s : I => g (fun i => (s.val i).val))\n    (x2611_16899_flagged_llt 14)\n    (x2611_16899_cor2_eq4_aux2 14 14 _ A g hg) hdet\n  exact (congrFun hvec b).trans (hcompute β hβ (by intro i; rfl))\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16899_cor2_eq4_s1h1",
+          "status": "duplicate",
+          "statement": "∀ (n d : ℕ) (B : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)), x2611_16899_atom_family n 0 B → IsUnit ((Matrix.of : ({ γ : Fin n → Fin (d + 1) // ∑ i : Fin n, (↑(γ i) : ℕ) = d } → { γ : Fin n → Fin (d + 1) // ∑ i : Fin n, (↑(γ i) : ℕ) = d } → RatFunc ℚ) → Matrix { γ : Fin n → Fin (d + 1) // ∑ i : Fin n, (↑(γ i) : ℕ) = d } { γ : Fin n → Fin (d + 1) // ∑ i : Fin n, (↑(γ i) : ℕ) = d } (RatFunc ℚ)) fun (r s : { γ : Fin n → Fin (d + 1) // ∑ i : Fin n, (↑(γ i) : ℕ) = d }) => MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => (↑((↑r : Fin n → Fin (d + 1)) i) : ℕ)) (B fun (i : Fin n) => (↑((↑s : Fin n → Fin (d + 1)) i) : ℕ))).det",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16899_cor2_eq4_s1h2",
+          "status": "open",
+          "statement": "∀ (A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)), x2611_16899_atom_family 14 0 A → ∀ (β : Fin 14 → Fin 15) (hβ : ∑ i : Fin 14, (↑(β i) : ℕ) = 14), (∀ (i : Fin 14), (↑(β i) : ℕ) = x2611_16899_alpha i.rev) → ((Matrix.of : ({ γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 } → { γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 } → RatFunc ℚ) → Matrix { γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 } { γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 } (RatFunc ℚ)) fun (r s : { γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 }) => MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin 14 → ℕ) → Fin 14 →₀ ℕ) fun (i : Fin 14) => (↑((↑r : Fin 14 → Fin 15) i) : ℕ)) (A fun (i : Fin 14) => (↑((↑s : Fin 14 → Fin 15) i) : ℕ)))⁻¹.mulVec (fun (r : { γ : Fin 14 → Fin 15 // ∑ i : Fin 14, (↑(γ i) : ℕ) = 14 }) => MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin 14 → ℕ) → Fin 14 →₀ ℕ) fun (i : Fin 14) => (↑((↑r : Fin 14 → Fin 15) i) : ℕ)) (x2611_16899_flagged_llt 14)) ⟨β, hβ⟩ = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) (Polynomial.reflect 91 x2611_16899_counterexample_polynomial)",
+          "args": [
+            "A",
+            "hA"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:29:45+0800"
+    }
+  ]
 }

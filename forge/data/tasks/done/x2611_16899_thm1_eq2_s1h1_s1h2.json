@@ -1,0 +1,25 @@
+{
+  "name": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "statement": ": ∀ (n : ℕ) (τ : RatFunc ℚ) (i j : Fin n) (f g : MvPolynomial (Fin n) (RatFunc ℚ)), (↑j : ℕ) = (↑i : ℕ) + 1 → f.totalDegree ≤ n → (MvPolynomial.X i - MvPolynomial.X j) * g = (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (1 - τ) * MvPolynomial.X j * (f - (MvPolynomial.rename (⇑(Equiv.swap i j) : Fin n → Fin n) : MvPolynomial (Fin n) (RatFunc ℚ) → MvPolynomial (Fin n) (RatFunc ℚ)) f) + (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) τ * (MvPolynomial.X i - MvPolynomial.X j) * (MvPolynomial.rename (⇑(Equiv.swap i j) : Fin n → Fin n) : MvPolynomial (Fin n) (RatFunc ℚ) → MvPolynomial (Fin n) (RatFunc ℚ)) f → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (g * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = τ * MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (f * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1)",
+  "closed": "∀ (n : ℕ) (τ : RatFunc ℚ) (i j : Fin n) (f g : MvPolynomial (Fin n) (RatFunc ℚ)), (↑j : ℕ) = (↑i : ℕ) + 1 → f.totalDegree ≤ n → (MvPolynomial.X i - MvPolynomial.X j) * g = (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (1 - τ) * MvPolynomial.X j * (f - (MvPolynomial.rename (⇑(Equiv.swap i j) : Fin n → Fin n) : MvPolynomial (Fin n) (RatFunc ℚ) → MvPolynomial (Fin n) (RatFunc ℚ)) f) + (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) τ * (MvPolynomial.X i - MvPolynomial.X j) * (MvPolynomial.rename (⇑(Equiv.swap i j) : Fin n → Fin n) : MvPolynomial (Fin n) (RatFunc ℚ) → MvPolynomial (Fin n) (RatFunc ℚ)) f → MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (g * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = τ * MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (f * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1)",
+  "informal": "x2611_16899_thm1_eq2_s1h1 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16899_thm1_eq2_s1h1",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "658138908",
+  "type": "∀ (n : ℕ) (τ : RatFunc ℚ) (i j : Fin n) (f g : MvPolynomial (Fin n) (RatFunc ℚ)), ↑j = ↑i + 1 → f.totalDegree ≤ n → (MvPolynomial.X i - MvPolynomial.X j) * g = MvPolynomial.C (1 - τ) * MvPolynomial.X j * (f - (MvPolynomial.rename ⇑(Equiv.swap i j)) f) + MvPolynomial.C τ * (MvPolynomial.X i - MvPolynomial.X j) * (MvPolynomial.rename ⇑(Equiv.swap i j)) f → MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun i => 1 + (n + 1) * ↑i) (g * ∏ ij, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = τ * MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun i => 1 + (n + 1) * ↑i) (f * ∏ ij, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w9",
+      "note": "调度器代为归还（agent 未完成，超时）：",
+      "at": "2026-11-16T13:29:30+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:13:36+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w9",
+  "claimed_at": "2026-11-16T12:49:30+0800",
+  "closed_by": "queue-papers-b1-w9",
+  "finished_at": "2026-11-16T21:06:31+0800"
+}

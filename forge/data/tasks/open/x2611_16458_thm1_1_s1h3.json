@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_thm1_1_s1h3",
+  "statement": ": ∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ (u : Fin n), x2611_16458_balanced (SimpleGraph.induce {v : Fin n | v ≠ u} P) (SimpleGraph.induce {v : Fin n | v ≠ u} N)) → x2611_16458_hasBalancedBlock P N → ∃ (G : SimpleGraph (Fin n)), G.Connected ∧ x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N",
+  "closed": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ (u : Fin n), x2611_16458_balanced (SimpleGraph.induce {v : Fin n | v ≠ u} P) (SimpleGraph.induce {v : Fin n | v ≠ u} N)) → x2611_16458_hasBalancedBlock P N → ∃ (G : SimpleGraph (Fin n)), G.Connected ∧ x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N",
+  "informal": "x2611_16458_thm1_1 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_thm1_1",
+  "original": "",
+  "proposed_by": "queue-r7-w1",
+  "hash": "2270347036",
+  "type": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ u, Mathlib2.x2611_16458_balanced (SimpleGraph.induce {v | v ≠ u} P) (SimpleGraph.induce {v | v ≠ u} N)) → Mathlib2.x2611_16458_hasBalancedBlock P N → ∃ G, G.Connected ∧ Mathlib2.x2611_16458_zeroFree G ⊥ = Mathlib2.x2611_16458_zeroFree P N",
+  "attempts": [],
+  "created_at": "2026-11-16T12:51:49+0800",
+  "status": "open"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10200_thm1_2",
+  "statement": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) : x2611_10200_M g k < x2611_10200_M (g + 1) k ∧ ∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), x2611_10200_standard g k N H → x2611_10200_standard (g + 1) k N H' → x2611_10200_complete H → x2611_10200_complete H'",
+  "closed": "∀ (g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k), x2611_10200_M g k < x2611_10200_M (g + 1) k ∧ ∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), x2611_10200_standard g k N H → x2611_10200_standard (g + 1) k N H' → x2611_10200_complete H → x2611_10200_complete H'",
+  "informal": "Theorem 1.2 (Leading-unit monotonicity)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "For all $g,k\\geq 1$ , one has $M_{g+1,k}>M_{g,k}$ . Consequently, if $[1^{g},0^{k},N]$ is complete, then $[1^{g+1},0^{k},N]$ is complete.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "935478880",
+  "type": "∀ (g k : ℕ), 1 ≤ g → 1 ≤ k → Mathlib2.x2611_10200_M g k < Mathlib2.x2611_10200_M (g + 1) k ∧ ∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), Mathlib2.x2611_10200_standard g k N H → Mathlib2.x2611_10200_standard (g + 1) k N H' → Mathlib2.x2611_10200_complete H → Mathlib2.x2611_10200_complete H'",
+  "attempts": [],
+  "created_at": "2026-11-16T12:27:51+0800",
+  "status": "open"
+}

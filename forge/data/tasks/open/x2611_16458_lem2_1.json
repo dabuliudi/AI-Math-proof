@@ -1,0 +1,85 @@
+{
+  "name": "x2611_16458_lem2_1",
+  "statement": ": (∀ (V : Type*) [Finite V] (P N : SimpleGraph V), (∀ (S T : Set V) (u : V), S ∪ T = Set.univ → S ∩ T = {u} →\n  (∀ v w, (P ⊔ N).Adj v w →\n    (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)) →\n  Polynomial.X * x2611_16458_zeroFree P N =\n    x2611_16458_zeroFree (P.induce S) (N.induce S) *\n    x2611_16458_zeroFree (P.induce T) (N.induce T)) ∧\n((P ⊔ N).Connected →\n  Polynomial.X ^ Nat.card {S : Set V // x2611_16458_isBlock (P ⊔ N) S} *\n    x2611_16458_zeroFree P N =\n  Polynomial.X * x2611_16458_blockPolynomialProduct P N)) ∧ (∀ (V : Type*) [Finite V] (G : SimpleGraph V) (S T : Set V) (a b : V)\n(hab : a ≠ b) (he : G.Adj a b) (hcover : S ∪ T = Set.univ)\n(hinter : S ∩ T = {a, b})\n(hedges : ∀ v w, G.Adj v w →\n  (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)), Polynomial.X * (Polynomial.X - 1) * x2611_16458_zeroFree G ⊥ =\n  x2611_16458_zeroFree (G.induce S) ⊥ *\n  x2611_16458_zeroFree (G.induce T) ⊥)",
+  "closed": "(∀ (V : Type*) [Finite V] (P N : SimpleGraph V), (∀ (S T : Set V) (u : V), S ∪ T = Set.univ → S ∩ T = {u} →\n  (∀ v w, (P ⊔ N).Adj v w →\n    (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)) →\n  Polynomial.X * x2611_16458_zeroFree P N =\n    x2611_16458_zeroFree (P.induce S) (N.induce S) *\n    x2611_16458_zeroFree (P.induce T) (N.induce T)) ∧\n((P ⊔ N).Connected →\n  Polynomial.X ^ Nat.card {S : Set V // x2611_16458_isBlock (P ⊔ N) S} *\n    x2611_16458_zeroFree P N =\n  Polynomial.X * x2611_16458_blockPolynomialProduct P N)) ∧ (∀ (V : Type*) [Finite V] (G : SimpleGraph V) (S T : Set V) (a b : V)\n(hab : a ≠ b) (he : G.Adj a b) (hcover : S ∪ T = Set.univ)\n(hinter : S ∩ T = {a, b})\n(hedges : ∀ v w, G.Adj v w →\n  (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)), Polynomial.X * (Polynomial.X - 1) * x2611_16458_zeroFree G ⊥ =\n  x2611_16458_zeroFree (G.induce S) ⊥ *\n  x2611_16458_zeroFree (G.induce T) ⊥)",
+  "informal": "Lemma 2.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16458",
+  "original": "The following statements hold.\n\n(a) \n\nSuppose that signed graphs $\\Sigma_{1}$ and $\\Sigma_{2}$ have exactly one common vertex and no common edges.\nThen $\\displaystyle Z_{\\Sigma_{1}\\cup\\Sigma_{2}}(q)=\\frac{Z_{\\Sigma_{1}}(q)Z_{\\Sigma_{2}}(q)}{q}$ .\nConsequently, if a connected signed graph $\\Sigma$ has blocks $B_{1},\\ldots,B_{b}$ , then\n\n(2.2)\n\n $Z_{\\Sigma}(q)=q^{1-b}\\prod_{i=1}^{b}Z_{B_{i}}(q).$ \n\n(b) \n\nSuppose that ordinary graphs $G_{1}$ and $G_{2}$ meet exactly in an edge and its two endpoints. Then\n\n(2.3)\n\n $P_{G_{1}\\cup G_{2}}(q)=\\frac{P_{G_{1}}(q)P_{G_{2}}(q)}{q(q-1)}.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1715140093",
+  "type": "(∀ (V : Type u_1) [inst : Finite V] (P N : SimpleGraph V), (∀ (S T : Set V) (u : V), S ∪ T = Set.univ → S ∩ T = {u} → (∀ (v w : V), (P ⊔ N).Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Polynomial.X * Mathlib2.x2611_16458_zeroFree P N = Mathlib2.x2611_16458_zeroFree (SimpleGraph.induce S P) (SimpleGraph.induce S N) * Mathlib2.x2611_16458_zeroFree (SimpleGraph.induce T P) (SimpleGraph.induce T N)) ∧ ((P ⊔ N).Connected → Polynomial.X ^ Nat.card { S // Mathlib2.x2611_16458_isBlock (P ⊔ N) S } * Mathlib2.x2611_16458_zeroFree P N = Polynomial.X * Mathlib2.x2611_16458_blockPolynomialProduct P N)) ∧ ∀ (V : Type u_2) [inst : Finite V] (G : SimpleGraph V) (S T : Set V) (a b : V), a ≠ b → G.Adj a b → S ∪ T = Set.univ → S ∩ T = {a, b} → (∀ (v w : V), G.Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Polynomial.X * (Polynomial.X - 1) * Mathlib2.x2611_16458_zeroFree G ⊥ = Mathlib2.x2611_16458_zeroFree (SimpleGraph.induce S G) ⊥ * Mathlib2.x2611_16458_zeroFree (SimpleGraph.induce T G) ⊥",
+  "attempts": [],
+  "created_at": "2026-11-16T10:46:11+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w2",
+  "claimed_at": "2026-11-16T12:44:18+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w2",
+      "body": "lemma x2611_16458_lem2_1_aux1 (p q : Polynomial ℤ)\n    (h : ∀ n : ℕ, p.eval (2 * ((n : ℤ) + 1)) = q.eval (2 * ((n : ℤ) + 1))) :\n    p = q := by\n  apply Polynomial.eq_of_infinite_eval_eq\n  have hi : Function.Injective (fun n : ℕ => 2 * ((n : ℤ) + 1)) := by\n    intro a b hab\n    have hcast : (a : ℤ) = (b : ℤ) := by linarith\n    exact_mod_cast hcast\n  apply (Set.infinite_range_of_injective hi).mono\n  rintro x ⟨n, rfl⟩\n  exact h n\n\nlemma x2611_16458_lem2_1_aux2 {V C : Type*} [Finite V] [Finite C]\n    [AddCommGroup C] (d : C) (P N : SimpleGraph V)\n    (S T : Set V) (u : V) (hcover : S ∪ T = Set.univ)\n    (hinter : S ∩ T = {u})\n    (hedges : ∀ v w, (P ⊔ N).Adj v w →\n      (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)) :\n    Nat.card C * Nat.card {c : V → C //\n      (∀ v w, P.Adj v w → c v ≠ c w) ∧\n      (∀ v w, N.Adj v w → c v ≠ c w + d)} =\n    Nat.card {c : {v : V // v ∈ S} → C //\n      (∀ (v w : {v : V // v ∈ S}), (P.induce S).Adj v w → c v ≠ c w) ∧\n      (∀ (v w : {v : V // v ∈ S}), (N.induce S).Adj v w → c v ≠ c w + d)} *\n    Nat.card {c : {v : V // v ∈ T} → C //\n      (∀ (v w : {v : V // v ∈ T}), (P.induce T).Adj v w → c v ≠ c w) ∧\n      (∀ (v w : {v : V // v ∈ T}), (N.induce T).Adj v w → c v ≠ c w + d)} := by\n  classical\n  let Valid {W : Type _} (P N : SimpleGraph W) (c : W → C) : Prop :=\n    (∀ v w, P.Adj v w → c v ≠ c w) ∧\n    (∀ v w, N.Adj v w → c v ≠ c w + d)\n  have shift {W : Type _} {P N : SimpleGraph W} {c : W → C}\n      (hc : Valid P N c) (k : C) : Valid P N (fun v => c v + k) := by\n    constructor\n    · intro v w he h\n      exact hc.1 v w he (add_right_cancel h)\n    · intro v w he h\n      apply hc.2 v w he\n      apply add_right_cancel (b := k)\n      calc\n        c v + k = (c w + k) + d := h\n        _ = (c w + d) + k := by abel\n  have hu : u ∈ S ∩ T := by rw [hinter]; simp\n  let us : S := ⟨u, hu.1⟩\n  let ut : T := ⟨u, hu.2⟩\n  let A := {c : V → C // Valid P N c}\n  let B := {c : {v : V // v ∈ S} → C // Valid (P.induce S) (N.induce S) c}\n  let D := {c : {v : V // v ∈ T} → C // Valid (P.induce T) (N.induce T) c}\n  have restrictS (c : A) : Valid (P.induce S) (N.induce S) (fun v => c.1 v.1) :=\n    ⟨fun v w h => c.2.1 v.1 w.1 h, fun v w h => c.2.2 v.1 w.1 h⟩\n  have restrictT (c : A) : Valid (P.induce T) (N.induce T) (fun v => c.1 v.1) :=\n    ⟨fun v w h => c.2.1 v.1 w.1 h, fun v w h => c.2.2 v.1 w.1 h⟩\n  have memT (v : V) (hv : v ∉ S) : v ∈ T := by\n    have h : v ∈ S ∪ T := by rw [hcover]; trivial\n    exact h.resolve_left hv\n  let glue (s : B) (t : D) (v : V) : C :=\n    if hv : v ∈ S then s.1 ⟨v, hv⟩ else\n      t.1 ⟨v, memT v hv⟩ + (s.1 us - t.1 ut)\n  have glueS (s : B) (t : D) (v : S) : glue s t v.1 = s.1 v := by\n    simp [glue, v.2]\n  have glueT (s : B) (t : D) (v : T) :\n      glue s t v.1 = t.1 v + (s.1 us - t.1 ut) := by\n    by_cases hv : v.1 ∈ S\n    · have heq : v.1 = u := by\n        have h : v.1 ∈ S ∩ T := ⟨hv, v.2⟩\n        simpa [hinter] using h\n      have hvs : (⟨v.1, hv⟩ : S) = us := Subtype.ext heq\n      have hvt : v = ut := Subtype.ext heq\n      calc\n        glue s t v.1 = s.1 ⟨v.1, hv⟩ := glueS s t ⟨v.1, hv⟩\n        _ = s.1 us := congrArg s.1 hvs\n        _ = t.1 v + (s.1 us - t.1 ut) := by rw [hvt]; abel\n    · simp [glue, hv]\n  have glue_valid (s : B) (t : D) : Valid P N (glue s t) := by\n    have ht := shift t.2 (s.1 us - t.1 ut)\n    constructor\n    · intro v w he\n      rcases hedges v w (Or.inl he) with hs | ht'\n      · simpa only [glueS s t ⟨v, hs.1⟩, glueS s t ⟨w, hs.2⟩]\n          using s.2.1 ⟨v, hs.1⟩ ⟨w, hs.2⟩ he\n      · simpa only [glueT s t ⟨v, ht'.1⟩, glueT s t ⟨w, ht'.2⟩]\n          using ht.1 ⟨v, ht'.1⟩ ⟨w, ht'.2⟩ he\n    · intro v w he\n      rcases hedges v w (Or.inr he) with hs | ht'\n      · simpa only [glueS s t ⟨v, hs.1⟩, glueS s t ⟨w, hs.2⟩]\n          using s.2.2 ⟨v, hs.1⟩ ⟨w, hs.2⟩ he\n      · simpa only [glueT s t ⟨v, ht'.1⟩, glueT s t ⟨w, ht'.2⟩]\n          using ht.2 ⟨v, ht'.1⟩ ⟨w, ht'.2⟩ he\n  let e : C × A ≃ B × D :=\n    { toFun := fun x =>\n        (⟨fun v => x.2.1 v.1, restrictS x.2⟩,\n         ⟨fun v => x.2.1 v.1 + x.1, shift (restrictT x.2) x.1⟩)\n      invFun := fun x =>\n        (x.2.1 ut - x.1.1 us, ⟨glue x.1 x.2, glue_valid x.1 x.2⟩)\n      left_inv := by\n        rintro ⟨k, c⟩\n        apply Prod.ext\n        · dsimp\n          abel\n        · apply Subtype.ext\n          funext v\n          dsimp\n          by_cases hv : v ∈ S\n          · simp [glue, hv]\n          · simp only [glue, dif_neg hv]\n            abel\n      right_inv := by\n        rintro ⟨s, t⟩\n        apply Prod.ext\n        · apply Subtype.ext\n          funext v\n          exact glueS s t v\n        · apply Subtype.ext\n          funext v\n          change glue s t v.1 + (t.1 ut - s.1 us) = t.1 v\n          rw [glueT]\n          abel }\n  simpa only [Nat.card_prod] using Nat.card_congr e\n\nlemma x2611_16458_lem2_1_aux3 {V : Type*} [Finite V]\n    (P N : SimpleGraph V) (n : ℕ) :\n    (x2611_16458_zeroFree P N).eval (2 * ((n : ℤ) + 1)) =\n    (Nat.card {c : V → ZMod (2 * (n + 1)) //\n      (∀ v w, P.Adj v w → c v ≠ c w) ∧\n      (∀ v w, N.Adj v w → c v ≠ c w + (n + 1 : ℕ))} : ℤ) := by\n  sorry\n\nlemma x2611_16458_lem2_1_aux4 {V C : Type*} [Fintype V] [Finite C]\n    [AddCommGroup C] (d : C) (P N : SimpleGraph V)\n    [DecidablePred (fun S : Set V => x2611_16458_isBlock (P ⊔ N) S)]\n    (hconn : (P ⊔ N).Connected) :\n    Nat.card C ^ Nat.card {S : Set V // x2611_16458_isBlock (P ⊔ N) S} *\n      Nat.card {c : V → C //\n        (∀ v w, P.Adj v w → c v ≠ c w) ∧\n        (∀ v w, N.Adj v w → c v ≠ c w + d)} =\n    Nat.card C * Finset.prod\n      (Finset.univ.filter (fun S : Set V => x2611_16458_isBlock (P ⊔ N) S))\n      (fun S => Nat.card {c : {v : V // v ∈ S} → C //\n        (∀ (v w : {v : V // v ∈ S}), (P.induce S).Adj v w → c v ≠ c w) ∧\n        (∀ (v w : {v : V // v ∈ S}), (N.induce S).Adj v w → c v ≠ c w + d)}) := by\n  sorry\n\nlemma x2611_16458_lem2_1_aux5 {V C : Type*} [Finite V] [Finite C]\n    (G : SimpleGraph V) (S T : Set V) (a b : V)\n    (hab : a ≠ b) (he : G.Adj a b) (hcover : S ∪ T = Set.univ)\n    (hinter : S ∩ T = {a, b})\n    (hedges : ∀ v w, G.Adj v w →\n      (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)) :\n    Nat.card C * (Nat.card C - 1) *\n      Nat.card {c : V → C // ∀ v w, G.Adj v w → c v ≠ c w} =\n    Nat.card {c : {v : V // v ∈ S} → C // ∀ (v w : {v : V // v ∈ S}), (G.induce S).Adj v w → c v ≠ c w} *\n    Nat.card {c : {v : V // v ∈ T} → C // ∀ (v w : {v : V // v ∈ T}), (G.induce T).Adj v w → c v ≠ c w} := by\n  sorry\n\nlemma x2611_16458_lem2_1_aux6 {V : Type*} [Finite V]\n    (G : SimpleGraph V) (n : ℕ) :\n    (x2611_16458_zeroFree G ⊥).eval (2 * ((n : ℤ) + 1)) =\n    (Nat.card {c : V → ZMod (2 * (n + 1)) //\n      ∀ v w, G.Adj v w → c v ≠ c w} : ℤ) := by\n  simpa using x2611_16458_lem2_1_aux3 G ⊥ n\n\ntheorem x2611_16458_lem2_1 : (∀ (V : Type*) [Finite V] (P N : SimpleGraph V), (∀ (S T : Set V) (u : V), S ∪ T = Set.univ → S ∩ T = {u} →\n  (∀ v w, (P ⊔ N).Adj v w →\n    (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)) →\n  Polynomial.X * x2611_16458_zeroFree P N =\n    x2611_16458_zeroFree (P.induce S) (N.induce S) *\n    x2611_16458_zeroFree (P.induce T) (N.induce T)) ∧\n  ((P ⊔ N).Connected →\n  Polynomial.X ^ Nat.card {S : Set V // x2611_16458_isBlock (P ⊔ N) S} *\n    x2611_16458_zeroFree P N =\n  Polynomial.X * x2611_16458_blockPolynomialProduct P N)) ∧ (∀ (V : Type*) [Finite V] (G : SimpleGraph V) (S T : Set V) (a b : V)\n  (hab : a ≠ b) (he : G.Adj a b) (hcover : S ∪ T = Set.univ)\n  (hinter : S ∩ T = {a, b})\n  (hedges : ∀ v w, G.Adj v w →\n  (v ∈ S ∧ w ∈ S) ∨ (v ∈ T ∧ w ∈ T)), Polynomial.X * (Polynomial.X - 1) * x2611_16458_zeroFree G ⊥ =\n  x2611_16458_zeroFree (G.induce S) ⊥ *\n  x2611_16458_zeroFree (G.induce T) ⊥) := by\n  classical\n  constructor\n  · intro V _ P N\n    constructor\n    · intro S T u hcover hinter hedges\n      apply x2611_16458_lem2_1_aux1\n      intro n\n      have hc : Nat.card (ZMod (2 * (n + 1))) = 2 * (n + 1) := by\n        rw [Nat.card_eq_fintype_card, ZMod.card]\n      have h := x2611_16458_lem2_1_aux2\n        (C := ZMod (2 * (n + 1))) (n + 1 : ℕ) P N S T u hcover hinter hedges\n      rw [hc] at h\n      simp only [Polynomial.eval_mul, Polynomial.eval_X,\n        x2611_16458_lem2_1_aux3]\n      exact_mod_cast h\n    · intro hconn\n      letI := Fintype.ofFinite V\n      apply x2611_16458_lem2_1_aux1\n      intro n\n      have hc : Nat.card (ZMod (2 * (n + 1))) = 2 * (n + 1) := by\n        rw [Nat.card_eq_fintype_card, ZMod.card]\n      have h := x2611_16458_lem2_1_aux4\n        (C := ZMod (2 * (n + 1))) (n + 1 : ℕ) P N hconn\n      rw [hc] at h\n      simp only [Polynomial.eval_mul, Polynomial.eval_pow, Polynomial.eval_X,\n        x2611_16458_blockPolynomialProduct, Polynomial.eval_prod,\n        x2611_16458_lem2_1_aux3]\n      exact_mod_cast h\n  · intro V _ G S T a b hab he hcover hinter hedges\n    apply x2611_16458_lem2_1_aux1\n    intro n\n    have hc : Nat.card (ZMod (2 * (n + 1))) = 2 * (n + 1) := by\n      rw [Nat.card_eq_fintype_card, ZMod.card]\n    have h := x2611_16458_lem2_1_aux5 (C := ZMod (2 * (n + 1)))\n      G S T a b hab he hcover hinter hedges\n    rw [hc] at h\n    simp only [Polynomial.eval_mul, Polynomial.eval_sub, Polynomial.eval_X,\n      Polynomial.eval_one, x2611_16458_lem2_1_aux6]\n    have hn : 1 ≤ 2 * (n + 1) := by omega\n    exact_mod_cast h\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16458_lem2_1_s1h1",
+          "status": "duplicate",
+          "statement": "∀ {V : Type*} [inst : Finite V] (P N : SimpleGraph V) (n : ℕ), Polynomial.eval (2 * ((↑n : ℤ) + 1)) (x2611_16458_zeroFree P N) = (↑(Nat.card { c : V → ZMod (2 * (n + 1)) // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + (↑(n + 1) : ZMod (2 * (n + 1))) }) : ℤ)",
+          "args": [
+            "V",
+            "(by assumption)",
+            "P",
+            "N",
+            "n"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16458_lem2_1_s1h2",
+          "status": "duplicate",
+          "statement": "∀ {V : Type*} {C : Type*} [inst : Fintype V] [Finite C] [inst_2 : AddCommGroup C] (d : C) (P N : SimpleGraph V) [inst_3 : DecidablePred fun (S : Set V) => x2611_16458_isBlock (P ⊔ N) S], (P ⊔ N).Connected → Nat.card C ^ Nat.card { S : Set V // x2611_16458_isBlock (P ⊔ N) S } * Nat.card { c : V → C // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + d } = Nat.card C * ∏ S : Set V with x2611_16458_isBlock (P ⊔ N) S, Nat.card { c : { v : V // v ∈ S } → C // (∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S P).Adj v w → c v ≠ c w) ∧ ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S N).Adj v w → c v ≠ c w + d }",
+          "args": [
+            "V",
+            "C",
+            "_",
+            "(by assumption)",
+            "_",
+            "d",
+            "P",
+            "N",
+            "_",
+            "hconn"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "x2611_16458_lem2_1_s1h3",
+          "status": "open",
+          "statement": "∀ {V : Type*} {C : Type*} [Finite V] [Finite C] (G : SimpleGraph V) (S T : Set V) (a b : V), a ≠ b → G.Adj a b → S ∪ T = Set.univ → S ∩ T = {a, b} → (∀ (v w : V), G.Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Nat.card C * (Nat.card C - 1) * Nat.card { c : V → C // ∀ (v w : V), G.Adj v w → c v ≠ c w } = Nat.card { c : { v : V // v ∈ S } → C // ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S G).Adj v w → c v ≠ c w } * Nat.card { c : { v : V // v ∈ T } → C // ∀ (v w : { v : V // v ∈ T }), (SimpleGraph.induce T G).Adj v w → c v ≠ c w }",
+          "args": [
+            "V",
+            "C",
+            "(by assumption)",
+            "(by assumption)",
+            "G",
+            "S",
+            "T",
+            "a",
+            "b",
+            "hab",
+            "he",
+            "hcover",
+            "hinter",
+            "hedges"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T13:12:39+0800"
+    }
+  ]
+}

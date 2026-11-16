@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14160_thm1_4_s1h3",
+  "statement": ": ∀ (q : ℕ), 2 ≤ q → (∃ (a : ℕ), q = 2 ^ a) → ∀ (m : ℕ), 2 ≤ m → x2611_14160_zeroSumForces (x2611_14160_disjointCopies m (completeBipartiteGraph (Fin q) (Fin q))) m (2 * q * m + m / m.gcd q - 1)",
+  "closed": "∀ (q : ℕ), 2 ≤ q → (∃ (a : ℕ), q = 2 ^ a) → ∀ (m : ℕ), 2 ≤ m → x2611_14160_zeroSumForces (x2611_14160_disjointCopies m (completeBipartiteGraph (Fin q) (Fin q))) m (2 * q * m + m / m.gcd q - 1)",
+  "informal": "x2611_14160_thm1_4 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_14160_thm1_4",
+  "original": "",
+  "proposed_by": "queue-papers-b1-w4",
+  "hash": "2359086483",
+  "type": "∀ (q : ℕ), 2 ≤ q → (∃ a, q = 2 ^ a) → ∀ (m : ℕ), 2 ≤ m → Mathlib2.x2611_14160_zeroSumForces (Mathlib2.x2611_14160_disjointCopies m (completeBipartiteGraph (Fin q) (Fin q))) m (2 * q * m + m / m.gcd q - 1)",
+  "attempts": [],
+  "created_at": "2026-11-16T14:48:04+0800",
+  "status": "open"
+}

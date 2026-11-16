@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15358_triple_double_count",
+  "statement": "(G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15) : (Finset.univ.powersetCard 3 : Finset (Finset (Fin 14))).sum (fun S => x2611_15358_t G S) = Finset.univ.sum (fun v : Fin 14 => ((fun v : Fin 14 => Nat.card ((Gᶜ).neighborSet v)) v).choose 3)",
+  "closed": "∀ (G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15), (Finset.univ.powersetCard 3 : Finset (Finset (Fin 14))).sum (fun S => x2611_15358_t G S) = Finset.univ.sum (fun v : Fin 14 => ((fun v : Fin 14 => Nat.card ((Gᶜ).neighborSet v)) v).choose 3)",
+  "informal": "Lemma 2.6, proof (triple double count)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "Also, note that $\\sum_{|S|=3}t_{S}=\\sum_{v}\\binom{d_{v}}{3}$ , since both sides count pairs $(v,S)$ in which $S$ is a three-element subset of the neighbors of $v$ in $G^{c}$ .",
+  "proposed_by": "audit-b1",
+  "hash": "3908418937",
+  "type": "∀ (G : SimpleGraph (Fin 14)), (∀ (v : Fin 14), 4 ≤ Nat.card ↑(G.neighborSet v)) → Nat.card ↑Gᶜ.edgeSet ≤ 15 → ∑ S ∈ Finset.powersetCard 3 Finset.univ, Mathlib2.x2611_15358_t G S = ∑ v, ((fun v => Nat.card ↑(Gᶜ.neighborSet v)) v).choose 3",
+  "attempts": [],
+  "created_at": "2026-11-16T03:35:15+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w2",
+  "claimed_at": "2026-11-16T12:37:44+0800",
+  "closed_by": "queue-r7-w2",
+  "finished_at": "2026-11-16T12:41:31+0800"
+}

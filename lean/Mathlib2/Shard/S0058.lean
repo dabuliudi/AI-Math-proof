@@ -2156,4 +2156,169 @@ theorem x2611_15723_cycleShuffle_card (k l : ℕ) (σ : Equiv.Perm (Fin k))
     _ = Nat.choose (k + l) k := by simp [S]
 end
 
+-- forge:entry x2611_10667_claim4 kind=proved origin=paper
+section
+/- Claim 4 (the displayed two faces and inner edge) -/
+lemma x2611_10667_claim4_aux1
+    (K : Type*) [Field K] (r : ℕ) [CharP K r]
+    (a b c : K) (d e f : ℕ) (ha : a ≠ 0) :
+    x2611_10667_torus_regular
+      (MvPolynomial.C a * MvPolynomial.X (0 : Fin 2) ^ d * MvPolynomial.X (1 : Fin 2) +
+       MvPolynomial.C b * MvPolynomial.X (0 : Fin 2) ^ e * MvPolynomial.X (1 : Fin 2) ^ r +
+       MvPolynomial.C c * MvPolynomial.X (0 : Fin 2) ^ f) := by
+  intro z hz _
+  refine ⟨1, ?_⟩
+  have hd : MvPolynomial.pderiv (1 : Fin 2)
+      (MvPolynomial.C a * MvPolynomial.X (0 : Fin 2) ^ d * MvPolynomial.X (1 : Fin 2) +
+       MvPolynomial.C b * MvPolynomial.X (0 : Fin 2) ^ e * MvPolynomial.X (1 : Fin 2) ^ r +
+       MvPolynomial.C c * MvPolynomial.X (0 : Fin 2) ^ f) =
+      MvPolynomial.C a * MvPolynomial.X (0 : Fin 2) ^ d := by
+    simp [MvPolynomial.pderiv_mul, MvPolynomial.pderiv_pow,
+      MvPolynomial.pderiv_X, Pi.single_apply,
+      CharP.cast_eq_zero (MvPolynomial (Fin 2) K) r]
+  rw [hd]
+  simp only [MvPolynomial.eval₂_mul, MvPolynomial.eval₂_C,
+    MvPolynomial.eval₂_pow, MvPolynomial.eval₂_X]
+  exact mul_ne_zero (by simpa using (algebraMap K (AlgebraicClosure K)).injective.ne ha)
+    (pow_ne_zero _ (hz 0))
+
+lemma x2611_10667_claim4_aux2
+    (K : Type*) [Field K] (a b w : K) (n : ℕ)
+    (ha : a ≠ 0) (hb : b ≠ 0) (hw : w ≠ 0) (hn : (n : K) ≠ 0) :
+    Polynomial.Separable
+      (Polynomial.C a * (Polynomial.C w + Polynomial.X ^ n * Polynomial.C b)) := by
+  have hs := Polynomial.separable_X_pow_sub_C (-w / b) hn
+    (div_ne_zero (neg_ne_zero.mpr hw) hb)
+  have he : Polynomial.C w + Polynomial.X ^ n * Polynomial.C b =
+      (Polynomial.X ^ n - Polynomial.C (-w / b)) * Polynomial.C b := by
+    rw [sub_mul, ← Polynomial.C_mul]
+    simp [div_mul_cancel₀ _ hb, sub_neg_eq_add, add_comm]
+  rw [he]
+  exact (hs.mul_unit (Polynomial.isUnit_C.mpr (isUnit_iff_ne_zero.mpr hb))).unit_mul
+    (Polynomial.isUnit_C.mpr (isUnit_iff_ne_zero.mpr ha))
+
+theorem x2611_10667_claim4
+    (q r B C : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r)
+    (hqr : q ≠ r) (m n : ℤ)
+    (hm : IsCoprime m ((q * r : ℕ) : ℤ))
+    (hn : IsCoprime n ((q * r : ℕ) : ℤ))
+    (hbezout : n * (q : ℤ) - m * (r : ℤ) = 1)
+    (hB : Int.ModEq ((q * r : ℕ) : ℤ) (B : ℤ) (-m * (r : ℤ) - n * (q : ℤ)))
+    (hC : Int.ModEq ((q * r : ℕ) : ℤ) (C : ℤ) (m * (r : ℤ) + n * (q : ℤ)))
+    (hB0 : 0 < B) (hC0 : 0 < C) (hBlt : B < q * r) (hClt : C < q * r)
+    (hBC : B + C = q * r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1)
+    (ht : 2 + 2 / ((r : ℚ) - 1) < (padicValRat r (t - 1) : ℚ))
+    (K : Type*) [Field K] [Finite K] [CharP K r]
+    (ζ : K) (hζ : IsPrimitiveRoot ζ q) (j : ℕ) (hj1 : 1 ≤ j) (hjq : j ≤ q)
+    (u w : K) (hu : u ≠ 0) (hw : w ≠ 0) :
+    x2611_10667_torus_regular
+      ((MvPolynomial.C (ζ ^ (-(j : ℤ)) * (q : K) * w) *
+        (MvPolynomial.X (0 : Fin 2)) ^ (q * r - 1) * (MvPolynomial.X (1 : Fin 2))) +
+       (MvPolynomial.C (ζ ^ (-(r : ℤ) * (j : ℤ)) * (q : K)) *
+        (MvPolynomial.X (0 : Fin 2)) ^ (q * r - r) * (MvPolynomial.X (1 : Fin 2)) ^ r) +
+       MvPolynomial.C u * (MvPolynomial.X (0 : Fin 2)) ^ (q * r - 1)) ∧
+    x2611_10667_torus_regular
+      ((MvPolynomial.C (ζ ^ (-(j : ℤ)) * (q : K) * w) *
+        (MvPolynomial.X (0 : Fin 2)) ^ (q * r - 1) * (MvPolynomial.X (1 : Fin 2))) +
+       (MvPolynomial.C (ζ ^ (-(r : ℤ) * (j : ℤ)) * (q : K)) *
+        (MvPolynomial.X (0 : Fin 2)) ^ (q * r - r) * (MvPolynomial.X (1 : Fin 2)) ^ r) -
+       (MvPolynomial.X (0 : Fin 2)) ^ (q * r + 1)) ∧
+    Polynomial.Separable
+      (Polynomial.C ((q : K) * ζ ^ (-(j : ℤ))) *
+        (Polynomial.C w + Polynomial.X ^ (r - 1) *
+          Polynomial.C (ζ ^ ((1 - (r : ℤ)) * (j : ℤ))))) := by
+  have hz : ζ ≠ 0 := hζ.ne_zero hq.ne_zero
+  have hqK : (q : K) ≠ 0 := by
+    rw [Ne, CharP.cast_eq_zero_iff K r]
+    intro hd
+    exact hqr ((Nat.prime_dvd_prime_iff_eq hr hq).mp hd).symm
+  have ha : ζ ^ (-(j : ℤ)) * (q : K) * w ≠ 0 :=
+    mul_ne_zero (mul_ne_zero (zpow_ne_zero _ hz) hqK) hw
+  refine ⟨x2611_10667_claim4_aux1 K r _ _ u _ _ _ ha, ?_, ?_⟩
+  · simpa [sub_eq_add_neg] using
+      x2611_10667_claim4_aux1 K r
+        (ζ ^ (-(j : ℤ)) * (q : K) * w)
+        (ζ ^ (-(r : ℤ) * (j : ℤ)) * (q : K)) (-1)
+        (q * r - 1) (q * r - r) (q * r + 1) ha
+  · apply x2611_10667_claim4_aux2 K
+    · exact mul_ne_zero hqK (zpow_ne_zero _ hz)
+    · exact zpow_ne_zero _ hz
+    · exact hw
+    · rw [Ne, CharP.cast_eq_zero_iff K r]
+      exact Nat.not_dvd_of_pos_of_lt (by omega) (by omega)
+end
+
+-- forge:entry x2611_10667_lemma4_1_wild_valuation kind=proved origin=paper
+section
+/- Lemma 4.1 proof (explicit valuation bound at a wild divisor) -/
+lemma x2611_10667_lemma4_1_wild_valuation_aux1
+    (l q p r : ℕ) (hl : l.Prime) (hp : p ≠ 0) (hr : r ≠ 0)
+    (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0)
+    (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1)
+    (hb : (l : ℤ) ∣ b) : ¬ (l : ℤ) ∣ c := by
+  intro hc
+  have haq : (l : ℤ) ∣ a ^ q := by
+    have heq : a ^ q = -(b ^ p + c ^ r) := by linarith
+    rw [heq]
+    exact dvd_neg.mpr (dvd_add (dvd_pow hb hp) (dvd_pow hc hr))
+  have ha : (l : ℤ) ∣ a := Int.Prime.dvd_pow' hl haq
+  have hg : l ∣ Nat.gcd (Int.gcd a b) c.natAbs :=
+    Nat.dvd_gcd (Int.dvd_gcd ha hb) (Int.natCast_dvd.mp hc)
+  rw [hprim] at hg
+  exact hl.ne_one (Nat.dvd_one.mp hg)
+
+lemma x2611_10667_lemma4_1_wild_valuation_aux2
+    (l m n : ℕ) (hl : l.Prime) (b c : ℤ) (hb : b ≠ 0) (hc : c ≠ 0)
+    (hdiv : (l : ℤ) ∣ b) (hnot : ¬ (l : ℤ) ∣ c) :
+    (m : ℤ) ≤ padicValRat l ((b : ℚ) ^ m / (c : ℚ) ^ n) := by
+  letI : Fact l.Prime := ⟨hl⟩
+  have hbq : (b : ℚ) ≠ 0 := by exact_mod_cast hb
+  have hcq : (c : ℚ) ≠ 0 := by exact_mod_cast hc
+  have hv : padicValInt l b ≠ 0 := by
+    simp [padicValInt.eq_zero_iff, hl.ne_one, hb, hdiv]
+  have hv1 : (1 : ℤ) ≤ (padicValInt l b : ℤ) := by omega
+  rw [padicValRat.div (pow_ne_zero _ hbq) (pow_ne_zero _ hcq),
+    padicValRat.pow, padicValRat.pow, padicValRat.of_int, padicValRat.of_int,
+    padicValInt.eq_zero_of_not_dvd hnot]
+  simpa using mul_le_mul_of_nonneg_left hv1 (Int.natCast_nonneg m)
+
+theorem x2611_10667_lemma4_1_wild_valuation
+    (q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime)
+    (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p)
+    (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0)
+    (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1) (hnt : a * b * c ≠ 0)
+    (hdiv : (q : ℤ) ∣ b ∨ (r : ℤ) ∣ b) :
+    3 < padicValRat r (-(a : ℚ) ^ q / (c : ℚ) ^ r - 1) ∨
+    3 < padicValRat q (-(a : ℚ) ^ q / (c : ℚ) ^ r - 1) := by
+  have hb : b ≠ 0 := by
+    intro h
+    apply hnt
+    simp [h]
+  have hc : c ≠ 0 := by
+    intro h
+    apply hnt
+    simp [h]
+  have hcq : (c : ℚ) ≠ 0 := by exact_mod_cast hc
+  have hsolq : (a : ℚ) ^ q + (b : ℚ) ^ p + (c : ℚ) ^ r = 0 := by
+    exact_mod_cast hsol
+  have heq : -(a : ℚ) ^ q / (c : ℚ) ^ r - 1 =
+      (b : ℚ) ^ p / (c : ℚ) ^ r := by
+    apply (div_sub_one (pow_ne_zero r hcq)).trans
+    congr 1
+    linarith
+  rw [heq]
+  have hp3' : (3 : ℤ) < (p : ℤ) := by exact_mod_cast hp3
+  rcases hdiv with hdiv | hdiv
+  · right
+    have hnot := x2611_10667_lemma4_1_wild_valuation_aux1
+      q q p r hq hp.ne_zero hr.ne_zero a b c hsol hprim hdiv
+    exact lt_of_lt_of_le hp3'
+      (x2611_10667_lemma4_1_wild_valuation_aux2 q p r hq b c hb hc hdiv hnot)
+  · left
+    have hnot := x2611_10667_lemma4_1_wild_valuation_aux1
+      r q p r hr hp.ne_zero hr.ne_zero a b c hsol hprim hdiv
+    exact lt_of_lt_of_le hp3'
+      (x2611_10667_lemma4_1_wild_valuation_aux2 r p r hr b c hb hc hdiv hnot)
+end
+
 end Mathlib2

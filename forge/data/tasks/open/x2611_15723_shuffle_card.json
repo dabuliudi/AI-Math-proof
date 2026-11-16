@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15723_shuffle_card",
+  "statement": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)) :\n  (x2611_15723_shuffle σ τ).card = Nat.choose (k + l) k",
+  "closed": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), (x2611_15723_shuffle σ τ).card = Nat.choose (k + l) k",
+  "informal": "Section 1.1, cardinality of ordinary shuffles",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15723",
+  "original": "Clearly, $|\\sigma\\shuffle\\tau|=\\binom{n}{k}$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "916502781",
+  "type": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), (Mathlib2.x2611_15723_shuffle σ τ).card = (k + l).choose k",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w5",
+      "note": "Complete proof saved at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w5/ShuffleCard.lean. Four helpers turn List.ofFn sublists into increasing embeddings, construct permutations from complementary positions, prove disjoint coverage, and characterize shuffle membership; the main proof gives a bijection with k-element finsets. The entire proof compiled successfully (Lean exit 0) in ShuffleLocal.lean with minimal Mathlib imports and an exact copy of the library shuffle definition. Small cases including empty blocks and k,l=(2,3) matched choose. Official forge checks repeatedly fail before elaborating the proof because Mathlib2/Shard/S0061.olean is missing; S0062.olean is also unavailable during ongoing queue rebuilds. A forge audit/rebuild was attempted, then stopped to avoid duplicating active builds. No remaining known proof errors. Once Mathlib2 builds stabilize, run forge check on ShuffleCard.lean and submit it.",
+      "at": "2026-11-16T14:03:58+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:47:37+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w5",
+  "claimed_at": "2026-11-16T13:26:38+0800"
+}

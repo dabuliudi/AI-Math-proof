@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10667_lemma4_1_t_sub_one",
+  "statement": "(q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime) (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0) (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1) (hnt : a * b * c ≠ 0) : -(a : ℚ) ^ q / (c : ℚ) ^ r - 1 = (b : ℚ) ^ p / (c : ℚ) ^ r",
+  "closed": "∀ (q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime) (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0) (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1) (hnt : a * b * c ≠ 0), -(a : ℚ) ^ q / (c : ℚ) ^ r - 1 = (b : ℚ) ^ p / (c : ℚ) ^ r",
+  "informal": "Lemma 4.1 proof (specialization identity)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10667",
+  "original": "We first note that $t-1={b^{p}}/{c^{r}}$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "580561476",
+  "type": "∀ (q r p : ℕ), Nat.Prime q → Nat.Prime r → Nat.Prime p → r < q → 2 < r → 3 < p → ∀ (a b c : ℤ), a ^ q + b ^ p + c ^ r = 0 → (a.gcd b).gcd c.natAbs = 1 → a * b * c ≠ 0 → -↑a ^ q / ↑c ^ r - 1 = ↑b ^ p / ↑c ^ r",
+  "attempts": [],
+  "created_at": "2026-11-16T12:25:42+0800",
+  "status": "open"
+}

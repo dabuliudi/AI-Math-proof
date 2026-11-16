@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15210_thm1_2_s1h1",
+  "statement": ": ∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (r : ℕ), (↑m : ℝ) / (12 * Real.exp 1) * x2611_15210_rho m ^ r ≤ (↑(x2611_15210_A (2 * m) (Fin r → ZMod m)) : ℝ)",
+  "closed": "∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (r : ℕ), (↑m : ℝ) / (12 * Real.exp 1) * x2611_15210_rho m ^ r ≤ (↑(x2611_15210_A (2 * m) (Fin r → ZMod m)) : ℝ)",
+  "informal": "x2611_15210_thm1_2 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_thm1_2",
+  "original": "",
+  "proposed_by": "queue-r7-w7",
+  "hash": "962166102",
+  "type": "∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (r : ℕ), ↑m / (12 * Real.exp 1) * Mathlib2.x2611_15210_rho m ^ r ≤ ↑(Mathlib2.x2611_15210_A (2 * m) (Fin r → ZMod m))",
+  "attempts": [],
+  "created_at": "2026-11-16T11:30:47+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w0",
+  "claimed_at": "2026-11-16T12:55:40+0800",
+  "closed_by": "queue-r7-w0",
+  "finished_at": "2026-11-16T13:11:17+0800"
+}

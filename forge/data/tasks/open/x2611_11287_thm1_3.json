@@ -1,0 +1,15 @@
+{
+  "name": "x2611_11287_thm1_3",
+  "statement": "(A : Matrix (Fin 3) (Fin 3) ℤ)\n(hA : ∀ k : ℤ, A ≠ k • (1 : Matrix (Fin 3) (Fin 3) ℤ)) :\n(Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (3)) ∨ Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (5))) ∧\n(Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (5)) ↔\n ((∃ α β : ℂ, α ≠ β ∧ IsConj (A.map (Int.castRingHom ℂ))\n    (!![α, 0, 0; 0, α, 0; 0, 0, β] : Matrix (Fin 3) (Fin 3) ℂ)) ∨\n  (∃ α : ℂ, IsConj (A.map (Int.castRingHom ℂ))\n    (!![α, 1, 0; 0, α, 0; 0, 0, α] : Matrix (Fin 3) (Fin 3) ℂ))))",
+  "closed": "∀ (A : Matrix (Fin 3) (Fin 3) ℤ)\n(hA : ∀ k : ℤ, A ≠ k • (1 : Matrix (Fin 3) (Fin 3) ℤ)), (Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (3)) ∨ Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (5))) ∧\n(Asymptotics.IsTheta Filter.atTop (fun H : ℕ => (x2611_11287_centralizer_count A (H : ℤ) : ℝ)) (fun H : ℕ => (H : ℝ) ^ (5)) ↔\n ((∃ α β : ℂ, α ≠ β ∧ IsConj (A.map (Int.castRingHom ℂ))\n    (!![α, 0, 0; 0, α, 0; 0, 0, β] : Matrix (Fin 3) (Fin 3) ℂ)) ∨\n  (∃ α : ℂ, IsConj (A.map (Int.castRingHom ℂ))\n    (!![α, 1, 0; 0, α, 0; 0, 0, α] : Matrix (Fin 3) (Fin 3) ℂ))))",
+  "informal": "Theorem 1.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11287",
+  "original": "Let $A\\in\\mathcal{M}_{3}({\\mathbb{Z}})$ be a non-scalar matrix. We have either $\\#\\operatorname{C}(A,{\\mathbb{Z}};H)\\asymp H^{3}$ or $\\#\\operatorname{C}(A,{\\mathbb{Z}};H)\\asymp H^{5}$ . Moreover, $\\#\\operatorname{C}(A,{\\mathbb{Z}};H)\\asymp H^{5}$ if and only if $A$ is similar to either $\\alpha I_{2}\\oplus\\beta I_{1}$ $(\\alpha\\neq\\beta)$ or $J_{2}(\\alpha)\\oplus J_{1}(\\alpha)$ , where $J_{n}(\\alpha)$ denotes the Jordan matrix of order $n$ corresponding to to eigenvalue $\\alpha$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3782247974",
+  "type": "∀ (A : Matrix (Fin 3) (Fin 3) ℤ), (∀ (k : ℤ), A ≠ k • 1) → (((fun H => ↑(Mathlib2.x2611_11287_centralizer_count A ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ 3) ∨ (fun H => ↑(Mathlib2.x2611_11287_centralizer_count A ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ 5) ∧ (((fun H => ↑(Mathlib2.x2611_11287_centralizer_count A ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ 5) ↔ (∃ α β, α ≠ β ∧ IsConj (A.map ⇑(Int.castRingHom ℂ)) !![α, 0, 0; 0, α, 0; 0, 0, β]) ∨ ∃ α, IsConj (A.map ⇑(Int.castRingHom ℂ)) !![α, 1, 0; 0, α, 0; 0, 0, α])",
+  "attempts": [],
+  "created_at": "2026-11-16T12:26:10+0800",
+  "status": "open"
+}

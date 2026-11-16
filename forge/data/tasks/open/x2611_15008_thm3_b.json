@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_thm3_b",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hG : ∀ e ∈ G.edgeSet, ¬ x2611_15008_bridge G e) (hdensity : (2.55 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ≤ (G.edgeSet.ncard : ℝ)) : x2611_15008_Tutte G 1 1 ≤ x2611_15008_Tutte G 0 2",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hG : ∀ e ∈ G.edgeSet, ¬ x2611_15008_bridge G e) (hdensity : (2.55 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ≤ (G.edgeSet.ncard : ℝ)), x2611_15008_Tutte G 1 1 ≤ x2611_15008_Tutte G 0 2",
+  "informal": "Theorem 3(b)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Theorem 3.\n\nLet $G$ be a connected graph with $m$ edges and $n$ vertices. If $G$ is\n\n(b) \n\nbridgeless and $m\\geq 2.55(n-1),$ then $T_{G}(1,1)\\leq T_{G}(0,2).$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2777747146",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E), G.toSimpleGraph.Connected → (∀ e ∈ G.edgeSet, ¬Mathlib2.x2611_15008_bridge G e) → 2.55 * (↑G.vertexSet.ncard - 1) ≤ ↑G.edgeSet.ncard → Mathlib2.x2611_15008_Tutte G 1 1 ≤ Mathlib2.x2611_15008_Tutte G 0 2",
+  "attempts": [
+    {
+      "agent": "queue-r7-w4",
+      "note": "No counterexample in 2781 dense bridgeless multigraphs and 121 dense simple graphs. Saved exact a=2.42,b=1.71 density reduction and a sketch reusing the two graph holes of thm2_bridgeless in forge/data/staging/agents/queue-r7/queue-r7-w4/thm3_b_shared_sketch.lean; details and exact test script are beside it. Forge sketch timed out once and twice failed at import because Mathlib2/Shard/S0061.olean is missing. The weighted graph inequality, equivalently the existing vertex-map monotonicity and series-class decomposition tasks, remains unproved; no sketch registered.",
+      "at": "2026-11-16T13:39:13+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:34:46+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w4",
+  "claimed_at": "2026-11-16T13:14:26+0800"
+}

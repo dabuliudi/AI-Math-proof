@@ -1,0 +1,23 @@
+{
+  "name": "x2611_16338_theorem_a_s1h2",
+  "statement": ": ∀ (V : Type*) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∀ (U : Finset V), U.card = Fintype.card V / 2 → Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 → {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1 → ∃ (φ : V → ℕ), (∀ (v : V), 1 ≤ φ v ∧ φ v ≤ Fintype.card V / 2 + 1) ∧ ∀ (l r : ℕ), l ≤ r → {e ∈ G.edgeFinset | l ≤ x2611_16338_vertexSum φ e ∧ x2611_16338_vertexSum φ e ≤ r}.card ≤ r - l + (Fintype.card V / 2 + 1)",
+  "closed": "∀ (V : Type*) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∀ (U : Finset V), U.card = Fintype.card V / 2 → Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 → {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1 → ∃ (φ : V → ℕ), (∀ (v : V), 1 ≤ φ v ∧ φ v ≤ Fintype.card V / 2 + 1) ∧ ∀ (l r : ℕ), l ≤ r → {e ∈ G.edgeFinset | l ≤ x2611_16338_vertexSum φ e ∧ x2611_16338_vertexSum φ e ≤ r}.card ≤ r - l + (Fintype.card V / 2 + 1)",
+  "informal": "x2611_16338_theorem_a 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16338_theorem_a",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "750439092",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∀ (U : Finset V), U.card = Fintype.card V / 2 → Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 → {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1 → ∃ φ, (∀ (v : V), 1 ≤ φ v ∧ φ v ≤ Fintype.card V / 2 + 1) ∧ ∀ (l r : ℕ), l ≤ r → {e ∈ G.edgeFinset | l ≤ Mathlib2.x2611_16338_vertexSum φ e ∧ Mathlib2.x2611_16338_vertexSum φ e ≤ r}.card ≤ r - l + (Fintype.card V / 2 + 1)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w6",
+      "note": "Complete proof saved in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w6/proof.lean; identical test.lean passed direct Lean against stable Mathlib2.Shard.S0060 (exit 0). Uses final_distribution, admissibility, zero/one-neighbor completions, and an interval-injection bound; no mathematical gap remains in that check. Prescribed forge check first failed on missing S0061.olean, then timed out after 300.4s; S0062.olean still absent. See progress.txt. No submission made.",
+      "at": "2026-11-16T14:36:06+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:59:19+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w6",
+  "claimed_at": "2026-11-16T14:00:52+0800"
+}

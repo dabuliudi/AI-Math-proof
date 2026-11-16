@@ -1,0 +1,19 @@
+{
+  "name": "x2611_11287_thm1_2_lower_s1h3",
+  "statement": ": ∀ (F : Type*) [inst : Field F] (n : ℕ) (A : Matrix (Fin n) (Fin n) F), n ≤ Module.finrank F ↥((Subalgebra.toSubmodule : Subalgebra F (Matrix (Fin n) (Fin n) F) → Submodule F (Matrix (Fin n) (Fin n) F)) (Subalgebra.centralizer F {A}))",
+  "closed": "∀ (F : Type*) [inst : Field F] (n : ℕ) (A : Matrix (Fin n) (Fin n) F), n ≤ Module.finrank F ↥((Subalgebra.toSubmodule : Subalgebra F (Matrix (Fin n) (Fin n) F) → Submodule F (Matrix (Fin n) (Fin n) F)) (Subalgebra.centralizer F {A}))",
+  "informal": "x2611_11287_thm1_2_lower 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_11287_thm1_2_lower",
+  "original": "",
+  "proposed_by": "queue-r7-w5",
+  "hash": "2756670300",
+  "type": "∀ (F : Type u_1) [inst : Field F] (n : ℕ) (A : Matrix (Fin n) (Fin n) F), n ≤ Module.finrank F ↥(Subalgebra.toSubmodule (Subalgebra.centralizer F {A}))",
+  "attempts": [],
+  "created_at": "2026-11-16T11:14:41+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w8",
+  "claimed_at": "2026-11-16T12:54:14+0800",
+  "closed_by": "queue-papers-b1-w8",
+  "finished_at": "2026-11-16T13:11:17+0800"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thm3_1_s1h3",
+  "statement": ": ∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ (↑K'.vertices : Type)) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty ((↑K'.space : Type) ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {(↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ), (↑((e : Fin 14 → (↑K'.vertices : Type)) j) : Fin d' → ℝ)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun (i : Fin 14) => (↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ)) s ∈ K'.faces) → (∀ s ∈ F, s.card ≤ 4) ∧ ∑ s ∈ F, (↑((14 - s.card).choose (7 - s.card)) : ℤ) * (-1) ^ (s.card - 1) = 16464 - 252 * (↑(Nat.card (↑G.edgeSet : Type)) : ℤ)",
+  "closed": "∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ (↑K'.vertices : Type)) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty ((↑K'.space : Type) ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {(↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ), (↑((e : Fin 14 → (↑K'.vertices : Type)) j) : Fin d' → ℝ)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun (i : Fin 14) => (↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ)) s ∈ K'.faces) → (∀ s ∈ F, s.card ≤ 4) ∧ ∑ s ∈ F, (↑((14 - s.card).choose (7 - s.card)) : ℤ) * (-1) ^ (s.card - 1) = 16464 - 252 * (↑(Nat.card (↑G.edgeSet : Type)) : ℤ)",
+  "informal": "x2611_15358_thm3_1 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15358_thm3_1",
+  "original": "",
+  "proposed_by": "queue-r7-w1",
+  "hash": "2742341019",
+  "type": "∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ ↑K'.vertices) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty (↑K'.space ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {↑(e i), ↑(e j)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun i => ↑(e i)) s ∈ K'.faces) → (∀ s ∈ F, s.card ≤ 4) ∧ ∑ s ∈ F, ↑((14 - s.card).choose (7 - s.card)) * (-1) ^ (s.card - 1) = 16464 - 252 * ↑(Nat.card ↑G.edgeSet)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:40:05+0800",
+  "status": "open"
+}

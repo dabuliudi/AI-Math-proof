@@ -1,0 +1,32 @@
+{
+  "returncode": 0,
+  "stdout": "'p2_n001' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/ef0770de854b4f03ba02ca42eb5ea6ed/attempt-001.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.178782292001415,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (h0 : (p2v0 ∣ p2v1)) (h1 : (p2v1 ∣ p2v0)) : (p2v0 = p2v1) := by\n  exact @Dvd.dvd.antisymm Nat _ p2v0 p2v1 _ h0 h1\n\n#print axioms p2_n001\n",
+  "source_sha256": "5f8ad6efd291ce173c3ef1426b4671ba68a43c5cb6a8718788fdb46b75be3b78",
+  "goal": "(p2v0 = p2v1)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/ef0770de854b4f03ba02ca42eb5ea6ed/attempt-001.lean",
+  "log": "attempt-001.json"
+}

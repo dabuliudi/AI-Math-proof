@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10200_example6_1",
+  "statement": "(H H' : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H) (hH' : x2611_10200_standard 2 4 21 H') : x2611_10200_M 2 4 = 20 ∧ (List.range 12).map (fun i => H (i + 1)) = ([1, 2, 4, 7, 12, 20, 33, 73, 146, 299, 585, 1124] : List ℤ) ∧ x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧ x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧ x2611_10200_complete H ∧ x2611_10200_B H' 10 = -4 ∧ ¬ x2611_10200_complete H'",
+  "closed": "∀ (H H' : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H) (hH' : x2611_10200_standard 2 4 21 H'), x2611_10200_M 2 4 = 20 ∧ (List.range 12).map (fun i => H (i + 1)) = ([1, 2, 4, 7, 12, 20, 33, 73, 146, 299, 585, 1124] : List ℤ) ∧ x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧ x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧ x2611_10200_complete H ∧ x2611_10200_B H' 10 = -4 ∧ ¬ x2611_10200_complete H'",
+  "informal": "Example 6.1 (Vanishing critical gap)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "Take $(g,k,N)=(2,4,20)$ , so $L=7$ and $M_{2,4}=20$ . The sequence begins\n\n $1,\\ 2,\\ 4,\\ 7,\\ 12,\\ 20,\\ 33,\\ 73,\\ 146,\\ 299,\\ 585,\\ 1124,\\ldots.$ \n\nAt the critical index, $B_{10}=0$ , but the next gaps are $B_{11}=13$ , $B_{12}=59$ , and $B_{13}=198$ . For $N=21$ with the same $g,k$ , the critical gap is $B_{10}=-4$ , so the corresponding sequence is incomplete. Thus equality in the threshold can be admissible even when the first decisive gap vanishes.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3449279371",
+  "type": "∀ (H H' : ℕ → ℤ), Mathlib2.x2611_10200_standard 2 4 20 H → Mathlib2.x2611_10200_standard 2 4 21 H' → Mathlib2.x2611_10200_M 2 4 = 20 ∧ List.map (fun i => H (i + 1)) (List.range 12) = [1, 2, 4, 7, 12, 20, 33, 73, 146, 299, 585, 1124] ∧ Mathlib2.x2611_10200_B H 10 = 0 ∧ Mathlib2.x2611_10200_B H 11 = 13 ∧ Mathlib2.x2611_10200_B H 12 = 59 ∧ Mathlib2.x2611_10200_B H 13 = 198 ∧ Mathlib2.x2611_10200_complete H ∧ Mathlib2.x2611_10200_B H' 10 = -4 ∧ ¬Mathlib2.x2611_10200_complete H'",
+  "attempts": [],
+  "created_at": "2026-11-16T12:28:32+0800",
+  "status": "open"
+}

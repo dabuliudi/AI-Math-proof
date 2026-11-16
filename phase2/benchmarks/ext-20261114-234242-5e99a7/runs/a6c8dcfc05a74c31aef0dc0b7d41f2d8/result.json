@@ -1,0 +1,37 @@
+{
+  "status": "proved",
+  "reason": "lean_accepted",
+  "formal_goal_verified": true,
+  "source_alignment": "unconfirmed",
+  "candidate_verified": false,
+  "approval_status": "pending",
+  "run": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/a6c8dcfc05a74c31aef0dc0b7d41f2d8",
+  "ai": "no AI call",
+  "ai_calls": 0,
+  "ai_tokens": null,
+  "ai_cost": 0,
+  "human_interventions": 0,
+  "metrics": {
+    "compile_attempts": 3,
+    "failed_compilations": 0,
+    "repair_attempts": 0,
+    "first_compile_solved_target": false,
+    "reused_declarations": 2,
+    "reused_mathlib_theorems": 2,
+    "reused_lean_core_theorems": 0,
+    "generated_lemmas": 2,
+    "intermediate_lemmas": 1,
+    "dag_depth": 3,
+    "exploration_depth": 3,
+    "elapsed": 6.744761999994807
+  },
+  "successful_proof_nodes": [
+    "h0",
+    "h1",
+    "h2",
+    "p2_n001",
+    "p2_n002",
+    "p2_target"
+  ],
+  "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+}

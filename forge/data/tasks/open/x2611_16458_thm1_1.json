@@ -11,5 +11,63 @@
   "type": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ u, Mathlib2.x2611_16458_balanced (SimpleGraph.induce {v | v ≠ u} P) (SimpleGraph.induce {v | v ≠ u} N)) → ((∃ m G, Mathlib2.x2611_16458_zeroFree P N = Mathlib2.x2611_16458_zeroFree G ⊥) ↔ ∀ (i : ℕ), 0 ≤ (Mathlib2.x2611_16458_numerator n (Mathlib2.x2611_16458_zeroFree P N)).coeff i) ∧ ((∀ (i : ℕ), 0 ≤ (Mathlib2.x2611_16458_numerator n (Mathlib2.x2611_16458_zeroFree P N)).coeff i) ↔ Mathlib2.x2611_16458_hasBalancedBlock P N) ∧ (Mathlib2.x2611_16458_hasBalancedBlock P N ↔ Polynomial.eval 1 (Mathlib2.x2611_16458_zeroFree P N) = 0) ∧ (Polynomial.eval 1 (Mathlib2.x2611_16458_zeroFree P N) = 0 ↔ Polynomial.eval 2 ((Mathlib2.x2611_16458_zeroFree P N).comp (Polynomial.X - 1)) = 0) ∧ ((∀ (i : ℕ), 0 ≤ (Mathlib2.x2611_16458_numerator n (Mathlib2.x2611_16458_zeroFree P N)).coeff i) → ∃ G, G.Connected ∧ Mathlib2.x2611_16458_zeroFree G ⊥ = Mathlib2.x2611_16458_zeroFree P N)",
   "attempts": [],
   "created_at": "2026-11-16T03:44:30+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w1",
+  "claimed_at": "2026-11-16T12:41:17+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w1",
+      "body": "lemma x2611_16458_thm1_1_aux1 (n i : ℕ) (p : Polynomial ℤ)\n    (hi : i < n + 2) :\n    (x2611_16458_numerator n p).coeff i =\n      (Finset.range i).sum (fun j => (-1 : ℤ) ^ j * ((n + 1).choose j : ℤ) *\n        p.eval ((i - j - 1 : ℕ) : ℤ)) := by\n  classical\n  simp only [x2611_16458_numerator, Polynomial.finsetSum_coeff,\n    Polynomial.coeff_C_mul_X_pow]\n  simp [hi]\n\nlemma x2611_16458_thm1_1_aux2 (n : ℕ) (p : Polynomial ℤ)\n    (hn : 2 ≤ n) (hzero : p.eval 0 = 0) :\n    (x2611_16458_numerator n p).coeff 2 = p.eval 1 ∧\n    (x2611_16458_numerator n p).coeff 3 = p.eval 2 - (n + 1 : ℤ) * p.eval 1 := by\n  rw [x2611_16458_thm1_1_aux1 n 2 p (by omega),\n    x2611_16458_thm1_1_aux1 n 3 p (by omega)]\n  norm_num [Finset.sum_range_succ, hzero]\n  ring\n\nlemma x2611_16458_thm1_1_aux3 (n : ℕ) (p : Polynomial ℤ)\n    (hn : 2 ≤ n) (hzero : p.eval 0 = 0) (htwo : p.eval 2 ≤ 2)\n    (hpos : ∀ i : ℕ, 0 ≤ (x2611_16458_numerator n p).coeff i) :\n    p.eval 1 = 0 := by\n  obtain ⟨h₂, h₃⟩ := x2611_16458_thm1_1_aux2 n p hn hzero\n  have h2 := hpos 2\n  have h3 := hpos 3\n  rw [h₂] at h2\n  rw [h₃] at h3\n  have hn' : (2 : ℤ) ≤ n := by exact_mod_cast hn\n  by_contra h\n  have hp : 1 ≤ p.eval 1 := by omega\n  nlinarith\n\nlemma x2611_16458_thm1_1_aux4 {R : Type*} [CommRing R] (p : Polynomial R) :\n    p.eval 1 = 0 ↔ (p.comp (Polynomial.X - 1)).eval 2 = 0 := by\n  rw [Polynomial.eval_comp]\n  norm_num\n\nlemma x2611_16458_thm1_1_aux5 {V : Type*} [Finite V] [Nonempty V]\n    (P N : SimpleGraph V) : (x2611_16458_zeroFree P N).eval 0 = 0 := by\n  classical\n  unfold x2611_16458_zeroFree\n  rw [Polynomial.eval_finsetSum]\n  apply Finset.sum_eq_zero\n  intro F hF\n  dsimp only\n  split_ifs\n  · have hc : Nat.card (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n        SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V).ConnectedComponent ≠ 0 :=\n      Nat.card_pos.ne'\n    simp [hc]\n  · simp\n\nlemma x2611_16458_thm1_1_aux6 {V : Type*} [Finite V] (G : SimpleGraph V) :\n    Nat.card G.ConnectedComponent ≤ Nat.card V ∧\n    (Nat.card G.ConnectedComponent = Nat.card V → G = ⊥) := by\n  have hs : Function.Surjective G.connectedComponentMk := Quot.mk_surjective\n  refine ⟨Nat.card_le_card_of_surjective _ hs, ?_⟩\n  intro hc\n  have hi := (hs.bijective_of_nat_card_le hc.ge).injective\n  ext v w\n  simp only [SimpleGraph.bot_adj, iff_false]\n  intro h\n  exact h.ne (hi (SimpleGraph.ConnectedComponent.sound h.reachable))\n\nlemma x2611_16458_thm1_1_aux7 {V : Type*} [Finite V] :\n    Nat.card (⊥ : SimpleGraph V).ConnectedComponent = Nat.card V := by\n  symm\n  apply Nat.card_eq_of_bijective (⊥ : SimpleGraph V).connectedComponentMk\n  refine ⟨?_, Quot.mk_surjective⟩\n  intro v w h\n  exact SimpleGraph.reachable_bot.mp (SimpleGraph.ConnectedComponent.exact h)\n\nlemma x2611_16458_thm1_1_aux8 {V : Type*} [Fintype V] (P N : SimpleGraph V)\n    [Fintype P.edgeSet] [Fintype N.edgeSet]\n    (F : Finset (Sym2 V ⊕ Sym2 V))\n    (hF : F ⊆ P.edgeFinset.disjSum N.edgeFinset)\n    (hbot : (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n      SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V) = ⊥) :\n    F = ∅ := by\n  classical\n  apply Finset.eq_empty_iff_forall_notMem.mpr\n  intro e he\n  have hmem := hF he\n  cases e with\n  | inl e =>\n    induction e using Sym2.ind with\n    | _ v w =>\n      have hp : P.Adj v w := by simpa using hmem\n      have h : (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n          SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V).Adj v w :=\n        Or.inl ⟨he, hp.ne⟩\n      simpa [hbot] using h\n  | inr e =>\n    induction e using Sym2.ind with\n    | _ v w =>\n      have hn : N.Adj v w := by simpa using hmem\n      have h : (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n          SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V).Adj v w :=\n        Or.inr ⟨he, hn.ne⟩\n      simpa [hbot] using h\n\nlemma x2611_16458_thm1_1_aux9 {V : Type*} [Finite V] (P N : SimpleGraph V) :\n    (x2611_16458_zeroFree P N).coeff (Nat.card V) = 1 := by\n  classical\n  letI := Fintype.ofFinite V\n  have hb : x2611_16458_balanced (⊥ : SimpleGraph V) ⊥ :=\n    ⟨fun _ => false, by simp⟩\n  unfold x2611_16458_zeroFree\n  rw [Polynomial.finsetSum_coeff, Finset.sum_eq_single ∅]\n  · have hc : Fintype.card (⊥ : SimpleGraph V).ConnectedComponent = Fintype.card V := by\n      simpa only [Nat.card_eq_fintype_card] using (x2611_16458_thm1_1_aux7 (V := V))\n    simp [hb, hc]\n  · intro F hF hne\n    dsimp only\n    split_ifs\n    · rw [Polynomial.coeff_C_mul_X_pow]\n      have hc : Nat.card V ≠ Nat.card\n          (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n           SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V).ConnectedComponent := by\n        intro hc\n        apply hne\n        apply x2611_16458_thm1_1_aux8 P N F (Finset.mem_powerset.mp hF)\n        exact (x2611_16458_thm1_1_aux6 _).2 hc.symm\n      simp only [if_neg hc]\n    · simp\n  · simp\n\nlemma x2611_16458_thm1_1_aux10 {V : Type*} [Finite V] (P N : SimpleGraph V) :\n    (x2611_16458_zeroFree P N).natDegree = Nat.card V := by\n  classical\n  have hc := x2611_16458_thm1_1_aux9 P N\n  apply Polynomial.natDegree_eq_of_le_of_coeff_ne_zero _ (by rw [hc]; decide)\n  apply Polynomial.natDegree_le_iff_coeff_eq_zero.mpr\n  intro k hk\n  unfold x2611_16458_zeroFree\n  rw [Polynomial.finsetSum_coeff]\n  apply Finset.sum_eq_zero\n  intro F hF\n  dsimp only\n  split_ifs\n  · rw [Polynomial.coeff_C_mul_X_pow]\n    have hbound := (x2611_16458_thm1_1_aux6\n      (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F} ⊔\n       SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F} : SimpleGraph V)).1\n    rw [if_neg (by omega)]\n  · simp\n\nlemma x2611_16458_thm1_1_aux11 {V : Type*} [Finite V]\n    (G : SimpleGraph V) :\n    ∀ i : ℕ, 0 ≤ (x2611_16458_numerator (Nat.card V)\n      (x2611_16458_zeroFree G ⊥)).coeff i := by\n  sorry\n\nlemma x2611_16458_thm1_1_aux12 (V : Type*) [Finite V]\n    (P N : SimpleGraph V) (hconn : (P ⊔ N).Connected) :\n    (x2611_16458_zeroFree P N).eval 2 = 0 ∨\n    (x2611_16458_zeroFree P N).eval 2 = 2 := by\n  exact x2611_16458_lem2_2 V P N hconn\n\nlemma x2611_16458_thm1_1_aux13 (V : Type*) [Finite V]\n    (P N : SimpleGraph V) (hconn : (P ⊔ N).Connected)\n    (hbal : ∃ u : V, x2611_16458_balanced\n      (P.induce {v : V | v ≠ u}) (N.induce {v : V | v ≠ u}))\n    (hroot : (x2611_16458_zeroFree P N).eval 1 = 0) :\n    x2611_16458_hasBalancedBlock P N := by\n  sorry\n\nlemma x2611_16458_thm1_1_aux14 (n : ℕ) (P N : SimpleGraph (Fin n))\n    (hn : 2 ≤ n) (hconn : (P ⊔ N).Connected)\n    (hbal : ∃ u : Fin n, x2611_16458_balanced\n      (P.induce {v : Fin n | v ≠ u}) (N.induce {v : Fin n | v ≠ u}))\n    (hblocks : x2611_16458_hasBalancedBlock P N) :\n    ∃ G : SimpleGraph (Fin n), G.Connected ∧\n      x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N := by\n  sorry\n\ntheorem x2611_16458_thm1_1 (n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 2 ≤ n)\n    (hconn : (P ⊔ N).Connected)\n    (hbal : ∃ u : Fin n, x2611_16458_balanced\n      (P.induce {v : Fin n | v ≠ u}) (N.induce {v : Fin n | v ≠ u})) :\n    ((∃ m : ℕ, ∃ G : SimpleGraph (Fin m), x2611_16458_zeroFree P N = x2611_16458_zeroFree G ⊥) ↔\n      (∀ i : ℕ, 0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i)) ∧\n    ((∀ i : ℕ, 0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i) ↔\n      x2611_16458_hasBalancedBlock P N) ∧\n    (x2611_16458_hasBalancedBlock P N ↔ (x2611_16458_zeroFree P N).eval 1 = 0) ∧\n    ((x2611_16458_zeroFree P N).eval 1 = 0 ↔\n      ((x2611_16458_zeroFree P N).comp (Polynomial.X - 1)).eval 2 = 0) ∧\n    ((∀ i : ℕ, 0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i) →\n      ∃ G : SimpleGraph (Fin n), G.Connected ∧\n        x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N) := by\n  classical\n  have hordinary (h : ∃ m : ℕ, ∃ G : SimpleGraph (Fin m),\n      x2611_16458_zeroFree P N = x2611_16458_zeroFree G ⊥) :\n      ∀ i : ℕ, 0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i := by\n    obtain ⟨m, G, heq⟩ := h\n    have hcard : n = m := by\n      have hd := congrArg Polynomial.natDegree heq\n      simpa only [x2611_16458_thm1_1_aux10, Nat.card_fin] using hd\n    subst m\n    rw [heq]\n    simpa only [Nat.card_fin] using x2611_16458_thm1_1_aux11 G\n  have hroot (h : ∀ i : ℕ,\n      0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i) :\n      (x2611_16458_zeroFree P N).eval 1 = 0 := by\n    letI := hconn.nonempty\n    apply x2611_16458_thm1_1_aux3 n _ hn (x2611_16458_thm1_1_aux5 P N) _ h\n    rcases x2611_16458_thm1_1_aux12 (Fin n) P N hconn with htwo | htwo <;> omega\n  have hblocks (h : (x2611_16458_zeroFree P N).eval 1 = 0) :\n      x2611_16458_hasBalancedBlock P N :=\n    x2611_16458_thm1_1_aux13 (Fin n) P N hconn hbal h\n  have hreal (h : x2611_16458_hasBalancedBlock P N) :\n      ∃ G : SimpleGraph (Fin n), G.Connected ∧\n        x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N :=\n    x2611_16458_thm1_1_aux14 n P N hn hconn hbal h\n  have hpos (h : x2611_16458_hasBalancedBlock P N) :\n      ∀ i : ℕ, 0 ≤ (x2611_16458_numerator n (x2611_16458_zeroFree P N)).coeff i := by\n    obtain ⟨G, -, hG⟩ := hreal h\n    exact hordinary ⟨n, G, hG.symm⟩\n  refine ⟨⟨hordinary, ?_⟩, ⟨fun h => hblocks (hroot h), hpos⟩,\n    ⟨fun h => hroot (hpos h), hblocks⟩, x2611_16458_thm1_1_aux4 _,\n    fun h => hreal (hblocks (hroot h))⟩\n  intro h\n  obtain ⟨G, -, hG⟩ := hreal (hblocks (hroot h))\n  exact ⟨n, G, hG.symm⟩\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16458_thm1_1_s1h1",
+          "status": "duplicate",
+          "statement": "∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V) (i : ℕ), 0 ≤ (x2611_16458_numerator (Nat.card V) (x2611_16458_zeroFree G ⊥)).coeff i",
+          "args": [
+            "V",
+            "(by assumption)",
+            "G"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16458_thm1_1_s1h2",
+          "status": "open",
+          "statement": "∀ (V : Type*) [inst : Finite V] (P N : SimpleGraph V), (P ⊔ N).Connected → (∃ (u : V), x2611_16458_balanced (SimpleGraph.induce {v : V | v ≠ u} P) (SimpleGraph.induce {v : V | v ≠ u} N)) → Polynomial.eval 1 (x2611_16458_zeroFree P N) = 0 → x2611_16458_hasBalancedBlock P N",
+          "args": [
+            "V",
+            "(by assumption)",
+            "P",
+            "N",
+            "hconn",
+            "hbal",
+            "hroot"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "x2611_16458_thm1_1_s1h3",
+          "status": "open",
+          "statement": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ (u : Fin n), x2611_16458_balanced (SimpleGraph.induce {v : Fin n | v ≠ u} P) (SimpleGraph.induce {v : Fin n | v ≠ u} N)) → x2611_16458_hasBalancedBlock P N → ∃ (G : SimpleGraph (Fin n)), G.Connected ∧ x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N",
+          "args": [
+            "n",
+            "P",
+            "N",
+            "hn",
+            "hconn",
+            "hbal",
+            "hblocks"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:51:49+0800"
+    }
+  ]
 }

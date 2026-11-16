@@ -1,0 +1,11 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a"
+  ],
+  "assumptions": [],
+  "goals": [
+    "a ≤ a"
+  ],
+  "original_text": "每个自然数不大于自身。"
+}

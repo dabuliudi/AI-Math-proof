@@ -1,0 +1,23 @@
+{
+  "name": "x2611_16338_theorem_a_s1h1",
+  "statement": ": ∀ (V : Type*) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∃ (U : Finset V), U.card = Fintype.card V / 2 ∧ Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 ∧ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1",
+  "closed": "∀ (V : Type*) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∃ (U : Finset V), U.card = Fintype.card V / 2 ∧ Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 ∧ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1",
+  "informal": "x2611_16338_theorem_a 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16338_theorem_a",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "682478057",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∃ U, U.card = Fintype.card V / 2 ∧ Fintype.card V / 2 ≤ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card + 1 ∧ {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card ≤ Fintype.card V / 2 + 1",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w0",
+      "note": "Complete proof saved at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w0/bisection.lean (127 lines, 2 general helpers). BisectionMinimalTest.lean passed Lean 4.33.1 with -j1 and maxHeartbeats=400000, using exact copies of the existing required library lemmas and minimal imports. Proof minimizes internal edges among half-sized subsets satisfying lower bound; regular-graph degree identity forces a fully internal degree-3 vertex on each side if upper bound fails; swapping removes 3 edges and contradicts minimality. All cubic graphs on 0,4,6 vertices checked. Official forge check initially blocked by missing S0061.olean; ./forge.sh audit rebuilt S0061, but S0062 remains missing. Two subsequent full forge checks timed out at 300 seconds under severe shared-machine load, including direct Lean launcher bisection_lake.py. No proof error in final checks. Audit stopped to free resources. Resume by checking/submitting bisection.lean once full library imports fit the timeout; see bisection_status.txt.",
+      "at": "2026-11-16T14:35:38+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:58:56+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w0",
+  "claimed_at": "2026-11-16T13:56:57+0800"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_lem2_1_s1h2",
+  "statement": ": ∀ {V : Type*} {C : Type*} [inst : Fintype V] [Finite C] [inst_2 : AddCommGroup C] (d : C) (P N : SimpleGraph V) [inst_3 : DecidablePred fun (S : Set V) => x2611_16458_isBlock (P ⊔ N) S], (P ⊔ N).Connected → Nat.card C ^ Nat.card { S : Set V // x2611_16458_isBlock (P ⊔ N) S } * Nat.card { c : V → C // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + d } = Nat.card C * ∏ S : Set V with x2611_16458_isBlock (P ⊔ N) S, Nat.card { c : { v : V // v ∈ S } → C // (∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S P).Adj v w → c v ≠ c w) ∧ ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S N).Adj v w → c v ≠ c w + d }",
+  "closed": "∀ {V : Type*} {C : Type*} [inst : Fintype V] [Finite C] [inst_2 : AddCommGroup C] (d : C) (P N : SimpleGraph V) [inst_3 : DecidablePred fun (S : Set V) => x2611_16458_isBlock (P ⊔ N) S], (P ⊔ N).Connected → Nat.card C ^ Nat.card { S : Set V // x2611_16458_isBlock (P ⊔ N) S } * Nat.card { c : V → C // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + d } = Nat.card C * ∏ S : Set V with x2611_16458_isBlock (P ⊔ N) S, Nat.card { c : { v : V // v ∈ S } → C // (∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S P).Adj v w → c v ≠ c w) ∧ ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S N).Adj v w → c v ≠ c w + d }",
+  "informal": "x2611_16458_lem2_1 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_lem2_1",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "2346824326",
+  "type": "∀ {V : Type u_1} {C : Type u_2} [inst : Fintype V] [Finite C] [inst_2 : AddCommGroup C] (d : C) (P N : SimpleGraph V) [inst_3 : DecidablePred fun S => Mathlib2.x2611_16458_isBlock (P ⊔ N) S], (P ⊔ N).Connected → Nat.card C ^ Nat.card { S // Mathlib2.x2611_16458_isBlock (P ⊔ N) S } * Nat.card { c // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + d } = Nat.card C * ∏ S with Mathlib2.x2611_16458_isBlock (P ⊔ N) S, Nat.card { c // (∀ (v w : { v // v ∈ S }), (SimpleGraph.induce S P).Adj v w → c v ≠ c w) ∧ ∀ (v w : { v // v ∈ S }), (SimpleGraph.induce S N).Adj v w → c v ≠ c w + d }",
+  "attempts": [],
+  "created_at": "2026-11-16T13:02:33+0800",
+  "status": "open"
+}

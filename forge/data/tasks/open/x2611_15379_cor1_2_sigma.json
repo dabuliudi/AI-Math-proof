@@ -11,5 +11,25 @@
   "type": "∀ (k a b c : ℕ), 0 < k → 0 < a → 0 < c → ∀ (α : ℝ), IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k a b c (fun n => ↑(∑ d ∈ n.divisors, (↑d).rpow α)) (n + T) = Mathlib2.x2611_15379_G k a b c (fun n => ↑(∑ d ∈ n.divisors, (↑d).rpow α)) n} (Mathlib2.x2611_15379_monotonicPeriod k a b c)",
   "attempts": [],
   "created_at": "2026-11-16T03:28:04+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w7",
+  "claimed_at": "2026-11-16T12:13:45+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w7",
+      "body": "lemma x2611_15379_cor1_2_sigma_aux1\n    (g : ArithmeticFunction ℝ) (hg : g.IsMultiplicative)\n    (hgpos : ∀ n : ℕ, 0 < n → 0 < g n) :\n    ∃ f : ArithmeticFunction ℝ,\n      (∀ n : ℕ, f n = ∑ d ∈ n.divisors, g d) ∧\n      f.IsMultiplicative ∧\n      (∀ n : ℕ, 0 < n → 0 < f n) ∧\n      (∀ p : ℕ, Nat.Prime p → StrictMono (fun m : ℕ => f (p ^ m))) := by\n  let f : ArithmeticFunction ℝ := (ArithmeticFunction.zeta : ArithmeticFunction ℝ) * g\n  have heq (n : ℕ) : f n = ∑ d ∈ n.divisors, g d :=\n    ArithmeticFunction.coe_zeta_mul_apply\n  refine ⟨f, heq, ArithmeticFunction.isMultiplicative_zeta.natCast.mul hg, ?_, ?_⟩\n  · intro n hn\n    rw [heq]\n    apply Finset.sum_pos'\n    · intro d hd\n      exact (hgpos d (Nat.pos_of_mem_divisors hd)).le\n    · exact ⟨1, Nat.one_mem_divisors.mpr (Nat.ne_of_gt hn), hgpos 1 (by norm_num)⟩\n  · intro p hp\n    apply strictMono_nat_of_lt_succ\n    intro m\n    simp only [heq, Nat.sum_divisors_prime_pow hp, Finset.sum_range_succ]\n    exact lt_add_of_pos_right _ (hgpos (p ^ (m + 1)) (pow_pos hp.pos _))\n\nlemma x2611_15379_cor1_2_sigma_aux2 (α : ℝ) :\n    ∃ g : ArithmeticFunction ℝ,\n      (∀ n : ℕ, 0 < n → g n = Real.rpow (n : ℝ) α) ∧\n      g.IsMultiplicative ∧\n      (∀ n : ℕ, 0 < n → 0 < g n) := by\n  let g : ArithmeticFunction ℝ :=\n    ⟨fun n : ℕ => if n = 0 then 0 else Real.rpow (n : ℝ) α, by simp⟩\n  have heq (n : ℕ) (hn : 0 < n) : g n = Real.rpow (n : ℝ) α := by\n    simp only [g, ArithmeticFunction.coe_mk, if_neg (Nat.ne_of_gt hn)]\n  refine ⟨g, heq, ?_, ?_⟩\n  · apply ArithmeticFunction.IsMultiplicative.iff_ne_zero.mpr\n    refine ⟨?_, ?_⟩\n    · rw [heq 1 (by norm_num)]\n      simpa only [Nat.cast_one, Real.rpow_eq_pow] using Real.one_rpow α\n    · intro m n hm hn _\n      rw [heq (m * n) (Nat.pos_of_ne_zero (mul_ne_zero hm hn)),\n        heq m (Nat.pos_of_ne_zero hm), heq n (Nat.pos_of_ne_zero hn), Nat.cast_mul]\n      exact Real.mul_rpow (Nat.cast_nonneg m) (Nat.cast_nonneg n)\n  · intro n hn\n    rw [heq n hn]\n    exact Real.rpow_pos_of_pos (by exact_mod_cast hn) α\n\ntheorem x2611_15379_cor1_2_sigma (k a b c : ℕ) (hk : 0 < k)\n    (ha : 0 < a) (hc : 0 < c) (α : ℝ) :\n    IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n      (x2611_15379_G k a b c\n        (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) (n + T) =\n      (x2611_15379_G k a b c\n        (fun n : ℕ => ((∑ d ∈ n.divisors, Real.rpow (d : ℝ) α : ℝ) : ℂ))) n}\n      (x2611_15379_monotonicPeriod k a b c) := by\n  have hgeneral : ∀ (k a b c : ℕ) (_ : 0 < k) (_ : 0 < a) (_ : 0 < c)\n      (f : ArithmeticFunction ℝ) (_ : f.IsMultiplicative)\n      (_ : ∀ n : ℕ, 0 < n → 0 < f n)\n      (_ : ∀ p : ℕ, Nat.Prime p →\n        StrictMono (fun m : ℕ => f (p ^ m)) ∨\n        StrictAnti (fun m : ℕ => f (p ^ m))),\n      IsLeast {T : ℕ | 0 < T ∧ ∀ n : ℕ, 0 < n →\n        (x2611_15379_G k a b c (fun n => (f n : ℂ))) (n + T) =\n        (x2611_15379_G k a b c (fun n => (f n : ℂ))) n}\n        (x2611_15379_monotonicPeriod k a b c) := by\n    clear k a b c hk ha hc α\n    sorry\n  obtain ⟨g, hgeq, hg, hgpos⟩ := x2611_15379_cor1_2_sigma_aux2 α\n  obtain ⟨f, hfeq, hf, hfpos, hfmono⟩ := x2611_15379_cor1_2_sigma_aux1 g hg hgpos\n  have hsum (n : ℕ) : f n = ∑ d ∈ n.divisors, Real.rpow (d : ℝ) α := by\n    rw [hfeq]\n    exact Finset.sum_congr rfl (fun d hd => hgeq d (Nat.pos_of_mem_divisors hd))\n  simpa only [hsum] using\n    hgeneral k a b c hk ha hc f hf hfpos (fun p hp => Or.inl (hfmono p hp))\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_15379_cor1_1",
+          "status": "duplicate",
+          "statement": "∀ (k a b c : ℕ), 0 < k → 0 < a → 0 < c → ∀ (f : ArithmeticFunction ℝ), f.IsMultiplicative → (∀ (n : ℕ), 0 < n → 0 < (f : ℕ → ℝ) n) → (∀ (p : ℕ), Nat.Prime p → (StrictMono fun (m : ℕ) => (f : ℕ → ℝ) (p ^ m)) ∨ StrictAnti fun (m : ℕ) => (f : ℕ → ℝ) (p ^ m)) → IsLeast {T : ℕ | 0 < T ∧ ∀ (n : ℕ), 0 < n → x2611_15379_G k a b c (fun (n : ℕ) => (↑((f : ℕ → ℝ) n) : ℂ)) (n + T) = x2611_15379_G k a b c (fun (n : ℕ) => (↑((f : ℕ → ℝ) n) : ℂ)) n} (x2611_15379_monotonicPeriod k a b c)",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:18:15+0800"
+    }
+  ]
 }

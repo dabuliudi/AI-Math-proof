@@ -2958,5 +2958,1275 @@
   "owner": "x2611_15723_cycleShuffle_card",
   "type": "∀ {α : Type u_1} {β : Type u_2} {γ : Type u_3} (σ : Equiv.Perm α) (τ : Equiv.Perm β) (e : α → γ) (f : β → γ), Set.range e ∪ Set.range f = Set.univ → ∀ (π ρ : Equiv.Perm γ), (∀ (i : α), π (e i) = e (σ i)) → (∀ (j : β), π (f j) = f (τ j)) → (∀ (i : α), ρ (e i) = e (σ i)) → (∀ (j : β), ρ (f j) = f (τ j)) → π = ρ",
   "hash": "2877945076"
+ },
+ "x2611_10667_claim4_aux1": {
+  "owner": "x2611_10667_claim4",
+  "type": "∀ (K : Type u_1) [inst : Field K] (r : ℕ) [CharP K r] (a b c : K) (d e f : ℕ), a ≠ 0 → Mathlib2.x2611_10667_torus_regular (MvPolynomial.C a * MvPolynomial.X 0 ^ d * MvPolynomial.X 1 + MvPolynomial.C b * MvPolynomial.X 0 ^ e * MvPolynomial.X 1 ^ r + MvPolynomial.C c * MvPolynomial.X 0 ^ f)",
+  "hash": "3978903724"
+ },
+ "x2611_10667_claim4_aux2": {
+  "owner": "x2611_10667_claim4",
+  "type": "∀ (K : Type u_1) [inst : Field K] (a b w : K) (n : ℕ), a ≠ 0 → b ≠ 0 → w ≠ 0 → ↑n ≠ 0 → (Polynomial.C a * (Polynomial.C w + Polynomial.X ^ n * Polynomial.C b)).Separable",
+  "hash": "3287361226"
+ },
+ "x2611_10667_lemma4_1_wild_valuation_aux1": {
+  "owner": "x2611_10667_lemma4_1_wild_valuation",
+  "type": "∀ (l q p r : ℕ), Nat.Prime l → p ≠ 0 → r ≠ 0 → ∀ (a b c : ℤ), a ^ q + b ^ p + c ^ r = 0 → (a.gcd b).gcd c.natAbs = 1 → ↑l ∣ b → ¬↑l ∣ c",
+  "hash": "814738747"
+ },
+ "x2611_10667_lemma4_1_wild_valuation_aux2": {
+  "owner": "x2611_10667_lemma4_1_wild_valuation",
+  "type": "∀ (l m n : ℕ), Nat.Prime l → ∀ (b c : ℤ), b ≠ 0 → c ≠ 0 → ↑l ∣ b → ¬↑l ∣ c → ↑m ≤ padicValRat l (↑b ^ m / ↑c ^ n)",
+  "hash": "1567964145"
+ },
+ "x2611_12360_lem2_3_aux1": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (p : ℕ) (A : Set (AddCircle ↑p)), 0 ≤ Mathlib2.x2611_12360_gap p A ∧ Mathlib2.x2611_12360_gap p A ≤ ↑p",
+  "hash": "1527299058"
+ },
+ "x2611_12360_lem2_3_aux2": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ {ι : Type u_1} (p : ℕ) (f g : ι → ℝ) (c d : ℝ), c ≤ d → (∀ (i : ι), c ≤ g i - f i ∧ g i - f i ≤ d) → Mathlib2.x2611_12360_gap p (Set.range fun i => ↑(f i)) ≤ Mathlib2.x2611_12360_gap p (Set.range fun i => ↑(g i)) + (d - c)",
+  "hash": "1134070756"
+ },
+ "x2611_12360_lem2_3_aux3": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (p M : ℕ) (u : ℝ), 0 ≤ Mathlib2.x2611_12360_G p M u ∧ Mathlib2.x2611_12360_G p M u ≤ ↑p",
+  "hash": "2473523937"
+ },
+ "x2611_12360_lem2_3_aux4": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (M k : ℕ), 1 ≤ M → k < M → 0 ≤ ↑k * (↑M - 1 - ↑k) ∧ ↑k * (↑M - 1 - ↑k) ≤ ↑⌊(↑M - 1) ^ 2 / 4⌋",
+  "hash": "399713919"
+ },
+ "x2611_12360_lem2_3_aux5": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ {ι : Type u_1} (p : ℕ) (f g : ι → ℝ) (c d : ℝ), c ≤ d → (∀ (i : ι), c ≤ g i - f i ∧ g i - f i ≤ d) → |Mathlib2.x2611_12360_gap p (Set.range fun i => ↑(f i)) - Mathlib2.x2611_12360_gap p (Set.range fun i => ↑(g i))| ≤ d - c",
+  "hash": "3875317153"
+ },
+ "x2611_12360_lem2_3_aux6": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (p k : ℕ) (u β : ℝ), ↑(-(u + ↑p / 2) * ↑k ^ 2 - β * ↑k) = ↑(-u * ↑k ^ 2 - (β + ↑p / 2) * ↑k)",
+  "hash": "1593227651"
+ },
+ "x2611_12360_lem2_3_aux7": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (p M : ℕ) (u : ℝ), Mathlib2.x2611_12360_G p M (u + ↑p / 2) = Mathlib2.x2611_12360_G p M u",
+  "hash": "1179852499"
+ },
+ "x2611_12360_lem2_3_aux8": {
+  "owner": "x2611_12360_lem2_3",
+  "type": "∀ (p M : ℕ) (C : ℝ), 0 ≤ C → (∀ (k : Fin M), 0 ≤ ↑↑k * (↑M - 1 - ↑↑k) ∧ ↑↑k * (↑M - 1 - ↑↑k) ≤ C) → ∀ (u v : ℝ), u ≤ v → Mathlib2.x2611_12360_G p M u ≤ Mathlib2.x2611_12360_G p M v + C * (v - u) ∧ Mathlib2.x2611_12360_G p M v ≤ Mathlib2.x2611_12360_G p M u + C * (v - u)",
+  "hash": "481148417"
+ },
+ "x2611_15210_thm1_1_s1h1_aux1": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ (L : ℕ) (G : Type u_1) [inst : AddCommMonoid G] [inst_1 : Fintype G], (∀ (x : G), L • x = 0) → ∀ (a : Fin (Fintype.card G * L) → G), ∃ I, I.card = L ∧ ∑ i ∈ I, a i = 0",
+  "hash": "831486386"
+ },
+ "x2611_15210_thm1_1_s1h1_aux2": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ (L : ℕ) (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (x : G), L • x = 0) → ∀ {α : Type u_2} (s : Finset α) (a : α → G), Mathlib2.x2611_15210_s L G ≤ s.card → ∃ I ⊆ s, I.card = L ∧ ∑ i ∈ I, a i = 0",
+  "hash": "2978159448"
+ },
+ "x2611_15210_thm1_1_s1h1_aux3": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ {α : Type u_1} (P : Finset α → Prop) (c : ℕ), (∀ (s : Finset α), c < s.card → ∃ b ⊆ s, b.card = 2 ∧ P b) → ∀ (n : ℕ) (s : Finset α), 2 * n + c ≤ s.card + 1 → ∃ T, T.card = n ∧ (∀ b ∈ T, b ⊆ s ∧ b.card = 2 ∧ P b) ∧ (↑T).PairwiseDisjoint id",
+  "hash": "1219801337"
+ },
+ "x2611_15210_thm1_1_s1h1_aux4": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ (L : ℕ) (H : Type u_1) (G : Type u_2) (C : Type u_3) [inst : AddCommMonoid H] [Fintype H] [inst_2 : AddCommMonoid G] [inst_3 : Fintype C], (∀ (x : H), L • x = 0) → ∀ (f : H →+ G) (color : G → C), 0 < Fintype.card C → (∀ (x y : G), color x = color y → ∃ z, f z = x + y) → Mathlib2.x2611_15210_s (2 * L) G + 1 ≤ 2 * Mathlib2.x2611_15210_s L H + Fintype.card C",
+  "hash": "3320011795"
+ },
+ "x2611_15210_thm1_1_s1h1_aux5": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ (k : ℕ), ∃ f, ∀ (n : ℕ), f ↑n = 2 * ↑n",
+  "hash": "2451265222"
+ },
+ "x2611_15210_thm1_1_s1h1_aux6": {
+  "owner": "x2611_15210_thm1_1_s1h1",
+  "type": "∀ (k : ℕ) [NeZero (2 * k)] (f : ZMod k →+ ZMod (2 * k)), (∀ (n : ℕ), f ↑n = 2 * ↑n) → ∀ (x y : ZMod (2 * k)), x.val % 2 = y.val % 2 → ∃ z, f z = x + y",
+  "hash": "153020088"
+ },
+ "x2611_10667_eq13_singular_point_count_aux1": {
+  "owner": "x2611_10667_eq13_singular_point_count",
+  "type": "∀ (q r : ℕ), Nat.Prime r → ∀ (K : Type u_1) [inst : Field K] [CharP K r] (z : K), z ^ (q * r) = 1 ↔ z ^ q = 1",
+  "hash": "4217265166"
+ },
+ "x2611_10667_eq13_singular_point_count_aux2": {
+  "owner": "x2611_10667_eq13_singular_point_count",
+  "type": "∀ (q r : ℕ), 0 < q → Nat.Prime r → ∀ (K : Type u_1) [inst : Field K] [CharP K r] (ζ : K), IsPrimitiveRoot ζ q → {z | z ≠ 0 ∧ (Polynomial.X ^ (q * r) - 1).IsRoot z ∧ (Polynomial.derivative (Polynomial.X ^ (q * r) - 1)).IsRoot z}.ncard = q",
+  "hash": "1370373429"
+ },
+ "x2611_10667_table3_1_aux1": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (B C j : ℕ) (t : ℚ), j ≤ C + 1 → (Mathlib2.x2611_10667_p B C t).coeff (B + j) = (-1) ^ B * ((1 - t) ^ (↑C - ↑j) * (-t) ^ (↑j - 1) * ((if j = 0 then 0 else ↑(C.choose (j - 1))) - t * ↑((C + 1).choose j)))",
+  "hash": "3788920549"
+ },
+ "x2611_10667_table3_1_aux2": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (a b : ℚ), a ≠ 0 → padicValRat p a = 0 → b = 0 ∨ 0 < padicValRat p b → a + b ≠ 0 ∧ padicValRat p (a + b) = 0",
+  "hash": "1604225106"
+ },
+ "x2611_10667_table3_1_aux3": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (t : ℚ), 0 < padicValRat p (t - 1) → padicValRat p t = 0",
+  "hash": "4231542625"
+ },
+ "x2611_10667_table3_1_aux4": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (t : ℚ), t ≠ 0 → padicValRat p t = 0 → ∀ (a b : ℕ), ↑a - t * ↑b ≠ 0 → 0 ≤ padicValRat p (↑a - t * ↑b)",
+  "hash": "3815439034"
+ },
+ "x2611_10667_table3_1_aux5": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p B C j : ℕ) [Fact (Nat.Prime p)] (t : ℚ), t ≠ 0 → t ≠ 1 → padicValRat p t = 0 → j ≤ C + 1 → (if j = 0 then 0 else ↑(C.choose (j - 1))) - t * ↑((C + 1).choose j) ≠ 0 → (Mathlib2.x2611_10667_p B C t).coeff (B + j) ≠ 0 ∧ padicValRat p ((Mathlib2.x2611_10667_p B C t).coeff (B + j)) = (↑C - ↑j) * padicValRat p (t - 1) + padicValRat p ((if j = 0 then 0 else ↑(C.choose (j - 1))) - t * ↑((C + 1).choose j))",
+  "hash": "1424703153"
+ },
+ "x2611_10667_table3_1_aux6": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p : ℕ) [Fact (Nat.Prime p)] (t a : ℚ) (b : ℤ), a ≠ 0 → padicValRat p a = 0 → 0 < padicValRat p (t - 1) → a + ↑b * (t - 1) ≠ 0 ∧ padicValRat p (a + ↑b * (t - 1)) = 0",
+  "hash": "4021329780"
+ },
+ "x2611_10667_table3_1_aux7": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (B C : ℕ) (t : ℚ), t ≠ 0 → (Mathlib2.x2611_10667_p B C t).coeff B = (-1) ^ B * (1 - t) ^ C",
+  "hash": "3239463073"
+ },
+ "x2611_10667_table3_1_aux8": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (B C : ℕ) (t : ℚ), t ≠ 1 → (Mathlib2.x2611_10667_p B C t).coeff (B + C + 1) = (-1) ^ B * (-t) ^ C",
+  "hash": "1152072497"
+ },
+ "x2611_10667_table3_1_aux9": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p B C : ℕ) [Fact (Nat.Prime p)] (t : ℚ), 0 < C → t ≠ 0 → t ≠ 1 → 0 < padicValRat p (t - 1) → (Mathlib2.x2611_10667_p B C t).coeff (B + C) ≠ 0 ∧ padicValRat p ((Mathlib2.x2611_10667_p B C t).coeff (B + C)) = 0",
+  "hash": "131016958"
+ },
+ "x2611_10667_table3_1_aux10": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p B C : ℕ) [Fact (Nat.Prime p)] (t : ℚ), 2 ≤ C → ¬p ∣ C → t ≠ 0 → t ≠ 1 → 0 < padicValRat p (t - 1) → (Mathlib2.x2611_10667_p B C t).coeff (B + C - 1) ≠ 0 ∧ padicValRat p ((Mathlib2.x2611_10667_p B C t).coeff (B + C - 1)) = padicValRat p (t - 1)",
+  "hash": "364284091"
+ },
+ "x2611_10667_table3_1_aux11": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (p B C i : ℕ) [Fact (Nat.Prime p)] (t : ℚ), t ≠ 0 → t ≠ 1 → padicValRat p t = 0 → B ≤ i → i ≤ B + C → (Mathlib2.x2611_10667_p B C t).coeff i = 0 ∨ (↑(B + C) - ↑i) * padicValRat p (t - 1) ≤ padicValRat p ((Mathlib2.x2611_10667_p B C t).coeff i)",
+  "hash": "1501244231"
+ },
+ "x2611_10667_table3_1_aux12": {
+  "owner": "x2611_10667_table3_1",
+  "type": "∀ (q r C : ℕ), 2 < q → 2 < r → ∀ (m n : ℤ), n * ↑q - m * ↑r = 1 → ↑C ≡ m * ↑r + n * ↑q [ZMOD ↑(q * r)] → 0 < C → 2 ≤ C ∧ ¬r ∣ C",
+  "hash": "1629683494"
+ },
+ "x2611_16923_lemma2_6_aux1": {
+  "owner": "x2611_16923_lemma2_6",
+  "type": "∀ {r : ℕ} (k : Fin r → ℕ) (L : List (Fin r)), L.Nodup → ∀ (weak : Bool) (lower : ℕ) (upper : Option ℕ) (e : Fin r →₀ ℕ), Mathlib2.x2611_16923_li r weak lower upper (List.map (fun i => (k i, fun₀ | i => 1)) L) e = if (∀ i ∉ L, e i = 0) ∧ (∀ i ∈ L, lower ≤ e i) ∧ List.Pairwise (fun a b => if weak = true then a ≤ b else a < b) (List.map (⇑e) L) ∧ ∀ M ∈ upper, ∀ i ∈ L, e i < M then (List.map (fun i => (↑(e i) ^ k i)⁻¹) L).prod else 0",
+  "hash": "3800320573"
+ },
+ "x2611_16923_lemma2_6_aux2": {
+  "owner": "x2611_16923_lemma2_6",
+  "type": "∀ {σ : Type u_1} (f g : MvPowerSeries σ ℚ) (p : σ → Prop) (e : σ →₀ ℕ), (∀ (d : σ →₀ ℕ), f d ≠ 0 → ∀ (i : σ), ¬p i → d i = 0) → (∀ (d : σ →₀ ℕ), g d ≠ 0 → ∀ (i : σ), p i → d i = 0) → (f * g) e = f (Finsupp.filter p e) * g (Finsupp.filter (fun i => ¬p i) e)",
+  "hash": "4030169459"
+ },
+ "x2611_16923_lemma2_6_aux3": {
+  "owner": "x2611_16923_lemma2_6",
+  "type": "∀ {r : ℕ} (k : Fin r → ℕ) (A B : List (Fin r)), (A ++ B).Nodup → ∀ (N : ℕ) (e : Fin r →₀ ℕ), (Mathlib2.x2611_16923_li r false 1 none (List.map (fun i => (k i, fun₀ | i => 1)) A) * Mathlib2.x2611_16923_li r true N none (List.map (fun i => (k i, fun₀ | i => 1)) B.reverse)) e = if (∀ i ∉ A ++ B, e i = 0) ∧ (∀ i ∈ A, 1 ≤ e i) ∧ List.Pairwise (fun x1 x2 => x1 < x2) (List.map (⇑e) A) ∧ (∀ i ∈ B, N ≤ e i) ∧ List.Pairwise (fun x1 x2 => x1 ≥ x2) (List.map (⇑e) B) then (List.map (fun i => (↑(e i) ^ k i)⁻¹) (A ++ B)).prod else 0",
+  "hash": "4008971240"
+ },
+ "x2611_16923_lemma2_6_aux4": {
+  "owner": "x2611_16923_lemma2_6",
+  "type": "∀ (L : List ℕ) (M : ℕ), 1 ≤ M → ∀ (w : ℚ), (if (∀ a ∈ L, 1 ≤ a) ∧ List.Pairwise (fun x1 x2 => x1 < x2) L ∧ ∀ a ∈ L, a < M then w else 0) = ∑ j ∈ Finset.range (L.length + 1), (-1) ^ (L.length - j) * if (∀ a ∈ List.take j L, 1 ≤ a) ∧ List.Pairwise (fun x1 x2 => x1 < x2) (List.take j L) ∧ (∀ a ∈ List.drop j L, M ≤ a) ∧ List.Pairwise (fun x1 x2 => x1 ≥ x2) (List.drop j L) then w else 0",
+  "hash": "3055687488"
+ },
+ "x2611_15210_cor4_4_s1h1_aux1": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (B : Finset (Finset α)), (∀ I ∈ B, I.Nonempty) → ∃ T, Fintype.card α ≤ T.card + B.card ∧ ∀ I ∈ B, ¬I ⊆ T",
+  "hash": "2251183534"
+ },
+ "x2611_15210_cor4_4_s1h1_aux2": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} [inst : Fintype α] [inst_1 : Fintype S] (I : Finset α) (P : (↥I → S) → Prop), Nat.card { a // P fun i => a ↑i } = Nat.card { a // P a } * Fintype.card S ^ (Fintype.card α - I.card)",
+  "hash": "2765342295"
+ },
+ "x2611_15210_cor4_4_s1h1_aux3": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} {G : Type u_3} [inst : Fintype α] [inst_1 : Fintype S] [inst_2 : AddCommMonoid G] (I : Finset α) (L : ℕ), I.card = L → ∀ (p : S → G), Nat.card { a // ∑ i ∈ I, p (a i) = 0 } = Nat.card { v // ∑ i, p (v i) = 0 } * Fintype.card S ^ (Fintype.card α - L)",
+  "hash": "87699415"
+ },
+ "x2611_15210_cor4_4_s1h1_aux4": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ (M L : ℕ) (S : Type u_1) (G : Type u_2) [inst : Fintype S] [Nonempty S] [inst_2 : AddCommMonoid G] [inst_3 : DecidableEq G] (p : S → G) (θ : ℝ), θ = ↑(Nat.card { v // ∑ i, p (v i) = 0 }) / ↑(Fintype.card S) ^ L → ∃ a, ↑{I ∈ Finset.powersetCard L Finset.univ | ∑ i ∈ I, p (a i) = 0}.card ≤ ↑(M.choose L) * θ",
+  "hash": "3129697982"
+ },
+ "x2611_15210_cor4_4_s1h1_aux5": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ (M L : ℕ), 0 < L → ∀ (S : Type u_1) (G : Type u_2) [Fintype S] [Nonempty S] [inst : AddCommMonoid G] [inst_1 : DecidableEq G] (p : S → G) (a : Fin M → S) (A : ℝ), ↑{I ∈ Finset.powersetCard L Finset.univ | ∑ i ∈ I, p (a i) = 0}.card ≤ ↑M - A → ∃ N b, A ≤ ↑N ∧ ∀ (I : Finset (Fin N)), I.card = L → ∑ i ∈ I, p (b i) ≠ 0",
+  "hash": "3591080403"
+ },
+ "x2611_15210_cor4_4_s1h1_aux6": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ (L : ℕ), 4 ≤ L → 2 * (3 * ↑L / (4 * Real.exp 1)) ^ (L - 1) ≤ ↑L.factorial",
+  "hash": "889941225"
+ },
+ "x2611_15210_cor4_4_s1h1_aux7": {
+  "owner": "x2611_15210_cor4_4_s1h1",
+  "type": "∀ (L : ℕ), 4 ≤ L → ∀ (θ t : ℝ), 0 < θ → 0 < t → θ * t ^ (L - 1) = 1 → 1 ≤ ↑L / (4 * Real.exp 1) * t → ∃ M, 2 * (↑L / (4 * Real.exp 1) * t) ≤ ↑M ∧ ↑(M.choose L) * θ ≤ ↑M / 2",
+  "hash": "1930907478"
+ },
+ "x2611_11287_thm2_1_aux1": {
+  "owner": "x2611_11287_thm2_1",
+  "type": "∀ (n H : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)), Function.Injective fun x => (ModN.mkQ (2 * H + 1)) ⟨↑x, ⋯⟩",
+  "hash": "553731883"
+ },
+ "x2611_11287_thm2_1_aux2": {
+  "owner": "x2611_11287_thm2_1",
+  "type": "∀ (n H : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)), {A | A ∈ S ∧ ∀ (i j : Fin n), |A i j| ≤ ↑H}.Finite ∧ Mathlib2.x2611_11287_lattice_count S ↑H ≤ (2 * H + 1) ^ Module.finrank ℤ ↥S",
+  "hash": "3791829533"
+ },
+ "x2611_11287_thm2_1_aux3": {
+  "owner": "x2611_11287_thm2_1",
+  "type": "∀ (n k M L H : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)) (b : Module.Basis (Fin k) ℤ ↥S), (∀ (t : Fin k) (i j : Fin n), (↑(b t) i j).natAbs ≤ M) → k * L * M ≤ H → (L + 1) ^ k ≤ Mathlib2.x2611_11287_lattice_count S ↑H",
+  "hash": "2439680305"
+ },
+ "x2611_11287_thm2_1_aux4": {
+  "owner": "x2611_11287_thm2_1",
+  "type": "∀ (n k : ℕ) (S : Submodule ℤ (Matrix (Fin n) (Fin n) ℤ)) (b : Module.Basis (Fin k) ℤ ↥S), ∃ C, 0 < C ∧ ∀ (H : ℕ), (H / C + 1) ^ k ≤ Mathlib2.x2611_11287_lattice_count S ↑H",
+  "hash": "1837446671"
+ },
+ "x2611_10200_lem4_1_aux1": {
+  "owner": "x2611_10200_lem4_1",
+  "type": "∀ (f : ℤ → ℤ) (L : ℕ) (N c : ℤ), 3 ≤ L → 0 < N → 0 < N + c → (∀ m < ↑L, 0 ≤ f m) → (∀ (m : ℤ), 0 ≤ m → m < ↑L - 1 → 0 < f m) → f 0 = 1 → (c < 0 → 3 ≤ f 1) → (∀ (m : ℤ), ↑L ≤ m → f m = f (m - 1) + N * f (m - ↑L) + c) → (∀ (m : ℤ), 0 ≤ f m) ∧ ∀ (m : ℤ), ↑L ≤ m → 0 < f m",
+  "hash": "3623044881"
+ },
+ "x2611_10200_two_unit_formulas_aux1": {
+  "owner": "x2611_10200_two_unit_formulas",
+  "type": "∀ (m : ℕ), Mathlib2.x2611_10200_a 2 ↑m = ↑(Nat.fib (m + 5)) - ↑m - 4",
+  "hash": "4136605461"
+ },
+ "x2611_15210_rem4_3_aux1": {
+  "owner": "x2611_15210_rem4_3",
+  "type": "Filter.Tendsto (fun m => Real.log ↑m.centralBinom / ↑m) Filter.atTop (nhds (Real.log 4))",
+  "hash": "93448113"
+ },
+ "x2611_15210_rem4_3_aux2": {
+  "owner": "x2611_15210_rem4_3",
+  "type": "∀ (a b : ℝ), 0 ≤ a → 0 < b → Filter.Tendsto (fun m => Real.log (a + b * ↑m.centralBinom) / ↑m) Filter.atTop (nhds (Real.log 4))",
+  "hash": "1610103920"
+ },
+ "x2611_15210_rem4_3_aux3": {
+  "owner": "x2611_15210_rem4_3",
+  "type": "Filter.Tendsto Mathlib2.x2611_15210_rho Filter.atTop (nhds ((9 / 2) ^ (1 / 5)))",
+  "hash": "607264132"
+ },
+ "x2611_14160_remark3_4_aux1": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ {A : Type u_1} {B : Type u_2} {W : Type u_3} {R : Type u_4} [inst : Fintype A] [inst_1 : Fintype B] [inst_2 : AddCommMonoid R] (w : Sym2 W → R) (f : A ⊕ B ↪ W), Mathlib2.x2611_14160_copyWeight (completeBipartiteGraph A B) w f = ∑ a, ∑ b, w s(f (Sum.inl a), f (Sum.inr b))",
+  "hash": "3101212159"
+ },
+ "x2611_14160_remark3_4_aux2": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ (p : ℕ), 0 < p → ∃ N, Mathlib2.x2611_14160_zeroSumForces (completeBipartiteGraph (Fin p) (Fin p)) p N",
+  "hash": "3725422663"
+ },
+ "x2611_14160_remark3_4_aux3": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] (G : SimpleGraph V) (m : ℕ) {N M : ℕ}, N ≤ M → Mathlib2.x2611_14160_zeroSumForces G m N → Mathlib2.x2611_14160_zeroSumForces G m M",
+  "hash": "924659586"
+ },
+ "x2611_14160_remark3_4_aux4": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ {ι : Type u_1} [inst : Fintype ι] (p : ℕ), Fintype.card ι = p → ∀ (P : ι → Prop) [inst_1 : DecidablePred P], (∑ i, if P i then 1 else 0) = 0 → (∀ (i : ι), P i) ∨ ∀ (i : ι), ¬P i",
+  "hash": "3879751639"
+ },
+ "x2611_14160_remark3_4_aux5": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ {A : Type u_1} {B : Type u_2} {W : Type u_3} {R : Type u_4} [inst : Fintype A] [inst_1 : Fintype B] [inst_2 : AddCommMonoid R] [inst_3 : DecidableEq W] (f : A ⊕ B ↪ W) (x y : A ⊕ B) (t : R), (∑ i, ∑ j, if s(f (Sum.inl i), f (Sum.inr j)) = s(f x, f y) then t else 0) = if x.isLeft = y.isLeft then 0 else t",
+  "hash": "1290333894"
+ },
+ "x2611_14160_remark3_4_aux6": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ (p : ℕ), Nat.Prime p → ∀ (t : ZMod p), ¬IsSquare t → ∃ w, ∀ (f : Fin p ⊕ Fin p ↪ Fin p ⊕ Fin p), Mathlib2.x2611_14160_copyWeight (completeBipartiteGraph (Fin p) (Fin p)) w f ≠ 0",
+  "hash": "4279430315"
+ },
+ "x2611_14160_remark3_4_aux7": {
+  "owner": "x2611_14160_remark3_4",
+  "type": "∀ (p : ℕ), Nat.Prime p → Odd p → ¬Mathlib2.x2611_14160_zeroSumForces (completeBipartiteGraph (Fin p) (Fin p)) p (2 * p)",
+  "hash": "572399513"
+ },
+ "x2611_15210_lem2_1_aux1": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ {α : Type u_1} {G : Type u_2} [inst : Fintype α] [inst_1 : Fintype G] [inst_2 : DecidableEq α] [DecidableEq G] (μ : G → ℝ), ∑ g, μ g = 1 → ∑ a, ∏ i, μ (a i) = 1",
+  "hash": "4031214424"
+ },
+ "x2611_15210_lem2_1_aux2": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ {α : Type u_1} {G : Type u_2} [inst : Fintype α] [inst_1 : Fintype G] [inst_2 : DecidableEq α] [DecidableEq G] (μ : G → ℝ), ∑ g, μ g = 1 → ∀ (I : Finset α) (P : (↥I → G) → Prop) [inst_4 : DecidablePred P], (∑ a, if P fun i => a ↑i then ∏ i, μ (a i) else 0) = ∑ a, if P a then ∏ i, μ (a i) else 0",
+  "hash": "559761483"
+ },
+ "x2611_15210_lem2_1_aux3": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ {α : Type u_1} {G : Type u_2} [inst : Fintype α] [inst_1 : Fintype G] [inst_2 : DecidableEq α] [inst_3 : DecidableEq G] [inst_4 : AddCommMonoid G] (μ : G → ℝ), ∑ g, μ g = 1 → ∀ (L : ℕ) (I : Finset α), I.card = L → (∑ a, if ∑ i ∈ I, a i = 0 then ∏ i, μ (a i) else 0) = ∑ a, if ∑ i, a i = 0 then ∏ i, μ (a i) else 0",
+  "hash": "1705467247"
+ },
+ "x2611_15210_lem2_1_aux4": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ (M L : ℕ) (G : Type u_1) [inst : Fintype G] [inst_1 : AddCommMonoid G] [inst_2 : DecidableEq G] (μ : G → ℝ), (∀ (g : G), 0 ≤ μ g) → ∑ g, μ g = 1 → ∀ (θ : ℝ), (∑ a, if ∑ i, a i = 0 then ∏ i, μ (a i) else 0) = θ → ∃ a, ↑{I ∈ Finset.powersetCard L Finset.univ | ∑ i ∈ I, a i = 0}.card ≤ ↑(M.choose L) * θ",
+  "hash": "3961044494"
+ },
+ "x2611_15210_lem2_1_aux5": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ (L : ℕ) (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), L • g = 0) → ∀ (n : ℕ) (a : Fin n → G), (∀ (I : Finset (Fin n)), I.card = L → ∑ i ∈ I, a i ≠ 0) → n ≤ Mathlib2.x2611_15210_A L G",
+  "hash": "3889161821"
+ },
+ "x2611_15210_lem2_1_aux6": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) [inst : AddCommMonoid G] [inst_1 : Fintype G] [inst_2 : DecidableEq G], (∀ (g : G), L • g = 0) → ∀ (μ : G → ℝ), (∀ (g : G), 0 ≤ μ g) → ∑ g, μ g = 1 → ∀ (θ : ℝ), (∑ a, if ∑ i, a i = 0 then ∏ i, μ (a i) else 0) = θ → ∀ (M : ℕ) (A : ℝ), ↑(M.choose L) * θ ≤ ↑M - A → A ≤ ↑(Mathlib2.x2611_15210_A L G)",
+  "hash": "2620942104"
+ },
+ "x2611_15210_lem2_1_aux7": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ (L : ℕ), 2 ≤ L → ∀ (θ : ℝ), 0 < θ → θ * (θ ^ (-1 / (↑L - 1))) ^ (L - 1) = 1",
+  "hash": "943956079"
+ },
+ "x2611_15210_lem2_1_aux8": {
+  "owner": "x2611_15210_lem2_1",
+  "type": "∀ (L : ℕ), 2 ≤ L → ∀ (θ D : ℝ), 0 < θ → D = ↑(L - 1).factorial ^ (1 / (↑L - 1)) → ∀ (N : ℕ), N = ⌊D * θ ^ (-1 / (↑L - 1))⌋₊ → ↑(N.choose L) * θ ≤ ↑N / ↑L",
+  "hash": "663420063"
+ },
+ "x2611_15210_lem2_2_aux1": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), L • g = 0) → {s | ∀ (a : Fin s → G), ∃ I, I.card = L ∧ ∑ i ∈ I, a i = 0}.Nonempty",
+  "hash": "3736961677"
+ },
+ "x2611_15210_lem2_2_aux2": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), L • g = 0) → ∀ (N : ℕ) (a : Fin N → G), (∀ (I : Finset (Fin N)), I.card = L → ∑ i ∈ I, a i ≠ 0) → N ≤ Mathlib2.x2611_15210_A L G",
+  "hash": "168541044"
+ },
+ "x2611_15210_lem2_2_aux3": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), L • g = 0) → ∃ a, ∀ (I : Finset (Fin (Mathlib2.x2611_15210_A L G))), I.card = L → ∑ i ∈ I, a i ≠ 0",
+  "hash": "4294629946"
+ },
+ "x2611_15210_lem2_2_aux4": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (n : ℕ) (α : Type u_1) (I : Finset α) (f : α → Bool), I.card = n → (∑ i ∈ I, if f i = true then 1 else 0) = 0 → ∀ i ∈ I, ∀ j ∈ I, f i = f j",
+  "hash": "1887131227"
+ },
+ "x2611_15210_lem2_2_aux5": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), L • g = 0) → ∀ (α : Type u_2) [inst_2 : Fintype α] (a : α → G), (∀ (I : Finset α), I.card = L → ∑ i ∈ I, a i ≠ 0) → Fintype.card α ≤ Mathlib2.x2611_15210_A L G",
+  "hash": "2124289736"
+ },
+ "x2611_15210_lem2_2_aux6": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (L : ℕ), 0 < L → ∀ (G : Type u_1) (H : Type u_2) [inst : AddCommMonoid G] [Fintype G] [inst_2 : AddCommMonoid H] [Fintype H], (∀ (g : G), L • g = 0) → (∀ (h : H), L • h = 0) → Mathlib2.x2611_15210_A L G ≤ Mathlib2.x2611_15210_A L (G × H)",
+  "hash": "1524957473"
+ },
+ "x2611_15210_lem2_2_aux7": {
+  "owner": "x2611_15210_lem2_2",
+  "type": "∀ (n : ℕ), 0 < n → ∀ (G : Type u_1) [inst : AddCommMonoid G] [Fintype G], (∀ (g : G), n • g = 0) → ∀ (d : ℕ), 2 ^ d * Mathlib2.x2611_15210_A n G ≤ Mathlib2.x2611_15210_A n (G × (Fin d → ZMod n))",
+  "hash": "770712547"
+ },
+ "x2611_16338_lower_bound_aux1": {
+  "owner": "x2611_16338_lower_bound",
+  "type": "∀ {V : Type u_1} (G : SimpleGraph V) (s : ℕ) (φ : V → ℕ) (ψ : Sym2 V → ℕ), Mathlib2.x2611_16338_totalLabeling G s φ ψ → ∀ e ∈ G.edgeSet, 3 ≤ Mathlib2.x2611_16338_vertexSum φ e + ψ e ∧ Mathlib2.x2611_16338_vertexSum φ e + ψ e ≤ 3 * s",
+  "hash": "1580426568"
+ },
+ "x2611_16338_lower_bound_aux2": {
+  "owner": "x2611_16338_lower_bound",
+  "type": "∀ {V : Type u_1} [Fintype V] (G : SimpleGraph V), ∃ s, 0 < s ∧ ∃ φ ψ, Mathlib2.x2611_16338_totalLabeling G s φ ψ",
+  "hash": "3588710188"
+ },
+ "x2611_16338_lower_bound_aux3": {
+  "owner": "x2611_16338_lower_bound",
+  "type": "∀ {V : Type u_1} [Fintype V] (G : SimpleGraph V) (s : ℕ), 0 < s → ∀ (φ : V → ℕ) (ψ : Sym2 V → ℕ), Mathlib2.x2611_16338_totalLabeling G s φ ψ → G.edgeSet.ncard + 2 ≤ 3 * s",
+  "hash": "3049596359"
+ },
+ "x2611_16338_lower_bound_aux4": {
+  "owner": "x2611_16338_lower_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (s : ℕ), 0 < s → ∀ (φ : V → ℕ) (ψ : Sym2 V → ℕ), Mathlib2.x2611_16338_totalLabeling G s φ ψ → G.maxDegree + 1 ≤ 2 * s",
+  "hash": "1378123207"
+ },
+ "x2611_15210_thm4_2_aux1": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 0 < m → Odd m → ∀ (n : Fin 9 → ℕ), ∑ a, n a = 2 * m → m ∣ n 6 + n 7 + n 8 → m ∣ n 3 + n 4 + n 5 → m ∣ n 1 + n 2 + n 4 + n 5 + n 7 + n 8 → m ∣ n 1 + n 2 + n 3 + n 5 + n 6 + n 8 → m ∣ n 2 + n 5 + n 6 → ∀ (a : Fin 9), m ∣ n a",
+  "hash": "2327966626"
+ },
+ "x2611_15210_thm4_2_aux2": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 0 < m → Odd m → ∃ p, (∀ (a : Fin 9) (j : Fin 5), p a j = 0 ∨ p a j = 1) ∧ Nat.card { v // ∑ i, p (v i) = 0 } = 9 + 36 * (2 * m).choose m",
+  "hash": "2238714236"
+ },
+ "x2611_15210_thm4_2_aux3": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 0 < m → Odd m → ∀ (t : ℕ), ∃ p, (∀ (a : Fin t → Fin 9) (j : Fin (5 * t)), p a j = 0 ∨ p a j = 1) ∧ Nat.card { v // ∑ i, p (v i) = 0 } = (9 + 36 * (2 * m).choose m) ^ t",
+  "hash": "1808278874"
+ },
+ "x2611_15210_thm4_2_aux4": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), ↑((2 * (m + 1)).choose (m + 1)) ≤ 4 * ↑((2 * m).choose m)",
+  "hash": "2414887046"
+ },
+ "x2611_15210_thm4_2_aux5": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 3 ≤ m → Mathlib2.x2611_15210_rho 3 ≤ Mathlib2.x2611_15210_rho m",
+  "hash": "3753555301"
+ },
+ "x2611_15210_thm4_2_aux6": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 1 ≤ m → 0 ≤ Mathlib2.x2611_15210_rho m ∧ Mathlib2.x2611_15210_rho m ≤ 9 ^ (1 / 5)",
+  "hash": "71949627"
+ },
+ "x2611_15210_thm4_2_aux7": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (L : ℕ), 2 ≤ L → ∀ (S : Type u_1) (G : Type u_2) [Fintype S] [Nonempty S] [inst : AddCommMonoid G] [DecidableEq G] (p : S → G) (θ : ℝ), 0 < θ → θ = ↑(Nat.card { v // ∑ i, p (v i) = 0 }) / ↑(Nat.card S) ^ L → ∃ N a, (1 - 1 / ↑L) * ↑⌊↑(L - 1).factorial ^ (1 / (↑L - 1)) * θ ^ (-1 / (↑L - 1))⌋₊ ≤ ↑N ∧ ∀ (I : Finset (Fin N)), I.card = L → ∑ i ∈ I, p (a i) ≠ 0",
+  "hash": "3279540769"
+ },
+ "x2611_15210_thm4_2_aux8": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (t : ℕ), Mathlib2.x2611_15210_binary_witness m (5 * t) (2 * m) ((1 - 1 / (2 * ↑m)) * ↑⌊↑(2 * m - 1).factorial ^ (1 / (2 * ↑m - 1)) * Mathlib2.x2611_15210_rho m ^ (5 * t)⌋₊) ∧ Mathlib2.x2611_15210_binary_witness m (5 * t) (2 * m) (↑m / (2 * Real.exp 1) * Mathlib2.x2611_15210_rho m ^ (5 * t))",
+  "hash": "1617887297"
+ },
+ "x2611_15210_thm4_2_aux9": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (x : ℝ), 0 ≤ x → x ≤ 9 ^ (1 / 5) → ∀ u ≤ 4, x ^ u ≤ 6",
+  "hash": "812109346"
+ },
+ "x2611_15210_thm4_2_aux10": {
+  "owner": "x2611_15210_thm4_2",
+  "type": "∀ (m : ℕ), 2 ≤ m → (∀ (t : ℕ), Mathlib2.x2611_15210_binary_witness m (5 * t) (2 * m) (↑m / (2 * Real.exp 1) * Mathlib2.x2611_15210_rho m ^ (5 * t))) → ∀ (r : ℕ), Mathlib2.x2611_15210_binary_witness m r (2 * m) (↑m / (12 * Real.exp 1) * Mathlib2.x2611_15210_rho m ^ r)",
+  "hash": "3975563298"
+ },
+ "x2611_16338_balanced_counts_aux1": {
+  "owner": "x2611_16338_balanced_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (f : V → ℤ) (w : Sym2 V → ℤ), (∀ (u v : V), w s(u, v) = f u + f v) → ∑ e ∈ G.edgeFinset, w e = ∑ v, ↑(G.degree v) * f v",
+  "hash": "1350908398"
+ },
+ "x2611_16338_cubic_incidence_counts_aux1": {
+  "owner": "x2611_16338_cubic_incidence_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V), ∑ v ∈ U, G.degree v = ∑ e ∈ G.edgeFinset, (e.toFinset ∩ U).card",
+  "hash": "3209703903"
+ },
+ "x2611_16338_cubic_incidence_counts_aux2": {
+  "owner": "x2611_16338_cubic_incidence_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] (G : SimpleGraph V) [inst_1 : DecidableRel G.Adj] (φ : V → ℕ) (r : ℕ), (Mathlib2.x2611_16338_edgeClass G φ r).ncard = ∑ e ∈ G.edgeFinset, if Mathlib2.x2611_16338_vertexSum φ e = r then 1 else 0",
+  "hash": "1325570091"
+ },
+ "x2611_16338_cubic_incidence_counts_aux3": {
+  "owner": "x2611_16338_cubic_incidence_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (s : ℕ), 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → ∀ e ∈ G.edgeFinset, (((if Mathlib2.x2611_16338_vertexSum φ e = 2 then 1 else 0) + if Mathlib2.x2611_16338_vertexSum φ e = s + 1 then 1 else 0) + if Mathlib2.x2611_16338_vertexSum φ e = 2 * s then 1 else 0) = 1 ∧ (e.toFinset ∩ U).card = (2 * if Mathlib2.x2611_16338_vertexSum φ e = 2 then 1 else 0) + if Mathlib2.x2611_16338_vertexSum φ e = s + 1 then 1 else 0",
+  "hash": "4039412495"
+ },
+ "x2611_16338_cubic_incidence_counts_aux4": {
+  "owner": "x2611_16338_cubic_incidence_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (s : ℕ), 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → (Mathlib2.x2611_16338_edgeClass G φ 2).ncard + (Mathlib2.x2611_16338_edgeClass G φ (s + 1)).ncard + (Mathlib2.x2611_16338_edgeClass G φ (2 * s)).ncard = G.edgeSet.ncard ∧ ∑ v ∈ U, G.degree v = 2 * (Mathlib2.x2611_16338_edgeClass G φ 2).ncard + (Mathlib2.x2611_16338_edgeClass G φ (s + 1)).ncard",
+  "hash": "1311914236"
+ },
+ "x2611_15210_lem4_1_aux1": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m n : ℕ), 0 < m → n ≤ 2 * m → m ∣ n → n = 0 ∨ n = m ∨ n = 2 * m",
+  "hash": "1768698364"
+ },
+ "x2611_15210_lem4_1_aux2": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ) (c : Fin 9 → ℕ), (∑ i, c i • fun j => ↑(Mathlib2.x2611_15210_P i j)) = 0 ↔ m ∣ c 6 + c 7 + c 8 ∧ m ∣ c 3 + c 4 + c 5 ∧ m ∣ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 ∧ m ∣ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 ∧ m ∣ c 2 + c 5 + c 6",
+  "hash": "3223847117"
+ },
+ "x2611_15210_lem4_1_aux3": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 0 < m → ∀ (c : Fin 9 → ℕ), ∑ i, c i = 2 * m → c 6 + c 7 + c 8 = 0 → c 3 + c 4 + c 5 = 0 ∨ c 3 + c 4 + c 5 = m ∨ c 3 + c 4 + c 5 = 2 * m → c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 0 ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = m ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 2 * m → c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 0 ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = m ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 2 * m → c 2 + c 5 + c 6 = 0 ∨ c 2 + c 5 + c 6 = m ∨ c 2 + c 5 + c 6 = 2 * m → ((∃ i, c i = 2 * m ∧ ∀ (j : Fin 9), j ≠ i → c j = 0) ∨ ∃ i j, i ≠ j ∧ c i = m ∧ c j = m ∧ ∀ (k : Fin 9), k ≠ i → k ≠ j → c k = 0) ∨ ∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0",
+  "hash": "1908292058"
+ },
+ "x2611_15210_lem4_1_aux4": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 0 < m → ∀ (c : Fin 9 → ℕ), ∑ i, c i = 2 * m → c 6 + c 7 + c 8 = m → c 3 + c 4 + c 5 = 0 ∨ c 3 + c 4 + c 5 = m ∨ c 3 + c 4 + c 5 = 2 * m → c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 0 ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = m ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 2 * m → c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 0 ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = m ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 2 * m → c 2 + c 5 + c 6 = 0 ∨ c 2 + c 5 + c 6 = m ∨ c 2 + c 5 + c 6 = 2 * m → ((∃ i, c i = 2 * m ∧ ∀ (j : Fin 9), j ≠ i → c j = 0) ∨ ∃ i j, i ≠ j ∧ c i = m ∧ c j = m ∧ ∀ (k : Fin 9), k ≠ i → k ≠ j → c k = 0) ∨ ∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0",
+  "hash": "3566341306"
+ },
+ "x2611_15210_lem4_1_aux5": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 0 < m → ∀ (c : Fin 9 → ℕ), ∑ i, c i = 2 * m → c 6 + c 7 + c 8 = 2 * m → c 3 + c 4 + c 5 = 0 ∨ c 3 + c 4 + c 5 = m ∨ c 3 + c 4 + c 5 = 2 * m → c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 0 ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = m ∨ c 1 + c 2 + c 4 + c 5 + c 7 + c 8 = 2 * m → c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 0 ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = m ∨ c 1 + c 2 + c 3 + c 5 + c 6 + c 8 = 2 * m → c 2 + c 5 + c 6 = 0 ∨ c 2 + c 5 + c 6 = m ∨ c 2 + c 5 + c 6 = 2 * m → ((∃ i, c i = 2 * m ∧ ∀ (j : Fin 9), j ≠ i → c j = 0) ∨ ∃ i j, i ≠ j ∧ c i = m ∧ c j = m ∧ ∀ (k : Fin 9), k ≠ i → k ≠ j → c k = 0) ∨ ∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0",
+  "hash": "1929145820"
+ },
+ "x2611_15210_lem4_1_aux6": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 2 ≤ m → ∀ (c : Fin 9 → ℕ), ∑ i, c i = 2 * m → (∑ i, c i • fun j => ↑(Mathlib2.x2611_15210_P i j)) = 0 → ((∃ i, c i = 2 * m ∧ ∀ (j : Fin 9), j ≠ i → c j = 0) ∨ ∃ i j, i ≠ j ∧ c i = m ∧ c j = m ∧ ∀ (k : Fin 9), k ≠ i → k ≠ j → c k = 0) ∨ ∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0",
+  "hash": "2095636234"
+ },
+ "x2611_15210_lem4_1_aux7": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ) (c : Fin 9 → ℕ), ((∃ i, c i = 2 * m ∧ ∀ (j : Fin 9), j ≠ i → c j = 0) ∨ ∃ i j, i ≠ j ∧ c i = m ∧ c j = m ∧ ∀ (k : Fin 9), k ≠ i → k ≠ j → c k = 0) → ∀ (i : Fin 9), m ∣ c i",
+  "hash": "3019719865"
+ },
+ "x2611_15210_lem4_1_aux8": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ) (c : Fin 9 → ℕ), (∀ (i : Fin 9), m ∣ c i) → (∑ i, c i • fun j => ↑(Mathlib2.x2611_15210_P i j)) = 0",
+  "hash": "618761475"
+ },
+ "x2611_15210_lem4_1_aux9": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 0 < m → ∀ (c : Fin 9 → ℕ), (∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0) → ∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), ↑(c i) / ↑m = if i ∈ S then 1 / 2 else 0",
+  "hash": "4249357943"
+ },
+ "x2611_15210_lem4_1_aux10": {
+  "owner": "x2611_15210_lem4_1",
+  "type": "∀ (m : ℕ), 0 < m → ∀ (c : Fin 9 → ℕ), (∃ S, (S = {0, 1, 3, 4} ∨ S = {0, 2, 6, 7} ∨ S = {3, 5, 6, 8}) ∧ ∀ (i : Fin 9), 2 * c i = if i ∈ S then m else 0) → Even m ∧ (0 < c 0 ∨ 0 < c 6)",
+  "hash": "751267241"
+ },
+ "x2611_16338_final_distribution_aux1": {
+  "owner": "x2611_16338_final_distribution",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (f : V → ℕ), ∑ v, f v * G.degree v = ∑ e ∈ G.edgeFinset, Mathlib2.x2611_16338_vertexSum f e",
+  "hash": "148457209"
+ },
+ "x2611_16338_final_distribution_aux2": {
+  "owner": "x2611_16338_final_distribution",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (p q : ℕ), p ≠ q → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then p else q) → ∑ v ∈ U, G.degree v = 2 * (Mathlib2.x2611_16338_edgeClass G φ (2 * p)).ncard + (Mathlib2.x2611_16338_edgeClass G φ (p + q)).ncard",
+  "hash": "536235136"
+ },
+ "x2611_16338_swap_decrement_aux1": {
+  "owner": "x2611_16338_swap_decrement",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V), (SimpleGraph.induce (↑U) G).edgeSet.ncard = {e ∈ G.edgeFinset | e.toFinset ⊆ U}.card",
+  "hash": "520984926"
+ },
+ "x2611_16338_swap_decrement_aux2": {
+  "owner": "x2611_16338_swap_decrement",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V) (u : V), {e ∈ G.edgeFinset | e.toFinset ⊆ U.erase u} = {e ∈ G.edgeFinset | e.toFinset ⊆ U} \\ G.incidenceFinset u",
+  "hash": "684776835"
+ },
+ "x2611_16338_swap_decrement_aux3": {
+  "owner": "x2611_16338_swap_decrement",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V) (v : V), (∀ (w : V), G.Adj v w → w ∉ U) → {e ∈ G.edgeFinset | e.toFinset ⊆ insert v U} = {e ∈ G.edgeFinset | e.toFinset ⊆ U}",
+  "hash": "2467609434"
+ },
+ "x2611_16338_swap_decrement_aux4": {
+  "owner": "x2611_16338_swap_decrement",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V), ∀ u ∈ U, (∀ (w : V), G.Adj u w → w ∈ U) → G.incidenceFinset u ⊆ {e ∈ G.edgeFinset | e.toFinset ⊆ U}",
+  "hash": "2364130332"
+ },
+ "x2611_16338_initial_subset_aux1": {
+  "owner": "x2611_16338_initial_subset",
+  "type": "∀ {V : Type u_1} [Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst : DecidableRel G.Adj] {U W : Finset V}, U ⊆ W → (SimpleGraph.induce (↑U) G).edgeFinset.card ≤ (SimpleGraph.induce (↑W) G).edgeFinset.card",
+  "hash": "7034640"
+ },
+ "x2611_16338_initial_subset_aux2": {
+  "owner": "x2611_16338_initial_subset",
+  "type": "∀ {V : Type u_1} [Fintype V] [inst : DecidableEq V] (G : SimpleGraph V) [inst_1 : DecidableRel G.Adj] (U : Finset V) {u v : V}, u ∈ U → v ∉ U → G.Adj u v → (SimpleGraph.induce (↑U) G).edgeFinset.card < (SimpleGraph.induce (↑(insert v U)) G).edgeFinset.card",
+  "hash": "3401210773"
+ },
+ "x2611_16338_initial_subset_aux3": {
+  "owner": "x2611_16338_initial_subset",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], (∀ (v : V), 2 ≤ G.degree v) → ∀ (U : Finset V), (∀ u ∈ U, ∀ (v : V), G.Adj u v → v ∈ U) → U.card ≤ (SimpleGraph.induce (↑U) G).edgeFinset.card",
+  "hash": "2459422876"
+ },
+ "x2611_16338_initial_subset_aux4": {
+  "owner": "x2611_16338_initial_subset",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], (∀ (v : V), 2 ≤ G.degree v) → ∀ k ≤ Fintype.card V, ∃ U, U.card = k ∧ k ≤ (SimpleGraph.induce (↑U) G).edgeFinset.card + 1",
+  "hash": "689311798"
+ },
+ "x2611_16338_relabel_one_counts_aux1": {
+  "owner": "x2611_16338_relabel_one_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (u : V) (f : Sym2 V → ℕ), ∑ e ∈ G.incidenceFinset u, f e = ∑ v ∈ G.neighborFinset u, f s(u, v)",
+  "hash": "3455465967"
+ },
+ "x2611_16338_relabel_one_counts_aux2": {
+  "owner": "x2611_16338_relabel_one_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (φ ψ : V → ℕ) (u : V), (∀ (v : V), v ≠ u → ψ v = φ v) → ∀ (r : ℕ), ((Mathlib2.x2611_16338_edgeClass G ψ r).ncard + ∑ v ∈ G.neighborFinset u, if φ u + φ v = r then 1 else 0) = (Mathlib2.x2611_16338_edgeClass G φ r).ncard + ∑ v ∈ G.neighborFinset u, if ψ u + ψ v = r then 1 else 0",
+  "hash": "1827940101"
+ },
+ "x2611_16338_relabel_one_counts_aux3": {
+  "owner": "x2611_16338_relabel_one_counts",
+  "type": "∀ {V : Type u_1} [inst : DecidableEq V] (N U : Finset V) (φ : V → ℕ) (s t r : ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → (∑ v ∈ N, if t + φ v = r then 1 else 0) = ({x ∈ N | x ∈ U}.card * if t + 1 = r then 1 else 0) + {x ∈ N | x ∉ U}.card * if t + s = r then 1 else 0",
+  "hash": "2658775033"
+ },
+ "x2611_16338_relabel_one_counts_aux4": {
+  "owner": "x2611_16338_relabel_one_counts",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (u : V) (U : Finset V), G.degree u = 3 → (∃! v, G.Adj u v ∧ v ∈ U) → {x ∈ G.neighborFinset u | x ∈ U}.card = 1 ∧ {x ∈ G.neighborFinset u | x ∉ U}.card = 2",
+  "hash": "265791621"
+ },
+ "x2611_15379_cor1_2_zero_aux1": {
+  "owner": "x2611_15379_cor1_2_zero",
+  "type": "∀ (k a b c n : ℕ), Mathlib2.x2611_15379_G k a b c (fun n => ↑((↑n).rpow 0)) n = 1",
+  "hash": "4254794257"
+ },
+ "x2611_15210_lem5_1_aux1": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (k : ℕ), Odd k → ∀ (F : Type u_1) [inst : Field F] [inst_1 : Fintype F], Fintype.card F = 3 ^ k → ¬IsSquare (-1)",
+  "hash": "3487087922"
+ },
+ "x2611_15210_lem5_1_aux2": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (f : ℕ → R), f 0 = 0 → f 1 = 0 → f 2 = 0 → f 3 = 0 → f 4 = 0 → (Matrix.of fun i j => f (↑i + ↑j)).det = -f 5 ^ 6",
+  "hash": "3632872271"
+ },
+ "x2611_15210_lem5_1_aux3": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3], ¬IsSquare (-1) → ∀ (x : Fin 6 → F), ∑ i, x i = 0 → ∑ i, x i ^ 2 = 0 → ∑ i, x i ^ 4 = 0 → ∃ i j, x i = x j ∧ i ≠ j",
+  "hash": "2652846781"
+ },
+ "x2611_15210_lem5_1_aux4": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] (a b c : F), a + b + c = 0 → a ^ 2 + b ^ 2 + c ^ 2 = 0 → a = b ∧ b = c",
+  "hash": "3929238065"
+ },
+ "x2611_15210_lem5_1_aux5": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] (a b c d : F), a + b + c + d = 0 → a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 = 0 → a ^ 4 + b ^ 4 + c ^ 4 + d ^ 4 = 0 → a = 0 ∨ b = 0 ∨ c = 0 ∨ d = 0",
+  "hash": "1943289699"
+ },
+ "x2611_15210_lem5_1_aux6": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] [inst_2 : DecidableEq F] (y : Fin 6 → F), y 0 = 0 → y 1 = 0 → ∑ i, y i = 0 → ∑ i, y i ^ 2 = 0 → ∑ i, y i ^ 4 = 0 → (∀ (i : Fin 6), y i = 0) ∨ ∃ b, b ≠ 0 ∧ {i | y i = 0}.card = 3 ∧ {i | y i = b}.card = 3 ∧ ∀ (i : Fin 6), y i = 0 ∨ y i = b",
+  "hash": "2173549951"
+ },
+ "x2611_15210_lem5_1_aux7": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] (x : Fin 6 → F) (a : F), ∑ i, x i = 0 → ∑ i, x i ^ 2 = 0 → ∑ i, x i ^ 4 = 0 → ∑ i, (x i - a) = 0 ∧ ∑ i, (x i - a) ^ 2 = 0 ∧ ∑ i, (x i - a) ^ 4 = 0",
+  "hash": "907852659"
+ },
+ "x2611_15210_lem5_1_aux8": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (α : Type u_1) (β : Type u_2) [inst : Fintype α] [inst_1 : Fintype β] (e : α ≃ β) (p : β → Prop) [inst_2 : DecidablePred p], {i | p (e i)}.card = (Finset.filter p Finset.univ).card",
+  "hash": "854028500"
+ },
+ "x2611_15210_lem5_1_aux9": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] [inst_2 : DecidableEq F], ¬IsSquare (-1) → ∀ (x : Fin 6 → F), ∑ i, x i = 0 → ∑ i, x i ^ 2 = 0 → ∑ i, x i ^ 4 = 0 → (∃ a, ∀ (i : Fin 6), x i = a) ∨ ∃ a b, a ≠ b ∧ {i | x i = a}.card = 3 ∧ {i | x i = b}.card = 3 ∧ ∀ (i : Fin 6), x i = a ∨ x i = b",
+  "hash": "2092249330"
+ },
+ "x2611_15210_lem5_1_aux10": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (F : Type u_1) [inst : Field F] [CharP F 3] [DecidableEq F], ¬IsSquare (-1) → ∀ (I : Finset (F × Fin 2)), I.card = 6 → ∑ p ∈ I, ![p.1, p.1 ^ 2, p.1 ^ 4] ≠ 0",
+  "hash": "1596693522"
+ },
+ "x2611_15210_lem5_1_aux11": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (k : ℕ) (F : Type u_1) [inst : Field F] [inst_1 : Fintype F] [CharP F 3], Fintype.card F = 3 ^ k → Nonempty ((Fin 3 → F) ≃+ (Fin (3 * k) → ZMod 3))",
+  "hash": "3751663681"
+ },
+ "x2611_15210_lem5_1_aux12": {
+  "owner": "x2611_15210_lem5_1",
+  "type": "∀ (k : ℕ) (F : Type u_1) [inst : Field F] [inst_1 : Fintype F] [CharP F 3] [DecidableEq F], ¬IsSquare (-1) → Fintype.card F = 3 ^ k → 2 * 3 ^ k ≤ Mathlib2.x2611_15210_A 6 (Fin (3 * k) → ZMod 3)",
+  "hash": "1001276935"
+ },
+ "x2611_15379_lem2_1_aux1": {
+  "owner": "x2611_15379_lem2_1",
+  "type": "∀ {α : Type u_1} (f : ℕ → α) (p : ℕ), (∀ (n : ℕ), 0 < n → f (n + p) = f n) → ∀ (k n : ℕ), 0 < n → f (n + k * p) = f n",
+  "hash": "2999323165"
+ },
+ "x2611_15379_lem2_1_aux2": {
+  "owner": "x2611_15379_lem2_1",
+  "type": "∀ {α : Type u_1} (f : ℕ → α) {p T : ℕ}, (∀ (n : ℕ), 0 < n → f (n + p) = f n) → p ∣ T → ∀ (n : ℕ), 0 < n → f (n + T) = f n",
+  "hash": "2620391461"
+ },
+ "x2611_15379_lem2_1_aux3": {
+  "owner": "x2611_15379_lem2_1",
+  "type": "∀ {α : Type u_1} (f : ℕ → α) {q T : ℕ}, IsLeast {p | 0 < p ∧ ∀ (n : ℕ), 0 < n → f (n + p) = f n} q → (∀ (n : ℕ), 0 < n → f (n + T) = f n) → q ∣ T",
+  "hash": "729826238"
+ },
+ "x2611_16338_zero_neighbor_completion_table_aux1": {
+  "owner": "x2611_16338_zero_neighbor_completion_table",
+  "type": "∀ {α : Type u_1} [Fintype α] (A : Set α) (lo hi : ℕ), A.ncard = hi + 1 - lo → ∃ f, Set.InjOn f A ∧ f '' A = Set.Icc lo hi",
+  "hash": "854324022"
+ },
+ "x2611_16338_zero_neighbor_completion_table_aux2": {
+  "owner": "x2611_16338_zero_neighbor_completion_table",
+  "type": "∀ {α : Type u_1} [Fintype α] (E : Set α) (w : α → ℕ) (lo hi : ℕ → ℕ), (∀ (r : ℕ), {e | e ∈ E ∧ w e = r}.ncard = hi r + 1 - lo r) → ∃ ψ, ∀ (r : ℕ), Set.InjOn ψ {e | e ∈ E ∧ w e = r} ∧ ψ '' {e | e ∈ E ∧ w e = r} = Set.Icc (lo r) (hi r)",
+  "hash": "1021524057"
+ },
+ "x2611_16338_zero_neighbor_completion_table_aux3": {
+  "owner": "x2611_16338_zero_neighbor_completion_table",
+  "type": "∀ {V : Type u_1} [Fintype V] [inst : DecidableEq V] (G : SimpleGraph V) [inst_1 : DecidableRel G.Adj] (s : ℕ), 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → ∀ u ∈ U, (∀ (v : V), G.Adj u v → v ∉ U) → ∀ e ∈ G.edgeSet, (Mathlib2.x2611_16338_vertexSum φ e = 2 ∨ Mathlib2.x2611_16338_vertexSum φ e = s + 1 ∨ Mathlib2.x2611_16338_vertexSum φ e = 2 * s) ∧ if e ∈ G.incidenceSet u then Mathlib2.x2611_16338_vertexSum φ e = s + 1 ∧ Mathlib2.x2611_16338_vertexSum (Function.update φ u 2) e = s + 2 else Mathlib2.x2611_16338_vertexSum (Function.update φ u 2) e = Mathlib2.x2611_16338_vertexSum φ e",
+  "hash": "1246265405"
+ },
+ "x2611_16338_zero_neighbor_completion_table_aux4": {
+  "owner": "x2611_16338_zero_neighbor_completion_table",
+  "type": "∀ {V : Type u_1} [Fintype V] [inst : DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (s : ℕ), 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → ∀ u ∈ U, (∀ (v : V), G.Adj u v → v ∉ U) → Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) 2 = Mathlib2.x2611_16338_edgeClass G φ 2 ∧ Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (s + 1) = Mathlib2.x2611_16338_edgeClass G φ (s + 1) \\ G.incidenceSet u ∧ Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (s + 2) = G.incidenceSet u ∧ Mathlib2.x2611_16338_edgeClass G (Function.update φ u 2) (2 * s) = Mathlib2.x2611_16338_edgeClass G φ (2 * s)",
+  "hash": "1883328741"
+ },
+ "x2611_15379_lem2_2_aux1": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (k : ℕ) (P : ℤ → Prop) [inst : DecidablePred P], (Finset.filter P (Finset.Icc 0 ↑k)).card = Nat.count (fun i => P ↑i) (k + 1)",
+  "hash": "188367949"
+ },
+ "x2611_15379_lem2_2_aux2": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (q k : ℕ), 0 < q → ∀ (u z : ℤ), IsCoprime u ↑q → ∀ (r : ℕ), ↑q ∣ z + u * ↑r → {i ∈ Finset.Icc 0 ↑k | ↑q ∣ z + u * i}.card = (k + 1) / q + if r % q < (k + 1) % q then 1 else 0",
+  "hash": "2615578649"
+ },
+ "x2611_15379_lem2_2_aux3": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (q : ℕ), 0 < q → ∀ (u z : ℤ), IsCoprime u ↑q → ∃ r < q, ↑q ∣ z + u * ↑r",
+  "hash": "3975450801"
+ },
+ "x2611_15379_lem2_2_aux4": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (q k : ℕ) (u z : ℤ), ({i ∈ Finset.Icc 0 ↑k | ↑q ∣ z + u + u * i}.card + if ↑q ∣ z then 1 else 0) = {i ∈ Finset.Icc 0 ↑k | ↑q ∣ z + u * i}.card + if ↑q ∣ z + u * ↑(k + 1) then 1 else 0",
+  "hash": "3226386846"
+ },
+ "x2611_15379_lem2_2_aux5": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (q k : ℕ) (u : ℤ), Function.Periodic (fun z => {i ∈ Finset.Icc 0 ↑k | ↑q ∣ z + u * i}.card) ↑q",
+  "hash": "4036583508"
+ },
+ "x2611_15379_lem2_2_aux6": {
+  "owner": "x2611_15379_lem2_2",
+  "type": "∀ (q k : ℕ) (u : ℤ), IsCoprime u ↑q → ¬q ∣ k + 1 → ∀ (T : ℤ), Function.Periodic (fun z => {i ∈ Finset.Icc 0 ↑k | ↑q ∣ z + u * i}.card) T → ↑q ∣ T",
+  "hash": "222618343"
+ },
+ "x2611_15358_small_component_bound_aux1": {
+  "owner": "x2611_15358_small_component_bound",
+  "type": "∀ {V : Type u_1} [Finite V] (G : SimpleGraph V) (k : ℕ), Nat.card V < 2 * k → ∀ {C D : G.ConnectedComponent}, k ≤ Nat.card ↑C.supp → k ≤ Nat.card ↑D.supp → C = D",
+  "hash": "2512936082"
+ },
+ "x2611_15358_small_component_bound_aux2": {
+  "owner": "x2611_15358_small_component_bound",
+  "type": "∀ {V : Type u_1} [Finite V] (G : SimpleGraph V), Nat.card V ≤ 7 → Nat.card G.ConnectedComponent - 1 ≤ Nat.card { C // Nat.card ↑C.supp = 1 } + Nat.card { C // Nat.card ↑C.supp = 2 } + Nat.card { C // Nat.card ↑C.supp = 3 }",
+  "hash": "2179515349"
+ },
+ "x2611_16338_one_neighbor_completion_table_aux1": {
+  "owner": "x2611_16338_one_neighbor_completion_table",
+  "type": "∀ {α : Type u_1} (A : Set α), A.Finite → ∀ (lo hi : ℕ), A.ncard = hi + 1 - lo → ∃ f, Set.BijOn f A (Set.Icc lo hi)",
+  "hash": "741460605"
+ },
+ "x2611_16338_one_neighbor_completion_table_aux2": {
+  "owner": "x2611_16338_one_neighbor_completion_table",
+  "type": "∀ {α : Type u_1} [Finite α] (E : Set α) (f : α → ℕ) (s : ℕ) (R : Set ℕ) (lo hi : ℕ → ℕ), (∀ e ∈ E, f e ∈ R) → (∀ r ∈ R, {e | e ∈ E ∧ f e = r}.ncard = hi r + 1 - lo r) → (∀ r ∈ R, 1 ≤ lo r ∧ hi r ≤ s) → (∀ r ∈ R, ∀ t ∈ R, ∀ a ∈ Set.Icc (lo r) (hi r), ∀ b ∈ Set.Icc (lo t) (hi t), r + a = t + b → r = t) → ∃ ψ, (∀ e ∈ E, 1 ≤ ψ e ∧ ψ e ≤ s) ∧ Set.InjOn (fun e => f e + ψ e) E ∧ ∀ r ∈ R, ψ '' {e | e ∈ E ∧ f e = r} = Set.Icc (lo r) (hi r) ∧ (fun e => f e + ψ e) '' {e | e ∈ E ∧ f e = r} = Set.Icc (r + lo r) (r + hi r)",
+  "hash": "3842581003"
+ },
+ "x2611_15358_pair_common_bound_aux1": {
+  "owner": "x2611_15358_pair_common_bound",
+  "type": "∀ {V : Type u_1} [Finite V] (H : SimpleGraph V) (S : Finset V), S.card * Nat.card { v // ∀ x ∈ S, H.Adj x v } ≤ Nat.card ↑H.edgeSet",
+  "hash": "2618142368"
+ },
+ "x2611_15379_thmB_aux1": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ {α : Type u_1} (f : ℕ → α) (L c P : ℕ), 0 < L → (∀ (n : ℕ), f (n + L) = f n) → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → f (n + T) = f n} P → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → f (n + T + c) = f (n + c)} P",
+  "hash": "3639197062"
+ },
+ "x2611_15379_thmB_aux2": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ {K : Type u_1} [inst : Field K] [CharZero K] (f : ℕ → ℕ) (g : ℕ → K) (C : K), C ≠ 0 → (∀ (n : ℕ), 0 < n → g n = C * ↑(f n)) → ∀ (P : ℕ), IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → f (n + T) = f n} P → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → g (n + T) = g n} P",
+  "hash": "2208406468"
+ },
+ "x2611_15379_thmB_aux3": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (L d c : ℕ), 0 < L → 0 < d → IsLeast {T | 0 < T ∧ ∀ (n : ℕ), 0 < n → ∏ i ∈ Finset.range d, (n + T + c + i).gcd L = ∏ i ∈ Finset.range d, (n + c + i).gcd L} (∏ p ∈ L.primeFactors with d.factorization p < L.factorization p, p ^ L.factorization p)",
+  "hash": "619321680"
+ },
+ "x2611_15379_thmB_aux4": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (N a : ℕ), 0 < ∏ p ∈ N.primeFactors with ¬p ∣ a, p ^ N.factorization p",
+  "hash": "3607025837"
+ },
+ "x2611_15379_thmB_aux5": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (s : Finset ℕ) (e : ℕ → ℕ), (∀ p ∈ s, Nat.Prime p) → ∀ (p : ℕ), (∏ q ∈ s, q ^ e q).factorization p = if p ∈ s then e p else 0",
+  "hash": "611706568"
+ },
+ "x2611_15379_thmB_aux6": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (N a : ℕ),\n  N ≠ 0 →\n    have M := ∏ p ∈ N.primeFactors with ¬p ∣ a, p ^ N.factorization p;\n    M ∣ N ∧ a.Coprime M ∧ ∀ (d : ℕ), d ∣ N → a.Coprime d → d ∣ M",
+  "hash": "2921796285"
+ },
+ "x2611_15379_thmB_aux7": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a b n i j : ℕ), a.Coprime b → i ≤ k → j ≤ k → i ≠ j → (b + a * (n + i)).gcd (b + a * (n + j)) ∣ k.lcmUpto",
+  "hash": "985902653"
+ },
+ "x2611_15379_thmB_aux8": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a b M : ℕ), 0 < M → M ∣ k.lcmUpto → a.Coprime M → ∃ c, ∀ (n : ℕ), (∀ (i : ℕ), (b + a * (n + i)).gcd M = (n + c + i).gcd M) ∧ M ∣ (Finset.range (k + 1)).lcm fun i => b + a * (n + i)",
+  "hash": "1281347815"
+ },
+ "x2611_15379_thmB_aux9": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ {α : Type u_1} (s : Finset α), s.Nonempty → ∀ (g : ℕ) (f : α → ℕ), (s.lcm fun i => g * f i) = g * s.lcm f",
+  "hash": "2097294967"
+ },
+ "x2611_15379_thmB_aux10": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a b g M c : ℕ), 0 < a → 0 < g → 0 < M → (∀ (n : ℕ), M ∣ (Finset.range (k + 1)).lcm fun i => b + a * (n + i)) → (∀ (n i : ℕ), (b + a * (n + i)).gcd M = (n + c + i).gcd M) → (∀ (n i j : ℕ), i ≤ k → j ≤ k → i ≠ j → (b + a * (n + i)).gcd (b + a * (n + j)) ∣ M) → ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k (g * a) (g * b) 1 (fun m => ↑m) n = ↑g ^ k / ↑M * ↑(∏ i ∈ Finset.range (k + 1), (n + c + i).gcd M)",
+  "hash": "3100540399"
+ },
+ "x2611_15379_thmB_aux20": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a b : ℕ), 0 < a → ∃ C c, C ≠ 0 ∧ ∀ (n : ℕ), 0 < n → Mathlib2.x2611_15379_G k a b 1 (fun m => ↑m) n = C * ↑(∏ i ∈ Finset.range (k + 1), (n + c + i).gcd (∏ p ∈ k.lcmUpto.primeFactors with ¬p ∣ a / a.gcd b, p ^ k.lcmUpto.factorization p))",
+  "hash": "838053950"
+ },
+ "x2611_15379_thmB_aux21": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (N a d : ℕ),\n  N ≠ 0 →\n    have M := ∏ q ∈ N.primeFactors with ¬q ∣ a, q ^ N.factorization q;\n    ∏ p ∈ M.primeFactors with d.factorization p < M.factorization p, p ^ M.factorization p = ∏ p ∈ N.primeFactors with ¬p ∣ a ∧ d.factorization p < N.factorization p, p ^ N.factorization p",
+  "hash": "1234306419"
+ },
+ "x2611_15379_thmB_aux22": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k p q : ℕ), Nat.Prime p → Nat.Prime q → p ≤ k → q ≤ k → k.lcmUpto.factorization p ≤ (k + 1).factorization p → k.lcmUpto.factorization q ≤ (k + 1).factorization q → p = q",
+  "hash": "2960876611"
+ },
+ "x2611_15379_thmB_aux23": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (s : Finset ℕ) (f : ℕ → ℕ), (∀ p ∈ s, ∀ q ∈ s, p = q) → (∀ p ∈ s, 0 < f p) → max 1 (s.sup f) = ∏ p ∈ s, f p",
+  "hash": "3845306080"
+ },
+ "x2611_15379_thmB_aux24": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a : ℕ), 0 < a → Mathlib2.x2611_15379_hongQianPeriod k a = ∏ p ∈ k.lcmUpto.primeFactors with ¬p ∣ a ∧ (k + 1).factorization p < k.lcmUpto.factorization p, p ^ k.lcmUpto.factorization p",
+  "hash": "3993155924"
+ },
+ "x2611_15379_thmB_aux30": {
+  "owner": "x2611_15379_thmB",
+  "type": "∀ (k a : ℕ), 0 < a → Mathlib2.x2611_15379_hongQianPeriod k a = ∏ p ∈ (∏ q ∈ k.lcmUpto.primeFactors with ¬q ∣ a, q ^ k.lcmUpto.factorization q).primeFactors with (k + 1).factorization p < (∏ q ∈ k.lcmUpto.primeFactors with ¬q ∣ a, q ^ k.lcmUpto.factorization q).factorization p, p ^ (∏ q ∈ k.lcmUpto.primeFactors with ¬q ∣ a, q ^ k.lcmUpto.factorization q).factorization p",
+  "hash": "4173930170"
+ },
+ "x2611_15358_N1_bound_aux1": {
+  "owner": "x2611_15358_N1_bound",
+  "type": "∀ {V : Type u_1} (G : SimpleGraph V) {v w : V}, G.IsIsolated v → G.Reachable v w → v = w",
+  "hash": "1864038271"
+ },
+ "x2611_15358_N1_bound_aux2": {
+  "owner": "x2611_15358_N1_bound",
+  "type": "∀ {V : Type u_1} [Finite V] (G : SimpleGraph V), Nat.card { C // Nat.card ↑C.supp = 1 } = Nat.card { v // G.IsIsolated v }",
+  "hash": "3980019839"
+ },
+ "x2611_15358_N1_bound_aux3": {
+  "owner": "x2611_15358_N1_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V), Nat.card { C // Nat.card ↑C.supp = 1 } = ∑ v, if v ∈ U ∧ ∀ w ∈ U, ¬G.Adj v w then 1 else 0",
+  "hash": "3244953609"
+ },
+ "x2611_15358_N1_bound_aux4": {
+  "owner": "x2611_15358_N1_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (v : V) (k : ℕ), (∑ U ∈ Finset.powersetCard (k + 1) Finset.univ, if v ∈ U ∧ ∀ w ∈ U, ¬G.Adj v w then 1 else 0) = (Nat.card ↑(Gᶜ.neighborSet v)).choose k",
+  "hash": "3178040262"
+ },
+ "x2611_15358_pair_double_count_aux1": {
+  "owner": "x2611_15358_pair_double_count",
+  "type": "∀ {α : Type u_1} {β : Type u_2} [inst : Fintype α] [inst_1 : Fintype β] (r : α → β → Prop) (k : ℕ), ∑ S ∈ Finset.powersetCard k Finset.univ, Nat.card { b // ∀ a ∈ S, r a b } = ∑ b, (Nat.card { a // r a b }).choose k",
+  "hash": "1069696775"
+ },
+ "x2611_15358_triple_double_count_aux1": {
+  "owner": "x2611_15358_triple_double_count",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] (G : SimpleGraph V) (k : ℕ), ∑ S ∈ Finset.powersetCard k Finset.univ, Nat.card { v // ∀ x ∈ S, G.Adj x v } = ∑ v, (Nat.card ↑(G.neighborSet v)).choose k",
+  "hash": "243674732"
+ },
+ "x2611_15358_lem2_6_aux1": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ {V : Type u_1} [Fintype V] (H : SimpleGraph V) (S : Finset V), S.card * Nat.card { v // ∀ x ∈ S, H.Adj x v } ≤ Nat.card ↑H.edgeSet",
+  "hash": "1044848432"
+ },
+ "x2611_15358_lem2_6_aux2": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] (H : SimpleGraph V) (k : ℕ), ∑ S ∈ Finset.powersetCard k Finset.univ, Nat.card { v // ∀ x ∈ S, H.Adj x v } = ∑ v, (Nat.card ↑(H.neighborSet v)).choose k",
+  "hash": "243674732"
+ },
+ "x2611_15358_lem2_6_aux3": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V) (k : ℕ), Nat.card { C // Nat.card ↑C.supp = k } ≤ {S ∈ Finset.powersetCard k Finset.univ | S ⊆ U ∧ ∀ x ∈ S, ∀ y ∈ U \\ S, Gᶜ.Adj x y}.card",
+  "hash": "1703458587"
+ },
+ "x2611_15358_lem2_6_aux4": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (H : SimpleGraph V) [inst_2 : DecidableRel H.Adj] (S : Finset V) (n : ℕ), {U ∈ Finset.powersetCard n Finset.univ | S ⊆ U ∧ ∀ x ∈ S, ∀ y ∈ U \\ S, H.Adj x y}.card ≤ (Nat.card { v // ∀ x ∈ S, H.Adj x v }).choose (n - S.card)",
+  "hash": "1335102800"
+ },
+ "x2611_15358_lem2_6_aux5": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ (G : SimpleGraph (Fin 14)) (k : ℕ), Mathlib2.x2611_15358_N G k ≤ ∑ S ∈ Finset.powersetCard k Finset.univ, (Mathlib2.x2611_15358_t G S).choose (7 - k)",
+  "hash": "863091503"
+ },
+ "x2611_15358_lem2_6_aux6": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ (G : SimpleGraph (Fin 14)), (∀ (v : Fin 14), 4 ≤ Nat.card ↑(G.neighborSet v)) → ∀ (v : Fin 14), Nat.card ↑(Gᶜ.neighborSet v) ≤ 9",
+  "hash": "3876308039"
+ },
+ "x2611_15358_lem2_6_aux7": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ (G : SimpleGraph (Fin 14)), (∀ (v : Fin 14), 4 ≤ Nat.card ↑(G.neighborSet v)) → ∀ (S : Finset (Fin 14)), S.Nonempty → Mathlib2.x2611_15358_t G S ≤ 9",
+  "hash": "2945238920"
+ },
+ "x2611_15358_lem2_6_aux8": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ (G : SimpleGraph (Fin 14)) (k c b : ℕ), (∀ S ∈ Finset.powersetCard k Finset.univ, (Mathlib2.x2611_15358_t G S).choose (7 - k) ≤ c * Mathlib2.x2611_15358_t G S) → (∀ (v : Fin 14), c * (Nat.card ↑(Gᶜ.neighborSet v)).choose k ≤ b * Nat.card ↑(Gᶜ.neighborSet v)) → Mathlib2.x2611_15358_N G k ≤ b * ∑ v, Nat.card ↑(Gᶜ.neighborSet v)",
+  "hash": "3293655788"
+ },
+ "x2611_15358_lem2_6_aux9": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ n ≤ 9, n.choose 6 ≤ 10 * n ∧ 3 * n.choose 2 ≤ 12 * n ∧ n.choose 3 ≤ 10 * n",
+  "hash": "1477799030"
+ },
+ "x2611_15358_lem2_6_aux10": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ n ≤ 7, n.choose 5 ≤ 3 * n",
+  "hash": "3270851659"
+ },
+ "x2611_15358_lem2_6_aux11": {
+  "owner": "x2611_15358_lem2_6",
+  "type": "∀ n ≤ 5, n.choose 4 ≤ n",
+  "hash": "3291657840"
+ },
+ "x2611_15358_N2_bound_aux1": {
+  "owner": "x2611_15358_N2_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (U : Finset V) (k : ℕ), Nat.card { C // Nat.card ↑C.supp = k } ≤ ∑ S ∈ Finset.powersetCard k Finset.univ, if S ⊆ U ∧ ∀ x ∈ S, ∀ y ∈ U \\ S, Gᶜ.Adj x y then 1 else 0",
+  "hash": "255923427"
+ },
+ "x2611_15358_N2_bound_aux2": {
+  "owner": "x2611_15358_N2_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj] (S : Finset V) (n : ℕ), (∑ U ∈ Finset.powersetCard (n + S.card) Finset.univ, if S ⊆ U ∧ ∀ x ∈ S, ∀ y ∈ U \\ S, Gᶜ.Adj x y then 1 else 0) = (Nat.card { v // ∀ x ∈ S, Gᶜ.Adj x v }).choose n",
+  "hash": "1425507036"
+ },
+ "x2611_15358_N2_bound_aux3": {
+  "owner": "x2611_15358_N2_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (H : SimpleGraph V) (k : ℕ), ∑ S ∈ Finset.powersetCard k Finset.univ, Nat.card { v // ∀ x ∈ S, H.Adj x v } = ∑ v, (Nat.card ↑(H.neighborSet v)).choose k",
+  "hash": "1228938689"
+ },
+ "x2611_15358_N2_bound_aux4": {
+  "owner": "x2611_15358_N2_bound",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (n k : ℕ), ∑ U ∈ Finset.powersetCard (n + k) Finset.univ, Nat.card { C // Nat.card ↑C.supp = k } ≤ ∑ S ∈ Finset.powersetCard k Finset.univ, (Nat.card { v // ∀ x ∈ S, Gᶜ.Adj x v }).choose n",
+  "hash": "97254022"
+ },
+ "x2611_10200_thm1_1_aux1": {
+  "owner": "x2611_10200_thm1_1",
+  "type": "∀ (H : ℕ → ℤ), (∀ (n : ℕ), 1 ≤ n → 1 ≤ H n) → (∀ (n : ℕ), 1 ≤ n → 0 ≤ Mathlib2.x2611_10200_B H n) → Mathlib2.x2611_10200_complete H",
+  "hash": "1662915431"
+ },
+ "x2611_15505_lem3_1_aux1": {
+  "owner": "x2611_15505_lem3_1",
+  "type": "∀ (p : Polynomial ℝ) (a b : ℝ), a < b → Polynomial.eval a p * Polynomial.eval b p < 0 → ∃ x, a < x ∧ x < b ∧ Polynomial.eval x p = 0",
+  "hash": "1657018071"
+ },
+ "x2611_15505_lem3_1_aux2": {
+  "owner": "x2611_15505_lem3_1",
+  "type": "∀ (w : List ℕ) (j : ℕ), {i | w.get i = j}.card = List.count j w",
+  "hash": "1059179538"
+ },
+ "x2611_15505_lem3_1_aux3": {
+  "owner": "x2611_15505_lem3_1",
+  "type": "∀ {m : ℕ} (p : Polynomial ℝ) (x : Fin m → ℝ), Function.Injective x → ∀ (S : Finset (Fin m)), p ≠ 0 → p.natDegree ≤ S.card → (∀ i ∈ S, Polynomial.eval (x i) p = 0) → p.roots = Multiset.map x S.val",
+  "hash": "1293271031"
+ },
+ "x2611_15505_lem2_1_aux1": {
+  "owner": "x2611_15505_lem2_1",
+  "type": "∀ {α : Type u_1} (a b : α) (m : ℕ), a :: (List.replicate m [b, a]).flatten = (List.replicate m [a, b]).flatten ++ [a]",
+  "hash": "1972053981"
+ },
+ "x2611_15505_lem2_1_aux2": {
+  "owner": "x2611_15505_lem2_1",
+  "type": "∀ {α : Type u_1} [inst : DecidableEq α] (w : List α) (a b : α), a ≠ b → (∀ k ≤ w.length, List.count b (List.take k w) ≤ List.count a (List.take k w) ∧ List.count a (List.take k w) ≤ List.count b (List.take k w) + 1) → ∃ m, List.filter (fun x => decide (x = a ∨ x = b)) w = (List.replicate m [a, b]).flatten ∨ List.filter (fun x => decide (x = a ∨ x = b)) w = (List.replicate m [a, b]).flatten ++ [a]",
+  "hash": "53554351"
+ },
+ "x2611_15505_lem2_1_aux3": {
+  "owner": "x2611_15505_lem2_1",
+  "type": "∀ {α : Type u_1} [inst : DecidableEq α] (w : List α) (a b : α), a ≠ b → ∀ (m : ℕ), List.count a w = m + 1 → List.count b w = m → (∀ k ≤ w.length, List.count b (List.take k w) ≤ List.count a (List.take k w) ∧ List.count a (List.take k w) ≤ List.count b (List.take k w) + 1) → List.filter (fun x => decide (x = a ∨ x = b)) w = (List.replicate m [a, b]).flatten ++ [a]",
+  "hash": "1487106161"
+ },
+ "x2611_15505_lem2_1_aux4": {
+  "owner": "x2611_15505_lem2_1",
+  "type": "∀ {α : Type u_1} [inst : DecidableEq α] (a b : α), a ≠ b → ∀ (m k : ℕ), List.count b (List.take k ((List.replicate m [a, b]).flatten ++ [a])) ≤ List.count a (List.take k ((List.replicate m [a, b]).flatten ++ [a])) ∧ List.count a (List.take k ((List.replicate m [a, b]).flatten ++ [a])) ≤ List.count b (List.take k ((List.replicate m [a, b]).flatten ++ [a])) + 1",
+  "hash": "2869476479"
+ },
+ "x2611_15505_lem2_1_aux5": {
+  "owner": "x2611_15505_lem2_1",
+  "type": "∀ {α : Type u_1} [inst : DecidableEq α] (w : List α) (a b : α), a ≠ b → ∀ (m : ℕ), List.filter (fun x => decide (x = a ∨ x = b)) w = (List.replicate m [a, b]).flatten ++ [a] → ∀ (k : ℕ), List.count b (List.take k w) ≤ List.count a (List.take k w) ∧ List.count a (List.take k w) ≤ List.count b (List.take k w) + 1",
+  "hash": "272494346"
+ },
+ "x2611_15512_thm2_3_aux1": {
+  "owner": "x2611_15512_thm2_3",
+  "type": "∀ {V : Type u_1} [Fintype V] {G : SimpleGraph V} (M : G.Subgraph), M.IsMatching → ∀ (C : Set V), G.IsVertexCover C → M.edgeSet.ncard ≤ C.ncard",
+  "hash": "1781532004"
+ },
+ "x2611_15512_thm2_3_aux2": {
+  "owner": "x2611_15512_thm2_3",
+  "type": "∀ {V : Type u_1} [Fintype V] (G : SimpleGraph V) (C : Set V), G.IsVertexCover C → (∀ (D : Set V), G.IsVertexCover D → C.ncard ≤ D.ncard) → ∀ S ⊆ C, G.IsIndepSet S → S.ncard ≤ (⋃ x ∈ S, (SimpleGraph.between C Cᶜ G).neighborSet x).ncard",
+  "hash": "119771192"
+ },
+ "x2611_15512_thm2_3_aux3": {
+  "owner": "x2611_15512_thm2_3",
+  "type": "∀ {V : Type u_1} [Fintype V] (G : SimpleGraph V), G.IsBipartite → ∀ (C : Set V), G.IsVertexCover C → (∀ (D : Set V), G.IsVertexCover D → C.ncard ≤ D.ncard) → ∀ S ⊆ C, S.ncard ≤ (⋃ x ∈ S, (SimpleGraph.between C Cᶜ G).neighborSet x).ncard",
+  "hash": "2863597165"
+ },
+ "x2611_15512_thm2_3_aux4": {
+  "owner": "x2611_15512_thm2_3",
+  "type": "∀ {V : Type u_1} [Fintype V] {G : SimpleGraph V} (M : G.Subgraph), M.IsMatching → ∀ C ⊆ M.verts, (∀ ⦃v w : V⦄, M.Adj v w → v ∈ C → w ∉ C) → C.ncard ≤ M.edgeSet.ncard",
+  "hash": "997688527"
+ },
+ "x2611_12360_thm1_3_s1h1_aux1": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ {ι : Type u_1} (f : ι → ℝ) (σ : ℝ) (k : ι) (n m : ℤ) (L : List (ι × ℤ)), n + 1 ≤ m → (k, m) ∈ (k, n) :: L → List.IsChain (fun a b => -f b.1 + ↑b.2 - (-f a.1 + ↑a.2) ≤ σ) ((k, n) :: L) → ∀ (γ : ℝ), ∃ i, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 σ) (f i + γ)",
+  "hash": "1250622186"
+ },
+ "x2611_12360_thm1_3_s1h1_aux2": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 0 ≤ b → b ≤ 1 / 4 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "4238767840"
+ },
+ "x2611_12360_thm1_3_s1h1_aux3": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 1 / 4 ≤ b → b ≤ 3 / 8 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "980387713"
+ },
+ "x2611_12360_thm1_3_s1h1_aux4": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 3 / 8 ≤ b → b ≤ 1 / 2 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "559361148"
+ },
+ "x2611_12360_thm1_3_s1h1_aux5": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 1 / 2 ≤ b → b ≤ 5 / 8 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "2952374293"
+ },
+ "x2611_12360_thm1_3_s1h1_aux6": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 5 / 8 ≤ b → b ≤ 3 / 4 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "3860486792"
+ },
+ "x2611_12360_thm1_3_s1h1_aux7": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 3 / 4 ≤ b → b ≤ 1 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "4276734190"
+ },
+ "x2611_12360_thm1_3_s1h1_aux8": {
+  "owner": "x2611_12360_thm1_3_s1h1",
+  "type": "∀ (U b : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → 0 ≤ b → b ≤ 1 → ∀ (γ : ℝ), ∃ k, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑↑k - 10) ^ 2 + b * (↑↑k - 10) + γ)",
+  "hash": "218988425"
+ },
+ "x2611_16458_lem2_2_aux1": {
+  "owner": "x2611_16458_lem2_2",
+  "type": "∀ {V : Type u_1} {A : Type u_2} (G : SimpleGraph V) (f : V → A), (∀ (v w : V), G.Adj v w → f v = f w) → ∀ {u v : V}, G.Reachable u v → f u = f v",
+  "hash": "3759723759"
+ },
+ "x2611_16458_lem2_2_aux2": {
+  "owner": "x2611_16458_lem2_2",
+  "type": "∀ {V : Type u_1} [Finite V] (G : SimpleGraph V), Nat.card { f // ∀ (v w : V), G.Adj v w → f v = f w } = 2 ^ Nat.card G.ConnectedComponent",
+  "hash": "4053044802"
+ },
+ "x2611_16458_lem2_2_aux3": {
+  "owner": "x2611_16458_lem2_2",
+  "type": "∀ {V : Type u_1} [Finite V] (P N : SimpleGraph V), Nat.card { f // (∀ (v w : V), P.Adj v w → f v = f w) ∧ ∀ (v w : V), N.Adj v w → f v ≠ f w } = if Mathlib2.x2611_16458_balanced P N then 2 ^ Nat.card (P ⊔ N).ConnectedComponent else 0",
+  "hash": "1977250615"
+ },
+ "x2611_16458_lem2_2_aux4": {
+  "owner": "x2611_16458_lem2_2",
+  "type": "∀ {V : Type u_1} (R : V → V → Prop), (∀ (v w : V), R v w → R w v) → ∀ (v w : V), (∀ (a b : V), s(a, b) = s(v, w) → R a b) ↔ R v w",
+  "hash": "1616878422"
+ },
+ "x2611_16458_lem2_2_aux5": {
+  "owner": "x2611_16458_lem2_2",
+  "type": "∀ {V : Type u_1} [inst : Finite V] (P N : SimpleGraph V), Polynomial.eval 2 (Mathlib2.x2611_16458_zeroFree P N) = ↑(Nat.card { f // (∀ (v w : V), P.Adj v w → f v ≠ f w) ∧ ∀ (v w : V), N.Adj v w → f v = f w })",
+  "hash": "782949781"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h1_aux1": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h1",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : CommSemiring R] (τ : R) (i j : σ) (n : ℕ), ∑ k ∈ Finset.range (n + 2), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n + 1 - k) = MvPolynomial.X j ^ (n + 1) + MvPolynomial.C τ * MvPolynomial.X i * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n - k)",
+  "hash": "3483778300"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h1_aux2": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h1",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : CommRing R] [IsDomain R] (m : MonomialOrder σ) (τ : R) (i j : σ), ((m.toSyn fun₀ | i => 1) < m.toSyn fun₀ | j => 1) → ∀ (n : ℕ), (m.degree (∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n - k)) = n • fun₀ | j => 1) ∧ m.leadingCoeff (∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n - k)) = 1",
+  "hash": "2548674544"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h1_aux3": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h1",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : CommRing R] [IsDomain R] (m : MonomialOrder σ) (τ : R) (i j : σ), ((m.toSyn fun₀ | i => 1) < m.toSyn fun₀ | j => 1) → ∀ (n : ℕ), (m.degree ((MvPolynomial.X j - MvPolynomial.X i) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n - k)) = (n + 1) • fun₀ | j => 1) ∧ m.leadingCoeff ((MvPolynomial.X j - MvPolynomial.X i) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (τ ^ k) * MvPolynomial.X i ^ k * MvPolynomial.X j ^ (n - k)) = 1",
+  "hash": "1711769848"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h1_aux4": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h1",
+  "type": "∀ (n a : ℕ), (∑ ij, if ij.1 < ij.2 then a • fun₀ | ij.2 => 1 else 0) = Finsupp.equivFunOnFinite.symm fun i => a * ↑i",
+  "hash": "795434013"
+ },
+ "x2611_15505_formal_counts_aux1": {
+  "owner": "x2611_15505_formal_counts",
+  "type": "∀ (n L : ℕ), {w | w.length = L ∧ ∀ k ∈ w, k < n}.Finite",
+  "hash": "1002590189"
+ },
+ "x2611_15505_formal_counts_aux2": {
+  "owner": "x2611_15505_formal_counts",
+  "type": "∀ (n L : ℕ) (P : List ℕ → Prop), {w | w.length = L + 1 ∧ (∀ k ∈ w, k < n) ∧ P w}.ncard = ∑ i, {w | w.length = L ∧ (∀ k ∈ w, k < n) ∧ P (↑i :: w)}.ncard",
+  "hash": "2722936060"
+ },
+ "x2611_15505_formal_counts_aux3": {
+  "owner": "x2611_15505_formal_counts",
+  "type": "∀ (n L : ℕ) (t : Fin n → List ℕ), {w | w.length = L + 1 ∧ (∀ k ∈ w, k < n) ∧ ∀ (j : Fin n), List.filter (fun k => decide (k = ↑j ∨ k = ↑j + 1)) w = t j}.ncard = ∑ i, {w | w.length = L ∧ (∀ k ∈ w, k < n) ∧ ∀ (j : Fin n), (if ↑i = ↑j ∨ ↑i = ↑j + 1 then ↑i :: List.filter (fun k => decide (k = ↑j ∨ k = ↑j + 1)) w else List.filter (fun k => decide (k = ↑j ∨ k = ↑j + 1)) w) = t j}.ncard",
+  "hash": "1522701499"
+ },
+ "x2611_15505_formal_counts_aux4": {
+  "owner": "x2611_15505_formal_counts",
+  "type": "∀ (n : ℕ) (w : List ℕ), Mathlib2.x2611_15505_formal_word n w ↔ w.length = n * (n + 1) / 2 ∧ (∀ k ∈ w, k < n) ∧ ∀ (j : Fin n), List.filter (fun k => decide (k = ↑j ∨ k = ↑j + 1)) w = (List.replicate (n - ↑j - 1) [↑j, ↑j + 1]).flatten ++ [↑j]",
+  "hash": "62074165"
+ },
+ "x2611_15505_formal_counts_aux5": {
+  "owner": "x2611_15505_formal_counts",
+  "type": "∀ (P : List ℕ → Prop), P [] → {w | w.length = 0 ∧ P w}.ncard = 1",
+  "hash": "2879375843"
+ },
+ "x2611_11287_thm1_2_lower_s1h2_aux1": {
+  "owner": "x2611_11287_thm1_2_lower_s1h2",
+  "type": "∀ {R : Type u_1} {S : Type u_2} [inst : CommRing R] [inst_1 : CommRing S] [inst_2 : Algebra R S] [StrongRankCondition R] [StrongRankCondition S] [Module.Flat R S] {M : Type u_3} {N : Type u_4} {P : Type u_5} {Q : Type u_6} [inst_6 : AddCommGroup M] [inst_7 : Module R M] [inst_8 : AddCommGroup N] [inst_9 : Module R N] [inst_10 : AddCommGroup P] [inst_11 : Module S P] [inst_12 : AddCommGroup Q] [inst_13 : Module S Q] (f : M →ₗ[R] N) (g : P →ₗ[S] Q) [Module.Free R ↥f.ker] (e : TensorProduct R S M ≃ₗ[S] P) (e' : TensorProduct R S N ≃ₗ[S] Q), (∀ (x : TensorProduct R S M), e' (((TensorProduct.AlgebraTensorModule.lTensor S S) f) x) = g (e x)) → Module.finrank R ↥f.ker = Module.finrank S ↥g.ker",
+  "hash": "1737032292"
+ },
+ "x2611_11287_thm1_2_lower_s1h2_aux2": {
+  "owner": "x2611_11287_thm1_2_lower_s1h2",
+  "type": "∀ (F : Type u_1) [inst : Field F] (n : ℕ), ∃ e, ∀ (c : F) (X : Matrix (Fin n) (Fin n) ℤ), e (c ⊗ₜ[ℤ] X) = c • X.map ⇑(Int.castRingHom F)",
+  "hash": "481045988"
+ },
+ "x2611_11287_thm1_2_lower_s1h2_aux3": {
+  "owner": "x2611_11287_thm1_2_lower_s1h2",
+  "type": "∀ (R : Type u_1) [inst : CommRing R] (n : ℕ) (A : Matrix (Fin n) (Fin n) R), Subalgebra.toSubmodule (Subalgebra.centralizer R {A}) = (LinearMap.mulLeft R A - LinearMap.mulRight R A).ker",
+  "hash": "2444663610"
+ },
+ "x2611_15512_lem2_4_s1h1_aux1": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} [inst : CommSemiring S] (A : Finset α), (∏ a ∈ A, MvPolynomial.X a).IsHomogeneous A.card",
+  "hash": "2755479269"
+ },
+ "x2611_15512_lem2_4_s1h1_aux2": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} [inst : CommSemiring S] (P Q : MvPolynomial α S) (a b : ℕ), (∀ (d : α →₀ ℕ), Finsupp.degree d < a → MvPolynomial.coeff d P = 0) → (∀ (d : α →₀ ℕ), Finsupp.degree d < b → MvPolynomial.coeff d Q = 0) → ∀ (d : α →₀ ℕ), Finsupp.degree d < a + b → MvPolynomial.coeff d (P * Q) = 0",
+  "hash": "2350665782"
+ },
+ "x2611_15512_lem2_4_s1h1_aux3": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} [inst : CommSemiring S] (E : Finset α) (d : α →₀ ℕ), MvPolynomial.coeff d (∏ a ∈ E, (1 + MvPolynomial.X a)) = MvPolynomial.coeff d (∑ A ∈ Finset.powersetCard (Finsupp.degree d) E, ∏ a ∈ A, MvPolynomial.X a)",
+  "hash": "2946431850"
+ },
+ "x2611_15512_lem2_4_s1h1_aux4": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {S : Type u_2} [inst : CommRing S] (E : Finset α) (d : α →₀ ℕ), Finsupp.degree d < 3 → MvPolynomial.coeff d (∏ a ∈ E, (1 + MvPolynomial.X a) - 1 - ∑ a ∈ E, MvPolynomial.X a - ∑ A ∈ Finset.powersetCard 2 E, ∏ a ∈ A, MvPolynomial.X a) = 0",
+  "hash": "1377710101"
+ },
+ "x2611_15512_lem2_4_s1h1_aux5": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {β : Type u_2} {M : Type u_3} [inst : Fintype β] [inst_1 : AddCommMonoid M] (E : Finset α) (p : α → β) (f : Finset α → M), ∑ v, ∑ A ∈ Finset.powersetCard 2 ({a ∈ E | p a = v}), f A = ∑ A ∈ Finset.powersetCard 2 E, if (Finset.image p A).card = 1 then f A else 0",
+  "hash": "2351315164"
+ },
+ "x2611_15512_lem2_4_s1h1_aux6": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {L : Type u_2} {R : Type u_3} {M : Type u_4} [inst : Fintype L] [inst_1 : Fintype R] [inst_2 : AddCommMonoid M] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun a => (l a, r a)) ↑E → ∀ (f : Finset α → M), ∑ v, ∑ A ∈ Finset.powersetCard 2 ({a ∈ E | l a = v}), f A + ∑ v, ∑ A ∈ Finset.powersetCard 2 ({a ∈ E | r a = v}), f A + ∑ A ∈ Finset.powersetCard 2 E with (Finset.image l A).card = 2 ∧ (Finset.image r A).card = 2, f A = ∑ A ∈ Finset.powersetCard 2 E, f A",
+  "hash": "897888749"
+ },
+ "x2611_15512_lem2_4_s1h1_aux7": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} (S A B P H : MvPolynomial α ℝ), S.IsHomogeneous 1 → H.IsHomogeneous 2 → (∀ (d : α →₀ ℕ), Finsupp.degree d < 2 → MvPolynomial.coeff d (A - S) = 0) → (∀ (d : α →₀ ℕ), Finsupp.degree d < 2 → MvPolynomial.coeff d (B - S) = 0) → (∀ (d : α →₀ ℕ), Finsupp.degree d < 2 → MvPolynomial.coeff d (P - S) = 0) → (∀ (d : α →₀ ℕ), Finsupp.degree d < 3 → MvPolynomial.coeff d (A - S + (B - S) + H - (P - S)) = 0) → ∀ (d : α →₀ ℕ), Finsupp.degree d < 4 → MvPolynomial.coeff d (A * B + P * (H - S)) = 0",
+  "hash": "1959930092"
+ },
+ "x2611_15512_lem2_4_s1h1_aux8": {
+  "owner": "x2611_15512_lem2_4_s1h1",
+  "type": "∀ {α : Type u_1} {β : Type u_2} [inst : Fintype β] (E : Finset α) (p : α → β) (d : α →₀ ℕ), Finsupp.degree d < 3 → MvPolynomial.coeff d (Mathlib2.x2611_15512_graph_star E p - ∑ a ∈ E, MvPolynomial.X a - ∑ v, ∑ A ∈ Finset.powersetCard 2 ({a ∈ E | p a = v}), ∏ a ∈ A, MvPolynomial.X a) = 0",
+  "hash": "16751159"
+ },
+ "x2611_16458_ex4_4_aux1": {
+  "owner": "x2611_16458_ex4_4",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [inst_1 : DecidableEq V] (P N : SimpleGraph V) [inst_2 : DecidableRel P.Adj] [inst_3 : DecidableRel N.Adj],\n  Mathlib2.x2611_16458_zeroFree P N =\n    ∑ F ∈ (P.edgeFinset.disjSum N.edgeFinset).powerset,\n      let Q := SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F};\n      let R := SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F};\n      if Mathlib2.x2611_16458_balanced Q R then Polynomial.C ((-1) ^ F.card) * Polynomial.X ^ Fintype.card (Q ⊔ R).ConnectedComponent else 0",
+  "hash": "3414672514"
+ },
+ "x2611_16458_ex4_4_aux2": {
+  "owner": "x2611_16458_ex4_4",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj], Polynomial.eval 1 (Mathlib2.x2611_16458_zeroFree G ⊥) = if G = ⊥ then 1 else 0",
+  "hash": "1753282693"
+ },
+ "x2611_16458_ex4_4_aux3": {
+  "owner": "x2611_16458_ex4_4",
+  "type": "∀ {V : Type u_1} [inst : Finite V], Mathlib2.x2611_16458_zeroFree ⊥ ⊥ = Polynomial.X ^ Nat.card V",
+  "hash": "193053555"
+ },
+ "x2611_15505_eq5_aux1": {
+  "owner": "x2611_15505_eq5",
+  "type": "∀ (m : ℕ) (f : Polynomial ℝ) (x y : ℕ → ℝ), (Mathlib2.x2611_15505_ordered_roots f m fun i => x ↑i) → (Mathlib2.x2611_15505_ordered_roots (Polynomial.derivative f) (m - 1) fun i => y ↑i) → ∀ (i : Fin (m - 1)), x ↑i < y ↑i ∧ y ↑i < x (↑i + 1)",
+  "hash": "3892617870"
+ },
+ "x2611_15505_eq5_aux2": {
+  "owner": "x2611_15505_eq5",
+  "type": "∀ (m : ℕ) (f : Polynomial ℝ) (x : Fin m → ℝ), Mathlib2.x2611_15505_ordered_roots f m x → ∀ (t : ℝ), (∀ (i : Fin m), t ≠ x i) → Polynomial.eval t (Polynomial.derivative f) = 0 → ∑ i, 1 / (t - x i) = 0",
+  "hash": "11627131"
+ },
+ "x2611_15505_eq5_aux3": {
+  "owner": "x2611_15505_eq5",
+  "type": "∀ (m k : ℕ), k ≤ m → ∀ (a b : ℝ), (∑ i ∈ Finset.range m, if i < k then a else b) = ↑k * a + ↑(m - k) * b",
+  "hash": "3622334718"
+ },
+ "x2611_15505_eq5_aux4": {
+  "owner": "x2611_15505_eq5",
+  "type": "∀ (m k : ℕ), 3 ≤ m → 1 ≤ k → k < m → ∀ (x : ℕ → ℝ), (∀ (i j : ℕ), i < j → j < m → x i < x j) → ∀ (t : ℝ), x (k - 1) < t → t < x k → ∑ i ∈ Finset.range m, 1 / (t - x i) = 0 → 1 / (t - x (k - 1)) + ↑(m - k) / (t - x k) < 0 ∧ 0 < ↑k / (t - x (k - 1)) + 1 / (t - x k)",
+  "hash": "4175744877"
+ },
+ "x2611_15505_eq8_aux1": {
+  "owner": "x2611_15505_eq8",
+  "type": "∀ (n : ℕ) (p : Polynomial ℝ) (x : Fin (n + 1) → ℝ) (y : Fin n → ℝ), p ≠ 0 → Polynomial.derivative p ≠ 0 → StrictMono x → StrictMono y → p.roots = Multiset.map x Finset.univ.val → (Polynomial.derivative p).roots = Multiset.map y Finset.univ.val → ∀ (i : Fin n), x i.castSucc < y i ∧ y i < x i.succ",
+  "hash": "1862046663"
+ },
+ "x2611_15505_eq8_aux2": {
+  "owner": "x2611_15505_eq8",
+  "type": "∀ {ι : Type u_1} [inst : Fintype ι] (z : ι → ℝ) (u v : ℝ), (∀ (i : ι), u < z i ∧ z i < v) → ↑(Fintype.card ι) * (∑ i, 1 / (z i - u) + ∑ i, 1 / (v - z i)) ≤ ((v - u) * ∑ i, 1 / (z i - u)) * ∑ i, 1 / (v - z i)",
+  "hash": "2771389872"
+ },
+ "x2611_15505_eq8_aux3": {
+  "owner": "x2611_15505_eq8",
+  "type": "∀ (k a b u v : ℝ), 0 ≤ k → a < u → u < v → v < b → k * (1 / (u - a) + 1 / (u - b) + -(1 / (v - a) + 1 / (v - b))) ≤ (v - u) * (1 / (u - a) + 1 / (u - b)) * -(1 / (v - a) + 1 / (v - b)) → √(k / (k + 2)) * (b - a) ≤ v - u",
+  "hash": "3641845074"
+ },
+ "x2611_15505_eq8_aux4": {
+  "owner": "x2611_15505_eq8",
+  "type": "∀ (n : ℕ) (p : Polynomial ℝ) (x : Fin n → ℝ), p.natDegree = n → p.roots = Multiset.map x Finset.univ.val → ∀ (u : ℝ), Polynomial.eval u p ≠ 0 → Polynomial.eval u (Polynomial.derivative p) = 0 → ∑ i, 1 / (u - x i) = 0",
+  "hash": "828701774"
+ },
+ "x2611_15505_eq8_aux5": {
+  "owner": "x2611_15505_eq8",
+  "type": "∀ (n : ℕ) (p : Polynomial ℝ) (x : Fin (n + 1) → ℝ), p ≠ 0 → StrictMono x → p.roots = Multiset.map x Finset.univ.val → ∀ (i : Fin n) (u : ℝ), x i.castSucc < u ∧ u < x i.succ → Polynomial.eval u p ≠ 0",
+  "hash": "2282240552"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux1": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : CommSemiring R] (w : σ → ℕ) (p q : MvPolynomial σ R) (D : ℕ), MvPolynomial.IsWeightedHomogeneous w p D → ∀ (m : σ →₀ ℕ), (Finsupp.weight w) m < D → MvPolynomial.coeff m (p * q) = 0",
+  "hash": "173852782"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux2": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : CommRing R] (w : σ → ℕ) (a b : σ), w a = 1 → w b = 1 → ∀ (t : R) (N : ℕ), MvPolynomial.IsWeightedHomogeneous w ((MvPolynomial.X b - MvPolynomial.X a) * ∑ k ∈ Finset.range (N + 1), MvPolynomial.C (t ^ k) * MvPolynomial.X a ^ k * MvPolynomial.X b ^ (N - k)) (N + 1)",
+  "hash": "2679296074"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux3": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n N : ℕ) (i : Fin n), (∑ ab, if ab.1 < ab.2 ∧ ab.2 ≤ i then N else 0) = N * ∑ b, if b ≤ i then ↑b else 0",
+  "hash": "4237129908"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux4": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ {σ : Type u_1} {R : Type u_2} [inst : DecidableEq σ] [inst_1 : CommRing R] [IsAddTorsionFree R] (i j : σ) (m : σ →₀ ℕ), m i = m j → ∀ (p : MvPolynomial σ R), (MvPolynomial.rename ⇑(Equiv.swap i j)) p = -p → MvPolynomial.coeff m p = 0",
+  "hash": "2606550611"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux5": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n : ℕ) (i j : Fin n), ↑j = ↑i + 1 → ∀ (a b : Fin n), a < b ∧ (a, b) ≠ (i, j) ↔ (Equiv.swap i j) a < (Equiv.swap i j) b ∧ ((Equiv.swap i j) a, (Equiv.swap i j) b) ≠ (i, j)",
+  "hash": "3051269947"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux6": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n N : ℕ) (t : RatFunc ℚ) (i j : Fin n), ↑j = ↑i + 1 → (MvPolynomial.rename ⇑(Equiv.swap i j)) (∏ ab, if ab.1 < ab.2 ∧ ab ≠ (i, j) then (MvPolynomial.X ab.2 - MvPolynomial.X ab.1) * ∑ k ∈ Finset.range (N + 1), MvPolynomial.C (t ^ k) * MvPolynomial.X ab.1 ^ k * MvPolynomial.X ab.2 ^ (N - k) else 1) = ∏ ab, if ab.1 < ab.2 ∧ ab ≠ (i, j) then (MvPolynomial.X ab.2 - MvPolynomial.X ab.1) * ∑ k ∈ Finset.range (N + 1), MvPolynomial.C (t ^ k) * MvPolynomial.X ab.1 ^ k * MvPolynomial.X ab.2 ^ (N - k) else 1",
+  "hash": "3236353978"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux7": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n N : ℕ) (i : Fin n), (Finsupp.weight fun b => if b ≤ i then 1 else 0) (Finsupp.equivFunOnFinite.symm fun b => 1 + N * ↑b) = (N * ∑ b, if b ≤ i then ↑b else 0) + (↑i + 1)",
+  "hash": "3404384419"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux8": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n : ℕ) (t : RatFunc ℚ) (i j : Fin n), ↑j = ↑i + 1 → ∀ (h : MvPolynomial (Fin n) (RatFunc ℚ)), MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun b => 1 + (n + 1) * ↑b) ((MvPolynomial.X i ^ (n + 1) * ∏ ab, if ab.1 < ab.2 ∧ ab ≠ (i, j) then (MvPolynomial.X ab.2 - MvPolynomial.X ab.1) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (t ^ k) * MvPolynomial.X ab.1 ^ k * MvPolynomial.X ab.2 ^ (n - k) else 1) * h) = 0",
+  "hash": "4005770007"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux9": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ (n : ℕ) (i j : Fin n), ↑j = ↑i + 1 → ∀ (R f : MvPolynomial (Fin n) (RatFunc ℚ)), (MvPolynomial.rename ⇑(Equiv.swap i j)) R = R → MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun b => 1 + (n + 1) * ↑b) (MvPolynomial.X j ^ (n + 1) * R * (f - (MvPolynomial.rename ⇑(Equiv.swap i j)) f)) = 0",
+  "hash": "206537388"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux10": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ {α : Type u_1} {M : Type u_2} [inst : Fintype α] [inst_1 : DecidableEq α] [inst_2 : CommMonoid M] (c : α → Prop) [inst_3 : DecidablePred c] (F : α → M) (a : α), c a → (∏ b, if c b then F b else 1) = F a * ∏ b, if c b ∧ b ≠ a then F b else 1",
+  "hash": "2579178332"
+ },
+ "x2611_16899_thm1_eq2_s1h1_s1h2_aux11": {
+  "owner": "x2611_16899_thm1_eq2_s1h1_s1h2",
+  "type": "∀ {R : Type u_1} [inst : CommRing R] (x y t : R) (N : ℕ), (y - t * x) * ∑ k ∈ Finset.range (N + 1), t ^ k * x ^ k * y ^ (N - k) = y ^ (N + 1) - t ^ (N + 1) * x ^ (N + 1)",
+  "hash": "478484904"
  }
 }

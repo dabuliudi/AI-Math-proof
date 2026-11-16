@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16899_thm1_minimality_s1h2",
+  "statement": ": ∀ (n : ℕ), 3 ≤ n → n ≤ 13 → ∀ (b : Fin n → ℕ), (∀ (i : Fin n), b i ≤ 2) → ∑ i : Fin n, b i = n → ∀ (K : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)), x2611_16899_key_family n K → ∃ (p : Polynomial ℚ), MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (K b * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) p ∧ ∀ (r : ℕ), 0 ≤ p.coeff r",
+  "closed": "∀ (n : ℕ), 3 ≤ n → n ≤ 13 → ∀ (b : Fin n → ℕ), (∀ (i : Fin n), b i ≤ 2) → ∑ i : Fin n, b i = n → ∀ (K : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)), x2611_16899_key_family n K → ∃ (p : Polynomial ℚ), MvPolynomial.coeff ((Finsupp.equivFunOnFinite.symm : (Fin n → ℕ) → Fin n →₀ ℕ) fun (i : Fin n) => 1 + (n + 1) * (↑i : ℕ)) (K b * ∏ ij : Fin n × Fin n, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), (MvPolynomial.C : RatFunc ℚ → MvPolynomial (Fin n) (RatFunc ℚ)) (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ) : Polynomial ℚ → RatFunc ℚ) p ∧ ∀ (r : ℕ), 0 ≤ p.coeff r",
+  "informal": "x2611_16899_thm1_minimality 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16899_thm1_minimality",
+  "original": "",
+  "proposed_by": "queue-r7-w4",
+  "hash": "2013470214",
+  "type": "∀ (n : ℕ), 3 ≤ n → n ≤ 13 → ∀ (b : Fin n → ℕ), (∀ (i : Fin n), b i ≤ 2) → ∑ i, b i = n → ∀ (K : (Fin n → ℕ) → MvPolynomial (Fin n) (RatFunc ℚ)), Mathlib2.x2611_16899_key_family n K → ∃ p, MvPolynomial.coeff (Finsupp.equivFunOnFinite.symm fun i => 1 + (n + 1) * ↑i) (K b * ∏ ij, if ij.1 < ij.2 then (MvPolynomial.X ij.2 - MvPolynomial.X ij.1) * ∑ k ∈ Finset.range (n + 1), MvPolynomial.C (RatFunc.X ^ k) * MvPolynomial.X ij.1 ^ k * MvPolynomial.X ij.2 ^ (n - k) else 1) = (algebraMap (Polynomial ℚ) (RatFunc ℚ)) p ∧ ∀ (r : ℕ), 0 ≤ p.coeff r",
+  "attempts": [],
+  "created_at": "2026-11-16T12:18:28+0800",
+  "status": "open"
+}

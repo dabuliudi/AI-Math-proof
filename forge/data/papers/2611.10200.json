@@ -50,7 +50,8 @@
       "fidelity": {
         "twin": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : x2611_10200_complete H ↔ 1 ≤ N ∧ (N : ℤ) ≤ ⌊x2611_10200_M g k⌋",
         "twin_by": "audit-b1-w4",
-        "verdict": "original_invalid"
+        "verdict": "same",
+        "queued": "open"
       }
     },
     {
@@ -62,7 +63,11 @@
       "fidelity": {
         "twin": "(g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) : x2611_10200_M (g + 1) k > x2611_10200_M g k ∧ (∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ), x2611_10200_standard g k N H → x2611_10200_standard (g + 1) k N H' → x2611_10200_complete H → x2611_10200_complete H')",
         "twin_by": "audit-b1-w6",
-        "verdict": "original_invalid"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_10200_thm1_2_eqv :\n    (∀ (g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k),\n      x2611_10200_M g k < x2611_10200_M (g + 1) k ∧\n      ∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ),\n        x2611_10200_standard g k N H →\n        x2611_10200_standard (g + 1) k N H' →\n        x2611_10200_complete H → x2611_10200_complete H') ↔\n    (∀ (g k : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k),\n      x2611_10200_M (g + 1) k > x2611_10200_M g k ∧\n      (∀ (N : ℕ), 1 ≤ N → ∀ (H H' : ℕ → ℤ),\n        x2611_10200_standard g k N H →\n        x2611_10200_standard (g + 1) k N H' →\n        x2611_10200_complete H → x2611_10200_complete H')) := by\n  exact Iff.rfl\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     },
     {
@@ -197,7 +202,11 @@
       "fidelity": {
         "twin": "(H H21 : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H) (hH21 : x2611_10200_standard 2 4 21 H21) : (2 + 4 + 1 : ℕ) = 7 ∧ x2611_10200_M 2 4 = 20 ∧ H 1 = 1 ∧ H 2 = 2 ∧ H 3 = 4 ∧ H 4 = 7 ∧ H 5 = 12 ∧ H 6 = 20 ∧ H 7 = 33 ∧ H 8 = 73 ∧ H 9 = 146 ∧ H 10 = 299 ∧ H 11 = 585 ∧ H 12 = 1124 ∧ x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧ x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧ x2611_10200_complete H ∧ x2611_10200_B H21 10 = -4 ∧ ¬ x2611_10200_complete H21",
         "twin_by": "audit-b1-w7",
-        "verdict": "original_invalid"
+        "verdict": "equivalent",
+        "equiv_attempts": 1,
+        "equivalence_proof": "theorem x2611_10200_example6_1_eqv :\n    (∀ (H H' : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H)\n      (hH' : x2611_10200_standard 2 4 21 H'),\n      x2611_10200_M 2 4 = 20 ∧\n      (List.range 12).map (fun i => H (i + 1)) =\n        ([1, 2, 4, 7, 12, 20, 33, 73, 146, 299, 585, 1124] : List ℤ) ∧\n      x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧\n      x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧\n      x2611_10200_complete H ∧ x2611_10200_B H' 10 = -4 ∧\n      ¬ x2611_10200_complete H') ↔\n    (∀ (H H21 : ℕ → ℤ) (hH : x2611_10200_standard 2 4 20 H)\n      (hH21 : x2611_10200_standard 2 4 21 H21),\n      (2 + 4 + 1 : ℕ) = 7 ∧ x2611_10200_M 2 4 = 20 ∧\n      H 1 = 1 ∧ H 2 = 2 ∧ H 3 = 4 ∧ H 4 = 7 ∧ H 5 = 12 ∧\n      H 6 = 20 ∧ H 7 = 33 ∧ H 8 = 73 ∧ H 9 = 146 ∧ H 10 = 299 ∧\n      H 11 = 585 ∧ H 12 = 1124 ∧\n      x2611_10200_B H 10 = 0 ∧ x2611_10200_B H 11 = 13 ∧\n      x2611_10200_B H 12 = 59 ∧ x2611_10200_B H 13 = 198 ∧\n      x2611_10200_complete H ∧ x2611_10200_B H21 10 = -4 ∧\n      ¬ x2611_10200_complete H21) := by\n  simp [List.range_succ, and_assoc]\n",
+        "note": "通过：命题匹配，公理合规",
+        "queued": "open"
       }
     }
   ],

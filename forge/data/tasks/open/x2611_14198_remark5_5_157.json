@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14198_remark5_5_157",
+  "statement": "[Fact (Nat.Prime 157)] : IsPrimitiveRoot (157 : ZMod 5) (Nat.totient 5) ∧ ¬ IsPrimitiveRoot (157 : ZMod 25) (Nat.totient 25) ∧ orderOf (157 : ZMod 25) = 4 ∧ ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r",
+  "closed": "∀ [Fact (Nat.Prime 157)], IsPrimitiveRoot (157 : ZMod 5) (Nat.totient 5) ∧ ¬ IsPrimitiveRoot (157 : ZMod 25) (Nat.totient 25) ∧ orderOf (157 : ZMod 25) = 4 ∧ ∀ r : ℕ, 1 ≤ r → ¬ x2611_14198_maximal 25 157 r",
+  "informal": "Remark 5.5 (d = 25, p = 157)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14198",
+  "original": "For $\\ell=5$ and $p=13$ , Theorem 1.2 gives\n $L_{\\mathcal{H}_{25},13}(T)=(1+13^{2}T^{4})(1+13^{10}T^{20})$ , where\n $L_{C,p}(T)=T^{2g}P_{C,p}(T^{-1})$ , and similarly for $\\mathcal{H}_{125}$ ; these\nrecover the computations in [17, Example 4.2.8].\n\nThe necessity direction is already visible at the next type of examples. For\n $d=25$ and $p=157$ , the prime $157$ is a primitive root modulo $5$ but not\nmodulo $25$ (its order modulo $25$ is $4$ ), so\nProposition 4.4 excludes supersingularity of the\nprimitive factor $B_{2}$ and hence excludes maximality of $\\mathcal{H}_{25}$ over every\nfinite extension of $\\mathbb{F}_{157}$ . Likewise, if $d$ has two distinct prime\nfactors, Proposition 4.5 excludes supersingularity of $J_{d}$ in\ncharacteristic $p\\equiv 1\\pmod{4}$ ; for example this applies to $d=65$ and\n $p=37$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3693922165",
+  "type": "∀ [inst : Fact (Nat.Prime 157)], IsPrimitiveRoot 157 (Nat.totient 5) ∧ ¬IsPrimitiveRoot 157 (Nat.totient 25) ∧ orderOf 157 = 4 ∧ ∀ (r : ℕ), 1 ≤ r → ¬Mathlib2.x2611_14198_maximal 25 157 r",
+  "attempts": [],
+  "created_at": "2026-11-16T12:18:53+0800",
+  "status": "open"
+}

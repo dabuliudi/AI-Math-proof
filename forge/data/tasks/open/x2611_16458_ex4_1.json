@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_ex4_1",
+  "statement": "(n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 3 ≤ n)\n(hcycle : P ⊔ N = SimpleGraph.cycleGraph n) (hsigns : Disjoint P N) :\n(x2611_16458_balanced P N →\n  x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n +\n    Polynomial.C ((-1 : ℤ) ^ n) * (Polynomial.X - 1)) ∧\n(¬ x2611_16458_balanced P N →\n  x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n - Polynomial.C ((-1 : ℤ) ^ n))",
+  "closed": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 3 ≤ n)\n(hcycle : P ⊔ N = SimpleGraph.cycleGraph n) (hsigns : Disjoint P N), (x2611_16458_balanced P N →\n  x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n +\n    Polynomial.C ((-1 : ℤ) ^ n) * (Polynomial.X - 1)) ∧\n(¬ x2611_16458_balanced P N →\n  x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n - Polynomial.C ((-1 : ℤ) ^ n))",
+  "informal": "Example 4.1 (signed-cycle formula)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16458",
+  "original": "Let $\\Sigma$ be a signed cycle $C_{n}$ with $n\\geq 3$ .\nIf the number of negative edges is even, then $\\Sigma$ is balanced.\nIf it is odd, then $\\Sigma$ can be switched to a signed cycle with exactly one negative edge.\nBy splitting one of its endpoints, we obtain $C_{n+1}$ . Therefore, the formula for ordinary cycles and (2.5) provide\n\n $Z_{\\Sigma}(q)=\\begin{cases}(q-1)^{n}+(-1)^{n}(q-1),&\\text{if $\\Sigma$ is balanced},\\\\\n(q-1)^{n}-(-1)^{n},&\\text{if $\\Sigma$ is unbalanced}.\\end{cases}$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1931745641",
+  "type": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 3 ≤ n → P ⊔ N = SimpleGraph.cycleGraph n → Disjoint P N → (Mathlib2.x2611_16458_balanced P N → Mathlib2.x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n + Polynomial.C ((-1) ^ n) * (Polynomial.X - 1)) ∧ (¬Mathlib2.x2611_16458_balanced P N → Mathlib2.x2611_16458_zeroFree P N = (Polynomial.X - 1) ^ n - Polynomial.C ((-1) ^ n))",
+  "attempts": [],
+  "created_at": "2026-11-16T12:29:55+0800",
+  "status": "open"
+}

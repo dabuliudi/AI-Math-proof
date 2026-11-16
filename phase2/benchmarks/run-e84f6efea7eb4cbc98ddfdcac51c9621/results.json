@@ -1,0 +1,286 @@
+[
+  {
+    "id": "reuse",
+    "category": "direct_reuse",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/e13b6918912041dc962f34a50badfb84",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 2,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": true,
+        "reused_declarations": 1,
+        "reused_mathlib_theorems": 1,
+        "reused_lean_core_theorems": 0,
+        "generated_lemmas": 1,
+        "intermediate_lemmas": 0,
+        "dag_depth": 1,
+        "exploration_depth": 1,
+        "elapsed": 2.988445832997968
+      },
+      "successful_proof_nodes": [
+        "p2_n001",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "composition",
+    "category": "multiple_theorems",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/c0fe3eb3fe8e403fade10593e10c730c",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 3,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 2,
+        "reused_mathlib_theorems": 1,
+        "reused_lean_core_theorems": 1,
+        "generated_lemmas": 2,
+        "intermediate_lemmas": 1,
+        "dag_depth": 3,
+        "exploration_depth": 3,
+        "elapsed": 4.465467957998044
+      },
+      "successful_proof_nodes": [
+        "h0",
+        "h1",
+        "h2",
+        "p2_n001",
+        "p2_n002",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "intermediate",
+    "category": "intermediate_discovery",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/252c49157ba54448932b4ccb77471fd3",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 3,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 1,
+        "reused_mathlib_theorems": 1,
+        "reused_lean_core_theorems": 0,
+        "generated_lemmas": 2,
+        "intermediate_lemmas": 1,
+        "dag_depth": 3,
+        "exploration_depth": 3,
+        "elapsed": 4.450928958998702
+      },
+      "successful_proof_nodes": [
+        "h0",
+        "h1",
+        "h2",
+        "p2_n001",
+        "p2_n002",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "multilayer",
+    "category": "multilevel_and_conjunction",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/f734542b60d8473faa2f82e92a318f79",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 6,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 2,
+        "reused_mathlib_theorems": 1,
+        "reused_lean_core_theorems": 1,
+        "generated_lemmas": 5,
+        "intermediate_lemmas": 3,
+        "dag_depth": 6,
+        "exploration_depth": 6,
+        "elapsed": 9.037575125003059
+      },
+      "successful_proof_nodes": [
+        "h0",
+        "h1",
+        "h2",
+        "h3",
+        "h4",
+        "h5",
+        "p2_n001",
+        "p2_n002",
+        "p2_n003",
+        "p2_n004",
+        "p2_n005",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "unresolved",
+    "category": "unresolved_control_not_mathlib_impossibility",
+    "result": {
+      "status": "unknown",
+      "reason": "goal_not_derivable_in_fragment_closure",
+      "formal_goal_verified": false,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/3d19a9b4c82b410e9b99de90d387627e",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 0,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 0,
+        "reused_mathlib_theorems": 0,
+        "reused_lean_core_theorems": 0,
+        "generated_lemmas": 0,
+        "intermediate_lemmas": 0,
+        "dag_depth": 0,
+        "exploration_depth": 0,
+        "elapsed": 0.003431583994824905
+      },
+      "successful_proof_nodes": [],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "generated-0",
+    "category": "post_freeze_generated_order_chain",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/a6da3ab9ae6047f98840156ec4ece3c7",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 3,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 2,
+        "reused_mathlib_theorems": 2,
+        "reused_lean_core_theorems": 0,
+        "generated_lemmas": 2,
+        "intermediate_lemmas": 1,
+        "dag_depth": 3,
+        "exploration_depth": 3,
+        "elapsed": 4.268071416998282
+      },
+      "successful_proof_nodes": [
+        "h0",
+        "h1",
+        "h2",
+        "h3",
+        "p2_n001",
+        "p2_n002",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  },
+  {
+    "id": "generated-1",
+    "category": "post_freeze_generated_order_chain",
+    "result": {
+      "status": "proved",
+      "reason": "lean_accepted",
+      "formal_goal_verified": true,
+      "source_alignment": "unconfirmed",
+      "candidate_verified": false,
+      "approval_status": "pending",
+      "run": "/Users/zaixi/AI4math/phase2/benchmarks/run-e84f6efea7eb4cbc98ddfdcac51c9621/runs/12577a8716c848cab7104995b7b8b309",
+      "ai": "no AI call",
+      "ai_calls": 0,
+      "ai_tokens": null,
+      "ai_cost": 0,
+      "human_interventions": 0,
+      "metrics": {
+        "compile_attempts": 3,
+        "failed_compilations": 0,
+        "repair_attempts": 0,
+        "first_compile_solved_target": false,
+        "reused_declarations": 2,
+        "reused_mathlib_theorems": 2,
+        "reused_lean_core_theorems": 0,
+        "generated_lemmas": 2,
+        "intermediate_lemmas": 1,
+        "dag_depth": 3,
+        "exploration_depth": 3,
+        "elapsed": 4.263961583004857
+      },
+      "successful_proof_nodes": [
+        "h0",
+        "h1",
+        "h2",
+        "h3",
+        "p2_n001",
+        "p2_n002",
+        "p2_target"
+      ],
+      "generation_origin": "Rule Engine, runtime search over real library types; no target-specific proof template"
+    }
+  }
+]

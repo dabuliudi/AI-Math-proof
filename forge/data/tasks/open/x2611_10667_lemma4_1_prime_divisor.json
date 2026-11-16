@@ -1,0 +1,15 @@
+{
+  "name": "x2611_10667_lemma4_1_prime_divisor",
+  "statement": "(q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime) (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0) (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1) (hnt : a * b * c ≠ 0) : b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ : ℕ, ℓ.Prime ∧ (ℓ : ℤ) ∣ b",
+  "closed": "∀ (q r p : ℕ) (hq : q.Prime) (hr : r.Prime) (hp : p.Prime) (hqr : r < q) (hr2 : 2 < r) (hp3 : 3 < p) (a b c : ℤ) (hsol : a ^ q + b ^ p + c ^ r = 0) (hprim : Nat.gcd (Int.gcd a b) c.natAbs = 1) (hnt : a * b * c ≠ 0), b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ : ℕ, ℓ.Prime ∧ (ℓ : ℤ) ∣ b",
+  "informal": "Lemma 4.1 proof (Catalan consequence and existence of a prime divisor)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10667",
+  "original": "By Catalan’s conjecture [18], $b\\neq\\pm 1$ so\nthere exists a prime number $\\ell\\mid b$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2290680012",
+  "type": "∀ (q r p : ℕ), Nat.Prime q → Nat.Prime r → Nat.Prime p → r < q → 2 < r → 3 < p → ∀ (a b c : ℤ), a ^ q + b ^ p + c ^ r = 0 → (a.gcd b).gcd c.natAbs = 1 → a * b * c ≠ 0 → b ≠ 1 ∧ b ≠ -1 ∧ ∃ ℓ, Nat.Prime ℓ ∧ ↑ℓ ∣ b",
+  "attempts": [],
+  "created_at": "2026-11-16T12:25:36+0800",
+  "status": "open"
+}

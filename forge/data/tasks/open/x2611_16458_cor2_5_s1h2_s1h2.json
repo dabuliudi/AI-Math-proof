@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_cor2_5_s1h2_s1h2",
+  "statement": ": ∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V) (s t : V), x2611_16458_twoConnected G → G.Adj s t → ∃ (r : V → ℕ), Function.Injective r ∧ (∀ (v : V), r s ≤ r v) ∧ (∀ (v : V), r v ≤ r t) ∧ (∀ (v : V), v ≠ s → ∃ (w : V), G.Adj w v ∧ r w < r v) ∧ ∀ (v : V), v ≠ t → ∃ (w : V), G.Adj v w ∧ r v < r w",
+  "closed": "∀ {V : Type*} [inst : Finite V] (G : SimpleGraph V) (s t : V), x2611_16458_twoConnected G → G.Adj s t → ∃ (r : V → ℕ), Function.Injective r ∧ (∀ (v : V), r s ≤ r v) ∧ (∀ (v : V), r v ≤ r t) ∧ (∀ (v : V), v ≠ s → ∃ (w : V), G.Adj w v ∧ r w < r v) ∧ ∀ (v : V), v ≠ t → ∃ (w : V), G.Adj v w ∧ r v < r w",
+  "informal": "x2611_16458_cor2_5_s1h2 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_cor2_5_s1h2",
+  "original": "",
+  "proposed_by": "queue-r7-w7",
+  "hash": "3320531726",
+  "type": "∀ {V : Type u_1} [inst : Finite V] (G : SimpleGraph V) (s t : V), Mathlib2.x2611_16458_twoConnected G → G.Adj s t → ∃ r, Function.Injective r ∧ (∀ (v : V), r s ≤ r v) ∧ (∀ (v : V), r v ≤ r t) ∧ (∀ (v : V), v ≠ s → ∃ w, G.Adj w v ∧ r w < r v) ∧ ∀ (v : V), v ≠ t → ∃ w, G.Adj v w ∧ r v < r w",
+  "attempts": [],
+  "created_at": "2026-11-16T12:42:11+0800",
+  "status": "open"
+}

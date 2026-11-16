@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14198_cor6_2_fields",
+  "statement": "(d p r : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hcop : ¬ p ∣ 2 * d) (hr : 1 ≤ r) : x2611_14198_maximal d p r ↔ ((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k : ℕ, (p : ZMod (4 * d)) ^ k = -1 ∨ (p : ZMod (4 * d)) ^ k = ((1 + 2 * d : ℕ) : ZMod (4 * d))) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (4 * d)) * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ k : ℕ, (p : ZMod (2 * d)) ^ k = -1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (2 * d)) * b))",
+  "closed": "∀ (d p r : ℕ) [Fact p.Prime] (hd : 3 ≤ d) (hcop : ¬ p ∣ 2 * d) (hr : 1 ≤ r), x2611_14198_maximal d p r ↔ ((p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b : ℕ, ℓ.Prime ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (p : ZMod (ℓ ^ a)) (Nat.totient (ℓ ^ a)) ∧ 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (a - 1) * (ℓ - 1)) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k : ℕ, (p : ZMod (4 * d)) ^ k = -1 ∨ (p : ZMod (4 * d)) ^ k = ((1 + 2 * d : ℕ) : ZMod (4 * d))) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (4 * d)) * b) ∨ (p % 4 = 3 ∧ Even d ∧ (∃ k : ℕ, (p : ZMod (2 * d)) ^ k = -1) ∧ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = orderOf (p : ZMod (2 * d)) * b))",
+  "informal": "Corollary 6.2 and Table 1 (all maximal fields)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14198",
+  "original": "Let $d\\geq 3$ and let $p\\nmid 2d$ be prime. Then $\\mathcal{H}_{d}$ is maximal over\nsome finite extension of $\\mathbb{F}_{p}$ if and only if one of the five cases in\nTable 1 occurs. The last column of the table gives all\nfinite extensions over which it is maximal.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2866681282",
+  "type": "∀ (d p r : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → ¬p ∣ 2 * d → 1 ≤ r → (Mathlib2.x2611_14198_maximal d p r ↔ (p % 4 = 1 ∧ Odd d ∧ ∃ ℓ a b, Nat.Prime ℓ ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = ℓ ^ a ∧ IsPrimitiveRoot (↑p) (ℓ ^ a).totient ∧ 1 ≤ b ∧ Odd b ∧ r = ℓ ^ (a - 1) * (ℓ - 1) * b) ∨ (p % 4 = 1 ∧ d % 4 = 2 ∧ ∃ ℓ a b, Nat.Prime ℓ ∧ ℓ % 4 = 1 ∧ 1 ≤ a ∧ d = 2 * ℓ ^ a ∧ IsPrimitiveRoot (↑p) (ℓ ^ a).totient ∧ 1 ≤ b ∧ Odd b ∧ r = ℓ ^ (a - 1) * (ℓ - 1) * b) ∨ (p % 4 = 1 ∧ 4 ∣ d ∧ d = 4 ∧ p % 8 = 5 ∧ ∃ b, 1 ≤ b ∧ Odd b ∧ r = 2 * b) ∨ (p % 4 = 3 ∧ Odd d ∧ (∃ k, ↑p ^ k = -1 ∨ ↑p ^ k = ↑(1 + 2 * d)) ∧ ∃ b, 1 ≤ b ∧ Odd b ∧ r = orderOf ↑p * b) ∨ p % 4 = 3 ∧ Even d ∧ (∃ k, ↑p ^ k = -1) ∧ ∃ b, 1 ≤ b ∧ Odd b ∧ r = orderOf ↑p * b)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:24:12+0800",
+  "status": "open"
+}

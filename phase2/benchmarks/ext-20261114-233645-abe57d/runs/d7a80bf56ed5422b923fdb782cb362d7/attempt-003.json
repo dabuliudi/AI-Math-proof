@@ -1,0 +1,36 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:2:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:2:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:2:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:5:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:5:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:5:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:5:145: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:8:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:8:103: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:8:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean:8:145: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n'p2_n002' does not depend on any axioms\n'p2_n003' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.2359785419976106,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v2 ∣ p2v0)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v0 ∣ p2v3)) (h3 : (p2v4 < p2v3)) : (1 ≤ p2v3) := by\n  exact @Nat.one_le_of_lt p2v4 p2v3 h3\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v2 ∣ p2v0)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v0 ∣ p2v3)) (h3 : (p2v4 < p2v3)) : (p2v1 ≤ p2v1) := by\n  exact @Preorder.le_refl Nat _ p2v1\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v2 ∣ p2v0)) (h1 : (p2v1 ∣ p2v2)) (h2 : (p2v0 ∣ p2v3)) (h3 : (p2v4 < p2v3)) : (p2v3 ≤ p2v3) := by\n  exact @Preorder.le_refl Nat _ p2v3\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n",
+  "source_sha256": "0d710b9f3104e170d465aa94aa3e116c699ad37412282f9f4acd84a7d0e48ecd",
+  "goal": "(p2v3 ≤ p2v3)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/d7a80bf56ed5422b923fdb782cb362d7/attempt-003.lean",
+  "log": "attempt-003.json"
+}

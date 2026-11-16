@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14198_thm1_2_fields",
+  "statement": "(ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (r : ℕ) (hr : 1 ≤ r) : (x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧ (x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
+  "closed": "∀ (ℓ p n : ℕ) [Fact ℓ.Prime] [Fact p.Prime] (hℓ : ℓ % 4 = 1) (hp : p % 4 = 1) (hne : ℓ ≠ p) (hn : 1 ≤ n) (hgen : IsPrimitiveRoot (p : ZMod (ℓ ^ n)) (Nat.totient (ℓ ^ n))) (r : ℕ) (hr : 1 ≤ r), (x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ Odd b ∧ r = (ℓ ^ (n - 1) * (ℓ - 1)) * b) ∧ (x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b : ℕ, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
+  "informal": "Theorem 1.2 (maximal and minimal extension degrees)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14198",
+  "original": "Let $\\ell\\equiv 1\\pmod{4}$ and $p\\equiv 1\\pmod{4}$ be distinct primes, let\n $n\\geq 1$ , and suppose that $p$ generates $(\\mathbb{Z}/\\ell^{n}\\mathbb{Z})^{\\times}$ . Put\n\n $m_{j}=\\ell^{j-1}(\\ell-1)\\qquad(1\\leq j\\leq n).$ \n\nThen\n\n(2)\n\n $P_{\\mathcal{H}_{\\ell^{n}},p}(X)=\\prod_{j=1}^{n}\\left(X^{m_{j}}+p^{m_{j}/2}\\right).$ \n\nFor a positive integer $r$ , the curve $\\mathcal{H}_{\\ell^{n}}$ is maximal over\n $\\mathbb{F}_{p^{r}}$ if and only if $r=m_{n}b$ with $b$ positive and odd. It is\nminimal over $\\mathbb{F}_{p^{r}}$ if and only if $r=2m_{n}b$ with $b\\geq 1$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2861682415",
+  "type": "∀ (ℓ p n : ℕ) [Fact (Nat.Prime ℓ)] [inst : Fact (Nat.Prime p)], ℓ % 4 = 1 → p % 4 = 1 → ℓ ≠ p → 1 ≤ n → IsPrimitiveRoot (↑p) (ℓ ^ n).totient → ∀ (r : ℕ), 1 ≤ r → (Mathlib2.x2611_14198_maximal (ℓ ^ n) p r ↔ ∃ b, 1 ≤ b ∧ Odd b ∧ r = ℓ ^ (n - 1) * (ℓ - 1) * b) ∧ (Mathlib2.x2611_14198_minimal (ℓ ^ n) p r ↔ ∃ b, 1 ≤ b ∧ r = 2 * (ℓ ^ (n - 1) * (ℓ - 1)) * b)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:12:38+0800",
+  "status": "open"
+}

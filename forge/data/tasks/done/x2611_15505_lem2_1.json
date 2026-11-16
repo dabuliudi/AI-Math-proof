@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15505_lem2_1",
+  "statement": "(n : ℕ) (w : List ℕ) (hw : x2611_15505_word_multiplicities n w) :\n  x2611_15505_formal_word n w ↔\n  ∀ k : ℕ, k ≤ w.length → ∀ j : ℕ, j + 1 < n →\n    0 ≤ ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ∧\n    ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ≤ 1",
+  "closed": "∀ (n : ℕ) (w : List ℕ) (hw : x2611_15505_word_multiplicities n w), x2611_15505_formal_word n w ↔\n  ∀ k : ℕ, k ≤ w.length → ∀ j : ℕ, j + 1 < n →\n    0 ≤ ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ∧\n    ((w.take k).count j : ℤ) - ((w.take k).count (j + 1) : ℤ) ≤ 1",
+  "informal": "Lemma 2.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "A word with multiplicities $n,n-1,\\ldots,1$ encodes a linear extension of\n(1) if and only if every prefix satisfies\n\n $0\\leq c_{j}-c_{j+1}\\leq 1\\qquad(0\\leq j<n-1).$ \n\n(2)",
+  "proposed_by": "audit-b1-resume",
+  "hash": "4125823769",
+  "type": "∀ (n : ℕ) (w : List ℕ), Mathlib2.x2611_15505_word_multiplicities n w → (Mathlib2.x2611_15505_formal_word n w ↔ ∀ k ≤ w.length, ∀ (j : ℕ), j + 1 < n → 0 ≤ ↑(List.count j (List.take k w)) - ↑(List.count (j + 1) (List.take k w)) ∧ ↑(List.count j (List.take k w)) - ↑(List.count (j + 1) (List.take k w)) ≤ 1)",
+  "attempts": [],
+  "created_at": "2026-11-16T11:07:50+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w2",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "closed_by": "queue-papers-b1-w2",
+  "finished_at": "2026-11-16T12:48:44+0800"
+}

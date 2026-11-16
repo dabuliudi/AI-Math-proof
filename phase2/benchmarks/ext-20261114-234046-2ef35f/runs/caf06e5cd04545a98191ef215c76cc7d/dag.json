@@ -1,0 +1,24 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "a ≤ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "c ≤ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    }
+  ],
+  "edges": [],
+  "depth": 0,
+  "depths": {
+    "h0": 0,
+    "h1": 0
+  }
+}

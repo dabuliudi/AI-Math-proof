@@ -1,0 +1,112 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "a ∣ c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "b ∣ a",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "c ∣ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "p2_n001",
+      "statement": "b ∣ c",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "b",
+        "1": "a",
+        "2": "c"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 8,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "b = c",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.antisymm",
+      "binding": {
+        "0": "b",
+        "1": "c"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/GroupWithZero/Divisibility.lean",
+        "line": 146,
+        "type": "∀ {α : Type u_1} [inst : CancelCommMonoidWithZero α] {a b : α} [Subsingleton αˣ], a ∣ b → b ∣ a → a = b"
+      },
+      "planned_event": 14,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v1 = p2v2)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 19,
+      "compile_log": "attempt-003.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h1",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h0",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.antisymm"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.antisymm"
+    },
+    {
+      "source": "p2_n002",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 3,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "p2_n001": 1,
+    "p2_n002": 2,
+    "p2_target": 3
+  }
+}

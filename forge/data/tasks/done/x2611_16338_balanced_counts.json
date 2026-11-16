@@ -1,0 +1,19 @@
+{
+  "name": "x2611_16338_balanced_counts",
+  "statement": "(V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.IsRegularOfDegree 3) (s : ℕ) (hs : s = Fintype.card V / 2 + 1) (hs3 : 3 ≤ s) (U : Finset V) (φ : V → ℕ) (hφ : ∀ v, φ v = if v ∈ U then 1 else s) (hU : U.card = Fintype.card V / 2) (a b c : ℕ) (ha : a = (x2611_16338_edgeClass G φ (2)).ncard) (hb : b = (x2611_16338_edgeClass G φ (s + 1)).ncard) (hc : c = (x2611_16338_edgeClass G φ (2 * s)).ncard) : a = c",
+  "closed": "∀ (V : Type*) [Fintype V] [DecidableEq V] (G : SimpleGraph V) [DecidableRel G.Adj] (hG : G.IsRegularOfDegree 3) (s : ℕ) (hs : s = Fintype.card V / 2 + 1) (hs3 : 3 ≤ s) (U : Finset V) (φ : V → ℕ) (hφ : ∀ v, φ v = if v ∈ U then 1 else s) (hU : U.card = Fintype.card V / 2) (a b c : ℕ) (ha : a = (x2611_16338_edgeClass G φ (2)).ncard) (hb : b = (x2611_16338_edgeClass G φ (s + 1)).ncard) (hc : c = (x2611_16338_edgeClass G φ (2 * s)).ncard), a = c",
+  "informal": "Section 3: a=c for a balanced subset",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16338",
+  "original": "In the following, we will work with subsets $U\\subset V(G)$ with $|U|=n/2$ .\nNote that $a=c$ in this case.",
+  "proposed_by": "audit-b1",
+  "hash": "1767022089",
+  "type": "∀ (V : Type u_1) [inst : Fintype V] [inst_1 : DecidableEq V] (G : SimpleGraph V) [inst_2 : DecidableRel G.Adj], G.IsRegularOfDegree 3 → ∀ (s : ℕ), s = Fintype.card V / 2 + 1 → 3 ≤ s → ∀ (U : Finset V) (φ : V → ℕ), (∀ (v : V), φ v = if v ∈ U then 1 else s) → U.card = Fintype.card V / 2 → ∀ (a b c : ℕ), a = (Mathlib2.x2611_16338_edgeClass G φ 2).ncard → b = (Mathlib2.x2611_16338_edgeClass G φ (s + 1)).ncard → c = (Mathlib2.x2611_16338_edgeClass G φ (2 * s)).ncard → a = c",
+  "attempts": [],
+  "created_at": "2026-11-16T03:21:46+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w4",
+  "claimed_at": "2026-11-16T11:46:05+0800",
+  "closed_by": "queue-r7-w4",
+  "finished_at": "2026-11-16T11:55:45+0800"
+}

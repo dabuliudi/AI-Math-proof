@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15512_thm2_3",
+  "statement": "{V : Type*} [Fintype V] (G : SimpleGraph V) (hG : G.IsBipartite) :\n  ∃ (H : G.Subgraph) (C : Set V), H.IsMatching ∧ G.IsVertexCover C ∧\n    H.edgeSet.ncard = C.ncard ∧\n    (∀ N : G.Subgraph, N.IsMatching → N.edgeSet.ncard ≤ H.edgeSet.ncard) ∧\n    (∀ D : Set V, G.IsVertexCover D → C.ncard ≤ D.ncard)",
+  "closed": "∀ {V : Type*} [Fintype V] (G : SimpleGraph V) (hG : G.IsBipartite), ∃ (H : G.Subgraph) (C : Set V), H.IsMatching ∧ G.IsVertexCover C ∧\n    H.edgeSet.ncard = C.ncard ∧\n    (∀ N : G.Subgraph, N.IsMatching → N.edgeSet.ncard ≤ H.edgeSet.ncard) ∧\n    (∀ D : Set V, G.IsVertexCover D → C.ncard ≤ D.ncard)",
+  "informal": "Theorem 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "In a bipartite graph, the maximum size of a matching equals the\nminimum size of a vertex cover.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "922135957",
+  "type": "∀ {V : Type u_1} [Fintype V] (G : SimpleGraph V), G.IsBipartite → ∃ H C, H.IsMatching ∧ G.IsVertexCover C ∧ H.edgeSet.ncard = C.ncard ∧ (∀ (N : G.Subgraph), N.IsMatching → N.edgeSet.ncard ≤ H.edgeSet.ncard) ∧ ∀ (D : Set V), G.IsVertexCover D → C.ncard ≤ D.ncard",
+  "attempts": [],
+  "created_at": "2026-11-16T11:05:27+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w9",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "closed_by": "queue-papers-b1-w9",
+  "finished_at": "2026-11-16T12:49:00+0800"
+}

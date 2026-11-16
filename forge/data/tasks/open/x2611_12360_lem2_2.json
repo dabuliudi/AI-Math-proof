@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_lem2_2",
+  "statement": "(n p s r M : ℕ) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1)\n  (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U) :\n  (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) →\n    x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧\n  (x2611_12360_G p M U ≤ (s : ℝ) →\n    x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧\n  (4 * s < p →\n    x2611_12360_modMem ((p : ℝ) / 2)\n      (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R →\n    x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))",
+  "closed": "∀ (n p s r M : ℕ) (hp : 2 ≤ p) (hs : 1 ≤ s) (hsp : s ≤ p - 1)\n  (hr : 2 ≤ r) (hM : 2 ≤ M) (R U : ℝ) (hR : 0 < R) (hU : 0 < U), (x2611_12360_G p r R ≤ (p : ℝ) - (s : ℝ) →\n    x2611_12360_noMono n r (Real.sqrt R) (x2611_12360_red n p s)) ∧\n  (x2611_12360_G p M U ≤ (s : ℝ) →\n    x2611_12360_noMono n M (Real.sqrt U) (fun x => ¬ x2611_12360_red n p s x)) ∧\n  (4 * s < p →\n    x2611_12360_modMem ((p : ℝ) / 2)\n      (Set.Icc (s : ℝ) ((p : ℝ) / 2 - (s : ℝ))) R →\n    x2611_12360_noMono n 3 (Real.sqrt R) (x2611_12360_red n p s))",
+  "informal": "Lemma 2.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "For the coloring (5), let $r,M\\geq 2$ and $R,U>0$ .\n\n(1) \n\nIf $G_{p,r}(R)\\leq p-s$ , then the coloring contains no red\n $r$ -term progression with spacing $\\sqrt{R}$ .\n\n(2) \n\nIf $G_{p,M}(U)\\leq s$ , then the coloring contains no blue\n $M$ -term progression with spacing $\\sqrt{U}$ .\n\nFor red three-term progressions with spacing $\\sqrt{R}$ , the simpler condition\n\n(7)\n\n $R\\in\\left[s,\\frac{p}{2}-s\\right]\\pmod{p/2}$ \n\nalso suffices, provided that $4s<p$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "4214282068",
+  "type": "∀ (n p s r M : ℕ), 2 ≤ p → 1 ≤ s → s ≤ p - 1 → 2 ≤ r → 2 ≤ M → ∀ (R U : ℝ), 0 < R → 0 < U → (Mathlib2.x2611_12360_G p r R ≤ ↑p - ↑s → Mathlib2.x2611_12360_noMono n r (√R) (Mathlib2.x2611_12360_red n p s)) ∧ (Mathlib2.x2611_12360_G p M U ≤ ↑s → Mathlib2.x2611_12360_noMono n M √U fun x => ¬Mathlib2.x2611_12360_red n p s x) ∧ (4 * s < p → Mathlib2.x2611_12360_modMem (↑p / 2) (Set.Icc (↑s) (↑p / 2 - ↑s)) R → Mathlib2.x2611_12360_noMono n 3 (√R) (Mathlib2.x2611_12360_red n p s))",
+  "attempts": [],
+  "created_at": "2026-11-16T12:24:03+0800",
+  "status": "open"
+}

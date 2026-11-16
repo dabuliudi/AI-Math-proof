@@ -1,0 +1,19 @@
+{
+  "name": "x2611_12360_thm1_3_s1h1",
+  "statement": ": ∀ (U : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → ∀ (β γ : ℝ), ∃ k ∈ Finset.range 21, x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑k : ℝ) ^ 2 + β * (↑k : ℝ) + γ)",
+  "closed": "∀ (U : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → ∀ (β γ : ℝ), ∃ k ∈ Finset.range 21, x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * (↑k : ℝ) ^ 2 + β * (↑k : ℝ) + γ)",
+  "informal": "x2611_12360_thm1_3 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_12360_thm1_3",
+  "original": "",
+  "proposed_by": "queue-r7-w0",
+  "hash": "3606355098",
+  "type": "∀ (U : ℝ), 199 / 23100 ≤ U → U ≤ 221 / 23100 → ∀ (β γ : ℝ), ∃ k ∈ Finset.range 21, Mathlib2.x2611_12360_modMem 1 (Set.Ico 0 (8 / 33)) (U * ↑k ^ 2 + β * ↑k + γ)",
+  "attempts": [],
+  "created_at": "2026-11-16T10:56:10+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w6",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "closed_by": "queue-papers-b1-w6",
+  "finished_at": "2026-11-16T12:49:48+0800"
+}

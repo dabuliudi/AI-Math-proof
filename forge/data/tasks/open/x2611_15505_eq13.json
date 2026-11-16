@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15505_eq13",
+  "statement": "(u r a c d : ℝ) (hu : 0 < u) (hT : 1 < 1 + u + 2 * r)\n  (ha : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 ![a, c, d]) :\n  (x2611_15505_R u r).derivative.eval ((1 + r) / 2) = -r * (r + u) * (r + u + 1) ∧\n  (c < (1 + r) / 2 ↔ 0 < r)",
+  "closed": "∀ (u r a c d : ℝ) (hu : 0 < u) (hT : 1 < 1 + u + 2 * r)\n  (ha : x2611_15505_ordered_roots (x2611_15505_R u r).derivative 3 ![a, c, d]), (x2611_15505_R u r).derivative.eval ((1 + r) / 2) = -r * (r + u) * (r + u + 1) ∧\n  (c < (1 + r) / 2 ↔ 0 < r)",
+  "informal": "Section 5, equation (13) and orientation equivalence",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "Reflection permits the orientation\n $c<\\mu$ , equivalent to $r>0$ , since\n\n $R^{\\prime}(\\mu)=-r(r+u)(r+u+1).$ \n\n(13)",
+  "proposed_by": "audit-b1-resume",
+  "hash": "343473372",
+  "type": "∀ (u r a c d : ℝ), 0 < u → 1 < 1 + u + 2 * r → Mathlib2.x2611_15505_ordered_roots (Polynomial.derivative (Mathlib2.x2611_15505_R u r)) 3 ![a, c, d] → Polynomial.eval ((1 + r) / 2) (Polynomial.derivative (Mathlib2.x2611_15505_R u r)) = -r * (r + u) * (r + u + 1) ∧ (c < (1 + r) / 2 ↔ 0 < r)",
+  "attempts": [
+    {
+      "agent": "queue-r7-w0",
+      "note": "调度器代为归还（agent 未完成，超时）：",
+      "at": "2026-11-16T13:41:25+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:31:41+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w0",
+  "claimed_at": "2026-11-16T13:11:24+0800"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15358_euler_arithmetic",
+  "statement": "(m : ℤ) (hm_lo : 76 ≤ m) (hm_hi : m ≤ 91) : 14 * (Nat.choose 13 6 : ℤ) - m * (Nat.choose 12 5 : ℤ) + (2 * m - 28) * (Nat.choose 11 4 : ℤ) - (m - 14) * (Nat.choose 10 3 : ℤ) = 16464 - 252 * m",
+  "closed": "∀ (m : ℤ) (hm_lo : 76 ≤ m) (hm_hi : m ≤ 91), 14 * (Nat.choose 13 6 : ℤ) - m * (Nat.choose 12 5 : ℤ) + (2 * m - 28) * (Nat.choose 11 4 : ℤ) - (m - 14) * (Nat.choose 10 3 : ℤ) = 16464 - 252 * m",
+  "informal": "Theorem 3.1, proof (explicit binomial arithmetic)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "14\\binom{13}{6}-m\\binom{12}{5}+(2m-28)\\binom{11}{4}-(m-14)\\binom{10}{3}$ \n\n $\\displaystyle=16464-252m.$",
+  "proposed_by": "audit-b1",
+  "hash": "474296469",
+  "type": "∀ (m : ℤ), 76 ≤ m → m ≤ 91 → 14 * ↑(Nat.choose 13 6) - m * ↑(Nat.choose 12 5) + (2 * m - 28) * ↑(Nat.choose 11 4) - (m - 14) * ↑(Nat.choose 10 3) = 16464 - 252 * m",
+  "attempts": [],
+  "created_at": "2026-11-16T03:32:30+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w2",
+  "claimed_at": "2026-11-16T12:35:11+0800",
+  "closed_by": "queue-r7-w2",
+  "finished_at": "2026-11-16T12:37:38+0800"
+}

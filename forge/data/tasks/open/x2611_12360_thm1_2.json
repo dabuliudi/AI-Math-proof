@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_thm1_2",
+  "statement": "(n : ℕ) (hn : 0 < n) :\n  Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧\n  (∀ α : ℝ, 0 < α →\n    (Irrational (α ^ 2) ∨\n      (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧\n        α ^ 2 = (a : ℝ) / (b : ℝ) ∧ 37 ≤ (a : ℝ) + (b : ℝ) / 50) ∨\n      α ^ 2 ∈ Set.Icc ((7 : ℝ) / 152) ((179 : ℝ) / 3600)) →\n    x2611_12360_notArrow n 3 17 α)",
+  "closed": "∀ (n : ℕ) (hn : 0 < n), Set.Finite {α : ℝ | 0 < α ∧ ¬ x2611_12360_notArrow n 3 17 α} ∧\n  (∀ α : ℝ, 0 < α →\n    (Irrational (α ^ 2) ∨\n      (∃ a b : ℕ, 0 < a ∧ 0 < b ∧ Nat.Coprime a b ∧\n        α ^ 2 = (a : ℝ) / (b : ℝ) ∧ 37 ≤ (a : ℝ) + (b : ℝ) / 50) ∨\n      α ^ 2 ∈ Set.Icc ((7 : ℝ) / 152) ((179 : ℝ) / 3600)) →\n    x2611_12360_notArrow n 3 17 α)",
+  "informal": "Theorem 1.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "For every positive integer $n$ ,\n\n $\\mathbb{E}^{n}\\not\\to(\\ell_{3},\\alpha\\ell_{17})$ \n\nfor all but finitely many $\\alpha>0$ . More precisely, this holds\nwhenever $\\alpha^{2}$ is irrational, or $\\alpha^{2}=a/b$ in lowest\nterms with $a+b/50\\geq 37$ , or\n\n $\\frac{7}{152}\\leq\\alpha^{2}\\leq\\frac{179}{3600}.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1814610502",
+  "type": "∀ (n : ℕ), 0 < n → {α | 0 < α ∧ ¬Mathlib2.x2611_12360_notArrow n 3 17 α}.Finite ∧ ∀ (α : ℝ), 0 < α → Irrational (α ^ 2) ∨ (∃ a b, 0 < a ∧ 0 < b ∧ a.Coprime b ∧ α ^ 2 = ↑a / ↑b ∧ 37 ≤ ↑a + ↑b / 50) ∨ α ^ 2 ∈ Set.Icc (7 / 152) (179 / 3600) → Mathlib2.x2611_12360_notArrow n 3 17 α",
+  "attempts": [],
+  "created_at": "2026-11-16T12:22:08+0800",
+  "status": "open"
+}

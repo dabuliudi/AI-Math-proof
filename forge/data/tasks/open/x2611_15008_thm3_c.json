@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_thm3_c",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hloop : G.Loopless) (hbridge : ∀ e ∈ G.edgeSet, ¬ x2611_15008_bridge G e) (hdensity : (G.edgeSet.ncard : ℝ) ≤ (1.21 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ∨ (5.62 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ≤ (G.edgeSet.ncard : ℝ)) : x2611_15008_Tutte G 1 1 ^ 2 ≤ x2611_15008_Tutte G 2 0 * x2611_15008_Tutte G 0 2",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hloop : G.Loopless) (hbridge : ∀ e ∈ G.edgeSet, ¬ x2611_15008_bridge G e) (hdensity : (G.edgeSet.ncard : ℝ) ≤ (1.21 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ∨ (5.62 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1) ≤ (G.edgeSet.ncard : ℝ)), x2611_15008_Tutte G 1 1 ^ 2 ≤ x2611_15008_Tutte G 2 0 * x2611_15008_Tutte G 0 2",
+  "informal": "Theorem 3(c)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Theorem 3.\n\nLet $G$ be a connected graph with $m$ edges and $n$ vertices. If $G$ is\n\n(c) \n\nloopless and bridgeless with either $m\\leq 1.21(n-1)$ or $m\\geq 5.62(n-1),$ then\n\n ${T_{G}(1,1)}^{2}\\leq T_{G}(2,0)T_{G}(0,2).$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3316362628",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E), G.toSimpleGraph.Connected → G.Loopless → (∀ e ∈ G.edgeSet, ¬Mathlib2.x2611_15008_bridge G e) → ↑G.edgeSet.ncard ≤ 1.21 * (↑G.vertexSet.ncard - 1) ∨ 5.62 * (↑G.vertexSet.ncard - 1) ≤ ↑G.edgeSet.ncard → Mathlib2.x2611_15008_Tutte G 1 1 ^ 2 ≤ Mathlib2.x2611_15008_Tutte G 2 0 * Mathlib2.x2611_15008_Tutte G 0 2",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w8",
+      "note": "No counterexample found in small eligible multigraphs or cycles. Saved reduction.lean and reduction_notes.txt in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w8. The complete two-hole skeleton passes local Lean checking in test_light2.lean using narrow imports and verbatim copies of the three library definitions; all nine helpers and the final combination compile. Exact admissible parameter pairs are (7427/10000,23741/20000) and (461/100,561/200), with sparse power comparison 17/14 and dense comparison 73/13, giving the required 1.21 and 5.62 thresholds without logarithms. Remaining holes are the general cross-multiplied loopless bound (same as existing x2611_15008_thm3_a_s1h1) and its bridgeless analogue. Official forge sketch failed twice before checking the body because Mathlib2/Shard/S0061.olean is missing; no sketch or children registered. Main theorem remains unproved.",
+      "at": "2026-11-16T13:48:58+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:37:27+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w8",
+  "claimed_at": "2026-11-16T13:14:49+0800"
+}

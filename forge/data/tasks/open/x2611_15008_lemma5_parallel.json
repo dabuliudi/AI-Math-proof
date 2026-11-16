@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_lemma5_parallel",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (e : E) (he : e ∈ G.edgeSet) (hnonloop : ¬ ∃ v, G.IsLoopAt e v) (hnonbridge : ¬ x2611_15008_bridge G e) (p : ℕ) (hp : p = (x2611_15008_parallelClass G e).ncard) (s : ℕ) (hs : s = (x2611_15008_seriesClass G e).ncard) : (x2611_15008_multipleBridge G e → x2611_15008_Tutte G 2 0 = 2 * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 2 0 ∧ x2611_15008_Tutte G 1 1 = (p : ℝ) * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 1 1) ∧ (¬ x2611_15008_multipleBridge G e → x2611_15008_Tutte G 2 0 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_parallelClass G e)) 2 0 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 2 0 ∧ x2611_15008_Tutte G 1 1 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_parallelClass G e)) 1 1 + (p : ℝ) * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 1 1)",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (e : E) (he : e ∈ G.edgeSet) (hnonloop : ¬ ∃ v, G.IsLoopAt e v) (hnonbridge : ¬ x2611_15008_bridge G e) (p : ℕ) (hp : p = (x2611_15008_parallelClass G e).ncard) (s : ℕ) (hs : s = (x2611_15008_seriesClass G e).ncard), (x2611_15008_multipleBridge G e → x2611_15008_Tutte G 2 0 = 2 * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 2 0 ∧ x2611_15008_Tutte G 1 1 = (p : ℝ) * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 1 1) ∧ (¬ x2611_15008_multipleBridge G e → x2611_15008_Tutte G 2 0 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_parallelClass G e)) 2 0 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 2 0 ∧ x2611_15008_Tutte G 1 1 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_parallelClass G e)) 1 1 + (p : ℝ) * x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_parallelClass G e)) 1 1)",
+  "informal": "Lemma 5(a)–(b)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Lemma 5.\n\nLet $G$ be a graph, $e\\in E(G),$ and $P(e)$ and $S(e)$ be the parallel and series class of $e$ with $|P(e)|=p$ and $|S(e)|=s.$ Then:\n\n(a) \n\nif $P(e)$ is a multiple bridge, then\n\n $T_{G}(2,0)=2T_{G/P(e)}(2,0)\\quad\\text{and}\\quad T_{G}(1,1)=pT_{G/P(e)}(1,1),$\n\n(b) \n\nif $P(e)$ is not a multiple bridge, then\n\n $T_{G}(2,0)=T_{G-P(e)}(2,0)+T_{G/P(e)}(2,0)\\quad\\text{and}$ \n\n $T_{G}(1,1)=T_{G-P(e)}(1,1)+pT_{G/P(e)}(1,1)\\qquad$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1883507855",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E), ∀ e ∈ G.edgeSet, (¬∃ v, G.IsLoopAt e v) → ¬Mathlib2.x2611_15008_bridge G e → ∀ (p : ℕ), p = (Mathlib2.x2611_15008_parallelClass G e).ncard → ∀ (s : ℕ), s = (Mathlib2.x2611_15008_seriesClass G e).ncard → (Mathlib2.x2611_15008_multipleBridge G e → Mathlib2.x2611_15008_Tutte G 2 0 = 2 * Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_parallelClass G e)) 2 0 ∧ Mathlib2.x2611_15008_Tutte G 1 1 = ↑p * Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_parallelClass G e)) 1 1) ∧ (¬Mathlib2.x2611_15008_multipleBridge G e → Mathlib2.x2611_15008_Tutte G 2 0 = Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_parallelClass G e)) 2 0 + Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_parallelClass G e)) 2 0 ∧ Mathlib2.x2611_15008_Tutte G 1 1 = Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_parallelClass G e)) 1 1 + ↑p * Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_parallelClass G e)) 1 1)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w4",
+      "note": "Nine auxiliary lemmas and a locally compiling three-gap draft are saved in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w4/parallel_sketch.lean, with details in PARALLEL_NOTES.md. Remaining facts are the component increase bound for deleting a parallel class, deletion/contraction Tutte equality for a multiple bridge, and the general parallel-class subset expansion. The exact-definition minimal-import draft compiled with Lean exit 0. All 5380 exhaustive small multigraph cases passed. Two Forge sketch attempts failed before elaboration because Mathlib2/Shard/S0061.olean is missing. A supported forge audit rebuild ran about twenty minutes without restoring the shard and was stopped within the task budget.",
+      "at": "2026-11-16T14:07:38+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:56:57+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w4",
+  "claimed_at": "2026-11-16T13:31:53+0800"
+}

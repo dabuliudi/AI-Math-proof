@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_thm1_3_s1h5",
+  "statement": ": ∀ {α : Type*} [inst : Fintype α], (∀ (N : Matroid α), x2611_15512_simple N → N.eRank = 3 → x2611_15512_z_rayleigh N) → ∀ (M : Matroid α), M.eRank ≤ 3 → x2611_15512_z_rayleigh M",
+  "closed": "∀ {α : Type*} [inst : Fintype α], (∀ (N : Matroid α), x2611_15512_simple N → N.eRank = 3 → x2611_15512_z_rayleigh N) → ∀ (M : Matroid α), M.eRank ≤ 3 → x2611_15512_z_rayleigh M",
+  "informal": "x2611_15512_thm1_3 的证明骨架中第 5 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15512_thm1_3",
+  "original": "",
+  "proposed_by": "queue-papers-b1-w7",
+  "hash": "1544095151",
+  "type": "∀ {α : Type u_1} [inst : Fintype α], (∀ (N : Matroid α), Mathlib2.x2611_15512_simple N → N.eRank = 3 → Mathlib2.x2611_15512_z_rayleigh N) → ∀ (M : Matroid α), M.eRank ≤ 3 → Mathlib2.x2611_15512_z_rayleigh M",
+  "attempts": [],
+  "created_at": "2026-11-16T13:12:45+0800",
+  "status": "open"
+}

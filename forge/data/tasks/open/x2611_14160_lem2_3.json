@@ -1,0 +1,28 @@
+{
+  "name": "x2611_14160_lem2_3",
+  "statement": "(a b q : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hq : 1 ≤ q)\n  (hab : 3*b ≤ a) (hineq : 2*b*(b-1) < (q+2)*(a+b-2)) :\n  x2611_14160_ramsey (x2611_14160_subdividedStar a b) 2 ≤ 2*a+q",
+  "closed": "∀ (a b q : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hq : 1 ≤ q)\n  (hab : 3*b ≤ a) (hineq : 2*b*(b-1) < (q+2)*(a+b-2)), x2611_14160_ramsey (x2611_14160_subdividedStar a b) 2 ≤ 2*a+q",
+  "informal": "Lemma 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14160",
+  "original": "Let $a,b,q$ be positive integers such that $a\\geq 3b$ and\n $(q+2)(a+b-2)>2b(b-1)$ . Then\n\n $R(T_{a,b},2)\\leq 2a+q.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "944545219",
+  "type": "∀ (a b q : ℕ), 1 ≤ a → 1 ≤ b → 1 ≤ q → 3 * b ≤ a → 2 * b * (b - 1) < (q + 2) * (a + b - 2) → Mathlib2.x2611_14160_ramsey (Mathlib2.x2611_14160_subdividedStar a b) 2 ≤ 2 * a + q",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w9",
+      "note": "No counterexample: all 2,097,152 colorings of K7 for (a,b,q)=(3,1,1), plus 2,250 random admissible colorings, passed. A four-hole decomposition is saved at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w9/ramsey_sketch.lean; RamseyMinimalSketch.lean passed local Lean elaboration (exit 0, only four intended sorry holes), using exact original definitions and minimal imports. Both arithmetic and coloring helpers and the final composition typecheck. Missing graph lemmas are: large-neighborhood argument, small Konig cover extraction (reuse x2611_15512_thm2_3), biclique-based subdivided-star embedding, and degree double counting. See ramsey_proof_notes.txt in the same directory for full proof routes. Official sketch registration failed before the proof body because S0061.olean was missing; S0061 was eventually rebuilt, but S0062.olean remains absent. The official audit rebuild failed with duplicate declarations in S0062 (x2611_16899_thm1_eq2_s1h1_s1h2 helpers/main, and x2611_15210_thm1_2_s1h2). No sketch or children were registered. The final official check stalled and was stopped. No library sources were edited.",
+      "at": "2026-11-16T14:38:29+0800"
+    },
+    {
+      "agent": "queue-papers-b1-w9",
+      "note": "CORRECTION to previous handoff: the last official sketch command DID pass check_sketch and validate_statements. Its interruption traceback reached tasks.sketch line 315 -> propose -> verify.triage -> core_future.result, so the skeleton, exact target signature, hole extraction and portable child statements were officially validated. It stalled during child-task triage, not kernel checking. The command has exited 130, and queue confirms NO children or registered parent sketch. The separate audit failure from duplicate S0062 declarations is real but was not the final sketch blocker; compiled Mathlib2 could load once S0061 was restored. The complete locally/officially checked four-hole draft remains at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w9/ramsey_sketch.lean. Its arithmetic and color-conversion helpers and final composition are proved; remaining holes are large-neighborhood embedding, Konig cover extraction, biclique embedding and degree counting. Full mathematical routes and validation history are in ramsey_proof_notes.txt beside it. All 2,097,152 smallest-case colorings and 2,250 random cases passed. No complete proof or disproof was obtained, and registration did not finish within this attempt.",
+      "at": "2026-11-16T14:40:33+0800"
+    }
+  ],
+  "created_at": "2026-11-16T12:00:43+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w9",
+  "claimed_at": "2026-11-16T14:40:33+0800"
+}

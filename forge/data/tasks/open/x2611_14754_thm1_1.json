@@ -1,0 +1,23 @@
+{
+  "name": "x2611_14754_thm1_1",
+  "statement": "(n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 2 ≤ d) : (∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ ∀ p : ℕ, p.Prime → p ∣ n → 2 ^ d < p",
+  "closed": "∀ (n d : ℕ) [NeZero n] (hn : 1 < n) (hd : 2 ≤ d), (∃ S : Finset (Fin d → ZMod n), S.card = n ^ (d - 1) ∧ x2611_14754_nonattacking S) ↔ ∀ p : ℕ, p.Prime → p ∣ n → 2 ^ d < p",
+  "informal": "Theorem 1.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14754",
+  "original": "Let $d\\geq 2$ .\nOne can place $n^{d-1}$ non-attacking queens on $(\\mathbb{Z}/n\\mathbb{Z})^{d}$ if and only if all prime factors of $n$ exceed $2^{d}$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "4183350207",
+  "type": "∀ (n d : ℕ) [NeZero n], 1 < n → 2 ≤ d → ((∃ S, S.card = n ^ (d - 1) ∧ Mathlib2.x2611_14754_nonattacking S) ↔ ∀ (p : ℕ), Nat.Prime p → p ∣ n → 2 ^ d < p)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w8",
+      "note": "Checked small cases. Drafts in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w8/Proof.lean and NOTES.md. Aux1-aux7 and final conditional assembly passed standalone Lean TestLight.lean (exact mirrored paper definitions, required Mathlib imports): binary-weight hyperplane construction proves sufficiency; finite coset counting gives every direction line sum 1; Lucas congruence proves n does not divide choose n p for prime p dividing positive n. Sole remaining mathematical hole aux8: integer function with every permitted line sum C implies (n : Int) divides C * choose n k for 0 < k < 2^d and k <= n. NOTES gives the Fourier/complete-homogeneous-polynomial route and warns r=k+1>=2 is essential because paper Lemma 3.3 is false for r=1. Official forge sketch failed before elaboration due missing Mathlib2/Shard/S0061.olean (S0062 also missing). Supported forge audit/build retries stalled and were stopped; no official acceptance.",
+      "at": "2026-11-16T14:19:20+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:57:20+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w8",
+  "claimed_at": "2026-11-16T13:49:16+0800"
+}

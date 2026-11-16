@@ -1,0 +1,36 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234149-7b7c8c/runs/3c269ccca10f49a79ee09bd252d62cc8/attempt-003.lean:2:124: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234149-7b7c8c/runs/3c269ccca10f49a79ee09bd252d62cc8/attempt-003.lean:2:145: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n'p2_n002' does not depend on any axioms\n'p2_n003' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234149-7b7c8c/runs/3c269ccca10f49a79ee09bd252d62cc8/attempt-003.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.201154750000569,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n003": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v1 ≤ p2v2)) (h1 : (p2v3 < p2v1)) (h2 : (p2v4 < p2v0)) (h3 : (p2v2 ≤ p2v4)) : (p2v3 < p2v2) := by\n  exact @LE.le.trans_lt' Nat _ p2v2 p2v1 p2v3 h0 h1\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v1 ≤ p2v2)) (h1 : (p2v3 < p2v1)) (h2 : (p2v4 < p2v0)) (h3 : (p2v2 ≤ p2v4)) : (p2v3 < p2v4) := by\n  exact @LE.le.trans_lt' Nat _ p2v4 p2v2 p2v3 h3 (p2_n001 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3)\n\ntheorem p2_n003 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (p2v1 ≤ p2v2)) (h1 : (p2v3 < p2v1)) (h2 : (p2v4 < p2v0)) (h3 : (p2v2 ≤ p2v4)) : (p2v3 < p2v0) := by\n  exact @LT.lt.trans Nat _ p2v3 p2v4 p2v0 (p2_n002 p2v0 p2v1 p2v2 p2v3 p2v4 h0 h1 h2 h3) h2\n\n#print axioms p2_n001\n#print axioms p2_n002\n#print axioms p2_n003\n",
+  "source_sha256": "3d5b8479d3044a50b766712850aa3434294dd9a2c1baea322fd55ed5dd61fc7a",
+  "goal": "(p2v3 < p2v0)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234149-7b7c8c/runs/3c269ccca10f49a79ee09bd252d62cc8/attempt-003.lean",
+  "log": "attempt-003.json"
+}

@@ -1,0 +1,19 @@
+{
+  "name": "x2611_10200_thm1_1",
+  "statement": "(g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H) : x2611_10200_complete H ↔ 1 ≤ N ∧ (N : ℤ) ≤ Int.floor (x2611_10200_M g k)",
+  "closed": "∀ (g k N : ℕ) (hg : 1 ≤ g) (hk : 1 ≤ k) (hN : 1 ≤ N) (H : ℕ → ℤ) (hH : x2611_10200_standard g k N H), x2611_10200_complete H ↔ 1 ≤ N ∧ (N : ℤ) ≤ Int.floor (x2611_10200_M g k)",
+  "informal": "Theorem 1.1 (Exact threshold)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10200",
+  "original": "For every $g,k,N\\geq 1$ , the sequence (1.2)–(1.3) is complete if and only if\n\n(1.6)\n\n $1\\leq N\\leq\\lfloor M_{g,k}\\rfloor=\\left\\lfloor\\frac{1+[z^{g+k}]((1-z)^{2}Q_{g}(z))^{-1}}{2^{g}}\\right\\rfloor.$ \n\nIf $M_{g,k}$ is an integer, equality $N=M_{g,k}$ is included.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2488159296",
+  "type": "∀ (g k N : ℕ), 1 ≤ g → 1 ≤ k → 1 ≤ N → ∀ (H : ℕ → ℤ), Mathlib2.x2611_10200_standard g k N H → (Mathlib2.x2611_10200_complete H ↔ 1 ≤ N ∧ ↑N ≤ ⌊Mathlib2.x2611_10200_M g k⌋)",
+  "attempts": [],
+  "created_at": "2026-11-16T10:40:34+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w5",
+  "claimed_at": "2026-11-16T12:42:10+0800",
+  "closed_by": "queue-r7-w5",
+  "finished_at": "2026-11-16T12:45:15+0800"
+}

@@ -1,0 +1,38 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:2:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:2:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:2:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:2:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:2:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:5:82: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:5:100: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:5:121: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:5:142: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean:5:163: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n'p2_n002' depends on axioms: [propext, Classical.choice, Quot.sound]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.223223125001823,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 ≤ p2v2) := by\n  exact @zero_le Nat _ _ _ p2v2\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (h0 : (0 < p2v0)) (h1 : (p2v3 ∣ p2v1)) (h2 : (p2v2 ∣ p2v3)) (h3 : (p2v1 ∣ p2v4)) (h4 : (p2v4 ∣ p2v0)) : (0 < 1) := by\n  exact @Mathlib.Tactic.Linarith.zero_lt_one Nat _ _ _\n\n#print axioms p2_n001\n#print axioms p2_n002\n",
+  "source_sha256": "6b3917e4f4596301381d7756740acfa5514c19078dcac63b147ccdfbdf935664",
+  "goal": "(0 < 1)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234242-5e99a7/runs/f341506b8bcf4347aa6cbbea3a83dd2e/attempt-002.lean",
+  "log": "attempt-002.json"
+}

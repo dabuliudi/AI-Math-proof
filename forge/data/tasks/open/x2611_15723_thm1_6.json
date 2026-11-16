@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15723_thm1_6",
+  "statement": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (J : Finset ℕ) :\n  ((x2611_15723_cycleShuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card =\n    ((x2611_15723_shuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card",
+  "closed": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (J : Finset ℕ), ((x2611_15723_cycleShuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card =\n    ((x2611_15723_shuffle σ τ).filter\n      (fun π => x2611_15723_descents π = J)).card",
+  "informal": "Theorem 1.6",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15723",
+  "original": "For every $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}F_{n,\\Des(\\pi)}=\\sum_{\\pi^{\\prime}\\in\\sigma\\shuffle\\tau}F_{n,\\Des(\\pi^{\\prime})}.$ \n\n(1)\n\nEquivalently, for any pair $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\nthe statistic $\\Des$ has the same distribution on the set of\nshuffles-by-cycle\n $\\sigma\\shuffle_{c}\\tau$ as on the set of standard shuffles $\\sigma\\shuffle\\tau$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2867647323",
+  "type": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), Mathlib2.x2611_15723_noOrderIso σ τ → ∀ (J : Finset ℕ), {π ∈ Mathlib2.x2611_15723_cycleShuffle σ τ | Mathlib2.x2611_15723_descents π = J}.card = {π ∈ Mathlib2.x2611_15723_shuffle σ τ | Mathlib2.x2611_15723_descents π = J}.card",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w3",
+      "note": "Small cases agree (303 input pairs; 6609 coloring identities). Preserved three independently Lean-checked reduction helpers and x2611_15723_thm1_6_sketch.lean in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w3. Two unproved holes count compatible monotone colorings for ordinary shuffles and cycle shuffles; thm1_6_notes.md gives bijection plans. Official sketch first failed on missing S0061.olean, then timed out at 300s twice, including one Lean worker; no children registered. Full theorem remains unproved.",
+      "at": "2026-11-16T14:32:51+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:59:39+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w3",
+  "claimed_at": "2026-11-16T14:03:42+0800"
+}

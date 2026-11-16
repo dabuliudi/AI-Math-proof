@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_lem2_6",
+  "statement": "(T A B c d : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A ≤ B)\n  (hBT : B < T) (hcd : c ≤ d) (a b : ℕ)\n  (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b) :\n  ((∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n    x2611_12360_modMem T (Set.Icc c d)\n      (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r))) ↔\n    (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤\n    (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧\n  (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) →\n    ∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n      x2611_12360_modMem T (Set.Icc c d)\n        (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r)))",
+  "closed": "∀ (T A B c d : ℝ) (hT : 0 < T) (hA : 0 < A) (hAB : A ≤ B)\n  (hBT : B < T) (hcd : c ≤ d) (a b : ℕ)\n  (ha : 0 < a) (hb : 0 < b) (hab : Nat.Coprime a b), ((∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n    x2611_12360_modMem T (Set.Icc c d)\n      (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r))) ↔\n    (⌈((b : ℝ) * c - (a : ℝ) * B) / T⌉ : ℤ) ≤\n    (⌊((b : ℝ) * d - (a : ℝ) * A) / T⌋ : ℤ)) ∧\n  (T ≤ (a : ℝ) * (B - A) + (b : ℝ) * (d - c) →\n    ∃ k : ℕ, k < b ∧ ∃ r ∈ Set.Icc A B,\n      x2611_12360_modMem T (Set.Icc c d)\n        (((a : ℝ) / (b : ℝ)) * (T * (k : ℝ) + r)))",
+  "informal": "Lemma 2.6",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "Let $T>0$ , and let $q=a/b>0$ , where $a,b$ are coprime\npositive integers. Suppose that $[A,B]$ and $[c,d]$ are closed\nintervals, with $0<A\\leq B<T$ . There exist $k\\in\\{0,\\ldots,b-1\\}$ \nand $r\\in[A,B]$ such that\n\n $R=Tk+r,\\qquad U=\\frac{a}{b}R,\\qquad U\\in[c,d]\\pmod{T}$ \n\nif and only if\n\n(13)\n\n $\\left\\lceil\\frac{bc-aB}{T}\\right\\rceil\\leq\\left\\lfloor\\frac{bd-aA}{T}\\right\\rfloor.$ \n\nIn particular, such $R,U$ exist whenever\n\n(14)\n\n $a(B-A)+b(d-c)\\geq T.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "567479826",
+  "type": "∀ (T A B c d : ℝ), 0 < T → 0 < A → A ≤ B → B < T → c ≤ d → ∀ (a b : ℕ), 0 < a → 0 < b → a.Coprime b → ((∃ k < b, ∃ r ∈ Set.Icc A B, Mathlib2.x2611_12360_modMem T (Set.Icc c d) (↑a / ↑b * (T * ↑k + r))) ↔ ⌈(↑b * c - ↑a * B) / T⌉ ≤ ⌊(↑b * d - ↑a * A) / T⌋) ∧ (T ≤ ↑a * (B - A) + ↑b * (d - c) → ∃ k < b, ∃ r ∈ Set.Icc A B, Mathlib2.x2611_12360_modMem T (Set.Icc c d) (↑a / ↑b * (T * ↑k + r)))",
+  "attempts": [],
+  "created_at": "2026-11-16T12:24:25+0800",
+  "status": "open"
+}

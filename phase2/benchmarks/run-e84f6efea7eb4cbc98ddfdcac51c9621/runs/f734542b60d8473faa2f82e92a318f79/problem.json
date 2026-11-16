@@ -1,0 +1,24 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f"
+  ],
+  "assumptions": [
+    "a ∣ b",
+    "b ∣ c",
+    "c ∣ d",
+    "d ∣ e",
+    "e ∣ f",
+    "0 < f"
+  ],
+  "goals": [
+    "a ∣ f",
+    "a ≤ f"
+  ],
+  "original_text": "五段整除链，末项为正；证明起点整除末项且不大于末项。"
+}

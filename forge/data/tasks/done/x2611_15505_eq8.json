@@ -1,0 +1,25 @@
+{
+  "name": "x2611_15505_eq8",
+  "statement": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i)) :\n  Real.sqrt (((m : ℝ) - 2) / (m : ℝ)) * (x (m - 1) - x 0) ≤\n    y (m - 2) - y 0",
+  "closed": "∀ (m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i)), Real.sqrt (((m : ℝ) - 2) / (m : ℝ)) * (x (m - 1) - x 0) ≤\n    y (m - 2) - y 0",
+  "informal": "Section 4.1, equation (8)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "Metric cuts include rational consequences\nof the span bound\n\n $\\spanop(f^{\\prime})\\geq\\sqrt{\\frac{m-2}{m}}\\,\\spanop(f)$ \n\n(8)\n\nof Meir–Sharma [5].",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1037718448",
+  "type": "∀ (m : ℕ), 3 ≤ m → ∀ (f : Polynomial ℝ) (x y : ℕ → ℝ), (Mathlib2.x2611_15505_ordered_roots f m fun i => x ↑i) → (Mathlib2.x2611_15505_ordered_roots (Polynomial.derivative f) (m - 1) fun i => y ↑i) → √((↑m - 2) / ↑m) * (x (m - 1) - x 0) ≤ y (m - 2) - y 0",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w3",
+      "note": "调度器代为归还（agent 未完成，超时）：",
+      "at": "2026-11-16T13:28:01+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:13:01+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w3",
+  "claimed_at": "2026-11-16T12:48:01+0800",
+  "closed_by": "queue-papers-b1-w3",
+  "finished_at": "2026-11-16T21:06:31+0800"
+}

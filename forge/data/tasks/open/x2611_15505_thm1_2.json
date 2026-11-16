@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15505_thm1_2",
+  "statement": ": {w : List ℕ | ∃ p : Polynomial ℝ, x2611_15505_realizes 6 p w}.ncard = 2706",
+  "closed": "{w : List ℕ | ∃ p : Polynomial ℝ, x2611_15505_realizes 6 p w}.ncard = 2706",
+  "informal": "Theorem 1.2 (Computer-assisted enumeration)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "Under the definition above, $a_{6}=2706$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1813517363",
+  "type": "{w | ∃ p, Mathlib2.x2611_15505_realizes 6 p w}.ncard = 2706",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w4",
+      "note": "Exact enumeration remains unproved. Verified 14 general helper lemmas in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w4/bridge.lean: finiteness, disjoint and simple derivative roots, root cardinalities/splitting, Rolle interlacing, both prefix-count bounds, realizes implies formal_word, and realized ncard bounded by formal ncard. Also verified one explicit sextic integer sign certificate in witness.lean. attempt.lean obeys declaration format; forge check succeeds through all helpers and fails only at the final 2706 count. Small-case Python formal counts match 1,1,2,12,286,33592; sampling gives 2 and 10 realizable words in degrees 3 and 4. Main gap is importing and proving the complete 2706-witness corpus and soundness/accounting for the 53 exclusion stages; these are not yet in Mathlib2. Ancillary JSON retrieval failed. No evidence of falsity.",
+      "at": "2026-11-16T12:58:31+0800"
+    }
+  ],
+  "created_at": "2026-11-16T10:55:29+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w4",
+  "claimed_at": "2026-11-16T12:44:38+0800"
+}

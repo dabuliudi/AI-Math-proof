@@ -1,0 +1,23 @@
+{
+  "name": "x2611_14160_lem2_1_ii",
+  "statement": "(a b s : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hs : 1 ≤ s) (hab : 4*b ≤ a) :\n  (¬ ∃ f : Fin (1+a+b) ↪ Fin (2*(a-1)+s),\n    x2611_14160_copyWeight (x2611_14160_subdividedStar a b)\n      (x2611_14160_obstructionLabel a s (a+b)) f = 0) ↔ 6*s ≤ b+1",
+  "closed": "∀ (a b s : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b) (hs : 1 ≤ s) (hab : 4*b ≤ a), (¬ ∃ f : Fin (1+a+b) ↪ Fin (2*(a-1)+s),\n    x2611_14160_copyWeight (x2611_14160_subdividedStar a b)\n      (x2611_14160_obstructionLabel a s (a+b)) f = 0) ↔ 6*s ≤ b+1",
+  "informal": "Lemma 2.1(ii)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14160",
+  "original": "Conversely, let $a\\geq 4b$ and $a,b,s\\geq 1$ . For the labeling\nused in (i), with $|P|=|Q|=a-1$ and $|X|=s$ , there is no zero-sum copy\nof $T_{a,b}$ if and only if $6s\\leq b+1$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1795236700",
+  "type": "∀ (a b s : ℕ), 1 ≤ a → 1 ≤ b → 1 ≤ s → 4 * b ≤ a → ((¬∃ f, Mathlib2.x2611_14160_copyWeight (Mathlib2.x2611_14160_subdividedStar a b) (Mathlib2.x2611_14160_obstructionLabel a s (a + b)) f = 0) ↔ 6 * s ≤ b + 1)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w5",
+      "note": "Small-case DP agrees; explicit r=min(s,b), k=min(2r,b-r), t=2r-k construction tested for b,s<=200. Drafts at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w5. Locally verified StarReduction.lean (fiber embedding and coloring equivalence), StarArithmetic.lean, StarGraphMinimal.lean (edge sum), and StarHost.lean (host capacities). Core necessity/sufficiency remain unproved; StarLabel.lean has residual interval simp goals. StarSketchFinal.lean timed out after 300s; StarCompactSketch.lean compiled but hole roundtrip dropped ZMod literal types, including an untyped local let. StarPortableSketch.lean uses explicit forall (one : ZMod (a+b)) binders as a proposed fix, untested. Detailed mathematical proof and construction are in StarNotes.txt. No sketch registered.",
+      "at": "2026-11-16T14:41:38+0800"
+    }
+  ],
+  "created_at": "2026-11-16T12:00:15+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w5",
+  "claimed_at": "2026-11-16T14:04:07+0800"
+}

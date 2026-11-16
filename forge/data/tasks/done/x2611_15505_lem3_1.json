@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15505_lem3_1",
+  "statement": "(n : ℕ) (p : Polynomial ℤ) (hp : p ≠ 0) (hdeg : p.natDegree = n)\n  (w : List ℕ) (hw : x2611_15505_word_multiplicities n w)\n  (q : ℕ) (hq : 0 < q) (b : Fin (w.length + 1) → ℤ) (hb : StrictMono b)\n  (hsign : ∀ i : Fin w.length,\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.castSucc : ℝ) / (q : ℝ))) *\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.succ : ℝ) / (q : ℝ))) < 0) :\n  x2611_15505_realizes n (p.map (Int.castRingHom ℝ)) w",
+  "closed": "∀ (n : ℕ) (p : Polynomial ℤ) (hp : p ≠ 0) (hdeg : p.natDegree = n)\n  (w : List ℕ) (hw : x2611_15505_word_multiplicities n w)\n  (q : ℕ) (hq : 0 < q) (b : Fin (w.length + 1) → ℤ) (hb : StrictMono b)\n  (hsign : ∀ i : Fin w.length,\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.castSucc : ℝ) / (q : ℝ))) *\n    (((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[w.get i] (p.map (Int.castRingHom ℝ))).eval ((b i.succ : ℝ) / (q : ℝ))) < 0), x2611_15505_realizes n (p.map (Int.castRingHom ℝ)) w",
+  "informal": "Lemma 3.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "If the assigned derivative has opposite nonzero signs at the two\nendpoints of every interval, then the witness realizes the asserted word.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "419780792",
+  "type": "∀ (n : ℕ) (p : Polynomial ℤ), p ≠ 0 → p.natDegree = n → ∀ (w : List ℕ), Mathlib2.x2611_15505_word_multiplicities n w → ∀ (q : ℕ), 0 < q → ∀ (b : Fin (w.length + 1) → ℤ), StrictMono b → (∀ (i : Fin w.length), Polynomial.eval (↑(b i.castSucc) / ↑q) ((⇑Polynomial.derivative)^[w.get i] (Polynomial.map (Int.castRingHom ℝ) p)) * Polynomial.eval (↑(b i.succ) / ↑q) ((⇑Polynomial.derivative)^[w.get i] (Polynomial.map (Int.castRingHom ℝ) p)) < 0) → Mathlib2.x2611_15505_realizes n (Polynomial.map (Int.castRingHom ℝ) p) w",
+  "attempts": [],
+  "created_at": "2026-11-16T11:07:59+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w3",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "closed_by": "queue-papers-b1-w3",
+  "finished_at": "2026-11-16T12:47:52+0800"
+}

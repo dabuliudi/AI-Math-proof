@@ -85,6 +85,17 @@ sorry replaced by a use of the matching lemma. Check it with `{forge} bench-chec
 until it says solved. Do not edit other files. End with one line: RESULT: solved | failed.
 '''
 
+ASSEMBLE_LEMMA_PROMPT = '''In a Lean 4 + Mathlib project at {root} (agent `{agent}`): all parts of a decomposition of the lemma
+`{name}` are proved, but mechanical assembly failed ({reason}).
+Skeleton (with sorry holes): {skeleton}
+Proved part files (each defines `theorem <part> : <closed statement>` and helpers): {lemmas}
+Write ONE file {file} containing all part proofs (copy them, renaming every part and helper to start with `{name}_aux`, as
+the checker requires for extra theorems) followed by the final `theorem {name} ...` (LAST in the file) whose proof is the
+skeleton with every sorry replaced by a use of the matching part. Check it with
+`{forge} portfolio-lemma-check {run} {name} {file}` until it says ok. Do not edit other files.
+End with one line: RESULT: proved | failed.
+'''
+
 HOLE = re.compile(r'(?<![\w.\'])sorry(?![\w\'])')
 
 
@@ -463,6 +474,12 @@ class Portfolio(Scheduler):
             body = main_last(assemble_body(lemma, d['skeleton'], [self.state['lemmas'][l]['body'] for l in subs],
                                            [(h['lemma'], h['args']) for h in d['holes']]), lemma)
             result = check_submission(_task(item, lemma, ': ' + info['statement']), body, closed=info['statement'])
+            if not result.get('ok'):  # 机械拼装失败：派一个 agent 手工拼（排队，不在这里同步等）
+                self._push(('assemble_lemma', info['problem'], lemma, sdag, result.get('reason', '')[:300]))
+                self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker='-', outcome='mechanical failed',
+                                  progress=False, seconds=0, tokens=0, exit=0, timed_out=False,
+                                  reason=result.get('reason', '')[:300], message=''))
+                continue
             with self.file_lock:
                 d['status'] = 'solved' if result.get('ok') else 'assembly_failed'
                 if result.get('ok') and info['status'] != 'proved':
@@ -474,6 +491,47 @@ class Portfolio(Scheduler):
             if result.get('ok'):
                 self._resolved(lemma)
                 return
+
+    def _assemble_lemma(self, agent, problem, lemma, sdag, reason):
+        from .verify import check_submission
+        info = self.state['lemmas'][lemma]
+        d = info['splits'][sdag]
+        if info['status'] == 'proved':
+            with self.file_lock:
+                d['status'] = 'open'
+            return
+        item = self.items[problem]
+        folder = self.scratch / agent
+        subs = list(dict.fromkeys(h['lemma'] for h in d['holes']))
+        files = []
+        for l in subs:
+            f = folder / f'{l}.proved.lean'
+            f.write_text(self.state['lemmas'][l]['body'], encoding='utf-8')
+            files.append(str(f))
+        skel = folder / f'{lemma}.{sdag}.skeleton.lean'
+        skel.write_text(d['skeleton'], encoding='utf-8')
+        out = folder / f'{lemma}.{sdag}.final.lean'
+        out.unlink(missing_ok=True)
+        prompt = ASSEMBLE_LEMMA_PROMPT.format(root=ROOT, agent=agent, name=lemma, reason=reason, skeleton=skel,
+                                              lemmas=', '.join(files), file=out, forge=FORGE, run=self.run)
+        began = time.time()
+        code, message, used, slow = self._invoke(prompt, agent)
+        result = dict(ok=False, reason='没有交出拼装结果')
+        if out.exists():
+            body = main_last(out.read_text(encoding='utf-8'), lemma)
+            result = check_submission(_task(item, lemma, ': ' + info['statement']), body, closed=info['statement'])
+        ok = result.get('ok') and result.get('kind') == 'proved'
+        with self.file_lock:
+            d['status'] = 'solved' if ok else 'assembly_failed'
+            if ok and info['status'] != 'proved':
+                info.update(status='proved', body=body, proved_by=sdag)
+            self._save()
+        self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker=agent,
+                          outcome='proved' if ok else 'failed', progress=bool(ok), seconds=round(time.time() - began),
+                          tokens=used, exit=code, timed_out=slow, reason='agent: ' + result.get('reason', '')[:280],
+                          message=message[-300:]))
+        if ok:
+            self._resolved(lemma)
 
     # ---- lemma ----
     def _lemma(self, agent, problem, lemma):

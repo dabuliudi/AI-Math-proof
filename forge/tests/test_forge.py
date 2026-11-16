@@ -1791,3 +1791,32 @@ class PortfolioRetryTests(unittest.TestCase):
             result = runner.run_portfolio('s', ['p'], k=1, split=2)
         self.assertEqual(runner.state['lemmas']['p_d1_h1']['status'], 'proved')
         self.assertEqual(result['solved'], 1)
+
+    def test_failed_mechanical_lemma_assembly_falls_back_to_an_agent(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self._split_state(root, 'proved')
+        state = json.loads((root / 'pf' / 't-k.json').read_text())
+        state['lemmas']['p_d1_h1_d1_h1']['body'] = 'theorem p_d1_h1_d1_h1 : True := trivial'
+        (root / 'pf' / 't-k.json').write_text(json.dumps(state))
+        verdicts = [dict(ok=False, reason='mechanical: type mismatch'), dict(ok=True, kind='proved')]
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+             mock.patch('forge.verify.check_submission', side_effect=lambda *a, **kw: verdicts.pop(0)), \
+             mock.patch.object(portfolio.bench, 'check', return_value=dict(ok=True, solved=True)):
+            runner = portfolio.Portfolio('t-k', workers=1, max_tasks=1000, dry_run=True)
+            prompts = []
+
+            def fake_invoke(prompt, agent, **kw):
+                prompts.append(prompt)
+                (runner.scratch / agent / 'p_d1_h1.d1.final.lean').write_text(
+                    'theorem p_d1_h1_aux_d1_h1 : True := trivial\ntheorem p_d1_h1 : True ∧ True := ⟨p_d1_h1_aux_d1_h1, trivial⟩')
+                return 0, '', 0, False
+            runner._invoke = fake_invoke
+            result = runner.run_portfolio('s', ['p'], k=1, split=2)
+        self.assertEqual(len(prompts), 1)
+        self.assertIn('mechanical: type mismatch', prompts[0])
+        self.assertEqual(runner.state['lemmas']['p_d1_h1']['status'], 'proved')
+        self.assertEqual(runner.state['lemmas']['p_d1_h1']['splits']['d1']['status'], 'solved')
+        self.assertEqual(result['solved'], 1)

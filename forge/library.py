@@ -77,6 +77,9 @@ LIBRARY_PATHS = ['forge/data/ledger.jsonl', 'lean/Mathlib2', 'lean/Mathlib2.lean
 DATA_DIRS = ('forge/data/', 'lean/Mathlib2/', 'phase2/benchmarks/', 'reports/', 'audits/', 'lean/Research/')
 
 
+SNAPSHOT_BRANCH = 'data/snapshot-'
+
+
 def is_data(path):
     norm = os.path.normpath(path).replace(os.sep, '/')
     return '..' not in norm.split('/') and (norm == 'lean/Mathlib2.lean' or norm.startswith(DATA_DIRS) or norm + '/' in DATA_DIRS)
@@ -94,35 +97,62 @@ def _blob(rev, path):
     return found.stdout.strip() if found.returncode == 0 else None
 
 
-def _publish_commit(message):
-    """在 origin/main 上做一个提交，内容是 origin/main 加上本地 main 里还没进去的数据改动。
+def _state_path():
+    return Path(_git('rev-parse', '--absolute-git-dir').stdout.strip()) / 'forge-snapshot.json'
 
-    不直接推本地 main 的历史：数据 PR 若被 squash 或 rebase 合并，旧提交还留在本地历史里，再推就会和 main 冲突。
-    返回 (提交, 路径, 冲突路径)；没有要发布的改动时提交为 None。"""
-    import tempfile
-    base = _git('merge-base', 'origin/main', 'HEAD').stdout.strip()
-    local = [p for p in _git('diff', '--name-only', '-z', base, 'HEAD').stdout.split('\0') if p]
-    todo = [p for p in local if _blob('HEAD', p) != _blob('origin/main', p)]
-    if not todo:
-        return None, [], []
-    ours = _git('rev-list', f'{base}..HEAD').stdout.split()
-    conflicts = [p for p in todo if _blob('origin/main', p) != _blob(base, p)
-                 and _blob('origin/main', p) not in {_blob(c, p) for c in ours}]
-    if conflicts:
-        return None, todo, conflicts
-    with tempfile.TemporaryDirectory() as tmp:
-        index = Path(tmp) / 'index'
-        _git('read-tree', 'origin/main', index=index)
-        for path in todo:
-            blob = _blob('HEAD', path)
-            if blob:
-                mode = _git('ls-tree', 'HEAD', '--', path).stdout.split()[0]
-                _git('update-index', '--add', '--cacheinfo', f'{mode},{blob},{path}', index=index)
-            else:
-                _git('update-index', '--force-remove', '--', path, index=index)
-        tree = _git('write-tree', index=index).stdout.strip()
-    commit = _git('commit-tree', tree, '-p', 'origin/main', '-m', message).stdout.strip()
-    return commit or None, todo, []
+
+def _load_state():
+    """这个检出自己的发布记录：lane（检出的随机标识，进分支名）、branch（自己的数据 PR 分支）、
+    pushed（最后推上去的提交）、published（那次发布时本地 main 的 HEAD）。不同机器、不同检出互不接手。"""
+    path = _state_path()
+    try:
+        state = json.loads(path.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        state = {}
+    state.setdefault('lane', uuid.uuid4().hex[:8])
+    return state
+
+
+def _save_state(state):
+    path = _state_path()
+    tmp = path.with_suffix('.tmp')
+    tmp.write_text(json.dumps(state), encoding='utf-8')
+    os.replace(tmp, path)
+
+
+def _pr(branch):
+    """自己分支上的 PR 状态；没有 PR 或查询失败返回 None。"""
+    if not branch:
+        return None
+    view = _gh('pr', 'view', branch, '--json', 'state,url,isCrossRepository,autoMergeRequest')
+    if view.returncode:
+        return None
+    try:
+        return json.loads(view.stdout)
+    except ValueError:
+        return None
+
+
+def _base(state, pr):
+    """三方合并的基：上一次发布已经合进 main，就从那次发布时的 HEAD 算起；否则从本地 main 与 origin/main 的合并基算起。"""
+    published = state.get('published')
+    if pr and pr.get('state') == 'MERGED' and published \
+            and _git('merge-base', '--is-ancestor', published, 'HEAD').returncode == 0:
+        return published
+    return _git('merge-base', 'origin/main', 'HEAD').stdout.strip()
+
+
+def _merged_tree(base):
+    """把本地 main 自 base 以来的改动三方合并进 origin/main。返回 (树, 冲突路径)。"""
+    # 不认改名：任务从 open/ 挪到 claimed/ 是状态变化，不能把本地对 open/x 的修改套到 claimed/x 上
+    merged = _git('merge-tree', '--write-tree', '-Xno-renames', '--name-only', '--no-messages', f'--merge-base={base}',
+                  'origin/main', 'HEAD')
+    lines = merged.stdout.split('\n')
+    if merged.returncode == 1:
+        return None, [line for line in lines[1:] if line]
+    if merged.returncode:
+        raise RuntimeError('git merge-tree 失败：' + merged.stderr.strip()[-300:])
+    return lines[0].strip(), []
 
 
 def _gh(*args):
@@ -140,8 +170,8 @@ def _unpublished_paths():
 def snapshot(message, include=(), publish=True):
     """持锁提交库的快照（台账、分片、任务、辅助引理索引，加上 include 里的实验结果），提交前核对台账与分片一致。
 
-    在主检出的 main 上且 publish 时，把还没进 origin/main 的数据改动做成 origin/main 上的一个提交，推到数据分支，
-    请求 CI 通过后自动 squash 合并：已有打开的数据 PR 就更新它的分支，没有才开新 PR。主检出从不直接推 main。在其他分支上（例如升级分支）只在本地提交。"""
+    在主检出的 main 上且 publish 时，提交、发布都在库锁内：把还没进 origin/main 的数据改动三方合并成 origin/main 上的
+    一个提交，推到这个检出自己的数据分支（记在 .git/forge-snapshot.json），请求 CI 通过后自动 squash 合并。主检出从不直接推 main。在其他分支上（例如升级分支）只在本地提交。"""
     from .leanrun import ROOT
     from .regressions import consistency
     bad = [p for p in include if not is_data(p)]
@@ -172,53 +202,72 @@ def snapshot(message, include=(), publish=True):
             if made.returncode:
                 return dict(ok=False, reason='git commit 失败', error=made.stderr.strip()[-300:])
         committed = bool(staged)
-    result = dict(ok=True, committed=committed, commit=_git('rev-parse', '--short', 'HEAD').stdout.strip())
-    if not publish:
-        return dict(result, published=False, **({} if on_main else dict(reason='不在 main 上，只在本地提交')))
-    commit, todo, conflicts = _publish_commit(message)
+        result = dict(ok=True, committed=committed, commit=_git('rev-parse', '--short', 'HEAD').stdout.strip())
+        if not publish:
+            return dict(result, published=False, **({} if on_main else dict(reason='不在 main 上，只在本地提交')))
+        return _publish(message, result)
+
+
+def _publish(message, result, state=None):
+    """在库锁内调用：把未发布的数据改动做成 origin/main 上的一个提交，推到这个检出自己的数据分支，开或更新 PR。"""
+    state = _load_state() if state is None else state
+    pr = _pr(state.get('branch'))
+    try:
+        tree, conflicts = _merged_tree(_base(state, pr))
+    except RuntimeError as exc:
+        return dict(result, ok=False, published=False, reason=str(exc))
     if conflicts:
         return dict(result, ok=False, published=False, reason='这些数据在 origin/main 上也被别处改过，先手动合并', paths=conflicts)
-    if not commit:
+    if tree == _git('rev-parse', 'origin/main^{tree}').stdout.strip():
         return dict(result, published=False, reason='没有未发布的数据改动')
-    listed = _gh('pr', 'list', '--state', 'open', '--base', 'main', '--limit', '100', '--json', 'headRefName,url')
-    if listed.returncode:
-        return dict(result, ok=False, published=False, reason='查询打开的 PR 失败', error=listed.stderr.strip()[-300:])
-    open_data = [pr for pr in json.loads(listed.stdout or '[]') if pr['headRefName'].startswith('data/')]
-    branch = open_data[0]['headRefName'] if open_data else 'data/' + time.strftime('%Y%m%d-%H%M%S-') + uuid.uuid4().hex[:6]
-    pushed = _git('push', '-q', '--force', 'origin', f'{commit}:refs/heads/{branch}')  # 数据分支每次从 origin/main 重建
+    commit = _git('commit-tree', tree, '-p', 'origin/main', '-m', message).stdout.strip()
+    head = _git('rev-parse', 'HEAD').stdout.strip()
+    reuse = pr and pr.get('state') == 'OPEN' and not pr.get('isCrossRepository')
+    branch = state['branch'] if reuse else f"{SNAPSHOT_BRANCH}{state['lane']}-{time.strftime('%Y%m%d-%H%M%S')}-{uuid.uuid4().hex[:4]}"
+    expected = state.get('pushed', '') if reuse else ''  # 新分支：租约要求远端还没有这个分支
+    pushed = _git('push', '-q', f'--force-with-lease=refs/heads/{branch}:{expected}', 'origin', f'{commit}:refs/heads/{branch}')
     if pushed.returncode:
-        return dict(result, ok=False, published=False, branch=branch, reason='推送数据分支失败', error=pushed.stderr.strip()[-500:])
-    if open_data:
-        return dict(result, published=True, pr=open_data[0]['url'], updated_existing_pr=True)
-    body = '由 `forge snapshot` 生成的库与实验数据快照（风险级别：低）。CI 核对台账与分片、重建并审计全库，通过后自动合并。'
-    pr = _gh('pr', 'create', '--base', 'main', '--head', branch, '--title', f'data: {message}', '--body', body)
-    if pr.returncode:
-        return dict(result, ok=False, published=False, branch=branch, reason='开 PR 失败', error=pr.stderr.strip()[-500:])
-    url = pr.stdout.strip().splitlines()[-1]
-    auto = _gh('pr', 'merge', url, '--auto', '--squash')
-    result.update(published=True, pr=url, auto_merge=auto.returncode == 0)
-    if auto.returncode:
-        result['auto_merge_error'] = auto.stderr.strip()[-300:]
+        return dict(result, ok=False, published=False, branch=branch, reason='推送数据分支失败（远端被别人改过？）',
+                    error=pushed.stderr.strip()[-500:])
+    if reuse:
+        pr = _pr(branch)
+        if not pr or pr.get('state') != 'OPEN':  # 列出之后、推送之前 PR 被合并或关闭了：换新分支开新 PR
+            state = {k: v for k, v in state.items() if k not in ('branch', 'pushed')}
+            return _publish(message, result, state)
+    else:
+        body = '由 `forge snapshot` 生成的库与实验数据快照（风险级别：低）。CI 核对台账与分片、重建并审计全库，通过后自动合并。'
+        created = _gh('pr', 'create', '--base', 'main', '--head', branch, '--title', f'data: {message}', '--body', body)
+        if created.returncode:
+            return dict(result, ok=False, published=False, branch=branch, reason='开 PR 失败', error=created.stderr.strip()[-500:])
+        pr = dict(url=created.stdout.strip().splitlines()[-1], autoMergeRequest=None)
+    _save_state(dict(state, branch=branch, pushed=commit, published=head))
+    result.update(published=True, pr=pr['url'], branch=branch, updated_existing_pr=bool(reuse))
+    if not pr.get('autoMergeRequest'):  # 每次都补请求：上次失败或被取消的自动合并不会就此停掉
+        auto = _gh('pr', 'merge', pr['url'], '--auto', '--squash')
+        result['auto_merge'] = auto.returncode == 0
+        if auto.returncode:
+            result['auto_merge_error'] = auto.stderr.strip()[-300:]
     return result
 
 
 def sync():
     """主检出拿到 main 上新合并的代码和数据，不碰未提交的数据。
 
-    本地 main 上的数据提交只要内容已经在 origin/main 里（不论用 merge、squash 还是 rebase 合并的），就直接对齐到
-    origin/main（git reset --keep：有未提交改动的文件若要被改写就中止）。内容还没进去就等数据 PR 合并。"""
+    本地 main 上的数据改动（自上次已合并的发布以来）三方合并进 origin/main 后若不改变 origin/main，说明都已经进去了
+    （不论 merge、squash 还是 rebase），就对齐到 origin/main（git reset --keep：有未提交改动的文件若要被改写就中止）。"""
     if _git('rev-parse', '--abbrev-ref', 'HEAD').stdout.strip() != 'main':
         return dict(ok=False, reason='只在主检出的 main 上同步')
     with locked():
         fetched = _git('fetch', '-q', 'origin', 'main')
         if fetched.returncode:
             return dict(ok=False, reason='fetch 失败', error=fetched.stderr.strip()[-300:])
-        changed = _unpublished_paths()
-        if changed is None:
-            return dict(ok=False, reason='无法比较本地 main 与 origin/main')
-        if changed and _git('diff', '--quiet', 'HEAD', 'origin/main', '--', *changed).returncode:
-            pending = [p for p in _git('diff', '--name-only', '-z', 'HEAD', 'origin/main', '--', *changed).stdout.split('\0') if p]
-            return dict(ok=False, reason='本地 main 上的数据提交还没进 origin/main，等数据 PR 合并后再同步', paths=pending[:20])
+        state = _load_state()
+        try:
+            tree, conflicts = _merged_tree(_base(state, _pr(state.get('branch'))))
+        except RuntimeError as exc:
+            return dict(ok=False, reason=str(exc))
+        if conflicts or tree != _git('rev-parse', 'origin/main^{tree}').stdout.strip():
+            return dict(ok=False, reason='本地 main 上有数据改动还没进 origin/main，等数据 PR 合并后再同步', paths=conflicts[:20])
         moved = _git('reset', '-q', '--keep', 'origin/main')
         if moved.returncode:
             return dict(ok=False, reason='对齐 origin/main 失败（有未提交改动的文件会被改写）', error=moved.stderr.strip()[-500:])

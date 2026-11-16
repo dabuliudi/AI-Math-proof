@@ -94,11 +94,7 @@ def check(name, problem, body, run, agent):
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
     task = dict(name=problem, statement=item['statement'], opens=item.get('opens', ''), preamble=item.get('preamble', ''),
                 imports=item.get('imports', []))
-    try:
-        result = check_submission(task, body)
-    except StatementError as exc:
-        # 提交的格式不合规（例如主定理不在最后、根本没写主定理）：这是一次没做出的尝试，不是检查器出错
-        result = dict(ok=False, kind='proved', reason=f'提交格式不合规：{exc}')
+    result = check_submission(task, body)
     if _library_mid_build(result):
         # 别的进程正在入库重建时 Mathlib2 的 .olean 会暂时缺失，这不是证明的错；拿着库锁重查一次
         from .library import locked

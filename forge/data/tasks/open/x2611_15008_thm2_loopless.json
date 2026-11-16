@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_thm2_loopless",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (a b : ℝ) (ha : 0 < a) (hb : 1 < b) (hab : ∀ k : ℕ, 1 ≤ k → 1 + (k : ℝ) * a ≤ 2 * b ^ k) (hG : G.Loopless) : x2611_15008_Tutte G 1 1 / x2611_15008_Tutte G 2 0 ≤ b ^ G.edgeSet.ncard / a ^ (G.vertexSet.ncard - x2611_15008_components G)",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (a b : ℝ) (ha : 0 < a) (hb : 1 < b) (hab : ∀ k : ℕ, 1 ≤ k → 1 + (k : ℝ) * a ≤ 2 * b ^ k) (hG : G.Loopless), x2611_15008_Tutte G 1 1 / x2611_15008_Tutte G 2 0 ≤ b ^ G.edgeSet.ncard / a ^ (G.vertexSet.ncard - x2611_15008_components G)",
+  "informal": "Theorem 2 (loopless inequality)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Theorem 2.\n\nLet $a>0,~b>1$ so that $1+ka\\leq 2b^{k}$ for all integers $k\\geq 1$ and $G$ be a graph with $n$ vertices, $m$ edges and $\\kappa$ connected components. Then\n\n$\\displaystyle\\frac{T_{G}(1,1)}{T_{G}(2,0)}\\leq\\frac{b^{m}}{a^{n-\\kappa}}$ \n $\\displaystyle\\text{if $G$ is loopless, and}$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "4036719990",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E) (a b : ℝ), 0 < a → 1 < b → (∀ (k : ℕ), 1 ≤ k → 1 + ↑k * a ≤ 2 * b ^ k) → G.Loopless → Mathlib2.x2611_15008_Tutte G 1 1 / Mathlib2.x2611_15008_Tutte G 2 0 ≤ b ^ G.edgeSet.ncard / a ^ (G.vertexSet.ncard - Mathlib2.x2611_15008_components G)",
+  "attempts": [
+    {
+      "agent": "queue-r7-w7",
+      "note": "Verified a parallel-class strong-induction skeleton and eight proved general helpers in forge/data/staging/agents/queue-r7/queue-r7-w7/loopless_sketch.lean; see loopless_notes.md. Numerical checks passed for all 1024 labelled simple graphs on five vertices at six admissible parameter samples and parallel classes of size 1-14. Full skeleton check passed, including positivity and final division. Three independent gaps remain: contraction decreases rank by one; parallel-class Tutte deletion/contraction recurrences including multiple bridges; and T_contract(2,0) <= T_delete(2,0). Forge sketch then timed out during 180-second standalone-hole validation, so no subtasks were registered. Retry the same sketch when the environment is less busy, or prove those three graph lemmas.",
+      "at": "2026-11-16T13:21:52+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:29:55+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w7",
+  "claimed_at": "2026-11-16T12:55:10+0800"
+}

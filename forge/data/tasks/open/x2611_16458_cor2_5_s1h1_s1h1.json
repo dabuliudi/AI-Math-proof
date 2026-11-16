@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_cor2_5_s1h1_s1h1",
+  "statement": ": ∀ {V : Type*} [inst : Fintype V] [DecidableEq V] (P N : SimpleGraph V) [inst_2 : DecidableRel P.Adj] [inst_3 : DecidableRel N.Adj] (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_zeroFree (x2611_16458_split P N u) ⊥ = ∑ F ∈ (P.edgeFinset.disjSum N.edgeFinset).powerset, (Polynomial.C : ℤ → Polynomial ℤ) ((-1) ^ F.card) * (Polynomial.X ^ Nat.card ((x2611_16458_split (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inr e ∈ F}) u).deleteEdges {s(Sum.inl true, Sum.inl false)}).ConnectedComponent - Polynomial.X ^ Nat.card (x2611_16458_split (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inr e ∈ F}) u).ConnectedComponent)",
+  "closed": "∀ {V : Type*} [inst : Fintype V] [DecidableEq V] (P N : SimpleGraph V) [inst_2 : DecidableRel P.Adj] [inst_3 : DecidableRel N.Adj] (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_zeroFree (x2611_16458_split P N u) ⊥ = ∑ F ∈ (P.edgeFinset.disjSum N.edgeFinset).powerset, (Polynomial.C : ℤ → Polynomial ℤ) ((-1) ^ F.card) * (Polynomial.X ^ Nat.card ((x2611_16458_split (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inr e ∈ F}) u).deleteEdges {s(Sum.inl true, Sum.inl false)}).ConnectedComponent - Polynomial.X ^ Nat.card (x2611_16458_split (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e : Sym2 V | Sum.inr e ∈ F}) u).ConnectedComponent)",
+  "informal": "x2611_16458_cor2_5_s1h1 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_cor2_5_s1h1",
+  "original": "",
+  "proposed_by": "queue-r7-w4",
+  "hash": "3150691623",
+  "type": "∀ {V : Type u_1} [inst : Fintype V] [DecidableEq V] (P N : SimpleGraph V) [inst_2 : DecidableRel P.Adj] [inst_3 : DecidableRel N.Adj] (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → Mathlib2.x2611_16458_zeroFree (Mathlib2.x2611_16458_split P N u) ⊥ = ∑ F ∈ (P.edgeFinset.disjSum N.edgeFinset).powerset, Polynomial.C ((-1) ^ F.card) * (Polynomial.X ^ Nat.card ((Mathlib2.x2611_16458_split (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F}) u).deleteEdges {s(Sum.inl true, Sum.inl false)}).ConnectedComponent - Polynomial.X ^ Nat.card (Mathlib2.x2611_16458_split (SimpleGraph.fromEdgeSet {e | Sum.inl e ∈ F}) (SimpleGraph.fromEdgeSet {e | Sum.inr e ∈ F}) u).ConnectedComponent)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:44:16+0800",
+  "status": "open"
+}

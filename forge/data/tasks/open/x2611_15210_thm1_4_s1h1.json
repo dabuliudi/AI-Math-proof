@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15210_thm1_4_s1h1",
+  "statement": ": ∀ (n K a m : ℕ), K = 2 ^ a → 1 ≤ a → 3 ≤ m → Odd m → n = K * m → ∀ (p : ℝ), 0 < p → p < 1 → ∀ (Z : ℝ), Z = 14 + 2 * x2611_15210_Q n m K p ^ (-1 / ((↑n : ℝ) - 1)) → ∀ (t d : ℕ), ∃ (N : ℕ) (f : Fin N → Fin (4 * t + d) → ZMod n) (w : Fin N → ℝ), (∀ (i : Fin N), 0 ≤ w i) ∧ ∑ i : Fin N, w i = 1 ∧ (∑ v : Fin n → Fin N, if ∑ i : Fin n, f (v i) = 0 then ∏ i : Fin n, w (v i) else 0) ≤ (2 ^ d * Z ^ t) ^ (-((↑n : ℝ) - 1))",
+  "closed": "∀ (n K a m : ℕ), K = 2 ^ a → 1 ≤ a → 3 ≤ m → Odd m → n = K * m → ∀ (p : ℝ), 0 < p → p < 1 → ∀ (Z : ℝ), Z = 14 + 2 * x2611_15210_Q n m K p ^ (-1 / ((↑n : ℝ) - 1)) → ∀ (t d : ℕ), ∃ (N : ℕ) (f : Fin N → Fin (4 * t + d) → ZMod n) (w : Fin N → ℝ), (∀ (i : Fin N), 0 ≤ w i) ∧ ∑ i : Fin N, w i = 1 ∧ (∑ v : Fin n → Fin N, if ∑ i : Fin n, f (v i) = 0 then ∏ i : Fin n, w (v i) else 0) ≤ (2 ^ d * Z ^ t) ^ (-((↑n : ℝ) - 1))",
+  "informal": "x2611_15210_thm1_4 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_thm1_4",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "2345707257",
+  "type": "∀ (n K a m : ℕ), K = 2 ^ a → 1 ≤ a → 3 ≤ m → Odd m → n = K * m → ∀ (p : ℝ), 0 < p → p < 1 → ∀ (Z : ℝ), Z = 14 + 2 * Mathlib2.x2611_15210_Q n m K p ^ (-1 / (↑n - 1)) → ∀ (t d : ℕ), ∃ N f w, (∀ (i : Fin N), 0 ≤ w i) ∧ ∑ i, w i = 1 ∧ (∑ v, if ∑ i, f (v i) = 0 then ∏ i, w (v i) else 0) ≤ (2 ^ d * Z ^ t) ^ (-(↑n - 1))",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w4",
+      "note": "Locally compiled six auxiliary lemmas and a one-hole reduction in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w4/tensor.lean (import Mathlib2.Shard.S0059, lake env lean -j 1). They prove product probability factorization, finite support reindexing, coordinate concatenation, binary and rank-zero distributions, and induction reducing all t,d to a distribution on fixed Fin 18 in rank four. The remaining mathematics is the Wang-Zeng configuration classification (local paper Section 6, Lemma 6.1) and its weighted binomial probability calculation. Explicit points, weights, and proof plan are in BLOCK_NOTES.md; submission-ready sketch.lean has exactly this one hole. Exhaustive small-case checks n=6,10,12 match the classification. Two Forge sketch checks timed out after 300 seconds; a third failed because Mathlib2/Shard/S0061.olean disappeared during a concurrent rebuild, and it remained unavailable. No proof or sketch was accepted. Retry the saved sketch once the full library is available.",
+      "at": "2026-11-16T13:31:42+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:30:55+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w4",
+  "claimed_at": "2026-11-16T12:58:39+0800"
+}

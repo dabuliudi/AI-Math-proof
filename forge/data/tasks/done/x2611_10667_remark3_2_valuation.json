@@ -1,0 +1,19 @@
+{
+  "name": "x2611_10667_remark3_2_valuation",
+  "statement": "(q r : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (hv : 0 < padicValRat q (t - 1)) : padicValRat q (t - 1) = padicValRat q (t⁻¹ - 1)",
+  "closed": "∀ (q r : ℕ) (hq : q.Prime) (hr : r.Prime) (hq2 : 2 < q) (hr2 : 2 < r) (hqr : q ≠ r) (t : ℚ) (ht0 : t ≠ 0) (ht1 : t ≠ 1) (hv : 0 < padicValRat q (t - 1)), padicValRat q (t - 1) = padicValRat q (t⁻¹ - 1)",
+  "informal": "Remark 3.2 (valuation identity)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.10667",
+  "original": "and if $v_{q}(t-1)>0$ then $v_{q}(t-1)=v_{q}(t^{-1}-1)$ , so that the roles of $q$ and $r$ are symmetric in Theorem B.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "913288541",
+  "type": "∀ (q r : ℕ), Nat.Prime q → Nat.Prime r → 2 < q → 2 < r → q ≠ r → ∀ (t : ℚ), t ≠ 0 → t ≠ 1 → 0 < padicValRat q (t - 1) → padicValRat q (t - 1) = padicValRat q (t⁻¹ - 1)",
+  "attempts": [],
+  "created_at": "2026-11-16T10:40:08+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w2",
+  "claimed_at": "2026-11-16T12:42:08+0800",
+  "closed_by": "queue-r7-w2",
+  "finished_at": "2026-11-16T12:44:12+0800"
+}

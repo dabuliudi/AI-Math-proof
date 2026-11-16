@@ -1,0 +1,193 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "f < b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "b ≤ a",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "e ≤ d",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "h3",
+      "statement": "a ≤ c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 5
+    },
+    {
+      "id": "h4",
+      "statement": "d < f",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 6
+    },
+    {
+      "id": "p2_n001",
+      "statement": "e < f",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "LE.le.trans_lt",
+      "binding": {
+        "0": "e",
+        "1": "d",
+        "2": "f"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 141,
+        "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a ≤ b → b < c → a < c"
+      },
+      "planned_event": 10,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "e < b",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "LT.lt.trans",
+      "binding": {
+        "0": "e",
+        "1": "f",
+        "2": "b"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 139,
+        "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, a < b → b < c → a < c"
+      },
+      "planned_event": 16,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_n003",
+      "statement": "e < a",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "LE.le.trans_lt'",
+      "binding": {
+        "1": "b",
+        "0": "a",
+        "2": "e"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 142,
+        "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c < b → c < a"
+      },
+      "planned_event": 22,
+      "compile_log": "attempt-003.json"
+    },
+    {
+      "id": "p2_n004",
+      "statement": "e < c",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "LE.le.trans_lt'",
+      "binding": {
+        "1": "a",
+        "0": "c",
+        "2": "e"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 142,
+        "type": "∀ {α : Type u_1} [inst : Preorder α] {a b c : α}, b ≤ a → c < b → c < a"
+      },
+      "planned_event": 28,
+      "compile_log": "attempt-004.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v4 < p2v2)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 33,
+      "compile_log": "attempt-005.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h2",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt"
+    },
+    {
+      "source": "h4",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "LT.lt.trans"
+    },
+    {
+      "source": "h0",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "LT.lt.trans"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt'"
+    },
+    {
+      "source": "p2_n002",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt'"
+    },
+    {
+      "source": "h3",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt'"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "LE.le.trans_lt'"
+    },
+    {
+      "source": "p2_n004",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 5,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "h4": 0,
+    "p2_n001": 1,
+    "p2_n002": 2,
+    "p2_n003": 3,
+    "p2_n004": 4,
+    "p2_target": 5
+  }
+}

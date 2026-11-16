@@ -9,7 +9,15 @@
   "proposed_by": "queue-r6-w2",
   "hash": "1100976672",
   "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), M.eRank ≤ 3 → ∀ (e f : α) (m : α →₀ ℕ), 0 ≤ MvPolynomial.coeff m (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Indep) e f - Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f)",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r7-w6",
+      "note": "调度器代为归还（agent 未完成）：",
+      "at": "2026-11-16T12:04:48+0800"
+    }
+  ],
   "created_at": "2026-11-16T03:26:15+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w6",
+  "claimed_at": "2026-11-16T12:00:55+0800"
 }

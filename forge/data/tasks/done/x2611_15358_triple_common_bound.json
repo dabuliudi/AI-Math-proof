@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15358_triple_common_bound",
+  "statement": "(G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15) (S : Finset (Fin 14)) (hS : S.card = 3) : x2611_15358_t G S ≤ (Nat.card (Gᶜ).edgeSet) / 3 ∧ (Nat.card (Gᶜ).edgeSet) / 3 ≤ 5",
+  "closed": "∀ (G : SimpleGraph (Fin 14)) (hdeg : ∀ v : Fin 14, 4 ≤ Nat.card (G.neighborSet v)) (hq : Nat.card (Gᶜ).edgeSet ≤ 15) (S : Finset (Fin 14)) (hS : S.card = 3), x2611_15358_t G S ≤ (Nat.card (Gᶜ).edgeSet) / 3 ∧ (Nat.card (Gᶜ).edgeSet) / 3 ≤ 5",
+  "informal": "Lemma 2.6, proof (common neighbors of a triple)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15358",
+  "original": "For an unordered triple $S$ , put $t_{S}=|\\bigcap_{x\\in S}N_{G^{c}}(x)|$ .\nThe $3t_{S}$ edges between $S$ and its common neighbors are distinct, so $t_{S}\\leq\\lfloor q/3\\rfloor\\leq 5$ .",
+  "proposed_by": "audit-b1",
+  "hash": "3852311759",
+  "type": "∀ (G : SimpleGraph (Fin 14)), (∀ (v : Fin 14), 4 ≤ Nat.card ↑(G.neighborSet v)) → Nat.card ↑Gᶜ.edgeSet ≤ 15 → ∀ (S : Finset (Fin 14)), S.card = 3 → Mathlib2.x2611_15358_t G S ≤ Nat.card ↑Gᶜ.edgeSet / 3 ∧ Nat.card ↑Gᶜ.edgeSet / 3 ≤ 5",
+  "attempts": [],
+  "created_at": "2026-11-16T03:32:32+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w0",
+  "claimed_at": "2026-11-16T12:35:39+0800",
+  "closed_by": "queue-r7-w0",
+  "finished_at": "2026-11-16T12:38:58+0800"
+}

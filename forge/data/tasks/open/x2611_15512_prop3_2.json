@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15512_prop3_2",
+  "statement": "{α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) :\n  ∃ R : MvPolynomial α (Polynomial ℝ),\n    (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f =\n      (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) ^ 2 *\n        MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) +\n      MvPolynomial.C (Polynomial.X : Polynomial ℝ) *\n        (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) * R",
+  "closed": "∀ {α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f), ∃ R : MvPolynomial α (Polynomial ℝ),\n    (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_normalized_tutte M) e f =\n      (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) ^ 2 *\n        MvPolynomial.map (Polynomial.C : ℝ →+* Polynomial ℝ) (x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f) +\n      MvPolynomial.C (Polynomial.X : Polynomial ℝ) *\n        (1 - MvPolynomial.C (Polynomial.X : Polynomial ℝ)) * R",
+  "informal": "Proposition 3.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "Let $M$ be a simple rank- $3$ matroid, and let $e,f\\in E(M)$ be distinct.\nThere is a polynomial $\\mathcal{R}_{M,e,f}(q,x)$ with nonnegative\ncoefficients in $q$ and $x$ such that\n\n $(\\Delta_{e,f}W_{M})(q,x)=(1-q)^{2}(\\Delta_{e,f}S_{M})(x)+q(1-q)\\mathcal{R}_{M,e,f}(q,x).$ \n\n(9)",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3332939459",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), Mathlib2.x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∃ R, (∀ (d : α →₀ ℕ) (k : ℕ), 0 ≤ (MvPolynomial.coeff d R).coeff k) ∧ Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_normalized_tutte M) e f = (1 - MvPolynomial.C Polynomial.X) ^ 2 * (MvPolynomial.map Polynomial.C) (Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Spanning) e f) + MvPolynomial.C Polynomial.X * (1 - MvPolynomial.C Polynomial.X) * R",
+  "attempts": [
+    {
+      "agent": "queue-r7-w2",
+      "note": "Reduction and unverified four-hole skeleton saved in forge/data/staging/agents/queue-r7/queue-r7-w2; see NOTES.md and sketch.lean. Let A,B,C,D be spanning generating polynomials on ground minus e,f for adjoining ef,e,f,neither; P=product(1+x), S=sum x. Quotient is R0+q*R1+q^2*R2 with R0=(S+1)*A-B-C+P*(B+C-A-D), R1=1+B+C-S*A+P*(S-1), R2=P-1-A. Draft ring assembly and R2 positivity by powerset complement provided; remaining holes are two Rayleigh expansions and coefficient positivity of R0,R1. Exact full-identity and positivity checks pass U3,n for n=3..8, Fano, coloop plus U2,5, and 100 seeded random rank-three partial linear spaces. Forge sketch first timed out at 300s, second failed because compiled Mathlib2/Shard/S0061.olean was missing; S0062.olean also missing later. Local S0060-only check timed out at 240s. Skeleton was not registered and all Lean drafts remain unverified.",
+      "at": "2026-11-16T13:37:19+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:31:41+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w2",
+  "claimed_at": "2026-11-16T13:12:52+0800"
+}

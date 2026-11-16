@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15512_prop3_1",
+  "statement": "{α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f) :\n  ∃ (n m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ),\n    Set.InjOn (fun a => (l a, r a)) (M.E \\ M.closure ({e, f} : Set α)) ∧\n    (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f +\n      x2611_15512_graph_q ((Set.toFinite (M.E \\ M.closure ({e, f} : Set α))).toFinset) l r + C",
+  "closed": "∀ {α : Type*} [Fintype α] (M : Matroid α) (hsimple : x2611_15512_simple M) (hrank : M.eRank = 3) (e f : α) (he : e ∈ M.E) (hf : f ∈ M.E) (hef : e ≠ f), ∃ (n m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ),\n    Set.InjOn (fun a => (l a, r a)) (M.E \\ M.closure ({e, f} : Set α)) ∧\n    (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧ (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n    x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f +\n      x2611_15512_graph_q ((Set.toFinite (M.E \\ M.closure ({e, f} : Set α))).toFinset) l r + C",
+  "informal": "Proposition 3.1",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15512",
+  "original": "Let $M$ be a simple rank- $3$ matroid, and let $e,f\\in E(M)$ be\ndistinct. There is a simple bipartite graph $G$ whose edges are indexed\nby $E(M)\\setminus\\operatorname{cl}_{M}\\{e,f\\}$ and a polynomial $R_{M,e,f}\\succeq 0$ \nwith no terms of degree less than five such that\n\n $\\Delta_{e,f}S_{M}=\\Delta_{e,f}B_{M}+Q_{G}+R_{M,e,f}.$ \n\nHere $Q_{G}$ is defined by (5).",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1668965341",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), Mathlib2.x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∃ n m l r C, Set.InjOn (fun a => (l a, r a)) (M.E \\ M.closure {e, f}) ∧ (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ (∀ (d : α →₀ ℕ), Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧ Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Spanning) e f = Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f + Mathlib2.x2611_15512_graph_q ⋯.toFinset l r + C",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w5",
+      "note": "Saved draft at /Users/zaixi/AI4math/forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w5/sketch.lean. The unchanged target is reduced to two holes. The first is exactly existing task x2611_15512_lem2_4, stated as top-level aux14 to avoid local-universe issues. The second is coefficientwise nonnegativity of Delta(Spanning)-graph_d for endpoint labels classified by closures of {e,a} and {f,a}. An explicit positive factorization of this difference is written in the hcompare comments, using the distinguished line, matching pairs, and other collinear subsets. Locally checked auxiliary proofs construct injective finite closure labels, prove graph_q homogeneous of degree five, prove minimal-degree perturbation bounds, basis homogeneity, and cancellation of Delta(Spanning)-Delta(IsBase) below degree five. Final draft reuses x2611_15512_lem2_4_s1h1_aux1/aux2. Small-case script passed free rank-three, Fano, affine rectangles/grids, five GF(3) examples and three real examples, including the stronger matroid comparison. The graph certificate and matroid comparison remain unproved. A first integrated check exposed type-parameter R versus S in reused helpers, now fixed. Two subsequent forge sketch attempts each exceeded the 300-second compilation limit under heavy shared load, so this draft was not registered as a sketch.",
+      "at": "2026-11-16T13:26:11+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:14:13+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w5",
+  "claimed_at": "2026-11-16T12:51:13+0800"
+}

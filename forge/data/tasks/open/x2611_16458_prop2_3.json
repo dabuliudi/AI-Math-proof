@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_prop2_3",
+  "statement": "(V : Type*) [Finite V] (P N : SimpleGraph V) (u : V)\n(hneg : ∀ v w, N.Adj v w → v = u ∨ w = u) :\nx2611_16458_zeroFree (x2611_16458_split P N u) ⊥ =\n  (Polynomial.X - 1) * x2611_16458_zeroFree P N ∧\n(x2611_16458_zeroFree (x2611_16458_split P N u) ⊥).comp (Polynomial.X - 1) =\n  (Polynomial.X - Polynomial.C 2) *\n    (x2611_16458_zeroFree P N).comp (Polynomial.X - 1)",
+  "closed": "∀ (V : Type*) [Finite V] (P N : SimpleGraph V) (u : V)\n(hneg : ∀ v w, N.Adj v w → v = u ∨ w = u), x2611_16458_zeroFree (x2611_16458_split P N u) ⊥ =\n  (Polynomial.X - 1) * x2611_16458_zeroFree P N ∧\n(x2611_16458_zeroFree (x2611_16458_split P N u) ⊥).comp (Polynomial.X - 1) =\n  (Polynomial.X - Polynomial.C 2) *\n    (x2611_16458_zeroFree P N).comp (Polynomial.X - 1)",
+  "informal": "Proposition 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16458",
+  "original": "With the notation above, we have\n\n(2.5)\n\n $P_{H_{u}(\\Sigma)}(q)=(q-1)Z_{\\Sigma}(q).$ \n\nEquivalently,\n $\\chi_{H_{u}(\\Sigma)}(q)=(q-2)\\chi_{\\Sigma}(q)$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3593674861",
+  "type": "∀ (V : Type u_1) [inst : Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → Mathlib2.x2611_16458_zeroFree (Mathlib2.x2611_16458_split P N u) ⊥ = (Polynomial.X - 1) * Mathlib2.x2611_16458_zeroFree P N ∧ (Mathlib2.x2611_16458_zeroFree (Mathlib2.x2611_16458_split P N u) ⊥).comp (Polynomial.X - 1) = (Polynomial.X - Polynomial.C 2) * (Mathlib2.x2611_16458_zeroFree P N).comp (Polynomial.X - 1)",
+  "attempts": [],
+  "created_at": "2026-11-16T12:32:45+0800",
+  "status": "open"
+}

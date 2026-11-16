@@ -1,0 +1,167 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "c ≤ d",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "e ≤ g",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "f ≤ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "h3",
+      "statement": "f ≤ c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 5
+    },
+    {
+      "id": "h4",
+      "statement": "d ∣ h",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 6
+    },
+    {
+      "id": "h5",
+      "statement": "h ≤ f",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 7
+    },
+    {
+      "id": "h6",
+      "statement": "g ≤ a",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 8
+    },
+    {
+      "id": "h7",
+      "statement": "b ≤ e",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 9
+    },
+    {
+      "id": "p2_n001",
+      "statement": "h ≤ e",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "le_imp_le_of_le_of_le",
+      "binding": {
+        "2": "h",
+        "0": "f",
+        "1": "b",
+        "3": "e"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 187,
+        "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d"
+      },
+      "planned_event": 13,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "h ≤ a",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "le_imp_le_of_le_of_le",
+      "binding": {
+        "2": "h",
+        "0": "e",
+        "1": "g",
+        "3": "a"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Order/Basic.lean",
+        "line": 187,
+        "type": "∀ {α : Type u_2} [inst : Preorder α] {a b c d : α}, c ≤ a → b ≤ d → a ≤ b → c ≤ d"
+      },
+      "planned_event": 19,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v7 ≤ p2v0)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 24,
+      "compile_log": "attempt-003.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h5",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h7",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h6",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "le_imp_le_of_le_of_le"
+    },
+    {
+      "source": "p2_n002",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 3,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "h4": 0,
+    "h5": 0,
+    "h6": 0,
+    "h7": 0,
+    "p2_n001": 1,
+    "p2_n002": 2,
+    "p2_target": 3
+  }
+}

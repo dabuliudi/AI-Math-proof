@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15512_thm1_3_s1h2",
+  "statement": ": ∀ {α : Type*} [inst : Fintype α] (M : Matroid α), x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (E : Finset α), (↑E : Set α) = M.E \\ M.closure {e, f} → ∃ (n : ℕ) (m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ), (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f + x2611_15512_graph_q E l r + C",
+  "closed": "∀ {α : Type*} [inst : Fintype α] (M : Matroid α), x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (E : Finset α), (↑E : Set α) = M.E \\ M.closure {e, f} → ∃ (n : ℕ) (m : ℕ) (l : α → Fin n) (r : α → Fin m) (C : MvPolynomial α ℝ), (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.Spanning) e f = x2611_15512_rayleigh_difference (x2611_15512_set_polynomial M.IsBase) e f + x2611_15512_graph_q E l r + C",
+  "informal": "x2611_15512_thm1_3 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15512_thm1_3",
+  "original": "",
+  "proposed_by": "queue-papers-b1-w7",
+  "hash": "1885427995",
+  "type": "∀ {α : Type u_1} [inst : Fintype α] (M : Matroid α), Mathlib2.x2611_15512_simple M → M.eRank = 3 → ∀ (e f : α), e ∈ M.E → f ∈ M.E → e ≠ f → ∀ (E : Finset α), ↑E = M.E \\ M.closure {e, f} → ∃ n m l r C, (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.Spanning) e f = Mathlib2.x2611_15512_rayleigh_difference (Mathlib2.x2611_15512_set_polynomial M.IsBase) e f + Mathlib2.x2611_15512_graph_q E l r + C",
+  "attempts": [],
+  "created_at": "2026-11-16T12:56:40+0800",
+  "status": "open"
+}

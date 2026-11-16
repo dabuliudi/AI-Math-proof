@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14160_lem3_2",
+  "statement": "(q : ℕ) (hq : 2 ≤ q) (hpow : ∃ a : ℕ, q = 2^a)\n  (Γ : Type) [AddCommGroup Γ] [Fintype Γ] :\n  ((∀ w : Sym2 (Fin (2*q)) → Γ, ∃ A : Finset (Fin (2*q)), A.card = q ∧\n    x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = 0) ↔\n    x2611_14160_twoGroupCondition Γ q) ∧\n  (x2611_14160_twoGroupCondition Γ q →\n    ∀ (w : Sym2 (Fin (2*q)) → Γ) (v : Fin (2*q)) (g : Γ),\n    (g = 0 → Odd (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})) ∧\n    (g ≠ 0 → Even (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})))",
+  "closed": "∀ (q : ℕ) (hq : 2 ≤ q) (hpow : ∃ a : ℕ, q = 2^a)\n  (Γ : Type) [AddCommGroup Γ] [Fintype Γ], ((∀ w : Sym2 (Fin (2*q)) → Γ, ∃ A : Finset (Fin (2*q)), A.card = q ∧\n    x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = 0) ↔\n    x2611_14160_twoGroupCondition Γ q) ∧\n  (x2611_14160_twoGroupCondition Γ q →\n    ∀ (w : Sym2 (Fin (2*q)) → Γ) (v : Fin (2*q)) (g : Γ),\n    (g = 0 → Odd (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})) ∧\n    (g ≠ 0 → Even (Nat.card {A : Finset (Fin (2*q)) // A.card = q ∧ v ∉ A ∧\n      x2611_14160_cutWeight (⊤ : SimpleGraph (Fin (2*q))) w A = g})))",
+  "informal": "Lemma 3.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14160",
+  "original": "Let $q\\geq 2$ be a power of two, and let $\\Gamma$ be a finite abelian group.\nEvery $\\Gamma$ -labeling of $E(K_{2q})$ contains a zero-sum $K_{q,q}$ if\nand only if $\\Gamma$ is a $2$ -group with $D(\\Gamma)\\leq q$ . Whenever this\ncondition holds, the number of unordered balanced cuts of weight\nzero is odd, and the number of each other weight is even.",
+  "proposed_by": "audit-b1-resume",
+  "hash": "4037415950",
+  "type": "∀ (q : ℕ), 2 ≤ q → (∃ a, q = 2 ^ a) → ∀ (Γ : Type) [inst : AddCommGroup Γ] [Fintype Γ], ((∀ (w : Sym2 (Fin (2 * q)) → Γ), ∃ A, A.card = q ∧ Mathlib2.x2611_14160_cutWeight ⊤ w A = 0) ↔ Mathlib2.x2611_14160_twoGroupCondition Γ q) ∧ (Mathlib2.x2611_14160_twoGroupCondition Γ q → ∀ (w : Sym2 (Fin (2 * q)) → Γ) (v : Fin (2 * q)) (g : Γ), (g = 0 → Odd (Nat.card { A // A.card = q ∧ v ∉ A ∧ Mathlib2.x2611_14160_cutWeight ⊤ w A = g })) ∧ (g ≠ 0 → Even (Nat.card { A // A.card = q ∧ v ∉ A ∧ Mathlib2.x2611_14160_cutWeight ⊤ w A = g })))",
+  "attempts": [],
+  "created_at": "2026-11-16T12:12:56+0800",
+  "status": "open"
+}

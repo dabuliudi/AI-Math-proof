@@ -61,3 +61,7 @@ import Mathlib2.Shard.S0055
 import Mathlib2.Shard.S0056
 import Mathlib2.Shard.S0057
 import Mathlib2.Shard.S0058
+import Mathlib2.Shard.S0059
+import Mathlib2.Shard.S0060
+import Mathlib2.Shard.S0061
+import Mathlib2.Shard.S0062

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_cor2_5_s1h2_s1h1",
+  "statement": ": ∀ {V : Type*} [Finite V] (G : SimpleGraph V) (E : Finset (Sym2 V)), (↑E : Set (Sym2 V)) = G.edgeSet → ∀ (s t : V), G.Connected → G.Adj s t → (-1) ^ Nat.card V * ∑ F ∈ E.powerset, (-1) ^ F.card * (↑(Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent) : ℤ) = (↑(Nat.card { O : V → V → Bool // (∀ (v w : V), O v w = true ∨ O w v = true ↔ G.Adj v w) ∧ (∃ (q : V → ℕ), ∀ (v w : V), O v w = true → q v < q w) ∧ (∀ (v : V), (∀ (w : V), O w v = false) ↔ v = s) ∧ ∀ (v : V), (∀ (w : V), O v w = false) ↔ v = t }) : ℤ)",
+  "closed": "∀ {V : Type*} [Finite V] (G : SimpleGraph V) (E : Finset (Sym2 V)), (↑E : Set (Sym2 V)) = G.edgeSet → ∀ (s t : V), G.Connected → G.Adj s t → (-1) ^ Nat.card V * ∑ F ∈ E.powerset, (-1) ^ F.card * (↑(Nat.card (SimpleGraph.fromEdgeSet (↑F : Set (Sym2 V))).ConnectedComponent) : ℤ) = (↑(Nat.card { O : V → V → Bool // (∀ (v w : V), O v w = true ∨ O w v = true ↔ G.Adj v w) ∧ (∃ (q : V → ℕ), ∀ (v w : V), O v w = true → q v < q w) ∧ (∀ (v : V), (∀ (w : V), O w v = false) ↔ v = s) ∧ ∀ (v : V), (∀ (w : V), O v w = false) ↔ v = t }) : ℤ)",
+  "informal": "x2611_16458_cor2_5_s1h2 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_cor2_5_s1h2",
+  "original": "",
+  "proposed_by": "queue-r7-w7",
+  "hash": "1432574329",
+  "type": "∀ {V : Type u_1} [Finite V] (G : SimpleGraph V) (E : Finset (Sym2 V)), ↑E = G.edgeSet → ∀ (s t : V), G.Connected → G.Adj s t → (-1) ^ Nat.card V * ∑ F ∈ E.powerset, (-1) ^ F.card * ↑(Nat.card (SimpleGraph.fromEdgeSet ↑F).ConnectedComponent) = ↑(Nat.card { O // (∀ (v w : V), O v w = true ∨ O w v = true ↔ G.Adj v w) ∧ (∃ q, ∀ (v w : V), O v w = true → q v < q w) ∧ (∀ (v : V), (∀ (w : V), O w v = false) ↔ v = s) ∧ ∀ (v : V), (∀ (w : V), O v w = false) ↔ v = t })",
+  "attempts": [],
+  "created_at": "2026-11-16T12:41:48+0800",
+  "status": "open"
+}

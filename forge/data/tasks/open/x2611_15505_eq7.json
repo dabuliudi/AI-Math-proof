@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15505_eq7",
+  "statement": "(m : ℕ) (hm : 2 ≤ m) (f : Polynomial ℝ) (x : Fin m → ℝ)\n  (y : Fin (m - 1) → ℝ) (z : Fin 2 → ℝ) (μ : ℝ)\n  (hx : x2611_15505_ordered_roots f m x)\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) y)\n  (hz : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[m - 2] f) 2 z)\n  (hmean : (∑ i, x i) = (m : ℝ) * μ) :\n  (∑ i, (y i - μ) ^ 2) = ((m : ℝ) - 2) / (m : ℝ) * (∑ i, (x i - μ) ^ 2) ∧\n  (∑ i, (x i - μ) ^ 2) / ((m : ℝ) * ((m : ℝ) - 1)) =\n    (∑ i, (z i - μ) ^ 2) / 2",
+  "closed": "∀ (m : ℕ) (hm : 2 ≤ m) (f : Polynomial ℝ) (x : Fin m → ℝ)\n  (y : Fin (m - 1) → ℝ) (z : Fin 2 → ℝ) (μ : ℝ)\n  (hx : x2611_15505_ordered_roots f m x)\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) y)\n  (hz : x2611_15505_ordered_roots ((Polynomial.derivative : Polynomial ℝ → Polynomial ℝ)^[m - 2] f) 2 z)\n  (hmean : (∑ i, x i) = (m : ℝ) * μ), (∑ i, (y i - μ) ^ 2) = ((m : ℝ) - 2) / (m : ℝ) * (∑ i, (x i - μ) ^ 2) ∧\n  (∑ i, (x i - μ) ^ 2) / ((m : ℝ) * ((m : ℝ) - 1)) =\n    (∑ i, (z i - μ) ^ 2) / 2",
+  "informal": "Section 4.1, equation (7)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "If the roots are centered at their common mean and $S_{m}$ denotes their\nsum of squares, coefficient comparison gives\n\n $S_{m-1}=\\frac{m-2}{m}S_{m},\\qquad\\frac{S_{m}}{m(m-1)}=\\frac{S_{2}}{2}.$ \n\n(7)",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2767562001",
+  "type": "∀ (m : ℕ), 2 ≤ m → ∀ (f : Polynomial ℝ) (x : Fin m → ℝ) (y : Fin (m - 1) → ℝ) (z : Fin 2 → ℝ) (μ : ℝ), Mathlib2.x2611_15505_ordered_roots f m x → Mathlib2.x2611_15505_ordered_roots (Polynomial.derivative f) (m - 1) y → Mathlib2.x2611_15505_ordered_roots ((⇑Polynomial.derivative)^[m - 2] f) 2 z → ∑ i, x i = ↑m * μ → ∑ i, (y i - μ) ^ 2 = (↑m - 2) / ↑m * ∑ i, (x i - μ) ^ 2 ∧ (∑ i, (x i - μ) ^ 2) / (↑m * (↑m - 1)) = (∑ i, (z i - μ) ^ 2) / 2",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w7",
+      "note": "Saved a full but unverified Vieta/coefficient proof draft with six helpers at forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w7/eq7.lean; strategy and exact small-case checks are recorded in eq7_notes.txt. Forge check first timed out after 300s, then a single-threaded check failed because Mathlib2.Shard.S0061.olean is missing. Narrow-import CLI and interactive checks also failed to return proof diagnostics under heavy machine load; the final -j0 attempt produced an internal IO.Promise/task-manager panic. A cache rebuild did not restore S0061 within the time budget and was interrupted. The mathematical approach expresses centered second moments using the leading and third coefficients, compares derivative coefficients, and handles m=2 separately.",
+      "at": "2026-11-16T13:50:10+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:32:06+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w7",
+  "claimed_at": "2026-11-16T13:14:03+0800"
+}

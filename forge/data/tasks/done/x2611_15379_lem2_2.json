@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15379_lem2_2",
+  "statement": "(p k j : ℕ) (hp : Nat.Prime p) (u : ℤ) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k) : (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ ℓ : ℕ, (∀ z : ℤ, x2611_15379_N p j k u z = ℓ ∨ x2611_15379_N p j k u z = ℓ + 1) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ + 1)) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))",
+  "closed": "∀ (p k j : ℕ) (hp : Nat.Prime p) (u : ℤ) (hu : Int.gcd u (p : ℤ) = 1) (hk : 0 < k) (hj : 0 < j) (hpk : p ^ j ≤ k), (p ^ j ∣ k + 1 → ∀ z : ℤ, x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬ p ^ j ∣ k + 1 → (∃ ℓ : ℕ, (∀ z : ℤ, x2611_15379_N p j k u z = ℓ ∨ x2611_15379_N p j k u z = ℓ + 1) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ) ∧ (∃ z : ℤ, x2611_15379_N p j k u z = ℓ + 1)) ∧ IsLeast {T : ℤ | 0 < T ∧ Function.Periodic (x2611_15379_N p j k u) T} ((p : ℤ) ^ j))",
+  "informal": "Lemma 2.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15379",
+  "original": "Let $p$ be a prime, let $u$ be an integer with $\\operatorname{gcd}(u,p)=1$ , and let $k,j$ be positive integers such that $p^{j}\\leq k$ . For each integer $z$ , define\n\n $N_{j}(z)=\\#\\left\\{i\\in\\mathbb{Z}:0\\leq i\\leq k,p^{j}\\mid z+ui\\right\\}.$ \n\nIf $p^{j}\\mid k+1$ , then $N_{j}(z)=\\frac{k+1}{p^{j}}$ for every integer $z$ . Otherwise, $N_{j}(z)$ takes two consecutive integer values and has least positive period $p^{j}$ .",
+  "proposed_by": "audit-b1",
+  "hash": "3530278521",
+  "type": "∀ (p k j : ℕ), Nat.Prime p → ∀ (u : ℤ), u.gcd ↑p = 1 → 0 < k → 0 < j → p ^ j ≤ k → (p ^ j ∣ k + 1 → ∀ (z : ℤ), Mathlib2.x2611_15379_N p j k u z = (k + 1) / p ^ j) ∧ (¬p ^ j ∣ k + 1 → (∃ ℓ, (∀ (z : ℤ), Mathlib2.x2611_15379_N p j k u z = ℓ ∨ Mathlib2.x2611_15379_N p j k u z = ℓ + 1) ∧ (∃ z, Mathlib2.x2611_15379_N p j k u z = ℓ) ∧ ∃ z, Mathlib2.x2611_15379_N p j k u z = ℓ + 1) ∧ IsLeast {T | 0 < T ∧ Function.Periodic (Mathlib2.x2611_15379_N p j k u) T} (↑p ^ j))",
+  "attempts": [],
+  "created_at": "2026-11-16T03:29:41+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w4",
+  "claimed_at": "2026-11-16T12:20:17+0800",
+  "closed_by": "queue-r7-w4",
+  "finished_at": "2026-11-16T12:27:13+0800"
+}

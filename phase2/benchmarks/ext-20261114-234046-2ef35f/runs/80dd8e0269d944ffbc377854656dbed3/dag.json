@@ -1,0 +1,235 @@
+{
+  "nodes": [
+    {
+      "id": "h0",
+      "statement": "a ∣ b",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 2
+    },
+    {
+      "id": "h1",
+      "statement": "e ∣ d",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 3
+    },
+    {
+      "id": "h2",
+      "statement": "0 < c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 4
+    },
+    {
+      "id": "h3",
+      "statement": "b ∣ e",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 5
+    },
+    {
+      "id": "h4",
+      "statement": "d ∣ c",
+      "status": "assumed",
+      "origin": "Input Assumption",
+      "planned_event": 6
+    },
+    {
+      "id": "p2_n001",
+      "statement": "a ∣ e",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "a",
+        "1": "b",
+        "2": "e"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 10,
+      "compile_log": "attempt-001.json"
+    },
+    {
+      "id": "p2_n002",
+      "statement": "a ∣ d",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "a",
+        "1": "e",
+        "2": "d"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 16,
+      "compile_log": "attempt-002.json"
+    },
+    {
+      "id": "p2_n003",
+      "statement": "a ∣ c",
+      "status": "verified",
+      "origin": "Rule Engine + Mathlib Reuse",
+      "rule": "Dvd.dvd.trans",
+      "binding": {
+        "0": "a",
+        "1": "d",
+        "2": "c"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/AI4math/lean/.lake/packages/mathlib/Mathlib/Algebra/Divisibility/Basic.lean",
+        "line": 67,
+        "type": "∀ {α : Type u_1} [inst : Semigroup α] {a b c : α}, a ∣ b → b ∣ c → a ∣ c"
+      },
+      "planned_event": 22,
+      "compile_log": "attempt-003.json"
+    },
+    {
+      "id": "p2_n004",
+      "statement": "a ≤ c",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.le_of_dvd",
+      "binding": {
+        "1": "c",
+        "0": "a"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+        "line": 56,
+        "type": "∀ {m n : ℕ}, 0 < n → m ∣ n → m ≤ n"
+      },
+      "planned_event": 28,
+      "compile_log": "attempt-004.json"
+    },
+    {
+      "id": "p2_n005",
+      "statement": "0 < a",
+      "status": "verified",
+      "origin": "Rule Engine + Lean Core Reuse",
+      "rule": "Nat.pos_of_dvd_of_pos",
+      "binding": {
+        "0": "a",
+        "1": "c"
+      },
+      "retrieval_source": {
+        "path": "/Users/zaixi/.elan/toolchains/leanprover--lean4---v4.24.0/src/lean/Init/Data/Nat/Dvd.lean",
+        "line": 72,
+        "type": "∀ {m n : ℕ}, m ∣ n → 0 < n → 0 < m"
+      },
+      "planned_event": 34,
+      "compile_log": "attempt-005.json"
+    },
+    {
+      "id": "p2_target",
+      "statement": "(p2v0 ∣ p2v2) ∧ (p2v0 ≤ p2v2) ∧ (0 < p2v0)",
+      "status": "verified",
+      "origin": "Lemma Composition",
+      "rule": "generic conjunction/goal closure",
+      "planned_event": 39,
+      "compile_log": "attempt-006.json"
+    }
+  ],
+  "edges": [
+    {
+      "source": "h0",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h3",
+      "target": "p2_n001",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "p2_n001",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h1",
+      "target": "p2_n002",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "p2_n002",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h4",
+      "target": "p2_n003",
+      "type": "proof_dependency",
+      "evidence": "Dvd.dvd.trans"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Nat.le_of_dvd"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_n004",
+      "type": "proof_dependency",
+      "evidence": "Nat.le_of_dvd"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_n005",
+      "type": "proof_dependency",
+      "evidence": "Nat.pos_of_dvd_of_pos"
+    },
+    {
+      "source": "h2",
+      "target": "p2_n005",
+      "type": "proof_dependency",
+      "evidence": "Nat.pos_of_dvd_of_pos"
+    },
+    {
+      "source": "p2_n003",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    },
+    {
+      "source": "p2_n004",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    },
+    {
+      "source": "p2_n005",
+      "target": "p2_target",
+      "type": "proof_dependency",
+      "evidence": "generic conjunction/goal closure"
+    }
+  ],
+  "depth": 5,
+  "depths": {
+    "h0": 0,
+    "h1": 0,
+    "h2": 0,
+    "h3": 0,
+    "h4": 0,
+    "p2_n001": 1,
+    "p2_n002": 2,
+    "p2_n003": 3,
+    "p2_n004": 4,
+    "p2_n005": 4,
+    "p2_target": 5
+  }
+}

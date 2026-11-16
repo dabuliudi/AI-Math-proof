@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15210_thm3_1_s1h1",
+  "statement": ": ∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (H : Type*) [inst : AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * x2611_15210_A (2 * m) (H × ZMod m) ≤ x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))",
+  "closed": "∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (H : Type*) [inst : AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * x2611_15210_A (2 * m) (H × ZMod m) ≤ x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))",
+  "informal": "x2611_15210_thm3_1 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_thm3_1",
+  "original": "",
+  "proposed_by": "queue-r7-w3",
+  "hash": "2821317796",
+  "type": "∀ (m : ℕ), 3 ≤ m → Odd m → ∀ (H : Type u_1) [inst : AddCommGroup H] [Fintype H], AddMonoid.exponent H ∣ 2 * m → 12 * Mathlib2.x2611_15210_A (2 * m) (H × ZMod (2 * m)) + 8 * Mathlib2.x2611_15210_A (2 * m) (H × ZMod m) ≤ Mathlib2.x2611_15210_A (2 * m) (H × (Fin 5 → ZMod (2 * m)))",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w6",
+      "note": "Found the paper’s 20-fiber construction (12 spokes and 8 cubes), local paper lines 275–501. Exhaustively checked m=3 over all 2,324,784 six-label multisets: all 56 zero sums have one fiber index. TableFactsTest.lean kernel-check passed (ordinary decide) for all four parity identities; face characters also checked in Python. Draft FiberSketch.lean has four general assembly lemmas and one configuration-existence hole; the configuration/separation certificate remains unproved and the assembly draft is not certified. Both forge sketch attempts failed before proof checking because Mathlib2/Shard/S0061.olean is missing; isolated assembly checks timed out. All drafts, tables, face indices and detailed notes are in forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w6/FIBER_NOTES.md and adjacent files.",
+      "at": "2026-11-16T14:00:30+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:52:15+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w6",
+  "claimed_at": "2026-11-16T13:27:06+0800"
+}

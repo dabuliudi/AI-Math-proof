@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15723_cor1_7",
+  "statement": "(k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (q t : ℚ) :\n  (∑ π ∈ x2611_15723_cycleShuffle σ τ, q ^ x2611_15723_maj π) =\n    q ^ (x2611_15723_maj σ + x2611_15723_maj τ) *\n      x2611_15723_qchoose q (k + l) k ∧\n  (∑ π ∈ x2611_15723_cycleShuffle σ τ, t ^ x2611_15723_des π) =\n    ∑ i ∈ Finset.range (k + l + 1),\n      (x2611_15723_zchoose\n        ((k : ℤ) + (x2611_15723_des τ : ℤ) - (x2611_15723_des σ : ℤ))\n        ((i : ℤ) - (x2611_15723_des σ : ℤ)) : ℚ) *\n      (x2611_15723_zchoose\n        ((l : ℤ) + (x2611_15723_des σ : ℤ) - (x2611_15723_des τ : ℤ))\n        ((i : ℤ) - (x2611_15723_des τ : ℤ)) : ℚ) * t ^ i",
+  "closed": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l))\n    (h : x2611_15723_noOrderIso σ τ) (q t : ℚ), (∑ π ∈ x2611_15723_cycleShuffle σ τ, q ^ x2611_15723_maj π) =\n    q ^ (x2611_15723_maj σ + x2611_15723_maj τ) *\n      x2611_15723_qchoose q (k + l) k ∧\n  (∑ π ∈ x2611_15723_cycleShuffle σ τ, t ^ x2611_15723_des π) =\n    ∑ i ∈ Finset.range (k + l + 1),\n      (x2611_15723_zchoose\n        ((k : ℤ) + (x2611_15723_des τ : ℤ) - (x2611_15723_des σ : ℤ))\n        ((i : ℤ) - (x2611_15723_des σ : ℤ)) : ℚ) *\n      (x2611_15723_zchoose\n        ((l : ℤ) + (x2611_15723_des σ : ℤ) - (x2611_15723_des τ : ℤ))\n        ((i : ℤ) - (x2611_15723_des τ : ℤ)) : ℚ) * t ^ i",
+  "informal": "Corollary 1.7",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15723",
+  "original": "For every $\\sigma\\in\\mathcal{S}_{k}$ and $\\tau\\in\\mathcal{S}_{n-k}$ with no order-isomorphic cycles,\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}q^{\\maj(\\pi)}=q^{\\maj(\\sigma)+\\maj(\\tau)}{{n}\\brack{k}}_{q}$ \n\nand\n\n $\\sum_{\\pi\\in\\sigma\\shuffle_{c}\\tau}t^{\\des(\\pi)}=\\sum_{i=0}^{n}\\binom{k+\\des(\\tau)-\\des(\\sigma)}{i-\\des(\\sigma)}\\binom{n-k+\\des(\\sigma)-\\des(\\tau)}{i-\\des(\\tau)}\\,t^{i}.$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3424296075",
+  "type": "∀ (k l : ℕ) (σ : Equiv.Perm (Fin k)) (τ : Equiv.Perm (Fin l)), Mathlib2.x2611_15723_noOrderIso σ τ → ∀ (q t : ℚ), ∑ π ∈ Mathlib2.x2611_15723_cycleShuffle σ τ, q ^ Mathlib2.x2611_15723_maj π = q ^ (Mathlib2.x2611_15723_maj σ + Mathlib2.x2611_15723_maj τ) * Mathlib2.x2611_15723_qchoose q (k + l) k ∧ ∑ π ∈ Mathlib2.x2611_15723_cycleShuffle σ τ, t ^ Mathlib2.x2611_15723_des π = ∑ i ∈ Finset.range (k + l + 1), ↑(Mathlib2.x2611_15723_zchoose (↑k + ↑(Mathlib2.x2611_15723_des τ) - ↑(Mathlib2.x2611_15723_des σ)) (↑i - ↑(Mathlib2.x2611_15723_des σ))) * ↑(Mathlib2.x2611_15723_zchoose (↑l + ↑(Mathlib2.x2611_15723_des σ) - ↑(Mathlib2.x2611_15723_des τ)) (↑i - ↑(Mathlib2.x2611_15723_des τ))) * t ^ i",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w9",
+      "note": "No counterexample among all 1,937 admissible permutation pairs with k+l <= 6; both ordinary-shuffle formulas also passed for all 2,212 arbitrary pairs through size 6. Draft cor1_7_sketch.lean in /Users/zaixi/AI4math/forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w9 reduces the goal using a generic equal-fiber-cardinality weighted-sum helper to existing task x2611_15723_thm1_6 and the two classical ordinary-shuffle enumeration formulas, clearing unnecessary cycle assumptions. Forge sketch failed at line 0 because Mathlib2.Shard.S0061.olean is missing; S0062.olean is also absent. No sketch was registered. Lookup timed out, direct S0058 imports timed out after 90/120 seconds, and even a Mathlib Finset.Basic-only helper check timed out after 90 seconds. Two official forge audit rebuild attempts made no observable progress and were interrupted. Helper and sketch remain unvalidated; no complete proof found. See cor1_7_notes.txt and cor1_7_small_cases.py in the same staging directory.",
+      "at": "2026-11-16T14:03:57+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:57:19+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w9",
+  "claimed_at": "2026-11-16T13:45:43+0800"
+}

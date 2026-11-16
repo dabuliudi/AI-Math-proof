@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_lem2_1_s1h1",
+  "statement": ": ∀ {V : Type*} [inst : Finite V] (P N : SimpleGraph V) (n : ℕ), Polynomial.eval (2 * ((↑n : ℤ) + 1)) (x2611_16458_zeroFree P N) = (↑(Nat.card { c : V → ZMod (2 * (n + 1)) // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + (↑(n + 1) : ZMod (2 * (n + 1))) }) : ℤ)",
+  "closed": "∀ {V : Type*} [inst : Finite V] (P N : SimpleGraph V) (n : ℕ), Polynomial.eval (2 * ((↑n : ℤ) + 1)) (x2611_16458_zeroFree P N) = (↑(Nat.card { c : V → ZMod (2 * (n + 1)) // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + (↑(n + 1) : ZMod (2 * (n + 1))) }) : ℤ)",
+  "informal": "x2611_16458_lem2_1 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_lem2_1",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "1982581958",
+  "type": "∀ {V : Type u_1} [inst : Finite V] (P N : SimpleGraph V) (n : ℕ), Polynomial.eval (2 * (↑n + 1)) (Mathlib2.x2611_16458_zeroFree P N) = ↑(Nat.card { c // (∀ (v w : V), P.Adj v w → c v ≠ c w) ∧ ∀ (v w : V), N.Adj v w → c v ≠ c w + ↑(n + 1) })",
+  "attempts": [],
+  "created_at": "2026-11-16T12:58:31+0800",
+  "status": "open"
+}

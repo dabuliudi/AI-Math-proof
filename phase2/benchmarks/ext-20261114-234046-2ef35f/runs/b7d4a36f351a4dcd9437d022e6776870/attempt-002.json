@@ -1,0 +1,32 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/b7d4a36f351a4dcd9437d022e6776870/attempt-002.lean:2:69: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n'p2_n002' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/b7d4a36f351a4dcd9437d022e6776870/attempt-002.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.0243977089994587,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    },
+    "p2_n002": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v2 < p2v3)) (h1 : (p2v1 ≤ p2v0)) (h2 : (p2v3 ≤ p2v1)) : (p2v3 ≤ p2v0) := by\n  exact @LE.le.trans Nat _ p2v3 p2v1 p2v0 h2 h1\n\ntheorem p2_n002 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v2 < p2v3)) (h1 : (p2v1 ≤ p2v0)) (h2 : (p2v3 ≤ p2v1)) : (p2v2 < p2v0) := by\n  exact @LE.le.trans_lt' Nat _ p2v0 p2v3 p2v2 (p2_n001 p2v0 p2v1 p2v2 p2v3 h0 h1 h2) h0\n\n#print axioms p2_n001\n#print axioms p2_n002\n",
+  "source_sha256": "baeb3214549e9153bdf1d8930df79f2d5174b8ab54d55ff39c520ddb0101bc10",
+  "goal": "(p2v2 < p2v0)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/b7d4a36f351a4dcd9437d022e6776870/attempt-002.lean",
+  "log": "attempt-002.json"
+}

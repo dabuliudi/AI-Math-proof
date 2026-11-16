@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14754_lem3_2",
+  "statement": "(n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i, z i ^ n = 1) : (if r ≤ n + 1 then MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ (n + 1 - r)) else 0) = 0",
+  "closed": "∀ (n r : ℕ) (hn : 1 < n) (hr : 2 ≤ r) (z : Fin r → ℂ) (hz : Function.Injective z) (hroot : ∀ i, z i ^ n = 1), (if r ≤ n + 1 then MvPolynomial.eval z (MvPolynomial.hsymm (Fin r) ℂ (n + 1 - r)) else 0) = 0",
+  "informal": "Lemma 3.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.14754",
+  "original": "For a positive integer $r\\geq 2$ , write\n\n $h_{n}(z_{1},\\ldots,z_{r}):=\\sum_{\\begin{subarray}{c}\\alpha\\in\\mathbb{Z}_{\\geq 0}^{r}\\\\\n\\wt\\alpha=n-r+1\\end{subarray}}z_{1}^{\\alpha_{1}}\\cdots z_{r}^{\\alpha_{r}}$ \n\nfor the $n$ th complete homogeneous symmetric polynomial in the variables $z_{1},\\ldots,z_{r}$ .\nIf $z_{1},\\ldots,z_{r}$ are distinct $n$ th roots of unity, then $h_{n}(z_{1},\\ldots,z_{r})=0$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "390409579",
+  "type": "∀ (n r : ℕ), 1 < n → 2 ≤ r → ∀ (z : Fin r → ℂ), Function.Injective z → (∀ (i : Fin r), z i ^ n = 1) → (if r ≤ n + 1 then (MvPolynomial.eval z) (MvPolynomial.hsymm (Fin r) ℂ (n + 1 - r)) else 0) = 0",
+  "attempts": [],
+  "created_at": "2026-11-16T12:24:12+0800",
+  "status": "open"
+}

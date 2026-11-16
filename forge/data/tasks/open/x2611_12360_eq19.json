@@ -1,0 +1,15 @@
+{
+  "name": "x2611_12360_eq19",
+  "statement": "(U : ℝ) (hU : U ∈ Set.Icc ((9 : ℝ) / 25) ((16 : ℝ) / 25)) :\n  x2611_12360_G 33 22 U ≤ 8",
+  "closed": "∀ (U : ℝ) (hU : U ∈ Set.Icc ((9 : ℝ) / 25) ((16 : ℝ) / 25)), x2611_12360_G 33 22 U ≤ 8",
+  "informal": "Equation (19) / Section 4.1 (certified real interval)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.12360",
+  "original": "The exact interval verification\nin Section 4 establishes\n\n(19)\n\n $G_{33,22}(U)\\leq 8\\qquad\\left(\\frac{9}{25}\\leq U\\leq\\frac{16}{25}\\right).$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "3168590572",
+  "type": "∀ U ∈ Set.Icc (9 / 25) (16 / 25), Mathlib2.x2611_12360_G 33 22 U ≤ 8",
+  "attempts": [],
+  "created_at": "2026-11-16T12:25:16+0800",
+  "status": "open"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_prop3_2_s1h2",
+  "statement": ": ∀ {V : Type*} [Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_hasBalancedBlock P N → ∃ (a : Bool ⊕ { v : V // v ≠ u }), ¬(SimpleGraph.induce {b : Bool ⊕ { v : V // v ≠ u } | b ≠ a} (x2611_16458_split P N u)).Connected",
+  "closed": "∀ {V : Type*} [Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_hasBalancedBlock P N → ∃ (a : Bool ⊕ { v : V // v ≠ u }), ¬(SimpleGraph.induce {b : Bool ⊕ { v : V // v ≠ u } | b ≠ a} (x2611_16458_split P N u)).Connected",
+  "informal": "x2611_16458_prop3_2 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_prop3_2",
+  "original": "",
+  "proposed_by": "queue-r7-w3",
+  "hash": "348501257",
+  "type": "∀ {V : Type u_1} [Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → Mathlib2.x2611_16458_hasBalancedBlock P N → ∃ a, ¬(SimpleGraph.induce {b | b ≠ a} (Mathlib2.x2611_16458_split P N u)).Connected",
+  "attempts": [],
+  "created_at": "2026-11-16T12:54:48+0800",
+  "status": "open"
+}

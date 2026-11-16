@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thmA_s1h2",
+  "statement": ": ∀ (n : ℕ) (C : AbstractSimplicialComplex (Fin n)), Nonempty ((↑{x : Fin n → ℝ | (∀ (i : Fin n), 0 ≤ x i) ∧ ∑ i : Fin n, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} : Type) ≃ₜ (Fin 3 → Circle)) → 14 ≤ n",
+  "closed": "∀ (n : ℕ) (C : AbstractSimplicialComplex (Fin n)), Nonempty ((↑{x : Fin n → ℝ | (∀ (i : Fin n), 0 ≤ x i) ∧ ∑ i : Fin n, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} : Type) ≃ₜ (Fin 3 → Circle)) → 14 ≤ n",
+  "informal": "x2611_15358_thmA 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15358_thmA",
+  "original": "",
+  "proposed_by": "queue-r7-w0",
+  "hash": "866350071",
+  "type": "∀ (n : ℕ) (C : AbstractSimplicialComplex (Fin n)), Nonempty (↑{x | (∀ (i : Fin n), 0 ≤ x i) ∧ ∑ i, x i = 1 ∧ ∃ s ∈ C.faces, ∀ i ∉ s, x i = 0} ≃ₜ (Fin 3 → Circle)) → 14 ≤ n",
+  "attempts": [],
+  "created_at": "2026-11-16T12:43:15+0800",
+  "status": "open"
+}

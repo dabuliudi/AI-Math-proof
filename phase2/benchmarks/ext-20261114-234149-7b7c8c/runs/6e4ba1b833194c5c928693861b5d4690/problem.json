@@ -1,0 +1,22 @@
+{
+  "domain": "Nat",
+  "variables": [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f"
+  ],
+  "assumptions": [
+    "d = b",
+    "f ≤ c",
+    "a = f",
+    "c = d",
+    "e = a"
+  ],
+  "goals": [
+    "e ≤ b"
+  ],
+  "original_text": ""
+}

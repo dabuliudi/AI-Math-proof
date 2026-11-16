@@ -52,7 +52,8 @@
         "twin_by": "audit-b1-w2",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "I kernel-checked Version A’s sorting equality, but could neither prove nor refute Version B’s additional coefficient identity, so I left no proof file.\n\nRESULT: unknown"
+        "note": "Version A is kernel-checked, but Version B adds a coefficient identity I could neither prove nor refute; the checker rejected the incomplete proof, and no target file remains.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -79,7 +80,8 @@
         "twin_by": "audit-b1-w5",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "B additionally requires `p.eval 1 = 341`, which I could not derive from A and the shared hypotheses; no proof file remains.\n\nRESULT: unknown"
+        "note": "I kernel-checked B ⇒ A, but could not derive B’s extra `p.eval 1 = 341` condition from A and the family hypotheses; no proof file remains.\n\nRESULT: unknown.",
+        "equiv_attempts": 2
       }
     },
     {
@@ -93,7 +95,8 @@
         "twin_by": "audit-b1-w1",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "B additionally requires a polynomial representative with specified coefficient signs; I kernel-checked B ⇒ A but could not prove the converse, so I left no file.\n\nRESULT: unknown"
+        "note": "B additionally requires a polynomial representative with specified coefficient signs; I kernel-checked B ⇒ A but could not prove the converse, so no submission file remains.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -122,7 +125,8 @@
         "twin_by": "audit-b1-w0",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "A → B is kernel checked, but B’s bounds `n ≤ 13` and `b i ≤ 2` leave the converse unresolved; no proof file remains.\n\nRESULT: unknown"
+        "note": "I kernel-checked A ⇒ B, but the converse remains unresolved beyond B’s bounds `n ≤ 13` and `b i ≤ 2`, so I left no proof file.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -136,7 +140,8 @@
         "twin_by": "audit-b1-w2",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "Left no file: A ⇒ B checked, but the reverse remains unresolved because B assumes global families and expansions while A permits independent local data.\n\nRESULT: unknown"
+        "note": "A ⇒ B kernel-checks, but the reverse remains unresolved because B requires global families and expansions while A permits independent local data; no submission file was retained.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -163,7 +168,8 @@
         "twin_by": "audit-b1-w4",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "The counting expressions are kernel-checked equal, but B adds polynomiality and coefficient nonnegativity that I could neither prove nor refute; no proof file was left.\n\nRESULT: unknown"
+        "note": "The counts are kernel-checked equal, but B adds polynomiality and coefficient nonnegativity that I could neither prove nor refute; no proof file remains.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -177,7 +183,8 @@
         "twin_by": "audit-b1-w5",
         "verdict": "unknown",
         "equivalence_proof": "",
-        "note": "Lean checked A and the height bound, but I could not prove B’s additional assertion that every admissible expansion coefficient is a polynomial with a negative coefficient; no submission file remains.\n\nRESULT: unknown"
+        "note": "Lean checked A and the height bound, but I could not prove B’s additional negative polynomial coefficient claim or find a counterexample; no submission file remains.\n\nRESULT: unknown",
+        "equiv_attempts": 2
       }
     },
     {
@@ -204,7 +211,10 @@
       "fidelity": {
         "twin": "(K T A : (Fin 14 → ℕ) → MvPolynomial (Fin 14) (RatFunc ℚ)) (hK : x2611_16899_key_family 14 K) (hT : x2611_16899_atom_family 14 RatFunc.X T) (hA : x2611_16899_atom_family 14 0 A) (c g : (Fin 14 → ℕ) → RatFunc ℚ) (hc : x2611_16899_expansion 14 14 (K x2611_16899_alpha) T c) (hg : x2611_16899_expansion 14 14 (x2611_16899_flagged_llt 14) A g) (stable14 stable10 : Polynomial (RatFunc ℚ)) (hstable14 : stable14 = Polynomial.C (c (fun _ => 1))) (hstable10 : stable10 = Polynomial.C (c (fun _ => 1))) : (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = g (fun i => x2611_16899_alpha (Fin.rev i)) ∧ p.coeff 81 = -1) ∧ (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = stable14.coeff 0 ∧ p.coeff 10 = -1) ∧ (∃ p : Polynomial ℚ, algebraMap (Polynomial ℚ) (RatFunc ℚ) p = stable10.coeff 0 ∧ p.coeff 10 = -1)",
         "twin_by": "audit-b1-w7",
-        "verdict": "original_invalid"
+        "verdict": "unknown",
+        "equiv_attempts": 1,
+        "equivalence_proof": "",
+        "note": "B includes degree-10 assertions about `c` absent from A; I could not prove the full equivalence or a counterexample, so no output file remains.\n\nRESULT: unknown"
       }
     }
   ],

@@ -1,0 +1,3 @@
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "pf-k6-1-assembly-test", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T20:53:53+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1-assembly-test", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T20:54:00+0800"}
+{"problem": "fc_erdos1023_erdos_1023_variants_hunter", "run": "pf-k6-1-assembly-test", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T20:54:06+0800"}

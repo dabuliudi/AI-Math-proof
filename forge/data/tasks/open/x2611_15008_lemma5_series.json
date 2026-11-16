@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_lemma5_series",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (e : E) (he : e ∈ G.edgeSet) (hnonloop : ¬ ∃ v, G.IsLoopAt e v) (hnonbridge : ¬ x2611_15008_bridge G e) (s : ℕ) (hs : s = (x2611_15008_seriesClass G e).ncard) (p : ℕ) (hp : p = (x2611_15008_parallelClass G e).ncard) : (x2611_15008_subdividedLoop G e → x2611_15008_Tutte G 0 2 = 2 * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 0 2 ∧ x2611_15008_Tutte G 1 1 = (s : ℝ) * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 1 1) ∧ (¬ x2611_15008_subdividedLoop G e → x2611_15008_Tutte G 0 2 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 0 2 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_seriesClass G e)) 0 2 ∧ x2611_15008_Tutte G 1 1 = (s : ℝ) * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 1 1 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_seriesClass G e)) 1 1)",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (e : E) (he : e ∈ G.edgeSet) (hnonloop : ¬ ∃ v, G.IsLoopAt e v) (hnonbridge : ¬ x2611_15008_bridge G e) (s : ℕ) (hs : s = (x2611_15008_seriesClass G e).ncard) (p : ℕ) (hp : p = (x2611_15008_parallelClass G e).ncard), (x2611_15008_subdividedLoop G e → x2611_15008_Tutte G 0 2 = 2 * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 0 2 ∧ x2611_15008_Tutte G 1 1 = (s : ℝ) * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 1 1) ∧ (¬ x2611_15008_subdividedLoop G e → x2611_15008_Tutte G 0 2 = x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 0 2 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_seriesClass G e)) 0 2 ∧ x2611_15008_Tutte G 1 1 = (s : ℝ) * x2611_15008_Tutte (G.deleteEdges (x2611_15008_seriesClass G e)) 1 1 + x2611_15008_Tutte (x2611_15008_contract G (x2611_15008_seriesClass G e)) 1 1)",
+  "informal": "Lemma 5(c)–(d)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Lemma 5.\n\nLet $G$ be a graph, $e\\in E(G),$ and $P(e)$ and $S(e)$ be the parallel and series class of $e$ with $|P(e)|=p$ and $|S(e)|=s.$ Then:\n\n(c) \n\nif $S(e)$ is a subdivided loop, then\n\n $T_{G}(0,2)=2T_{G-S(e)}(0,2)\\qquad\\text{and}\\qquad T_{G}(1,1)=sT_{G-S(e)}(1,1),$\n\n(d) \n\nif $S(e)$ is not a subdivided loop, then\n\n $T_{G}(0,2)=T_{G-S(e)}(0,2)+T_{G/S(e)}(0,2)\\quad\\text{and}$ \n\n $T_{G}(1,1)=sT_{G-S(e)}(1,1)+T_{G/S(e)}(1,1).\\qquad$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2262016366",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E), ∀ e ∈ G.edgeSet, (¬∃ v, G.IsLoopAt e v) → ¬Mathlib2.x2611_15008_bridge G e → ∀ (s : ℕ), s = (Mathlib2.x2611_15008_seriesClass G e).ncard → ∀ (p : ℕ), p = (Mathlib2.x2611_15008_parallelClass G e).ncard → (Mathlib2.x2611_15008_subdividedLoop G e → Mathlib2.x2611_15008_Tutte G 0 2 = 2 * Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_seriesClass G e)) 0 2 ∧ Mathlib2.x2611_15008_Tutte G 1 1 = ↑s * Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_seriesClass G e)) 1 1) ∧ (¬Mathlib2.x2611_15008_subdividedLoop G e → Mathlib2.x2611_15008_Tutte G 0 2 = Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_seriesClass G e)) 0 2 + Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_seriesClass G e)) 0 2 ∧ Mathlib2.x2611_15008_Tutte G 1 1 = ↑s * Mathlib2.x2611_15008_Tutte (G.deleteEdges (Mathlib2.x2611_15008_seriesClass G e)) 1 1 + Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G (Mathlib2.x2611_15008_seriesClass G e)) 1 1)",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w9",
+      "note": "No counterexample in 5380 admissible multigraph edge cases (up to 4 vertices/5 edges), tested both target evaluations and stronger full series recurrences at 3 other integer points. Prepared series_sketch.lean with 3 auxiliary proofs and two independent general Tutte series-recurrence holes; unregistered because forge sketch failed at line 0: missing Mathlib2/Shard/S0061.olean. Forge audit/build ran about 10 minutes without visible progress and was interrupted; local Lean imports also stalled (even bare True.intro smoke test exceeded 15 sec). Draft helpers remain unvalidated. All drafts, small_cases.py and detailed connectivity/powerset proof plan are under forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w9; see series_proof_notes.txt. No library/forge state edited except via forge commands.",
+      "at": "2026-11-16T13:45:35+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:56:36+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w9",
+  "claimed_at": "2026-11-16T13:29:31+0800"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "x2611_15505_eq5",
+  "statement": "(m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i))\n  (k : ℕ) (hk1 : 1 ≤ k) (hkm : k < m) :\n  (((m : ℝ) - (k : ℝ)) * x (k - 1) + x k) / ((m : ℝ) - (k : ℝ) + 1) < y (k - 1) ∧\n  y (k - 1) < (x (k - 1) + (k : ℝ) * x k) / ((k : ℝ) + 1)",
+  "closed": "∀ (m : ℕ) (hm : 3 ≤ m) (f : Polynomial ℝ) (x y : ℕ → ℝ)\n  (hx : x2611_15505_ordered_roots f m (fun i => x i))\n  (hy : x2611_15505_ordered_roots f.derivative (m - 1) (fun i => y i))\n  (k : ℕ) (hk1 : 1 ≤ k) (hkm : k < m), (((m : ℝ) - (k : ℝ)) * x (k - 1) + x k) / ((m : ℝ) - (k : ℝ) + 1) < y (k - 1) ∧\n  y (k - 1) < (x (k - 1) + (k : ℝ) * x k) / ((k : ℝ) + 1)",
+  "informal": "Section 4.1, equation (5)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "For completeness, two root inequalities used in these systems are recorded\nhere. If $x_{1}<\\cdots<x_{m}$ are the roots of $f$ and\n $y_{1}<\\cdots<y_{m-1}$ those of $f^{\\prime}$ , then, for $m\\geq 3$ ,\n\n $\\frac{(m-k)x_{k}+x_{k+1}}{m-k+1}<y_{k}<\\frac{x_{k}+kx_{k+1}}{k+1}\\quad(1\\leq k<m).$ \n\n(5)",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2568163438",
+  "type": "∀ (m : ℕ), 3 ≤ m → ∀ (f : Polynomial ℝ) (x y : ℕ → ℝ), (Mathlib2.x2611_15505_ordered_roots f m fun i => x ↑i) → (Mathlib2.x2611_15505_ordered_roots (Polynomial.derivative f) (m - 1) fun i => y ↑i) → ∀ (k : ℕ), 1 ≤ k → k < m → ((↑m - ↑k) * x (k - 1) + x k) / (↑m - ↑k + 1) < y (k - 1) ∧ y (k - 1) < (x (k - 1) + ↑k * x k) / (↑k + 1)",
+  "attempts": [
+    {
+      "agent": "queue-r7-w1",
+      "note": "调度器代为归还（agent 未完成）：RESULT: proved — The exact statement passed forge check; submission remains queued behind forge’s shared library lock, with the submission process still running.",
+      "at": "2026-11-16T13:17:40+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:14:39+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w1",
+  "claimed_at": "2026-11-16T12:52:13+0800",
+  "closed_by": "queue-r7-w1",
+  "finished_at": "2026-11-16T21:06:31+0800"
+}

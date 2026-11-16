@@ -1,0 +1,40 @@
+{
+  "name": "x2611_15008_thm3_a",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hG : G.Loopless) (hdensity : (G.edgeSet.ncard : ℝ) ≤ (1.64 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1)) : x2611_15008_Tutte G 1 1 ≤ x2611_15008_Tutte G 2 0",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hG : G.Loopless) (hdensity : (G.edgeSet.ncard : ℝ) ≤ (1.64 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1)), x2611_15008_Tutte G 1 1 ≤ x2611_15008_Tutte G 2 0",
+  "informal": "Theorem 3(a)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Theorem 3.\n\nLet $G$ be a connected graph with $m$ edges and $n$ vertices. If $G$ is\n\n(a) \n\nloopless and $m\\leq 1.64(n-1),$ then $T_{G}(1,1)\\leq T_{G}(2,0).$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "2106880875",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E), G.toSimpleGraph.Connected → G.Loopless → ↑G.edgeSet.ncard ≤ 1.64 * (↑G.vertexSet.ncard - 1) → Mathlib2.x2611_15008_Tutte G 1 1 ≤ Mathlib2.x2611_15008_Tutte G 2 0",
+  "attempts": [],
+  "created_at": "2026-11-16T11:30:51+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w3",
+  "claimed_at": "2026-11-16T12:57:50+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w3",
+      "body": "\ntheorem x2611_15008_thm3_a_aux1 (a b : ℝ) (ha : 0 ≤ a) (hb : 1 ≤ b)\n    (n : ℕ) (hbase : 1 + (n : ℝ) * a ≤ 2 * b ^ n)\n    (hstep : a ≤ (b - 1) * (1 + (n : ℝ) * a)) :\n    ∀ k : ℕ, n ≤ k → 1 + (k : ℝ) * a ≤ 2 * b ^ k := by\n  intro k hk\n  induction k, hk using Nat.le_induction with\n  | base => exact hbase\n  | succ k hk ih =>\n    have hlin : 1 + (n : ℝ) * a ≤ 1 + (k : ℝ) * a := by\n      simpa only [add_comm] using add_le_add_left (mul_le_mul_of_nonneg_right (show (n : ℝ) ≤ (k : ℝ) by exact_mod_cast hk) ha) 1\n    have hs : a ≤ (b - 1) * (1 + (k : ℝ) * a) :=\n      hstep.trans (mul_le_mul_of_nonneg_left hlin (sub_nonneg.mpr hb))\n    calc\n      1 + ((k + 1 : ℕ) : ℝ) * a = (1 + (k : ℝ) * a) + a := by push_cast; ring\n      _ ≤ (1 + (k : ℝ) * a) * b := by nlinarith [hs]\n      _ ≤ (2 * b ^ k) * b := mul_le_mul_of_nonneg_right ih (by linarith)\n      _ = 2 * b ^ (k + 1) := by rw [pow_succ]; ring\n\ntheorem x2611_15008_thm3_a_aux2 (a b : ℝ) (ha : 0 ≤ a) (hb : 1 ≤ b)\n    (p q m r : ℕ) (hq : q ≠ 0) (hab : b ^ p ≤ a ^ q) (hmr : q * m ≤ p * r) :\n    b ^ m ≤ a ^ r := by\n  apply (pow_le_pow_iff_left₀ (pow_nonneg (by linarith : 0 ≤ b) _) (pow_nonneg ha _) hq).mp\n  calc\n    (b ^ m) ^ q = b ^ (q * m) := by rw [← pow_mul, Nat.mul_comm m q]\n    _ ≤ b ^ (p * r) := pow_le_pow_right₀ hb hmr\n    _ = (b ^ p) ^ r := by rw [pow_mul]\n    _ ≤ (a ^ q) ^ r := pow_le_pow_left₀ (pow_nonneg (by linarith : 0 ≤ b) _) hab r\n    _ = (a ^ r) ^ q := by rw [← pow_mul, ← pow_mul, Nat.mul_comm q r]\n\ntheorem x2611_15008_thm3_a_aux3 {V E : Type*} [Fintype E]\n    (G : Graph V E) (x y : ℝ) (hx : 1 ≤ x) (hy : 1 ≤ y) :\n    0 ≤ x2611_15008_Tutte G x y := by\n  classical\n  unfold x2611_15008_Tutte\n  exact Finset.sum_nonneg fun A _ => mul_nonneg\n    (pow_nonneg (sub_nonneg.mpr hx) _) (pow_nonneg (sub_nonneg.mpr hy) _)\n\ntheorem x2611_15008_thm3_a_aux4 {V E : Type*} (G : Graph V E)\n    (hconn : G.toSimpleGraph.Connected) : x2611_15008_components G = 1 := by\n  haveI : Nonempty G.vertexSet := hconn.nonempty\n  haveI : Subsingleton G.toSimpleGraph.ConnectedComponent :=\n    hconn.preconnected.subsingleton_connectedComponent\n  exact Nat.card_eq_one_iff_unique.mpr ⟨inferInstance, inferInstance⟩\n\ntheorem x2611_15008_thm3_a_aux5 :\n    ∀ k : ℕ, 1 ≤ k → 1 + (k : ℝ) * (2.39 : ℝ) ≤ 2 * (1.7 : ℝ) ^ k := by\n  intro k hk\n  by_cases h : k = 1\n  · subst k; norm_num\n  · apply x2611_15008_thm3_a_aux1 (2.39 : ℝ) (1.7 : ℝ) (by norm_num)\n      (by norm_num) 2 (by norm_num) (by norm_num) k\n    omega\n\n\ntheorem x2611_15008_thm3_a (V E : Type*) [Fintype V] [Fintype E]\n    (G : Graph V E) (hconn : G.toSimpleGraph.Connected) (hG : G.Loopless)\n    (hdensity : (G.edgeSet.ncard : ℝ) ≤ (1.64 : ℝ) * ((G.vertexSet.ncard : ℝ) - 1)) :\n    x2611_15008_Tutte G 1 1 ≤ x2611_15008_Tutte G 2 0 := by\n  have bound : ∀ (H : Graph V E)\n      (a b : ℝ), 0 < a → 1 < b →\n      (∀ k : ℕ, 1 ≤ k → 1 + (k : ℝ) * a ≤ 2 * b ^ k) → H.Loopless →\n      x2611_15008_Tutte H 1 1 * a ^ (H.vertexSet.ncard - x2611_15008_components H) ≤\n        x2611_15008_Tutte H 2 0 * b ^ H.edgeSet.ncard := by\n    clear! G\n    sorry\n  have hn : 1 ≤ G.vertexSet.ncard := by\n    have he : G.vertexSet.Nonempty := by\n      obtain ⟨v⟩ := hconn.nonempty\n      exact ⟨v.val, v.property⟩\n    exact (Set.ncard_pos (Set.toFinite _)).mpr he\n  have hm : 25 * G.edgeSet.ncard ≤ 41 * (G.vertexSet.ncard - 1) := by\n    have hd : (25 : ℝ) * (G.edgeSet.ncard : ℝ) ≤\n        41 * ((G.vertexSet.ncard - 1 : ℕ) : ℝ) := by\n      rw [Nat.cast_sub hn, Nat.cast_one]\n      linarith\n    exact_mod_cast hd\n  have hp : (1.7 : ℝ) ^ G.edgeSet.ncard ≤ (2.39 : ℝ) ^ (G.vertexSet.ncard - 1) :=\n    x2611_15008_thm3_a_aux2 (2.39 : ℝ) (1.7 : ℝ) (by norm_num) (by norm_num)\n      41 25 G.edgeSet.ncard (G.vertexSet.ncard - 1) (by norm_num) (by norm_num) hm\n  have hb := bound G (2.39 : ℝ) (1.7 : ℝ) (by norm_num) (by norm_num)\n    x2611_15008_thm3_a_aux5 hG\n  rw [x2611_15008_thm3_a_aux4 G hconn] at hb\n  have hnonneg := x2611_15008_thm3_a_aux3 G 1 1 le_rfl le_rfl\n  have hmul : x2611_15008_Tutte G 1 1 * (1.7 : ℝ) ^ G.edgeSet.ncard ≤\n      x2611_15008_Tutte G 2 0 * (1.7 : ℝ) ^ G.edgeSet.ncard :=\n    (mul_le_mul_of_nonneg_left hp hnonneg).trans hb\n  exact (mul_le_mul_iff_left₀ (by positivity : 0 < (1.7 : ℝ) ^ G.edgeSet.ncard)).mp hmul\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_15008_thm3_a_s1h1",
+          "status": "open",
+          "statement": "∀ (V : Type*) (E : Type*) [Fintype V] [inst : Fintype E] (H : Graph V E) (a b : ℝ), 0 < a → 1 < b → (∀ (k : ℕ), 1 ≤ k → 1 + (↑k : ℝ) * a ≤ 2 * b ^ k) → H.Loopless → x2611_15008_Tutte H 1 1 * a ^ (H.vertexSet.ncard - x2611_15008_components H) ≤ x2611_15008_Tutte H 2 0 * b ^ H.edgeSet.ncard",
+          "args": [
+            "V",
+            "E",
+            "_",
+            "_"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T13:13:40+0800"
+    }
+  ]
+}

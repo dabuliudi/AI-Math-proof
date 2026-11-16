@@ -1,0 +1,15 @@
+{
+  "name": "x2611_11287_lem2_3",
+  "statement": "(n k : ℕ) (hk : 1 ≤ k) (hkn : k < n) :\nAsymptotics.IsTheta Filter.atTop\n (fun H : ℕ => (Set.ncard {A : Matrix (Fin n) (Fin n) ℤ |\n   (∀ i j, |A i j| ≤ (H : ℤ)) ∧ (A.map (Int.castRingHom ℚ)).rank = k} : ℝ))\n (fun H : ℕ => (H : ℝ) ^ (k * n) * Real.log (H : ℝ))",
+  "closed": "∀ (n k : ℕ) (hk : 1 ≤ k) (hkn : k < n), Asymptotics.IsTheta Filter.atTop\n (fun H : ℕ => (Set.ncard {A : Matrix (Fin n) (Fin n) ℤ |\n   (∀ i j, |A i j| ≤ (H : ℤ)) ∧ (A.map (Int.castRingHom ℚ)).rank = k} : ℝ))\n (fun H : ℕ => (H : ℝ) ^ (k * n) * Real.log (H : ℝ))",
+  "informal": "Lemma 2.3",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.11287",
+  "original": "[22, Theorem 1] Let $T_{n}(H;k)$ denote the number of matrices in ${\\mathcal{M}}_{n}({\\mathbb{Z}};H)$ of rank $k$ . If $1\\leq k<n$ , we have $T_{n}(H;k)\\asymp H^{kn}\\log H$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1380261510",
+  "type": "∀ (n k : ℕ), 1 ≤ k → k < n → (fun H => ↑{A | (∀ (i j : Fin n), |A i j| ≤ ↑H) ∧ (A.map ⇑(Int.castRingHom ℚ)).rank = k}.ncard) =Θ[Filter.atTop] fun H => ↑H ^ (k * n) * Real.log ↑H",
+  "attempts": [],
+  "created_at": "2026-11-16T12:29:39+0800",
+  "status": "open"
+}

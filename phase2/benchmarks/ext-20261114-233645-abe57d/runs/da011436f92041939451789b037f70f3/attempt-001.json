@@ -1,0 +1,28 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:95: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:116: warning: unused variable `h1`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:137: warning: unused variable `h2`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:158: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:179: warning: unused variable `h4`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean:2:197: warning: unused variable `h5`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' does not depend on any axioms\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.194263792000129,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (p2v4 : Nat) (p2v5 : Nat) (h0 : (p2v5 ∣ p2v2)) (h1 : (p2v4 ∣ p2v0)) (h2 : (p2v0 ∣ p2v5)) (h3 : (p2v2 ∣ p2v3)) (h4 : (0 < p2v1)) (h5 : (p2v3 ∣ p2v1)) : (p2v4 ≤ p2v4) := by\n  exact @Preorder.le_refl Nat _ p2v4\n\n#print axioms p2_n001\n",
+  "source_sha256": "7066d0bc3285d17fff85ac7c05644d4bc66323a558de7ad4b93600e3d8fe7492",
+  "goal": "(p2v4 ≤ p2v4)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-233645-abe57d/runs/da011436f92041939451789b037f70f3/attempt-001.lean",
+  "log": "attempt-001.json"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "x2611_16458_lem2_1_s1h3",
+  "statement": ": ∀ {V : Type*} {C : Type*} [Finite V] [Finite C] (G : SimpleGraph V) (S T : Set V) (a b : V), a ≠ b → G.Adj a b → S ∪ T = Set.univ → S ∩ T = {a, b} → (∀ (v w : V), G.Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Nat.card C * (Nat.card C - 1) * Nat.card { c : V → C // ∀ (v w : V), G.Adj v w → c v ≠ c w } = Nat.card { c : { v : V // v ∈ S } → C // ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S G).Adj v w → c v ≠ c w } * Nat.card { c : { v : V // v ∈ T } → C // ∀ (v w : { v : V // v ∈ T }), (SimpleGraph.induce T G).Adj v w → c v ≠ c w }",
+  "closed": "∀ {V : Type*} {C : Type*} [Finite V] [Finite C] (G : SimpleGraph V) (S T : Set V) (a b : V), a ≠ b → G.Adj a b → S ∪ T = Set.univ → S ∩ T = {a, b} → (∀ (v w : V), G.Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Nat.card C * (Nat.card C - 1) * Nat.card { c : V → C // ∀ (v w : V), G.Adj v w → c v ≠ c w } = Nat.card { c : { v : V // v ∈ S } → C // ∀ (v w : { v : V // v ∈ S }), (SimpleGraph.induce S G).Adj v w → c v ≠ c w } * Nat.card { c : { v : V // v ∈ T } → C // ∀ (v w : { v : V // v ∈ T }), (SimpleGraph.induce T G).Adj v w → c v ≠ c w }",
+  "informal": "x2611_16458_lem2_1 的证明骨架中第 3 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_16458_lem2_1",
+  "original": "",
+  "proposed_by": "queue-r7-w2",
+  "hash": "792102374",
+  "type": "∀ {V : Type u_1} {C : Type u_2} [Finite V] [Finite C] (G : SimpleGraph V) (S T : Set V) (a b : V), a ≠ b → G.Adj a b → S ∪ T = Set.univ → S ∩ T = {a, b} → (∀ (v w : V), G.Adj v w → v ∈ S ∧ w ∈ S ∨ v ∈ T ∧ w ∈ T) → Nat.card C * (Nat.card C - 1) * Nat.card { c // ∀ (v w : V), G.Adj v w → c v ≠ c w } = Nat.card { c // ∀ (v w : { v // v ∈ S }), (SimpleGraph.induce S G).Adj v w → c v ≠ c w } * Nat.card { c // ∀ (v w : { v // v ∈ T }), (SimpleGraph.induce T G).Adj v w → c v ≠ c w }",
+  "attempts": [],
+  "created_at": "2026-11-16T13:12:39+0800",
+  "status": "open"
+}

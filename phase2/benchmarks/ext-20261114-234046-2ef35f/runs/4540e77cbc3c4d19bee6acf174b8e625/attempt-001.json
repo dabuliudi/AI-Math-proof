@@ -1,0 +1,30 @@
+{
+  "returncode": 0,
+  "stdout": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/4540e77cbc3c4d19bee6acf174b8e625/attempt-001.lean:2:69: warning: unused variable `h0`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/4540e77cbc3c4d19bee6acf174b8e625/attempt-001.lean:2:132: warning: unused variable `h3`\n\nNote: This linter can be disabled with `set_option linter.unusedVariables false`\n'p2_n001' depends on axioms: [propext]\n",
+  "stderr": "",
+  "status": "completed",
+  "command": [
+    "/Users/zaixi/.elan/bin/lake",
+    "env",
+    "lean",
+    "-M",
+    "2048",
+    "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/4540e77cbc3c4d19bee6acf174b8e625/attempt-001.lean"
+  ],
+  "cwd": "/Users/zaixi/AI4math/lean",
+  "elapsed": 2.19999962500151,
+  "accepted": true,
+  "audits": {
+    "p2_n001": {
+      "axioms": [
+        "propext"
+      ],
+      "accepted": true
+    }
+  },
+  "source": "import Mathlib.RingTheory.Polynomial.Radical\ntheorem p2_n001 (p2v0 : Nat) (p2v1 : Nat) (p2v2 : Nat) (p2v3 : Nat) (h0 : (p2v1 ∣ p2v2)) (h1 : (p2v0 ∣ p2v3)) (h2 : (p2v3 ∣ p2v1)) (h3 : (0 < p2v2)) : (p2v0 ∣ p2v1) := by\n  exact @Dvd.dvd.trans Nat _ p2v0 p2v3 p2v1 h1 h2\n\n#print axioms p2_n001\n",
+  "source_sha256": "8f3e32e69df8a771f918455ed0265a09a5de4ad2c2a9ef684ff485736c440c9d",
+  "goal": "(p2v0 ∣ p2v1)",
+  "artifact": "/Users/zaixi/AI4math/phase2/benchmarks/ext-20261114-234046-2ef35f/runs/4540e77cbc3c4d19bee6acf174b8e625/attempt-001.lean",
+  "log": "attempt-001.json"
+}

@@ -1,0 +1,25 @@
+{
+  "name": "x2611_15210_thm1_2_s1h2",
+  "statement": ": ∀ (m : ℕ), 3 ≤ m → Odd m → x2611_15210_rho 3 ≤ x2611_15210_rho m",
+  "closed": "∀ (m : ℕ), 3 ≤ m → Odd m → x2611_15210_rho 3 ≤ x2611_15210_rho m",
+  "informal": "x2611_15210_thm1_2 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_thm1_2",
+  "original": "",
+  "proposed_by": "queue-r7-w7",
+  "hash": "3709875186",
+  "type": "∀ (m : ℕ), 3 ≤ m → Odd m → Mathlib2.x2611_15210_rho 3 ≤ Mathlib2.x2611_15210_rho m",
+  "attempts": [
+    {
+      "agent": "queue-r7-w6",
+      "note": "调度器代为归还（agent 未完成，超时）：",
+      "at": "2026-11-16T13:28:47+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:31:07+0800",
+  "status": "proved",
+  "claimed_by": "queue-r7-w6",
+  "claimed_at": "2026-11-16T12:58:46+0800",
+  "closed_by": "queue-r7-w6",
+  "finished_at": "2026-11-16T21:06:31+0800"
+}

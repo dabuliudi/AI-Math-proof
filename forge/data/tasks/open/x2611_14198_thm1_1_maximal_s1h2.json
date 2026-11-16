@@ -1,0 +1,15 @@
+{
+  "name": "x2611_14198_thm1_1_maximal_s1h2",
+  "statement": ": ∀ (d p : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → Odd d → ¬p ∣ 2 * d → p % 4 = 1 → (∃ (r : ℕ), 1 ≤ r ∧ x2611_14198_maximal d p r) → IsPrimitiveRoot (↑p : ZMod d) d.totient ∧ 4 ∣ d.totient",
+  "closed": "∀ (d p : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → Odd d → ¬p ∣ 2 * d → p % 4 = 1 → (∃ (r : ℕ), 1 ≤ r ∧ x2611_14198_maximal d p r) → IsPrimitiveRoot (↑p : ZMod d) d.totient ∧ 4 ∣ d.totient",
+  "informal": "x2611_14198_thm1_1_maximal 的证明骨架中第 2 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_14198_thm1_1_maximal",
+  "original": "",
+  "proposed_by": "queue-papers-b1-w2",
+  "hash": "2433498625",
+  "type": "∀ (d p : ℕ) [inst : Fact (Nat.Prime p)], 3 ≤ d → Odd d → ¬p ∣ 2 * d → p % 4 = 1 → (∃ r, 1 ≤ r ∧ Mathlib2.x2611_14198_maximal d p r) → IsPrimitiveRoot (↑p) d.totient ∧ 4 ∣ d.totient",
+  "attempts": [],
+  "created_at": "2026-11-16T14:46:33+0800",
+  "status": "open"
+}

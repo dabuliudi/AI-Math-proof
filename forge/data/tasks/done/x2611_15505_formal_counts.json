@@ -1,0 +1,19 @@
+{
+  "name": "x2611_15505_formal_counts",
+  "statement": ": {w : List ℕ | x2611_15505_formal_word 1 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 2 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 3 w}.ncard = 2 ∧\n  {w : List ℕ | x2611_15505_formal_word 4 w}.ncard = 12 ∧\n  {w : List ℕ | x2611_15505_formal_word 5 w}.ncard = 286 ∧\n  {w : List ℕ | x2611_15505_formal_word 6 w}.ncard = 33592",
+  "closed": "{w : List ℕ | x2611_15505_formal_word 1 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 2 w}.ncard = 1 ∧\n  {w : List ℕ | x2611_15505_formal_word 3 w}.ncard = 2 ∧\n  {w : List ℕ | x2611_15505_formal_word 4 w}.ncard = 12 ∧\n  {w : List ℕ | x2611_15505_formal_word 5 w}.ncard = 286 ∧\n  {w : List ℕ | x2611_15505_formal_word 6 w}.ncard = 33592",
+  "informal": "Section 2 table (formal words, degrees 1 through 6)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15505",
+  "original": "Degree $n$ \n1\n2\n3\n4\n5\n6\n\nFormal words\n1\n1\n2\n12\n286\n33592",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1372912695",
+  "type": "{w | Mathlib2.x2611_15505_formal_word 1 w}.ncard = 1 ∧ {w | Mathlib2.x2611_15505_formal_word 2 w}.ncard = 1 ∧ {w | Mathlib2.x2611_15505_formal_word 3 w}.ncard = 2 ∧ {w | Mathlib2.x2611_15505_formal_word 4 w}.ncard = 12 ∧ {w | Mathlib2.x2611_15505_formal_word 5 w}.ncard = 286 ∧ {w | Mathlib2.x2611_15505_formal_word 6 w}.ncard = 33592",
+  "attempts": [],
+  "created_at": "2026-11-16T11:07:48+0800",
+  "status": "proved",
+  "claimed_by": "queue-papers-b1-w8",
+  "claimed_at": "2026-11-16T12:44:38+0800",
+  "closed_by": "queue-papers-b1-w8",
+  "finished_at": "2026-11-16T12:54:02+0800"
+}

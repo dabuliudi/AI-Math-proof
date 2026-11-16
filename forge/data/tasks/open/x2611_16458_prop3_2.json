@@ -1,0 +1,53 @@
+{
+  "name": "x2611_16458_prop3_2",
+  "statement": "(n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 2 ≤ n)\n(hconn : (P ⊔ N).Connected)\n(hneg : ∃ u : Fin n, ∀ v w, N.Adj v w → v = u ∨ w = u)\n(hblocks : x2611_16458_hasBalancedBlock P N) :\n∃ G : SimpleGraph (Fin n), G.Connected ∧ x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N",
+  "closed": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 2 ≤ n)\n(hconn : (P ⊔ N).Connected)\n(hneg : ∃ u : Fin n, ∀ v w, N.Adj v w → v = u ∨ w = u)\n(hblocks : x2611_16458_hasBalancedBlock P N), ∃ G : SimpleGraph (Fin n), G.Connected ∧ x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N",
+  "informal": "Proposition 3.2",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.16458",
+  "original": "Let $\\Sigma$ be a connected signed graph with at least two vertices whose negative edges are incident to a common vertex.\nIf $\\Sigma$ has a balanced block, then there is a connected ordinary graph $G$ on $|V(\\Sigma)|$ vertices such that $P_{G}(q)=Z_{\\Sigma}(q)$ .",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1308791550",
+  "type": "∀ (n : ℕ) (P N : SimpleGraph (Fin n)), 2 ≤ n → (P ⊔ N).Connected → (∃ u, ∀ (v w : Fin n), N.Adj v w → v = u ∨ w = u) → Mathlib2.x2611_16458_hasBalancedBlock P N → ∃ G, G.Connected ∧ Mathlib2.x2611_16458_zeroFree G ⊥ = Mathlib2.x2611_16458_zeroFree P N",
+  "attempts": [],
+  "created_at": "2026-11-16T10:44:55+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w3",
+  "claimed_at": "2026-11-16T12:43:52+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w3",
+      "body": "\nlemma x2611_16458_prop3_2_aux1 {V W : Type*}\n    (G : SimpleGraph V) (H : SimpleGraph W) (f : V → W)\n    (hf : ∀ v w, G.Adj v w → H.Reachable (f v) (f w))\n    {v w : V} (h : G.Reachable v w) : H.Reachable (f v) (f w) := by\n  obtain ⟨p⟩ := h\n  induction p with\n  | nil => exact SimpleGraph.Reachable.rfl\n  | cons h p ih => exact (hf _ _ h).trans ih\n\nlemma x2611_16458_prop3_2_aux2 {V : Type*} [Finite V] (u : V) :\n    Nat.card (Bool ⊕ {v : V // v ≠ u}) = Nat.card V + 1 := by\n  classical\n  letI := Fintype.ofFinite V\n  have hpos : 0 < Fintype.card V := Fintype.card_pos_iff.mpr ⟨u⟩\n  simp only [Nat.card_eq_fintype_card, Fintype.card_sum, Fintype.card_bool,\n    Fintype.card_subtype_compl, Fintype.card_subtype_eq]\n  omega\n\nlemma x2611_16458_prop3_2_aux3 {V : Type*} (P N : SimpleGraph V) (u : V)\n    (hconn : (P ⊔ N).Connected)\n    (hneg : ∀ v w, N.Adj v w → v = u ∨ w = u) :\n    (x2611_16458_split P N u).Connected := by\n  classical\n  let H := x2611_16458_split P N u\n  let f : V → Bool ⊕ {v : V // v ≠ u} :=\n    fun v => if h : v = u then Sum.inl true else Sum.inr ⟨v, h⟩\n  have hst : H.Adj (Sum.inl true) (Sum.inl false) := by\n    simp [H, x2611_16458_split, SimpleGraph.fromRel_adj]\n  have hedge : ∀ v w, (P ⊔ N).Adj v w → H.Reachable (f v) (f w) := by\n    intro v w hvw\n    by_cases hv : v = u\n    · subst v\n      have hw : w ≠ u := hvw.ne.symm\n      simp only [f, dif_pos rfl, dif_neg hw]\n      rcases hvw with hp | hn\n      · apply SimpleGraph.Adj.reachable\n        simp [H, x2611_16458_split, SimpleGraph.fromRel_adj, hp]\n      · apply hst.reachable.trans\n        apply SimpleGraph.Adj.reachable\n        simp [H, x2611_16458_split, SimpleGraph.fromRel_adj, hn]\n    · by_cases hw : w = u\n      · subst w\n        simp only [f, dif_neg hv, dif_pos rfl]\n        apply SimpleGraph.Reachable.symm\n        rcases hvw.symm with hp | hn\n        · apply SimpleGraph.Adj.reachable\n          simp [H, x2611_16458_split, SimpleGraph.fromRel_adj, hp]\n        · apply hst.reachable.trans\n          apply SimpleGraph.Adj.reachable\n          simp [H, x2611_16458_split, SimpleGraph.fromRel_adj, hn]\n      · simp only [f, dif_neg hv, dif_neg hw]\n        rcases hvw with hp | hn\n        · apply SimpleGraph.Adj.reachable\n          simp only [H, x2611_16458_split, SimpleGraph.fromRel_adj]\n          exact ⟨fun he => hp.ne (congrArg (fun z => z.val) (Sum.inr.inj he)), Or.inl hp⟩\n        · exact (hneg v w hn).elim (fun he => (hv he).elim) (fun he => (hw he).elim)\n  have hr : ∀ v, H.Reachable (Sum.inl true) (f v) := by\n    intro v\n    simpa only [f, dif_pos rfl] using\n      (x2611_16458_prop3_2_aux1 (P ⊔ N) H f hedge (hconn u v))\n  apply (SimpleGraph.connected_iff_exists_forall_reachable H).mpr\n  refine ⟨Sum.inl true, ?_⟩\n  intro a\n  rcases a with s | v\n  · cases s\n    · exact hst.reachable\n    · exact SimpleGraph.Reachable.rfl\n  · simpa only [f, dif_neg v.property] using hr v.val\n\n-- This is the existing split-polynomial identity from Proposition 2.3 /\n-- Corollary 2.5, so the forge can reuse that already tracked dependency.\nlemma x2611_16458_prop3_2_aux4 :\n    ∀ {V : Type*} [Finite V] (P N : SimpleGraph V) (u : V),\n      (∀ v w, N.Adj v w → v = u ∨ w = u) →\n      x2611_16458_zeroFree (x2611_16458_split P N u) ⊥ =\n        (Polynomial.X - 1) * x2611_16458_zeroFree P N := by\n  sorry\n\n-- A balanced block is attached to the rest of the split graph at a single\n-- vertex. If it contains the balancing vertex, balance forces every edge\n-- from that vertex inside the block to have the same sign, since deleting\n-- the vertex leaves the block connected. This gives a cut vertex upstairs.\nlemma x2611_16458_prop3_2_aux5 :\n    ∀ {V : Type*} [Finite V] (P N : SimpleGraph V) (u : V),\n      (∀ v w, N.Adj v w → v = u ∨ w = u) →\n      x2611_16458_hasBalancedBlock P N →\n      ∃ a : Bool ⊕ {v : V // v ≠ u},\n        ¬ ((x2611_16458_split P N u).induce {b | b ≠ a}).Connected := by\n  sorry\n\n-- Choose neighbors a,b of a cut vertex c in different components of H-c.\n-- Identify a with b. This glues the two sides along the edge ca=cb, so the\n-- chromatic polynomial is divided by X-1. Relabel its n vertices by Fin n.\nlemma x2611_16458_prop3_2_aux6 :\n    ∀ {V : Type*} [Finite V] (n : ℕ) (H : SimpleGraph V),\n      2 ≤ n → Nat.card V = n + 1 → H.Connected →\n      (∃ a : V, ¬ (H.induce {b | b ≠ a}).Connected) →\n      ∃ G : SimpleGraph (Fin n), G.Connected ∧\n        x2611_16458_zeroFree H ⊥ =\n          (Polynomial.X - 1) * x2611_16458_zeroFree G ⊥ := by\n  sorry\n\ntheorem x2611_16458_prop3_2 (n : ℕ) (P N : SimpleGraph (Fin n)) (hn : 2 ≤ n)\n    (hconn : (P ⊔ N).Connected)\n    (hneg : ∃ u : Fin n, ∀ v w, N.Adj v w → v = u ∨ w = u)\n    (hblocks : x2611_16458_hasBalancedBlock P N) :\n    ∃ G : SimpleGraph (Fin n), G.Connected ∧\n      x2611_16458_zeroFree G ⊥ = x2611_16458_zeroFree P N := by\n  obtain ⟨u, hu⟩ := hneg\n  have hcard : Nat.card (Bool ⊕ {v : Fin n // v ≠ u}) = n + 1 := by\n    simpa using x2611_16458_prop3_2_aux2 u\n  obtain ⟨G, hG, heq⟩ := x2611_16458_prop3_2_aux6 n\n    (x2611_16458_split P N u) hn hcard\n    (x2611_16458_prop3_2_aux3 P N u hconn hu)\n    (x2611_16458_prop3_2_aux5 P N u hu hblocks)\n  refine ⟨G, hG, ?_⟩\n  have hX : (Polynomial.X - 1 : Polynomial ℤ) ≠ 0 := by\n    simpa using Polynomial.X_sub_C_ne_zero (1 : ℤ)\n  exact mul_left_cancel₀ hX\n    (heq.symm.trans (x2611_16458_prop3_2_aux4 P N u hu))\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_16458_cor2_5_s1h1",
+          "status": "duplicate",
+          "statement": "∀ {V : Type*} [inst : Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_zeroFree (x2611_16458_split P N u) ⊥ = (Polynomial.X - 1) * x2611_16458_zeroFree P N",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_16458_prop3_2_s1h2",
+          "status": "duplicate",
+          "statement": "∀ {V : Type*} [Finite V] (P N : SimpleGraph V) (u : V), (∀ (v w : V), N.Adj v w → v = u ∨ w = u) → x2611_16458_hasBalancedBlock P N → ∃ (a : Bool ⊕ { v : V // v ≠ u }), ¬(SimpleGraph.induce {b : Bool ⊕ { v : V // v ≠ u } | b ≠ a} (x2611_16458_split P N u)).Connected",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "x2611_16458_prop3_2_s1h3",
+          "status": "open",
+          "statement": "∀ {V : Type*} [inst : Finite V] (n : ℕ) (H : SimpleGraph V), 2 ≤ n → Nat.card V = n + 1 → H.Connected → (∃ (a : V), ¬(SimpleGraph.induce {b : V | b ≠ a} H).Connected) → ∃ (G : SimpleGraph (Fin n)), G.Connected ∧ x2611_16458_zeroFree H ⊥ = (Polynomial.X - 1) * x2611_16458_zeroFree G ⊥",
+          "args": [],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:56:59+0800"
+    }
+  ]
+}

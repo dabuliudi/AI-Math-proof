@@ -11,5 +11,118 @@
   "type": "∀ {α : Type u_1} {L : Type u_2} {R : Type u_3} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun a => (l a, r a)) ↑E → ∃ C, (∀ (d : α →₀ ℕ), 0 ≤ MvPolynomial.coeff d C) ∧ (∀ (d : α →₀ ℕ), Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧ Mathlib2.x2611_15512_graph_d E l r = (MvPolynomial.homogeneousComponent 4) (Mathlib2.x2611_15512_graph_d E l r) + Mathlib2.x2611_15512_graph_q E l r + C",
   "attempts": [],
   "created_at": "2026-11-16T03:44:34+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w6",
+  "claimed_at": "2026-11-16T12:41:59+0800",
+  "sketches": [
+    {
+      "agent": "queue-r7-w6",
+      "body": "lemma x2611_15512_lem2_4_aux1 {α S : Type*} [CommSemiring S]\n    (A : Finset α) :\n    MvPolynomial.IsHomogeneous (∏ a ∈ A, (MvPolynomial.X a : MvPolynomial α S)) A.card := by\n  classical\n  simpa using MvPolynomial.IsHomogeneous.prod A\n    (fun a => (MvPolynomial.X a : MvPolynomial α S)) (fun _ => 1)\n    (fun a _ => MvPolynomial.isHomogeneous_X S a)\n\nlemma x2611_15512_lem2_4_aux2 {α L R : Type*}\n    (E : Finset α) (l : α → L) (r : α → R) :\n    MvPolynomial.IsHomogeneous (x2611_15512_graph_q E l r) 5 := by\n  classical\n  unfold x2611_15512_graph_q\n  apply MvPolynomial.IsHomogeneous.C_mul\n  apply MvPolynomial.IsHomogeneous.sum\n  intro A hA\n  have hAc : A.card = 5 := (Finset.mem_powersetCard.mp hA).2\n  apply MvPolynomial.IsHomogeneous.sum\n  intro z hz\n  split_ifs\n  · have hAz : (A.erase z).card = 4 := by\n      rw [Finset.card_erase_of_mem hz, hAc]\n    have hinner : MvPolynomial.IsHomogeneous\n        (∑ B ∈ ((A.erase z).powersetCard 2).filter\n            (fun B => (B.image l).card = 2 ∧ (B.image r).card = 2),\n          ((∏ a ∈ B, MvPolynomial.X a) -\n            ∏ a ∈ A.erase z \\ B, MvPolynomial.X a) ^ 2 : MvPolynomial α ℝ) 4 := by\n      apply MvPolynomial.IsHomogeneous.sum\n      intro B hB\n      obtain ⟨hBA, hBc⟩ := Finset.mem_powersetCard.mp (Finset.mem_filter.mp hB).1\n      have hcomp : (A.erase z \\ B).card = 2 := by\n        rw [Finset.card_sdiff_of_subset hBA, hAz, hBc]\n      have h₁ := x2611_15512_lem2_4_aux1 (S := ℝ) B\n      have h₂ := x2611_15512_lem2_4_aux1 (S := ℝ) (A.erase z \\ B)\n      rw [hBc] at h₁\n      rw [hcomp] at h₂\n      exact (h₁.sub h₂).pow 2\n    exact (MvPolynomial.isHomogeneous_X ℝ z).mul hinner\n  · exact MvPolynomial.isHomogeneous_zero α ℝ 5\n\nlemma x2611_15512_lem2_4_aux3 {α : Type*}\n    (D Q : MvPolynomial α ℝ)\n    (hQ : MvPolynomial.IsHomogeneous Q 5)\n    (hlow : ∀ d : α →₀ ℕ, Finsupp.degree d < 4 → MvPolynomial.coeff d D = 0)\n    (hfifth : ∀ d : α →₀ ℕ, Finsupp.degree d = 5 →\n      MvPolynomial.coeff d Q ≤ MvPolynomial.coeff d D)\n    (hhigh : ∀ d : α →₀ ℕ, 5 < Finsupp.degree d → 0 ≤ MvPolynomial.coeff d D) :\n    ∃ C : MvPolynomial α ℝ,\n      (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧\n      (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n      D = MvPolynomial.homogeneousComponent 4 D + Q + C := by\n  classical\n  refine ⟨D - MvPolynomial.homogeneousComponent 4 D - Q, ?_, ?_, ?_⟩\n  · intro d\n    rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_sub,\n      MvPolynomial.coeff_homogeneousComponent]\n    by_cases hd4 : Finsupp.degree d = 4\n    · rw [if_pos hd4, hQ.coeff_eq_zero (by omega)]\n      simp\n    · rw [if_neg hd4]\n      by_cases hd5 : Finsupp.degree d = 5\n      · exact sub_nonneg.mpr (by simpa using hfifth d hd5)\n      · rw [hQ.coeff_eq_zero hd5]\n        by_cases hd : Finsupp.degree d < 4\n        · rw [hlow d hd]\n          simp\n        · simpa using hhigh d (by omega)\n  · intro d hd\n    rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_sub,\n      MvPolynomial.coeff_homogeneousComponent, hQ.coeff_eq_zero (by omega)]\n    by_cases hd4 : Finsupp.degree d = 4\n    · simp [hd4]\n    · rw [if_neg hd4, hlow d (by omega)]\n      simp\n  · ring\n\ntheorem x2611_15512_lem2_4 {α L R : Type*} [Fintype L] [Fintype R]\n    (E : Finset α) (l : α → L) (r : α → R)\n    (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)) :\n    ∃ C : MvPolynomial α ℝ,\n      (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧\n      (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n      x2611_15512_graph_d E l r =\n        MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n        x2611_15512_graph_q E l r + C := by\n  have H :\n      (∀ d : α →₀ ℕ, Finsupp.degree d < 4 →\n        MvPolynomial.coeff d (x2611_15512_graph_d E l r) = 0) ∧\n      (∀ d : α →₀ ℕ, Finsupp.degree d = 5 →\n        MvPolynomial.coeff d (x2611_15512_graph_q E l r) ≤\n          MvPolynomial.coeff d (x2611_15512_graph_d E l r)) ∧\n      (∀ d : α →₀ ℕ, 5 < Finsupp.degree d →\n        0 ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)) := by\n    refine ⟨?_, ?_, ?_⟩\n    · sorry\n    · sorry\n    · sorry\n  exact x2611_15512_lem2_4_aux3 _ _\n    (x2611_15512_lem2_4_aux2 E l r) H.1 H.2.1 H.2.2\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_15512_lem2_4_s1h1",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} {L : Type*} {R : Type*} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun (a : α) => (l a, r a)) (↑E : Set α) → ∀ (d : α →₀ ℕ), (Finsupp.degree : (α →₀ ℕ) → ℕ) d < 4 → MvPolynomial.coeff d (x2611_15512_graph_d E l r) = 0",
+          "args": [
+            "α",
+            "L",
+            "R",
+            "_",
+            "_",
+            "E",
+            "l",
+            "r",
+            "hsimple"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_15512_lem2_4_s1h2",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} {L : Type*} {R : Type*} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun (a : α) => (l a, r a)) (↑E : Set α) → ∀ (d : α →₀ ℕ), (Finsupp.degree : (α →₀ ℕ) → ℕ) d = 5 → MvPolynomial.coeff d (x2611_15512_graph_q E l r) ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)",
+          "args": [
+            "α",
+            "L",
+            "R",
+            "_",
+            "_",
+            "E",
+            "l",
+            "r",
+            "hsimple"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 3,
+          "task": "x2611_15512_lem2_4_s1h3",
+          "status": "open",
+          "statement": "∀ {α : Type*} {L : Type*} {R : Type*} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun (a : α) => (l a, r a)) (↑E : Set α) → ∀ (d : α →₀ ℕ), 5 < (Finsupp.degree : (α →₀ ℕ) → ℕ) d → 0 ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)",
+          "args": [
+            "α",
+            "L",
+            "R",
+            "_",
+            "_",
+            "E",
+            "l",
+            "r",
+            "hsimple"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:53:13+0800"
+    },
+    {
+      "agent": "queue-r7-w6",
+      "body": "lemma x2611_15512_lem2_4_aux1 {α L R : Type*}\n    (E : Finset α) (l : α → L) (r : α → R) :\n    MvPolynomial.IsHomogeneous (x2611_15512_graph_q E l r) 5 := by\n  classical\n  unfold x2611_15512_graph_q\n  apply MvPolynomial.IsHomogeneous.C_mul\n  apply MvPolynomial.IsHomogeneous.sum\n  intro A hA\n  have hAc : A.card = 5 := (Finset.mem_powersetCard.mp hA).2\n  apply MvPolynomial.IsHomogeneous.sum\n  intro z hz\n  split_ifs\n  · have hAz : (A.erase z).card = 4 := by\n      rw [Finset.card_erase_of_mem hz, hAc]\n    have hinner : MvPolynomial.IsHomogeneous\n        (∑ B ∈ ((A.erase z).powersetCard 2).filter\n            (fun B => (B.image l).card = 2 ∧ (B.image r).card = 2),\n          ((∏ a ∈ B, MvPolynomial.X a) -\n            ∏ a ∈ A.erase z \\ B, MvPolynomial.X a) ^ 2 : MvPolynomial α ℝ) 4 := by\n      apply MvPolynomial.IsHomogeneous.sum\n      intro B hB\n      obtain ⟨hBA, hBc⟩ := Finset.mem_powersetCard.mp (Finset.mem_filter.mp hB).1\n      have hcomp : (A.erase z \\ B).card = 2 := by\n        rw [Finset.card_sdiff_of_subset hBA, hAz, hBc]\n      have h₁ := x2611_15512_lem2_4_s1h1_aux1 (S := ℝ) B\n      have h₂ := x2611_15512_lem2_4_s1h1_aux1 (S := ℝ) (A.erase z \\ B)\n      rw [hBc] at h₁\n      rw [hcomp] at h₂\n      exact (h₁.sub h₂).pow 2\n    exact (MvPolynomial.isHomogeneous_X ℝ z).mul hinner\n  · exact MvPolynomial.isHomogeneous_zero α ℝ 5\n\nlemma x2611_15512_lem2_4_aux2 {α : Type*}\n    (D Q : MvPolynomial α ℝ)\n    (hQ : MvPolynomial.IsHomogeneous Q 5)\n    (hlow : ∀ d : α →₀ ℕ, Finsupp.degree d < 4 → MvPolynomial.coeff d D = 0)\n    (hfifth : ∀ d : α →₀ ℕ, Finsupp.degree d = 5 →\n      MvPolynomial.coeff d Q ≤ MvPolynomial.coeff d D)\n    (hhigh : ∀ d : α →₀ ℕ, 5 < Finsupp.degree d → 0 ≤ MvPolynomial.coeff d D) :\n    ∃ C : MvPolynomial α ℝ,\n      (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧\n      (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n      D = MvPolynomial.homogeneousComponent 4 D + Q + C := by\n  classical\n  refine ⟨D - MvPolynomial.homogeneousComponent 4 D - Q, ?_, ?_, ?_⟩\n  · intro d\n    rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_sub,\n      MvPolynomial.coeff_homogeneousComponent]\n    by_cases hd4 : Finsupp.degree d = 4\n    · rw [if_pos hd4, hQ.coeff_eq_zero (by omega)]\n      simp\n    · rw [if_neg hd4]\n      by_cases hd5 : Finsupp.degree d = 5\n      · exact sub_nonneg.mpr (by simpa using hfifth d hd5)\n      · rw [hQ.coeff_eq_zero hd5]\n        by_cases hd : Finsupp.degree d < 4\n        · rw [hlow d hd]\n          simp\n        · simpa using hhigh d (by omega)\n  · intro d hd\n    rw [MvPolynomial.coeff_sub, MvPolynomial.coeff_sub,\n      MvPolynomial.coeff_homogeneousComponent, hQ.coeff_eq_zero (by omega)]\n    by_cases hd4 : Finsupp.degree d = 4\n    · simp [hd4]\n    · rw [if_neg hd4, hlow d (by omega)]\n      simp\n  · ring\n\ntheorem x2611_15512_lem2_4 {α L R : Type*} [Fintype L] [Fintype R]\n    (E : Finset α) (l : α → L) (r : α → R)\n    (hsimple : Set.InjOn (fun a => (l a, r a)) (↑E : Set α)) :\n    ∃ C : MvPolynomial α ℝ,\n      (∀ d : α →₀ ℕ, 0 ≤ MvPolynomial.coeff d C) ∧\n      (∀ d : α →₀ ℕ, Finsupp.degree d < 5 → MvPolynomial.coeff d C = 0) ∧\n      x2611_15512_graph_d E l r =\n        MvPolynomial.homogeneousComponent 4 (x2611_15512_graph_d E l r) +\n        x2611_15512_graph_q E l r + C := by\n  have H :\n      (∀ d : α →₀ ℕ, Finsupp.degree d = 5 →\n        MvPolynomial.coeff d (x2611_15512_graph_q E l r) ≤\n          MvPolynomial.coeff d (x2611_15512_graph_d E l r)) ∧\n      (∀ d : α →₀ ℕ, 5 < Finsupp.degree d →\n        0 ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)) := by\n    constructor\n    · -- For squarefree degree-five monomials, count two-edge matchings and\n      -- partitions into a left star and a right star. The negative case is a\n      -- four-cycle with an attached edge, which also contributes to graph_q.\n      -- The positive terms of graph_q have exponent pattern (2, 2, 1).\n      sorry\n    · -- For squarefree support S contained in E of size at least six, the coefficient is the\n      -- number of two-edge matchings plus the number of ordered partitions\n      -- into nonempty left and right stars, minus S.card.\n      -- For support contained in E, a coefficient with one doubled edge z is\n      -- k - 1 when k > 0, and zero\n      -- when k = 0, where k counts support edges disjoint from z.\n      -- Two doubled edges contribute a matching indicator.\n      sorry\n  exact x2611_15512_lem2_4_aux2 _ _\n    (x2611_15512_lem2_4_aux1 E l r)\n    (x2611_15512_lem2_4_s1h1 E l r hsimple) H.1 H.2\n",
+      "children": [
+        {
+          "hole": 1,
+          "task": "x2611_15512_lem2_4_s1h2",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} {L : Type*} {R : Type*} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun (a : α) => (l a, r a)) (↑E : Set α) → ∀ (d : α →₀ ℕ), (Finsupp.degree : (α →₀ ℕ) → ℕ) d = 5 → MvPolynomial.coeff d (x2611_15512_graph_q E l r) ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)",
+          "args": [
+            "α",
+            "L",
+            "R",
+            "_",
+            "_",
+            "E",
+            "l",
+            "r",
+            "hsimple"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        },
+        {
+          "hole": 2,
+          "task": "x2611_15512_lem2_4_s1h3",
+          "status": "duplicate",
+          "statement": "∀ {α : Type*} {L : Type*} {R : Type*} [inst : Fintype L] [inst_1 : Fintype R] (E : Finset α) (l : α → L) (r : α → R), Set.InjOn (fun (a : α) => (l a, r a)) (↑E : Set α) → ∀ (d : α →₀ ℕ), 5 < (Finsupp.degree : (α →₀ ℕ) → ℕ) d → 0 ≤ MvPolynomial.coeff d (x2611_15512_graph_d E l r)",
+          "args": [
+            "α",
+            "L",
+            "R",
+            "_",
+            "_",
+            "E",
+            "l",
+            "r",
+            "hsimple"
+          ],
+          "known_as": "",
+          "counterexample": ""
+        }
+      ],
+      "at": "2026-11-16T12:58:29+0800"
+    }
+  ]
 }

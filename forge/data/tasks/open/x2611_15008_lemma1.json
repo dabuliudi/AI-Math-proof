@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15008_lemma1",
+  "statement": "(V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (x y : ℝ) : (∀ e ∈ G.edgeSet, ((¬ (∃ v, G.IsLoopAt e v) ∧ ¬ x2611_15008_bridge G e) → x2611_15008_Tutte G x y = x2611_15008_Tutte (G.deleteEdges {e}) x y + x2611_15008_Tutte (x2611_15008_contract G {e}) x y) ∧ (x2611_15008_bridge G e → x2611_15008_Tutte G x y = x * x2611_15008_Tutte (G.deleteEdges {e}) x y) ∧ ((∃ v, G.IsLoopAt e v) → x2611_15008_Tutte G x y = y * x2611_15008_Tutte (G.deleteEdges {e}) x y)) ∧ (∀ G₁ G₂ : Graph V E, G₁ ≤ G → G₂ ≤ G → G.vertexSet = G₁.vertexSet ∪ G₂.vertexSet → G.edgeSet = G₁.edgeSet ∪ G₂.edgeSet → Disjoint G₁.edgeSet G₂.edgeSet → (G₁.vertexSet ∩ G₂.vertexSet).ncard ≤ 1 → x2611_15008_Tutte G x y = x2611_15008_Tutte G₁ x y * x2611_15008_Tutte G₂ x y)",
+  "closed": "∀ (V E : Type*) [Fintype V] [Fintype E] (G : Graph V E) (x y : ℝ), (∀ e ∈ G.edgeSet, ((¬ (∃ v, G.IsLoopAt e v) ∧ ¬ x2611_15008_bridge G e) → x2611_15008_Tutte G x y = x2611_15008_Tutte (G.deleteEdges {e}) x y + x2611_15008_Tutte (x2611_15008_contract G {e}) x y) ∧ (x2611_15008_bridge G e → x2611_15008_Tutte G x y = x * x2611_15008_Tutte (G.deleteEdges {e}) x y) ∧ ((∃ v, G.IsLoopAt e v) → x2611_15008_Tutte G x y = y * x2611_15008_Tutte (G.deleteEdges {e}) x y)) ∧ (∀ G₁ G₂ : Graph V E, G₁ ≤ G → G₂ ≤ G → G.vertexSet = G₁.vertexSet ∪ G₂.vertexSet → G.edgeSet = G₁.edgeSet ∪ G₂.edgeSet → Disjoint G₁.edgeSet G₂.edgeSet → (G₁.vertexSet ∩ G₂.vertexSet).ncard ≤ 1 → x2611_15008_Tutte G x y = x2611_15008_Tutte G₁ x y * x2611_15008_Tutte G₂ x y)",
+  "informal": "Lemma 1(a)–(d)",
+  "origin": "paper",
+  "source": "https://arxiv.org/abs/2611.15008",
+  "original": "Lemma 1.\n\n([18])\nLet $G$ be a graph and $e\\in E(G).$ Then:\n\n(a) \n\n $T_{G}(x,y)=T_{G-e}(x,y)+T_{G/e}(x,y)$ if $e$ is neither a loop nor a bridge,\n\n(b) \n\n $T_{G}(x,y)=xT_{G-e}(x,y)$ if $e$ is a bridge,\n\n(c) \n\n $T_{G}(x,y)=yT_{G-e}(x,y)$ if $e$ is a loop.\n\n(d) \n\nFurthermore, if $G=G_{1}\\cup G_{2},$ where $E(G_{1})\\cap E(G_{2})=\\emptyset$ and $|V(G_{1})\\cap V(G_{2})|\\leq 1,$ then $T_{G}(x,y)=T_{G_{1}}(x,y)T_{G_{2}}(x,y).$",
+  "proposed_by": "audit-b1-resume",
+  "hash": "1289590118",
+  "type": "∀ (V : Type u_1) (E : Type u_2) [Fintype V] [inst : Fintype E] (G : Graph V E) (x y : ℝ), (∀ e ∈ G.edgeSet, ((¬∃ v, G.IsLoopAt e v) ∧ ¬Mathlib2.x2611_15008_bridge G e → Mathlib2.x2611_15008_Tutte G x y = Mathlib2.x2611_15008_Tutte (G.deleteEdges {e}) x y + Mathlib2.x2611_15008_Tutte (Mathlib2.x2611_15008_contract G {e}) x y) ∧ (Mathlib2.x2611_15008_bridge G e → Mathlib2.x2611_15008_Tutte G x y = x * Mathlib2.x2611_15008_Tutte (G.deleteEdges {e}) x y) ∧ ((∃ v, G.IsLoopAt e v) → Mathlib2.x2611_15008_Tutte G x y = y * Mathlib2.x2611_15008_Tutte (G.deleteEdges {e}) x y)) ∧ ∀ (G₁ G₂ : Graph V E), G₁ ≤ G → G₂ ≤ G → G.vertexSet = G₁.vertexSet ∪ G₂.vertexSet → G.edgeSet = G₁.edgeSet ∪ G₂.edgeSet → Disjoint G₁.edgeSet G₂.edgeSet → (G₁.vertexSet ∩ G₂.vertexSet).ncard ≤ 1 → Mathlib2.x2611_15008_Tutte G x y = Mathlib2.x2611_15008_Tutte G₁ x y * Mathlib2.x2611_15008_Tutte G₂ x y",
+  "attempts": [
+    {
+      "agent": "queue-papers-b1-w1",
+      "note": "No counterexample in 55,500 small graph evaluations. Drafts and plans: forge/data/staging/agents/queue-papers-b1/queue-papers-b1-w1/lemma1_NOTES.md, lemma1_sketch.lean, lemma1_helpers.lean, lemma1_simple_sketch.lean. Four structural facts remain: forest component bound; bridge component changes; nonloop contraction component/vertex counts; rank/nullity additivity for one-vertex gluing. Helper proofs remain unverified. Forge sketch failed because Mathlib2/Shard/S0061.olean is missing; audit rebuild was attempted and interrupted without restoring it. No proof or sketch was registered.",
+      "at": "2026-11-16T13:51:32+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:40:46+0800",
+  "status": "open",
+  "claimed_by": "queue-papers-b1-w1",
+  "claimed_at": "2026-11-16T13:24:39+0800"
+}

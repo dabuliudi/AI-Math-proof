@@ -1,0 +1,15 @@
+{
+  "name": "x2611_15358_thm3_1_s1h4",
+  "statement": ": ∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ (↑K'.vertices : Type)) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty ((↑K'.space : Type) ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {(↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ), (↑((e : Fin 14 → (↑K'.vertices : Type)) j) : Fin d' → ℝ)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun (i : Fin 14) => (↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ)) s ∈ K'.faces) → ∀ (U : Finset (Fin 14)), U.card = 7 → ∑ s ∈ F with s ⊆ U, (-1) ^ (s.card - 1) ≤ (↑(Nat.card (SimpleGraph.induce (↑U : Set (Fin 14)) G).ConnectedComponent) : ℤ) + (↑(Nat.card (SimpleGraph.induce (↑Uᶜ : Set (Fin 14)) G).ConnectedComponent) : ℤ) - 4",
+  "closed": "∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ (↑K'.vertices : Type)) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty ((↑K'.space : Type) ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {(↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ), (↑((e : Fin 14 → (↑K'.vertices : Type)) j) : Fin d' → ℝ)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun (i : Fin 14) => (↑((e : Fin 14 → (↑K'.vertices : Type)) i) : Fin d' → ℝ)) s ∈ K'.faces) → ∀ (U : Finset (Fin 14)), U.card = 7 → ∑ s ∈ F with s ⊆ U, (-1) ^ (s.card - 1) ≤ (↑(Nat.card (SimpleGraph.induce (↑U : Set (Fin 14)) G).ConnectedComponent) : ℤ) + (↑(Nat.card (SimpleGraph.induce (↑Uᶜ : Set (Fin 14)) G).ConnectedComponent) : ℤ) - 4",
+  "informal": "x2611_15358_thm3_1 的证明骨架中第 4 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15358_thm3_1",
+  "original": "",
+  "proposed_by": "queue-r7-w1",
+  "hash": "3906814738",
+  "type": "∀ (d' : ℕ) (K' : Geometry.SimplicialComplex ℝ (Fin d' → ℝ)) (e : Fin 14 ≃ ↑K'.vertices) (G : SimpleGraph (Fin 14)) (F : Finset (Finset (Fin 14))), Nonempty (↑K'.space ≃ₜ (Fin 3 → Circle)) → (∀ (i j : Fin 14), G.Adj i j ↔ i ≠ j ∧ {↑(e i), ↑(e j)} ∈ K'.faces) → (∀ (s : Finset (Fin 14)), s ∈ F ↔ Finset.image (fun i => ↑(e i)) s ∈ K'.faces) → ∀ (U : Finset (Fin 14)), U.card = 7 → ∑ s ∈ F with s ⊆ U, (-1) ^ (s.card - 1) ≤ ↑(Nat.card (SimpleGraph.induce (↑U) G).ConnectedComponent) + ↑(Nat.card (SimpleGraph.induce (↑Uᶜ) G).ConnectedComponent) - 4",
+  "attempts": [],
+  "created_at": "2026-11-16T12:40:49+0800",
+  "status": "open"
+}

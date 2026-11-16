@@ -1,0 +1,23 @@
+{
+  "name": "x2611_15210_thm1_3_s1h1",
+  "statement": ": ∀ (b : ℝ), 0 < b → b ^ 3 = 3 → ∀ (s : ℕ), 2 / b ^ 5 * b ^ s ≤ (↑(x2611_15210_A 6 (Fin s → ZMod 3)) : ℝ)",
+  "closed": "∀ (b : ℝ), 0 < b → b ^ 3 = 3 → ∀ (s : ℕ), 2 / b ^ 5 * b ^ s ≤ (↑(x2611_15210_A 6 (Fin s → ZMod 3)) : ℝ)",
+  "informal": "x2611_15210_thm1_3 的证明骨架中第 1 个空洞",
+  "origin": "decomposition",
+  "source": "x2611_15210_thm1_3",
+  "original": "",
+  "proposed_by": "queue-r7-w1",
+  "hash": "3700037106",
+  "type": "∀ (b : ℝ), 0 < b → b ^ 3 = 3 → ∀ (s : ℕ), 2 / b ^ 5 * b ^ s ≤ ↑(Mathlib2.x2611_15210_A 6 (Fin s → ZMod 3))",
+  "attempts": [
+    {
+      "agent": "queue-r7-w3",
+      "note": "Proof draft and notes saved in forge/data/staging/agents/queue-r7/queue-r7-w3/thm1_3_s1h1.lean and thm1_3_s1h1_notes.md. Route: transport extremal sequences through injective additive maps, zero-pad coordinates, instantiate lem5_1 with GaloisField 3 k for k=2*((s-3)/6)+1, and use 3*k <= s <= 3*k+5; s<3 follows from A>=5. Small cases s=0..12 checked numerically. Verification blocked by environment: first forge check timed out at 300s; another returned an import error that S0061.olean does not exist. S0061 and S0062 remained unavailable while library root imported them. A direct diagnostic importing completed S0060 also stalled without output for over six minutes. No proof diagnostics obtained; draft is unverified.",
+      "at": "2026-11-16T13:42:47+0800"
+    }
+  ],
+  "created_at": "2026-11-16T11:37:59+0800",
+  "status": "open",
+  "claimed_by": "queue-r7-w3",
+  "claimed_at": "2026-11-16T13:14:50+0800"
+}

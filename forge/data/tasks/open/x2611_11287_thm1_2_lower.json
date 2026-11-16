@@ -9,7 +9,15 @@
   "proposed_by": "audit-b1",
   "hash": "1252645284",
   "type": "∀ (n : ℕ) (A : Matrix (Fin n) (Fin n) ℤ), (∀ (k : ℤ), A ≠ k • 1) → ((fun H => ↑H ^ n) =O[Filter.atTop] fun H => ↑(Mathlib2.x2611_11287_centralizer_count A ↑H)) ∧ ((A.map ⇑(Int.castRingHom ℂ)).charpoly.Separable → (fun H => ↑(Mathlib2.x2611_11287_centralizer_count A ↑H)) =Θ[Filter.atTop] fun H => ↑H ^ n)",
-  "attempts": [],
+  "attempts": [
+    {
+      "agent": "queue-r7-w5",
+      "note": "Validated proof skeleton saved at forge/data/staging/agents/queue-r7/queue-r7-w5/sketch.lean, with proof routes in NOTES.md. All non-hole Lean steps compiled. It reduces to x2611_11287_thm2_1 (now proved), integer-to-characteristic-zero-field centralizer rank preservation (registered child x2611_11287_thm1_2_lower_s1h2), the field centralizer dimension lower bound (registered child x2611_11287_thm1_2_lower_s1h3), and separable-charpoly centralizer dimension equality (last unregistered hole). Final sketch registration repeatedly failed as S0059.olean disappeared during shared-library rebuilds; the final 3-minute read-lock window remained blocked by an exclusive forge build lock. Resume by retrying the unchanged sketch when the library is stable. Small cases support truth; no complete proof or disproof found.",
+      "at": "2026-11-16T11:25:45+0800"
+    }
+  ],
   "created_at": "2026-11-16T03:05:44+0800",
-  "status": "open"
+  "status": "open",
+  "claimed_by": "queue-r7-w5",
+  "claimed_at": "2026-11-16T10:57:26+0800"
 }

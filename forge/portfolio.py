@@ -109,16 +109,6 @@ def _task(item, name=None, statement=None):
                 library=False)  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
 
 
-def _locked_retry(check, *args, **kwargs):
-    """内核检查；没过就持入库锁再查一次（别的进程重建库时 .olean 会短暂缺失）。"""
-    from .library import locked
-    result = check(*args, **kwargs)
-    if not result.get('ok') and result.get('errors'):
-        with locked():
-            result = check(*args, **kwargs)
-    return result
-
-
 def sketch_check(run, problem, path):
     from .verify import check_sketch
     state = load_state(run)
@@ -127,7 +117,7 @@ def sketch_check(run, problem, path):
         return dict(ok=False, reason=f'轮次 {run} 里没有题目 {problem}')
     item = next(i for i in bench.load(info['set']) if i['name'] == problem)
     try:
-        return _locked_retry(check_sketch, _task(item), Path(path).read_text(encoding='utf-8'))
+        return check_sketch(_task(item), Path(path).read_text(encoding='utf-8'))
     except Exception as exc:  # noqa: BLE001 - 静态检查的报错（名称不符、禁用词）原样告诉 agent
         return dict(ok=False, reason=str(exc))
 
@@ -140,7 +130,7 @@ def lemma_check(run, lemma, path):
         return dict(ok=False, reason=f'轮次 {run} 里没有引理 {lemma}')
     item = next(i for i in bench.load(info['set']) if i['name'] == info['problem'])
     try:
-        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), Path(path).read_text(encoding='utf-8'),
+        return check_submission(_task(item, lemma, ': ' + info['statement']), Path(path).read_text(encoding='utf-8'),
                              closed=info['statement'])
     except Exception as exc:  # noqa: BLE001
         return dict(ok=False, reason=str(exc))
@@ -269,7 +259,7 @@ class Portfolio(Scheduler):
         check = dict(ok=False, reason='没有交出骨架')
         if path.exists():
             try:
-                check = _locked_retry(check_sketch, _task(item), path.read_text(encoding='utf-8'))
+                check = check_sketch(_task(item), path.read_text(encoding='utf-8'))
             except Exception as exc:  # noqa: BLE001
                 check = dict(ok=False, reason=str(exc))
         holes = []
@@ -318,7 +308,7 @@ class Portfolio(Scheduler):
         if path.exists():
             body = path.read_text(encoding='utf-8')
             try:
-                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), body, closed=info['statement'])
+                result = check_submission(_task(item, lemma, ': ' + info['statement']), body, closed=info['statement'])
             except StatementError as exc:  # 提交本身不合规（剩 sorry、辅助引理名不对……）：算没证出来，可以再试
                 result = dict(ok=False, reason=str(exc))
             reason = result.get('reason', '')

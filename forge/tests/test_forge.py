@@ -1288,6 +1288,28 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(runner.state['lemmas']['L']['status'], 'unsolved')
         self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'open')
 
+    def test_failing_lemma_check_does_not_take_the_library_lock(self):
+        # 子引理检查不导入 Mathlib2，库重建与它无关：没过的检查不该再持全局入库锁重跑一遍
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        portfolio, runner = self._runner(root, dict(name='p', statement=': True'))
+        runner.items = {'p': dict(name='p', statement=': True')}
+        runner.state = dict(run='t-pf', problems={'p': dict(set='s', solved_by=None, dags={'d1': dict(skeleton='', holes=[dict(lemma='L', args=[])], status='open')})},
+                            lemmas={'L': dict(set='s', problem='p', statement='True', hash='h', status='open', dags=['d1'])})
+        runner.file_lock, runner.lemma_seconds, runner.scratch, runner.lemma_attempts = threading.Lock(), 60, root / 'scratch', 1
+
+        def invoke(prompt, agent, seconds=None):
+            (root / 'scratch' / agent).mkdir(parents=True, exist_ok=True)
+            (root / 'scratch' / agent / 'L.lean').write_text('theorem L : True := by simp')
+            return 0, '', 0, False
+        failing = dict(ok=False, reason='Lean 报错', errors=['type mismatch'])
+        with mock.patch.object(runner, '_invoke', side_effect=invoke), \
+                mock.patch('forge.verify.check_submission', return_value=failing) as check, \
+                mock.patch('forge.library.locked', side_effect=AssertionError('took the library lock')):
+            runner._lemma('a1', 'p', 'L')
+        self.assertEqual(check.call_count, 1)
+        self.assertEqual(runner.state['lemmas']['L']['status'], 'unsolved')
+
     def test_resume_clears_stale_queued_flags(self):
         tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
         root = Path(tmp.name)

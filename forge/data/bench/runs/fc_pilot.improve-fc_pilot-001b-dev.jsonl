@@ -1,0 +1,18 @@
+{"problem": "fc_erdos1086_erdos_1086_variants_raz_sharir", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T10:47:37+0800"}
+{"problem": "fc_erdos1100_erdos_1100_parts_i", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T10:48:43+0800"}
+{"problem": "fc_erdos1057_erdos_1057_variants_upper_bound", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T10:51:46+0800"}
+{"problem": "fc_erdos100_erdos_100_variants_kanold", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T10:53:52+0800"}
+{"problem": "fc_erdos902_erdos_902_variants_f_two", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:04:28+0800"}
+{"problem": "fc_erdos1062_erdos_1062_variants_lebensold_bounds", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T11:05:54+0800"}
+{"problem": "fc_erdos1023_erdos_1023_variants_hunter", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:06:50+0800"}
+{"problem": "fc_erdos1099_erdos_1099_variants_lcm", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T11:07:10+0800"}
+{"problem": "fc_erdos297_erdos_297_variants_steinerberger", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:07:49+0800"}
+{"problem": "fc_powerfulnumbersdensity_asymptotic_erdos_szekeres", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:08:10+0800"}
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T11:12:05+0800"}
+{"problem": "fc_erdos1100_erdos_1100_variants_omega_le", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:13:25+0800"}
+{"problem": "fc_erdos1148_erdos_1148_variants_weaker", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:29:19+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T11:30:25+0800"}
+{"problem": "fc_squarepacking_eleven_square_packing_in_square_bound", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:31:07+0800"}
+{"problem": "fc_erdos1038_erdos_1038_parts_ii", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T11:31:51+0800"}
+{"problem": "fc_erdos770_nat_prime_h_eq_add_one", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:34:25+0800"}
+{"problem": "fc_green14_w_3_23_lower", "run": "improve-fc_pilot-001b-dev", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T11:34:55+0800"}

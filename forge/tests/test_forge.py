@@ -1255,6 +1255,66 @@ class PortfolioTests(unittest.TestCase):
         self.assertEqual(result['solved'], 0)
         self.assertEqual({d['status'] for d in runner.state['problems']['p']['dags'].values()}, {'dead'})
 
+    def test_aux_names_renames_only_whole_lemma_names(self):
+        from forge.portfolio import aux_names
+        self.assertEqual(aux_names('p', 'theorem p_d1_h1 pp_d1_h1 Foo.p_d1_h1 (p_d12_h3)'),
+                         'theorem p_aux_d1_h1 pp_d1_h1 Foo.p_d1_h1 (p_aux_d12_h3)')
+
+    def _runner(self, root, item):
+        from forge import portfolio
+        stack = contextlib.ExitStack(); self.addCleanup(stack.close)
+        for patch in (mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'),
+                      mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[item])):
+            stack.enter_context(patch)
+        return portfolio, portfolio.Portfolio('t-pf', workers=1, max_tasks=1000, dry_run=True)
+
+    def test_malformed_lemma_submission_is_unsolved_not_a_dead_dag(self):
+        from forge.statement import StatementError
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        portfolio, runner = self._runner(root, dict(name='p', statement=': True'))
+        runner.items = {'p': dict(name='p', statement=': True')}
+        runner.state = dict(run='t-pf', problems={'p': dict(set='s', solved_by=None, dags={'d1': dict(skeleton='', holes=[dict(lemma='L', args=[])], status='open')})},
+                            lemmas={'L': dict(set='s', problem='p', statement='True', hash='h', status='open', dags=['d1'])})
+        runner.file_lock, runner.lemma_seconds, runner.scratch, runner.lemma_attempts = threading.Lock(), 60, root / 'scratch', 1
+
+        def invoke(prompt, agent, seconds=None):
+            (root / 'scratch' / agent).mkdir(parents=True, exist_ok=True)
+            (root / 'scratch' / agent / 'L.lean').write_text('theorem L : True := by sorry')
+            return 0, '', 0, False
+        with mock.patch.object(runner, '_invoke', side_effect=invoke), \
+                mock.patch('forge.verify.check_submission', side_effect=StatementError('剩下 sorry')):
+            runner._lemma('a1', 'p', 'L')
+        self.assertEqual(runner.state['lemmas']['L']['status'], 'unsolved')
+        self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'open')
+
+    def test_resume_clears_stale_queued_flags(self):
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        portfolio, runner = self._runner(root, dict(name='p', statement=': True'))
+        (root / 'pf').mkdir()
+        (root / 'pf' / 't-pf.json').write_text(json.dumps(dict(run='t-pf', problems={'p': dict(set='s', solved_by=None, dags={
+            'd1': dict(skeleton='', holes=[dict(lemma='L', args=[])], status='dead')})}, lemmas={
+            'L': dict(set='s', problem='p', statement='True', hash='h', status='open', dags=['d1'], queued=True)})))
+        seen = []
+        runner._sketch = lambda agent, problem, k: seen.append(runner.state['lemmas']['L'].get('queued'))
+        runner.run_portfolio('s', ['p'], k=2)
+        self.assertEqual(seen, [False])  # 重新拆解时这条引理不再被旧的排队标记挡住
+
+    def test_library_task_closed_field_cannot_change_what_is_proved(self):
+        from forge import verify
+        seen = []
+
+        def capture(source, **kwargs):
+            seen.append(source)
+            raise RuntimeError('stop')
+        task = dict(name='t', statement=': 1 + 1 = 3', closed='True', opens='', preamble='', imports=[])
+        with mock.patch.object(verify, 'run_source', side_effect=capture):
+            with self.assertRaises(RuntimeError):
+                verify.check_submission(task, 'theorem t : True := trivial')
+        self.assertIn('(1 + 1 = 3)', seen[0])
+        self.assertNotIn('"proved" (True)', seen[0])
+
 
 class SnapshotPublishTests(unittest.TestCase):
     """forge snapshot 开或更新本检出自己的数据 PR、forge sync 对齐 origin/main：用真实 git 仓库和一个记着 PR 状态的假 gh。"""

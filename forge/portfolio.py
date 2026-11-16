@@ -21,6 +21,7 @@ from pathlib import Path
 from . import bench
 from .leanrun import DATA, PROJECT, ROOT
 from .scheduler import FORGE, PREAMBLE_NOTE, SOURCE_NOTE, Scheduler
+from .statement import StatementError
 
 STATE_DIR = DATA / 'staging' / 'portfolio'
 
@@ -101,21 +102,20 @@ def load_state(run):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else dict(run=run, problems={}, lemmas={})
 
 
-def _task(item, name=None, statement=None, closed=None):
+def _task(item, name=None, statement=None):
     """检查用的任务：评测题本身，或者它的一个子引理（闭命题）——都带上题目的导入、前置定义和记号设置。"""
     return dict(name=name or item['name'], statement=statement if statement is not None else item['statement'],
                 opens=item.get('opens', ''), preamble=item.get('preamble', ''), imports=item.get('imports', []),
-                library=False,  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
-                **(dict(closed=closed) if closed else {}))
+                library=False)  # 子引理不进库、也不引用库：不导入 Mathlib2，就不必等别的进程重建库
 
 
-def _locked_retry(check, *args):
+def _locked_retry(check, *args, **kwargs):
     """内核检查；没过就持入库锁再查一次（别的进程重建库时 .olean 会短暂缺失）。"""
     from .library import locked
-    result = check(*args)
+    result = check(*args, **kwargs)
     if not result.get('ok') and result.get('errors'):
         with locked():
-            result = check(*args)
+            result = check(*args, **kwargs)
     return result
 
 
@@ -140,14 +140,16 @@ def lemma_check(run, lemma, path):
         return dict(ok=False, reason=f'轮次 {run} 里没有引理 {lemma}')
     item = next(i for i in bench.load(info['set']) if i['name'] == info['problem'])
     try:
-        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), Path(path).read_text(encoding='utf-8'))
+        return _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), Path(path).read_text(encoding='utf-8'),
+                             closed=info['statement'])
     except Exception as exc:  # noqa: BLE001
         return dict(ok=False, reason=str(exc))
 
 
 def aux_names(name, text):
-    """评测检查器要求附加定理都叫 `<题名>_aux…`：把子引理 `<题名>_d<k>_h<i>`（及其辅助引理）改名成 `<题名>_aux_d<k>_h<i>`。"""
-    return re.sub(re.escape(name) + r'_(d\d+_h\d+)', name + r'_aux_\1', text)
+    """评测检查器要求附加定理都叫 `<题名>_aux…`：把子引理 `<题名>_d<k>_h<i>`（及其辅助引理）改名成 `<题名>_aux_d<k>_h<i>`。
+    左边界：`pp_d1_h1`、`Foo.p_d1_h1` 这类只是包含题名的标识符不改。"""
+    return re.sub(r"(?<![\w.'])" + re.escape(name) + r'_(d\d+_h\d+)', name + r'_aux_\1', text)
 
 
 def assemble_body(name, skeleton, lemma_bodies, lemma_args):
@@ -178,15 +180,18 @@ class Portfolio(Scheduler):
             self.state['problems'].setdefault(p, dict(set=set_name, dags={}, solved_by=None))
         self._save()
         if revive:
-            # 检查器修好后：被判“没法检查”的引理重新开放，只因它们作废（没有被证伪的引理）的图恢复
-            for lemma in self.state['lemmas'].values():
-                if lemma['status'] == 'uncheckable':
-                    lemma.update(status='open', attempts=0)
+            # 旧版本把检查器拒收的引理记成 uncheckable 并让用到它的图作废：这些引理重新开放，
+            # 只因它们作废的图（有 uncheckable 引理、没有被证伪的引理）恢复。只动这一轮的题。
             for p in problems:
-                for dag, d in self.state['problems'][p]['dags'].items():
-                    if d['status'] in ('dead', 'assembly_failed') and not any(
-                            self.state['lemmas'][h['lemma']]['status'] == 'disproved' for h in d['holes']):
+                for d in self.state['problems'][p]['dags'].values():
+                    holes = [self.state['lemmas'][h['lemma']]['status'] for h in d['holes']]
+                    if d['status'] == 'dead' and 'uncheckable' in holes and 'disproved' not in holes:
                         d['status'] = 'open'
+            for lemma in self.state['lemmas'].values():
+                if lemma['status'] == 'uncheckable' and lemma['problem'] in set(problems):
+                    lemma.update(status='open', attempts=0)
+        for lemma in self.state['lemmas'].values():
+            lemma['queued'] = False  # 排队标记只在本次运行内有效
         # 接着上次的状态跑：已有骨架的图不再重写；没证完的子引理、该拼装的图重新排队
         self.queue = [('sketch', p, i) for i in range(1, k + 1) for p in problems
                       if f'd{i}' not in self.state['problems'][p]['dags']]
@@ -313,20 +318,18 @@ class Portfolio(Scheduler):
         if path.exists():
             body = path.read_text(encoding='utf-8')
             try:
-                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement'], closed=info['statement']), body)
-            except Exception as exc:  # noqa: BLE001 - 静态检查拒收（例如空洞目标里带 let 的 `:=`）：这条引理没法检查
-                result = dict(ok=False, reason=str(exc), uncheckable=True)
+                result = _locked_retry(check_submission, _task(item, lemma, ': ' + info['statement']), body, closed=info['statement'])
+            except StatementError as exc:  # 提交本身不合规（剩 sorry、辅助引理名不对……）：算没证出来，可以再试
+                result = dict(ok=False, reason=str(exc))
             reason = result.get('reason', '')
-            if result.get('uncheckable'):
-                status = 'uncheckable'
-            elif result.get('ok'):
+            if result.get('ok'):
                 status = 'disproved' if result['kind'] == 'disproved' else 'proved'
                 if status == 'proved':
                     info['body'] = body
         with self.file_lock:
             info['status'] = status
             info['attempts'] = info.get('attempts', 0) + 1
-            if status in ('disproved', 'uncheckable'):  # 拆法不成立，或这条引理没法检查：用到它的图全部作废
+            if status == 'disproved':  # 拆法不成立：用到它的图全部作废
                 for d in info['dags']:
                     self.state['problems'][problem]['dags'][d]['status'] = 'dead'
             self._save()
@@ -388,10 +391,10 @@ class Portfolio(Scheduler):
 
 
 def _safe_check(set_name, problem, body, run):
-    """评测检查器；静态检查拒收（命名、禁用词）时记为没解出，不让异常打断整轮。"""
+    """评测检查器；静态检查拒收（命名、禁用词）时记为没解出。Lean、磁盘等基础设施错误照常抛出，不当成没解出。"""
     try:
         return bench.check(set_name, problem, body, run, 'scheduler')
-    except Exception as exc:  # noqa: BLE001
+    except StatementError as exc:
         return dict(ok=False, solved=False, reason=str(exc))
 
 

@@ -506,7 +506,8 @@ with mock.patch.object(library, 'lake_build', return_value=(0, '')), \\
         fake.chmod(0o755)
         with mock.patch.object(leanrun, 'find_lake', return_value=str(fake)):
             with self.assertRaises(subprocess.TimeoutExpired):
-                leanrun.lake_build('Mathlib2', timeout=1)
+                # 超时要留够让假 lake 起来并写下子进程号：整套测试一起跑时 shell 启动可能超过 1 秒
+                leanrun.lake_build('Mathlib2', timeout=5)
         child = int(pidfile.read_text())
         deadline = time.time() + 5
         alive = True

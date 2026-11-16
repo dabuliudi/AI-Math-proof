@@ -151,9 +151,17 @@ def lemma_check(run, lemma, path):
 
 
 def main_last(body, lemma):
-    """把主定理（`lemma` 或 `lemma_disproof`）那一段挪到文件最后：agent 常把辅助引理写在主定理后面，内容没错只是顺序不合规。"""
+    """把主定理（`lemma` 或 `lemma_disproof`）那一段挪到文件最后：agent 常把辅助引理写在主定理后面，内容没错只是顺序不合规。
+    只在原文被静态检查拒收时才动；分段用去掉注释后的文本（块注释里顶格的行不能当成新声明）。"""
+    from .statement import StatementError, analyse_submission, strip_comments
+    disproof = re.search(r'^(?:theorem|lemma)\s+' + re.escape(lemma) + r'_disproof(?![\w\'])', strip_comments(body), re.M)
+    try:
+        analyse_submission(body, lemma, bool(disproof))
+        return body
+    except StatementError:
+        pass
     blocks, current = [], []
-    for line in body.splitlines():
+    for line in strip_comments(body).splitlines():
         if line and not line[0].isspace() and current and not line.startswith(('--', '/-', '@[')) \
                 and not (current[-1].startswith('@[') and not current[-1][0].isspace()):
             blocks.append(current)
@@ -287,7 +295,8 @@ class Portfolio(Scheduler):
             return True
         for parent, sdag in info.get('parents', []):
             up = self.state['lemmas'][parent]
-            if up['status'] != 'proved' and up['splits'][sdag]['status'] == 'open' and self._live(up):
+            # 子图登记到一半（父链接已加、子图还没存）时按“还开着”算
+            if up['status'] != 'proved' and up.get('splits', {}).get(sdag, {}).get('status', 'open') == 'open' and self._live(up):
                 return True
         return False
 
@@ -371,6 +380,7 @@ class Portfolio(Scheduler):
                 self.state['lemmas'][lemma] = dict(set=self.set_name, problem=problem, statement=hole['statement'],
                                                    hash=hole['hash'], status='open', dags=[], depth=depth)
             info = self.state['lemmas'][lemma]
+            info['depth'] = min(info.get('depth', 0), depth)  # 共用时按最浅的用法算层数
             if dag:
                 info['dags'].append(dag)
             if parent:
@@ -412,21 +422,26 @@ class Portfolio(Scheduler):
         if check.get('ok') and any(same(h['statement'], info['statement']) for h in check['holes']):
             check = dict(ok=False, reason='骨架把整条引理原样留成了空洞，等于没拆')
         holes = []
-        if check.get('ok'):
-            with self.file_lock:
+        with self.file_lock:
+            if check.get('ok'):
+                info.setdefault('splits', {})[sdag] = dict(skeleton=path.read_text(encoding='utf-8'), holes=[],
+                                                           status='open', planner=agent)
                 holes = self._register_holes(problem, f'{lemma}_{sdag}', check['holes'], depth=info.get('depth', 0) + 1,
                                              parent=(lemma, sdag))
-                info.setdefault('splits', {})[sdag] = dict(skeleton=path.read_text(encoding='utf-8'), holes=holes,
-                                                           status='open', planner=agent)
-                self._save()
+                info['splits'][sdag]['holes'] = holes
+            else:  # 记下失败，接着跑时不再重派这个规划者
+                info.setdefault('splits', {})[sdag] = dict(skeleton='', holes=[], status='failed', planner=agent)
+            self._save()
         self._record(dict(mode='portfolio-split', task=f'{lemma}/{sdag}', worker=agent,
                           outcome=f'{len(holes)} holes' if check.get('ok') else 'failed', progress=bool(holes),
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
                           reason=check.get('reason', '')[:300], message=message[-500:]))
         for h in holes:
             sub = self.state['lemmas'][h['lemma']]
-            if sub['status'] == 'open' and not sub.get('queued'):
-                sub['queued'] = True
+            with self.file_lock:
+                fresh = sub['status'] == 'open' and not sub.get('queued')
+                sub['queued'] = sub.get('queued') or fresh
+            if fresh:
                 self._push(('lemma', problem, h['lemma']))
         self._maybe_assemble_lemma(lemma)
 
@@ -492,7 +507,8 @@ class Portfolio(Scheduler):
                 keep = self.scratch / 'attempts' / f'{lemma}.{info.get("attempts", 0) + 1}.lean'
                 keep.parent.mkdir(parents=True, exist_ok=True)
                 keep.write_text(body, encoding='utf-8')
-                info['last_attempt'] = dict(file=str(keep), reason=reason)
+                with self.file_lock:  # 别的线程可能正在 _save 里序列化这个字典
+                    info['last_attempt'] = dict(file=str(keep), reason=reason)
             if result.get('ok'):
                 status = 'disproved' if result['kind'] == 'disproved' else 'proved'
                 if status == 'proved':

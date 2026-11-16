@@ -1614,6 +1614,10 @@ class PortfolioMainLastTests(unittest.TestCase):
         self.assertTrue(fixed.startswith('open Nat'))
         ok = 'theorem p_d1_h1_aux : 1 = 1 := rfl\ntheorem p_d1_h1 : 1 = 1 := p_d1_h1_aux\n'
         self.assertEqual(main_last(ok, 'p_d1_h1'), ok)  # 已经合规的不动
+        commented = 'theorem p_d1_h1_aux : 1 = 1 := rfl\ntheorem p_d1_h1 : 1 = 1 := p_d1_h1_aux\n/-\nnotes at column 0\n-/\n'
+        self.assertEqual(main_last(commented, 'p_d1_h1'), commented)  # 结尾的块注释不算声明，合规的文件原样保留
+        late = 'theorem p_d1_h1 : 1 = 1 := p_d1_h1_aux\n/-\nnotes\n-/\ntheorem p_d1_h1_aux : 1 = 1 := rfl\n'
+        self.assertEqual(analyse_submission(main_last(late, 'p_d1_h1'), 'p_d1_h1'), ['p_d1_h1_aux', 'p_d1_h1'])
         dis = 'theorem p_d1_h1_disproof : ¬ (1 = 2) := by\n  decide\ntheorem p_d1_h1_aux : True := trivial\n'
         self.assertEqual(analyse_submission(main_last(dis, 'p_d1_h1'), 'p_d1_h1', disproof=True)[-1], 'p_d1_h1_disproof')
 
@@ -1695,7 +1699,7 @@ class PortfolioSplitTests(unittest.TestCase):
             runner._invoke = fake_invoke
             result = runner.run_portfolio('s', ['p'], k=1, split=1)
         self.assertNotIn('p_d1_h1_d1_h1', runner.state['lemmas'])
-        self.assertNotIn('splits', runner.state['lemmas']['p_d1_h1'])
+        self.assertEqual(runner.state['lemmas']['p_d1_h1']['splits']['d1']['status'], 'failed')  # 记下失败，接着跑不再重派
         self.assertEqual(result['solved'], 0)
 
 
@@ -1728,3 +1732,62 @@ class PortfolioRetryTests(unittest.TestCase):
         kept = Path(runner.state['lemmas']['l1']['last_attempt']['file'])
         self.assertIn('attempt2', kept.read_text())  # 最新一次的失败提交
         self.assertIn('attempt1', (kept.parent / 'l1.1.lean').read_text())
+
+    def _split_state(self, root, sub_status):
+        state = dict(run='t-k', problems=dict(p=dict(set='s', solved_by=None, dags=dict(
+            d1=dict(skeleton='theorem p : True := by\n  exact (by sorry)', holes=[dict(lemma='p_d1_h1', args=[])],
+                    status='open', planner='w')))),
+            lemmas=dict(p_d1_h1=dict(set='s', problem='p', statement='True ∧ True', hash='h', status='unsolved', dags=['d1'],
+                                     attempts=2, splits=dict(
+                                         d1=dict(skeleton='theorem p_d1_h1 : True ∧ True := by\n  exact ⟨by sorry, trivial⟩',
+                                                 holes=[dict(lemma='p_d1_h1_d1_h1', args=[])], status='open', planner='w'),
+                                         d2=dict(skeleton='', holes=[], status='failed', planner='w'))),
+                        p_d1_h1_d1_h1=dict(set='s', problem='p', statement='True', hash='h2', status=sub_status, dags=[],
+                                           attempts=0, depth=1, parents=[['p_d1_h1', 'd1']])))
+        (root / 'pf').mkdir()
+        (root / 'pf' / 't-k.json').write_text(json.dumps(state))
+
+    def test_disproved_part_kills_only_its_sub_dag_and_resume_skips_failed_planners(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self._split_state(root, 'open')
+        seen = []
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+             mock.patch('forge.verify.check_submission', return_value=dict(ok=True, kind='disproved')):
+            runner = portfolio.Portfolio('t-k', workers=1, max_tasks=1000, dry_run=True)
+            real = runner._lemma
+            def lemma(agent, p, name):
+                seen.append(name)
+                (runner.scratch / agent / f'{name}.lean').parent.mkdir(parents=True, exist_ok=True)
+                runner._invoke = lambda prompt, agent, **kw: ((runner.scratch / agent / f'{name}.lean').write_text(
+                    f'theorem {name}_disproof : ¬ True := by\n  simp'), (0, '', 0, False))[1]
+                real(agent, p, name)
+            runner._lemma = lemma
+            runner._split_sketch = lambda *a: seen.append(('split_sketch',) + a[1:])
+            runner.run_portfolio('s', ['p'], k=1, split=2)
+        self.assertEqual(seen, ['p_d1_h1_d1_h1'])  # 失败过的规划者 d2 不重派
+        lemmas = runner.state['lemmas']
+        self.assertEqual(lemmas['p_d1_h1']['splits']['d1']['status'], 'dead')
+        self.assertEqual(runner.state['problems']['p']['dags']['d1']['status'], 'open')  # 题目的图不受牵连
+        self.assertEqual(lemmas['p_d1_h1']['status'], 'unsolved')
+
+    def test_resume_assembles_a_split_whose_parts_were_already_proved(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self._split_state(root, 'proved')
+        state = json.loads((root / 'pf' / 't-k.json').read_text())
+        state['lemmas']['p_d1_h1_d1_h1']['body'] = 'theorem p_d1_h1_d1_h1 : True := trivial'
+        state['lemmas']['p_d1_h1']['splits']['d1']['status'] = 'assembling'  # 上次拼到一半被打断
+        (root / 'pf' / 't-k.json').write_text(json.dumps(state))
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+             mock.patch('forge.verify.check_submission', return_value=dict(ok=True, kind='proved')), \
+             mock.patch.object(portfolio.bench, 'check', return_value=dict(ok=True, solved=True)):
+            runner = portfolio.Portfolio('t-k', workers=1, max_tasks=1000, dry_run=True)
+            runner._invoke = lambda *a, **kw: self.fail('no agent should be needed')
+            result = runner.run_portfolio('s', ['p'], k=1, split=2)
+        self.assertEqual(runner.state['lemmas']['p_d1_h1']['status'], 'proved')
+        self.assertEqual(result['solved'], 1)

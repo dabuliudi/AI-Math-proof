@@ -1176,6 +1176,8 @@ class CopyIsolationTests(unittest.TestCase):
             def communicate(self, timeout=None):
                 return '', ''
         checks = self.root / 'scratch' / 'checks'
+        lake = mock.patch.object(leanrun, 'find_lake', return_value='lake')   # CI 上没装 Lean
+        lake.start(); self.addCleanup(lake.stop)
         with mock.patch.object(leanrun, 'CHECKS', checks), mock.patch.object(leanrun.subprocess, 'Popen', FakeProc):
             leanrun.run_source('theorem t : True := trivial\n')
         self.assertEqual(seen[0].parent, checks)

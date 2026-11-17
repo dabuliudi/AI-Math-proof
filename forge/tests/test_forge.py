@@ -1196,12 +1196,13 @@ class CopyIsolationTests(unittest.TestCase):
         dead = checks / 'check_999999999_bb.lean'
         old = checks / 'check_0123456789abcdef.lean'   # 旧文件名，认不出进程号
         new = checks / 'check_fedcba9876543210.lean'
-        for path in (live, dead, old, new):
+        odd = [checks / 'check_4294967296_x.lean', checks / 'check_²_x.lean']   # 进程号溢出、非 ASCII 数字
+        for path in (live, dead, old, new, *odd):
             path.write_text('x', encoding='utf-8')
         os.utime(old, (time.time() - 2 * leanrun.CHECK_MAX_AGE,) * 2)
         with mock.patch.object(leanrun, 'CHECKS', checks), mock.patch.object(leanrun, '_swept', [0.0]):
             leanrun._sweep_checks()
-        self.assertEqual(sorted(p.name for p in checks.iterdir()), sorted([live.name, new.name]))
+        self.assertEqual(sorted(p.name for p in checks.iterdir()), sorted([live.name, new.name] + [p.name for p in odd]))
 
     def test_lean_check_files_are_not_copy_sources(self):
         from forge import provenance
@@ -1231,9 +1232,11 @@ class CopyIsolationTests(unittest.TestCase):
                 self.assertEqual(real(), [provenance.ROOT, Path('/x/wt-a'), Path('/x/wt-b')])
                 real()
             self.assertEqual(run.call_count, 1)   # 缓存
-        with mock.patch.object(provenance, '_checkouts', [0.0, None]), \
+        cache = [0.0, None]
+        with mock.patch.object(provenance, '_checkouts', cache), \
                 mock.patch.object(provenance.subprocess, 'run', side_effect=OSError):
             self.assertEqual(real(), [provenance.ROOT])
+        self.assertIsNone(cache[1])   # 失败不缓存
 
     def _bench(self, run, agent_writes):
         s = self.scheduler.Scheduler(run, workers=1, max_tasks=5, max_failures=5)

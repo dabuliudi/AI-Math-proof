@@ -91,12 +91,12 @@ def _sweep_checks(now=None):
     _swept[0] = now
     for path in CHECKS.glob('check_*.lean'):
         parts = path.stem.split('_')
-        pid = int(parts[1]) if len(parts) == 3 and parts[1].isdigit() else None
-        alive = _alive(pid) if pid is not None else None
-        try:
+        try:   # 任何人都能往这里放文件：名字怪的文件不能让检查全部失败
+            pid = int(parts[1]) if len(parts) == 3 and parts[1].isascii() and parts[1].isdigit() else None
+            alive = _alive(pid) if pid is not None else None
             if alive is False or (alive is None and now - path.stat().st_mtime > CHECK_MAX_AGE):
                 path.unlink(missing_ok=True)
-        except OSError:
+        except (OSError, ValueError, OverflowError):
             pass
 
 

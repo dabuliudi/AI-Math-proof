@@ -80,7 +80,7 @@ def checkouts():
         out = subprocess.run(['git', 'worktree', 'list', '--porcelain'], cwd=ROOT, capture_output=True,
                              text=True, encoding='utf-8', errors='replace', timeout=30).stdout
     except (OSError, subprocess.SubprocessError):
-        out = ''
+        return found   # 不缓存失败：下一次再试，免得 5 分钟里都看不到其他检出
     seen = {ROOT.resolve()}
     for line in out.splitlines():
         path = Path(line[len('worktree '):]) if line.startswith('worktree ') else None

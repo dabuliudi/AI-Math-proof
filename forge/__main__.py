@@ -346,7 +346,7 @@ def main(argv=None):
     elif args.command == 'portfolio':
         from .portfolio import Portfolio
         runner = Portfolio(args.run, workers=args.workers, max_tasks=100000, budget_minutes=args.budget_minutes,
-                           task_minutes=args.task_minutes, max_failures=1000, effort=args.effort,
+                           task_minutes=args.task_minutes, max_failures=1000, effort=args.effort, agent_error_limit=5, cooldowns=6,
                            min_free_memory=args.min_free_memory)
         emit(runner.run_portfolio(args.bench, args.problems.split(','), k=args.k, lemma_minutes=args.lemma_minutes,
                                   lemma_attempts=args.lemma_attempts, revive=args.revive,

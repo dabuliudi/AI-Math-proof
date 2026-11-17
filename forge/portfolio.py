@@ -366,6 +366,17 @@ class Portfolio(Scheduler):
         for parent, _ in info.get('parents', []):
             self._maybe_assemble_lemma(parent)
 
+    def _agent_down(self, code, used, agent, work, began):
+        """agent 本身没跑起来（退出码非 0 且一个 token 都没用）：多半是 Codex 服务或网络故障，不是题难。
+        不算一次尝试、不记失败的骨架，把这项活原样放回队列；连续几次这样由调度器暂停、探测、必要时停下。"""
+        if code == 0 or used:
+            return False
+        self._record(dict(mode='portfolio-' + work[0].replace('_', '-'), task='/'.join(str(x) for x in work[1:3]), worker=agent,
+                          outcome='agent_error', progress=False, seconds=round(time.time() - began), tokens=0, exit=code,
+                          timed_out=False, reason='agent 没有跑起来（退出码非 0、没有用 token），放回队列', message=''))
+        self._push(work)
+        return True
+
     def _worker(self, index):
         agent = f'{self.run}-w{index}'
         (self.scratch / agent).mkdir(parents=True, exist_ok=True)
@@ -393,6 +404,8 @@ class Portfolio(Scheduler):
                                       strategy=STRATEGIES[(k - 1) % len(STRATEGIES)])
         began = time.time()
         code, message, used, slow = self._invoke(prompt, agent)
+        if self._agent_down(code, used, agent, ('sketch', problem, k), began):  # Codex 出错（不是题难）：不算一次尝试，放回队列
+            return
         check = dict(ok=False, reason='没有交出骨架')
         if path.exists():
             try:
@@ -460,6 +473,8 @@ class Portfolio(Scheduler):
                                       forge=FORGE, run=self.run, file=path, strategy=STRATEGIES[(k - 1) % len(STRATEGIES)])
         began = time.time()
         code, message, used, slow = self._invoke(prompt, agent)
+        if self._agent_down(code, used, agent, ('split_sketch', problem, lemma, k), began):  # Codex 出错（不是题难）：不算一次尝试，放回队列
+            return
         check = dict(ok=False, reason='没有交出骨架')
         if path.exists():
             try:
@@ -554,6 +569,8 @@ class Portfolio(Scheduler):
                                               lemmas=', '.join(files), file=out, forge=FORGE, run=self.run)
         began = time.time()
         code, message, used, slow = self._invoke(prompt, agent)
+        if self._agent_down(code, used, agent, ('assemble_lemma', problem, lemma, sdag, reason), began):  # Codex 出错（不是题难）：不算一次尝试，放回队列
+            return
         result = dict(ok=False, reason='没有交出拼装结果')
         if out.exists():
             body = main_last(out.read_text(encoding='utf-8'), lemma)
@@ -603,6 +620,8 @@ class Portfolio(Scheduler):
                                      minutes=self.lemma_seconds // 60, previous=previous)
         began = time.time()
         code, message, used, slow = self._invoke(prompt, agent, seconds=self.lemma_seconds)
+        if self._agent_down(code, used, agent, ('lemma', problem, lemma), began):  # Codex 出错（不是题难）：不算一次尝试，放回队列
+            return
         status, reason = 'unsolved', '没有交出证明'
         if path.exists():
             body = main_last(path.read_text(encoding='utf-8'), lemma)
@@ -676,6 +695,8 @@ class Portfolio(Scheduler):
             prompt = ASSEMBLE_PROMPT.format(root=ROOT, agent=agent, name=problem, skeleton=skel, lemmas=', '.join(files),
                                             file=out, forge=FORGE, set=self.set_name)
             code, message, used, slow = self._invoke(prompt, agent)
+            if self._agent_down(code, used, agent, ('assemble', problem, dag), began):  # Codex 出错（不是题难）：不算一次尝试，放回队列
+                return
             how = 'agent'
             if out.exists():
                 result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run, **check)

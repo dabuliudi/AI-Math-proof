@@ -839,7 +839,8 @@ class SchedulerTests(unittest.TestCase):
         root = Path(self.tmp.name)
         self.patches = [mock.patch.object(scheduler, 'RUNS', root / 'runs'), mock.patch.object(scheduler, 'DATA', root),
                         mock.patch.object(scheduler, 'SCRATCH', root / 'scratch'),
-                        mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
+                        mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')])]
         for p in self.patches:
             p.start()
         self.scheduler = scheduler
@@ -1118,7 +1119,8 @@ class CopyIsolationTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.patches = [mock.patch.object(scheduler, 'RUNS', self.root / 'runs'), mock.patch.object(scheduler, 'DATA', self.root),
                         mock.patch.object(scheduler, 'SCRATCH', self.root / 'scratch'),
-                        mock.patch('forge.provenance.SCRATCH', self.root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
+                        mock.patch('forge.provenance.SCRATCH', self.root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')])]
         for p in self.patches:
             p.start()
         self.scheduler = scheduler
@@ -1163,6 +1165,80 @@ class CopyIsolationTests(unittest.TestCase):
         self.assertEqual(cmd[cmd.index('--add-dir') + 1], str(s.scratch))
         from forge.leanrun import ROOT, SCRATCH
         self.assertNotIn(ROOT, SCRATCH.parents)
+
+    def test_lean_check_files_are_written_outside_the_repo_and_removed(self):
+        from forge import leanrun
+        seen = []
+        class FakeProc:
+            pid, returncode = 1, 0
+            def __init__(self, command, **kw):
+                seen.append(Path(command[-1]))
+            def communicate(self, timeout=None):
+                return '', ''
+        checks = self.root / 'scratch' / 'checks'
+        lake = mock.patch.object(leanrun, 'find_lake', return_value='lake')   # CI 上没装 Lean
+        lake.start(); self.addCleanup(lake.stop)
+        with mock.patch.object(leanrun, 'CHECKS', checks), mock.patch.object(leanrun.subprocess, 'Popen', FakeProc):
+            leanrun.run_source('theorem t : True := trivial\n')
+        self.assertEqual(seen[0].parent, checks)
+        self.assertTrue(seen[0].name.startswith(f'check_{os.getpid()}_'))
+        self.assertNotIn(leanrun.ROOT, leanrun.CHECKS.parents)
+        self.assertFalse(seen[0].exists())
+        with mock.patch.object(leanrun, 'CHECKS', checks), \
+                mock.patch.object(leanrun.subprocess, 'Popen', side_effect=FileNotFoundError('lake')):
+            with self.assertRaises(FileNotFoundError):
+                leanrun.run_source('theorem t : True := trivial\n')
+        self.assertEqual(list(checks.iterdir()), [])   # 出错也删
+
+    def test_sweep_removes_check_files_of_dead_processes_only(self):
+        from forge import leanrun
+        checks = self.root / 'scratch' / 'checks'
+        checks.mkdir(parents=True)
+        live = checks / f'check_{os.getpid()}_aa.lean'
+        dead = checks / 'check_999999999_bb.lean'
+        old = checks / 'check_0123456789abcdef.lean'   # 旧文件名，认不出进程号
+        new = checks / 'check_fedcba9876543210.lean'
+        odd = [checks / 'check_4294967296_x.lean', checks / 'check_²_x.lean']   # 进程号溢出、非 ASCII 数字
+        for path in (live, dead, old, new, *odd):
+            path.write_text('x', encoding='utf-8')
+        os.utime(old, (time.time() - 2 * leanrun.CHECK_MAX_AGE,) * 2)
+        with mock.patch.object(leanrun, 'CHECKS', checks), mock.patch.object(leanrun, '_swept', [0.0]):
+            leanrun._sweep_checks()
+        self.assertEqual(sorted(p.name for p in checks.iterdir()), sorted([live.name, new.name] + [p.name for p in odd]))
+
+    def test_lean_check_files_are_not_copy_sources(self):
+        from forge import provenance
+        self._old_file('checks/check_1_ab.lean', self.PROOF)
+        with mock.patch.object(provenance, 'CHECKS', self.root / 'scratch' / 'checks'):
+            self.assertFalse(provenance.check(self.PROOF, time.time())['copied'])
+
+    def test_other_worktrees_old_drafts_are_sources(self):
+        from forge import provenance
+        other = self.root / 'other-checkout'
+        draft = other / 'forge' / 'data' / 'staging' / 'portfolio' / 'pf.json'
+        draft.parent.mkdir(parents=True)
+        draft.write_text(json.dumps(dict(lemmas=dict(L=dict(proof=self.PROOF)))), encoding='utf-8')
+        os.utime(draft, (time.time() - 3600,) * 2)
+        with mock.patch.object(provenance, 'checkouts', lambda: [provenance.ROOT, other]):
+            self.assertEqual(provenance.check(self.PROOF, time.time())['source'], str(draft))
+            self.assertFalse(provenance.check(self.PROOF, time.time(), exclude=[draft])['copied'])
+        self.assertFalse(provenance.check(self.PROOF, time.time())['copied'])   # 只有当前检出时看不到
+
+    def test_checkouts_lists_every_worktree_once(self):
+        from forge import provenance
+        real = next(p for p in self.patches if p.attribute == 'checkouts').temp_original   # setUp 换掉了它
+        out = (f'worktree {provenance.ROOT}\nHEAD abc\nbranch refs/heads/main\n\n'
+               'worktree /x/wt-a\nHEAD def\nbranch refs/heads/a\n\nworktree /x/wt-b\nHEAD 123\ndetached\n')
+        with mock.patch.object(provenance, '_checkouts', [0.0, None]):
+            with mock.patch.object(provenance.subprocess, 'run', return_value=mock.Mock(stdout=out)) as run:
+                self.assertEqual(real(), [provenance.ROOT, Path('/x/wt-a'), Path('/x/wt-b')])
+                real()
+            self.assertEqual(run.call_count, 1)   # 缓存
+        cache = [0.0, None]
+        with mock.patch.object(provenance, '_checkouts', cache), \
+                mock.patch.object(provenance.subprocess, 'run', side_effect=OSError):
+            self.assertEqual(real(), [provenance.ROOT])
+        self.assertIsNone(cache[1])   # 失败不缓存
 
     def _bench(self, run, agent_writes):
         s = self.scheduler.Scheduler(run, workers=1, max_tasks=5, max_failures=5)
@@ -1864,6 +1940,7 @@ class PortfolioCopyTests(unittest.TestCase):
                       mock.patch.object(portfolio, 'SCRATCH', root / 'scratch'), mock.patch.object(portfolio, 'DATA', root / 'data'),
                       mock.patch('forge.scheduler.SCRATCH', root / 'scratch'), mock.patch('forge.scheduler.RUNS', root / 'runs'),
                       mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')]),
                       mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')])):
             stack.enter_context(patch)
         self.portfolio = portfolio
@@ -1886,6 +1963,22 @@ class PortfolioCopyTests(unittest.TestCase):
         self.assertIsNone(self.runner._copy_of(self.PROOF))
         self._old('agents/pf-other/w1/L.proved.lean')
         self.assertIn('pf-other', self.runner._copy_of(self.PROOF))
+
+    def test_own_drafts_in_another_worktree_are_not_sources(self):
+        other = self.root / 'other-checkout'
+        own = other / 'forge' / 'data' / 'staging' / 'agents' / 'pf-now' / 'w1' / 'L.final.lean'
+        state = other / 'forge' / 'data' / 'staging' / 'portfolio' / 'pf-now.json'
+        foreign = other / 'forge' / 'data' / 'staging' / 'agents' / 'pf-other' / 'w1' / 'L.final.lean'
+        for path in (own, state):
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(self.PROOF if path.suffix == '.lean' else json.dumps(dict(x=self.PROOF)))
+            os.utime(path, (time.time() - 3600,) * 2)
+        with mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout'), other]):
+            self.assertIsNone(self.runner._copy_of(self.PROOF))   # 同名轮次在别的检出里留下的是自己的
+            foreign.parent.mkdir(parents=True)
+            foreign.write_text(self.PROOF)
+            os.utime(foreign, (time.time() - 3600,) * 2)
+            self.assertIn('pf-other', self.runner._copy_of(self.PROOF))
 
     def test_a_problem_using_a_copied_lemma_is_not_solved(self):
         self.runner.state['lemmas']['L']['copied'] = '/old/x.lean'

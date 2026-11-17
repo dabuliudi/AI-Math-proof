@@ -590,9 +590,11 @@ class Portfolio(Scheduler):
 
     # ---- 抄写检测 ----
     def _own_files(self):
-        """本轮自己的草稿和状态（新旧两个位置）：接着上次跑时，自己上一次证出的引理不算抄写的来源。"""
-        return [SCRATCH / 'agents' / self.run, DATA / 'staging' / 'agents' / self.run,
-                STATE_DIR / f'{self.run}.json', LEGACY_STATE_DIR / f'{self.run}.json']
+        """本轮自己的草稿和状态（新位置，和所有检出里的旧位置）：接着上次跑时，自己上一次证出的引理不算抄写的来源。"""
+        own = [SCRATCH / 'agents' / self.run, STATE_DIR / f'{self.run}.json']
+        for d in provenance.legacy_dirs():   # 同名轮次在任何检出里留下的旧草稿和状态都是自己的
+            own += [d / self.run, d / f'{self.run}.json']
+        return own
 
     def _copy_of(self, body, lemmas=()):
         """证出的引理或题目是不是抄来的：自己和本轮开始前就有的别的文件比；用到的子引理里有抄来的，也算抄来的。

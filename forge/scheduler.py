@@ -572,7 +572,7 @@ class Scheduler:
                     continue
                 for line in path.read_text(encoding='utf-8').splitlines():
                     row = json.loads(line)
-                    if row['solved'] and row.get('agent') == 'scheduler':
+                    if row['solved'] and not row.get('copied') and row.get('agent') == 'scheduler':  # 抄来的不算，下次照常重做
                         solved.add(row['problem'])
             items = [i for i in items if i['name'] not in solved]
         if resume and self.log.exists():
@@ -620,7 +620,7 @@ def compare(runs, problems_from=None):
         for line in path.read_text(encoding='utf-8').splitlines():
             row = json.loads(line)
             item = per.setdefault(row['task'], dict(solved=False, tokens=0, seconds=0, attempts=0))
-            item['solved'] = item['solved'] or row['outcome'] in ('solved', 'proved', 'disproved')
+            item['solved'] = item['solved'] or (row['outcome'] in ('solved', 'proved', 'disproved') and not row.get('copied'))
             item['tokens'] += row.get('tokens') or 0
             item['seconds'] += row['seconds']
             item['attempts'] += 1

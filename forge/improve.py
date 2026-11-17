@@ -93,7 +93,9 @@ def from_run(run, problems):
     missing = set(problems) - set(per)
     if missing:
         raise ValueError(f'轮次 {run} 里没有这些题，不能当基线：{sorted(missing)}')
-    return _score(run, problems, per)
+    # 抄写检测加上之前跑的轮次，记录里没有检测字段：它的解出可能含抄来的，不能直接当干净的基线
+    checked = all('copied' in r for r in rows if r['task'] in problems and r['outcome'] == 'solved')
+    return dict(_score(run, problems, per), copy_checked=checked)
 
 
 def _note(row):
@@ -169,9 +171,9 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
                      tokens_spent=state['tokens_spent'] + score['tokens'] + hold['tokens'])
         _note(dict(event='baseline', set=set_name, from_run=baseline_run, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
                    dev_copied=score.get('copied', []), holdout_solved=hold['solved'], holdout_tokens=hold['tokens'], holdout_copied=hold.get('copied', [])))
-        state['copy_checked'] = True
+        state['copy_checked'] = score.get('copy_checked', True) and hold.get('copy_checked', True)
         _save_state(state)
-    elif not state.get('copy_checked') and not dry_run:
+    if not state.get('copy_checked') and not dry_run:
         # 这份状态里“当前最好”的成绩是在没有抄写检测时测的，可能含抄来的解出：用同一配置重测一次再比较。
         # 试跑（dry_run）不重测：否则会把试跑的空成绩当成真成绩存下来。
         if state['tokens_spent'] >= token_budget:

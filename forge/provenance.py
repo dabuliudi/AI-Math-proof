@@ -63,14 +63,17 @@ def _file_lines(path, mtime):
     return found
 
 
-def sources(before, roots=None):
-    """在 before（时间戳）之前就存在的草稿和拆解状态文件。"""
+def sources(before, roots=None, exclude=()):
+    """在 before（时间戳）之前就存在的草稿和拆解状态文件；exclude 里的目录和文件不算。"""
+    exclude = [Path(e) for e in exclude]
     for root in roots or (SCRATCH, *LEGACY):
         root = Path(root)
         if not root.is_dir():
             continue
         for path in root.rglob('*'):
             if path.suffix not in ('.lean', '.json') or not path.is_file():
+                continue
+            if any(path == e or e in path.parents for e in exclude):
                 continue
             try:
                 mtime = path.stat().st_mtime
@@ -80,13 +83,14 @@ def sources(before, roots=None):
                 yield path, mtime
 
 
-def check(text, before, roots=None):
-    """返回和这份证明重合最多的旧文件：dict(copied, overlap, shared, source)。没有可比的行时 overlap 为 0。"""
+def check(text, before, roots=None, exclude=()):
+    """返回和这份证明重合最多的旧文件：dict(copied, overlap, shared, source)。没有可比的行时 overlap 为 0。
+    exclude：不算来源的目录和文件，例如组合拆解接着跑时它自己上一次留下的引理。"""
     mine = lines(text)
     best = dict(copied=False, overlap=0.0, shared=0, source=None)
     if not mine:
         return best
-    for path, mtime in sources(before, roots):
+    for path, mtime in sources(before, roots, exclude):
         shared = len(mine & _file_lines(path, mtime))
         if shared > best['shared']:
             best.update(shared=shared, overlap=round(shared / len(mine), 3), source=str(path))

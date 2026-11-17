@@ -1207,6 +1207,27 @@ class CopyIsolationTests(unittest.TestCase):
         self.assertFalse(draft.exists())
         self.assertEqual(len(list(draft.parent.glob('p.attempt1.stale-*.lean'))), 1)
 
+    def test_excluded_folders_are_not_sources(self):
+        from forge import provenance
+        own = self._old_file('agents/pf-run/w0/L.proved.lean', self.PROOF)
+        self.assertTrue(provenance.check(self.PROOF, time.time())['copied'])
+        self.assertFalse(provenance.check(self.PROOF, time.time(), exclude=[own.parent.parent])['copied'])
+
+    def test_compare_and_only_unsolved_ignore_copied_solves(self):
+        runs = self.root / 'runs'
+        runs.mkdir(parents=True, exist_ok=True)
+        rows = [dict(task='a', outcome='solved', copied=True, seconds=1), dict(task='b', outcome='solved', copied=False, seconds=1)]
+        (runs / 'cmp.jsonl').write_text('\n'.join(json.dumps(r) for r in rows))
+        row = self.scheduler.compare(['cmp'])['runs'][0]
+        self.assertEqual(row['solved'], 1)
+        from forge import bench
+        (runs / 'demo.r.jsonl').write_text('\n'.join(json.dumps(dict(problem=p, solved=True, copied=c, agent='scheduler'))
+                                                     for p, c in (('a', True), ('b', False))))
+        s = self.scheduler.Scheduler('ou', workers=1)
+        with mock.patch.object(bench, 'RUNS', runs), mock.patch('forge.bench.load', return_value=[dict(name='a'), dict(name='b')]), \
+                mock.patch.object(s, '_run_threads', side_effect=lambda fn, args: [i['name'] for i in args[1]]):
+            self.assertEqual(s.run_bench('demo', only_unsolved=True), ['a'])
+
     def test_bench_score_leaves_out_copied_solves(self):
         from forge import bench
         runs = self.root / 'runs'
@@ -1280,6 +1301,23 @@ class ImproveCopyTests(unittest.TestCase):
              mock.patch.object(improve, 'evaluate', side_effect=fake):
             improve.run_loop('x', iterations=0, **kw)
         return runs, json.loads((root / 'state-x.json').read_text())
+
+    def test_baseline_run_without_copy_fields_is_rechecked(self):
+        from forge import improve
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / 'runs').mkdir()
+        rows = [dict(task='a', outcome='solved', tokens=1, seconds=1), dict(task='b', outcome='solved', tokens=1, seconds=1)]
+        (root / 'runs' / 'old.jsonl').write_text('\n'.join(json.dumps(r) for r in rows))
+        runs = []
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            runs.append(run)
+            return dict(run=run, solved=1, problems=1, tokens=0, per={}, copied=[], complete=True)
+        with mock.patch('forge.scheduler.RUNS', root / 'runs'), mock.patch.object(improve, 'STATE', root / 'state.json'), \
+             mock.patch.object(improve, 'HISTORY', root / 'h.jsonl'), mock.patch.object(improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(improve, 'evaluate', side_effect=fake):
+            improve.run_loop('x', iterations=0, baseline_run='old')
+        self.assertEqual(runs, ['improve-x-000-recheck-dev', 'improve-x-000-recheck-holdout'])
 
     def test_dry_run_does_not_overwrite_the_best_with_empty_scores(self):
         tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)

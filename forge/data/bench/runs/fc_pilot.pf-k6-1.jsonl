@@ -1,0 +1,23 @@
+{"problem": "fc_erdos1038_erdos_1038_parts_ii", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:00:22+0800"}
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:02:24+0800"}
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:02:44+0800"}
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:03:16+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:03:40+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:03:52+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:04:42+0800"}
+{"problem": "fc_erdos1062_erdos_1062_variants_lebensold_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": false, "reason": "编译超时（300 秒）。把证明拆成更小的辅助引理，或换更直接的策略。", "refuted": false, "at": "2026-11-16T23:04:54+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:05:32+0800"}
+{"problem": "fc_erdos686_erdos_686_variants_four_three", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:05:49+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": false, "reason": "Lean 报错", "refuted": false, "at": "2026-11-16T23:06:21+0800"}
+{"problem": "fc_erdos1023_erdos_1023_variants_hunter", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:06:49+0800"}
+{"problem": "fc_erdos1023_erdos_1023_variants_hunter", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:08:31+0800"}
+{"problem": "fc_erdos1023_erdos_1023_variants_hunter", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:08:35+0800"}
+{"problem": "fc_erdos1062_erdos_1062_variants_lebensold_bounds", "run": "pf-k6-1", "agent": "pf-k6-1-w13", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:10:12+0800"}
+{"problem": "fc_erdos1062_erdos_1062_variants_lebensold_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:10:21+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "pf-k6-1-w4", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:10:51+0800"}
+{"problem": "fc_erdos1062_erdos_1062_variants_lebensold_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": false, "reason": "编译超时（300 秒）。把证明拆成更小的辅助引理，或换更直接的策略。", "refuted": false, "at": "2026-11-16T23:15:20+0800"}
+{"problem": "fc_erdos1057_erdos_1057_variants_upper_bound", "run": "pf-k6-1", "agent": "scheduler", "solved": false, "reason": "编译超时（300 秒）。把证明拆成更小的辅助引理，或换更直接的策略。", "refuted": false, "at": "2026-11-16T23:15:21+0800"}
+{"problem": "fc_erdos667_erdos_667_variants_ramsey_bounds", "run": "pf-k6-1", "agent": "scheduler", "solved": false, "reason": "编译超时（300 秒）。把证明拆成更小的辅助引理，或换更直接的策略。", "refuted": false, "at": "2026-11-16T23:15:57+0800"}
+{"problem": "fc_erdos1057_erdos_1057_variants_upper_bound", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:18:45+0800"}
+{"problem": "fc_erdos1057_erdos_1057_variants_upper_bound", "run": "pf-k6-1", "agent": "pf-k6-1-w5", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:19:02+0800"}
+{"problem": "fc_erdos1057_erdos_1057_variants_upper_bound", "run": "pf-k6-1", "agent": "scheduler", "solved": true, "reason": "通过：命题匹配，公理合规", "refuted": false, "at": "2026-11-16T23:19:44+0800"}

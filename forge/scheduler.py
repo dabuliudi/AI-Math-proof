@@ -23,8 +23,8 @@ import threading
 import time
 from pathlib import Path
 
-from . import bench, tasks
-from .leanrun import DATA, PROJECT, ROOT
+from . import bench, provenance, tasks
+from .leanrun import DATA, PROJECT, ROOT, SCRATCH
 
 RUNS = DATA / 'runs'
 MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
@@ -257,7 +257,8 @@ class Scheduler:
         self.agent_failures_in_a_row = 0
         self.cooldowns_left, self.cooldown_seconds = cooldowns, cooldown_minutes * 60
         self.paused_until, self.probing, self.events = 0, False, []
-        self.scratch = DATA / 'staging' / 'agents' / run
+        self.scratch = SCRATCH / 'agents' / run
+        self.began = time.time()  # 抄写检测只把这之前就存在的文件当作来源：本轮自己写的草稿不算
         RUNS.mkdir(parents=True, exist_ok=True)
         self.log = RUNS / f'{run}.jsonl'
 
@@ -267,7 +268,7 @@ class Scheduler:
             return self.agent_cmd
         effort = effort or self.effort
         cmd = [find_codex(), 'exec', '-s', self.sandbox, '--ephemeral', '--skip-git-repo-check', '-C', str(ROOT),
-               '-o', str(last_message)]
+               '-o', str(last_message), '--add-dir', str(self.scratch)]  # 草稿目录在仓库外，要单独给写权限
         if self.model:
             cmd += ['-m', self.model]
         if effort:
@@ -418,6 +419,9 @@ class Scheduler:
             if not self._may_start():
                 return
             proof = scratch / f'{item["name"]}.lean'
+            if proof.exists():
+                # 同名轮次以前留下的证明文件：不挪开的话，agent 什么都不做也会被判解出
+                proof.rename(proof.with_name(f'{item["name"]}.stale-{time.strftime("%Y%m%d%H%M%S")}.lean'))
             steps = self.ladder or [(None, None)]
             previous = None
             for attempt, (effort, minutes) in enumerate(steps):
@@ -437,17 +441,22 @@ class Scheduler:
                 overrides = dict(effort=effort, seconds=minutes * 60) if effort else {}
                 began = time.time()
                 code, message, used, slow = self._invoke(prompt, agent, **overrides)
-                solved, reason = False, '没有交出证明文件'
+                solved, reason, copy = False, '没有交出证明文件', None
                 if proof.exists():  # 正式成绩只来自这里：调度器自己用内核校验 agent 留下的证明
-                    verdict = bench.check(set_name, item['name'], proof.read_text(encoding='utf-8'), self.run, 'scheduler')
+                    body = proof.read_text(encoding='utf-8')
+                    verdict = bench.check(set_name, item['name'], body, self.run, 'scheduler')
                     solved, reason = verdict['solved'], verdict.get('reason', '')
+                    if solved:  # 解出了：看是不是抄了以前留下的证明（改进循环不把抄来的解出算进成绩）
+                        copy = provenance.check(body, self.began)
                 # 评测里做不出难题是正常的，不算“没有进展”；只有 agent 本身出错、或连证明文件都没交，才计入熔断。
                 attempted = code == 0 and proof.exists()
                 self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',
                                   progress=solved or attempted, seconds=round(time.time() - began), tokens=used, exit=code,
                                   timed_out=slow, reason=reason[:300], message=message[-500:], attempt=attempt + 1,
                                   effort=effort or self.effort, prompt=self.prompt,
-                                  raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else ''))
+                                  raw=self.last_raw.get(agent, '')[-1200:] if code != 0 else '',
+                                  **(dict(copied=copy['copied'], copy_overlap=copy['overlap'], copy_source=copy['source'])
+                                     if copy else {})))
                 if solved or self.stop_reason:
                     break
                 if code != 0 and not proof.exists() and not item.get('_retried'):

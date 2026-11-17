@@ -836,7 +836,9 @@ class SchedulerTests(unittest.TestCase):
         from forge import scheduler
         self.tmp = tempfile.TemporaryDirectory()
         root = Path(self.tmp.name)
-        self.patches = [mock.patch.object(scheduler, 'RUNS', root / 'runs'), mock.patch.object(scheduler, 'DATA', root)]
+        self.patches = [mock.patch.object(scheduler, 'RUNS', root / 'runs'), mock.patch.object(scheduler, 'DATA', root),
+                        mock.patch.object(scheduler, 'SCRATCH', root / 'scratch'),
+                        mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
         for p in self.patches:
             p.start()
         self.scheduler = scheduler
@@ -1102,6 +1104,147 @@ class SchedulerTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class CopyIsolationTests(unittest.TestCase):
+    """事故（2026-11-17）：评测 agent 读得到以前各轮留下的证明，改进循环里有题是抄来的。"""
+
+    PROOF = '\n'.join(f'  have h{i} : some_long_fact_number_{i} = other_side_{i} := by ring_nf' for i in range(8))
+
+    def setUp(self):
+        from forge import scheduler
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.patches = [mock.patch.object(scheduler, 'RUNS', self.root / 'runs'), mock.patch.object(scheduler, 'DATA', self.root),
+                        mock.patch.object(scheduler, 'SCRATCH', self.root / 'scratch'),
+                        mock.patch('forge.provenance.SCRATCH', self.root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
+        for p in self.patches:
+            p.start()
+        self.scheduler = scheduler
+
+    def tearDown(self):
+        for p in self.patches:
+            p.stop()
+        self.tmp.cleanup()
+
+    def _old_file(self, rel, text, age=3600):
+        path = self.root / 'scratch' / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(text, encoding='utf-8')
+        old = time.time() - age
+        os.utime(path, (old, old))
+        return path
+
+    def test_check_flags_only_files_older_than_the_run(self):
+        from forge import provenance
+        source = self._old_file('agents/old-run/w0/p.lean', 'theorem p : True := by\n' + self.PROOF)
+        verdict = provenance.check('theorem p : True := by\n' + self.PROOF, time.time())
+        self.assertTrue(verdict['copied'])
+        self.assertEqual(verdict['source'], str(source))
+        self.assertFalse(provenance.check(self.PROOF, time.time() - 7200)['copied'])   # 文件比本轮新：不算来源
+
+    def test_short_or_common_lines_are_not_a_copy(self):
+        from forge import provenance
+        self._old_file('agents/old/w0/p.lean', 'theorem p : True := by\n  simp\n  omega\n' + self.PROOF.splitlines()[0])
+        verdict = provenance.check('theorem p : True := by\n  simp\n  omega\n' + self.PROOF.splitlines()[0], time.time())
+        self.assertFalse(verdict['copied'])   # 只有 1 行够长且相同，少于 MIN_SHARED
+
+    def test_portfolio_state_json_is_a_source(self):
+        from forge import provenance
+        self._old_file('portfolio/pf.json', json.dumps(dict(lemmas=dict(L=dict(proof=self.PROOF)))))
+        self.assertTrue(provenance.check(self.PROOF, time.time())['copied'])
+
+    def test_scratch_lives_outside_the_repo_and_is_writable_for_the_agent(self):
+        s = self.scheduler.Scheduler('iso', workers=1)
+        self.assertEqual(s.scratch, self.root / 'scratch' / 'agents' / 'iso')
+        with mock.patch.object(self.scheduler, 'find_codex', return_value='codex'):
+            cmd = s._command(s.scratch / 'w.last.txt')
+        self.assertEqual(cmd[cmd.index('--add-dir') + 1], str(s.scratch))
+        from forge.leanrun import ROOT, SCRATCH
+        self.assertNotIn(ROOT, SCRATCH.parents)
+
+    def _bench(self, run, agent_writes):
+        s = self.scheduler.Scheduler(run, workers=1, max_tasks=5, max_failures=5)
+        def fake_invoke(prompt, worker):
+            if agent_writes is not None:
+                (s.scratch / worker / 'p.lean').write_text(agent_writes, encoding='utf-8')
+            return 0, 'RESULT: solved', 10, False
+        checked = []
+        def fake_check(set_name, problem, body, run, agent):
+            checked.append(body)
+            return dict(ok=True, kind='proved', solved=True, reason='通过')
+        with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
+                mock.patch('forge.bench.load', return_value=[dict(name='p', statement=': True')]), \
+                mock.patch('forge.bench.check', side_effect=fake_check):
+            s.run_bench('demo', only_unsolved=False)
+        return s, checked
+
+    def test_bench_record_marks_a_copied_solve(self):
+        self._old_file('agents/pf-old/w3/p.d1.final.lean', 'theorem p : True := by\n' + self.PROOF)
+        s, _ = self._bench('cp', 'theorem p : True := by\n' + self.PROOF)
+        row = s.records[0]
+        self.assertEqual(row['outcome'], 'solved')
+        self.assertTrue(row['copied'])
+        self.assertIn('pf-old', row['copy_source'])
+
+    def test_bench_record_of_an_original_solve(self):
+        self._old_file('agents/pf-old/w3/q.lean', 'theorem q : True := by\n' + self.PROOF)
+        s, _ = self._bench('orig', 'theorem p : True := by\n' + self.PROOF.replace('ring_nf', 'nlinarith [sq_nonneg x]'))
+        self.assertFalse(s.records[0]['copied'])
+
+    def test_a_proof_left_by_an_earlier_run_of_the_same_name_is_not_a_solve(self):
+        stale = self._old_file('agents/same/same-w0/p.lean', 'theorem p : True := trivial')
+        s, checked = self._bench('same', None)   # agent 什么都没写
+        self.assertEqual(checked, [])
+        self.assertEqual(s.records[0]['outcome'], 'unsolved')
+        self.assertFalse(stale.exists())
+        self.assertEqual(len(list(stale.parent.glob('p.stale-*.lean'))), 1)
+
+
+class ImproveCopyTests(unittest.TestCase):
+    def test_copied_solves_do_not_count(self):
+        from forge import improve
+        per = improve._tally([dict(task='a', outcome='solved', copied=True, copy_source='x.lean', tokens=1, seconds=1),
+                              dict(task='b', outcome='solved', copied=False, tokens=1, seconds=1),
+                              dict(task='c', outcome='solved', tokens=1, seconds=1),          # 旧记录没有检测字段
+                              dict(task='d', outcome='unsolved', tokens=1, seconds=1)])
+        score = improve._score('r', ['a', 'b', 'c', 'd'], per)
+        self.assertEqual(score['solved'], 2)
+        self.assertEqual(score['copied'], ['a'])
+
+    def test_old_state_is_rechecked_before_any_candidate(self):
+        from forge import improve
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        best = dict(config=dict(prompt='auto003', effort='xhigh'), dev=dict(solved=11, tokens=100, per={}),
+                    holdout=dict(solved=12, tokens=100, per={}))
+        (root / 'state-x.json').write_text(json.dumps(dict(best=best, iteration=4, tokens_spent=0, set='x', dev=['a'], holdout=['b'])))
+        runs = []
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            runs.append((run, config['prompt']))
+            return dict(run=run, solved=9, problems=1, tokens=10, per={}, copied=['a'], complete=True)
+        with mock.patch.object(improve, 'STATE', root / 'state.json'), mock.patch.object(improve, 'HISTORY', root / 'h.jsonl'), \
+             mock.patch.object(improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(improve, 'evaluate', side_effect=fake):
+            improve.run_loop('x', iterations=0)
+        self.assertEqual(runs, [('improve-x-004-recheck-dev', 'auto003'), ('improve-x-004-recheck-holdout', 'auto003')])
+        state = json.loads((root / 'state-x.json').read_text())
+        self.assertTrue(state['copy_checked'])
+        self.assertEqual((state['best']['dev']['solved'], state['best']['holdout']['solved']), (9, 9))
+        row = json.loads((root / 'h.jsonl').read_text().splitlines()[-1])
+        self.assertEqual((row['event'], row['old_dev_solved'], row['dev_copied']), ('recheck', 11, ['a']))
+
+
+class PortfolioLegacyStateTests(unittest.TestCase):
+    def test_runs_started_before_the_move_resume_from_the_old_place(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        (root / 'old').mkdir()
+        (root / 'old' / 'pf-k6-1.json').write_text('{}')
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'new'), mock.patch.object(portfolio, 'LEGACY_STATE_DIR', root / 'old'):
+            self.assertEqual(portfolio._state_path('pf-k6-1'), root / 'old' / 'pf-k6-1.json')
+            self.assertEqual(portfolio._state_path('pf-new'), root / 'new' / 'pf-new.json')
 
 
 class ImproveTests(unittest.TestCase):

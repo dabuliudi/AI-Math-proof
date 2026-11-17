@@ -8,6 +8,9 @@
 4. 更好的候选再到保留集上跑一次，解出数不比当前最好的少，才正式采纳（防止只是碰巧适合开发集那几道题）。
 5. 每一轮记一行到 forge/data/improve/history.jsonl；token 总预算花完就停。
 
+抄来的解出不算：调度器给每个解出的证明做抄写检测（provenance.py），和更早留下的证明重合过多的，
+在成绩里算没解出，单独列在 copied 里。
+
 做法来自 Anthropic 的评测与 harness 设计文章：固定评测、开发集与保留集分开、只采纳在评测上确有改进的改动，
 以及“harness 里每个组件都是对模型能力的假设，要定期用评测重新检验”。
 """
@@ -57,24 +60,40 @@ def _save_state(state):
     path.write_text(json.dumps(state, ensure_ascii=False, indent=2), encoding='utf-8')
 
 
-def from_run(run, problems):
-    """用一轮已经跑完的评测当基线（同一配置不必重跑）：只取这组题的记录。"""
-    from .scheduler import RUNS
+def _tally(rows):
+    """每题的成绩。抄写检测判为抄来的解出不算解出，题名记进 copied。"""
     per = {}
-    for line in (RUNS / f'{run}.jsonl').read_text(encoding='utf-8').splitlines():
-        row = json.loads(line)
-        if row['task'] not in problems:
-            continue
+    for row in rows:
         item = per.setdefault(row['task'], dict(solved=False, tokens=0, seconds=0, reason=''))
-        item['solved'] = item['solved'] or row['outcome'] == 'solved'
+        if row['outcome'] == 'solved':
+            if row.get('copied'):
+                item['copied'] = row.get('copy_source')
+            else:
+                item['solved'] = True
         item['tokens'] += row.get('tokens') or 0
         item['seconds'] += row['seconds']
         item['reason'] = row.get('reason', '')
+    for item in per.values():
+        if item['solved']:
+            item.pop('copied', None)
+    return per
+
+
+def _score(run, problems, per):
+    return dict(run=run, solved=sum(i['solved'] for i in per.values()), problems=len(problems),
+                tokens=sum(i['tokens'] for i in per.values()), per=per,
+                copied=sorted(p for p, i in per.items() if 'copied' in i))
+
+
+def from_run(run, problems):
+    """用一轮已经跑完的评测当基线（同一配置不必重跑）：只取这组题的记录。"""
+    from .scheduler import RUNS
+    rows = [json.loads(line) for line in (RUNS / f'{run}.jsonl').read_text(encoding='utf-8').splitlines()]
+    per = _tally(r for r in rows if r['task'] in problems)
     missing = set(problems) - set(per)
     if missing:
         raise ValueError(f'轮次 {run} 里没有这些题，不能当基线：{sorted(missing)}')
-    return dict(run=run, solved=sum(i['solved'] for i in per.values()), problems=len(problems),
-                tokens=sum(i['tokens'] for i in per.values()), per=per)
+    return _score(run, problems, per)
 
 
 def _note(row):
@@ -96,18 +115,10 @@ def evaluate(run, set_name, problems, config, workers, minutes, dry_run=False):
     runner = Scheduler(run, workers=workers, max_tasks=len(problems), budget_minutes=24 * 60, task_minutes=minutes,
                        max_failures=max(6, len(problems)), effort=config['effort'], prompt=config['prompt'], dry_run=dry_run)
     runner.run_bench(set_name, only_unsolved=False, problems=problems)
-    per = {}
-    for row in runner.records:
-        item = per.setdefault(row['task'], dict(solved=False, tokens=0, seconds=0, reason=''))
-        item['solved'] = item['solved'] or row['outcome'] == 'solved'
-        item['tokens'] += row.get('tokens') or 0
-        item['seconds'] += row['seconds']
-        item['reason'] = row.get('reason', '')
+    per = _tally(runner.records)
     # 每道题都认真做过（agent 正常退出或交了证明）才算完整；agent 不可用、服务中断时成绩不能拿来比较
     attempted = {r['task'] for r in runner.records if r['exit'] == 0 or r['outcome'] == 'solved' or r['timed_out']}
-    return dict(run=run, solved=sum(i['solved'] for i in per.values()), problems=len(problems),
-                tokens=sum(i['tokens'] for i in per.values()), per=per,
-                complete=set(problems) <= attempted, stop_reason=runner.stop_reason)
+    return dict(_score(run, problems, per), complete=set(problems) <= attempted, stop_reason=runner.stop_reason)
 
 
 def better(candidate, best, token_margin=0.9):
@@ -157,7 +168,27 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
         state.update(best=dict(config=config, dev=score, holdout=hold), set=set_name, dev=dev, holdout=holdout, baseline_run=baseline_run,
                      tokens_spent=state['tokens_spent'] + score['tokens'] + hold['tokens'])
         _note(dict(event='baseline', set=set_name, from_run=baseline_run, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
-                   holdout_solved=hold['solved'], holdout_tokens=hold['tokens']))
+                   dev_copied=score.get('copied', []), holdout_solved=hold['solved'], holdout_tokens=hold['tokens'], holdout_copied=hold.get('copied', [])))
+        state['copy_checked'] = True
+        _save_state(state)
+    elif not state.get('copy_checked'):
+        # 这份状态里“当前最好”的成绩是在没有抄写检测时测的，可能含抄来的解出：用同一配置重测一次再比较
+        best = state['best']
+        n = state['iteration']
+        score = evaluate(f'improve-{set_name}-{n:03d}-recheck-dev', set_name, state['dev'], best['config'], workers, minutes, dry_run)
+        hold = evaluate(f'improve-{set_name}-{n:03d}-recheck-holdout', set_name, state['holdout'], best['config'], workers, minutes, dry_run)
+        state['tokens_spent'] += score['tokens'] + hold['tokens']
+        if not (score.get('complete', True) and hold.get('complete', True)):
+            _note(dict(event='aborted', set=set_name, iteration=n, config=best['config'], reason='重测当前最好的配置没有做完：'
+                       + (score.get('stop_reason') or hold.get('stop_reason') or '有题没有做完')))
+            _save_state(state)
+            return _summary(state)
+        _note(dict(event='recheck', set=set_name, config=best['config'], reason='加了抄写检测，重测当前最好的配置',
+                   old_dev_solved=best['dev']['solved'], old_holdout_solved=best['holdout']['solved'],
+                   dev_solved=score['solved'], dev_tokens=score['tokens'], dev_copied=score.get('copied', []),
+                   holdout_solved=hold['solved'], holdout_tokens=hold['tokens'], holdout_copied=hold.get('copied', [])))
+        state['best'] = dict(config=best['config'], dev=score, holdout=hold)
+        state['copy_checked'] = True
         _save_state(state)
     for _ in range(iterations):
         if state['tokens_spent'] >= token_budget:
@@ -185,7 +216,7 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
             _save_state(state)
             break
         row = dict(event='candidate', set=set_name, iteration=n, config=config, dev_solved=score['solved'], dev_tokens=score['tokens'],
-                   best_dev_solved=best['dev']['solved'], best_dev_tokens=best['dev']['tokens'])
+                   dev_copied=score.get('copied', []), best_dev_solved=best['dev']['solved'], best_dev_tokens=best['dev']['tokens'])
         if better(score, best['dev']):
             hold = evaluate(f'improve-{set_name}-{n:03d}-holdout', set_name, state['holdout'], config, workers, minutes, dry_run)
             state['tokens_spent'] += hold['tokens']
@@ -194,7 +225,7 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
                 _note(dict(event='aborted', set=set_name, iteration=n, config=config, reason=hold.get('stop_reason') or '保留集有题没有做完'))
                 _save_state(state)
                 break
-            row.update(holdout_solved=hold['solved'], holdout_tokens=hold['tokens'],
+            row.update(holdout_solved=hold['solved'], holdout_tokens=hold['tokens'], holdout_copied=hold.get('copied', []),
                        best_holdout_solved=best['holdout']['solved'])
             if hold['solved'] >= best['holdout']['solved']:
                 state['best'] = dict(config=config, dev=score, holdout=hold)
@@ -205,5 +236,9 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
             row['decision'] = 'rejected_on_dev'
         _note(row)
         _save_state(state)
+    return _summary(state)
+
+
+def _summary(state):
     return dict(best=state['best']['config'], best_dev=dict(solved=state['best']['dev']['solved'], tokens=state['best']['dev']['tokens']),
                 iterations=state['iteration'], tokens_spent=state['tokens_spent'])

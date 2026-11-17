@@ -10,7 +10,7 @@
 所有检查都由 Lean 内核做；证明里有 sorry、额外公理或 native_decide 一律不收，所以不需要 agent 互相复核“有没有 sorry”。
 
 子引理来自评测题，不进 Mathlib2（否则评测题的解法会漏进库里，以后的成绩就不干净了）。全部记录在
-forge/data/staging/portfolio/<轮次>.json。
+~/.rsi-math/scratch/portfolio/<轮次>.json（仓库外，见 provenance.py；旧轮次仍在 forge/data/staging/portfolio）。
 """
 import json
 import re
@@ -19,11 +19,12 @@ import time
 from pathlib import Path
 
 from . import bench
-from .leanrun import DATA, PROJECT, ROOT
+from .leanrun import DATA, PROJECT, ROOT, SCRATCH
 from .scheduler import FORGE, PREAMBLE_NOTE, SOURCE_NOTE, Scheduler
 from .statement import StatementError
 
-STATE_DIR = DATA / 'staging' / 'portfolio'
+STATE_DIR = SCRATCH / 'portfolio'  # 在仓库外：状态里有证明原文，见 provenance.py
+LEGACY_STATE_DIR = DATA / 'staging' / 'portfolio'
 
 STRATEGIES = [
     'Prove it the most direct way you can see; make each hole a substantial, self-contained step.',
@@ -114,7 +115,9 @@ def _opens_note(item):
 
 
 def _state_path(run):
-    return STATE_DIR / f'{run}.json'
+    legacy = LEGACY_STATE_DIR / f'{run}.json'
+    # 移出仓库之前开始的拆解轮次：状态还在旧位置，接着在那里跑
+    return legacy if legacy.exists() and not (STATE_DIR / f'{run}.json').exists() else STATE_DIR / f'{run}.json'
 
 
 def load_state(run):
@@ -223,6 +226,9 @@ class Portfolio(Scheduler):
         if missing:
             raise ValueError(f'评测集里没有这些题：{sorted(missing)}')
         self.state = load_state(self.run)
+        legacy = DATA / 'staging' / 'agents' / self.run
+        if legacy.is_dir() and not self.scratch.exists():
+            self.scratch = legacy  # 旧轮次接着跑：引理文件都在旧位置
         for p in problems:
             self.state['problems'].setdefault(p, dict(set=set_name, dags={}, solved_by=None))
         self._save()
@@ -276,7 +282,7 @@ class Portfolio(Scheduler):
 
     # ---- 状态 ----
     def _save(self):
-        STATE_DIR.mkdir(parents=True, exist_ok=True)
+        _state_path(self.run).parent.mkdir(parents=True, exist_ok=True)
         tmp = _state_path(self.run).with_suffix('.tmp')
         tmp.write_text(json.dumps(self.state, ensure_ascii=False, indent=1), encoding='utf-8')
         tmp.replace(_state_path(self.run))

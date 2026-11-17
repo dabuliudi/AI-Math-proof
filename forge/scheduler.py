@@ -266,7 +266,7 @@ def _tokens(text):
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
                  agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2', parity=None,
-                 cooldowns=2, cooldown_minutes=10, min_free_memory=0):
+                 cooldowns=2, cooldown_minutes=10, min_free_memory=0, agent_error_limit=None):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -286,6 +286,9 @@ class Scheduler:
         self.records = []
         self.last_raw = {}
         self.agent_failures_in_a_row = 0
+        # 连续这么多次 agent 根本没跑起来（退出码非 0、没用 token）就暂停探测，不等 max_failures：
+        # 组合拆解把 max_failures 设得很大（单条引理证不出是常事），以前 Codex 宕机时会一直空转、把尝试次数耗光。
+        self.agent_error_limit, self.agent_errors_in_a_row = agent_error_limit, 0
         self.cooldowns_left, self.cooldown_seconds = cooldowns, cooldown_minutes * 60
         self.paused_until, self.probing, self.events = 0, False, []
         # 内存闸门（百分比，0 = 关闭）：系统空闲内存低于它时不派新活，已经在跑的不受影响。
@@ -350,6 +353,16 @@ class Scheduler:
             self.failures_in_a_row = 0 if row['progress'] else self.failures_in_a_row + 1
             # agent 本身出错或卡死（退出码非 0，包括超时）连续出现，多半是 Codex 服务或网络的问题，不是题目难
             self.agent_failures_in_a_row = self.agent_failures_in_a_row + 1 if row.get('exit') != 0 and not row['progress'] else 0
+            self.agent_errors_in_a_row = self.agent_errors_in_a_row + 1 if row.get('exit') != 0 and not row.get('tokens') else 0
+            if self.agent_error_limit and self.agent_errors_in_a_row >= self.agent_error_limit and not self.stop_reason \
+                    and time.time() >= self.paused_until:
+                if self.cooldowns_left > 0:
+                    self.cooldowns_left -= 1
+                    self.paused_until = time.time() + self.cooldown_seconds
+                    self.agent_errors_in_a_row = 0
+                    self.events.append(dict(at=row['at'], event='cooldown', seconds=self.cooldown_seconds, reason='agent_errors'))
+                else:
+                    self.stop_reason = f'熔断：agent 连续 {self.agent_errors_in_a_row} 次没有跑起来'
             if self.failures_in_a_row >= self.max_failures and not self.stop_reason:
                 if self.agent_failures_in_a_row >= self.max_failures and self.cooldowns_left > 0:
                     # 冷却后重试：暂停派活，过一段时间探测 agent 是否恢复，恢复了就继续跑

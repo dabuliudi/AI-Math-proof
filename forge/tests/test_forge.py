@@ -2256,3 +2256,42 @@ class ShardImportTests(unittest.TestCase):
         journal = dict(names=['c'], ledger_size=0, ledger_digest=hashlib.sha256(b'').hexdigest(), shards={str(shard): original})
         with mock.patch.object(library, 'LEDGER', ledger):
             self.assertTrue(library._journal_matches(journal))
+
+
+class AgentOutageTests(unittest.TestCase):
+    def test_a_codex_error_is_not_a_lemma_attempt_and_goes_back_in_the_queue(self):
+        from forge import portfolio
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        with mock.patch.object(portfolio, 'STATE_DIR', root / 'pf'), mock.patch('forge.scheduler.RUNS', root / 'runs'), \
+             mock.patch('forge.scheduler.DATA', root), mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')]):
+            runner = portfolio.Portfolio('t-out', workers=1, max_tasks=1000, dry_run=True)
+            runner.items = {'p': dict(name='p', statement=': True')}
+            runner.state = dict(run='t-out', problems={'p': dict(set='s', solved_by=None, dags={'d1': dict(skeleton='', holes=[dict(lemma='L', args=[])], status='open')})},
+                                lemmas={'L': dict(set='s', problem='p', statement='True', hash='h', status='open', dags=['d1'], attempts=1)})
+            runner.file_lock, runner.lemma_seconds, runner.scratch, runner.lemma_attempts = threading.Lock(), 60, root / 'scratch', 2
+            runner.queue, runner.split, runner.depth = [], 0, 1
+            (root / 'scratch' / 'a1').mkdir(parents=True)
+            with mock.patch.object(runner, '_invoke', return_value=(1, '', None, False)):
+                runner._lemma('a1', 'p', 'L')
+        self.assertEqual(runner.state['lemmas']['L']['attempts'], 1)  # 没有多算一次
+        self.assertEqual(runner.state['lemmas']['L']['status'], 'open')
+        self.assertEqual(runner.queue, [('lemma', 'p', 'L')])
+        self.assertEqual(runner.records[-1]['outcome'], 'agent_error')
+
+    def test_scheduler_pauses_after_consecutive_agent_errors_even_with_a_high_failure_limit(self):
+        from forge import scheduler
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        with mock.patch.object(scheduler, 'RUNS', Path(tmp.name)):
+            runner = scheduler.Scheduler('t-err', workers=1, max_tasks=10, dry_run=True, max_failures=1000,
+                                         agent_error_limit=3, cooldowns=1)
+            runner.log = Path(tmp.name) / 't-err.jsonl'
+            for _ in range(3):
+                runner._record(dict(mode='x', outcome='agent_error', progress=False, exit=1, tokens=0))
+            self.assertGreater(runner.paused_until, 0)
+            self.assertIsNone(runner.stop_reason)
+            runner.paused_until = 0
+            runner._record(dict(mode='x', outcome='unsolved', progress=False, exit=0, tokens=500))  # 一次正常的失败清零
+            for _ in range(3):
+                runner._record(dict(mode='x', outcome='agent_error', progress=False, exit=1, tokens=0))
+            self.assertIn('没有跑起来', runner.stop_reason)  # 冷却用完就停下，不再空转

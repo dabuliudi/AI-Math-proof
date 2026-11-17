@@ -231,7 +231,7 @@ def triage(name, statement, timeout=240):
 HOLE = re.compile(r"(?<![\w.'])sorry(?![\w'])")
 
 
-def check_sketch(task, body, timeout=300):
+def check_sketch(task, body, timeout=300, closed=None):
     """校验证明骨架：把每个 `sorry` 换成 `forge_hole`，由内核给出各空洞处的闭命题。
 
     骨架本身必须能编译、命题必须匹配——也就是说，只要这些空洞都成立，父命题就成立。
@@ -248,7 +248,7 @@ def check_sketch(task, body, timeout=300):
     prefix = (header(task.get('imports'), task.get('library', True)) + (preamble.rstrip('\n') + '\n' if preamble else '') +
               f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\nsection\n' + (f'open {opens}\n' if opens else ''))
     offset = prefix.count('\n')
-    tail = f'\nend\nend Mathlib2\nopen Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{names[-1]} "proved" ({closed_form(task["statement"])})\n'
+    tail = f'\nend\nend Mathlib2\nopen Mathlib2 {opens} in\n#forge_match "{nonce}" Mathlib2.{names[-1]} "proved" ({closed or closed_form(task["statement"])})\n'
     result = run_source(prefix + marked.rstrip('\n') + tail, timeout=timeout, nonce=nonce)
     if result.timed_out:
         return dict(ok=False, reason=f'骨架编译超时（{timeout} 秒）')

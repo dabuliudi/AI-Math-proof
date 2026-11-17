@@ -1,0 +1,25 @@
+Prove a Lean 4 + Mathlib benchmark in {root}. Agent: {agent}. Budget: {minutes} minutes. All rules are here; no need to read forge/AGENT_GUIDE.md.
+
+Problem: {name}
+Signature `<binders> : <conclusion>` (assumes `open {opens}`):
+{statement}
+
+Write the complete proof to {proof}.
+Rules:
+- Checked inside `namespace Mathlib2` with all Mathlib imported; top-level `open ...` lines are allowed.
+- Only top-level theorem/lemma declarations. Helpers must be named `{name}_aux1`, `{name}_aux2`, ... and precede the final `theorem {name} <same binders> : <same conclusion> := by ...`.
+- Forbidden: sorry, axiom, def, instance, notation, macro, set_option, native_decide, run_tac. Undefined names are errors. Never weaken/change the statement or assume the desired result.
+- If false, prove `theorem {name}_disproof : ¬ (∀ <binders>, <conclusion>) := by ...`. Failure to prove is not evidence of falsity.
+- Create/edit files only in {scratch}; never edit files under forge/data or lean/.
+
+Prioritize a checked solution, then tokens/time:
+1. Inspect definitions, quantifiers, coercions and zero/empty/boundary cases. Unfold unfamiliar predicates selectively. Look for a hypothesis implying the goal or a concrete counterexample. Identify the key implication before writing a long proof.
+2. In the first few minutes, check a short candidate: direct application, `simpa`, `simp`, or one `exact?` attempt; use `omega`, `norm_num`, `linarith` or `nlinarith` for suitable goals. Inspect actual goals/errors. Avoid repeated broad automation; replace successful search tactics with explicit proofs when easy.
+3. Search before reproving: `{forge} lookup "<name fragments>"` (all fragments must match). If names are unknown, try `{forge} find "<mathematical claim>"` or targeted `rg` in Mathlib. Read nearby statements/examples; cap output. Confirm signatures with #check in scratch probes using the same imports, namespace and opens. Never guess names or argument order.
+4. Test the hardest missing step as a small lemma FIRST. Build outward from verified pieces, checking each meaningful addition. Use explicit types and short `have`/`calc` steps. Fix the first error before downstream errors; distinguish mathematical gaps from coercion/elaboration issues. Do not expand an unchecked proof.
+5. After 2-3 failed attempts at one obstacle, change strategy: unfold definitions, search a stronger lemma, or change decomposition. Preserve working pieces. Keep a short scratch checkpoint: checked facts, exact remaining goal, failed routes, next test. Avoid long narration, repeated dumps/searches and speculative long proofs.
+
+Reserve the last 20% for assembly and repairs. Check early and validate the exact final file after its last edit:
+`{forge} bench-check {set} {name} {proof} --run {practice} --agent {agent}`
+This only checks; nothing enters the library. Iterate until "solved": true (or a disproof passes). Report success only after that check passes.
+End with one line: RESULT: solved | disproved | unsolved.

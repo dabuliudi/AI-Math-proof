@@ -255,8 +255,8 @@
       "stop_reason": "评测题都已发出"
     }
   },
-  "iteration": 9,
-  "tokens_spent": 29138791,
+  "iteration": 13,
+  "tokens_spent": 36472304,
   "set": "fc_pilot",
   "dev": [
     "fc_erdos100_erdos_100_variants_kanold",

@@ -166,6 +166,7 @@ def main(argv=None):
     p = sub.add_parser('review-summary', help='一篇论文各条命题的复核结论（多数决）'); p.add_argument('paper', type=Path)
     p = sub.add_parser('run-compare', help='在同一组题上比较几个轮次：解出数、token、用时')
     p.add_argument('runs', nargs='+'); p.add_argument('--problems-from', help='以这个轮次做过的题为准（默认取交集）')
+    sub.add_parser('shard-imports', help='把每个分片的导入改成只导入它的定理真正用到的分片（可反复跑）')
     p = sub.add_parser('audit', help='独立审计：对着已编译的库重新核对每条定理的公理与命题')
     p.add_argument('--replay', action='store_true', help='另外把整个库放进只含 Mathlib 的环境让内核重放一遍（约 14 GB 内存）')
     sub.add_parser('status', help='队列与库的概况')
@@ -414,6 +415,8 @@ def main(argv=None):
     elif args.command == 'run-report':
         from .scheduler import report
         emit(report(args.run))
+    elif args.command == 'shard-imports':
+        emit(dict(changed=library.rewrite_shard_imports()))
     elif args.command == 'audit':
         from .leanrun import lake_build
         from .verify import audit

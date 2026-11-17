@@ -17,7 +17,10 @@ LEDGER = DATA / 'ledger.jsonl'
 LOCK = DATA / 'library.lock'
 SHARDS = PROJECT / 'Mathlib2' / 'Shard'
 ROOT_FILE = PROJECT / 'Mathlib2.lean'
-SHARD_SIZE = 20  # 每次入库要重编当前分片，分片越小入库越快；分片之间线性依赖，后面的可以引用前面的
+SHARD_SIZE = 20  # 每次入库要重编当前分片，分片越小入库越快
+# 分片只导入它的定理真正用到的分片（台账里的 library_deps），不再一个接一个串成链：
+# 互不依赖的分片可以并行编译（62 个分片的串行链，按真实依赖最长只有 21 层）。
+SHARD_IMPORT = re.compile(r'^import Mathlib2\.Shard\.(S\d{4})\n', re.M)
 
 
 if os.name == 'nt':
@@ -294,6 +297,49 @@ def _current_shard():
     return (index, count) if count < SHARD_SIZE else (index + 1, 0)
 
 
+def _shard_of_names(rows=None):
+    """库里每个名字（定理、反证、辅助引理）所在的分片。"""
+    where = {}
+    for e in entries() if rows is None else rows:
+        for name in [e['name'], e['task'], *(e.get('helpers') or [])]:
+            where[name] = e['shard']
+    return where
+
+
+def _with_imports(text, shard, wanted):
+    """在分片头部 `import Mathlib` 之后补上缺的分片导入（不删已有的），按编号排好。"""
+    have = set(SHARD_IMPORT.findall(text))
+    need = sorted((set(wanted) | have) - {shard})
+    body = SHARD_IMPORT.sub('', text)
+    head = 'import Mathlib\n'
+    position = body.index(head) + len(head)
+    return body[:position] + ''.join(f'import Mathlib2.Shard.{s}\n' for s in need) + body[position:]
+
+
+def shard_imports(rows=None):
+    """按台账算出每个分片应当导入哪些分片：它的条目用到的库内定理所在的分片（同一分片内的不算）。"""
+    rows = entries() if rows is None else rows
+    where = _shard_of_names(rows)
+    out = {}
+    for e in rows:
+        out.setdefault(e['shard'], set()).update(where[d] for d in e.get('library_deps') or [] if where.get(d, e['shard']) != e['shard'])
+    return out
+
+
+def rewrite_shard_imports():
+    """一次性迁移（也可反复跑，结果不变）：把每个分片的导入改成按真实依赖，持入库锁做。返回改动的分片。"""
+    changed = []
+    with locked():
+        wanted = shard_imports()
+        for path in sorted(SHARDS.glob('S*.lean')):
+            text = path.read_text(encoding='utf-8')
+            new = _with_imports(SHARD_IMPORT.sub('', text), path.stem, wanted.get(path.stem, ()))
+            if new != text:
+                _write_durable(path, new)
+                changed.append(path.stem)
+    return changed
+
+
 def _write_root():
     shards = sorted(p.stem for p in SHARDS.glob('S*.lean'))
     header = ('/-\nMathlib2：机器生成、内核验证的定理库。\n本文件由 forge 维护：每个分片追加后在这里登记。请勿手改。\n-/\n'
@@ -311,9 +357,11 @@ def _append(task, body, check, journal):
     if path.exists():
         text = path.read_text(encoding='utf-8')
     else:
-        previous = f'import Mathlib2.Shard.S{index - 1:04d}\n' if index > 1 else ''
-        text = (f'/- Mathlib2 分片 {index}（forge 自动维护，追加式）。 -/\nimport Mathlib\n{previous}'
+        text = (f'/- Mathlib2 分片 {index}（forge 自动维护，追加式）。 -/\nimport Mathlib\n'
                 f'set_option maxHeartbeats {HEARTBEATS}\nnamespace Mathlib2\n\nend Mathlib2\n')
+    # 这条定理用到的库内定理在别的分片里：导入那些分片（只导入真正用到的，分片之间就能并行编译）
+    where = _shard_of_names()
+    text = _with_imports(text, path.stem, {where[d] for d in check.get('library_deps') or [] if d in where})
     doc = (task.get('informal') or '').replace('-/', '- /').strip()
     block = f'-- forge:entry {task["name"]} kind={check["kind"]} origin={task.get("origin", "")}\nsection\n'
     if doc:
@@ -380,7 +428,9 @@ def _journal_matches(journal):
             if original is not None:
                 return False
             continue
-        current = path.read_text(encoding='utf-8')
+        # 入库会在分片头部补导入行：比较时不看分片导入行（它们由条目的依赖决定，回滚时随原文一起恢复）
+        current = SHARD_IMPORT.sub('', path.read_text(encoding='utf-8'))
+        original = None if original is None else SHARD_IMPORT.sub('', original)
         head, tail = ('', '') if original is None else (original[:original.rindex(MARKER)], original[original.rindex(MARKER):])
         if not (current.startswith(head) and current.endswith(tail) and len(current) >= len(head) + len(tail)):
             return False

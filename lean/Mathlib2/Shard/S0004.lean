@@ -1,6 +1,5 @@
 /- Mathlib2 分片 4（forge 自动维护，追加式）。 -/
 import Mathlib
-import Mathlib2.Shard.S0003
 set_option maxHeartbeats 400000
 namespace Mathlib2
 

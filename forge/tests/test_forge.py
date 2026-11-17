@@ -839,7 +839,8 @@ class SchedulerTests(unittest.TestCase):
         root = Path(self.tmp.name)
         self.patches = [mock.patch.object(scheduler, 'RUNS', root / 'runs'), mock.patch.object(scheduler, 'DATA', root),
                         mock.patch.object(scheduler, 'SCRATCH', root / 'scratch'),
-                        mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
+                        mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()), mock.patch('forge.provenance.CHECK_DIRS', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')])]
         for p in self.patches:
             p.start()
         self.scheduler = scheduler
@@ -1118,7 +1119,8 @@ class CopyIsolationTests(unittest.TestCase):
         self.root = Path(self.tmp.name)
         self.patches = [mock.patch.object(scheduler, 'RUNS', self.root / 'runs'), mock.patch.object(scheduler, 'DATA', self.root),
                         mock.patch.object(scheduler, 'SCRATCH', self.root / 'scratch'),
-                        mock.patch('forge.provenance.SCRATCH', self.root / 'scratch'), mock.patch('forge.provenance.LEGACY', ())]
+                        mock.patch('forge.provenance.SCRATCH', self.root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()), mock.patch('forge.provenance.CHECK_DIRS', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')])]
         for p in self.patches:
             p.start()
         self.scheduler = scheduler
@@ -1163,6 +1165,64 @@ class CopyIsolationTests(unittest.TestCase):
         self.assertEqual(cmd[cmd.index('--add-dir') + 1], str(s.scratch))
         from forge.leanrun import ROOT, SCRATCH
         self.assertNotIn(ROOT, SCRATCH.parents)
+
+    def test_lean_check_files_are_written_outside_the_repo(self):
+        from forge import leanrun
+        seen = []
+        class FakeProc:
+            pid, returncode = 1, 0
+            def __init__(self, command, **kw):
+                seen.append(Path(command[-1]))
+                self.exists = Path(command[-1]).exists()
+            def communicate(self, timeout=None):
+                return '', ''
+        with mock.patch.object(leanrun, 'CHECKS', self.root / 'scratch' / 'checks'), \
+                mock.patch.object(leanrun.subprocess, 'Popen', FakeProc):
+            leanrun.run_source('theorem t : True := trivial\n')
+        self.assertEqual(seen[0].parent, self.root / 'scratch' / 'checks')
+        self.assertNotIn(leanrun.ROOT, leanrun.CHECKS.parents)
+        self.assertFalse(seen[0].exists())   # 检查完删掉
+
+    def test_leftover_check_files_are_sources_but_other_staging_files_are_not(self):
+        from forge import provenance
+        staging = self.root / 'repo-staging'
+        for name, text in [('check_ab12.lean', self.PROOF), ('audit_last.json', json.dumps(dict(p=self.PROOF)))]:
+            path = staging / name
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding='utf-8')
+            os.utime(path, (time.time() - 3600,) * 2)
+        with mock.patch.object(provenance, 'CHECK_DIRS', (staging,)):
+            verdict = provenance.check(self.PROOF, time.time())
+        self.assertTrue(verdict['copied'])
+        self.assertEqual(verdict['source'], str(staging / 'check_ab12.lean'))
+        (staging / 'check_ab12.lean').unlink()
+        with mock.patch.object(provenance, 'CHECK_DIRS', (staging,)):
+            self.assertFalse(provenance.check(self.PROOF, time.time())['copied'])   # 只认 check_*.lean
+
+    def test_other_worktrees_old_drafts_are_sources(self):
+        from forge import provenance
+        other = self.root / 'other-checkout'
+        draft = other / 'forge' / 'data' / 'staging' / 'agents' / 'pf' / 'w0' / 'p.final.lean'
+        check = other / 'forge' / 'data' / 'staging' / 'check_cd34.lean'
+        for path, text in [(draft, 'theorem p : True := by\n' + self.PROOF), (check, self.PROOF + '\n  extra_line_that_is_long_enough_here')]:
+            path.parent.mkdir(parents=True, exist_ok=True)
+            path.write_text(text, encoding='utf-8')
+            os.utime(path, (time.time() - 3600,) * 2)
+        with mock.patch.object(provenance, 'checkouts', lambda: [provenance.ROOT, other]):
+            self.assertEqual(provenance.check('theorem p : True := by\n' + self.PROOF, time.time())['source'], str(draft))
+            draft.unlink()
+            self.assertEqual(provenance.check(self.PROOF, time.time())['source'], str(check))
+        self.assertFalse(provenance.check(self.PROOF, time.time())['copied'])   # 只有当前检出时看不到
+
+    def test_checkouts_lists_every_worktree_once(self):
+        from forge import provenance
+        real = next(p for p in self.patches if p.attribute == 'checkouts').temp_original   # setUp 换掉了它
+        out = (f'worktree {provenance.ROOT}\nHEAD abc\nbranch refs/heads/main\n\n'
+               'worktree /x/wt-a\nHEAD def\nbranch refs/heads/a\n\nworktree /x/wt-b\nHEAD 123\ndetached\n')
+        with mock.patch.object(provenance.subprocess, 'run', return_value=mock.Mock(stdout=out)):
+            self.assertEqual(real(), [provenance.ROOT, Path('/x/wt-a'), Path('/x/wt-b')])
+        with mock.patch.object(provenance.subprocess, 'run', side_effect=OSError):
+            self.assertEqual(real(), [provenance.ROOT])
 
     def _bench(self, run, agent_writes):
         s = self.scheduler.Scheduler(run, workers=1, max_tasks=5, max_failures=5)
@@ -1863,7 +1923,8 @@ class PortfolioCopyTests(unittest.TestCase):
                       mock.patch.object(portfolio, 'LEGACY_STATE_DIR', root / 'legacy' / 'portfolio'),
                       mock.patch.object(portfolio, 'SCRATCH', root / 'scratch'), mock.patch.object(portfolio, 'DATA', root / 'data'),
                       mock.patch('forge.scheduler.SCRATCH', root / 'scratch'), mock.patch('forge.scheduler.RUNS', root / 'runs'),
-                      mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()),
+                      mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()), mock.patch('forge.provenance.CHECK_DIRS', ()),
+                        mock.patch('forge.provenance.checkouts', lambda: [Path('/nonexistent-checkout')]),
                       mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')])):
             stack.enter_context(patch)
         self.portfolio = portfolio

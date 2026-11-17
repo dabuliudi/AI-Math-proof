@@ -9,13 +9,18 @@
 只比较草稿和拆解状态，不比较 Mathlib2 库本身——引用库里的定理是知识复利，正是想要的。
 """
 import json
+import subprocess
 import threading
 from pathlib import Path
 
-from .leanrun import DATA, SCRATCH
+from .leanrun import DATA, ROOT, SCRATCH
 
 # 旧位置（移出仓库之前）：里面的文件还在，照样算作可能被抄的来源
 LEGACY = (DATA / 'staging' / 'agents', DATA / 'staging' / 'portfolio')
+# 旧版本把 Lean 检查的临时文件 check_*.lean（完整的证明）写在 staging 根上，进程被杀时会留下
+CHECK_DIRS = (DATA / 'staging',)
+# 同一仓库的其他检出（git worktree）在各自的 forge/data/staging 下也有这些旧位置，agent 读得到，所以都要比
+STAGING_REL = Path('forge') / 'data' / 'staging'
 THRESHOLD = 0.3     # 证明里超过三成的行在某一份旧文件里原样出现，就算抄写
 MIN_SHARED = 5      # 至少 5 行相同：很短的证明里一两行定理头相同不算
 MIN_LINE = 20       # 短于 20 个字符的行（simp、omega、· 等）到处都有，不参与比较
@@ -63,24 +68,59 @@ def _file_lines(path, mtime):
     return found
 
 
+def checkouts():
+    """这个仓库的所有检出（主检出和各个 worktree）的根目录；git 不可用时只有当前检出。"""
+    found = [ROOT]
+    try:
+        out = subprocess.run(['git', 'worktree', 'list', '--porcelain'], cwd=ROOT, capture_output=True,
+                             text=True, encoding='utf-8', errors='replace', timeout=30).stdout
+    except (OSError, subprocess.SubprocessError):
+        return found
+    seen = {ROOT.resolve()}
+    for line in out.splitlines():
+        path = Path(line[len('worktree '):]) if line.startswith('worktree ') else None
+        if path and path.resolve() not in seen:
+            seen.add(path.resolve())
+            found.append(path)
+    return found
+
+
+def _default_files():
+    """不给 roots 时比的文件：SCRATCH 和 LEGACY 整个目录、CHECK_DIRS 里的 check_*.lean，
+    以及同一仓库其他检出里对应的旧位置。"""
+    dirs, check_dirs = [SCRATCH, *LEGACY], list(CHECK_DIRS)
+    for checkout in checkouts()[1:]:
+        staging = checkout / STAGING_REL
+        dirs += [staging / 'agents', staging / 'portfolio']
+        check_dirs.append(staging)
+    for d in dirs:
+        yield from _walk(d)
+    for d in check_dirs:
+        if Path(d).is_dir():
+            yield from Path(d).glob('check_*.lean')
+
+
+def _walk(root):
+    root = Path(root)
+    if root.is_dir():
+        yield from root.rglob('*')
+
+
 def sources(before, roots=None, exclude=()):
     """在 before（时间戳）之前就存在的草稿和拆解状态文件；exclude 里的目录和文件不算。"""
     exclude = [Path(e) for e in exclude]
-    for root in roots or (SCRATCH, *LEGACY):
-        root = Path(root)
-        if not root.is_dir():
+    files = (p for r in roots for p in _walk(r)) if roots else _default_files()
+    for path in files:
+        if path.suffix not in ('.lean', '.json') or not path.is_file():
             continue
-        for path in root.rglob('*'):
-            if path.suffix not in ('.lean', '.json') or not path.is_file():
-                continue
-            if any(path == e or e in path.parents for e in exclude):
-                continue
-            try:
-                mtime = path.stat().st_mtime
-            except OSError:
-                continue
-            if mtime < before:
-                yield path, mtime
+        if any(path == e or e in path.parents for e in exclude):
+            continue
+        try:
+            mtime = path.stat().st_mtime
+        except OSError:
+            continue
+        if mtime < before:
+            yield path, mtime
 
 
 def check(text, before, roots=None, exclude=()):

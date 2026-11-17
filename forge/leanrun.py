@@ -15,6 +15,8 @@ STAGING = DATA / 'staging'
 # agent 的草稿和拆解状态放在仓库外面：agent 在仓库里搜索时不会顺手翻到以前各轮的证明（抄写见 provenance.py）。
 # 不能放在 /tmp：拆解要能接着上次的状态跑，重启后还得在。
 SCRATCH = Path(os.environ.get('FORGE_SCRATCH') or Path.home() / '.rsi-math' / 'scratch')
+# 每次 Lean 检查的临时文件：里面是完整的证明。进程被杀时会留下来，所以也放在仓库外面，并算作抄写来源。
+CHECKS = SCRATCH / 'checks'
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 
@@ -68,8 +70,8 @@ class Result:
 
 def run_source(source, timeout=180, nonce=None, keep=False):
     """把 source 写成临时文件，在固定的 Lean 工程环境里编译。"""
-    STAGING.mkdir(parents=True, exist_ok=True)
-    path = STAGING / f'check_{uuid.uuid4().hex}.lean'
+    CHECKS.mkdir(parents=True, exist_ok=True)
+    path = CHECKS / f'check_{uuid.uuid4().hex}.lean'
     path.write_text(source, encoding='utf-8')
     command = [find_lake(), 'env', 'lean', '--json', str(path)]
     start = time.perf_counter()

@@ -132,6 +132,7 @@ def main(argv=None):
     p.add_argument('--workers', type=int, default=8); p.add_argument('--task-minutes', type=int, default=40)
     p.add_argument('--lemma-minutes', type=int, default=40); p.add_argument('--lemma-attempts', type=int, default=2)
     p.add_argument('--revive', action='store_true', help='接着跑时，把被判没法检查的引理重新开放、只因它们作废的图恢复')
+    p.add_argument('--min-free-memory', type=int, default=0, help='系统空闲内存低于这个百分比时不派新活（0 = 关闭），工人数可以开大')
     p.add_argument('--split', type=int, default=0, help='子引理试够次数仍没证出时，再拆成这么多张子图（0 = 不拆）')
     p.add_argument('--depth', type=int, default=1, help='最多再拆几层')
     p.add_argument('--budget-minutes', type=int, default=720); p.add_argument('--effort', default='xhigh')
@@ -333,7 +334,8 @@ def main(argv=None):
     elif args.command == 'portfolio':
         from .portfolio import Portfolio
         runner = Portfolio(args.run, workers=args.workers, max_tasks=100000, budget_minutes=args.budget_minutes,
-                           task_minutes=args.task_minutes, max_failures=1000, effort=args.effort)
+                           task_minutes=args.task_minutes, max_failures=1000, effort=args.effort,
+                           min_free_memory=args.min_free_memory)
         emit(runner.run_portfolio(args.bench, args.problems.split(','), k=args.k, lemma_minutes=args.lemma_minutes,
                                   lemma_attempts=args.lemma_attempts, revive=args.revive,
                                   split=args.split, depth=args.depth))

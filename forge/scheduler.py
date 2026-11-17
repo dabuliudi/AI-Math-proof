@@ -19,6 +19,7 @@ import shlex
 import shutil
 import signal
 import subprocess
+import sys
 import threading
 import time
 from pathlib import Path
@@ -30,6 +31,20 @@ RUNS = DATA / 'runs'
 MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
 # agent 在提示词里看到的 forge 命令：macOS/Linux 用 ./forge.sh，Windows 用 forge.cmd
 FORGE = 'forge.cmd' if os.name == 'nt' else './forge.sh'
+
+
+def free_memory_percent():
+    """系统空闲内存百分比（macOS 的 memory_pressure，与活动监视器一致；Linux 读 /proc/meminfo）。取不到时返回 None。"""
+    try:
+        if sys.platform == 'darwin':
+            out = subprocess.run(['memory_pressure'], capture_output=True, text=True, timeout=30).stdout
+            match = re.search(r'free percentage:\s*(\d+)%', out)
+            return int(match.group(1)) if match else None
+        info = dict(line.split(':', 1) for line in Path('/proc/meminfo').read_text().splitlines() if ':' in line)
+        total, available = (int(info[k].split()[0]) for k in ('MemTotal', 'MemAvailable'))
+        return round(100 * available / total)
+    except (OSError, ValueError, KeyError, subprocess.SubprocessError):
+        return None
 
 
 def find_codex():
@@ -235,7 +250,7 @@ def _tokens(text):
 class Scheduler:
     def __init__(self, run, workers=2, max_tasks=10, budget_minutes=60, task_minutes=20, max_failures=4,
                  agent_cmd=None, model='gpt-6.1-sol', effort='xhigh', dry_run=False, sandbox='workspace-write', ladder=None, prompt='v2', parity=None,
-                 cooldowns=2, cooldown_minutes=10):
+                 cooldowns=2, cooldown_minutes=10, min_free_memory=0):
         if not re.fullmatch(r'[A-Za-z0-9][A-Za-z0-9_@-]{0,60}', run):
             raise ValueError('轮次名只能含字母、数字、-、_ 和 @（例如 mf2f-r2@win）')
         self.run, self.workers, self.max_tasks = run, workers, max_tasks
@@ -257,6 +272,9 @@ class Scheduler:
         self.agent_failures_in_a_row = 0
         self.cooldowns_left, self.cooldown_seconds = cooldowns, cooldown_minutes * 60
         self.paused_until, self.probing, self.events = 0, False, []
+        # 内存闸门（百分比，0 = 关闭）：系统空闲内存低于它时不派新活，已经在跑的不受影响。
+        # 这样工人数可以开大，内存由闸门兜底，不会把机器挤进交换区（交换会拖慢别人的检查、造成超时）。
+        self.min_free_memory = min_free_memory
         self.scratch = SCRATCH / 'agents' / run
         self.began = time.time()  # 抄写检测只把这之前就存在的文件当作来源：本轮自己写的草稿不算
         RUNS.mkdir(parents=True, exist_ok=True)
@@ -325,6 +343,21 @@ class Scheduler:
             with open(self.log, 'a', encoding='utf-8') as handle:
                 handle.write(json.dumps(row, ensure_ascii=False) + '\n')
 
+    def _wait_for_memory(self, poll=20):
+        """空闲内存低于 min_free_memory 时等着（不占任务数，不算失败）；轮次停下或超时就不再等。"""
+        if not self.min_free_memory:
+            return
+        waited = False
+        while not self.stop_reason and time.time() < self.deadline - 120:
+            free = free_memory_percent()
+            if free is None or free >= self.min_free_memory:
+                break
+            if not waited:
+                waited = True
+                with self.lock:
+                    self.events.append(dict(at=time.strftime('%Y-%m-%dT%H:%M:%S%z'), event='memory_wait', free=free))
+            time.sleep(poll)
+
     def _wait_out_cooldown(self):
         """冷却期内不派新活；冷却结束后由一个工人探测 agent 是否恢复，没恢复就整体停下。"""
         while True:
@@ -357,6 +390,7 @@ class Scheduler:
 
     def _may_start(self):
         self._wait_out_cooldown()
+        self._wait_for_memory()
         with self.lock:
             if self.stop_reason:
                 return False

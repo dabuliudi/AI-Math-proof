@@ -23,7 +23,7 @@ import threading
 import time
 from pathlib import Path
 
-from . import bench, provenance, tasks
+from . import bench, tasks
 from .leanrun import DATA, PROJECT, ROOT, SCRATCH
 
 RUNS = DATA / 'runs'
@@ -419,9 +419,11 @@ class Scheduler:
             if not self._may_start():
                 return
             proof = scratch / f'{item["name"]}.lean'
-            if proof.exists():
-                # 同名轮次以前留下的证明文件：不挪开的话，agent 什么都不做也会被判解出
-                proof.rename(proof.with_name(f'{item["name"]}.stale-{time.strftime("%Y%m%d%H%M%S")}.lean'))
+            stamp = time.strftime('%Y%m%d%H%M%S')
+            for old in [proof, *scratch.glob(f'{item["name"]}.attempt*.lean')]:
+                # 同名轮次以前留下的证明和草稿：不挪开的话，agent 什么都不做也会被判解出，或者把旧草稿当成“上一次的尝试”
+                if old.exists():
+                    old.rename(old.with_name(f'{old.stem}.stale-{stamp}.lean'))
             steps = self.ladder or [(None, None)]
             previous = None
             for attempt, (effort, minutes) in enumerate(steps):
@@ -444,10 +446,9 @@ class Scheduler:
                 solved, reason, copy = False, '没有交出证明文件', None
                 if proof.exists():  # 正式成绩只来自这里：调度器自己用内核校验 agent 留下的证明
                     body = proof.read_text(encoding='utf-8')
-                    verdict = bench.check(set_name, item['name'], body, self.run, 'scheduler')
-                    solved, reason = verdict['solved'], verdict.get('reason', '')
-                    if solved:  # 解出了：看是不是抄了以前留下的证明（改进循环不把抄来的解出算进成绩）
-                        copy = provenance.check(body, self.began)
+                    # 解出的证明顺带做抄写检测：和本轮开始前就有的证明比（改进循环和 bench score 都不把抄来的算解出）
+                    verdict = bench.check(set_name, item['name'], body, self.run, 'scheduler', before=self.began)
+                    solved, reason, copy = verdict['solved'], verdict.get('reason', ''), verdict.get('copy')
                 # 评测里做不出难题是正常的，不算“没有进展”；只有 agent 本身出错、或连证明文件都没交，才计入熔断。
                 attempted = code == 0 and proof.exists()
                 self._record(dict(mode='bench', task=item['name'], worker=agent, outcome='solved' if solved else 'unsolved',

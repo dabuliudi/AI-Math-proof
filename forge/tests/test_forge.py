@@ -903,7 +903,7 @@ class SchedulerTests(unittest.TestCase):
                 (s.scratch / worker / 'p1.lean').write_text('theorem p1 : True := trivial\n', encoding='utf-8')
             return 0, 'RESULT: solved', 10, False
 
-        def fake_check(set_name, problem, body, run, agent):
+        def fake_check(set_name, problem, body, run, agent, before=None):
             checked.append((problem, agent))
             return dict(ok=True, kind='proved', solved=True, reason='通过')
 
@@ -964,7 +964,7 @@ class SchedulerTests(unittest.TestCase):
         verdicts = {('easy', 1): True, ('hard', 1): False, ('hard', 2): True}
         attempts = {}
 
-        def fake_check(set_name, problem, body, run, agent):
+        def fake_check(set_name, problem, body, run, agent, before=None):
             attempts[problem] = attempts.get(problem, 0) + 1
             return dict(ok=True, kind='proved', solved=verdicts[(problem, attempts[problem])], reason='r')
 
@@ -1170,9 +1170,10 @@ class CopyIsolationTests(unittest.TestCase):
                 (s.scratch / worker / 'p.lean').write_text(agent_writes, encoding='utf-8')
             return 0, 'RESULT: solved', 10, False
         checked = []
-        def fake_check(set_name, problem, body, run, agent):
+        def fake_check(set_name, problem, body, run, agent, before=None):
+            from forge import provenance   # 只替掉 Lean 检查，抄写检测照常做
             checked.append(body)
-            return dict(ok=True, kind='proved', solved=True, reason='通过')
+            return dict(ok=True, kind='proved', solved=True, reason='通过', copy=provenance.check(body, before))
         with mock.patch.object(s, '_invoke', side_effect=fake_invoke), \
                 mock.patch('forge.bench.load', return_value=[dict(name='p', statement=': True')]), \
                 mock.patch('forge.bench.check', side_effect=fake_check):
@@ -1199,6 +1200,34 @@ class CopyIsolationTests(unittest.TestCase):
         self.assertEqual(s.records[0]['outcome'], 'unsolved')
         self.assertFalse(stale.exists())
         self.assertEqual(len(list(stale.parent.glob('p.stale-*.lean'))), 1)
+
+    def test_old_attempt_drafts_are_moved_aside_too(self):
+        draft = self._old_file('agents/lad2/lad2-w0/p.attempt1.lean', 'old draft')
+        self._bench('lad2', None)
+        self.assertFalse(draft.exists())
+        self.assertEqual(len(list(draft.parent.glob('p.attempt1.stale-*.lean'))), 1)
+
+    def test_bench_score_leaves_out_copied_solves(self):
+        from forge import bench
+        runs = self.root / 'runs'
+        runs.mkdir(parents=True, exist_ok=True)
+        rows = [dict(problem='a', solved=True, copied=True), dict(problem='b', solved=True, copied=False), dict(problem='c', solved=True)]
+        (runs / 'demo.r1.jsonl').write_text('\n'.join(json.dumps(r) for r in rows))
+        with mock.patch.object(bench, 'RUNS', runs), mock.patch.object(bench, 'load', return_value=[dict(name=n) for n in 'abcd']):
+            row = next(r for r in bench.score('demo')['runs'] if r['run'] == 'r1')
+        self.assertEqual(row['solved'], 2)
+
+    def test_bench_check_records_the_copy(self):
+        from forge import bench
+        self._old_file('agents/pf-old/w3/p.final.lean', 'theorem p : True := by\n' + self.PROOF)
+        runs = self.root / 'runs'
+        with mock.patch.object(bench, 'RUNS', runs), mock.patch.object(bench, 'load', return_value=[dict(name='p', statement=': True')]), \
+                mock.patch.object(bench, 'check_submission', return_value=dict(ok=True, kind='proved', reason='通过')):
+            verdict = bench.check('demo', 'p', 'theorem p : True := by\n' + self.PROOF, 'r2', 'scheduler', before=time.time())
+            self.assertTrue(verdict['copy']['copied'])
+            self.assertFalse(bench.check('demo', 'p', 'theorem p : True := by\n' + self.PROOF, 'r2', 'x')['copy'])  # 没给 before：不检测
+        row = json.loads((runs / 'demo.r2.jsonl').read_text().splitlines()[0])
+        self.assertTrue(row['copied'])
 
 
 class ImproveCopyTests(unittest.TestCase):
@@ -1233,6 +1262,41 @@ class ImproveCopyTests(unittest.TestCase):
         self.assertEqual((state['best']['dev']['solved'], state['best']['holdout']['solved']), (9, 9))
         row = json.loads((root / 'h.jsonl').read_text().splitlines()[-1])
         self.assertEqual((row['event'], row['old_dev_solved'], row['dev_copied']), ('recheck', 11, ['a']))
+
+    def _old_state(self, root, tokens_spent=0):
+        best = dict(config=dict(prompt='auto003', effort='xhigh'), dev=dict(solved=11, tokens=100, per={}),
+                    holdout=dict(solved=12, tokens=100, per={}))
+        (root / 'state-x.json').write_text(json.dumps(dict(best=best, iteration=4, tokens_spent=tokens_spent, set='x',
+                                                            dev=['a'], holdout=['b'])))
+
+    def _run(self, root, **kw):
+        from forge import improve
+        runs = []
+        def fake(run, set_name, problems, config, workers, minutes, dry_run=False):
+            runs.append(run)
+            return dict(run=run, solved=0, problems=1, tokens=0, per={}, copied=[], complete=True)
+        with mock.patch.object(improve, 'STATE', root / 'state.json'), mock.patch.object(improve, 'HISTORY', root / 'h.jsonl'), \
+             mock.patch.object(improve, 'split', return_value=(['a'], ['b'])), \
+             mock.patch.object(improve, 'evaluate', side_effect=fake):
+            improve.run_loop('x', iterations=0, **kw)
+        return runs, json.loads((root / 'state-x.json').read_text())
+
+    def test_dry_run_does_not_overwrite_the_best_with_empty_scores(self):
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self._old_state(root)
+        runs, state = self._run(root, dry_run=True)
+        self.assertEqual(runs, [])
+        self.assertEqual(state['best']['dev']['solved'], 11)
+        self.assertNotIn('copy_checked', state)
+
+    def test_recheck_respects_the_token_budget(self):
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        self._old_state(root, tokens_spent=10_000)
+        runs, state = self._run(root, token_budget=5_000)
+        self.assertEqual(runs, [])
+        self.assertNotIn('copy_checked', state)
 
 
 class PortfolioLegacyStateTests(unittest.TestCase):

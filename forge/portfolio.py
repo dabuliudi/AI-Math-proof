@@ -659,10 +659,12 @@ class Portfolio(Scheduler):
             code, message, used, slow = self._invoke(prompt, agent)
             how = 'agent'
             if out.exists():
-                result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run)
+                result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run, before=self.began)
         with self.file_lock:
             if result.get('solved'):
                 d['status'] = 'solved'
+                if (result.get('copy') or {}).get('copied'):  # 抄写检测：拼出的证明大段和本轮开始前就有的文件相同
+                    d['copied'] = result['copy']['source']
                 self.state['problems'][problem]['solved_by'] = self.state['problems'][problem]['solved_by'] or dag
             else:
                 d['status'] = 'assembly_failed'
@@ -670,13 +672,14 @@ class Portfolio(Scheduler):
         self._record(dict(mode='portfolio-assemble', task=f'{problem}/{dag}', worker=agent,
                           outcome='solved' if result.get('solved') else 'failed', progress=bool(result.get('solved')),
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
-                          reason=f'{how}: ' + result.get('reason', '')[:280], message=message[-300:]))
+                          reason=f'{how}: ' + result.get('reason', '')[:280], message=message[-300:],
+                          **({'copied': result['copy']['copied'], 'copy_source': result['copy']['source']} if result.get('copy') else {})))
 
 
-def _safe_check(set_name, problem, body, run):
+def _safe_check(set_name, problem, body, run, before=None):
     """评测检查器；静态检查拒收（命名、禁用词）时记为没解出。Lean、磁盘等基础设施错误照常抛出，不当成没解出。"""
     try:
-        return bench.check(set_name, problem, body, run, 'scheduler')
+        return bench.check(set_name, problem, body, run, 'scheduler', before=before)
     except StatementError as exc:
         return dict(ok=False, solved=False, reason=str(exc))
 

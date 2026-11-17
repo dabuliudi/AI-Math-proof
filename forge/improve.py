@@ -171,8 +171,12 @@ def run_loop(set_name, iterations=4, dev_size=16, holdout_size=16, seed=2026, wo
                    dev_copied=score.get('copied', []), holdout_solved=hold['solved'], holdout_tokens=hold['tokens'], holdout_copied=hold.get('copied', [])))
         state['copy_checked'] = True
         _save_state(state)
-    elif not state.get('copy_checked'):
-        # 这份状态里“当前最好”的成绩是在没有抄写检测时测的，可能含抄来的解出：用同一配置重测一次再比较
+    elif not state.get('copy_checked') and not dry_run:
+        # 这份状态里“当前最好”的成绩是在没有抄写检测时测的，可能含抄来的解出：用同一配置重测一次再比较。
+        # 试跑（dry_run）不重测：否则会把试跑的空成绩当成真成绩存下来。
+        if state['tokens_spent'] >= token_budget:
+            _note(dict(event='stop', reason=f'token 预算用完（{state["tokens_spent"]}），没有重测当前最好的配置'))
+            return _summary(state)
         best = state['best']
         n = state['iteration']
         score = evaluate(f'improve-{set_name}-{n:03d}-recheck-dev', set_name, state['dev'], best['config'], workers, minutes, dry_run)

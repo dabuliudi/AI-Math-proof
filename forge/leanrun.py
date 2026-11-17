@@ -12,6 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 PROJECT = ROOT / 'lean'
 DATA = ROOT / 'forge' / 'data'
 STAGING = DATA / 'staging'
+# agent 的草稿和拆解状态放在仓库外面：agent 在仓库里搜索时不会顺手翻到以前各轮的证明（抄写见 provenance.py）。
+# 不能放在 /tmp：拆解要能接着上次的状态跑，重启后还得在。
+SCRATCH = Path(os.environ.get('FORGE_SCRATCH') or Path.home() / '.rsi-math' / 'scratch')
 ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
 
 

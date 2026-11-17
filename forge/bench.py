@@ -87,8 +87,10 @@ def _library_mid_build(result):
                for e in result.get('errors') or [])
 
 
-def check(name, problem, body, run, agent):
-    """对一道评测题校验一份证明：只判对错，不入库，结果记入该轮次。"""
+def check(name, problem, body, run, agent, before=None, exclude=(), inherited=None):
+    """对一道评测题校验一份证明：只判对错，不入库，结果记入该轮次。
+    给了 before（本轮开始的时间戳）就对解出的证明做抄写检测（provenance.py）：抄来的记下来源，成绩里不算解出。
+    inherited：调用方已知证明里用了抄来的部分（例如组合拆解的某条子引理），直接记为抄来的。"""
     item = next((i for i in load(name) if i['name'] == problem), None)
     if item is None:
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
@@ -101,14 +103,22 @@ def check(name, problem, body, run, agent):
         with locked():
             result = check_submission(task, body)
     solved = bool(result['ok']) and result['kind'] == 'proved'
+    copy = None
+    if solved and before is not None:
+        from . import provenance
+        copy = provenance.check(body, before, exclude=exclude)
+        if inherited and not copy['copied']:
+            copy.update(copied=True, source=inherited)
     RUNS.mkdir(parents=True, exist_ok=True)
     # 交的是反证且内核通过：说明评测集里这道题的 Lean 写法本身为假（写错的题），单独记下，不算没做出。
     record = dict(problem=problem, run=run, agent=agent, solved=solved, reason=result.get('reason', ''),
                   refuted=bool(result['ok']) and result['kind'] == 'disproved',
                   at=time.strftime('%Y-%m-%dT%H:%M:%S%z'))
+    if copy:
+        record.update(copied=copy['copied'], copy_overlap=copy['overlap'], copy_source=copy['source'])
     with open(RUNS / f'{name}.{run}.jsonl', 'a', encoding='utf-8') as handle:
         handle.write(json.dumps(record, ensure_ascii=False) + '\n')
-    return dict(result, solved=solved)
+    return dict(result, solved=solved, copy=copy)
 
 
 def score(name):
@@ -117,7 +127,7 @@ def score(name):
     rows = []
     for path in sorted(RUNS.glob(f'{name}.*.jsonl')) if RUNS.exists() else []:
         records = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
-        solved = sorted({r['problem'] for r in records if r['solved']})
+        solved = sorted({r['problem'] for r in records if r['solved'] and not r.get('copied')})  # 抄来的不算
         # 旧记录没有 refuted 字段：校验通过却不算解出，只可能是交了反证
         refuted = sorted({r['problem'] for r in records if r.get('refuted', r.get('reason', '').startswith('通过') and not r['solved'])}
                          - set(solved))
@@ -133,7 +143,7 @@ def score(name):
             continue
         records = [json.loads(line) for line in path.read_text(encoding='utf-8').splitlines() if line.strip()]
         entry = combined.setdefault(base, dict(solved=set(), attempts=0, machines=[]))
-        entry['solved'].update(r['problem'] for r in records if r['solved'])
+        entry['solved'].update(r['problem'] for r in records if r['solved'] and not r.get('copied'))
         entry['attempts'] += len(records)
         entry['machines'].append(path.name.split('@')[1][:-len('.jsonl')])
     merged = [dict(run=base, machines=sorted(e['machines']), solved=len(e['solved']), total=total,

@@ -37,7 +37,9 @@
 
 ## 风险分级
 
-分级看改动碰到了哪些路径，不看是谁写的。`python scripts/risk_tier.py` 给出当前分支的级别，CI 也会在每个 PR 上算一次。规则在该脚本的 `RULES` 里。
+分级看改动碰到了哪些路径，不看是谁写的。`python scripts/risk_tier.py` 给出当前分支的级别，CI 也会在每个 PR 上算一次并打 `risk:*` 标签。规则在该脚本的 `RULES` 里。
+
+**改动不能改评判它自己的规则。** CI 定级用的是 base 分支上的 `risk_tier.py` 和工作流（`.github/workflows/risk-tier.yml`，`pull_request_target`），PR 的提交只当数据读。所以改分级规则的 PR，按改之前的规则定级，新规则从下一个 PR 起生效。重命名的两头都算碰到。
 
 | 级别 | 范围 | 合并条件 |
 |---|---|---|

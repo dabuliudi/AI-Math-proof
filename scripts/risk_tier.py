@@ -5,6 +5,7 @@ RULES below and are described for people in docs/DEVELOPMENT.md.
 
     python scripts/risk_tier.py                  # diff of HEAD against origin/main
     python scripts/risk_tier.py --base <ref>     # diff of HEAD against <ref>
+    python scripts/risk_tier.py --head <ref>     # diff of <ref> instead of HEAD (CI: the PR head)
     python scripts/risk_tier.py path ...         # classify the given paths
     python scripts/risk_tier.py --json ...       # machine-readable output
 """
@@ -67,19 +68,25 @@ def classify(paths):
     return overall, tiers
 
 
-def changed_paths(base):
-    merge_base = subprocess.run(['git', 'merge-base', base, 'HEAD'], capture_output=True, text=True, check=True).stdout.strip()
-    out = subprocess.run(['git', 'diff', '--name-only', merge_base, 'HEAD'], capture_output=True, text=True, check=True).stdout
-    return [line for line in out.splitlines() if line]
+def changed_paths(base, head='HEAD', repo=None):
+    git = ['git'] + (['-C', repo] if repo else [])
+    merge_base = subprocess.run([*git, 'merge-base', base, head], capture_output=True, text=True, check=True).stdout.strip()
+    # --no-renames lists both sides of a rename, so moving a file out of a high path still counts as touching it.
+    # -z: paths come out unquoted, so a non-ASCII name still matches its rule.
+    out = subprocess.run([*git, 'diff', '--name-only', '--no-renames', '-z', merge_base, head], capture_output=True, text=True, check=True).stdout
+    return [path for path in out.split('\0') if path]
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('paths', nargs='*')
     parser.add_argument('--base', default='origin/main')
+    parser.add_argument('--head', default='HEAD')
     parser.add_argument('--json', action='store_true')
     args = parser.parse_args(argv)
-    paths = args.paths or changed_paths(args.base)
+    if args.paths and args.head != 'HEAD':
+        parser.error('--head classifies a diff; it cannot be combined with explicit paths')
+    paths = args.paths or changed_paths(args.base, args.head)
     overall, tiers = classify(paths)
     if args.json:
         print(json.dumps(dict(tier=overall, paths=tiers), ensure_ascii=False, indent=2))

@@ -8,8 +8,9 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, edited]
 
+# 会被下面 if 跳过的运行（只改了标题或正文）用自己的组，不能取消同一 PR 正在跑的定级。
 concurrency:
-  group: risk-tier-${{ github.event.pull_request.number }}
+  group: ${{ (github.event.action != 'edited' || github.event.changes.base) && format('risk-tier-{0}', github.event.pull_request.number) || format('risk-tier-skip-{0}', github.run_id) }}
   cancel-in-progress: true
 
 permissions:
@@ -18,6 +19,8 @@ permissions:
 
 jobs:
   tier:
+    # edited 也包括改标题和正文；只有改了 base 分支时才需要重新定级。
+    if: github.event.action != 'edited' || github.event.changes.base
     runs-on: ubuntu-latest
     steps:
       - name: Check out the base branch (rules come from here)
@@ -25,16 +28,19 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.base.ref }}
           fetch-depth: 0
+      # 取这次事件对应的那个提交，不取 PR 此刻的最新头，标签才和 CI、批准对着同一个 SHA。
       - name: Fetch the PR head (data only, never run)
         env:
-          PR: ${{ github.event.pull_request.number }}
-        run: git fetch --no-tags origin "+refs/pull/$PR/head:refs/remotes/pr/head"
+          SHA: ${{ github.event.pull_request.head.sha }}
+        run: git fetch --no-tags origin "$SHA"
       - name: Risk tier
         id: tier
+        env:
+          SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          python3 scripts/risk_tier.py --base HEAD --head refs/remotes/pr/head | tee tier.txt
+          python3 scripts/risk_tier.py --base HEAD --head "$SHA" | tee tier.txt
           echo "tier=$(head -1 tier.txt)" >> "$GITHUB_OUTPUT"
-          { echo '### Risk tier (rules from the base branch)'; echo '```'; cat tier.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          { echo "### Risk tier of $SHA (rules from the base branch)"; echo '```'; cat tier.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
       - name: Label
         env:
           GH_TOKEN: ${{ github.token }}

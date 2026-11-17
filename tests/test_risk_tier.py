@@ -1,5 +1,4 @@
 import importlib.util
-import os
 import subprocess
 import tempfile
 import unittest
@@ -49,12 +48,7 @@ class RiskTierTests(unittest.TestCase):
             git('commit', '-qm', 'move')
             head = git('rev-parse', 'HEAD')
             git('checkout', '-q', '--detach', base)
-            cwd = Path.cwd()
-            try:
-                os.chdir(repo)
-                paths = risk_tier.changed_paths(base, head)
-            finally:
-                os.chdir(cwd)
+            paths = risk_tier.changed_paths(base, head, repo=repo)
             self.assertEqual(sorted(paths), ['forge/moved.py', 'forge/verify.py'])
             self.assertEqual(risk_tier.classify(paths)[0], 'high')
 

@@ -68,10 +68,11 @@ def classify(paths):
     return overall, tiers
 
 
-def changed_paths(base, head='HEAD'):
-    merge_base = subprocess.run(['git', 'merge-base', base, head], capture_output=True, text=True, check=True).stdout.strip()
+def changed_paths(base, head='HEAD', repo=None):
+    git = ['git'] + (['-C', repo] if repo else [])
+    merge_base = subprocess.run([*git, 'merge-base', base, head], capture_output=True, text=True, check=True).stdout.strip()
     # --no-renames lists both sides of a rename, so moving a file out of a high path still counts as touching it.
-    out = subprocess.run(['git', 'diff', '--name-only', '--no-renames', merge_base, head], capture_output=True, text=True, check=True).stdout
+    out = subprocess.run([*git, 'diff', '--name-only', '--no-renames', merge_base, head], capture_output=True, text=True, check=True).stdout
     return [line for line in out.splitlines() if line]
 
 
@@ -82,6 +83,8 @@ def main(argv=None):
     parser.add_argument('--head', default='HEAD')
     parser.add_argument('--json', action='store_true')
     args = parser.parse_args(argv)
+    if args.paths and args.head != 'HEAD':
+        parser.error('--head classifies a diff; it cannot be combined with explicit paths')
     paths = args.paths or changed_paths(args.base, args.head)
     overall, tiers = classify(paths)
     if args.json:

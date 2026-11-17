@@ -1,0 +1,47 @@
+name: risk-tier
+
+# 给 PR 定风险级别并打 risk:* 标签。规则必须来自 base 分支，不能来自 PR 自己：
+# 否则一个 PR 改掉 scripts/risk_tier.py 的 RULES 或这个工作流，就能把自己降成 low。
+# pull_request_target 用 base 分支上的这个文件运行，检出的也是 base 分支，
+# PR 的提交只被 fetch 下来做 git diff，不执行其中任何代码。
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, edited]
+
+concurrency:
+  group: risk-tier-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  tier:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the base branch (rules come from here)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          fetch-depth: 0
+      - name: Fetch the PR head (data only, never run)
+        env:
+          PR: ${{ github.event.pull_request.number }}
+        run: git fetch --no-tags origin "+refs/pull/$PR/head:refs/remotes/pr/head"
+      - name: Risk tier
+        id: tier
+        run: |
+          python3 scripts/risk_tier.py --base HEAD --head refs/remotes/pr/head | tee tier.txt
+          echo "tier=$(head -1 tier.txt)" >> "$GITHUB_OUTPUT"
+          { echo '### Risk tier (rules from the base branch)'; echo '```'; cat tier.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      - name: Label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TIER: ${{ steps.tier.outputs.tier }}
+          PR: ${{ github.event.pull_request.number }}
+          REPO: ${{ github.repository }}
+        run: |
+          for t in low medium high; do gh label create "risk:$t" --repo "$REPO" --force >/dev/null; done
+          gh pr edit "$PR" --repo "$REPO" --remove-label risk:low,risk:medium,risk:high >/dev/null || true
+          gh pr edit "$PR" --repo "$REPO" --add-label "risk:$TIER"

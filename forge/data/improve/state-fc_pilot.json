@@ -1,250 +1,262 @@
 {
   "best": {
     "config": {
-      "prompt": "fc_pilot-auto001",
-      "effort": "xhigh"
+      "prompt": "fc_pilot-auto003",
+      "effort": "high"
     },
     "dev": {
-      "run": "improve-fc_pilot-001b-dev",
+      "run": "improve-fc_pilot-006-dev",
       "solved": 9,
       "problems": 18,
-      "tokens": 2108810,
+      "tokens": 2054113,
       "per": {
         "fc_erdos1086_erdos_1086_variants_raz_sharir": {
           "solved": false,
-          "tokens": 57162,
-          "seconds": 473,
+          "tokens": 44123,
+          "seconds": 202,
           "reason": "Lean 报错"
         },
         "fc_erdos1100_erdos_1100_parts_i": {
           "solved": false,
-          "tokens": 176709,
-          "seconds": 539,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos1057_erdos_1057_variants_upper_bound": {
-          "solved": false,
-          "tokens": 65236,
-          "seconds": 722,
+          "tokens": 66680,
+          "seconds": 349,
           "reason": "Lean 报错"
         },
         "fc_erdos100_erdos_100_variants_kanold": {
           "solved": false,
-          "tokens": 158549,
-          "seconds": 848,
+          "tokens": 193818,
+          "seconds": 477,
+          "reason": "Lean 报错"
+        },
+        "fc_erdos297_erdos_297_variants_steinerberger": {
+          "solved": false,
+          "tokens": 17267,
+          "seconds": 72,
+          "reason": "通过：命题匹配，公理合规",
+          "copied": "/Users/zaixi/.rsi-math/scratch/agents/improve-fc_pilot-006-dev/improve-fc_pilot-006-dev-w5/fc_erdos297_erdos_297_variants_steinerberger.stale-20261117133153.lean"
+        },
+        "fc_erdos1057_erdos_1057_variants_upper_bound": {
+          "solved": false,
+          "tokens": 49798,
+          "seconds": 269,
           "reason": "Lean 报错"
         },
         "fc_erdos902_erdos_902_variants_f_two": {
           "solved": true,
-          "tokens": 65139,
-          "seconds": 763,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos1062_erdos_1062_variants_lebensold_bounds": {
-          "solved": false,
-          "tokens": 168304,
-          "seconds": 1570,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos1023_erdos_1023_variants_hunter": {
-          "solved": true,
-          "tokens": 224485,
-          "seconds": 1626,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos1099_erdos_1099_variants_lcm": {
-          "solved": false,
-          "tokens": 103335,
-          "seconds": 1107,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos297_erdos_297_variants_steinerberger": {
-          "solved": true,
-          "tokens": 70807,
-          "seconds": 1212,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_powerfulnumbersdensity_asymptotic_erdos_szekeres": {
-          "solved": true,
-          "tokens": 67332,
-          "seconds": 222,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos686_erdos_686_variants_four_three": {
-          "solved": false,
-          "tokens": 307814,
-          "seconds": 1941,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos1100_erdos_1100_variants_omega_le": {
-          "solved": true,
-          "tokens": 48691,
-          "seconds": 336,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos1148_erdos_1148_variants_weaker": {
-          "solved": true,
-          "tokens": 77218,
-          "seconds": 1405,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos667_erdos_667_variants_ramsey_bounds": {
-          "solved": false,
-          "tokens": 198875,
-          "seconds": 2193,
-          "reason": "Lean 报错"
-        },
-        "fc_squarepacking_eleven_square_packing_in_square_bound": {
-          "solved": true,
-          "tokens": 88716,
-          "seconds": 1437,
+          "tokens": 37098,
+          "seconds": 218,
           "reason": "通过：命题匹配，公理合规"
         },
         "fc_erdos1038_erdos_1038_parts_ii": {
           "solved": false,
-          "tokens": 0,
-          "seconds": 3127,
+          "tokens": 155737,
+          "seconds": 848,
           "reason": "Lean 报错"
         },
-        "fc_erdos770_nat_prime_h_eq_add_one": {
+        "fc_erdos1099_erdos_1099_variants_lcm": {
+          "solved": false,
+          "tokens": 116854,
+          "seconds": 616,
+          "reason": "Lean 报错"
+        },
+        "fc_erdos1148_erdos_1148_variants_weaker": {
           "solved": true,
-          "tokens": 85517,
-          "seconds": 1575,
+          "tokens": 51758,
+          "seconds": 175,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos667_erdos_667_variants_ramsey_bounds": {
+          "solved": false,
+          "tokens": 143108,
+          "seconds": 723,
+          "reason": "Lean 报错"
+        },
+        "fc_powerfulnumbersdensity_asymptotic_erdos_szekeres": {
+          "solved": true,
+          "tokens": 128498,
+          "seconds": 808,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos1100_erdos_1100_variants_omega_le": {
+          "solved": true,
+          "tokens": 84982,
+          "seconds": 147,
           "reason": "通过：命题匹配，公理合规"
         },
         "fc_green14_w_3_23_lower": {
           "solved": true,
-          "tokens": 144921,
-          "seconds": 1685,
-          "reason": "通过：命题匹配，公理合规"
-        }
-      }
-    },
-    "holdout": {
-      "run": "improve-fc_pilot-001b-holdout",
-      "solved": 12,
-      "problems": 19,
-      "tokens": 2077304,
-      "per": {
-        "fc_erdos559_erdos_559_variants_rodl_szemeredi": {
-          "solved": true,
-          "tokens": 72136,
-          "seconds": 193,
+          "tokens": 123090,
+          "seconds": 467,
           "reason": "通过：命题匹配，公理合规"
         },
-        "fc_erdos1198_erdos_1198_variants_hindman": {
+        "fc_erdos1023_erdos_1023_variants_hunter": {
           "solved": true,
-          "tokens": 57122,
-          "seconds": 578,
+          "tokens": 241576,
+          "seconds": 1867,
           "reason": "通过：命题匹配，公理合规"
         },
-        "fc_erdos950_erdos_950_variants_debruijn_erdos_turan": {
+        "fc_squarepacking_eleven_square_packing_in_square_bound": {
+          "solved": true,
+          "tokens": 58781,
+          "seconds": 354,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos1062_erdos_1062_variants_lebensold_bounds": {
           "solved": false,
-          "tokens": 120383,
-          "seconds": 986,
+          "tokens": 243046,
+          "seconds": 1916,
           "reason": "Lean 报错"
         },
-        "fc_noetherproblem_noether_problem_variants_two": {
+        "fc_erdos770_nat_prime_h_eq_add_one": {
           "solved": true,
-          "tokens": 106042,
-          "seconds": 1000,
+          "tokens": 48423,
+          "seconds": 323,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos686_erdos_686_variants_four_three": {
+          "solved": true,
+          "tokens": 249476,
+          "seconds": 2136,
+          "reason": "通过：命题匹配，公理合规"
+        }
+      },
+      "copied": [
+        "fc_erdos297_erdos_297_variants_steinerberger"
+      ],
+      "complete": true,
+      "stop_reason": "评测题都已发出"
+    },
+    "holdout": {
+      "run": "improve-fc_pilot-006-holdout",
+      "solved": 10,
+      "problems": 19,
+      "tokens": 1932959,
+      "per": {
+        "fc_erdos1198_erdos_1198_variants_hindman": {
+          "solved": true,
+          "tokens": 39674,
+          "seconds": 210,
           "reason": "通过：命题匹配，公理合规"
         },
         "fc_green27_green_27_lower": {
           "solved": false,
-          "tokens": 176971,
-          "seconds": 1019,
+          "tokens": 50552,
+          "seconds": 387,
+          "reason": "Lean 报错"
+        },
+        "fc_noetherproblem_noether_problem_variants_two": {
+          "solved": true,
+          "tokens": 76544,
+          "seconds": 403,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos239_erdos_239": {
+          "solved": false,
+          "tokens": 103966,
+          "seconds": 259,
+          "reason": "Lean 报错"
+        },
+        "fc_erdos820_erdos_820_variants_erdos_lower": {
+          "solved": false,
+          "tokens": 76273,
+          "seconds": 347,
           "reason": "Lean 报错"
         },
         "fc_erdos876_erdos_876_variants_dem_ratio": {
           "solved": true,
-          "tokens": 108812,
-          "seconds": 1263,
+          "tokens": 138994,
+          "seconds": 834,
           "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos950_erdos_950_variants_debruijn_erdos_turan": {
+          "solved": false,
+          "tokens": 99506,
+          "seconds": 692,
+          "reason": "Lean 报错"
         },
         "fc_erdos652_erdos_652_variants_product": {
           "solved": true,
-          "tokens": 77085,
-          "seconds": 702,
+          "tokens": 63321,
+          "seconds": 295,
           "reason": "通过：命题匹配，公理合规"
         },
-        "fc_erdos820_erdos_820_variants_erdos_lower": {
+        "fc_erdos559_erdos_559_variants_rodl_szemeredi": {
           "solved": false,
-          "tokens": 141938,
-          "seconds": 1332,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos239_erdos_239": {
-          "solved": false,
-          "tokens": 128559,
-          "seconds": 1145,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos617_erdos_617_variants_r_eq_3": {
-          "solved": true,
-          "tokens": 150794,
-          "seconds": 1440,
-          "reason": "通过：命题匹配，公理合规"
+          "tokens": 157137,
+          "seconds": 1292,
+          "reason": "通过：命题匹配，公理合规",
+          "copied": "/Users/zaixi/.rsi-math/scratch/agents/improve-fc_pilot-005-recheck-holdout/improve-fc_pilot-005-recheck-holdout-w4/full_probe.lean"
         },
         "fc_erdos930_erdos_930_variants_consecutive_integers": {
           "solved": false,
-          "tokens": 146298,
-          "seconds": 1092,
-          "reason": "Lean 报错"
-        },
-        "fc_erdos1069_erdos_1069_variants_lattice": {
-          "solved": true,
-          "tokens": 55543,
-          "seconds": 916,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_green14_w_3_16": {
-          "solved": false,
-          "tokens": 147620,
-          "seconds": 1396,
-          "reason": "Lean 报错"
-        },
-        "fc_regularprimes_isregularprime_iff_bernoulli": {
-          "solved": false,
-          "tokens": 65210,
-          "seconds": 1045,
+          "tokens": 137443,
+          "seconds": 667,
           "reason": "Lean 报错"
         },
         "fc_wolstenholmeprime_wolstenholme_harmonic": {
           "solved": true,
-          "tokens": 77059,
-          "seconds": 1225,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_erdos340_erdos_340_variants_third": {
-          "solved": true,
-          "tokens": 69256,
-          "seconds": 414,
+          "tokens": 116882,
+          "seconds": 726,
           "reason": "通过：命题匹配，公理合规"
         },
         "fc_erdos1070_erdos_1070_variants_moser_spindle": {
           "solved": true,
-          "tokens": 117869,
-          "seconds": 1291,
-          "reason": "通过：命题匹配，公理合规"
-        },
-        "fc_complexitytheory_p_subset_bpp": {
-          "solved": true,
-          "tokens": 83259,
-          "seconds": 1464,
+          "tokens": 67242,
+          "seconds": 431,
           "reason": "通过：命题匹配，公理合规"
         },
         "fc_erdos252_erdos_252_variants_prime_tuples": {
           "solved": true,
-          "tokens": 175348,
-          "seconds": 1786,
+          "tokens": 124803,
+          "seconds": 1070,
           "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_complexitytheory_p_subset_bpp": {
+          "solved": true,
+          "tokens": 177943,
+          "seconds": 861,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_erdos1069_erdos_1069_variants_lattice": {
+          "solved": true,
+          "tokens": 27709,
+          "seconds": 500,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_regularprimes_isregularprime_iff_bernoulli": {
+          "solved": false,
+          "tokens": 66162,
+          "seconds": 360,
+          "reason": "Lean 报错"
+        },
+        "fc_erdos340_erdos_340_variants_third": {
+          "solved": true,
+          "tokens": 76358,
+          "seconds": 337,
+          "reason": "通过：命题匹配，公理合规"
+        },
+        "fc_green14_w_3_16": {
+          "solved": false,
+          "tokens": 184352,
+          "seconds": 1497,
+          "reason": "Lean 报错"
+        },
+        "fc_erdos617_erdos_617_variants_r_eq_3": {
+          "solved": false,
+          "tokens": 148098,
+          "seconds": 2401,
+          "reason": "提交格式不合规：提交过长"
         }
-      }
+      },
+      "copied": [
+        "fc_erdos559_erdos_559_variants_rodl_szemeredi"
+      ],
+      "complete": true,
+      "stop_reason": "评测题都已发出"
     }
   },
-  "iteration": 1,
-  "tokens_spent": 4520694,
+  "iteration": 9,
+  "tokens_spent": 29138791,
   "set": "fc_pilot",
   "dev": [
     "fc_erdos100_erdos_100_variants_kanold",
@@ -287,5 +299,6 @@
     "fc_regularprimes_isregularprime_iff_bernoulli",
     "fc_wolstenholmeprime_wolstenholme_harmonic"
   ],
-  "baseline_run": "fc-calib-0"
+  "baseline_run": "fc-calib-0",
+  "copy_checked": true
 }

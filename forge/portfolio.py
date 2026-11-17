@@ -18,7 +18,7 @@ import threading
 import time
 from pathlib import Path
 
-from . import bench
+from . import bench, provenance
 from .leanrun import DATA, PROJECT, ROOT, SCRATCH
 from .scheduler import FORGE, PREAMBLE_NOTE, SOURCE_NOTE, Scheduler
 from .statement import StatementError
@@ -520,9 +520,9 @@ class Portfolio(Scheduler):
             with self.file_lock:
                 d['status'] = 'solved' if result.get('ok') else 'assembly_failed'
                 if result.get('ok') and info['status'] != 'proved':
-                    info.update(status='proved', body=body, proved_by=sdag)
+                    info.update(status='proved', body=body, proved_by=sdag, copied=self._copy_of(body, subs))
                 self._save()
-            self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker='-',
+            self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker='-', copied=info.get('copied'),
                               outcome='proved' if result.get('ok') else 'failed', progress=bool(result.get('ok')),
                               seconds=0, tokens=0, exit=0, timed_out=False, reason=result.get('reason', '')[:300], message=''))
             if result.get('ok'):
@@ -561,14 +561,29 @@ class Portfolio(Scheduler):
         with self.file_lock:
             d['status'] = 'solved' if ok else 'assembly_failed'
             if ok and info['status'] != 'proved':
-                info.update(status='proved', body=body, proved_by=sdag)
+                info.update(status='proved', body=body, proved_by=sdag, copied=self._copy_of(body, subs))
             self._save()
-        self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker=agent,
+        self._record(dict(mode='portfolio-lemma-assemble', task=f'{lemma}/{sdag}', worker=agent, copied=info.get('copied'),
                           outcome='proved' if ok else 'failed', progress=bool(ok), seconds=round(time.time() - began),
                           tokens=used, exit=code, timed_out=slow, reason='agent: ' + result.get('reason', '')[:280],
                           message=message[-300:]))
         if ok:
             self._resolved(lemma)
+
+    # ---- 抄写检测 ----
+    def _own_files(self):
+        """本轮自己的草稿和状态（新旧两个位置）：接着上次跑时，自己上一次证出的引理不算抄写的来源。"""
+        return [SCRATCH / 'agents' / self.run, DATA / 'staging' / 'agents' / self.run,
+                STATE_DIR / f'{self.run}.json', LEGACY_STATE_DIR / f'{self.run}.json']
+
+    def _copy_of(self, body, lemmas=()):
+        """证出的引理或题目是不是抄来的：自己和本轮开始前就有的别的文件比；用到的子引理里有抄来的，也算抄来的。
+        返回来源（文件路径或 `lemma:<名字>`），不是抄的返回 None。"""
+        for l in lemmas:
+            if self.state['lemmas'][l].get('copied'):
+                return f'lemma:{l}'
+        copy = provenance.check(body, self.began, exclude=self._own_files())
+        return copy['source'] if copy['copied'] else None
 
     # ---- lemma ----
     def _lemma(self, agent, problem, lemma):
@@ -608,13 +623,14 @@ class Portfolio(Scheduler):
                 status = 'disproved' if result['kind'] == 'disproved' else 'proved'
                 if status == 'proved':
                     info['body'] = body
+                    info['copied'] = self._copy_of(body)
         with self.file_lock:
             info['status'] = status
             info['attempts'] = info.get('attempts', 0) + 1
             if status == 'disproved':  # 拆法不成立：用到它的图（题目图、父引理的子图）全部作废
                 self._kill_users(info)
             self._save()
-        self._record(dict(mode='portfolio-lemma', task=lemma, worker=agent, outcome=status, progress=status != 'unsolved',
+        self._record(dict(mode='portfolio-lemma', task=lemma, worker=agent, outcome=status, progress=status != 'unsolved', copied=info.get('copied'),
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
                           reason=reason[:300], message=message[-500:]))
         if status == 'proved':
@@ -640,7 +656,9 @@ class Portfolio(Scheduler):
         bodies = [self.state['lemmas'][l]['body'] for l in lemmas]
         began = time.time()
         body = assemble_body(problem, d['skeleton'], bodies, [(h['lemma'], h['args']) for h in d['holes']])
-        result = _safe_check(self.set_name, problem, body, self.run)
+        check = dict(before=self.began, exclude=self._own_files(),
+                     inherited=next((f'lemma:{l}' for l in lemmas if self.state['lemmas'][l].get('copied')), None))
+        result = _safe_check(self.set_name, problem, body, self.run, **check)
         used, code, slow, message, how = 0, 0, False, '', 'mechanical'
         if not result.get('solved'):
             # 机械拼装失败：派一个 agent 手工拼，结果仍由评测检查器判定
@@ -659,27 +677,30 @@ class Portfolio(Scheduler):
             code, message, used, slow = self._invoke(prompt, agent)
             how = 'agent'
             if out.exists():
-                result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run, before=self.began)
+                result = _safe_check(self.set_name, problem, out.read_text(encoding='utf-8'), self.run, **check)
         with self.file_lock:
-            if result.get('solved'):
+            copied = (result.get('copy') or {}).get('copied')
+            if result.get('solved') and copied:
+                # 抄来的（拼出的证明或用到的子引理大段和本轮开始前就有的文件相同）：不算解出，别的图接着做
+                d.update(status='copied', copied=result['copy']['source'])
+            elif result.get('solved'):
                 d['status'] = 'solved'
-                if (result.get('copy') or {}).get('copied'):  # 抄写检测：拼出的证明大段和本轮开始前就有的文件相同
-                    d['copied'] = result['copy']['source']
                 self.state['problems'][problem]['solved_by'] = self.state['problems'][problem]['solved_by'] or dag
             else:
                 d['status'] = 'assembly_failed'
             self._save()
         self._record(dict(mode='portfolio-assemble', task=f'{problem}/{dag}', worker=agent,
-                          outcome='solved' if result.get('solved') else 'failed', progress=bool(result.get('solved')),
+                          outcome=('copied' if copied else 'solved') if result.get('solved') else 'failed',
+                          progress=bool(result.get('solved')) and not copied,
                           seconds=round(time.time() - began), tokens=used, exit=code, timed_out=slow,
                           reason=f'{how}: ' + result.get('reason', '')[:280], message=message[-300:],
                           **({'copied': result['copy']['copied'], 'copy_source': result['copy']['source']} if result.get('copy') else {})))
 
 
-def _safe_check(set_name, problem, body, run, before=None):
+def _safe_check(set_name, problem, body, run, **copy_check):
     """评测检查器；静态检查拒收（命名、禁用词）时记为没解出。Lean、磁盘等基础设施错误照常抛出，不当成没解出。"""
     try:
-        return bench.check(set_name, problem, body, run, 'scheduler', before=before)
+        return bench.check(set_name, problem, body, run, 'scheduler', **copy_check)
     except StatementError as exc:
         return dict(ok=False, solved=False, reason=str(exc))
 
@@ -693,5 +714,5 @@ def summary(run):
         rows.append(dict(problem=p, solved_by=info['solved_by'], dags=len(dags),
                          dag_status={s: sum(d['status'] == s for d in dags.values()) for s in {d['status'] for d in dags.values()}},
                          lemmas=len(lemmas), proved=sum(l['status'] == 'proved' for l in lemmas),
-                         disproved=sum(l['status'] == 'disproved' for l in lemmas)))
+                         disproved=sum(l['status'] == 'disproved' for l in lemmas), copied_lemmas=sum(bool(l.get('copied')) for l in lemmas)))
     return dict(run=run, solved=sum(bool(r['solved_by']) for r in rows), problems=len(rows), rows=rows)

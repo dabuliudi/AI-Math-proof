@@ -1848,6 +1848,74 @@ store.write_text(json.dumps(prs))
         self.assertTrue(result['ok'] and not result['committed'], result)
 
 
+class PortfolioCopyTests(unittest.TestCase):
+    """组合拆解的抄写检测：子引理抄来的，用到它的题也不算解出；自己上一次留下的引理不算来源。"""
+
+    PROOF = '\n'.join(f'  have h{i} : some_long_fact_number_{i} = other_side_{i} := by ring_nf' for i in range(8))
+
+    def setUp(self):
+        from forge import portfolio
+        self.tmp = tempfile.TemporaryDirectory(); self.addCleanup(self.tmp.cleanup)
+        self.root = root = Path(self.tmp.name)
+        stack = contextlib.ExitStack(); self.addCleanup(stack.close)
+        for patch in (mock.patch.object(portfolio, 'STATE_DIR', root / 'scratch' / 'portfolio'),
+                      mock.patch.object(portfolio, 'LEGACY_STATE_DIR', root / 'legacy' / 'portfolio'),
+                      mock.patch.object(portfolio, 'SCRATCH', root / 'scratch'), mock.patch.object(portfolio, 'DATA', root / 'data'),
+                      mock.patch('forge.scheduler.SCRATCH', root / 'scratch'), mock.patch('forge.scheduler.RUNS', root / 'runs'),
+                      mock.patch('forge.provenance.SCRATCH', root / 'scratch'), mock.patch('forge.provenance.LEGACY', ()),
+                      mock.patch.object(portfolio.bench, 'load', return_value=[dict(name='p', statement=': True')])):
+            stack.enter_context(patch)
+        self.portfolio = portfolio
+        self.runner = portfolio.Portfolio('pf-now', workers=1, max_tasks=1000, dry_run=True)
+        self.runner.items = {'p': dict(name='p', statement=': True')}
+        self.runner.set_name, self.runner.file_lock = 's', threading.Lock()
+        self.runner.state = dict(run='pf-now', problems={'p': dict(set='s', solved_by=None, dags={
+            'd1': dict(skeleton='', holes=[dict(lemma='L', args=[])], status='assembling')})},
+            lemmas={'L': dict(set='s', problem='p', statement='True', hash='h', status='proved', dags=['d1'], body='x')})
+
+    def _old(self, rel):
+        path = self.root / 'scratch' / rel
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(self.PROOF)
+        old = time.time() - 3600
+        os.utime(path, (old, old))
+
+    def test_own_earlier_files_are_not_sources_but_other_runs_are(self):
+        self._old('agents/pf-now/pf-now-w1/L.proved.lean')
+        self.assertIsNone(self.runner._copy_of(self.PROOF))
+        self._old('agents/pf-other/w1/L.proved.lean')
+        self.assertIn('pf-other', self.runner._copy_of(self.PROOF))
+
+    def test_a_problem_using_a_copied_lemma_is_not_solved(self):
+        self.runner.state['lemmas']['L']['copied'] = '/old/x.lean'
+        def check(set_name, problem, body, run, agent, before=None, exclude=(), inherited=None):
+            return dict(ok=True, kind='proved', solved=True, reason='通过',
+                        copy=dict(copied=bool(inherited), source=inherited, overlap=0.0))
+        with mock.patch.object(self.portfolio.bench, 'check', side_effect=check), \
+                mock.patch.object(self.portfolio, 'assemble_body', return_value='theorem p : True := trivial'):
+            self.runner._assemble('a1', 'p', 'd1')
+        d = self.runner.state['problems']['p']['dags']['d1']
+        self.assertEqual((d['status'], d['copied']), ('copied', 'lemma:L'))
+        self.assertIsNone(self.runner.state['problems']['p']['solved_by'])
+        self.assertEqual(self.runner.records[-1]['outcome'], 'copied')
+
+    def test_a_proved_lemma_is_checked(self):
+        self._old('agents/pf-other/w1/L.final.lean')
+        info = self.runner.state['lemmas']['L']
+        info.update(status='open', attempts=0)
+        self.runner.state['problems']['p']['dags']['d1']['status'] = 'open'   # 引理还有图在用，才会去证
+        self.runner.lemma_seconds, self.runner.lemma_attempts = 60, 1
+        def invoke(prompt, agent, seconds=None):
+            (self.runner.scratch / agent).mkdir(parents=True, exist_ok=True)
+            (self.runner.scratch / agent / 'L.lean').write_text('theorem L : True := by\n' + self.PROOF)
+            return 0, '', 0, False
+        with mock.patch.object(self.runner, '_invoke', side_effect=invoke), \
+                mock.patch('forge.verify.check_submission', return_value=dict(ok=True, kind='proved', reason='通过')), \
+                mock.patch.object(self.runner, '_resolved'):
+            self.runner._lemma('a1', 'p', 'L')
+        self.assertIn('pf-other', info['copied'])
+
+
 class PortfolioMainLastTests(unittest.TestCase):
     def test_main_last_moves_the_main_theorem_after_its_helpers(self):
         from forge.portfolio import main_last

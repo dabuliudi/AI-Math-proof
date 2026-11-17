@@ -87,9 +87,10 @@ def _library_mid_build(result):
                for e in result.get('errors') or [])
 
 
-def check(name, problem, body, run, agent, before=None, exclude=()):
+def check(name, problem, body, run, agent, before=None, exclude=(), inherited=None):
     """对一道评测题校验一份证明：只判对错，不入库，结果记入该轮次。
-    给了 before（本轮开始的时间戳）就对解出的证明做抄写检测（provenance.py）：抄来的记下来源，成绩里不算解出。"""
+    给了 before（本轮开始的时间戳）就对解出的证明做抄写检测（provenance.py）：抄来的记下来源，成绩里不算解出。
+    inherited：调用方已知证明里用了抄来的部分（例如组合拆解的某条子引理），直接记为抄来的。"""
     item = next((i for i in load(name) if i['name'] == problem), None)
     if item is None:
         return dict(ok=False, reason=f'评测集 {name} 里没有 {problem}')
@@ -106,6 +107,8 @@ def check(name, problem, body, run, agent, before=None, exclude=()):
     if solved and before is not None:
         from . import provenance
         copy = provenance.check(body, before, exclude=exclude)
+        if inherited and not copy['copied']:
+            copy.update(copied=True, source=inherited)
     RUNS.mkdir(parents=True, exist_ok=True)
     # 交的是反证且内核通过：说明评测集里这道题的 Lean 写法本身为假（写错的题），单独记下，不算没做出。
     record = dict(problem=problem, run=run, agent=agent, solved=solved, reason=result.get('reason', ''),

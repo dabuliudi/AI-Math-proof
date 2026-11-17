@@ -6,11 +6,11 @@ name: risk-tier
 # PR 的提交只被 fetch 下来做 git diff，不执行其中任何代码。
 on:
   pull_request_target:
-    types: [opened, synchronize, reopened, edited]
+    types: [opened, synchronize, reopened, edited, labeled, unlabeled]
 
-# 会被下面 if 跳过的运行（只改了标题或正文）用自己的组，不能取消同一 PR 正在跑的定级。
+# 会被下面 if 跳过的运行（只改了标题或正文、只动了别的标签）用自己的组，不能取消同一 PR 正在跑的定级。
 concurrency:
-  group: ${{ (github.event.action != 'edited' || github.event.changes.base) && format('risk-tier-{0}', github.event.pull_request.number) || format('risk-tier-skip-{0}', github.run_id) }}
+  group: ${{ ((github.event.action != 'edited' && github.event.action != 'labeled' && github.event.action != 'unlabeled') || github.event.changes.base || startsWith(github.event.label.name, 'risk:')) && format('risk-tier-{0}', github.event.pull_request.number) || format('risk-tier-skip-{0}', github.run_id) }}
   cancel-in-progress: true
 
 permissions:
@@ -19,8 +19,9 @@ permissions:
 
 jobs:
   tier:
-    # edited 也包括改标题和正文；只有改了 base 分支时才需要重新定级。
-    if: github.event.action != 'edited' || github.event.changes.base
+    # edited 也包括改标题和正文，只有改了 base 分支才重新定级。有人手动改了 risk:* 标签就重新算一遍改回去
+    # （GITHUB_TOKEN 打的标签不触发工作流，不会循环）。
+    if: ${{ (github.event.action != 'edited' && github.event.action != 'labeled' && github.event.action != 'unlabeled') || github.event.changes.base || startsWith(github.event.label.name, 'risk:') }}
     runs-on: ubuntu-latest
     steps:
       - name: Check out the base branch (rules come from here)
@@ -41,10 +42,12 @@ jobs:
           python3 scripts/risk_tier.py --base HEAD --head "$SHA" | tee tier.txt
           echo "tier=$(head -1 tier.txt)" >> "$GITHUB_OUTPUT"
           { echo "### Risk tier of $SHA (rules from the base branch)"; echo '```'; cat tier.txt; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+      # 定级失败（fetch、merge-base 出错）时按高风险标，不能让上一个提交的标签留着；被取消时不动（更新的运行会打）。
       - name: Label
+        if: ${{ success() || failure() }}
         env:
           GH_TOKEN: ${{ github.token }}
-          TIER: ${{ steps.tier.outputs.tier }}
+          TIER: ${{ steps.tier.outputs.tier || 'high' }}
           PR: ${{ github.event.pull_request.number }}
           REPO: ${{ github.repository }}
         run: |

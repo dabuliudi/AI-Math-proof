@@ -72,8 +72,9 @@ def changed_paths(base, head='HEAD', repo=None):
     git = ['git'] + (['-C', repo] if repo else [])
     merge_base = subprocess.run([*git, 'merge-base', base, head], capture_output=True, text=True, check=True).stdout.strip()
     # --no-renames lists both sides of a rename, so moving a file out of a high path still counts as touching it.
-    out = subprocess.run([*git, 'diff', '--name-only', '--no-renames', merge_base, head], capture_output=True, text=True, check=True).stdout
-    return [line for line in out.splitlines() if line]
+    # -z: paths come out unquoted, so a non-ASCII name still matches its rule.
+    out = subprocess.run([*git, 'diff', '--name-only', '--no-renames', '-z', merge_base, head], capture_output=True, text=True, check=True).stdout
+    return [path for path in out.split('\0') if path]
 
 
 def main(argv=None):

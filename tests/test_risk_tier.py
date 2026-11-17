@@ -52,6 +52,15 @@ class RiskTierTests(unittest.TestCase):
             self.assertEqual(sorted(paths), ['forge/moved.py', 'forge/verify.py'])
             self.assertEqual(risk_tier.classify(paths)[0], 'high')
 
+            git('checkout', '-q', head)
+            Path(repo, 'lean', 'Forge').mkdir(parents=True)
+            Path(repo, 'lean', 'Forge', 'Vé.lean').write_text('-- x\n')
+            git('add', '-A')
+            git('commit', '-qm', 'non-ascii')
+            paths = risk_tier.changed_paths(head, git('rev-parse', 'HEAD'), repo=repo)
+            self.assertEqual(paths, ['lean/Forge/Vé.lean'])
+            self.assertEqual(risk_tier.classify(paths)[0], 'high')
+
 
 if __name__ == '__main__':
     unittest.main()

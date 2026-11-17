@@ -1,5 +1,6 @@
 """forge 的测试。纯逻辑部分总是运行；需要真实 Lean 的部分设置 FORGE_INTEGRATION=1 才运行，且不修改库和队列。"""
 import contextlib
+import hashlib
 import json
 import os
 import tempfile
@@ -2221,3 +2222,37 @@ class MemoryGateTests(unittest.TestCase):
         self.assertEqual(read.call_count, 1)
         scheduler._memory_cache[:] = [0.0, None]
 
+
+class ShardImportTests(unittest.TestCase):
+    ROWS = [dict(name='a', task='a', shard='S0001', library_deps=[], helpers=['a_aux']),
+            dict(name='b', task='b', shard='S0002', library_deps=[], helpers=[]),
+            dict(name='c', task='c', shard='S0003', library_deps=['a_aux', 'c0'], helpers=[]),
+            dict(name='c0', task='c0', shard='S0003', library_deps=[], helpers=[])]
+
+    def test_shards_import_only_the_shards_their_theorems_use(self):
+        from forge import library
+        # c 用到 S0001 的辅助引理和同分片的 c0：只导入 S0001，不导入 S0002，也不导入自己
+        self.assertEqual(library.shard_imports(self.ROWS), {'S0001': set(), 'S0002': set(), 'S0003': {'S0001'}})
+
+    def test_with_imports_adds_missing_imports_after_mathlib_and_keeps_existing(self):
+        from forge import library
+        text = '/- 分片 -/\nimport Mathlib\nimport Mathlib2.Shard.S0002\nset_option x 1\nnamespace Mathlib2\n\nend Mathlib2\n'
+        out = library._with_imports(text, 'S0005', {'S0001', 'S0005'})
+        self.assertEqual(out, '/- 分片 -/\nimport Mathlib\nimport Mathlib2.Shard.S0001\nimport Mathlib2.Shard.S0002\n'
+                              'set_option x 1\nnamespace Mathlib2\n\nend Mathlib2\n')
+        self.assertEqual(library._with_imports(out, 'S0005', {'S0001'}), out)  # 再跑一遍不变
+
+    def test_rollback_journal_still_matches_after_an_admission_added_imports(self):
+        from forge import library
+        tmp = tempfile.TemporaryDirectory(); self.addCleanup(tmp.cleanup)
+        root = Path(tmp.name)
+        shard = root / 'S0003.lean'
+        original = '/- s -/\nimport Mathlib\nset_option x 1\nnamespace Mathlib2\n\nend Mathlib2\n'
+        grown = library._with_imports(original, 'S0003', {'S0001'}).replace(
+            'end Mathlib2\n', '-- forge:entry c kind=proved origin=\nsection\ntheorem c : True := trivial\nend\n\nend Mathlib2\n')
+        shard.write_text(grown, encoding='utf-8')
+        ledger = root / 'ledger.jsonl'
+        ledger.write_text(json.dumps(dict(task='c')) + '\n', encoding='utf-8')
+        journal = dict(names=['c'], ledger_size=0, ledger_digest=hashlib.sha256(b'').hexdigest(), shards={str(shard): original})
+        with mock.patch.object(library, 'LEDGER', ledger):
+            self.assertTrue(library._journal_matches(journal))

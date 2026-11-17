@@ -1,6 +1,6 @@
 /- Mathlib2 分片 44（forge 自动维护，追加式）。 -/
 import Mathlib
-import Mathlib2.Shard.S0043
+import Mathlib2.Shard.S0002
 namespace Mathlib2
 
 -- forge:entry lw_11611 kind=proved origin=external

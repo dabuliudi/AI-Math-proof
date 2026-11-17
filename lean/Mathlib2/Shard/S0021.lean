@@ -1,5 +1,15 @@
 /- Mathlib2 分片 21（forge 自动维护，追加式）。 -/
 import Mathlib
+import Mathlib2.Shard.S0006
+import Mathlib2.Shard.S0010
+import Mathlib2.Shard.S0012
+import Mathlib2.Shard.S0013
+import Mathlib2.Shard.S0014
+import Mathlib2.Shard.S0015
+import Mathlib2.Shard.S0016
+import Mathlib2.Shard.S0017
+import Mathlib2.Shard.S0018
+import Mathlib2.Shard.S0019
 import Mathlib2.Shard.S0020
 set_option maxHeartbeats 400000
 namespace Mathlib2

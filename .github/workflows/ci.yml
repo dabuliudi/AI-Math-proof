@@ -87,6 +87,17 @@ jobs:
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      # 库自己的编译结果（Mathlib2 分片、Forge 检查器）跨运行缓存：分片是追加式的，一次入库通常只改最后一个分片，
+      # 不必每次从头编译全部分片（原来约 23 分钟）。Lake 按源码和依赖的哈希判断是否重编，缓存里过期的部分会自动重编，
+      # 所以缓存只影响速度、不影响结果；审计（forge audit）照样对着编好的库逐条重新核对。
+      # PR 只能读 main 写下的缓存、写自己分支的缓存，不能改 main 的缓存。
+      - name: Restore the library build
+        uses: actions/cache@v4
+        with:
+          path: lean/.lake/build
+          key: lean-build-${{ hashFiles('lean/lean-toolchain', 'lean/lake-manifest.json') }}-${{ hashFiles('lean/*.lean', 'lean/lakefile.toml', 'lean/Mathlib2/**', 'lean/Research/**', 'lean/scripts/**') }}
+          restore-keys: |
+            lean-build-${{ hashFiles('lean/lean-toolchain', 'lean/lake-manifest.json') }}-
       - name: Fetch Mathlib build cache
         working-directory: lean
         run: lake exe cache get

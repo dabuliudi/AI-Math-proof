@@ -35,6 +35,13 @@ def emit(value):
     print(json.dumps(value, ensure_ascii=False, indent=2))
 
 
+def _percent(text):
+    value = int(text)
+    if not 0 <= value <= 90:
+        raise argparse.ArgumentTypeError('取 0（关闭）到 90')
+    return value
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(prog='forge', description='定理铸造厂：Lean 内核把关的任务队列与 Mathlib2 库')
     sub = parser.add_subparsers(dest='command', required=True)
@@ -104,6 +111,8 @@ def main(argv=None):
     p.add_argument('--max-failures', type=int, default=4, help='连续这么多次没有进展就整体停下')
     p.add_argument('--cooldowns', type=int, default=2, help='agent 连续出错时，先暂停再探测恢复的次数（之后才真正停下）')
     p.add_argument('--cooldown-minutes', type=int, default=10)
+    p.add_argument('--min-free-memory', type=_percent, default=0, metavar='0-90',
+                   help='系统空闲内存低于这个百分比时不派新活（0 = 关闭）。只用于不做对比的运行：评测对比要在同样负载下进行')
     p.add_argument('--agent-cmd', help='自定义 agent 命令（提示词从 stdin 传入）；默认 codex exec')
     p.add_argument('--model', default='gpt-6.1-sol', help='Codex 模型，默认 gpt-6.1-sol')
     p.add_argument('--effort', default='xhigh', help='Codex 推理强度：low/medium/high/xhigh，默认 xhigh')
@@ -123,6 +132,7 @@ def main(argv=None):
     p.add_argument('--run', required=True); p.add_argument('--workers', type=int, default=4)
     p.add_argument('--budget-minutes', type=int, default=600); p.add_argument('--task-minutes', type=int, default=40)
     p.add_argument('--no-propose', action='store_true', help='只判定忠实度，不把一致的命题放进队列')
+    p.add_argument('--min-free-memory', type=_percent, default=0, metavar='0-90', help='系统空闲内存低于这个百分比时不派新活（0 = 关闭，最大 90），工人数可以开大')
     p.add_argument('--effort', default='xhigh'); p.add_argument('--dry-run', action='store_true')
     p = sub.add_parser('audit-summary', help='一篇论文的体检结果'); p.add_argument('paper')
     p = sub.add_parser('portfolio', help='组合拆解：每道难题拆成 K 张引理 DAG，各组并行证子引理，先拼完整的算解出')
@@ -132,7 +142,7 @@ def main(argv=None):
     p.add_argument('--workers', type=int, default=8); p.add_argument('--task-minutes', type=int, default=40)
     p.add_argument('--lemma-minutes', type=int, default=40); p.add_argument('--lemma-attempts', type=int, default=2)
     p.add_argument('--revive', action='store_true', help='接着跑时，把被判没法检查的引理重新开放、只因它们作废的图恢复')
-    p.add_argument('--min-free-memory', type=int, default=0, help='系统空闲内存低于这个百分比时不派新活（0 = 关闭），工人数可以开大')
+    p.add_argument('--min-free-memory', type=_percent, default=0, metavar='0-90', help='系统空闲内存低于这个百分比时不派新活（0 = 关闭，最大 90），工人数可以开大')
     p.add_argument('--split', type=int, default=0, help='子引理试够次数仍没证出时，再拆成这么多张子图（0 = 不拆）')
     p.add_argument('--depth', type=int, default=1, help='最多再拆几层')
     p.add_argument('--budget-minutes', type=int, default=720); p.add_argument('--effort', default='xhigh')
@@ -296,7 +306,8 @@ def main(argv=None):
                            model=args.model, effort=args.effort, dry_run=args.dry_run, sandbox=args.sandbox,
                            ladder=[(step.split(':')[0], int(step.split(':')[1])) for step in args.ladder.split(',')] if args.ladder else None,
                            prompt=args.prompt, parity=0 if args.only_even else (1 if args.only_odd else None),
-                           cooldowns=args.cooldowns, cooldown_minutes=args.cooldown_minutes)
+                           cooldowns=args.cooldowns, cooldown_minutes=args.cooldown_minutes,
+                           min_free_memory=args.min_free_memory)
         shard = None
         if args.shard:
             k, n = (int(x) for x in args.shard.split('/'))
@@ -326,7 +337,7 @@ def main(argv=None):
         print(f'有 HTML 全文的论文 {len(ready)}/{len(ids)}：{",".join(ready)}', flush=True)
         runner = PaperAudit(args.run, workers=args.workers, max_tasks=100000, budget_minutes=args.budget_minutes,
                             task_minutes=args.task_minutes, max_failures=max(8, len(ready)), effort=args.effort,
-                            dry_run=args.dry_run)
+                            dry_run=args.dry_run, min_free_memory=args.min_free_memory)
         emit(runner.run_audit(ready, propose=not args.no_propose))
     elif args.command == 'audit-summary':
         from .audit import summary

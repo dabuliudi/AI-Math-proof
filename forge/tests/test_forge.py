@@ -2183,3 +2183,41 @@ class MemoryGateTests(unittest.TestCase):
              mock.patch.object(scheduler.time, 'sleep', side_effect=stop):
             self.assertFalse(runner._may_start())
 
+    def test_recent_starts_are_reserved_so_waiting_workers_do_not_all_pass(self):
+        from forge import scheduler
+        runner = scheduler.Scheduler('t-mem3', workers=4, max_tasks=10, dry_run=True, min_free_memory=30)
+        # 空闲 55%：第一个、第二个放行（55-0、55-12 都 >= 30），第三个要 55-24=31 也放行，第四个 55-36 < 30 要等
+        with mock.patch.object(scheduler, 'free_memory_percent', return_value=55), \
+             mock.patch.object(scheduler.time, 'sleep', side_effect=lambda _: setattr(runner, 'stop_reason', 'x')):
+            passed = [runner._may_start() for _ in range(4)]
+        self.assertEqual(passed, [True, True, True, False])
+
+    def test_out_of_range_gate_is_rejected(self):
+        from forge import scheduler
+        with self.assertRaises(ValueError):
+            scheduler.Scheduler('t-mem4', workers=1, max_tasks=1, dry_run=True, min_free_memory=300)
+        from forge.__main__ import main
+        with self.assertRaises(SystemExit):
+            main(['portfolio', '--run', 'x', '--bench', 's', '--problems', 'p', '--min-free-memory', '300'])
+
+    def test_portfolio_cli_passes_the_gate_to_the_scheduler(self):
+        from forge import __main__ as cli, portfolio
+        seen = {}
+        class Fake(portfolio.Portfolio):
+            def __init__(self, *a, **kw):
+                seen.update(kw)
+                raise SystemExit(0)
+        with mock.patch.object(portfolio, 'Portfolio', Fake):
+            with self.assertRaises(SystemExit):
+                cli.main(['portfolio', '--run', 'x', '--bench', 's', '--problems', 'p', '--min-free-memory', '30'])
+        self.assertEqual(seen['min_free_memory'], 30)
+
+    def test_free_memory_reading_is_cached_briefly(self):
+        from forge import scheduler
+        scheduler._memory_cache[:] = [0.0, None]
+        with mock.patch.object(scheduler, '_read_free_memory', return_value=40) as read:
+            self.assertEqual(scheduler.free_memory_percent(), 40)
+            self.assertEqual(scheduler.free_memory_percent(), 40)
+        self.assertEqual(read.call_count, 1)
+        scheduler._memory_cache[:] = [0.0, None]
+

@@ -33,8 +33,24 @@ MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
 FORGE = 'forge.cmd' if os.name == 'nt' else './forge.sh'
 
 
-def free_memory_percent():
-    """系统空闲内存百分比（macOS 的 memory_pressure，与活动监视器一致；Linux 读 /proc/meminfo）。取不到时返回 None。"""
+MEMORY_TASK_PERCENT = 12  # 一个新任务稍后大约会占的内存（FC 导入的 Lean 检查约 5 GB，占 32 GB 机器的 15% 上下）
+MEMORY_WINDOW = 600  # 新任务的 Lean 进程通常几分钟后才起来：这段时间内开始的任务按“还没显出来的占用”预留
+_memory_cache = [0.0, None]
+_memory_cache_lock = threading.Lock()
+
+
+def free_memory_percent(max_age=5):
+    """系统空闲内存百分比（macOS 的 memory_pressure，与活动监视器一致；Linux 读 /proc/meminfo）。取不到时返回 None。
+    几秒内的读数共用一份，许多工人同时等的时候不必每人起一个子进程。"""
+    with _memory_cache_lock:
+        if time.time() - _memory_cache[0] < max_age:
+            return _memory_cache[1]
+        value = _read_free_memory()
+        _memory_cache[:] = [time.time(), value]
+        return value
+
+
+def _read_free_memory():
     try:
         if sys.platform == 'darwin':
             out = subprocess.run(['memory_pressure'], capture_output=True, text=True, timeout=30).stdout
@@ -274,7 +290,10 @@ class Scheduler:
         self.paused_until, self.probing, self.events = 0, False, []
         # 内存闸门（百分比，0 = 关闭）：系统空闲内存低于它时不派新活，已经在跑的不受影响。
         # 这样工人数可以开大，内存由闸门兜底，不会把机器挤进交换区（交换会拖慢别人的检查、造成超时）。
+        if not 0 <= min_free_memory <= 90:
+            raise ValueError('min_free_memory 是百分比，取 0（关闭）到 90')
         self.min_free_memory = min_free_memory
+        self.memory_lock, self.recent_starts = threading.Lock(), []
         self.scratch = SCRATCH / 'agents' / run
         self.began = time.time()  # 抄写检测只把这之前就存在的文件当作来源：本轮自己写的草稿不算
         RUNS.mkdir(parents=True, exist_ok=True)
@@ -344,14 +363,19 @@ class Scheduler:
                 handle.write(json.dumps(row, ensure_ascii=False) + '\n')
 
     def _wait_for_memory(self, poll=20):
-        """空闲内存低于 min_free_memory 时等着（不占任务数，不算失败）；轮次停下或超时就不再等。"""
+        """空闲内存低于 min_free_memory 时等着（不占任务数，不算失败）；轮次停下或超时就不再等。
+        刚开始的任务内存还没涨上来，按每个 MEMORY_TASK_PERCENT 预留，一次只放一个工人判断，免得一起涌进去。"""
         if not self.min_free_memory:
             return
         waited = False
         while not self.stop_reason and time.time() < self.deadline - 120:
-            free = free_memory_percent()
-            if free is None or free >= self.min_free_memory:
-                break
+            with self.memory_lock:
+                now = time.time()
+                self.recent_starts = [t for t in self.recent_starts if now - t < MEMORY_WINDOW]
+                free = free_memory_percent()
+                if free is None or free - MEMORY_TASK_PERCENT * len(self.recent_starts) >= self.min_free_memory:
+                    self.recent_starts.append(now)
+                    break
             if not waited:
                 waited = True
                 with self.lock:

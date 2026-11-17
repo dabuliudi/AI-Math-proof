@@ -370,6 +370,7 @@ class Portfolio(Scheduler):
         agent = f'{self.run}-w{index}'
         (self.scratch / agent).mkdir(parents=True, exist_ok=True)
         while True:
+            self._wait_for_memory()  # 先等内存再挑活：等完再按当时的优先级挑，挑到的活不会在等待中过时
             work = self._take()
             if work is None:
                 return

@@ -621,10 +621,10 @@ class Portfolio(Scheduler):
                     info['last_attempt'] = dict(file=str(keep), reason=reason)
             if result.get('ok'):
                 status = 'disproved' if result['kind'] == 'disproved' else 'proved'
-                if status == 'proved':
-                    info['body'] = body
-                    info['copied'] = self._copy_of(body)
-        with self.file_lock:
+                copied = self._copy_of(body) if status == 'proved' else None
+        with self.file_lock:  # 别的线程可能正在 _save 里序列化状态：改共享字典都在锁里
+            if status == 'proved':
+                info.update(body=body, copied=copied)
             info['status'] = status
             info['attempts'] = info.get('attempts', 0) + 1
             if status == 'disproved':  # 拆法不成立：用到它的图（题目图、父引理的子图）全部作废

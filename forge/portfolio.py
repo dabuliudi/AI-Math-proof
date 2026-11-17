@@ -373,7 +373,8 @@ class Portfolio(Scheduler):
             return False
         self._record(dict(mode='portfolio-' + work[0].replace('_', '-'), task='/'.join(str(x) for x in work[1:3]), worker=agent,
                           outcome='agent_error', progress=False, seconds=round(time.time() - began), tokens=0, exit=code,
-                          timed_out=False, reason='agent 没有跑起来（退出码非 0、没有用 token），放回队列', message=''))
+                          timed_out=False, reason='agent 没有跑起来（退出码非 0、没有用 token），放回队列',
+                          message=self.last_raw.get(agent, '')[-800:]))  # Codex 的原始输出：看得出是限额、断线还是别的
         self._push(work)
         return True
 

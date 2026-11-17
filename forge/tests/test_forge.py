@@ -2279,12 +2279,12 @@ class MemoryGateTests(unittest.TestCase):
 
     def test_recent_starts_are_reserved_so_waiting_workers_do_not_all_pass(self):
         from forge import scheduler
-        runner = scheduler.Scheduler('t-mem3', workers=4, max_tasks=10, dry_run=True, min_free_memory=30)
-        # 空闲 55%：第一个、第二个放行（55-0、55-12 都 >= 30），第三个要 55-24=31 也放行，第四个 55-36 < 30 要等
+        runner = scheduler.Scheduler('t-mem3', workers=6, max_tasks=10, dry_run=True, min_free_memory=30)
+        # 空闲 55%、每个刚开始的任务预留 6%：55-0 … 55-24=31 都放行（5 个），第六个 55-30=25 < 30 要等
         with mock.patch.object(scheduler, 'free_memory_percent', return_value=55), \
              mock.patch.object(scheduler.time, 'sleep', side_effect=lambda _: setattr(runner, 'stop_reason', 'x')):
-            passed = [runner._may_start() for _ in range(4)]
-        self.assertEqual(passed, [True, True, True, False])
+            passed = [runner._may_start() for _ in range(6)]
+        self.assertEqual(passed, [True] * 5 + [False])
 
     def test_out_of_range_gate_is_rejected(self):
         from forge import scheduler

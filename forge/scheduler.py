@@ -33,8 +33,8 @@ MAC_CODEX = '/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex'
 FORGE = 'forge.cmd' if os.name == 'nt' else './forge.sh'
 
 
-MEMORY_TASK_PERCENT = 12  # 一个新任务稍后大约会占的内存（FC 导入的 Lean 检查约 5 GB，占 32 GB 机器的 15% 上下）
-MEMORY_WINDOW = 600  # 新任务的 Lean 进程通常几分钟后才起来：这段时间内开始的任务按“还没显出来的占用”预留
+MEMORY_TASK_PERCENT = 6  # 一个新任务稍后大约会占的内存：实测一个 FC 导入的 Lean 进程只多占 0.5–3 GB（.olean 是多进程共享的 mmap），约 32 GB 的 2–9%
+MEMORY_WINDOW = 300  # 新任务的 Lean 进程通常几分钟内起来：这段时间内开始的任务按“还没显出来的占用”预留
 _memory_cache = [0.0, None]
 _memory_cache_lock = threading.Lock()
 

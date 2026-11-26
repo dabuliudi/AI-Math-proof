@@ -2,6 +2,7 @@
 Copyright (c) 2024 Chenyi Li, Bowen Yang, Yifan Bai. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Chenyi Li, Bowen Yang, Yifan Bai
+Modified 2026 for RSI Math: ported from Lean/Mathlib v4.13.0 to v4.33.1; see Optlib/PORTING.md for the changes.
 -/
 import Optlib.Algorithm.BCD.Scheme
 

@@ -18,6 +18,11 @@ name = "Forge"
 [[lean_lib]]
 name = "Mathlib2"
 
+# Optlib（北京大学 optsuite，Apache-2.0，https://github.com/optsuite/optlib）的 KL + BCD 部分，
+# 从 Lean/Mathlib v4.13 移植到本项目的版本。原版权与许可证见 Optlib/LICENSE 和各文件文件头。
+[[lean_lib]]
+name = "Optlib"
+
 # Formal Conjectures（DeepMind，Apache-2.0）：难题集与开放问题的来源。与本库同一个 Mathlib 提交；
 # 只按需编译评测题用到的模块，不并入 Mathlib2。
 [[require]]
